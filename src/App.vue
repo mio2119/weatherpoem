@@ -14,7 +14,8 @@ import {
   recommendPoem,
   RULE_VERSION,
 } from "./core/recommendation";
-import { buildCalendarContext } from "./core/date-context";
+import { buildCalendarContext, localDateKey } from "./core/date-context";
+import { hasReplacedOnDate } from "./core/daily-behavior";
 import {
   buildPilotSummary,
   closePilotSession,
@@ -94,6 +95,8 @@ const pilotState = ref<PilotState>();
 const readingReturnPanel = ref<"card" | "favorites">("card");
 let toastTimer: number | undefined;
 let contentControlTimer: number | undefined;
+let dateCheckTimer: number | undefined;
+let dateRefreshPromise: Promise<boolean> | undefined;
 let stopSettingsListener: (() => void) | undefined;
 let stopOpenMainListener: (() => void) | undefined;
 let stopExitRequestListener: (() => void) | undefined;
@@ -123,11 +126,7 @@ const favoritePoems = computed(() =>
     .filter((poem): poem is Poem => Boolean(poem)),
 );
 const replacedToday = computed(() =>
-  bootstrap.value.feedback.some(
-    (item) =>
-      item.type === "replaced" &&
-      item.createdAt.slice(0, 10) === calendar.value.localDate,
-  ),
+  hasReplacedOnDate(bootstrap.value.feedback, calendar.value.localDate),
 );
 const pilotSummary = computed(() =>
   pilotState.value
@@ -283,11 +282,12 @@ async function persistRecommendation(
   state: "shown" | "retained",
 ): Promise<void> {
   if (!repository.value) return;
+  const displayedAt = new Date().toISOString();
   const dailyState = {
     localDate: calendar.value.localDate,
     state,
     workId: selected.poem.id,
-    shownAt: new Date().toISOString(),
+    shownAt: displayedAt,
     contentVersion: CONTENT_VERSION,
     ruleVersion: RULE_VERSION,
   } as const;
@@ -296,6 +296,7 @@ async function persistRecommendation(
     workId: selected.poem.id,
     author: selected.poem.author,
     primaryContext: selected.primaryContext,
+    displayedAt,
   };
   await Promise.all([
     repository.value.saveDailyState(dailyState),
@@ -304,9 +305,7 @@ async function persistRecommendation(
   bootstrap.value.dailyState = dailyState;
   bootstrap.value.history = [
     historyItem,
-    ...bootstrap.value.history.filter(
-      (item) => item.localDate !== historyItem.localDate,
-    ),
+    ...bootstrap.value.history,
   ].slice(0, 60);
 }
 
@@ -314,13 +313,22 @@ async function loadToday(
   forceNew = false,
   contentControlChecked = false,
 ): Promise<void> {
-  calendar.value = buildCalendarContext();
+  const nextCalendar = buildCalendarContext();
+  if (nextCalendar.localDate !== calendar.value.localDate) {
+    recommendation.value = undefined;
+    selectedReadingPoem.value = undefined;
+  }
+  calendar.value = nextCalendar;
   weather.value = offlineWeather();
   errorMessage.value = "";
   const city = findCity(settings.value.cityId);
   weather.value = await fetchWeather(city, {
     performanceScenario: performanceWeatherScenario,
   });
+  if (buildCalendarContext().localDate !== calendar.value.localDate) {
+    await loadToday(forceNew);
+    return;
+  }
 
   const weatherScenario =
     import.meta.env.DEV &&
@@ -419,6 +427,10 @@ async function loadToday(
     calendar.value,
     weather.value,
   );
+  if (buildCalendarContext().localDate !== calendar.value.localDate) {
+    await loadToday(forceNew);
+    return;
+  }
   const showReadingScenario =
     import.meta.env.DEV &&
     new URLSearchParams(window.location.search).get("scenario") ===
@@ -435,6 +447,44 @@ async function loadToday(
     retainedId ? "retained" : "shown",
   );
   await recordPilotActivity("poem-presented");
+}
+
+async function refreshDateIfChanged(): Promise<boolean> {
+  if (dateRefreshPromise) return dateRefreshPromise;
+  const nextCalendar = buildCalendarContext();
+  if (nextCalendar.localDate === calendar.value.localDate) return false;
+  if (!settings.value.configured || !repository.value) {
+    calendar.value = nextCalendar;
+    return true;
+  }
+  dateRefreshPromise = (async () => {
+    loading.value = true;
+    try {
+      await loadToday();
+    } catch (error) {
+      console.error(error);
+      errorMessage.value = "今日诗笺暂时未能载入，请稍后再试。";
+    } finally {
+      loading.value = false;
+    }
+    return true;
+  })();
+  try {
+    return await dateRefreshPromise;
+  } finally {
+    dateRefreshPromise = undefined;
+  }
+}
+
+function checkVisibleDate(): void {
+  if (
+    !loading.value &&
+    settings.value.configured &&
+    panel.value === "card" &&
+    document.visibilityState === "visible"
+  ) {
+    void refreshDateIfChanged();
+  }
 }
 
 async function completeOnboarding(next: AppSettings): Promise<void> {
@@ -473,6 +523,7 @@ async function toggleFavorite(workId?: string): Promise<void> {
 }
 
 async function openDailyReading(): Promise<void> {
+  if (await refreshDateIfChanged()) return;
   if (!recommendation.value) return;
   selectedReadingPoem.value = recommendation.value.poem;
   readingReturnPanel.value = "card";
@@ -495,13 +546,20 @@ function contextTags(selected: Recommendation): string[] {
 }
 
 async function replacePoem(): Promise<void> {
+  if (await refreshDateIfChanged()) return;
   const current = recommendation.value;
   if (!current || replacedToday.value || !repository.value) return;
+  const eventTime = new Date();
+  if (localDateKey(eventTime) !== calendar.value.localDate) {
+    await refreshDateIfChanged();
+    return;
+  }
   const feedback: FeedbackItem = {
     workId: current.poem.id,
     type: "replaced",
     contextTags: contextTags(current),
-    createdAt: new Date().toISOString(),
+    createdAt: eventTime.toISOString(),
+    localDate: localDateKey(eventTime),
   };
   const next = await enrichRecommendationReason(
     recommendPoem({
@@ -538,13 +596,20 @@ async function replaceWithdrawnContent(): Promise<void> {
 }
 
 async function dislikePoem(): Promise<void> {
+  if (await refreshDateIfChanged()) return;
   const current = recommendation.value;
   if (!current || !repository.value) return;
+  const eventTime = new Date();
+  if (localDateKey(eventTime) !== calendar.value.localDate) {
+    await refreshDateIfChanged();
+    return;
+  }
   const feedback: FeedbackItem = {
     workId: current.poem.id,
     type: "disliked",
     contextTags: contextTags(current),
-    createdAt: new Date().toISOString(),
+    createdAt: eventTime.toISOString(),
+    localDate: localDateKey(eventTime),
   };
   await repository.value.recordFeedback(feedback);
   bootstrap.value.feedback = [feedback, ...bootstrap.value.feedback];
@@ -651,9 +716,12 @@ async function openMainFromShell(): Promise<void> {
   if (settings.value.configured) {
     loading.value = true;
     try {
-      const correction = await refreshContentControl();
-      if (!correction && !recommendation.value) {
-        await loadToday(false, true);
+      const dateChanged = await refreshDateIfChanged();
+      if (!dateChanged) {
+        const correction = await refreshContentControl();
+        if (!correction && !recommendation.value) {
+          await loadToday(false, true);
+        }
       }
     } catch (error) {
       console.error(error);
@@ -680,6 +748,10 @@ async function openSettingsFromShell(): Promise<void> {
 }
 
 async function returnToCard(): Promise<void> {
+  if (await refreshDateIfChanged()) {
+    panel.value = "card";
+    return;
+  }
   if (!recommendation.value && settings.value.configured) {
     await openMainFromShell();
     return;
@@ -747,10 +819,15 @@ async function initialize(): Promise<void> {
       void openMainFromShell();
     });
     contentControlTimer = window.setInterval(() => {
-      if (settings.value.configured) {
+      if (buildCalendarContext().localDate !== calendar.value.localDate) {
+        checkVisibleDate();
+      } else if (settings.value.configured) {
         void refreshContentControl();
       }
     }, 30 * 60 * 1000);
+    dateCheckTimer = window.setInterval(checkVisibleDate, 60 * 1000);
+    window.addEventListener("focus", checkVisibleDate);
+    document.addEventListener("visibilitychange", checkVisibleDate);
 
     const demoScenario =
       import.meta.env.DEV &&
@@ -800,6 +877,9 @@ onMounted(initialize);
 onBeforeUnmount(() => {
   if (toastTimer) window.clearTimeout(toastTimer);
   if (contentControlTimer) window.clearInterval(contentControlTimer);
+  if (dateCheckTimer) window.clearInterval(dateCheckTimer);
+  window.removeEventListener("focus", checkVisibleDate);
+  document.removeEventListener("visibilitychange", checkVisibleDate);
   stopSettingsListener?.();
   stopOpenMainListener?.();
   stopExitRequestListener?.();

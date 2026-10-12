@@ -123,6 +123,7 @@ export interface RecommendationHistoryItem {
   workId: string;
   author: string;
   primaryContext: string;
+  displayedAt?: string;
 }
 
 export interface FeedbackItem {
@@ -130,6 +131,7 @@ export interface FeedbackItem {
   type: "disliked" | "replaced";
   contextTags: string[];
   createdAt: string;
+  localDate?: string;
 }
 
 export type PilotEventType =

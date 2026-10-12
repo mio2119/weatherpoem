@@ -7,6 +7,7 @@ import type {
   RecommendationHistoryItem,
 } from "../types";
 import { normalizePilotState } from "../core/pilot";
+import { localDateKey } from "../core/date-context";
 
 export const DEFAULT_SETTINGS: AppSettings = {
   configured: false,
@@ -41,11 +42,7 @@ const STORAGE_KEY = "weatherpoem.local.v1";
 const PILOT_STORAGE_KEY = "weatherpoem.pilot.v1";
 
 function todayLocalDate(): string {
-  const date = new Date();
-  const year = date.getFullYear();
-  const month = String(date.getMonth() + 1).padStart(2, "0");
-  const day = String(date.getDate()).padStart(2, "0");
-  return `${year}-${month}-${day}`;
+  return localDateKey(new Date());
 }
 
 function emptyData(): BrowserData {
@@ -119,10 +116,7 @@ class BrowserRepository implements AppRepository {
 
   async recordDisplay(item: RecommendationHistoryItem): Promise<void> {
     const data = this.read();
-    data.history = [
-      item,
-      ...data.history.filter((entry) => entry.localDate !== item.localDate),
-    ].slice(0, 60);
+    data.history = [item, ...data.history].slice(0, 60);
     this.write(data);
   }
 
@@ -189,6 +183,7 @@ interface HistoryRow {
   work_id: string;
   author: string;
   primary_context: string;
+  displayed_at: string | null;
 }
 
 interface FavoriteRow {
@@ -200,6 +195,7 @@ interface FeedbackRow {
   type: FeedbackItem["type"];
   context_tags: string;
   created_at: string;
+  local_date: string | null;
 }
 
 class SqliteRepository implements AppRepository {
@@ -243,6 +239,29 @@ class SqliteRepository implements AppRepository {
       )`,
     );
     await this.db.execute(
+      `CREATE TABLE IF NOT EXISTS recommendation_display_events (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        local_date TEXT NOT NULL,
+        work_id TEXT NOT NULL,
+        author TEXT NOT NULL,
+        primary_context TEXT NOT NULL,
+        displayed_at TEXT
+      )`,
+    );
+    // The old table has one row per day. Preserve each row once, without
+    // claiming that its original display time or replaced poem is recoverable.
+    await this.db.execute(
+      `INSERT INTO recommendation_display_events
+       (local_date, work_id, author, primary_context, displayed_at)
+       SELECT h.local_date, h.work_id, h.author, h.primary_context, NULL
+       FROM recommendation_history h
+       WHERE NOT EXISTS (
+         SELECT 1 FROM recommendation_display_events e
+         WHERE e.local_date = h.local_date AND e.work_id = h.work_id
+           AND e.displayed_at IS NULL
+       ) ORDER BY h.local_date ASC`,
+    );
+    await this.db.execute(
       `CREATE TABLE IF NOT EXISTS favorites (
         work_id TEXT PRIMARY KEY NOT NULL,
         created_at TEXT NOT NULL
@@ -254,9 +273,16 @@ class SqliteRepository implements AppRepository {
         work_id TEXT NOT NULL,
         type TEXT NOT NULL,
         context_tags TEXT NOT NULL,
-        created_at TEXT NOT NULL
+        created_at TEXT NOT NULL,
+        local_date TEXT
       )`,
     );
+    const feedbackColumns = await this.db.select<Array<{ name: string }>>(
+      "PRAGMA table_info(feedback)",
+    );
+    if (!feedbackColumns.some((column) => column.name === "local_date")) {
+      await this.db.execute("ALTER TABLE feedback ADD COLUMN local_date TEXT");
+    }
   }
 
   async load(): Promise<AppBootstrap> {
@@ -272,13 +298,13 @@ class SqliteRepository implements AppRepository {
       "SELECT * FROM daily_state ORDER BY local_date DESC LIMIT 1",
     );
     const historyRows = await this.db.select<HistoryRow[]>(
-      "SELECT * FROM recommendation_history ORDER BY local_date DESC LIMIT 60",
+      "SELECT local_date, work_id, author, primary_context, displayed_at FROM recommendation_display_events ORDER BY id DESC LIMIT 60",
     );
     const favoriteRows = await this.db.select<FavoriteRow[]>(
       "SELECT work_id FROM favorites ORDER BY created_at DESC",
     );
     const feedbackRows = await this.db.select<FeedbackRow[]>(
-      "SELECT work_id, type, context_tags, created_at FROM feedback ORDER BY id DESC LIMIT 100",
+      "SELECT work_id, type, context_tags, created_at, local_date FROM feedback ORDER BY id DESC LIMIT 100",
     );
 
     let settings = { ...DEFAULT_SETTINGS };
@@ -324,6 +350,7 @@ class SqliteRepository implements AppRepository {
         workId: row.work_id,
         author: row.author,
         primaryContext: row.primary_context,
+        displayedAt: row.displayed_at ?? undefined,
       })),
       favorites: favoriteRows.map((row) => row.work_id),
       feedback: feedbackRows.map((row) => ({
@@ -331,6 +358,7 @@ class SqliteRepository implements AppRepository {
         type: row.type,
         contextTags: safeStringArray(row.context_tags),
         createdAt: row.created_at,
+        localDate: row.local_date ?? undefined,
       })),
       pilotState,
     };
@@ -368,18 +396,20 @@ class SqliteRepository implements AppRepository {
 
   async recordDisplay(item: RecommendationHistoryItem): Promise<void> {
     await this.db.execute(
-      `INSERT INTO recommendation_history
-       (local_date, work_id, author, primary_context)
-       VALUES ($1, $2, $3, $4)
-       ON CONFLICT(local_date) DO UPDATE SET
-         work_id = excluded.work_id,
-         author = excluded.author,
-         primary_context = excluded.primary_context`,
-      [item.localDate, item.workId, item.author, item.primaryContext],
+      `INSERT INTO recommendation_display_events
+       (local_date, work_id, author, primary_context, displayed_at)
+       VALUES ($1, $2, $3, $4, $5)`,
+      [
+        item.localDate,
+        item.workId,
+        item.author,
+        item.primaryContext,
+        item.displayedAt ?? null,
+      ],
     );
     await this.db.execute(
-      `DELETE FROM recommendation_history WHERE local_date NOT IN
-       (SELECT local_date FROM recommendation_history ORDER BY local_date DESC LIMIT 60)`,
+      `DELETE FROM recommendation_display_events WHERE id NOT IN
+       (SELECT id FROM recommendation_display_events ORDER BY id DESC LIMIT 60)`,
     );
   }
 
@@ -398,13 +428,14 @@ class SqliteRepository implements AppRepository {
 
   async recordFeedback(item: FeedbackItem): Promise<void> {
     await this.db.execute(
-      `INSERT INTO feedback (work_id, type, context_tags, created_at)
-       VALUES ($1, $2, $3, $4)`,
+      `INSERT INTO feedback (work_id, type, context_tags, created_at, local_date)
+       VALUES ($1, $2, $3, $4, $5)`,
       [
         item.workId,
         item.type,
         JSON.stringify(item.contextTags),
         item.createdAt,
+        item.localDate ?? null,
       ],
     );
   }
@@ -427,6 +458,7 @@ class SqliteRepository implements AppRepository {
     await this.db.execute("DELETE FROM app_kv");
     await this.db.execute("DELETE FROM daily_state");
     await this.db.execute("DELETE FROM recommendation_history");
+    await this.db.execute("DELETE FROM recommendation_display_events");
     await this.db.execute("DELETE FROM favorites");
     await this.db.execute("DELETE FROM feedback");
   }
