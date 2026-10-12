@@ -1,0 +1,63 @@
+import type { CalendarContext, Poem, WeatherContext } from "../types";
+
+export type PoemSceneKind = "festival" | "rain" | "snow" | "sun" | "night" | "season";
+
+export interface PoemScene {
+  kind: PoemSceneKind;
+  glyph: string;
+  description: string;
+}
+
+/** Visual context is grounded in the same published poem and environment as the reason. */
+export function selectPoemScene(input: {
+  poem: Poem;
+  calendar: CalendarContext;
+  weather: WeatherContext;
+}): PoemScene {
+  const { poem, calendar, weather } = input;
+  if (weather.shouldSuppressPoem) {
+    return {
+      kind: "season",
+      glyph: "安",
+      description: "安全提醒优先；普通诗境不展示",
+    };
+  }
+  if (calendar.festival && poem.tags.festivals.includes(calendar.festival)) {
+    return {
+      kind: "festival",
+      glyph: "节",
+      description: `节日意象：${calendar.festival}`,
+    };
+  }
+  if (weather.freshness === "fresh") {
+    if (["light-rain", "rain", "heavy-rain"].includes(weather.kind)) {
+      return { kind: "rain", glyph: "雨", description: `当地天气：${weather.label}` };
+    }
+    if (weather.kind === "snow") {
+      return { kind: "snow", glyph: "雪", description: `当地天气：${weather.label}` };
+    }
+    if (weather.kind === "clear") {
+      return calendar.timePeriod === "night"
+        ? { kind: "night", glyph: "夜", description: "当地晴夜" }
+        : { kind: "sun", glyph: "晴", description: `当地天气：${weather.label}` };
+    }
+  }
+  if (calendar.solarTerm && poem.tags.solarTerms.includes(calendar.solarTerm)) {
+    return {
+      kind: "season",
+      glyph: "节气",
+      description: `节气意象：${calendar.solarTerm}；不代表实时天气`,
+    };
+  }
+  const seasonGlyph: Record<CalendarContext["season"], string> = {
+    spring: "春",
+    summer: "夏",
+    autumn: "秋",
+    winter: "冬",
+  };
+  return {
+    kind: "season",
+    glyph: seasonGlyph[calendar.season],
+    description: "抽象季节纹样，不代表当地实时天气",
+  };
+}

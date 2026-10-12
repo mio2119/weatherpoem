@@ -37,6 +37,7 @@ import {
   completeAppExit,
   getLaunchContext,
   getPerformanceWeatherScenario,
+  isTauri,
   fitGlanceWindowHeight,
   listenForOpenMain,
   listenForExitRequest,
@@ -821,6 +822,11 @@ function handleSystemThemeChange(): void {
   if (settings.value.theme === "system") applyTheme("system");
 }
 
+function handleSceneVisibilityChange(): void {
+  document.documentElement.dataset.sceneActive =
+    document.visibilityState === "visible" ? "true" : "false";
+}
+
 async function startPilot(): Promise<void> {
   if (!repository.value || pilotState.value) return;
   let next = createPilotState(calendar.value.localDate);
@@ -1078,11 +1084,15 @@ async function initialize(): Promise<void> {
 }
 
 onMounted(() => {
+  document.documentElement.dataset.sceneActive = isTauri() ? "false" : "true";
+  document.addEventListener("visibilitychange", handleSceneVisibilityChange);
   window.matchMedia("(prefers-color-scheme: dark)")
     .addEventListener("change", handleSystemThemeChange);
   void initialize();
 });
 onBeforeUnmount(() => {
+  document.documentElement.dataset.sceneActive = "false";
+  document.removeEventListener("visibilitychange", handleSceneVisibilityChange);
   window.matchMedia("(prefers-color-scheme: dark)")
     .removeEventListener("change", handleSystemThemeChange);
   if (toastTimer) window.clearTimeout(toastTimer);

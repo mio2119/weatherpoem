@@ -82,10 +82,14 @@ describe("glance poem card", () => {
     const stale = render({ weather: { ...weather, freshness: "stale", source: "cache" } });
     expect(stale.text()).toContain("缓存天气：晴");
     const offline = render({
+      calendar: { ...calendar, festival: undefined },
       weather: { ...weather, kind: "unknown", label: "天气暂不可用", freshness: "unavailable", source: "offline" },
     });
     expect(offline.text()).toContain("天气未更新");
     expect(offline.text()).not.toContain("当地正有晴");
+    expect(offline.get(".poem-paper").attributes("data-scene")).toBe("season");
+    expect(offline.get(".scene-mark").attributes("aria-label"))
+      .toContain("不代表当地实时天气");
   });
 
   it("switches to vertical columns without changing the poem text", async () => {

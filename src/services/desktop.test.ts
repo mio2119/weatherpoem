@@ -10,7 +10,9 @@ import {
   classifyFrontendReady,
   completeAppExit,
   fitGlanceWindowHeight,
+  hideWindow,
   listenForExitRequest,
+  minimizeWindow,
   OPEN_METEO_LICENSE_URL,
   openExternal,
   openThirdPartyNotices,
@@ -35,6 +37,8 @@ const openerMocks = vi.hoisted(() => ({
 }));
 const windowMocks = vi.hoisted(() => ({
   show: vi.fn<() => Promise<void>>(),
+  hide: vi.fn<() => Promise<void>>(),
+  minimize: vi.fn<() => Promise<void>>(),
   setFocus: vi.fn<() => Promise<void>>(),
   setMinSize: vi.fn<() => Promise<void>>(),
   setSize: vi.fn<() => Promise<void>>(),
@@ -73,6 +77,8 @@ describe("desktop reveal focus policy", () => {
       value: {}, configurable: true,
     });
     windowMocks.show.mockResolvedValue();
+    windowMocks.hide.mockResolvedValue();
+    windowMocks.minimize.mockResolvedValue();
     windowMocks.setFocus.mockResolvedValue();
   });
 
@@ -91,6 +97,16 @@ describe("desktop reveal focus policy", () => {
     await showWindow(true);
     expect(windowMocks.show).toHaveBeenCalledOnce();
     expect(windowMocks.setFocus).toHaveBeenCalledOnce();
+  });
+
+  it("stops scene motion when hidden or minimized", async () => {
+    await showWindow(false);
+    expect(document.documentElement.dataset.sceneActive).toBe("true");
+    await hideWindow();
+    expect(document.documentElement.dataset.sceneActive).toBe("false");
+    await showWindow(false);
+    await minimizeWindow();
+    expect(document.documentElement.dataset.sceneActive).toBe("false");
   });
 });
 

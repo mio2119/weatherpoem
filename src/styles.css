@@ -18,6 +18,7 @@
   --safe: #556750;
   --danger: #974332;
   --shadow: 0 10px 28px rgb(65 52 38 / 9%);
+  --scene-ink: rgb(143 70 54 / 12%);
   background: var(--paper);
   color: var(--ink);
 }
@@ -38,6 +39,7 @@
   --safe: #a7b79e;
   --danger: #e09a85;
   --shadow: 0 10px 28px rgb(0 0 0 / 18%);
+  --scene-ink: rgb(211 145 124 / 15%);
 }
 
 * {
@@ -809,6 +811,25 @@ button:disabled {
   font-size: 11px;
 }
 
+.scene-mark {
+  display: inline-grid;
+  width: 24px;
+  height: 24px;
+  flex: none;
+  margin-left: auto;
+  place-items: center;
+  border: 1px solid var(--line-strong);
+  border-radius: 5px;
+  color: var(--accent);
+  font-family: "Songti SC", "STSong", serif;
+  font-size: 11px;
+  line-height: 1;
+}
+
+.context-strip p {
+  flex: 1;
+}
+
 .context-strip p {
   min-width: 0;
   margin: 0;
@@ -837,9 +858,90 @@ button:disabled {
 
 .poem-view .poem-paper {
   min-height: 0;
+  overflow: hidden;
   padding: 12px 16px 11px;
   border-radius: 10px;
   box-shadow: none;
+}
+
+.poem-view .poem-paper::before {
+  position: absolute;
+  z-index: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 43%;
+  pointer-events: none;
+  content: "";
+}
+
+.poem-view .poem-paper > * {
+  position: relative;
+  z-index: 1;
+}
+
+.poem-paper[data-scene="festival"]::before {
+  background: repeating-radial-gradient(
+    circle at 100% 0%, transparent 0 16px,
+    var(--scene-ink) 17px 18px, transparent 19px 30px
+  );
+}
+
+.poem-paper[data-scene="rain"]::before {
+  background: repeating-linear-gradient(
+    107deg, transparent 0 23px, var(--scene-ink) 24px 25px,
+    transparent 26px 46px
+  );
+  opacity: 0.7;
+}
+
+.poem-paper[data-scene="snow"]::before {
+  background:
+    radial-gradient(circle at 30% 21%, var(--scene-ink) 0 2px, transparent 3px),
+    radial-gradient(circle at 78% 40%, var(--scene-ink) 0 2px, transparent 3px),
+    radial-gradient(circle at 47% 69%, var(--scene-ink) 0 2px, transparent 3px);
+}
+
+.poem-paper[data-scene="sun"]::before {
+  background: radial-gradient(
+    circle at 100% 4%, var(--scene-ink) 0 24px,
+    transparent 81px
+  );
+}
+
+.poem-paper[data-scene="night"]::before {
+  background:
+    radial-gradient(circle at 74% 23%, var(--scene-ink) 0 2px, transparent 3px),
+    radial-gradient(circle at 42% 43%, var(--scene-ink) 0 1px, transparent 2px),
+    linear-gradient(175deg, transparent 70%, var(--scene-ink));
+}
+
+.poem-paper[data-scene="season"]::before {
+  background: radial-gradient(
+    ellipse at 100% 100%, var(--scene-ink), transparent 68%
+  );
+}
+
+@keyframes scene-drift {
+  from { transform: translate3d(0, -7px, 0); opacity: 0.5; }
+  to { transform: translate3d(0, 7px, 0); opacity: 0.8; }
+}
+
+@keyframes scene-breathe {
+  from { opacity: 0.45; }
+  to { opacity: 0.8; }
+}
+
+:root[data-scene-active="true"]:not([data-motion="reduced"])
+  .poem-paper[data-scene="rain"]::before,
+:root[data-scene-active="true"]:not([data-motion="reduced"])
+  .poem-paper[data-scene="snow"]::before {
+  animation: scene-drift 16s ease-in-out infinite alternate;
+}
+
+:root[data-scene-active="true"]:not([data-motion="reduced"])
+  .poem-paper[data-scene="sun"]::before {
+  animation: scene-breathe 12s ease-in-out infinite alternate;
 }
 
 .poem-view .poem-heading {
@@ -1615,6 +1717,10 @@ button:disabled {
  * and clipping its controls.
  */
 @media (max-width: 300px) {
+  .poem-view .context-strip {
+    flex-wrap: wrap;
+  }
+
   .window-chrome {
     padding-inline: 8px;
   }

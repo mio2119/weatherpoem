@@ -2,6 +2,7 @@
 import { computed, nextTick, onBeforeUnmount, onMounted, ref, useTemplateRef, watch } from "vue";
 import { useInitialFocus } from "../composables/useInitialFocus";
 import { displayedPoemLines } from "../core/poem-layout";
+import { selectPoemScene } from "../core/poem-scene";
 import { hideWindow } from "../services/desktop";
 import type { CalendarContext, PoemFontSize, PoemLayout, Recommendation, WeatherContext } from "../types";
 import IconSymbol from "./IconSymbol.vue";
@@ -31,6 +32,11 @@ const moreOpen = ref(false);
 const poemLines = computed(() =>
   displayedPoemLines(props.recommendation.poem.excerpt, props.poemLayout),
 );
+const scene = computed(() => selectPoemScene({
+  poem: props.recommendation.poem,
+  calendar: props.calendar,
+  weather: props.weather,
+}));
 const contentMeasure = useTemplateRef<HTMLElement>("contentMeasure");
 let resizeObserver: ResizeObserver | undefined;
 useInitialFocus();
@@ -90,12 +96,22 @@ onBeforeUnmount(() => resizeObserver?.disconnect());
           <strong>{{ calendar.displayDate }}</strong>
           <span>{{ contextText }}</span>
         </p>
+        <span
+          class="scene-mark"
+          role="img"
+          :aria-label="scene.description"
+          :title="scene.description"
+        >{{ scene.glyph }}</span>
         <button class="context-favorites" type="button" @click="emit('favorites')">
           收藏 {{ favoriteCount }}
         </button>
       </section>
 
-      <article class="poem-paper" aria-labelledby="daily-poem-title">
+      <article
+        class="poem-paper"
+        :data-scene="scene.kind"
+        aria-labelledby="daily-poem-title"
+      >
         <div class="poem-heading">
           <h1 id="daily-poem-title">{{ recommendation.poem.title }}</h1>
           <p>{{ recommendation.poem.author }} · {{ recommendation.poem.dynasty }}</p>

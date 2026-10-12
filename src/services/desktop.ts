@@ -157,6 +157,7 @@ export async function showWindow(takeFocus = true): Promise<void> {
   const { getCurrentWindow } = await import("@tauri-apps/api/window");
   const appWindow = getCurrentWindow();
   await appWindow.show();
+  document.documentElement.dataset.sceneActive = "true";
   if (takeFocus) await appWindow.setFocus();
 }
 
@@ -277,12 +278,14 @@ export async function listenForReadingResize(
 
 export async function hideWindow(): Promise<void> {
   if (!isTauri()) return;
+  document.documentElement.dataset.sceneActive = "false";
   const { getCurrentWindow } = await import("@tauri-apps/api/window");
   await getCurrentWindow().hide();
 }
 
 export async function minimizeWindow(): Promise<void> {
   if (!isTauri()) return;
+  document.documentElement.dataset.sceneActive = "false";
   const { getCurrentWindow } = await import("@tauri-apps/api/window");
   await getCurrentWindow().minimize();
 }
