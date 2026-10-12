@@ -91,6 +91,26 @@ test("隐藏启动的主窗口不会在 WebView 初始化时抢占焦点", () =>
   assert.equal(mainWindow.focus, false);
 });
 
+test("诗笺与阅读窗的原生尺寸切换只使用列明的窗口能力", () => {
+  for (const permission of [
+    "core:window:allow-current-monitor",
+    "core:window:allow-primary-monitor",
+    "core:window:allow-inner-size",
+    "core:window:allow-outer-position",
+    "core:window:allow-scale-factor",
+    "core:window:allow-set-min-size",
+    "core:window:allow-set-position",
+    "core:window:allow-set-resizable",
+    "core:window:allow-set-size",
+  ]) {
+    assert.ok(capability.permissions.includes(permission), permission);
+  }
+  assert.equal(
+    capability.permissions.includes("core:window:default"),
+    false,
+  );
+});
+
 test("外部链接和第三方许可使用固定目标，不开放任意路径", () => {
   const opener = capability.permissions.find(
     (item) =>

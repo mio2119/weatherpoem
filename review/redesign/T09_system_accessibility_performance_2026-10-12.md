@@ -6,6 +6,7 @@
 
 - 开发目录 `E:\weatherpoem`；`D:\纯净工作台` 尚未用于独立审计。Windows 11 10.0.26100、100% 逻辑缩放，隔离 profile 位于系统临时目录下；未改变真实用户资料或系统缩放。
 - 原生运行暴露 `window.set_min_size not allowed`，导致原计划的小诗笺仍维持旧尺寸。为 `src-tauri/capabilities/default.json` 补齐窗口尺寸、可调整性、位置、显示器及缩放读取权限。Windows GNU 调试链接器在不需要的 `cdylib` 输出上报 `export ordinal too large: 113841`，桌面应用改为只生成 `rlib`。修复后调试 EXE 实际启动并按内容调整尺寸。
+- `scripts/desktop-capability-contract.test.mjs` 新增精确权限回归检查，防止以后删去必需权限而只在原生窗口中暴露问题；仍不开放整个 `core:window:default` 权限集。
 - 本次仅由执行 AI 启动并结束隔离调试进程，旧发布候选没有重建、替换或终止。
 
 ## 已执行的自动和原生检查
@@ -18,6 +19,7 @@
 | `cargo build --manifest-path src-tauri/Cargo.toml --no-default-features` | 通过 | 桌面调试链接可完成；不是 NSIS/MSI 发行包。 |
 | `npm.cmd run accessibility:check` | 通过 | 自动焦点/语义/对比度/回流契约；工具明确提示讲述人、NVDA、真实对比度主题和 200% 系统测试未完成。 |
 | `npm.cmd run device:matrix:check` | 通过 | 计划文件契约；不是设备矩阵实测。 |
+| `npm.cmd run desktop:capability:check` | 6 项通过 | 确认原生尺寸 API 所需权限逐项列明，无宽泛窗口默认权限；不能代替真实窗口测试。 |
 | 原生 WebView2：诗笺→全文→展开背景→返回；竖排→横排 | 样本《黄鹤楼》可达；诗笺约 404×513 缩至约 404×407；阅读窗约 560×720，八句顺序及来源出现在可访问树 | 仅 Windows 11 / 100% / 该作品 / 开发窗口的手动观察。桌面其他悬浮提示部分遮挡截图底部，不能把本次图像当作关键按钮完整可视证据。 |
 
 ## A9 验收逐项状态
