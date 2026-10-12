@@ -13,6 +13,7 @@ export function isTauri(): boolean {
 
 export interface LaunchContext {
   isAutostart: boolean;
+  foregroundPresentation: "clear" | "full-screen" | "unknown";
 }
 
 export type WindowMode = "setup" | "glance" | "reading" | "safety";
@@ -106,16 +107,19 @@ export function classifyFrontendReady(input: {
 
 export function shouldRevealOnLaunch(input: {
   isAutostart: boolean;
+  foregroundPresentation: LaunchContext["foregroundPresentation"];
   configured: boolean;
   lastHandledDate?: string;
   today: string;
 }): boolean {
-  if (!input.isAutostart || !input.configured) return true;
+  if (!input.isAutostart) return true;
+  if (input.foregroundPresentation !== "clear") return false;
+  if (!input.configured) return true;
   return input.lastHandledDate !== input.today;
 }
 
 export async function getLaunchContext(): Promise<LaunchContext> {
-  if (!isTauri()) return { isAutostart: false };
+  if (!isTauri()) return { isAutostart: false, foregroundPresentation: "clear" };
   const { invoke } = await import("@tauri-apps/api/core");
   return invoke<LaunchContext>("launch_context");
 }

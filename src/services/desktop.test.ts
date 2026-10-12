@@ -216,6 +216,7 @@ describe("desktop launch policy", () => {
     expect(
       shouldRevealOnLaunch({
         isAutostart: false,
+        foregroundPresentation: "full-screen",
         configured: true,
         lastHandledDate: "2026-07-23",
         today: "2026-07-23",
@@ -227,6 +228,7 @@ describe("desktop launch policy", () => {
     expect(
       shouldRevealOnLaunch({
         isAutostart: true,
+        foregroundPresentation: "clear",
         configured: false,
         today: "2026-07-23",
       }),
@@ -237,6 +239,7 @@ describe("desktop launch policy", () => {
     expect(
       shouldRevealOnLaunch({
         isAutostart: true,
+        foregroundPresentation: "clear",
         configured: true,
         lastHandledDate: "2026-07-23",
         today: "2026-07-23",
@@ -248,12 +251,32 @@ describe("desktop launch policy", () => {
     expect(
       shouldRevealOnLaunch({
         isAutostart: true,
+        foregroundPresentation: "clear",
         configured: true,
         lastHandledDate: "2026-07-22",
         today: "2026-07-23",
       }),
     ).toBe(true);
   });
+
+  it.each(["full-screen", "unknown"] as const)(
+    "开机自启动遇到 %s 前台状态时只留托盘，手动打开不受限",
+    (foregroundPresentation) => {
+      expect(shouldRevealOnLaunch({
+        isAutostart: true,
+        foregroundPresentation,
+        configured: true,
+        lastHandledDate: "2026-07-22",
+        today: "2026-07-23",
+      })).toBe(false);
+      expect(shouldRevealOnLaunch({
+        isAutostart: true,
+        foregroundPresentation,
+        configured: false,
+        today: "2026-07-23",
+      })).toBe(false);
+    },
+  );
 });
 
 describe("desktop autostart synchronization", () => {

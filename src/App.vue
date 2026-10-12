@@ -1063,6 +1063,7 @@ async function initialize(): Promise<void> {
     } else {
       revealAfterInitialization = shouldRevealOnLaunch({
         isAutostart: launchContext.isAutostart,
+        foregroundPresentation: launchContext.foregroundPresentation,
         configured: settings.value.configured,
         lastHandledDate: bootstrap.value.dailyState?.localDate,
         today: buildCalendarContext().localDate,

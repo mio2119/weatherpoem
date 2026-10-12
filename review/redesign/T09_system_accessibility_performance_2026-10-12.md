@@ -7,6 +7,7 @@
 - 开发目录 `E:\weatherpoem`；`D:\纯净工作台` 尚未用于独立审计。Windows 11 10.0.26100、100% 逻辑缩放，隔离 profile 位于系统临时目录下；未改变真实用户资料或系统缩放。
 - 原生运行暴露 `window.set_min_size not allowed`，导致原计划的小诗笺仍维持旧尺寸。为 `src-tauri/capabilities/default.json` 补齐窗口尺寸、可调整性、位置、显示器及缩放读取权限。Windows GNU 调试链接器在不需要的 `cdylib` 输出上报 `export ordinal too large: 113841`，桌面应用改为只生成 `rlib`。修复后调试 EXE 实际启动并按内容调整尺寸。
 - `scripts/desktop-capability-contract.test.mjs` 新增精确权限回归检查，防止以后删去必需权限而只在原生窗口中暴露问题；仍不开放整个 `core:window:default` 权限集。
+- 后续源码增加开机自启前台全屏探测：明确全屏或无法可靠探测时采用托盘保留，手动打开不受影响。Rust 几何和前端策略测试通过；真实演示/游戏、混合 DPI 和自动焦点仍未验，不能据此签 A4/A9。
 - 本次仅由执行 AI 启动并结束隔离调试进程，旧发布候选没有重建、替换或终止。
 - 使用独立 `CARGO_TARGET_DIR=E:\weatherpoem\.work\redesign-target` 进行无安装包的 release 构建；内部测试 EXE 为 `.work/redesign-target/release/weatherpoem.exe`，SHA-256 `D8E15744C17E4E26D116BAA23E7615AC3530D13E6989E33665B159A2D9A1D71A`。旧发行 EXE `00DB4B15F96E151CD7AF795A197E422F39ABFC3CE13E4AB298BF1DE7EC2DD74B`、旧发布清单 `5D4FAF610A9EB29F9833055A12B943F870410D5C62F9D17D8BEB3C25F29F619B`、旧 SHA 清单 `F745407E9DBEE18A087B220E2B468D8EB6FB68CBF7BF2096E7247EBB032E9A4B` 再次核对未变。新 EXE 不是 NSIS/MSI 发行候选。
 - 性能脚本加入明确的 `-RedesignCandidate` 和 `-BaselineComparison` 两个隔离模式：前者测 `.work` 中新 EXE，后者只读运行旧 EXE；两份报告分别存于 `review/redesign/evidence/`，均不覆盖 `output` 的旧正式报告。校验器按每种模式的预期路径和当前文件哈希核对。

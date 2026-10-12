@@ -11,6 +11,8 @@ use tauri::{
     Emitter, Manager, WebviewWindowBuilder, WindowEvent,
 };
 
+mod foreground;
+
 static PROCESS_STARTED: OnceLock<Instant> = OnceLock::new();
 static PERFORMANCE_PROFILE: OnceLock<Option<PerformanceProfile>> = OnceLock::new();
 const APP_IDENTIFIER: &str = "cn.weatherpoem.desktop";
@@ -26,6 +28,7 @@ struct PerformanceProfile {
 #[serde(rename_all = "camelCase")]
 struct LaunchContext {
     is_autostart: bool,
+    foreground_presentation: foreground::ForegroundPresentation,
 }
 
 #[derive(serde::Serialize)]
@@ -46,8 +49,14 @@ struct PerformanceProbe {
 
 #[tauri::command]
 fn launch_context() -> LaunchContext {
+    let is_autostart = std::env::args().any(|argument| argument == "--autostart");
     LaunchContext {
-        is_autostart: std::env::args().any(|argument| argument == "--autostart"),
+        is_autostart,
+        foreground_presentation: if is_autostart {
+            foreground::foreground_presentation()
+        } else {
+            foreground::ForegroundPresentation::Clear
+        },
     }
 }
 
