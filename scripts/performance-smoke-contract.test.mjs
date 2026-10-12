@@ -1,6 +1,8 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 import {
+  REDESIGN_EXE_PATH,
+  resolvePerformancePaths,
   validatePerformanceReport,
 } from "./performance-smoke-support.mjs";
 
@@ -112,6 +114,33 @@ test("性能报告绑定当前发布物并保留完整门禁限制", () => {
       appVersion: "0.2.0",
       exeSha256: HASH,
     }),
+  );
+});
+
+test("改版内部候选只接受独立路径和独立哈希", () => {
+  const report = fixture();
+  report.artifact.path = REDESIGN_EXE_PATH;
+  assert.doesNotThrow(() =>
+    validatePerformanceReport(report, {
+      appVersion: "0.2.0",
+      exeSha256: HASH,
+      artifactPath: REDESIGN_EXE_PATH,
+    }),
+  );
+  assert.throws(() =>
+    validatePerformanceReport(report, {
+      appVersion: "0.2.0",
+      exeSha256: HASH,
+    }),
+  );
+  assert.match(
+    resolvePerformancePaths("E:/weatherpoem", "redesign").reportPath,
+    /T09_PERFORMANCE_SMOKE\.json$/,
+  );
+  assert.match(
+    resolvePerformancePaths("E:/weatherpoem", "baseline-comparison")
+      .reportPath,
+    /T09_BASELINE_PERFORMANCE_SMOKE\.json$/,
   );
 });
 

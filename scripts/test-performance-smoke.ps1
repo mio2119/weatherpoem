@@ -9,7 +9,11 @@ param(
     [int]$ResourceSeconds = 60,
 
     [ValidateRange(500, 5000)]
-    [int]$SampleIntervalMs = 1000
+    [int]$SampleIntervalMs = 1000,
+
+    [switch]$RedesignCandidate,
+
+    [switch]$BaselineComparison
 )
 
 Set-StrictMode -Version Latest
@@ -23,8 +27,23 @@ Import-Module -Name $utilityModule -ErrorAction Stop
 $projectRoot = [System.IO.Path]::GetFullPath((Join-Path $PSScriptRoot ".."))
 $packageJson = Get-Content -LiteralPath (Join-Path $projectRoot "package.json") -Raw -Encoding UTF8 | ConvertFrom-Json
 $appVersion = [string]$packageJson.version
-$exePath = [System.IO.Path]::GetFullPath((Join-Path $projectRoot "src-tauri\target\release\weatherpoem.exe"))
-$reportPath = [System.IO.Path]::GetFullPath((Join-Path $projectRoot "output\WeatherPoem_0.2.0_PERFORMANCE_SMOKE.json"))
+if ($RedesignCandidate -and $BaselineComparison) {
+    throw "RedesignCandidate and BaselineComparison are mutually exclusive."
+}
+if ($RedesignCandidate) {
+    $artifactPath = ".work/redesign-target/release/weatherpoem.exe"
+    $reportRelativePath = "review/redesign/evidence/T09_PERFORMANCE_SMOKE.json"
+}
+elseif ($BaselineComparison) {
+    $artifactPath = "src-tauri/target/release/weatherpoem.exe"
+    $reportRelativePath = "review/redesign/evidence/T09_BASELINE_PERFORMANCE_SMOKE.json"
+}
+else {
+    $artifactPath = "src-tauri/target/release/weatherpoem.exe"
+    $reportRelativePath = "output/WeatherPoem_0.2.0_PERFORMANCE_SMOKE.json"
+}
+$exePath = [System.IO.Path]::GetFullPath((Join-Path $projectRoot $artifactPath))
+$reportPath = [System.IO.Path]::GetFullPath((Join-Path $projectRoot $reportRelativePath))
 $seedScript = [System.IO.Path]::GetFullPath((Join-Path $projectRoot "scripts\seed-performance-profile.mjs"))
 
 if (-not (Test-Path -LiteralPath $exePath -PathType Leaf)) {
@@ -356,7 +375,7 @@ try {
         generatedAt = [DateTime]::UtcNow.ToString("o")
         testKind = "automated-performance-smoke"
         artifact = [ordered]@{
-            path = "src-tauri/target/release/weatherpoem.exe"
+            path = $artifactPath
             sha256 = $hash
             sizeBytes = [long]$file.Length
             authenticodeStatus = [string]$signature.Status

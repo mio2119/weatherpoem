@@ -10,13 +10,28 @@ const projectRoot = path.resolve(import.meta.dirname, "..");
 const packageJson = JSON.parse(
   await readFile(path.join(projectRoot, "package.json"), "utf8"),
 );
-const { exePath, reportPath } = resolvePerformancePaths(projectRoot);
+const argument = process.argv[2];
+if (
+  process.argv.length > 3 ||
+  (argument && !["--redesign-candidate", "--baseline-comparison"].includes(argument))
+) {
+  throw new Error("仅支持 --redesign-candidate 或 --baseline-comparison 参数");
+}
+const { artifactPath, exePath, reportPath } = resolvePerformancePaths(
+  projectRoot,
+  argument === "--redesign-candidate"
+    ? "redesign"
+    : argument === "--baseline-comparison"
+      ? "baseline-comparison"
+      : "release",
+);
 const report = JSON.parse(await readFile(reportPath, "utf8"));
 const exeSha256 = await sha256File(exePath);
 
 validatePerformanceReport(report, {
   appVersion: packageJson.version,
   exeSha256,
+  artifactPath,
 });
 
 console.log(

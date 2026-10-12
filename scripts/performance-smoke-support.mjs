@@ -7,6 +7,12 @@ export const PERFORMANCE_REPORT_NAME =
   "WeatherPoem_0.2.0_PERFORMANCE_SMOKE.json";
 export const RELEASE_EXE_PATH =
   "src-tauri/target/release/weatherpoem.exe";
+export const REDESIGN_EXE_PATH =
+  ".work/redesign-target/release/weatherpoem.exe";
+export const REDESIGN_REPORT_PATH =
+  "review/redesign/evidence/T09_PERFORMANCE_SMOKE.json";
+export const BASELINE_COMPARISON_REPORT_PATH =
+  "review/redesign/evidence/T09_BASELINE_PERFORMANCE_SMOKE.json";
 
 const REQUIRED_LIMITATIONS = [
   "poemFirstFrameMeasured",
@@ -105,8 +111,8 @@ export function validatePerformanceReport(report, expected) {
     "性能报告 artifact",
   );
   assert(
-    report.artifact.path === RELEASE_EXE_PATH,
-    "性能报告未绑定标准发布 EXE",
+    report.artifact.path === (expected.artifactPath ?? RELEASE_EXE_PATH),
+    "性能报告未绑定预期 EXE",
   );
   assert(
     report.artifact.sha256 === expected.exeSha256,
@@ -565,8 +571,27 @@ export async function sha256File(filePath) {
   return createHash("sha256").update(content).digest("hex").toUpperCase();
 }
 
-export function resolvePerformancePaths(projectRoot) {
+export function resolvePerformancePaths(projectRoot, variant = "release") {
+  if (variant === "redesign") {
+    return {
+      artifactPath: REDESIGN_EXE_PATH,
+      exePath: path.join(projectRoot, ...REDESIGN_EXE_PATH.split("/")),
+      reportPath: path.join(projectRoot, ...REDESIGN_REPORT_PATH.split("/")),
+    };
+  }
+  if (variant === "baseline-comparison") {
+    return {
+      artifactPath: RELEASE_EXE_PATH,
+      exePath: path.join(projectRoot, ...RELEASE_EXE_PATH.split("/")),
+      reportPath: path.join(
+        projectRoot,
+        ...BASELINE_COMPARISON_REPORT_PATH.split("/"),
+      ),
+    };
+  }
+  assert(variant === "release", "未知性能候选类型");
   return {
+    artifactPath: RELEASE_EXE_PATH,
     exePath: path.join(projectRoot, ...RELEASE_EXE_PATH.split("/")),
     reportPath: path.join(
       projectRoot,
