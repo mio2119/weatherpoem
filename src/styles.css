@@ -1197,6 +1197,37 @@ button:disabled {
   background: var(--accent-soft);
 }
 
+.withdrawn-favorites {
+  margin: 10px 20px 24px;
+  padding: 12px 14px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  color: var(--muted);
+  font-size: 11px;
+}
+
+.withdrawn-favorites > p {
+  margin: 0 0 8px;
+  line-height: 1.6;
+}
+
+.withdrawn-favorites > div {
+  display: flex;
+  min-height: 38px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  border-top: 1px solid var(--line);
+}
+
+.withdrawn-favorites button {
+  min-height: 32px;
+  border: 0;
+  background: transparent;
+  color: var(--accent);
+  cursor: pointer;
+}
+
 .empty-favorites {
   display: grid;
   height: calc(100% - 46px);
@@ -1259,6 +1290,12 @@ button:disabled {
   --poem-scale: 1;
 }
 
+.reading-panel .panel-header {
+  position: sticky;
+  z-index: 4;
+  top: 0;
+}
+
 .reading-layout-action {
   display: flex;
   justify-content: flex-end;
@@ -1288,18 +1325,48 @@ button:disabled {
 }
 
 .reading-section {
-  margin-top: 28px;
+  margin-top: 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.reading-section:first-of-type {
+  border-top: 1px solid var(--line);
+}
+
+.reading-section summary {
+  display: flex;
+  min-height: 52px;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  list-style: none;
+}
+
+.reading-section summary::-webkit-details-marker {
+  display: none;
+}
+
+.reading-section summary::after {
+  margin-left: 12px;
+  color: var(--accent);
+  font-size: 19px;
+  font-weight: 400;
+  content: "+";
+}
+
+.reading-section[open] summary::after {
+  content: "−";
 }
 
 .reading-section h2 {
-  margin: 0 0 10px;
+  margin: 0;
   font-family: "Songti SC", "STSong", serif;
   font-size: 15px;
   font-weight: 650;
 }
 
 .reading-section > p {
-  margin: 0;
+  margin: 0 0 18px;
   color: var(--muted);
   font-family: "Songti SC", "STSong", serif;
   font-size: 13px;
@@ -1307,7 +1374,7 @@ button:disabled {
 }
 
 .annotation-list {
-  margin: 0;
+  margin: 0 0 18px;
 }
 
 .annotation-list > div {

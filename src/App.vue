@@ -198,6 +198,11 @@ const favoritePoems = computed(() =>
     .map((workId) => findPoem(workId))
     .filter((poem): poem is Poem => Boolean(poem)),
 );
+const withdrawnFavoriteIds = computed(() =>
+  bootstrap.value.favorites.filter((workId) =>
+    withdrawnWorkIds.value.includes(workId),
+  ),
+);
 const latestDislike = computed(() =>
   bootstrap.value.feedback.find((item) => item.type === "disliked"),
 );
@@ -331,6 +336,9 @@ async function refreshContentControl(
   recommendationsSuspended.value =
     control.suspendRecommendations;
   withdrawnWorkIds.value = control.withdrawnWorkIds;
+  const selectedReadingWithdrawn = Boolean(
+    selectedReadingPoem.value && !findPoem(selectedReadingPoem.value.id),
+  );
   const currentWorkId =
     recommendation.value?.poem.id ??
     (bootstrap.value.dailyState?.localDate ===
@@ -360,6 +368,11 @@ async function refreshContentControl(
     return true;
   }
   contentCorrectionPending.value = false;
+  if (selectedReadingWithdrawn) {
+    selectedReadingPoem.value = undefined;
+    panel.value = readingReturnPanel.value === "favorites" ? "favorites" : "card";
+    showToast("这首诗已从内容库撤回，阅读已关闭。");
+  }
   return false;
 }
 
@@ -643,7 +656,12 @@ async function openDailyReading(): Promise<void> {
 }
 
 function openFavoriteReading(poem: Poem): void {
-  selectedReadingPoem.value = poem;
+  const available = findPoem(poem.id);
+  if (!available) {
+    showToast("这首诗已从内容库撤回，不能继续阅读。");
+    return;
+  }
+  selectedReadingPoem.value = available;
   readingReturnPanel.value = "favorites";
   panel.value = "reading";
 }
@@ -1164,6 +1182,7 @@ onBeforeUnmount(() => {
     <FavoritesPanel
       v-else-if="panel === 'favorites'"
       :poems="favoritePoems"
+      :withdrawn-work-ids="withdrawnFavoriteIds"
       :back-label="favoritesReturnPanel === 'card' ? '今日诗笺' : '设置'"
       @back="panel = favoritesReturnPanel"
       @open="openFavoriteReading"

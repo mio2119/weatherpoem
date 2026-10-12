@@ -5,6 +5,7 @@ import IconSymbol from "./IconSymbol.vue";
 
 defineProps<{
   poems: Poem[];
+  withdrawnWorkIds: string[];
   backLabel: string;
 }>();
 
@@ -59,7 +60,21 @@ useInitialFocus();
       </article>
     </section>
 
-    <section v-else class="empty-favorites">
+    <section v-if="withdrawnWorkIds.length" class="withdrawn-favorites" aria-label="已撤回的收藏">
+      <p>有 {{ withdrawnWorkIds.length }} 首收藏已撤回，原文暂不展示。</p>
+      <div v-for="(workId, index) in withdrawnWorkIds" :key="workId">
+        <span>已撤回的收藏记录 {{ index + 1 }}</span>
+        <button
+          type="button"
+          :aria-label="`移除第${index + 1}条已撤回收藏记录`"
+          @click="emit('remove', workId)"
+        >
+          移除记录
+        </button>
+      </div>
+    </section>
+
+    <section v-if="!poems.length && !withdrawnWorkIds.length" class="empty-favorites">
       <span class="brand-seal" aria-hidden="true">藏</span>
       <h2>收藏还是空的</h2>
       <p>遇到想再读的诗，点一下诗笺下方的“收藏”即可。</p>

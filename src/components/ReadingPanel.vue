@@ -79,23 +79,23 @@ useInitialFocus();
         </div>
       </div>
 
-      <section class="reading-section">
-        <h2>放回它的时代</h2>
+      <details class="reading-section">
+        <summary><h2>放回它的时代</h2></summary>
         <p>{{ poem.culturalBackground }}</p>
-      </section>
-      <section class="reading-section">
-        <h2>放进今天</h2>
+      </details>
+      <details class="reading-section">
+        <summary><h2>放进今天</h2></summary>
         <p>{{ poem.contemporaryConnection }}</p>
-      </section>
-      <section v-if="poem.annotations.length" class="reading-section">
-        <h2>词句小注</h2>
+      </details>
+      <details v-if="poem.annotations.length" class="reading-section">
+        <summary><h2>词句小注</h2></summary>
         <dl class="annotation-list">
           <div v-for="item in poem.annotations" :key="item.term">
             <dt>{{ item.term }}</dt>
             <dd>{{ item.explanation }}</dd>
           </div>
         </dl>
-      </section>
+      </details>
       <p class="edition-note" aria-label="文本来源">
         文本来源：{{ poem.sourceName }}
       </p>

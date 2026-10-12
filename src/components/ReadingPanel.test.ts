@@ -27,5 +27,9 @@ describe("reading orientation", () => {
       .toBe(poem.fullText.join(""));
     expect(wrapper.get(".reading-panel").attributes("data-poem-font-size"))
       .toBe("large");
+    expect(wrapper.findAll("details.reading-section")).toHaveLength(3);
+    expect(wrapper.findAll("details.reading-section summary").map((item) => item.text()))
+      .toEqual(["放回它的时代", "放进今天", "词句小注"]);
+    expect(wrapper.get(".edition-note").text()).toContain(poem.sourceName);
   });
 });
