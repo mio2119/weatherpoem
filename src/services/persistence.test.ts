@@ -144,4 +144,24 @@ describe("browser persistence", () => {
     expect(data.favorites).toEqual(["legacy-poem"]);
     expect(data.feedback).toHaveLength(1);
   });
+
+  it("可撤销一条不太贴合反馈而保留其他本地数据", async () => {
+    const repository = await createRepository();
+    const first = {
+      workId: "first-poem",
+      type: "disliked" as const,
+      contextTags: ["homesick"],
+      createdAt: "2026-07-24T00:00:00Z",
+      localDate: "2026-07-24",
+    };
+    const second = { ...first, workId: "second-poem", createdAt: "2026-07-24T01:00:00Z" };
+    await repository.recordFeedback(first);
+    await repository.recordFeedback(second);
+    await repository.toggleFavorite(first.workId, true);
+    await repository.removeFeedback(second);
+
+    const reloaded = await (await createRepository()).load();
+    expect(reloaded.feedback.map((item) => item.workId)).toEqual([first.workId]);
+    expect(reloaded.favorites).toEqual([first.workId]);
+  });
 });

@@ -69,6 +69,8 @@ const UNSAFE_REASON_PATTERNS = [
   /https?:\/\//i,
   /\r|\n/,
   /作为一个AI|作为人工智能|语言模型/i,
+  /。，|，，|；。/,
+  /\b(?:spring|summer|autumn|winter)\b/i,
 ];
 
 export function validateReasonResponse(
@@ -141,7 +143,8 @@ export async function enrichRecommendationReason(
   if (
     !endpoint ||
     !isAllowedReasonServiceUrl(endpoint) ||
-    weather.shouldSuppressPoem
+    weather.shouldSuppressPoem ||
+    weather.freshness === "unavailable"
   ) {
     return recommendation;
   }

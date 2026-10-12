@@ -81,6 +81,18 @@ describe("AI reason adapter", () => {
     ).toBeUndefined();
     expect(
       validateReasonResponse(
+        { workId: recommendation.poem.id, reason: "今天正逢春天。，读一读这首诗。" },
+        recommendation.poem.id,
+      ),
+    ).toBeUndefined();
+    expect(
+      validateReasonResponse(
+        { workId: recommendation.poem.id, reason: "winter 的雨和诗相连。" },
+        recommendation.poem.id,
+      ),
+    ).toBeUndefined();
+    expect(
+      validateReasonResponse(
         {
           workId: recommendation.poem.id,
           reason: "这".repeat(41),
@@ -142,5 +154,17 @@ describe("AI reason adapter", () => {
     );
     expect(failed).toEqual(recommendation);
     expect(disabled).toEqual(recommendation);
+  });
+
+  it("天气不可用时不向远端请求可能虚构当地天气的理由", async () => {
+    const fetcher = vi.fn<typeof fetch>();
+    const result = await enrichRecommendationReason(
+      recommendation,
+      calendar,
+      { ...weather, kind: "unknown", freshness: "unavailable", source: "offline" },
+      { endpoint: "http://127.0.0.1:8787/reason", fetcher },
+    );
+    expect(result).toEqual(recommendation);
+    expect(fetcher).not.toHaveBeenCalled();
   });
 });

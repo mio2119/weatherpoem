@@ -10,6 +10,7 @@ function createRepository(): AppRepository {
     recordDisplay: vi.fn(),
     toggleFavorite: vi.fn(),
     recordFeedback: vi.fn(),
+    removeFeedback: vi.fn(),
     savePilotState: vi.fn(),
     clearPilotState: vi.fn(),
     clearUserData: vi.fn().mockResolvedValue(undefined),

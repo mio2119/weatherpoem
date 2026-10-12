@@ -89,3 +89,21 @@ describe("settings draft", () => {
     expect(wrapper.emitted("back")).toHaveLength(1);
   });
 });
+
+describe("feedback control", () => {
+  it("shows a persistent path to undo the latest mismatch feedback", async () => {
+    const wrapper = mount(SettingsPanel, {
+      props: {
+        ...props,
+        canUndoFeedback: true,
+        lastFeedbackTitle: "春晓",
+      },
+    });
+    const button = wrapper.findAll("button").find((item) =>
+      item.text().includes("撤销最近一次"),
+    );
+    expect(button?.text()).toContain("春晓");
+    await button!.trigger("click");
+    expect(wrapper.emitted("undoFeedback")).toHaveLength(1);
+  });
+});

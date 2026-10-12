@@ -15,6 +15,8 @@ const props = defineProps<{
   savedSettings: AppSettings;
   autostartWarning?: string;
   favoriteCount: number;
+  canUndoFeedback?: boolean;
+  lastFeedbackTitle?: string;
   pilotStatus?: PilotState["status"];
 }>();
 
@@ -25,6 +27,7 @@ const emit = defineEmits<{
   reset: [];
   favorites: [];
   pilot: [];
+  undoFeedback: [];
 }>();
 
 const draft = reactive<AppSettings>({
@@ -175,6 +178,18 @@ async function showThirdPartyNotices(): Promise<void> {
 
       <section class="settings-group">
         <h2>我的内容</h2>
+        <button
+          v-if="canUndoFeedback"
+          class="settings-navigation"
+          type="button"
+          @click="emit('undoFeedback')"
+        >
+          <span>
+            <strong>撤销最近一次“不太贴合”</strong>
+            <small>{{ lastFeedbackTitle }} · 恢复原有推荐权重</small>
+          </span>
+          <IconSymbol name="back" :size="17" />
+        </button>
         <button
           class="settings-navigation"
           type="button"

@@ -127,6 +127,12 @@ const favoritePoems = computed(() =>
     .map((workId) => findPoem(workId))
     .filter((poem): poem is Poem => Boolean(poem)),
 );
+const latestDislike = computed(() =>
+  bootstrap.value.feedback.find((item) => item.type === "disliked"),
+);
+const latestDislikeTitle = computed(() =>
+  findPoem(latestDislike.value?.workId)?.title ?? "最近一首诗",
+);
 const replacedToday = computed(() =>
   hasReplacedOnDate(bootstrap.value.feedback, calendar.value.localDate),
 );
@@ -166,6 +172,13 @@ function showToast(message: string): void {
   toastTimer = window.setTimeout(() => {
     toast.value = "";
   }, 2400);
+}
+
+function dailyLoadErrorMessage(error: unknown): string {
+  return error instanceof Error &&
+    error.message === "当前情境下没有适合推荐的作品"
+    ? "今天暂未找到与当前情境贴合的诗词，请稍后再试。"
+    : "今日诗笺暂时未能载入，请稍后再试。";
 }
 
 async function ensurePoemCatalog(): Promise<void> {
@@ -465,7 +478,7 @@ async function refreshDateIfChanged(): Promise<boolean> {
       await loadToday();
     } catch (error) {
       console.error(error);
-      errorMessage.value = "今日诗笺暂时未能载入，请稍后再试。";
+      errorMessage.value = dailyLoadErrorMessage(error);
     } finally {
       loading.value = false;
     }
@@ -521,7 +534,7 @@ async function completeOnboarding(next: AppSettings): Promise<void> {
   } catch (error) {
     console.error(error);
     errorMessage.value = saved
-      ? "城市设置已保存，但今日诗笺暂时未能载入，请稍后重试。"
+      ? dailyLoadErrorMessage(error)
       : "首次设置未能保存，请稍后重试。";
   } finally {
     loading.value = false;
@@ -616,7 +629,7 @@ async function replaceWithdrawnContent(): Promise<void> {
     showToast("已换为仍在发布状态的内容");
   } catch (error) {
     console.error(error);
-    errorMessage.value = "校正后的内容暂时未能载入，请稍后再试。";
+    errorMessage.value = dailyLoadErrorMessage(error);
   } finally {
     loading.value = false;
   }
@@ -641,7 +654,21 @@ async function dislikePoem(): Promise<void> {
   await repository.value.recordFeedback(feedback);
   bootstrap.value.feedback = [feedback, ...bootstrap.value.feedback];
   await recordPilotActivity("not-relevant");
-  showToast("已记下，之后会减少相近内容");
+  showToast("已记下：两周内减少这首诗，可在设置中撤销");
+}
+
+async function undoLatestDislike(): Promise<void> {
+  const item = latestDislike.value;
+  if (!item || !repository.value) return;
+  try {
+    await repository.value.removeFeedback(item);
+    const index = bootstrap.value.feedback.indexOf(item);
+    if (index >= 0) bootstrap.value.feedback.splice(index, 1);
+    showToast("已撤销最近一次不太贴合反馈");
+  } catch (error) {
+    console.error(error);
+    showToast("撤销反馈失败，请稍后重试。");
+  }
 }
 
 async function saveSettings(next: AppSettings): Promise<void> {
@@ -688,6 +715,11 @@ async function saveSettings(next: AppSettings): Promise<void> {
     showToast("设置已保存");
   } catch (error) {
     console.error(error);
+    if (saved && cityChanged) {
+      errorMessage.value = dailyLoadErrorMessage(error);
+      panel.value = "card";
+      return;
+    }
     showToast(
       saved
         ? "部分设置已保存，但诗笺刷新或系统状态确认失败，请重试。"
@@ -797,7 +829,7 @@ async function openMainFromShell(): Promise<void> {
       }
     } catch (error) {
       console.error(error);
-      errorMessage.value = "今日诗笺暂时未能载入，请稍后再试。";
+      errorMessage.value = dailyLoadErrorMessage(error);
     } finally {
       loading.value = false;
     }
@@ -922,7 +954,7 @@ async function initialize(): Promise<void> {
     }
   } catch (error) {
     console.error(error);
-    errorMessage.value = "今日诗笺启动时遇到问题，请稍后再试。";
+    errorMessage.value = dailyLoadErrorMessage(error);
   } finally {
     const viewRenderStartedAtMs = window.performance.now();
     loading.value = false;
@@ -993,6 +1025,8 @@ onBeforeUnmount(() => {
       :saved-settings="settings"
       :autostart-warning="autostartWarning"
       :favorite-count="favoritePoems.length"
+      :can-undo-feedback="Boolean(latestDislike)"
+      :last-feedback-title="latestDislikeTitle"
       :pilot-status="pilotState?.status"
       @back="returnToCard"
       @save="saveSettings"
@@ -1000,6 +1034,7 @@ onBeforeUnmount(() => {
       @reset="resetData"
       @favorites="panel = 'favorites'"
       @pilot="panel = 'pilot'"
+      @undo-feedback="undoLatestDislike"
     />
 
     <PilotPanel

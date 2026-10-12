@@ -25,6 +25,7 @@ export interface AppRepository {
   recordDisplay(item: RecommendationHistoryItem): Promise<void>;
   toggleFavorite(workId: string, active: boolean): Promise<void>;
   recordFeedback(item: FeedbackItem): Promise<void>;
+  removeFeedback(item: FeedbackItem): Promise<void>;
   savePilotState(state: PilotState): Promise<void>;
   clearPilotState(): Promise<void>;
   clearUserData(): Promise<void>;
@@ -133,6 +134,20 @@ class BrowserRepository implements AppRepository {
     const data = this.read();
     data.feedback = [item, ...data.feedback].slice(0, 100);
     this.write(data);
+  }
+
+  async removeFeedback(item: FeedbackItem): Promise<void> {
+    const data = this.read();
+    const index = data.feedback.findIndex(
+      (entry) =>
+        entry.workId === item.workId &&
+        entry.type === item.type &&
+        entry.createdAt === item.createdAt,
+    );
+    if (index >= 0) {
+      data.feedback.splice(index, 1);
+      this.write(data);
+    }
   }
 
   async savePilotState(state: PilotState): Promise<void> {
@@ -437,6 +452,17 @@ class SqliteRepository implements AppRepository {
         item.createdAt,
         item.localDate ?? null,
       ],
+    );
+  }
+
+  async removeFeedback(item: FeedbackItem): Promise<void> {
+    await this.db.execute(
+      `DELETE FROM feedback WHERE id = (
+         SELECT id FROM feedback
+         WHERE work_id = $1 AND type = $2 AND created_at = $3
+         ORDER BY id DESC LIMIT 1
+       )`,
+      [item.workId, item.type, item.createdAt],
     );
   }
 
