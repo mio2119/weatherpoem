@@ -784,6 +784,17 @@ button:disabled {
 /* The glance view is a compact reading surface; extra actions stay one tap away. */
 .poem-view {
   padding: 10px 14px 12px;
+  --poem-scale: 1;
+}
+
+.poem-view[data-poem-font-size="small"],
+.reading-panel[data-poem-font-size="small"] {
+  --poem-scale: 0.9;
+}
+
+.poem-view[data-poem-font-size="large"],
+.reading-panel[data-poem-font-size="large"] {
+  --poem-scale: 1.16;
 }
 
 .glance-content {
@@ -854,15 +865,62 @@ button:disabled {
   letter-spacing: 0.04em;
 }
 
+.layout-toggle,
+.reading-layout-action button {
+  border: 0;
+  background: transparent;
+  color: var(--accent);
+  font-size: 11px;
+  cursor: pointer;
+}
+
+.layout-toggle {
+  min-height: 30px;
+  margin: -5px 0 -5px auto;
+  padding: 3px 4px;
+  white-space: nowrap;
+}
+
+.layout-toggle:hover,
+.reading-layout-action button:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
 .poem-view .poem-lines {
   margin: 11px 0 10px;
 }
 
 .poem-view .poem-lines p {
-  font-size: 22px;
+  font-size: calc(22px * var(--poem-scale));
   line-height: 1.5;
   letter-spacing: 0.07em;
   text-wrap: balance;
+}
+
+.poem-view .poem-lines.is-vertical,
+.reading-panel .full-poem.is-vertical {
+  display: block;
+  width: max-content;
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+}
+
+.poem-view .poem-lines.is-vertical {
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.poem-view .poem-lines.is-vertical p,
+.reading-panel .full-poem.is-vertical p {
+  white-space: nowrap;
+  text-align: start;
+}
+
+.poem-view .poem-lines.is-vertical p {
+  line-height: 1.48;
+  letter-spacing: 0.04em;
 }
 
 .poem-view .reason-block {
@@ -1090,9 +1148,41 @@ button:disabled {
 .full-poem p {
   margin: 0;
   font-family: "Songti SC", "STSong", serif;
-  font-size: 16px;
+  font-size: calc(16px * var(--poem-scale, 1));
   line-height: 2;
   letter-spacing: 0.06em;
+}
+
+.reading-panel {
+  --poem-scale: 1;
+}
+
+.reading-layout-action {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 15px;
+}
+
+.reading-layout-action button {
+  min-height: 32px;
+  padding: 3px 0 3px 8px;
+}
+
+.reading-poem-frame.is-vertical {
+  max-width: 100%;
+  overflow-x: auto;
+  direction: rtl;
+}
+
+.reading-panel .full-poem.is-vertical {
+  max-height: none;
+  padding: 22px;
+  border: 1px solid var(--line);
+  direction: ltr;
+}
+
+.reading-panel .full-poem.is-vertical p {
+  line-height: 1.9;
 }
 
 .reading-section {

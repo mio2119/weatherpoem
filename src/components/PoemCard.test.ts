@@ -42,6 +42,8 @@ function render(overrides: Record<string, unknown> = {}) {
       favorite: false,
       favoriteCount: 2,
       canReplace: true,
+      poemLayout: "horizontal",
+      poemFontSize: "medium",
       ...overrides,
     },
   });
@@ -84,5 +86,15 @@ describe("glance poem card", () => {
     });
     expect(offline.text()).toContain("天气未更新");
     expect(offline.text()).not.toContain("当地正有晴");
+  });
+
+  it("switches to vertical columns without changing the poem text", async () => {
+    const wrapper = render();
+    await wrapper.get(".layout-toggle").trigger("click");
+    expect(wrapper.emitted("layoutChange")?.[0]).toEqual(["vertical"]);
+    await wrapper.setProps({ poemLayout: "vertical" });
+    expect(wrapper.get(".poem-lines").classes()).toContain("is-vertical");
+    expect(wrapper.findAll(".poem-lines p").map((line) => line.text()).join(""))
+      .toBe(recommendation.poem.excerpt.join(""));
   });
 });

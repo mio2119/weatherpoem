@@ -11,6 +11,8 @@ const SETTINGS: AppSettings = {
   anonymousMetrics: true,
   theme: "system",
   reduceMotion: false,
+  poemLayout: "horizontal",
+  poemFontSize: "medium",
 };
 
 const props = {
@@ -64,6 +66,19 @@ describe("SettingsPanel privacy consent", () => {
 });
 
 describe("settings draft", () => {
+  it("saves orientation and three-step poem size without changing other choices", async () => {
+    const wrapper = mount(SettingsPanel, { props });
+    await wrapper.find<HTMLSelectElement>('select[name="poem-layout"]').setValue("vertical");
+    await wrapper.find<HTMLSelectElement>('select[name="poem-font-size"]').setValue("large");
+    await wrapper.get("form").trigger("submit");
+    const saved = wrapper.emitted("save")?.[0]?.[0] as AppSettings;
+    expect(saved).toMatchObject({
+      poemLayout: "vertical",
+      poemFontSize: "large",
+      cityId: "beijing",
+    });
+  });
+
   it("preserves a draft across a navigation remount", async () => {
     const first = mount(SettingsPanel, { props });
     await first.find<HTMLSelectElement>('.settings-form select').setValue("hangzhou");

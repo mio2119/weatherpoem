@@ -254,7 +254,7 @@ export async function fitGlanceWindowHeight(requiredHeight: number): Promise<voi
     Math.max(320, Math.ceil(requiredHeight)),
     Math.max(1, Math.floor(monitor.workArea.size.height / scale) - 32),
   );
-  if (target <= current.height / scale + 2) return;
+  if (Math.abs(target - current.height / scale) <= 2) return;
   await appWindow.setSize(new LogicalSize(current.width / scale, target));
   await positionWindowBottomRight();
 }

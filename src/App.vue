@@ -67,6 +67,7 @@ import type {
   PilotState,
   Recommendation,
   Poem,
+  PoemLayout,
   WeatherContext,
 } from "./types";
 
@@ -802,6 +803,24 @@ async function saveSettings(next: AppSettings): Promise<void> {
   }
 }
 
+async function changePoemLayout(layout: PoemLayout): Promise<void> {
+  if (settings.value.poemLayout === layout) return;
+  const next = { ...settings.value, poemLayout: layout };
+  try {
+    await repository.value?.saveSettings(next);
+    settings.value = next;
+    settingsDraft.value = { ...next };
+    bootstrap.value.settings = next;
+  } catch (error) {
+    console.error(error);
+    showToast("排版偏好未能保存，请重试。");
+  }
+}
+
+function handleSystemThemeChange(): void {
+  if (settings.value.theme === "system") applyTheme("system");
+}
+
 async function startPilot(): Promise<void> {
   if (!repository.value || pilotState.value) return;
   let next = createPilotState(calendar.value.localDate);
@@ -1058,8 +1077,14 @@ async function initialize(): Promise<void> {
   }
 }
 
-onMounted(initialize);
+onMounted(() => {
+  window.matchMedia("(prefers-color-scheme: dark)")
+    .addEventListener("change", handleSystemThemeChange);
+  void initialize();
+});
 onBeforeUnmount(() => {
+  window.matchMedia("(prefers-color-scheme: dark)")
+    .removeEventListener("change", handleSystemThemeChange);
   if (toastTimer) window.clearTimeout(toastTimer);
   if (contentControlTimer) window.clearInterval(contentControlTimer);
   if (dateCheckTimer) window.clearInterval(dateCheckTimer);
@@ -1151,11 +1176,14 @@ onBeforeUnmount(() => {
       v-else-if="panel === 'reading' && selectedReadingPoem"
       :poem="selectedReadingPoem"
       :favorite="readingFavorite"
+      :poem-layout="settings.poemLayout"
+      :poem-font-size="settings.poemFontSize"
       :back-label="
         readingReturnPanel === 'favorites' ? '我的收藏' : '今日诗笺'
       "
       @back="panel = readingReturnPanel"
       @favorite="toggleFavorite"
+      @layout-change="changePoemLayout"
     />
 
     <PoemCard
@@ -1166,12 +1194,15 @@ onBeforeUnmount(() => {
       :favorite="favorite"
       :favorite-count="favoritePoems.length"
       :can-replace="!replacedToday"
+      :poem-layout="settings.poemLayout"
+      :poem-font-size="settings.poemFontSize"
       @read="openDailyReading"
       @favorite="toggleFavorite"
       @favorites="openFavorites('card')"
       @replace="replacePoem"
       @dislike="dislikePoem"
       @height-needed="fitGlanceToContent"
+      @layout-change="changePoemLayout"
     />
 
     <Transition name="toast">

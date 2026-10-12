@@ -140,9 +140,32 @@ describe("browser persistence", () => {
     );
     const data = await (await createRepository()).load();
     expect(data.settings).toMatchObject({ configured: true, cityId: "hangzhou" });
+    expect(data.settings.poemLayout).toBe("horizontal");
+    expect(data.settings.poemFontSize).toBe("medium");
     expect(data.history[0]?.workId).toBe("legacy-poem");
     expect(data.favorites).toEqual(["legacy-poem"]);
     expect(data.feedback).toHaveLength(1);
+  });
+
+  it("persists reading preferences and repairs invalid old values", async () => {
+    const repository = await createRepository();
+    await repository.saveSettings({
+      ...DEFAULT_SETTINGS,
+      poemLayout: "vertical",
+      poemFontSize: "large",
+    });
+    expect((await repository.load()).settings).toMatchObject({
+      poemLayout: "vertical",
+      poemFontSize: "large",
+    });
+    const raw = JSON.parse(localStorage.getItem("weatherpoem.local.v1")!);
+    raw.settings.poemLayout = "diagonal";
+    raw.settings.poemFontSize = "enormous";
+    localStorage.setItem("weatherpoem.local.v1", JSON.stringify(raw));
+    expect((await repository.load()).settings).toMatchObject({
+      poemLayout: "horizontal",
+      poemFontSize: "medium",
+    });
   });
 
   it("可撤销一条不太贴合反馈而保留其他本地数据", async () => {

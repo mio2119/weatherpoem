@@ -144,6 +144,21 @@ async function showThirdPartyNotices(): Promise<void> {
             <option value="dark">深色</option>
           </select>
         </label>
+        <label class="stacked-field">
+          <span>诗句排版</span>
+          <select v-model="draft.poemLayout" class="select-input" name="poem-layout">
+            <option value="horizontal">横排</option>
+            <option value="vertical">传统竖排</option>
+          </select>
+        </label>
+        <label class="stacked-field">
+          <span>诗句字号</span>
+          <select v-model="draft.poemFontSize" class="select-input" name="poem-font-size">
+            <option value="small">小</option>
+            <option value="medium">中</option>
+            <option value="large">大</option>
+          </select>
+        </label>
         <label class="switch-row">
           <span>
             <strong>减少动态效果</strong>

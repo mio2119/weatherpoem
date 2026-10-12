@@ -9,6 +9,7 @@ import {
 import {
   classifyFrontendReady,
   completeAppExit,
+  fitGlanceWindowHeight,
   listenForExitRequest,
   OPEN_METEO_LICENSE_URL,
   openExternal,
@@ -41,6 +42,7 @@ const windowMocks = vi.hoisted(() => ({
   outerSize: vi.fn<() => Promise<{ width: number; height: number }>>(),
   outerPosition: vi.fn<() => Promise<{ x: number; y: number }>>(),
   setPosition: vi.fn<() => Promise<void>>(),
+  innerSize: vi.fn<() => Promise<{ width: number; height: number }>>(),
 }));
 const monitorMocks = vi.hoisted(() => ({
   currentMonitor: vi.fn(),
@@ -160,6 +162,36 @@ describe("window mode geometry", () => {
     );
     expect(windowMocks.setResizable).toHaveBeenLastCalledWith(true);
     delete window.__TAURI_INTERNALS__;
+  });
+
+  it("grows for vertical text and shrinks back for short horizontal text", async () => {
+    vi.clearAllMocks();
+    Object.defineProperty(window, "__TAURI_INTERNALS__", {
+      value: {}, configurable: true,
+    });
+    monitorMocks.currentMonitor.mockResolvedValue({
+      scaleFactor: 1,
+      workArea: {
+        position: { x: 0, y: 0 },
+        size: { width: 1280, height: 800 },
+      },
+    });
+    windowMocks.setSize.mockResolvedValue();
+    windowMocks.outerSize.mockResolvedValue({ width: 392, height: 500 });
+    windowMocks.setPosition.mockResolvedValue();
+    windowMocks.innerSize.mockResolvedValueOnce({ width: 392, height: 320 })
+      .mockResolvedValueOnce({ width: 392, height: 500 });
+
+    await fitGlanceWindowHeight(500);
+    await fitGlanceWindowHeight(394);
+    expect(windowMocks.setSize).toHaveBeenNthCalledWith(
+      1, expect.objectContaining({ width: 392, height: 500 }),
+    );
+    expect(windowMocks.setSize).toHaveBeenNthCalledWith(
+      2, expect.objectContaining({ width: 392, height: 394 }),
+    );
+    delete window.__TAURI_INTERNALS__;
+    vi.clearAllMocks();
   });
 });
 

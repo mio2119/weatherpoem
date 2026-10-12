@@ -16,6 +16,8 @@ export const DEFAULT_SETTINGS: AppSettings = {
   anonymousMetrics: false,
   theme: "system",
   reduceMotion: false,
+  poemLayout: "horizontal",
+  poemFontSize: "medium",
 };
 
 export interface AppRepository {
@@ -55,12 +57,23 @@ function emptyData(): BrowserData {
   };
 }
 
+function normalizeSettings(candidate: Partial<AppSettings> | undefined): AppSettings {
+  const settings = { ...DEFAULT_SETTINGS, ...candidate };
+  if (settings.poemLayout !== "horizontal" && settings.poemLayout !== "vertical") {
+    settings.poemLayout = DEFAULT_SETTINGS.poemLayout;
+  }
+  if (!["small", "medium", "large"].includes(settings.poemFontSize)) {
+    settings.poemFontSize = DEFAULT_SETTINGS.poemFontSize;
+  }
+  return settings;
+}
+
 function parseBrowserData(raw: string | null): BrowserData {
   if (!raw) return emptyData();
   try {
     const parsed = JSON.parse(raw) as Partial<BrowserData>;
     return {
-      settings: { ...DEFAULT_SETTINGS, ...parsed.settings },
+      settings: normalizeSettings(parsed.settings),
       dailyState: parsed.dailyState,
       history: Array.isArray(parsed.history) ? parsed.history : [],
       favorites: Array.isArray(parsed.favorites) ? parsed.favorites : [],
@@ -325,10 +338,9 @@ class SqliteRepository implements AppRepository {
     let settings = { ...DEFAULT_SETTINGS };
     if (settingsRows[0]?.value) {
       try {
-        settings = {
-          ...settings,
-          ...(JSON.parse(settingsRows[0].value) as Partial<AppSettings>),
-        };
+        settings = normalizeSettings(
+          JSON.parse(settingsRows[0].value) as Partial<AppSettings>,
+        );
       } catch {
         // 保留安全默认值；损坏的设置不会阻止应用启动。
       }

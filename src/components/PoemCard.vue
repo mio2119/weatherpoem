@@ -1,8 +1,9 @@
 <script setup lang="ts">
 import { computed, nextTick, onBeforeUnmount, onMounted, ref, useTemplateRef, watch } from "vue";
 import { useInitialFocus } from "../composables/useInitialFocus";
+import { displayedPoemLines } from "../core/poem-layout";
 import { hideWindow } from "../services/desktop";
-import type { CalendarContext, Recommendation, WeatherContext } from "../types";
+import type { CalendarContext, PoemFontSize, PoemLayout, Recommendation, WeatherContext } from "../types";
 import IconSymbol from "./IconSymbol.vue";
 
 const props = defineProps<{
@@ -12,6 +13,8 @@ const props = defineProps<{
   favorite: boolean;
   favoriteCount: number;
   canReplace: boolean;
+  poemLayout: PoemLayout;
+  poemFontSize: PoemFontSize;
 }>();
 
 const emit = defineEmits<{
@@ -21,9 +24,13 @@ const emit = defineEmits<{
   replace: [];
   dislike: [];
   heightNeeded: [height: number];
+  layoutChange: [layout: PoemLayout];
 }>();
 
 const moreOpen = ref(false);
+const poemLines = computed(() =>
+  displayedPoemLines(props.recommendation.poem.excerpt, props.poemLayout),
+);
 const contentMeasure = useTemplateRef<HTMLElement>("contentMeasure");
 let resizeObserver: ResizeObserver | undefined;
 useInitialFocus();
@@ -73,6 +80,7 @@ onBeforeUnmount(() => resizeObserver?.disconnect());
   <main
     ref="initialFocusTarget"
     class="poem-view"
+    :data-poem-font-size="poemFontSize"
     aria-labelledby="daily-poem-title"
     tabindex="-1"
   >
@@ -91,10 +99,23 @@ onBeforeUnmount(() => resizeObserver?.disconnect());
         <div class="poem-heading">
           <h1 id="daily-poem-title">{{ recommendation.poem.title }}</h1>
           <p>{{ recommendation.poem.author }} · {{ recommendation.poem.dynasty }}</p>
+          <button
+            class="layout-toggle"
+            type="button"
+            :aria-label="poemLayout === 'horizontal' ? '改为竖排诗句' : '改为横排诗句'"
+            @click="emit('layoutChange', poemLayout === 'horizontal' ? 'vertical' : 'horizontal')"
+          >
+            {{ poemLayout === "horizontal" ? "竖排" : "横排" }}
+          </button>
         </div>
 
-        <div class="poem-lines" role="group" aria-label="诗句节选">
-          <p v-for="line in recommendation.poem.excerpt" :key="line">{{ line }}</p>
+        <div
+          class="poem-lines"
+          :class="{ 'is-vertical': poemLayout === 'vertical' }"
+          role="group"
+          aria-label="诗句节选"
+        >
+          <p v-for="(line, index) in poemLines" :key="index">{{ line }}</p>
         </div>
 
         <p class="reason-block">{{ recommendation.reason }}</p>
