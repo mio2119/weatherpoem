@@ -14,7 +14,10 @@ import {
   openExternal,
   openThirdPartyNotices,
   shouldRevealOnLaunch,
+  showWindow,
+  setWindowMode,
   syncAutostart,
+  windowSizeForMode,
 } from "./desktop";
 
 const autostartMocks = vi.hoisted(() => ({
@@ -29,11 +32,136 @@ const tauriMocks = vi.hoisted(() => ({
 const openerMocks = vi.hoisted(() => ({
   openUrl: vi.fn<(...args: unknown[]) => Promise<void>>(),
 }));
+const windowMocks = vi.hoisted(() => ({
+  show: vi.fn<() => Promise<void>>(),
+  setFocus: vi.fn<() => Promise<void>>(),
+  setMinSize: vi.fn<() => Promise<void>>(),
+  setSize: vi.fn<() => Promise<void>>(),
+  setResizable: vi.fn<() => Promise<void>>(),
+  outerSize: vi.fn<() => Promise<{ width: number; height: number }>>(),
+  outerPosition: vi.fn<() => Promise<{ x: number; y: number }>>(),
+  setPosition: vi.fn<() => Promise<void>>(),
+}));
+const monitorMocks = vi.hoisted(() => ({
+  currentMonitor: vi.fn(),
+  primaryMonitor: vi.fn(),
+}));
 
 vi.mock("@tauri-apps/plugin-autostart", () => autostartMocks);
 vi.mock("@tauri-apps/api/core", () => ({ invoke: tauriMocks.invoke }));
 vi.mock("@tauri-apps/api/event", () => ({ listen: tauriMocks.listen }));
 vi.mock("@tauri-apps/plugin-opener", () => openerMocks);
+vi.mock("@tauri-apps/api/window", () => ({
+  getCurrentWindow: () => windowMocks,
+  currentMonitor: monitorMocks.currentMonitor,
+  primaryMonitor: monitorMocks.primaryMonitor,
+}));
+vi.mock("@tauri-apps/api/dpi", () => ({
+  LogicalSize: class {
+    constructor(public width: number, public height: number) {}
+  },
+  PhysicalPosition: class {
+    constructor(public x: number, public y: number) {}
+  },
+}));
+
+describe("desktop reveal focus policy", () => {
+  beforeEach(() => {
+    Object.defineProperty(window, "__TAURI_INTERNALS__", {
+      value: {}, configurable: true,
+    });
+    windowMocks.show.mockResolvedValue();
+    windowMocks.setFocus.mockResolvedValue();
+  });
+
+  afterEach(() => {
+    delete window.__TAURI_INTERNALS__;
+    vi.clearAllMocks();
+  });
+
+  it("automatic reveal shows the card without requesting focus", async () => {
+    await showWindow(false);
+    expect(windowMocks.show).toHaveBeenCalledOnce();
+    expect(windowMocks.setFocus).not.toHaveBeenCalled();
+  });
+
+  it("manual reveal can take focus for keyboard operation", async () => {
+    await showWindow(true);
+    expect(windowMocks.show).toHaveBeenCalledOnce();
+    expect(windowMocks.setFocus).toHaveBeenCalledOnce();
+  });
+});
+
+describe("window mode geometry", () => {
+  it("uses a small glance window and a larger reading window", () => {
+    const workArea = { width: 1280, height: 800 };
+    expect(windowSizeForMode("glance", workArea)).toEqual({
+      width: 392,
+      height: 320,
+    });
+    expect(windowSizeForMode("reading", workArea)).toEqual({
+      width: 560,
+      height: 720,
+    });
+  });
+
+  it("keeps setup, safety and reading sizes inside a short work area", () => {
+    const workArea = { width: 800, height: 600 };
+    expect(windowSizeForMode("setup", workArea)).toEqual({
+      width: 430,
+      height: 568,
+    });
+    expect(windowSizeForMode("safety", workArea)).toEqual({
+      width: 430,
+      height: 560,
+    });
+    expect(windowSizeForMode("reading", workArea, { width: 900, height: 900 }))
+      .toEqual({ width: 768, height: 568 });
+  });
+
+  it("rejects an invalid saved reading size", () => {
+    expect(windowSizeForMode(
+      "reading",
+      { width: 1280, height: 800 },
+      { width: Number.NaN, height: 10 },
+    )).toEqual({ width: 560, height: 720 });
+  });
+
+  it("changes one native window between glance and resizable reading", async () => {
+    Object.defineProperty(window, "__TAURI_INTERNALS__", {
+      value: {}, configurable: true,
+    });
+    monitorMocks.currentMonitor.mockResolvedValue({
+      scaleFactor: 1,
+      workArea: {
+        position: { x: 0, y: 0 },
+        size: { width: 1280, height: 800 },
+      },
+    });
+    windowMocks.setMinSize.mockResolvedValue();
+    windowMocks.setSize.mockResolvedValue();
+    windowMocks.setResizable.mockResolvedValue();
+    windowMocks.outerSize.mockResolvedValue({ width: 392, height: 320 });
+    windowMocks.outerPosition.mockResolvedValue({ x: 100, y: 100 });
+    windowMocks.setPosition.mockResolvedValue();
+
+    await setWindowMode("glance");
+    expect(windowMocks.setSize).toHaveBeenCalledWith(
+      expect.objectContaining({ width: 392, height: 320 }),
+    );
+    expect(windowMocks.setResizable).toHaveBeenCalledWith(false);
+    expect(windowMocks.setPosition).toHaveBeenCalledWith(
+      expect.objectContaining({ x: 872, y: 464 }),
+    );
+
+    await setWindowMode("reading", { width: 700, height: 700 });
+    expect(windowMocks.setSize).toHaveBeenLastCalledWith(
+      expect.objectContaining({ width: 700, height: 700 }),
+    );
+    expect(windowMocks.setResizable).toHaveBeenLastCalledWith(true);
+    delete window.__TAURI_INTERNALS__;
+  });
+});
 
 describe("desktop launch policy", () => {
   it("普通手动启动始终显示窗口", () => {

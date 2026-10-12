@@ -32,6 +32,7 @@ export interface AppSettings {
   anonymousMetrics: boolean;
   theme: ThemePreference;
   reduceMotion: boolean;
+  readingWindowSize?: { width: number; height: number };
 }
 
 export interface CalendarContext {

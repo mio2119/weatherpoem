@@ -15,6 +15,40 @@ export interface LaunchContext {
   isAutostart: boolean;
 }
 
+export type WindowMode = "setup" | "glance" | "reading" | "safety";
+
+export interface WindowDimensions {
+  width: number;
+  height: number;
+}
+
+const WINDOW_PRESETS: Record<WindowMode, WindowDimensions> = {
+  setup: { width: 430, height: 680 },
+  glance: { width: 392, height: 320 },
+  reading: { width: 560, height: 720 },
+  safety: { width: 430, height: 560 },
+};
+
+export function windowSizeForMode(
+  mode: WindowMode,
+  workArea: WindowDimensions,
+  savedReadingSize?: WindowDimensions,
+): WindowDimensions {
+  const validReadingSize =
+    savedReadingSize &&
+    Number.isFinite(savedReadingSize.width) &&
+    Number.isFinite(savedReadingSize.height) &&
+    savedReadingSize.width >= 440 &&
+    savedReadingSize.height >= 520;
+  const desired = mode === "reading" && validReadingSize
+    ? savedReadingSize
+    : WINDOW_PRESETS[mode];
+  return {
+    width: Math.max(1, Math.min(desired.width, workArea.width - 32)),
+    height: Math.max(1, Math.min(desired.height, workArea.height - 32)),
+  };
+}
+
 export type FrontendReadyView =
   | "onboarding"
   | "poem"
@@ -118,12 +152,12 @@ export async function reportFrontendReady(
   });
 }
 
-export async function showWindow(): Promise<void> {
+export async function showWindow(takeFocus = true): Promise<void> {
   if (!isTauri()) return;
   const { getCurrentWindow } = await import("@tauri-apps/api/window");
   const appWindow = getCurrentWindow();
   await appWindow.show();
-  await appWindow.setFocus();
+  if (takeFocus) await appWindow.setFocus();
 }
 
 export async function positionWindowBottomRight(): Promise<void> {
@@ -150,6 +184,75 @@ export async function positionWindowBottomRight(): Promise<void> {
   } catch (error) {
     console.warn("窗口定位失败，将使用系统默认位置。", error);
   }
+}
+
+export async function setWindowMode(
+  mode: WindowMode,
+  savedReadingSize?: WindowDimensions,
+): Promise<void> {
+  if (!isTauri()) return;
+  const [{ LogicalSize, PhysicalPosition }, windowApi] = await Promise.all([
+    import("@tauri-apps/api/dpi"),
+    import("@tauri-apps/api/window"),
+  ]);
+  const appWindow = windowApi.getCurrentWindow();
+  const monitor = await windowApi.currentMonitor() ?? await windowApi.primaryMonitor();
+  if (!monitor) return;
+  const scale = monitor.scaleFactor;
+  const area = monitor.workArea;
+  const size = windowSizeForMode(
+    mode,
+    {
+      width: area.size.width / scale,
+      height: area.size.height / scale,
+    },
+    savedReadingSize,
+  );
+  await appWindow.setMinSize(null);
+  await appWindow.setSize(new LogicalSize(size.width, size.height));
+  await appWindow.setResizable(mode === "reading");
+  const minimum = mode === "glance"
+    ? { width: 320, height: 260 }
+    : mode === "reading"
+      ? { width: 440, height: 520 }
+      : { width: 390, height: 400 };
+  await appWindow.setMinSize(
+    new LogicalSize(
+      Math.min(minimum.width, size.width),
+      Math.min(minimum.height, size.height),
+    ),
+  );
+
+  const physicalSize = await appWindow.outerSize();
+  const currentPosition = await appWindow.outerPosition();
+  const margin = Math.round(16 * scale);
+  const left = area.position.x + margin;
+  const top = area.position.y + margin;
+  const right = Math.max(left, area.position.x + area.size.width - physicalSize.width - margin);
+  const bottom = Math.max(top, area.position.y + area.size.height - physicalSize.height - margin);
+  const x = mode === "glance"
+    ? right
+    : Math.min(right, Math.max(left, currentPosition.x));
+  const y = mode === "glance"
+    ? bottom
+    : Math.min(bottom, Math.max(top, currentPosition.y));
+  await appWindow.setPosition(new PhysicalPosition(x, y));
+}
+
+export async function listenForReadingResize(
+  callback: (size: WindowDimensions) => void,
+): Promise<() => void> {
+  if (!isTauri()) return () => undefined;
+  const { getCurrentWindow } = await import("@tauri-apps/api/window");
+  const appWindow = getCurrentWindow();
+  return appWindow.onResized(async ({ payload }) => {
+    const scale = await appWindow.scaleFactor();
+    if (!Number.isFinite(scale) || scale <= 0) return;
+    callback({
+      width: Math.round(payload.width / scale),
+      height: Math.round(payload.height / scale),
+    });
+  });
 }
 
 export async function hideWindow(): Promise<void> {

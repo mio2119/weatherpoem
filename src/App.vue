@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, onBeforeUnmount, onMounted, ref, shallowRef } from "vue";
+import { computed, onBeforeUnmount, onMounted, ref, shallowRef, watch } from "vue";
 import ContentCorrectionView from "./components/ContentCorrectionView.vue";
 import OnboardingView from "./components/OnboardingView.vue";
 import FavoritesPanel from "./components/FavoritesPanel.vue";
@@ -39,12 +39,15 @@ import {
   getPerformanceWeatherScenario,
   listenForOpenMain,
   listenForExitRequest,
+  listenForReadingResize,
   listenForSettings,
-  positionWindowBottomRight,
   reportFrontendReady,
+  setWindowMode,
   shouldRevealOnLaunch,
   showWindow,
   syncAutostart,
+  type WindowMode,
+  type WindowDimensions,
 } from "./services/desktop";
 import {
   createRepository,
@@ -99,13 +102,60 @@ let toastTimer: number | undefined;
 let contentControlTimer: number | undefined;
 let dateCheckTimer: number | undefined;
 let dateRefreshPromise: Promise<boolean> | undefined;
+let readingResizeTimer: number | undefined;
 let stopSettingsListener: (() => void) | undefined;
 let stopOpenMainListener: (() => void) | undefined;
 let stopExitRequestListener: (() => void) | undefined;
+let stopResizeListener: (() => void) | undefined;
 let pilotSessionOpened = false;
 let exitInProgress = false;
+let windowModeReady = false;
+let windowModeTask: Promise<void> = Promise.resolve();
 
 const configured = computed(() => settings.value.configured);
+const windowMode = computed<WindowMode>(() => {
+  if (!configured.value) return "setup";
+  if (weather.value.shouldSuppressPoem || contentCorrectionPending.value) {
+    return "safety";
+  }
+  return panel.value === "card" ? "glance" : "reading";
+});
+
+function queueWindowMode(mode: WindowMode): Promise<void> {
+  windowModeTask = windowModeTask
+    .catch(() => undefined)
+    .then(() => setWindowMode(mode, settings.value.readingWindowSize))
+    .catch((error) => {
+      console.warn("窗口尺寸未能按阅读状态调整。", error);
+    });
+  return windowModeTask;
+}
+
+watch(windowMode, (mode) => {
+  if (windowModeReady) void queueWindowMode(mode);
+});
+
+function handleReadingResize(size: WindowDimensions): void {
+  if (
+    !windowModeReady ||
+    panel.value !== "reading" ||
+    size.width < 440 ||
+    size.height < 520
+  ) return;
+  if (readingResizeTimer) window.clearTimeout(readingResizeTimer);
+  readingResizeTimer = window.setTimeout(() => {
+    if (!repository.value || panel.value !== "reading") return;
+    const previous = settings.value.readingWindowSize;
+    if (previous?.width === size.width && previous.height === size.height) return;
+    const next = { ...settings.value, readingWindowSize: size };
+    void repository.value.saveSettings(next).then(() => {
+      settings.value = next;
+      bootstrap.value.settings = next;
+    }).catch((error) => {
+      console.warn("阅读窗口尺寸未能保存。", error);
+    });
+  }, 350);
+}
 const favorite = computed(() => {
   const workId = recommendation.value?.poem.id;
   return workId ? bootstrap.value.favorites.includes(workId) : false;
@@ -898,12 +948,14 @@ async function exitFromShell(): Promise<void> {
 async function initialize(): Promise<void> {
   loading.value = true;
   let revealAfterInitialization = true;
+  let revealWithFocus = true;
   try {
     const [launchContext, controlledScenario] = await Promise.all([
       getLaunchContext(),
       getPerformanceWeatherScenario(),
     ]);
     performanceWeatherScenario = controlledScenario;
+    revealWithFocus = !launchContext.isAutostart;
     repository.value = await createRepository();
     bootstrap.value = await repository.value.load();
     settings.value = { ...bootstrap.value.settings };
@@ -918,13 +970,13 @@ async function initialize(): Promise<void> {
       "app-opened",
       buildCalendarContext().localDate,
     );
-    await positionWindowBottomRight();
     stopSettingsListener = await listenForSettings(() => {
       void openSettingsFromShell();
     });
     stopOpenMainListener = await listenForOpenMain(() => {
       void openMainFromShell();
     });
+    stopResizeListener = await listenForReadingResize(handleReadingResize);
     contentControlTimer = window.setInterval(() => {
       if (buildCalendarContext().localDate !== calendar.value.localDate) {
         checkVisibleDate();
@@ -958,8 +1010,10 @@ async function initialize(): Promise<void> {
   } finally {
     const viewRenderStartedAtMs = window.performance.now();
     loading.value = false;
+    await queueWindowMode(windowMode.value);
+    windowModeReady = true;
     if (revealAfterInitialization) {
-      await showWindow();
+      await showWindow(revealWithFocus);
       try {
         const ready = classifyFrontendReady({
           configured: configured.value,
@@ -985,11 +1039,13 @@ onBeforeUnmount(() => {
   if (toastTimer) window.clearTimeout(toastTimer);
   if (contentControlTimer) window.clearInterval(contentControlTimer);
   if (dateCheckTimer) window.clearInterval(dateCheckTimer);
+  if (readingResizeTimer) window.clearTimeout(readingResizeTimer);
   window.removeEventListener("focus", checkVisibleDate);
   document.removeEventListener("visibilitychange", checkVisibleDate);
   stopSettingsListener?.();
   stopOpenMainListener?.();
   stopExitRequestListener?.();
+  stopResizeListener?.();
 });
 </script>
 
