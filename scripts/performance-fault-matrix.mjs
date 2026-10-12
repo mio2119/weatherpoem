@@ -21,18 +21,15 @@ const projectRoot = path.resolve(
 const packageJson = JSON.parse(
   await readFile(path.join(projectRoot, "package.json"), "utf8"),
 );
-const exePath = path.join(
-  projectRoot,
-  "src-tauri",
-  "target",
-  "release",
-  "weatherpoem.exe",
-);
-const reportPath = path.join(
-  projectRoot,
-  "output",
-  "WeatherPoem_0.2.0_PERFORMANCE_FAULT_MATRIX.json",
-);
+const redesignCandidate = process.argv.includes("--redesign-candidate");
+const artifactPath = redesignCandidate
+  ? ".work/redesign-target/release/weatherpoem.exe"
+  : "src-tauri/target/release/weatherpoem.exe";
+const reportRelativePath = redesignCandidate
+  ? "review/redesign/evidence/T09_FAULT_MATRIX.json"
+  : "output/WeatherPoem_0.2.0_PERFORMANCE_FAULT_MATRIX.json";
+const exePath = path.join(projectRoot, ...artifactPath.split("/"));
+const reportPath = path.join(projectRoot, ...reportRelativePath.split("/"));
 const samplesArgument = Number(
   process.argv.find((value) => value.startsWith("--samples="))
     ?.split("=")[1] ?? 3,
@@ -277,7 +274,7 @@ try {
     generatedAt: new Date().toISOString(),
     testKind: "controlled-performance-fault-matrix",
     artifact: {
-      path: "src-tauri/target/release/weatherpoem.exe",
+      path: artifactPath,
       sha256: await sha256File(exePath),
       sizeBytes: executable.size,
     },

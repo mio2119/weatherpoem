@@ -29,6 +29,8 @@
     "performance:smoke:baseline-comparison": "powershell.exe -NoLogo -NoProfile -NonInteractive -ExecutionPolicy Bypass -File scripts/test-performance-smoke.ps1 -BaselineComparison",
     "performance:smoke:baseline-comparison:check": "node scripts/performance-smoke-check.mjs --baseline-comparison",
     "performance:fault-matrix": "node scripts/performance-fault-matrix.mjs",
+    "performance:fault-matrix:redesign": "node scripts/performance-fault-matrix.mjs --redesign-candidate",
+    "performance:fault-matrix:redesign:check": "node scripts/performance-fault-matrix-check.mjs --redesign-candidate",
     "performance:fault-matrix:check": "node scripts/performance-fault-matrix-check.mjs && node --test scripts/performance-fault-matrix-contract.test.mjs",
     "performance:long-run": "powershell.exe -NoLogo -NoProfile -NonInteractive -ExecutionPolicy Bypass -File scripts/test-performance-long-run.ps1",
     "performance:long-run:rehearsal": "powershell.exe -NoLogo -NoProfile -NonInteractive -ExecutionPolicy Bypass -File scripts/test-performance-long-run.ps1 -DurationMinutes 2 -SampleIntervalSeconds 5 -Rehearsal",
