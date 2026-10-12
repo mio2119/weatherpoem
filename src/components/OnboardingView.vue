@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, ref } from "vue";
+import { computed, ref, watch } from "vue";
 import { useInitialFocus } from "../composables/useInitialFocus";
 import { CITIES } from "../data/cities";
 import type { AppSettings } from "../types";
@@ -13,7 +13,7 @@ const emit = defineEmits<{
   complete: [settings: AppSettings];
 }>();
 
-const cityId = ref(props.initialSettings.cityId);
+const cityId = ref(props.initialSettings.configured ? props.initialSettings.cityId : "");
 const autostart = ref(props.initialSettings.autostart);
 const consent = ref(false);
 const query = ref("");
@@ -26,9 +26,17 @@ const filteredCities = computed(() => {
     `${city.name}${city.province}${city.note}`.includes(keyword),
   );
 });
+const selectedCity = computed(() =>
+  CITIES.find((city) => city.id === cityId.value),
+);
+
+watch(query, () => {
+  // Searching for another city must not silently keep a previous selection.
+  cityId.value = "";
+});
 
 function submit(): void {
-  if (!consent.value || !cityId.value) return;
+  if (!consent.value || !selectedCity.value) return;
   emit("complete", {
     ...props.initialSettings,
     configured: true,
@@ -63,8 +71,15 @@ function submit(): void {
         type="search"
         placeholder="搜索城市"
         autocomplete="off"
+        aria-describedby="city-search-help"
       />
-      <div class="city-grid" role="radiogroup" aria-label="选择城市">
+      <p id="city-search-help" class="city-search-help">
+        当前支持 {{ CITIES.length }} 座示范城市；不会自动定位或改用其他城市。
+      </p>
+      <p v-if="filteredCities.length === 0" class="city-empty" role="status">
+        暂未找到支持的城市。请清空搜索，或换一个城市名称试试。
+      </p>
+      <div v-else class="city-grid" role="radiogroup" aria-label="选择城市">
         <label
           v-for="city in filteredCities"
           :key="city.id"
@@ -79,6 +94,13 @@ function submit(): void {
           <IconSymbol v-if="cityId === city.id" name="check" :size="17" />
         </label>
       </div>
+      <p class="city-selection" aria-live="polite">
+        {{
+          selectedCity
+            ? `本次将使用${selectedCity.province} · ${selectedCity.name}的天气；城市设置保存在本机。`
+            : "请选择一座城市，再开始今日诗笺。"
+        }}
+      </p>
 
       <label class="switch-row">
         <span>
@@ -95,7 +117,11 @@ function submit(): void {
         </span>
       </label>
 
-      <button class="primary-button" type="submit" :disabled="!consent">
+      <button
+        class="primary-button"
+        type="submit"
+        :disabled="!consent || !selectedCity"
+      >
         开始今日诗笺
       </button>
     </form>

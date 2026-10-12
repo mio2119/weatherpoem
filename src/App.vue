@@ -76,6 +76,7 @@ const bootstrap = ref<AppBootstrap>({
   feedback: [],
 });
 const settings = ref<AppSettings>({ ...DEFAULT_SETTINGS });
+const settingsDraft = ref<AppSettings>({ ...DEFAULT_SETTINGS });
 const calendar = ref<CalendarContext>(buildCalendarContext());
 const weather = ref<WeatherContext>(offlineWeather());
 let performanceWeatherScenario:
@@ -86,6 +87,7 @@ const panel = ref<Panel>("card");
 const loading = ref(true);
 const errorMessage = ref("");
 const toast = ref("");
+const autostartWarning = ref("");
 const selectedReadingPoem = ref<Poem>();
 const poems = shallowRef<Poem[]>([]);
 const withdrawnWorkIds = ref<string[]>([]);
@@ -488,17 +490,42 @@ function checkVisibleDate(): void {
 }
 
 async function completeOnboarding(next: AppSettings): Promise<void> {
-  settings.value = next;
-  bootstrap.value.settings = next;
-  applyTheme(next.theme);
-  applyMotionPreference(next.reduceMotion);
-  await Promise.all([
-    repository.value?.saveSettings(next),
-    syncAutostart(next.autostart),
-  ]);
   loading.value = true;
-  await loadToday(true);
-  loading.value = false;
+  let saved = false;
+  try {
+    await repository.value?.saveSettings(next);
+    saved = true;
+    const sync = await syncAutostart(next.autostart);
+    const effective =
+      sync.status === "failed" && sync.enabled !== undefined
+        ? { ...next, autostart: sync.enabled }
+        : next;
+    if (effective.autostart !== next.autostart) {
+      await repository.value?.saveSettings(effective);
+    }
+    settings.value = effective;
+    settingsDraft.value = { ...effective };
+    bootstrap.value.settings = effective;
+    applyTheme(effective.theme);
+    applyMotionPreference(effective.reduceMotion);
+    autostartWarning.value =
+      sync.status === "failed"
+        ? sync.enabled === undefined
+          ? "无法确认系统开机启动状态，请到系统启动项核对。"
+          : "开机启动未按所选状态生效，已显示系统当前状态。"
+        : sync.status === "unavailable"
+          ? "浏览器预览无法设置系统开机启动。"
+          : "";
+    await loadToday(true);
+    if (autostartWarning.value) showToast(autostartWarning.value);
+  } catch (error) {
+    console.error(error);
+    errorMessage.value = saved
+      ? "城市设置已保存，但今日诗笺暂时未能载入，请稍后重试。"
+      : "首次设置未能保存，请稍后重试。";
+  } finally {
+    loading.value = false;
+  }
 }
 
 async function toggleFavorite(workId?: string): Promise<void> {
@@ -620,21 +647,53 @@ async function dislikePoem(): Promise<void> {
 async function saveSettings(next: AppSettings): Promise<void> {
   next = { ...next, anonymousMetrics: false };
   const cityChanged = next.cityId !== settings.value.cityId;
-  settings.value = next;
-  bootstrap.value.settings = next;
-  applyTheme(next.theme);
-  applyMotionPreference(next.reduceMotion);
-  await Promise.all([
-    repository.value?.saveSettings(next),
-    syncAutostart(next.autostart),
-  ]);
-  if (cityChanged) {
-    loading.value = true;
-    await loadToday(true);
-    loading.value = false;
+  let saved = false;
+  try {
+    await repository.value?.saveSettings(next);
+    saved = true;
+    const sync = await syncAutostart(next.autostart);
+    const effective =
+      sync.status === "failed" && sync.enabled !== undefined
+        ? { ...next, autostart: sync.enabled }
+        : next;
+    if (effective.autostart !== next.autostart) {
+      await repository.value?.saveSettings(effective);
+    }
+    settings.value = effective;
+    settingsDraft.value = { ...effective };
+    bootstrap.value.settings = effective;
+    applyTheme(effective.theme);
+    applyMotionPreference(effective.reduceMotion);
+    autostartWarning.value =
+      sync.status === "failed"
+        ? sync.enabled === undefined
+          ? "其他设置已保存，但无法确认系统开机启动状态。"
+          : "其他设置已保存；开机启动未按所选状态生效，已显示系统当前状态。"
+        : sync.status === "unavailable"
+          ? "其他设置已保存；浏览器预览无法设置系统开机启动。"
+          : "";
+    if (cityChanged) {
+      loading.value = true;
+      try {
+        await loadToday(true);
+      } finally {
+        loading.value = false;
+      }
+    }
+    if (autostartWarning.value) {
+      showToast(autostartWarning.value);
+      return;
+    }
+    panel.value = "card";
+    showToast("设置已保存");
+  } catch (error) {
+    console.error(error);
+    showToast(
+      saved
+        ? "部分设置已保存，但诗笺刷新或系统状态确认失败，请重试。"
+        : "设置未能保存，请重试。",
+    );
   }
-  panel.value = "card";
-  showToast("设置已保存");
 }
 
 async function startPilot(): Promise<void> {
@@ -695,7 +754,18 @@ async function resetData(): Promise<void> {
     return;
   }
   if (!repository.value) return;
-  await clearAllLocalUserData(repository.value);
+  try {
+    await clearAllLocalUserData(repository.value);
+  } catch (error) {
+    console.error(error);
+    bootstrap.value = await repository.value.load();
+    settings.value = { ...bootstrap.value.settings };
+    settingsDraft.value = { ...settings.value };
+    autostartWarning.value =
+      "数据清除未完整完成，请核对系统开机启动状态后重试。";
+    errorMessage.value = autostartWarning.value;
+    return;
+  }
   bootstrap.value = {
     settings: { ...DEFAULT_SETTINGS },
     history: [],
@@ -703,6 +773,8 @@ async function resetData(): Promise<void> {
     feedback: [],
   };
   settings.value = { ...DEFAULT_SETTINGS };
+  settingsDraft.value = { ...DEFAULT_SETTINGS };
+  autostartWarning.value = "";
   pilotState.value = undefined;
   pilotSessionOpened = false;
   recommendation.value = undefined;
@@ -738,6 +810,7 @@ async function openSettingsFromShell(): Promise<void> {
   loading.value = true;
   try {
     await ensurePoemCatalog();
+    settingsDraft.value = { ...settings.value };
     panel.value = "settings";
   } catch (error) {
     console.error(error);
@@ -748,6 +821,7 @@ async function openSettingsFromShell(): Promise<void> {
 }
 
 async function returnToCard(): Promise<void> {
+  settingsDraft.value = { ...settings.value };
   if (await refreshDateIfChanged()) {
     panel.value = "card";
     return;
@@ -801,6 +875,7 @@ async function initialize(): Promise<void> {
     repository.value = await createRepository();
     bootstrap.value = await repository.value.load();
     settings.value = { ...bootstrap.value.settings };
+    settingsDraft.value = { ...settings.value };
     pilotState.value = bootstrap.value.pilotState;
     stopExitRequestListener ??= await listenForExitRequest(() =>
       exitFromShell(),
@@ -890,7 +965,7 @@ onBeforeUnmount(() => {
   <div class="app-shell">
     <WindowChrome
       :subtitle="subtitle"
-      @settings="configured && (panel = 'settings')"
+      @settings="openSettingsFromShell"
     />
 
     <div v-if="loading" class="loading-view" aria-live="polite">
@@ -914,12 +989,14 @@ onBeforeUnmount(() => {
 
     <SettingsPanel
       v-else-if="panel === 'settings'"
-      :key="`${settings.cityId}-${settings.theme}-${settings.autostart}`"
-      :settings="settings"
+      :settings="settingsDraft"
+      :saved-settings="settings"
+      :autostart-warning="autostartWarning"
       :favorite-count="favoritePoems.length"
       :pilot-status="pilotState?.status"
       @back="returnToCard"
       @save="saveSettings"
+      @draft-change="settingsDraft = $event"
       @reset="resetData"
       @favorites="panel = 'favorites'"
       @pilot="panel = 'pilot'"

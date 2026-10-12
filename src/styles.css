@@ -365,6 +365,27 @@ button:disabled {
   overflow: auto;
 }
 
+.city-search-help,
+.city-selection,
+.city-empty {
+  margin: 7px 0;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.city-empty {
+  padding: 11px 12px;
+  border-radius: 8px;
+  background: var(--surface-soft);
+  color: var(--ink);
+}
+
+.city-selection {
+  min-height: 18px;
+  margin-bottom: 12px;
+}
+
 .city-option {
   position: relative;
   display: flex;
@@ -386,6 +407,11 @@ button:disabled {
 
 .city-option.selected {
   background: var(--accent-soft);
+}
+
+.city-option:focus-within {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
 }
 
 .city-option input {
@@ -978,6 +1004,48 @@ button:disabled {
 
 .settings-form {
   padding: 22px 26px 38px;
+}
+
+.settings-discard {
+  position: sticky;
+  z-index: 3;
+  top: 46px;
+  margin: 0 16px;
+  padding: 12px 14px;
+  border-bottom: 1px solid var(--accent);
+  background: var(--surface-soft);
+}
+
+.settings-discard p {
+  margin: 0 0 10px;
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.settings-discard > div {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 14px;
+}
+
+.settings-discard button {
+  padding: 2px 0;
+  border: 0;
+  background: transparent;
+  color: var(--accent);
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.settings-warning {
+  margin: 8px 0 0;
+  padding: 10px 12px;
+  border-left: 2px solid var(--danger);
+  background: var(--surface-soft);
+  color: var(--ink);
+  font-size: 12px;
+  line-height: 1.5;
 }
 
 .settings-group {

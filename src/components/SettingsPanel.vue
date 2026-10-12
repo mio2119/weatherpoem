@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { reactive, ref } from "vue";
+import { computed, reactive, ref, watch } from "vue";
 import { useInitialFocus } from "../composables/useInitialFocus";
 import { CITIES } from "../data/cities";
 import {
@@ -12,6 +12,8 @@ import IconSymbol from "./IconSymbol.vue";
 
 const props = defineProps<{
   settings: AppSettings;
+  savedSettings: AppSettings;
+  autostartWarning?: string;
   favoriteCount: number;
   pilotStatus?: PilotState["status"];
 }>();
@@ -19,6 +21,7 @@ const props = defineProps<{
 const emit = defineEmits<{
   back: [];
   save: [settings: AppSettings];
+  draftChange: [settings: AppSettings];
   reset: [];
   favorites: [];
   pilot: [];
@@ -34,7 +37,29 @@ const releaseLabel = isTrialRelease
   ? "M1 未签名试用版"
   : "正式签名版";
 const trustError = ref("");
+const confirmDiscard = ref(false);
+const isDirty = computed(() =>
+  JSON.stringify(draft) !==
+  JSON.stringify({ ...props.savedSettings, anonymousMetrics: false }),
+);
 useInitialFocus();
+
+watch(draft, () => {
+  confirmDiscard.value = false;
+  emit("draftChange", { ...draft, anonymousMetrics: false });
+}, { deep: true });
+
+watch(() => props.settings, (next) => {
+  Object.assign(draft, next);
+});
+
+function back(): void {
+  if (isDirty.value) {
+    confirmDiscard.value = true;
+    return;
+  }
+  emit("back");
+}
 
 function submit(): void {
   emit("save", { ...draft, anonymousMetrics: false });
@@ -67,13 +92,21 @@ async function showThirdPartyNotices(): Promise<void> {
     tabindex="-1"
   >
     <header class="panel-header">
-      <button class="back-button" type="button" @click="emit('back')">
+      <button class="back-button" type="button" @click="back">
         <IconSymbol name="back" :size="18" />
         返回
       </button>
       <h1 id="settings-title">设置</h1>
       <span class="header-spacer" />
     </header>
+
+    <div v-if="confirmDiscard" class="settings-discard" role="alert">
+      <p>修改尚未保存。可以继续编辑，或放弃修改后返回诗笺。</p>
+      <div>
+        <button type="button" @click="confirmDiscard = false">继续编辑</button>
+        <button type="button" @click="emit('back')">放弃修改并返回</button>
+      </div>
+    </div>
 
     <form class="settings-form" @submit.prevent="submit">
       <section class="settings-group">
@@ -93,6 +126,9 @@ async function showThirdPartyNotices(): Promise<void> {
           </span>
           <input v-model="draft.autostart" type="checkbox" role="switch" />
         </label>
+        <p v-if="autostartWarning" class="settings-warning" role="status">
+          {{ autostartWarning }}
+        </p>
       </section>
 
       <section class="settings-group">

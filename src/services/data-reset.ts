@@ -8,7 +8,12 @@ export interface DataResetDependencies {
 }
 
 const defaultDependencies: DataResetDependencies = {
-  disableAutostart: () => syncAutostart(false),
+  disableAutostart: async () => {
+    const result = await syncAutostart(false);
+    if (result.status === "failed") {
+      throw new Error("本地数据已清除，但无法确认开机启动已关闭");
+    }
+  },
   clearTransientCaches: clearWeatherCache,
 };
 

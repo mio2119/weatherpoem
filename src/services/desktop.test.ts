@@ -123,16 +123,26 @@ describe("desktop autostart synchronization", () => {
   ])(
     "请求 $requested 且系统状态为 $current 时只执行必要变更",
     async ({ requested, current, enables, disables }) => {
-      autostartMocks.isEnabled.mockResolvedValue(current);
+      let actual = current;
+      autostartMocks.isEnabled.mockImplementation(async () => actual);
+      autostartMocks.enable.mockImplementation(async () => {
+        actual = true;
+      });
+      autostartMocks.disable.mockImplementation(async () => {
+        actual = false;
+      });
 
-      await syncAutostart(requested);
+      await expect(syncAutostart(requested)).resolves.toEqual({
+        status: "applied",
+        enabled: requested,
+      });
 
       expect(autostartMocks.enable).toHaveBeenCalledTimes(enables);
       expect(autostartMocks.disable).toHaveBeenCalledTimes(disables);
     },
   );
 
-  it("系统自启接口失败时保留应用设置并记录降级", async () => {
+  it("系统自启接口失败时报告未知状态而不伪称成功", async () => {
     const warning = vi
       .spyOn(console, "warn")
       .mockImplementation(() => undefined);
@@ -140,10 +150,23 @@ describe("desktop autostart synchronization", () => {
       new Error("registry unavailable"),
     );
 
-    await expect(syncAutostart(true)).resolves.toBeUndefined();
+    await expect(syncAutostart(true)).resolves.toEqual({ status: "failed" });
 
     expect(autostartMocks.enable).not.toHaveBeenCalled();
     expect(autostartMocks.disable).not.toHaveBeenCalled();
+    expect(warning).toHaveBeenCalledOnce();
+    warning.mockRestore();
+  });
+
+  it("写入被拒绝时回读并报告系统真实状态", async () => {
+    const warning = vi.spyOn(console, "warn").mockImplementation(() => undefined);
+    autostartMocks.isEnabled.mockResolvedValue(false);
+    autostartMocks.enable.mockRejectedValue(new Error("access denied"));
+
+    await expect(syncAutostart(true)).resolves.toEqual({
+      status: "failed",
+      enabled: false,
+    });
     expect(warning).toHaveBeenCalledOnce();
     warning.mockRestore();
   });

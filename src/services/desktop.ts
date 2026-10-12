@@ -170,15 +170,34 @@ export async function startWindowDrag(): Promise<void> {
   await getCurrentWindow().startDragging();
 }
 
-export async function syncAutostart(enabled: boolean): Promise<void> {
-  if (!isTauri()) return;
+export interface AutostartSyncResult {
+  status: "applied" | "unavailable" | "failed";
+  enabled?: boolean;
+}
+
+export async function syncAutostart(
+  enabled: boolean,
+): Promise<AutostartSyncResult> {
+  if (!isTauri()) return { status: "unavailable" };
+  let autostart: typeof import("@tauri-apps/plugin-autostart") | undefined;
   try {
-    const autostart = await import("@tauri-apps/plugin-autostart");
+    autostart = await import("@tauri-apps/plugin-autostart");
     const current = await autostart.isEnabled();
     if (enabled && !current) await autostart.enable();
     if (!enabled && current) await autostart.disable();
+    const actual = await autostart.isEnabled();
+    return {
+      status: actual === enabled ? "applied" : "failed",
+      enabled: actual,
+    };
   } catch (error) {
     console.warn("开机启动设置未能同步。", error);
+    try {
+      const actual = await autostart?.isEnabled();
+      return { status: "failed", enabled: actual };
+    } catch {
+      return { status: "failed" };
+    }
   }
 }
 
