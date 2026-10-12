@@ -1,0 +1,2940 @@
+{
+    "schemaVersion":  "1.0",
+    "product":  "WeatherPoem",
+    "appVersion":  "0.2.0",
+    "generatedAt":  "2026-07-24T06:59:58.7972006Z",
+    "testKind":  "performance-eight-hour",
+    "artifact":  {
+                     "path":  "src-tauri/target/release/weatherpoem.exe",
+                     "sha256":  "830FBE885FCCECD24C43A9209085F053CA78687558DE7A3B466A00024AC310A5",
+                     "sizeBytes":  25057654
+                 },
+    "configuration":  {
+                          "mode":  "eight-hour",
+                          "requestedDurationMinutes":  480,
+                          "sampleIntervalSeconds":  60,
+                          "processorCount":  20,
+                          "isolatedProfile":  true,
+                          "controlledScenario":  "weather-offline",
+                          "realUserDataTouched":  false,
+                          "closedToTray":  true
+                      },
+    "startup":  {
+                    "readyView":  "poem",
+                    "readyMode":  "offline-rules",
+                    "performanceScenario":  "weather-offline",
+                    "nativeReadyMs":  742.71359999999993,
+                    "frontendReadyMs":  390.90000000596046,
+                    "viewRenderMs":  123.29999998211861
+                },
+    "thresholds":  {
+                       "idleCpuAveragePercent":  0.2,
+                       "idleMemoryP95MiB":  100,
+                       "memoryGrowthMiB":  20
+                   },
+    "results":  {
+                    "actualDurationSeconds":  28810.8,
+                    "sampleCount":  480,
+                    "samples":  [
+                                    {
+                                        "elapsedSeconds":  60.01,
+                                        "workingSetMiB":  31.5,
+                                        "totalProcessorTimeMs":  156.25,
+                                        "recordedAt":  "2026-07-23T23:00:47.5471205Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  120.05,
+                                        "workingSetMiB":  31.5,
+                                        "totalProcessorTimeMs":  156.25,
+                                        "recordedAt":  "2026-07-23T23:01:47.5705620Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  180.06,
+                                        "workingSetMiB":  31.5,
+                                        "totalProcessorTimeMs":  156.25,
+                                        "recordedAt":  "2026-07-23T23:02:47.5830172Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  240.07,
+                                        "workingSetMiB":  31.5,
+                                        "totalProcessorTimeMs":  156.25,
+                                        "recordedAt":  "2026-07-23T23:03:47.5982023Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  300.09,
+                                        "workingSetMiB":  31.71,
+                                        "totalProcessorTimeMs":  156.25,
+                                        "recordedAt":  "2026-07-23T23:04:47.6154024Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  360.1,
+                                        "workingSetMiB":  31.84,
+                                        "totalProcessorTimeMs":  156.25,
+                                        "recordedAt":  "2026-07-23T23:05:47.6237790Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  420.11,
+                                        "workingSetMiB":  31.79,
+                                        "totalProcessorTimeMs":  156.25,
+                                        "recordedAt":  "2026-07-23T23:06:47.6356354Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  480.13,
+                                        "workingSetMiB":  31.76,
+                                        "totalProcessorTimeMs":  156.25,
+                                        "recordedAt":  "2026-07-23T23:07:47.6542969Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  540.14,
+                                        "workingSetMiB":  31.76,
+                                        "totalProcessorTimeMs":  156.25,
+                                        "recordedAt":  "2026-07-23T23:08:47.6663698Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  600.15,
+                                        "workingSetMiB":  31.81,
+                                        "totalProcessorTimeMs":  156.25,
+                                        "recordedAt":  "2026-07-23T23:09:47.6845624Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  660.17,
+                                        "workingSetMiB":  31.81,
+                                        "totalProcessorTimeMs":  156.25,
+                                        "recordedAt":  "2026-07-23T23:10:47.6954221Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  720.19,
+                                        "workingSetMiB":  31.77,
+                                        "totalProcessorTimeMs":  156.25,
+                                        "recordedAt":  "2026-07-23T23:11:47.7186470Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  780.21,
+                                        "workingSetMiB":  31.77,
+                                        "totalProcessorTimeMs":  156.25,
+                                        "recordedAt":  "2026-07-23T23:12:47.7304284Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  840.22,
+                                        "workingSetMiB":  31.77,
+                                        "totalProcessorTimeMs":  156.25,
+                                        "recordedAt":  "2026-07-23T23:13:47.7438146Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  900.23,
+                                        "workingSetMiB":  31.63,
+                                        "totalProcessorTimeMs":  156.25,
+                                        "recordedAt":  "2026-07-23T23:14:47.7523721Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  960.25,
+                                        "workingSetMiB":  31.63,
+                                        "totalProcessorTimeMs":  156.25,
+                                        "recordedAt":  "2026-07-23T23:15:47.7720877Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  1020.27,
+                                        "workingSetMiB":  31.63,
+                                        "totalProcessorTimeMs":  156.25,
+                                        "recordedAt":  "2026-07-23T23:16:47.7925340Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  1080.28,
+                                        "workingSetMiB":  31.65,
+                                        "totalProcessorTimeMs":  156.25,
+                                        "recordedAt":  "2026-07-23T23:17:47.8012467Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  1140.29,
+                                        "workingSetMiB":  31.65,
+                                        "totalProcessorTimeMs":  156.25,
+                                        "recordedAt":  "2026-07-23T23:18:47.8115479Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  1200.3,
+                                        "workingSetMiB":  31.53,
+                                        "totalProcessorTimeMs":  156.25,
+                                        "recordedAt":  "2026-07-23T23:19:47.8258995Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  1260.31,
+                                        "workingSetMiB":  31.53,
+                                        "totalProcessorTimeMs":  156.25,
+                                        "recordedAt":  "2026-07-23T23:20:47.8336795Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  1320.32,
+                                        "workingSetMiB":  31.53,
+                                        "totalProcessorTimeMs":  156.25,
+                                        "recordedAt":  "2026-07-23T23:21:47.8507687Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  1380.33,
+                                        "workingSetMiB":  31.53,
+                                        "totalProcessorTimeMs":  156.25,
+                                        "recordedAt":  "2026-07-23T23:22:47.8598255Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  1440.35,
+                                        "workingSetMiB":  31.53,
+                                        "totalProcessorTimeMs":  156.25,
+                                        "recordedAt":  "2026-07-23T23:23:47.8793375Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  1500.37,
+                                        "workingSetMiB":  31.53,
+                                        "totalProcessorTimeMs":  156.25,
+                                        "recordedAt":  "2026-07-23T23:24:47.8914421Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  1560.38,
+                                        "workingSetMiB":  31.53,
+                                        "totalProcessorTimeMs":  156.25,
+                                        "recordedAt":  "2026-07-23T23:25:47.9061712Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  1620.4,
+                                        "workingSetMiB":  31.53,
+                                        "totalProcessorTimeMs":  156.25,
+                                        "recordedAt":  "2026-07-23T23:26:47.9220239Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  1680.41,
+                                        "workingSetMiB":  31.53,
+                                        "totalProcessorTimeMs":  156.25,
+                                        "recordedAt":  "2026-07-23T23:27:47.9328045Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  1740.42,
+                                        "workingSetMiB":  31.53,
+                                        "totalProcessorTimeMs":  156.25,
+                                        "recordedAt":  "2026-07-23T23:28:47.9420210Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  1800.43,
+                                        "workingSetMiB":  31.53,
+                                        "totalProcessorTimeMs":  156.25,
+                                        "recordedAt":  "2026-07-23T23:29:47.9620601Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  1860.45,
+                                        "workingSetMiB":  31.53,
+                                        "totalProcessorTimeMs":  156.25,
+                                        "recordedAt":  "2026-07-23T23:30:47.9723027Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  1920.46,
+                                        "workingSetMiB":  31.53,
+                                        "totalProcessorTimeMs":  156.25,
+                                        "recordedAt":  "2026-07-23T23:31:47.9807318Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  1980.47,
+                                        "workingSetMiB":  31.53,
+                                        "totalProcessorTimeMs":  156.25,
+                                        "recordedAt":  "2026-07-23T23:32:47.9886465Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  2040.49,
+                                        "workingSetMiB":  31.53,
+                                        "totalProcessorTimeMs":  156.25,
+                                        "recordedAt":  "2026-07-23T23:33:48.0148914Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  2100.51,
+                                        "workingSetMiB":  31.53,
+                                        "totalProcessorTimeMs":  156.25,
+                                        "recordedAt":  "2026-07-23T23:34:48.0329299Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  2160.52,
+                                        "workingSetMiB":  31.53,
+                                        "totalProcessorTimeMs":  156.25,
+                                        "recordedAt":  "2026-07-23T23:35:48.0496491Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  2220.55,
+                                        "workingSetMiB":  31.53,
+                                        "totalProcessorTimeMs":  156.25,
+                                        "recordedAt":  "2026-07-23T23:36:48.0726756Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  2280.56,
+                                        "workingSetMiB":  31.53,
+                                        "totalProcessorTimeMs":  156.25,
+                                        "recordedAt":  "2026-07-23T23:37:48.0869902Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  2340.59,
+                                        "workingSetMiB":  31.53,
+                                        "totalProcessorTimeMs":  156.25,
+                                        "recordedAt":  "2026-07-23T23:38:48.1107497Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  2400.59,
+                                        "workingSetMiB":  31.53,
+                                        "totalProcessorTimeMs":  156.25,
+                                        "recordedAt":  "2026-07-23T23:39:48.1194415Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  2460.61,
+                                        "workingSetMiB":  31.53,
+                                        "totalProcessorTimeMs":  156.25,
+                                        "recordedAt":  "2026-07-23T23:40:48.1363796Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  2520.63,
+                                        "workingSetMiB":  31.53,
+                                        "totalProcessorTimeMs":  156.25,
+                                        "recordedAt":  "2026-07-23T23:41:48.1511055Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  2580.65,
+                                        "workingSetMiB":  31.53,
+                                        "totalProcessorTimeMs":  156.25,
+                                        "recordedAt":  "2026-07-23T23:42:48.1725003Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  2640.67,
+                                        "workingSetMiB":  31.53,
+                                        "totalProcessorTimeMs":  156.25,
+                                        "recordedAt":  "2026-07-23T23:43:48.1953313Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  2700.68,
+                                        "workingSetMiB":  31.52,
+                                        "totalProcessorTimeMs":  156.25,
+                                        "recordedAt":  "2026-07-23T23:44:48.2091568Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  2760.7,
+                                        "workingSetMiB":  31.52,
+                                        "totalProcessorTimeMs":  156.25,
+                                        "recordedAt":  "2026-07-23T23:45:48.2262634Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  2820.71,
+                                        "workingSetMiB":  31.52,
+                                        "totalProcessorTimeMs":  156.25,
+                                        "recordedAt":  "2026-07-23T23:46:48.2398168Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  2880.72,
+                                        "workingSetMiB":  31.52,
+                                        "totalProcessorTimeMs":  156.25,
+                                        "recordedAt":  "2026-07-23T23:47:48.2474228Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  2940.73,
+                                        "workingSetMiB":  31.53,
+                                        "totalProcessorTimeMs":  156.25,
+                                        "recordedAt":  "2026-07-23T23:48:48.2575872Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  3000.75,
+                                        "workingSetMiB":  31.53,
+                                        "totalProcessorTimeMs":  156.25,
+                                        "recordedAt":  "2026-07-23T23:49:48.2784097Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  3060.77,
+                                        "workingSetMiB":  31.53,
+                                        "totalProcessorTimeMs":  156.25,
+                                        "recordedAt":  "2026-07-23T23:50:48.2968120Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  3120.79,
+                                        "workingSetMiB":  31.53,
+                                        "totalProcessorTimeMs":  156.25,
+                                        "recordedAt":  "2026-07-23T23:51:48.3154956Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  3180.81,
+                                        "workingSetMiB":  31.53,
+                                        "totalProcessorTimeMs":  156.25,
+                                        "recordedAt":  "2026-07-23T23:52:48.3381375Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  3240.82,
+                                        "workingSetMiB":  31.53,
+                                        "totalProcessorTimeMs":  156.25,
+                                        "recordedAt":  "2026-07-23T23:53:48.3486041Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  3300.85,
+                                        "workingSetMiB":  31.53,
+                                        "totalProcessorTimeMs":  156.25,
+                                        "recordedAt":  "2026-07-23T23:54:48.3709903Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  3360.86,
+                                        "workingSetMiB":  31.53,
+                                        "totalProcessorTimeMs":  156.25,
+                                        "recordedAt":  "2026-07-23T23:55:48.3903131Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  3420.89,
+                                        "workingSetMiB":  31.53,
+                                        "totalProcessorTimeMs":  156.25,
+                                        "recordedAt":  "2026-07-23T23:56:48.4118058Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  3481.11,
+                                        "workingSetMiB":  31.53,
+                                        "totalProcessorTimeMs":  156.25,
+                                        "recordedAt":  "2026-07-23T23:57:48.6362642Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  3541.12,
+                                        "workingSetMiB":  31.53,
+                                        "totalProcessorTimeMs":  156.25,
+                                        "recordedAt":  "2026-07-23T23:58:48.6462158Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  3601.14,
+                                        "workingSetMiB":  31.53,
+                                        "totalProcessorTimeMs":  156.25,
+                                        "recordedAt":  "2026-07-23T23:59:48.6612843Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  3661.15,
+                                        "workingSetMiB":  31.53,
+                                        "totalProcessorTimeMs":  156.25,
+                                        "recordedAt":  "2026-07-24T00:00:48.6789966Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  3721.16,
+                                        "workingSetMiB":  31.53,
+                                        "totalProcessorTimeMs":  156.25,
+                                        "recordedAt":  "2026-07-24T00:01:48.6859798Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  3781.17,
+                                        "workingSetMiB":  31.53,
+                                        "totalProcessorTimeMs":  156.25,
+                                        "recordedAt":  "2026-07-24T00:02:48.6947538Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  3841.19,
+                                        "workingSetMiB":  31.53,
+                                        "totalProcessorTimeMs":  156.25,
+                                        "recordedAt":  "2026-07-24T00:03:48.7115287Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  3901.2,
+                                        "workingSetMiB":  31.53,
+                                        "totalProcessorTimeMs":  156.25,
+                                        "recordedAt":  "2026-07-24T00:04:48.7235868Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  3961.21,
+                                        "workingSetMiB":  31.53,
+                                        "totalProcessorTimeMs":  156.25,
+                                        "recordedAt":  "2026-07-24T00:05:48.7398443Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  4021.22,
+                                        "workingSetMiB":  31.53,
+                                        "totalProcessorTimeMs":  156.25,
+                                        "recordedAt":  "2026-07-24T00:06:48.7477195Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  4081.23,
+                                        "workingSetMiB":  31.53,
+                                        "totalProcessorTimeMs":  156.25,
+                                        "recordedAt":  "2026-07-24T00:07:48.7573703Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  4141.25,
+                                        "workingSetMiB":  31.53,
+                                        "totalProcessorTimeMs":  156.25,
+                                        "recordedAt":  "2026-07-24T00:08:48.7792948Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  4201.27,
+                                        "workingSetMiB":  31.53,
+                                        "totalProcessorTimeMs":  171.88,
+                                        "recordedAt":  "2026-07-24T00:09:48.8063320Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  4261.3,
+                                        "workingSetMiB":  31.53,
+                                        "totalProcessorTimeMs":  171.88,
+                                        "recordedAt":  "2026-07-24T00:10:48.8272821Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  4321.31,
+                                        "workingSetMiB":  31.53,
+                                        "totalProcessorTimeMs":  171.88,
+                                        "recordedAt":  "2026-07-24T00:11:48.8377705Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  4381.32,
+                                        "workingSetMiB":  31.53,
+                                        "totalProcessorTimeMs":  171.88,
+                                        "recordedAt":  "2026-07-24T00:12:48.8442375Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  4441.33,
+                                        "workingSetMiB":  31.53,
+                                        "totalProcessorTimeMs":  171.88,
+                                        "recordedAt":  "2026-07-24T00:13:48.8567302Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  4501.35,
+                                        "workingSetMiB":  31.53,
+                                        "totalProcessorTimeMs":  171.88,
+                                        "recordedAt":  "2026-07-24T00:14:48.8746181Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  4561.36,
+                                        "workingSetMiB":  31.53,
+                                        "totalProcessorTimeMs":  171.88,
+                                        "recordedAt":  "2026-07-24T00:15:48.8883105Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  4621.38,
+                                        "workingSetMiB":  31.53,
+                                        "totalProcessorTimeMs":  171.88,
+                                        "recordedAt":  "2026-07-24T00:16:48.9055202Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  4681.39,
+                                        "workingSetMiB":  31.53,
+                                        "totalProcessorTimeMs":  171.88,
+                                        "recordedAt":  "2026-07-24T00:17:48.9188131Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  4741.4,
+                                        "workingSetMiB":  31.53,
+                                        "totalProcessorTimeMs":  171.88,
+                                        "recordedAt":  "2026-07-24T00:18:48.9283340Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  4801.41,
+                                        "workingSetMiB":  31.53,
+                                        "totalProcessorTimeMs":  171.88,
+                                        "recordedAt":  "2026-07-24T00:19:48.9380271Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  4861.43,
+                                        "workingSetMiB":  31.53,
+                                        "totalProcessorTimeMs":  171.88,
+                                        "recordedAt":  "2026-07-24T00:20:48.9561135Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  4921.45,
+                                        "workingSetMiB":  31.53,
+                                        "totalProcessorTimeMs":  171.88,
+                                        "recordedAt":  "2026-07-24T00:21:48.9796929Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  4981.46,
+                                        "workingSetMiB":  31.53,
+                                        "totalProcessorTimeMs":  171.88,
+                                        "recordedAt":  "2026-07-24T00:22:48.9899122Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  5041.48,
+                                        "workingSetMiB":  31.53,
+                                        "totalProcessorTimeMs":  171.88,
+                                        "recordedAt":  "2026-07-24T00:23:49.0086905Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  5101.49,
+                                        "workingSetMiB":  31.53,
+                                        "totalProcessorTimeMs":  171.88,
+                                        "recordedAt":  "2026-07-24T00:24:49.0149146Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  5161.51,
+                                        "workingSetMiB":  31.53,
+                                        "totalProcessorTimeMs":  171.88,
+                                        "recordedAt":  "2026-07-24T00:25:49.0280023Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  5221.53,
+                                        "workingSetMiB":  31.53,
+                                        "totalProcessorTimeMs":  171.88,
+                                        "recordedAt":  "2026-07-24T00:26:49.0508601Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  5281.55,
+                                        "workingSetMiB":  31.53,
+                                        "totalProcessorTimeMs":  171.88,
+                                        "recordedAt":  "2026-07-24T00:27:49.0728274Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  5341.56,
+                                        "workingSetMiB":  31.53,
+                                        "totalProcessorTimeMs":  171.88,
+                                        "recordedAt":  "2026-07-24T00:28:49.0867592Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  5401.57,
+                                        "workingSetMiB":  31.53,
+                                        "totalProcessorTimeMs":  171.88,
+                                        "recordedAt":  "2026-07-24T00:29:49.0960653Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  5461.58,
+                                        "workingSetMiB":  31.53,
+                                        "totalProcessorTimeMs":  171.88,
+                                        "recordedAt":  "2026-07-24T00:30:49.1072077Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  5521.6,
+                                        "workingSetMiB":  31.53,
+                                        "totalProcessorTimeMs":  171.88,
+                                        "recordedAt":  "2026-07-24T00:31:49.1263085Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  5581.61,
+                                        "workingSetMiB":  31.53,
+                                        "totalProcessorTimeMs":  171.88,
+                                        "recordedAt":  "2026-07-24T00:32:49.1343898Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  5641.63,
+                                        "workingSetMiB":  31.53,
+                                        "totalProcessorTimeMs":  171.88,
+                                        "recordedAt":  "2026-07-24T00:33:49.1557044Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  5701.64,
+                                        "workingSetMiB":  31.53,
+                                        "totalProcessorTimeMs":  171.88,
+                                        "recordedAt":  "2026-07-24T00:34:49.1684833Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  5761.66,
+                                        "workingSetMiB":  31.53,
+                                        "totalProcessorTimeMs":  171.88,
+                                        "recordedAt":  "2026-07-24T00:35:49.1839574Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  5821.67,
+                                        "workingSetMiB":  31.53,
+                                        "totalProcessorTimeMs":  171.88,
+                                        "recordedAt":  "2026-07-24T00:36:49.1978816Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  5881.69,
+                                        "workingSetMiB":  31.53,
+                                        "totalProcessorTimeMs":  171.88,
+                                        "recordedAt":  "2026-07-24T00:37:49.2158122Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  5941.7,
+                                        "workingSetMiB":  31.53,
+                                        "totalProcessorTimeMs":  171.88,
+                                        "recordedAt":  "2026-07-24T00:38:49.2285128Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  6001.72,
+                                        "workingSetMiB":  31.53,
+                                        "totalProcessorTimeMs":  171.88,
+                                        "recordedAt":  "2026-07-24T00:39:49.2449926Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  6061.74,
+                                        "workingSetMiB":  31.53,
+                                        "totalProcessorTimeMs":  171.88,
+                                        "recordedAt":  "2026-07-24T00:40:49.2629798Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  6121.75,
+                                        "workingSetMiB":  31.53,
+                                        "totalProcessorTimeMs":  171.88,
+                                        "recordedAt":  "2026-07-24T00:41:49.2719180Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  6181.76,
+                                        "workingSetMiB":  31.53,
+                                        "totalProcessorTimeMs":  171.88,
+                                        "recordedAt":  "2026-07-24T00:42:49.2888599Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  6241.78,
+                                        "workingSetMiB":  31.53,
+                                        "totalProcessorTimeMs":  171.88,
+                                        "recordedAt":  "2026-07-24T00:43:49.3061424Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  6301.8,
+                                        "workingSetMiB":  31.51,
+                                        "totalProcessorTimeMs":  171.88,
+                                        "recordedAt":  "2026-07-24T00:44:49.3243770Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  6361.82,
+                                        "workingSetMiB":  31.51,
+                                        "totalProcessorTimeMs":  171.88,
+                                        "recordedAt":  "2026-07-24T00:45:49.3396243Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  6421.83,
+                                        "workingSetMiB":  31.51,
+                                        "totalProcessorTimeMs":  171.88,
+                                        "recordedAt":  "2026-07-24T00:46:49.3517544Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  6481.84,
+                                        "workingSetMiB":  31.51,
+                                        "totalProcessorTimeMs":  171.88,
+                                        "recordedAt":  "2026-07-24T00:47:49.3632772Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  6541.85,
+                                        "workingSetMiB":  31.51,
+                                        "totalProcessorTimeMs":  171.88,
+                                        "recordedAt":  "2026-07-24T00:48:49.3710345Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  6601.86,
+                                        "workingSetMiB":  31.53,
+                                        "totalProcessorTimeMs":  171.88,
+                                        "recordedAt":  "2026-07-24T00:49:49.3869022Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  6661.87,
+                                        "workingSetMiB":  31.53,
+                                        "totalProcessorTimeMs":  171.88,
+                                        "recordedAt":  "2026-07-24T00:50:49.3982899Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  6721.89,
+                                        "workingSetMiB":  28.37,
+                                        "totalProcessorTimeMs":  171.88,
+                                        "recordedAt":  "2026-07-24T00:51:49.4117851Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  6781.9,
+                                        "workingSetMiB":  28.37,
+                                        "totalProcessorTimeMs":  171.88,
+                                        "recordedAt":  "2026-07-24T00:52:49.4282096Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  6841.92,
+                                        "workingSetMiB":  28.37,
+                                        "totalProcessorTimeMs":  171.88,
+                                        "recordedAt":  "2026-07-24T00:53:49.4454785Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  6901.94,
+                                        "workingSetMiB":  28.37,
+                                        "totalProcessorTimeMs":  171.88,
+                                        "recordedAt":  "2026-07-24T00:54:49.4604153Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  6961.95,
+                                        "workingSetMiB":  28.37,
+                                        "totalProcessorTimeMs":  171.88,
+                                        "recordedAt":  "2026-07-24T00:55:49.4731502Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  7021.97,
+                                        "workingSetMiB":  28.37,
+                                        "totalProcessorTimeMs":  171.88,
+                                        "recordedAt":  "2026-07-24T00:56:49.4962731Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  7081.99,
+                                        "workingSetMiB":  28.37,
+                                        "totalProcessorTimeMs":  171.88,
+                                        "recordedAt":  "2026-07-24T00:57:49.5129120Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  7142,
+                                        "workingSetMiB":  28.37,
+                                        "totalProcessorTimeMs":  171.88,
+                                        "recordedAt":  "2026-07-24T00:58:49.5197635Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  7202.01,
+                                        "workingSetMiB":  28.37,
+                                        "totalProcessorTimeMs":  171.88,
+                                        "recordedAt":  "2026-07-24T00:59:49.5334739Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  7262.03,
+                                        "workingSetMiB":  28.37,
+                                        "totalProcessorTimeMs":  171.88,
+                                        "recordedAt":  "2026-07-24T01:00:49.5525159Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  7322.04,
+                                        "workingSetMiB":  28.37,
+                                        "totalProcessorTimeMs":  171.88,
+                                        "recordedAt":  "2026-07-24T01:01:49.5678162Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  7382.06,
+                                        "workingSetMiB":  28.37,
+                                        "totalProcessorTimeMs":  171.88,
+                                        "recordedAt":  "2026-07-24T01:02:49.5852611Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  7442.07,
+                                        "workingSetMiB":  28.37,
+                                        "totalProcessorTimeMs":  171.88,
+                                        "recordedAt":  "2026-07-24T01:03:49.5972916Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  7502.09,
+                                        "workingSetMiB":  28.37,
+                                        "totalProcessorTimeMs":  171.88,
+                                        "recordedAt":  "2026-07-24T01:04:49.6152441Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  7562.1,
+                                        "workingSetMiB":  28.37,
+                                        "totalProcessorTimeMs":  171.88,
+                                        "recordedAt":  "2026-07-24T01:05:49.6281929Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  7622.12,
+                                        "workingSetMiB":  28.37,
+                                        "totalProcessorTimeMs":  171.88,
+                                        "recordedAt":  "2026-07-24T01:06:49.6463307Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  7682.13,
+                                        "workingSetMiB":  28.37,
+                                        "totalProcessorTimeMs":  171.88,
+                                        "recordedAt":  "2026-07-24T01:07:49.6570728Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  7742.15,
+                                        "workingSetMiB":  28.37,
+                                        "totalProcessorTimeMs":  171.88,
+                                        "recordedAt":  "2026-07-24T01:08:49.6734459Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  7802.17,
+                                        "workingSetMiB":  28.37,
+                                        "totalProcessorTimeMs":  171.88,
+                                        "recordedAt":  "2026-07-24T01:09:49.6951519Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  7862.19,
+                                        "workingSetMiB":  28.37,
+                                        "totalProcessorTimeMs":  171.88,
+                                        "recordedAt":  "2026-07-24T01:10:49.7177965Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  7922.21,
+                                        "workingSetMiB":  28.37,
+                                        "totalProcessorTimeMs":  171.88,
+                                        "recordedAt":  "2026-07-24T01:11:49.7300896Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  7982.22,
+                                        "workingSetMiB":  20.41,
+                                        "totalProcessorTimeMs":  171.88,
+                                        "recordedAt":  "2026-07-24T01:12:49.7397137Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  8042.23,
+                                        "workingSetMiB":  20.41,
+                                        "totalProcessorTimeMs":  171.88,
+                                        "recordedAt":  "2026-07-24T01:13:49.7575265Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  8102.25,
+                                        "workingSetMiB":  20.41,
+                                        "totalProcessorTimeMs":  171.88,
+                                        "recordedAt":  "2026-07-24T01:14:49.7742557Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  8162.26,
+                                        "workingSetMiB":  20.39,
+                                        "totalProcessorTimeMs":  171.88,
+                                        "recordedAt":  "2026-07-24T01:15:49.7886522Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  8222.28,
+                                        "workingSetMiB":  20.39,
+                                        "totalProcessorTimeMs":  171.88,
+                                        "recordedAt":  "2026-07-24T01:16:49.8050605Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  8282.3,
+                                        "workingSetMiB":  20.39,
+                                        "totalProcessorTimeMs":  171.88,
+                                        "recordedAt":  "2026-07-24T01:17:49.8232561Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  8342.32,
+                                        "workingSetMiB":  20.39,
+                                        "totalProcessorTimeMs":  171.88,
+                                        "recordedAt":  "2026-07-24T01:18:49.8463194Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  8402.34,
+                                        "workingSetMiB":  20.41,
+                                        "totalProcessorTimeMs":  171.88,
+                                        "recordedAt":  "2026-07-24T01:19:49.8582560Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  8462.35,
+                                        "workingSetMiB":  20.41,
+                                        "totalProcessorTimeMs":  171.88,
+                                        "recordedAt":  "2026-07-24T01:20:49.8745806Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  8522.36,
+                                        "workingSetMiB":  20.41,
+                                        "totalProcessorTimeMs":  171.88,
+                                        "recordedAt":  "2026-07-24T01:21:49.8799442Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  8582.37,
+                                        "workingSetMiB":  20.41,
+                                        "totalProcessorTimeMs":  171.88,
+                                        "recordedAt":  "2026-07-24T01:22:49.9025947Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  8642.39,
+                                        "workingSetMiB":  14.62,
+                                        "totalProcessorTimeMs":  171.88,
+                                        "recordedAt":  "2026-07-24T01:23:49.9132538Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  8702.4,
+                                        "workingSetMiB":  14.62,
+                                        "totalProcessorTimeMs":  171.88,
+                                        "recordedAt":  "2026-07-24T01:24:49.9251930Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  8762.41,
+                                        "workingSetMiB":  14.62,
+                                        "totalProcessorTimeMs":  171.88,
+                                        "recordedAt":  "2026-07-24T01:25:49.9390436Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  8822.43,
+                                        "workingSetMiB":  11.17,
+                                        "totalProcessorTimeMs":  171.88,
+                                        "recordedAt":  "2026-07-24T01:26:49.9523357Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  8882.44,
+                                        "workingSetMiB":  11.17,
+                                        "totalProcessorTimeMs":  171.88,
+                                        "recordedAt":  "2026-07-24T01:27:49.9562318Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  8942.45,
+                                        "workingSetMiB":  11.17,
+                                        "totalProcessorTimeMs":  171.88,
+                                        "recordedAt":  "2026-07-24T01:28:49.9733702Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  9002.47,
+                                        "workingSetMiB":  11.17,
+                                        "totalProcessorTimeMs":  171.88,
+                                        "recordedAt":  "2026-07-24T01:29:49.9925603Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  9062.48,
+                                        "workingSetMiB":  11.15,
+                                        "totalProcessorTimeMs":  171.88,
+                                        "recordedAt":  "2026-07-24T01:30:50.0025252Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  9122.5,
+                                        "workingSetMiB":  11.15,
+                                        "totalProcessorTimeMs":  171.88,
+                                        "recordedAt":  "2026-07-24T01:31:50.0237542Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  9182.52,
+                                        "workingSetMiB":  11.15,
+                                        "totalProcessorTimeMs":  171.88,
+                                        "recordedAt":  "2026-07-24T01:32:50.0478304Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  9242.54,
+                                        "workingSetMiB":  11.2,
+                                        "totalProcessorTimeMs":  171.88,
+                                        "recordedAt":  "2026-07-24T01:33:50.0701685Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  9302.57,
+                                        "workingSetMiB":  11.26,
+                                        "totalProcessorTimeMs":  171.88,
+                                        "recordedAt":  "2026-07-24T01:34:50.1063990Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  9362.6,
+                                        "workingSetMiB":  16.44,
+                                        "totalProcessorTimeMs":  234.38,
+                                        "recordedAt":  "2026-07-24T01:35:50.1191092Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  9422.61,
+                                        "workingSetMiB":  20.21,
+                                        "totalProcessorTimeMs":  578.12,
+                                        "recordedAt":  "2026-07-24T01:36:50.1338921Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  9482.65,
+                                        "workingSetMiB":  20.23,
+                                        "totalProcessorTimeMs":  1015.62,
+                                        "recordedAt":  "2026-07-24T01:37:50.2005036Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  9542.69,
+                                        "workingSetMiB":  18.65,
+                                        "totalProcessorTimeMs":  1375,
+                                        "recordedAt":  "2026-07-24T01:38:50.2153241Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  9602.7,
+                                        "workingSetMiB":  18.64,
+                                        "totalProcessorTimeMs":  1562.5,
+                                        "recordedAt":  "2026-07-24T01:39:50.2233209Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  9662.73,
+                                        "workingSetMiB":  18.68,
+                                        "totalProcessorTimeMs":  1812.5,
+                                        "recordedAt":  "2026-07-24T01:40:50.2578941Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  9722.75,
+                                        "workingSetMiB":  18.21,
+                                        "totalProcessorTimeMs":  2140.62,
+                                        "recordedAt":  "2026-07-24T01:41:50.2774907Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  9782.76,
+                                        "workingSetMiB":  18.22,
+                                        "totalProcessorTimeMs":  2484.38,
+                                        "recordedAt":  "2026-07-24T01:42:50.2935806Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  9842.78,
+                                        "workingSetMiB":  18.22,
+                                        "totalProcessorTimeMs":  2687.5,
+                                        "recordedAt":  "2026-07-24T01:43:50.3135062Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  9902.81,
+                                        "workingSetMiB":  18.19,
+                                        "totalProcessorTimeMs":  3062.5,
+                                        "recordedAt":  "2026-07-24T01:44:50.3401609Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  9962.83,
+                                        "workingSetMiB":  18.23,
+                                        "totalProcessorTimeMs":  3328.12,
+                                        "recordedAt":  "2026-07-24T01:45:50.3591697Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  10022.85,
+                                        "workingSetMiB":  18.32,
+                                        "totalProcessorTimeMs":  3531.25,
+                                        "recordedAt":  "2026-07-24T01:46:50.3810568Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  10082.88,
+                                        "workingSetMiB":  18.27,
+                                        "totalProcessorTimeMs":  3718.75,
+                                        "recordedAt":  "2026-07-24T01:47:50.4051315Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  10142.89,
+                                        "workingSetMiB":  18.25,
+                                        "totalProcessorTimeMs":  4062.5,
+                                        "recordedAt":  "2026-07-24T01:48:50.4261737Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  10202.91,
+                                        "workingSetMiB":  18.24,
+                                        "totalProcessorTimeMs":  4468.75,
+                                        "recordedAt":  "2026-07-24T01:49:50.4396808Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  10262.93,
+                                        "workingSetMiB":  18.24,
+                                        "totalProcessorTimeMs":  4890.62,
+                                        "recordedAt":  "2026-07-24T01:50:50.4586476Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  10322.95,
+                                        "workingSetMiB":  18.18,
+                                        "totalProcessorTimeMs":  5250,
+                                        "recordedAt":  "2026-07-24T01:51:50.4824862Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  10382.97,
+                                        "workingSetMiB":  18.18,
+                                        "totalProcessorTimeMs":  5562.5,
+                                        "recordedAt":  "2026-07-24T01:52:50.5045259Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  10442.99,
+                                        "workingSetMiB":  18.18,
+                                        "totalProcessorTimeMs":  5921.88,
+                                        "recordedAt":  "2026-07-24T01:53:50.5156166Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  10503,
+                                        "workingSetMiB":  18.18,
+                                        "totalProcessorTimeMs":  6218.75,
+                                        "recordedAt":  "2026-07-24T01:54:50.5352456Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  10563.02,
+                                        "workingSetMiB":  18.18,
+                                        "totalProcessorTimeMs":  6640.62,
+                                        "recordedAt":  "2026-07-24T01:55:50.5495173Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  10623.04,
+                                        "workingSetMiB":  17.77,
+                                        "totalProcessorTimeMs":  6875,
+                                        "recordedAt":  "2026-07-24T01:56:50.5682489Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  10683.05,
+                                        "workingSetMiB":  13.82,
+                                        "totalProcessorTimeMs":  7328.12,
+                                        "recordedAt":  "2026-07-24T01:57:50.5856933Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  10743.08,
+                                        "workingSetMiB":  13.82,
+                                        "totalProcessorTimeMs":  7578.12,
+                                        "recordedAt":  "2026-07-24T01:58:50.6108807Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  10803.1,
+                                        "workingSetMiB":  13.82,
+                                        "totalProcessorTimeMs":  7812.5,
+                                        "recordedAt":  "2026-07-24T01:59:50.6335074Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  10863.12,
+                                        "workingSetMiB":  13.82,
+                                        "totalProcessorTimeMs":  8171.88,
+                                        "recordedAt":  "2026-07-24T02:00:50.6461860Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  10923.13,
+                                        "workingSetMiB":  13.76,
+                                        "totalProcessorTimeMs":  8671.88,
+                                        "recordedAt":  "2026-07-24T02:01:50.6614010Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  10983.16,
+                                        "workingSetMiB":  13.76,
+                                        "totalProcessorTimeMs":  9250,
+                                        "recordedAt":  "2026-07-24T02:02:50.6927963Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  11043.18,
+                                        "workingSetMiB":  13.76,
+                                        "totalProcessorTimeMs":  9609.38,
+                                        "recordedAt":  "2026-07-24T02:03:50.7182173Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  11103.21,
+                                        "workingSetMiB":  13.76,
+                                        "totalProcessorTimeMs":  9921.88,
+                                        "recordedAt":  "2026-07-24T02:04:50.7366744Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  11163.23,
+                                        "workingSetMiB":  13.76,
+                                        "totalProcessorTimeMs":  10296.88,
+                                        "recordedAt":  "2026-07-24T02:05:50.7589799Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  11223.25,
+                                        "workingSetMiB":  13.47,
+                                        "totalProcessorTimeMs":  10703.12,
+                                        "recordedAt":  "2026-07-24T02:06:50.7796958Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  11283.28,
+                                        "workingSetMiB":  13.47,
+                                        "totalProcessorTimeMs":  10984.38,
+                                        "recordedAt":  "2026-07-24T02:07:50.8084992Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  11343.3,
+                                        "workingSetMiB":  13.47,
+                                        "totalProcessorTimeMs":  11390.62,
+                                        "recordedAt":  "2026-07-24T02:08:50.8263631Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  11403.31,
+                                        "workingSetMiB":  13.47,
+                                        "totalProcessorTimeMs":  11718.75,
+                                        "recordedAt":  "2026-07-24T02:09:50.8383334Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  11463.33,
+                                        "workingSetMiB":  9.17,
+                                        "totalProcessorTimeMs":  11984.38,
+                                        "recordedAt":  "2026-07-24T02:10:50.8578179Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  11523.34,
+                                        "workingSetMiB":  8.7,
+                                        "totalProcessorTimeMs":  12359.38,
+                                        "recordedAt":  "2026-07-24T02:11:50.8748821Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  11583.37,
+                                        "workingSetMiB":  8.7,
+                                        "totalProcessorTimeMs":  12687.5,
+                                        "recordedAt":  "2026-07-24T02:12:50.9027114Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  11643.39,
+                                        "workingSetMiB":  8.7,
+                                        "totalProcessorTimeMs":  12953.12,
+                                        "recordedAt":  "2026-07-24T02:13:50.9120938Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  11703.4,
+                                        "workingSetMiB":  8.7,
+                                        "totalProcessorTimeMs":  13093.75,
+                                        "recordedAt":  "2026-07-24T02:14:50.9296247Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  11763.42,
+                                        "workingSetMiB":  8.7,
+                                        "totalProcessorTimeMs":  13093.75,
+                                        "recordedAt":  "2026-07-24T02:15:50.9518110Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  11823.44,
+                                        "workingSetMiB":  11.12,
+                                        "totalProcessorTimeMs":  13171.88,
+                                        "recordedAt":  "2026-07-24T02:16:50.9687481Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  11883.46,
+                                        "workingSetMiB":  11.12,
+                                        "totalProcessorTimeMs":  13406.25,
+                                        "recordedAt":  "2026-07-24T02:17:50.9932379Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  11943.48,
+                                        "workingSetMiB":  11.16,
+                                        "totalProcessorTimeMs":  13687.5,
+                                        "recordedAt":  "2026-07-24T02:18:51.0058886Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  12003.5,
+                                        "workingSetMiB":  11.16,
+                                        "totalProcessorTimeMs":  14031.25,
+                                        "recordedAt":  "2026-07-24T02:19:51.0281290Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  12063.52,
+                                        "workingSetMiB":  11.13,
+                                        "totalProcessorTimeMs":  14343.75,
+                                        "recordedAt":  "2026-07-24T02:20:51.0521302Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  12123.54,
+                                        "workingSetMiB":  11.13,
+                                        "totalProcessorTimeMs":  14734.38,
+                                        "recordedAt":  "2026-07-24T02:21:51.0691626Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  12183.56,
+                                        "workingSetMiB":  11.11,
+                                        "totalProcessorTimeMs":  14968.75,
+                                        "recordedAt":  "2026-07-24T02:22:51.0894103Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  12243.58,
+                                        "workingSetMiB":  11.11,
+                                        "totalProcessorTimeMs":  15187.5,
+                                        "recordedAt":  "2026-07-24T02:23:51.1040252Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  12303.59,
+                                        "workingSetMiB":  11.11,
+                                        "totalProcessorTimeMs":  15390.62,
+                                        "recordedAt":  "2026-07-24T02:24:51.1248132Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  12363.62,
+                                        "workingSetMiB":  11.11,
+                                        "totalProcessorTimeMs":  15562.5,
+                                        "recordedAt":  "2026-07-24T02:25:51.1446431Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  12423.63,
+                                        "workingSetMiB":  11.11,
+                                        "totalProcessorTimeMs":  15843.75,
+                                        "recordedAt":  "2026-07-24T02:26:51.1646632Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  12483.65,
+                                        "workingSetMiB":  11.16,
+                                        "totalProcessorTimeMs":  16078.12,
+                                        "recordedAt":  "2026-07-24T02:27:51.1831558Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  12543.68,
+                                        "workingSetMiB":  12.69,
+                                        "totalProcessorTimeMs":  16843.75,
+                                        "recordedAt":  "2026-07-24T02:28:51.2022287Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  12603.7,
+                                        "workingSetMiB":  12.66,
+                                        "totalProcessorTimeMs":  16984.38,
+                                        "recordedAt":  "2026-07-24T02:29:51.2274956Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  12663.72,
+                                        "workingSetMiB":  12.68,
+                                        "totalProcessorTimeMs":  17265.62,
+                                        "recordedAt":  "2026-07-24T02:30:51.2498625Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  12723.74,
+                                        "workingSetMiB":  10.57,
+                                        "totalProcessorTimeMs":  17671.88,
+                                        "recordedAt":  "2026-07-24T02:31:51.2692911Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  12783.75,
+                                        "workingSetMiB":  10.57,
+                                        "totalProcessorTimeMs":  18015.62,
+                                        "recordedAt":  "2026-07-24T02:32:51.2821057Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  12843.77,
+                                        "workingSetMiB":  10.59,
+                                        "totalProcessorTimeMs":  18218.75,
+                                        "recordedAt":  "2026-07-24T02:33:51.3195996Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  12903.82,
+                                        "workingSetMiB":  10.59,
+                                        "totalProcessorTimeMs":  18453.12,
+                                        "recordedAt":  "2026-07-24T02:34:51.3527467Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  12963.84,
+                                        "workingSetMiB":  10.55,
+                                        "totalProcessorTimeMs":  18531.25,
+                                        "recordedAt":  "2026-07-24T02:35:51.3700453Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  13023.85,
+                                        "workingSetMiB":  10.48,
+                                        "totalProcessorTimeMs":  18828.12,
+                                        "recordedAt":  "2026-07-24T02:36:51.3869870Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  13083.88,
+                                        "workingSetMiB":  10.46,
+                                        "totalProcessorTimeMs":  19031.25,
+                                        "recordedAt":  "2026-07-24T02:37:51.4087976Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  13143.9,
+                                        "workingSetMiB":  12.31,
+                                        "totalProcessorTimeMs":  19093.75,
+                                        "recordedAt":  "2026-07-24T02:38:51.4291390Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  13203.92,
+                                        "workingSetMiB":  12.27,
+                                        "totalProcessorTimeMs":  19093.75,
+                                        "recordedAt":  "2026-07-24T02:39:51.4503090Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  13263.93,
+                                        "workingSetMiB":  12.31,
+                                        "totalProcessorTimeMs":  19171.88,
+                                        "recordedAt":  "2026-07-24T02:40:51.4608097Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  13323.95,
+                                        "workingSetMiB":  12.31,
+                                        "totalProcessorTimeMs":  19171.88,
+                                        "recordedAt":  "2026-07-24T02:41:51.4792224Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  13383.96,
+                                        "workingSetMiB":  12.27,
+                                        "totalProcessorTimeMs":  19171.88,
+                                        "recordedAt":  "2026-07-24T02:42:51.4940199Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  13443.99,
+                                        "workingSetMiB":  12.27,
+                                        "totalProcessorTimeMs":  19171.88,
+                                        "recordedAt":  "2026-07-24T02:43:51.5211327Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  13504.02,
+                                        "workingSetMiB":  12.25,
+                                        "totalProcessorTimeMs":  19171.88,
+                                        "recordedAt":  "2026-07-24T02:44:51.5497963Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  13564.05,
+                                        "workingSetMiB":  12.21,
+                                        "totalProcessorTimeMs":  19171.88,
+                                        "recordedAt":  "2026-07-24T02:45:51.5798604Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  13624.07,
+                                        "workingSetMiB":  11.89,
+                                        "totalProcessorTimeMs":  19171.88,
+                                        "recordedAt":  "2026-07-24T02:46:51.6050060Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  13684.1,
+                                        "workingSetMiB":  11.9,
+                                        "totalProcessorTimeMs":  19171.88,
+                                        "recordedAt":  "2026-07-24T02:47:51.6311799Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  13744.12,
+                                        "workingSetMiB":  11.9,
+                                        "totalProcessorTimeMs":  19171.88,
+                                        "recordedAt":  "2026-07-24T02:48:51.6492293Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  13804.14,
+                                        "workingSetMiB":  11.9,
+                                        "totalProcessorTimeMs":  19171.88,
+                                        "recordedAt":  "2026-07-24T02:49:51.6719555Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  13864.16,
+                                        "workingSetMiB":  11.9,
+                                        "totalProcessorTimeMs":  19171.88,
+                                        "recordedAt":  "2026-07-24T02:50:51.6866465Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  13924.17,
+                                        "workingSetMiB":  11.9,
+                                        "totalProcessorTimeMs":  19171.88,
+                                        "recordedAt":  "2026-07-24T02:51:51.6975575Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  13984.19,
+                                        "workingSetMiB":  11.9,
+                                        "totalProcessorTimeMs":  19171.88,
+                                        "recordedAt":  "2026-07-24T02:52:51.7223668Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  14044.21,
+                                        "workingSetMiB":  11.9,
+                                        "totalProcessorTimeMs":  19171.88,
+                                        "recordedAt":  "2026-07-24T02:53:51.7463534Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  14104.23,
+                                        "workingSetMiB":  11.9,
+                                        "totalProcessorTimeMs":  19171.88,
+                                        "recordedAt":  "2026-07-24T02:54:51.7478021Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  14164.25,
+                                        "workingSetMiB":  11.9,
+                                        "totalProcessorTimeMs":  19171.88,
+                                        "recordedAt":  "2026-07-24T02:55:51.7659284Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  14224.28,
+                                        "workingSetMiB":  11.89,
+                                        "totalProcessorTimeMs":  19171.88,
+                                        "recordedAt":  "2026-07-24T02:56:51.8093757Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  14284.29,
+                                        "workingSetMiB":  10.59,
+                                        "totalProcessorTimeMs":  19171.88,
+                                        "recordedAt":  "2026-07-24T02:57:51.8261260Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  14344.32,
+                                        "workingSetMiB":  10.59,
+                                        "totalProcessorTimeMs":  19171.88,
+                                        "recordedAt":  "2026-07-24T02:58:51.8519822Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  14404.34,
+                                        "workingSetMiB":  10.59,
+                                        "totalProcessorTimeMs":  19171.88,
+                                        "recordedAt":  "2026-07-24T02:59:51.8695585Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  14464.36,
+                                        "workingSetMiB":  10.59,
+                                        "totalProcessorTimeMs":  19171.88,
+                                        "recordedAt":  "2026-07-24T03:00:51.8913579Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  14524.38,
+                                        "workingSetMiB":  9.83,
+                                        "totalProcessorTimeMs":  19171.88,
+                                        "recordedAt":  "2026-07-24T03:01:51.9171267Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  14584.41,
+                                        "workingSetMiB":  9.83,
+                                        "totalProcessorTimeMs":  19171.88,
+                                        "recordedAt":  "2026-07-24T03:02:51.9329717Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  14644.43,
+                                        "workingSetMiB":  9.83,
+                                        "totalProcessorTimeMs":  19171.88,
+                                        "recordedAt":  "2026-07-24T03:03:51.9560708Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  14704.45,
+                                        "workingSetMiB":  9.83,
+                                        "totalProcessorTimeMs":  19171.88,
+                                        "recordedAt":  "2026-07-24T03:04:51.9814038Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  14764.48,
+                                        "workingSetMiB":  9.83,
+                                        "totalProcessorTimeMs":  19171.88,
+                                        "recordedAt":  "2026-07-24T03:05:52.0156665Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  14824.51,
+                                        "workingSetMiB":  9.53,
+                                        "totalProcessorTimeMs":  19171.88,
+                                        "recordedAt":  "2026-07-24T03:06:52.0427399Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  14884.53,
+                                        "workingSetMiB":  9.53,
+                                        "totalProcessorTimeMs":  19171.88,
+                                        "recordedAt":  "2026-07-24T03:07:52.0613345Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  14944.55,
+                                        "workingSetMiB":  9.53,
+                                        "totalProcessorTimeMs":  19171.88,
+                                        "recordedAt":  "2026-07-24T03:08:52.0778816Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  15004.57,
+                                        "workingSetMiB":  9.53,
+                                        "totalProcessorTimeMs":  19171.88,
+                                        "recordedAt":  "2026-07-24T03:09:52.0989342Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  15064.59,
+                                        "workingSetMiB":  9.51,
+                                        "totalProcessorTimeMs":  19171.88,
+                                        "recordedAt":  "2026-07-24T03:10:52.1206245Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  15124.59,
+                                        "workingSetMiB":  9.02,
+                                        "totalProcessorTimeMs":  19171.88,
+                                        "recordedAt":  "2026-07-24T03:11:52.1235824Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  15184.61,
+                                        "workingSetMiB":  9.02,
+                                        "totalProcessorTimeMs":  19171.88,
+                                        "recordedAt":  "2026-07-24T03:12:52.1387558Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  15244.63,
+                                        "workingSetMiB":  9.02,
+                                        "totalProcessorTimeMs":  19171.88,
+                                        "recordedAt":  "2026-07-24T03:13:52.1586125Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  15304.65,
+                                        "workingSetMiB":  9.02,
+                                        "totalProcessorTimeMs":  19171.88,
+                                        "recordedAt":  "2026-07-24T03:14:52.1849014Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  15364.67,
+                                        "workingSetMiB":  9.02,
+                                        "totalProcessorTimeMs":  19171.88,
+                                        "recordedAt":  "2026-07-24T03:15:52.1980086Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  15424.68,
+                                        "workingSetMiB":  9.02,
+                                        "totalProcessorTimeMs":  19171.88,
+                                        "recordedAt":  "2026-07-24T03:16:52.2130681Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  15484.7,
+                                        "workingSetMiB":  9.04,
+                                        "totalProcessorTimeMs":  19171.88,
+                                        "recordedAt":  "2026-07-24T03:17:52.2296952Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  15544.73,
+                                        "workingSetMiB":  9.04,
+                                        "totalProcessorTimeMs":  19171.88,
+                                        "recordedAt":  "2026-07-24T03:18:52.2543846Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  15604.75,
+                                        "workingSetMiB":  9.04,
+                                        "totalProcessorTimeMs":  19171.88,
+                                        "recordedAt":  "2026-07-24T03:19:52.2793380Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  15664.77,
+                                        "workingSetMiB":  9.04,
+                                        "totalProcessorTimeMs":  19171.88,
+                                        "recordedAt":  "2026-07-24T03:20:52.2943930Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  15724.78,
+                                        "workingSetMiB":  9.04,
+                                        "totalProcessorTimeMs":  19171.88,
+                                        "recordedAt":  "2026-07-24T03:21:52.3141153Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  15784.8,
+                                        "workingSetMiB":  9.04,
+                                        "totalProcessorTimeMs":  19171.88,
+                                        "recordedAt":  "2026-07-24T03:22:52.3336230Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  15844.83,
+                                        "workingSetMiB":  9.04,
+                                        "totalProcessorTimeMs":  19171.88,
+                                        "recordedAt":  "2026-07-24T03:23:52.3528651Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  15904.84,
+                                        "workingSetMiB":  9.04,
+                                        "totalProcessorTimeMs":  19171.88,
+                                        "recordedAt":  "2026-07-24T03:24:52.3684145Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  15964.87,
+                                        "workingSetMiB":  9.04,
+                                        "totalProcessorTimeMs":  19171.88,
+                                        "recordedAt":  "2026-07-24T03:25:52.3834604Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  16024.87,
+                                        "workingSetMiB":  9.04,
+                                        "totalProcessorTimeMs":  19171.88,
+                                        "recordedAt":  "2026-07-24T03:26:52.3963697Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  16084.88,
+                                        "workingSetMiB":  9.04,
+                                        "totalProcessorTimeMs":  19171.88,
+                                        "recordedAt":  "2026-07-24T03:27:52.3997465Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  16144.9,
+                                        "workingSetMiB":  9.04,
+                                        "totalProcessorTimeMs":  19171.88,
+                                        "recordedAt":  "2026-07-24T03:28:52.4292778Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  16204.92,
+                                        "workingSetMiB":  9.04,
+                                        "totalProcessorTimeMs":  19171.88,
+                                        "recordedAt":  "2026-07-24T03:29:52.4486828Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  16264.94,
+                                        "workingSetMiB":  9.04,
+                                        "totalProcessorTimeMs":  19171.88,
+                                        "recordedAt":  "2026-07-24T03:30:52.4723091Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  16324.96,
+                                        "workingSetMiB":  9.04,
+                                        "totalProcessorTimeMs":  19171.88,
+                                        "recordedAt":  "2026-07-24T03:31:52.4863406Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  16384.97,
+                                        "workingSetMiB":  9.04,
+                                        "totalProcessorTimeMs":  19171.88,
+                                        "recordedAt":  "2026-07-24T03:32:52.5043363Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  16445,
+                                        "workingSetMiB":  9.04,
+                                        "totalProcessorTimeMs":  19171.88,
+                                        "recordedAt":  "2026-07-24T03:33:52.5286440Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  16505.02,
+                                        "workingSetMiB":  9.04,
+                                        "totalProcessorTimeMs":  19171.88,
+                                        "recordedAt":  "2026-07-24T03:34:52.5504890Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  16565.05,
+                                        "workingSetMiB":  9.04,
+                                        "totalProcessorTimeMs":  19171.88,
+                                        "recordedAt":  "2026-07-24T03:35:52.5735494Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  16625.06,
+                                        "workingSetMiB":  9.04,
+                                        "totalProcessorTimeMs":  19171.88,
+                                        "recordedAt":  "2026-07-24T03:36:52.5923747Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  16685.09,
+                                        "workingSetMiB":  9.09,
+                                        "totalProcessorTimeMs":  19171.88,
+                                        "recordedAt":  "2026-07-24T03:37:52.6206296Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  16745.12,
+                                        "workingSetMiB":  9.09,
+                                        "totalProcessorTimeMs":  19171.88,
+                                        "recordedAt":  "2026-07-24T03:38:52.6482648Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  16805.14,
+                                        "workingSetMiB":  9.09,
+                                        "totalProcessorTimeMs":  19171.88,
+                                        "recordedAt":  "2026-07-24T03:39:52.6685277Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  16865.15,
+                                        "workingSetMiB":  9.09,
+                                        "totalProcessorTimeMs":  19171.88,
+                                        "recordedAt":  "2026-07-24T03:40:52.6872295Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  16925.18,
+                                        "workingSetMiB":  9.09,
+                                        "totalProcessorTimeMs":  19171.88,
+                                        "recordedAt":  "2026-07-24T03:41:52.7144949Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  16985.2,
+                                        "workingSetMiB":  9.09,
+                                        "totalProcessorTimeMs":  19171.88,
+                                        "recordedAt":  "2026-07-24T03:42:52.7163634Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  17045.21,
+                                        "workingSetMiB":  9.09,
+                                        "totalProcessorTimeMs":  19171.88,
+                                        "recordedAt":  "2026-07-24T03:43:52.7387677Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  17105.22,
+                                        "workingSetMiB":  9.09,
+                                        "totalProcessorTimeMs":  19171.88,
+                                        "recordedAt":  "2026-07-24T03:44:52.7559543Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  17165.25,
+                                        "workingSetMiB":  9.09,
+                                        "totalProcessorTimeMs":  19171.88,
+                                        "recordedAt":  "2026-07-24T03:45:52.7731088Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  17225.26,
+                                        "workingSetMiB":  9.09,
+                                        "totalProcessorTimeMs":  19171.88,
+                                        "recordedAt":  "2026-07-24T03:46:52.7817405Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  17285.29,
+                                        "workingSetMiB":  9.09,
+                                        "totalProcessorTimeMs":  19171.88,
+                                        "recordedAt":  "2026-07-24T03:47:52.8109682Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  17345.31,
+                                        "workingSetMiB":  9.09,
+                                        "totalProcessorTimeMs":  19171.88,
+                                        "recordedAt":  "2026-07-24T03:48:52.8272841Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  17405.31,
+                                        "workingSetMiB":  9.09,
+                                        "totalProcessorTimeMs":  19171.88,
+                                        "recordedAt":  "2026-07-24T03:49:52.8432894Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  17465.33,
+                                        "workingSetMiB":  9.09,
+                                        "totalProcessorTimeMs":  19171.88,
+                                        "recordedAt":  "2026-07-24T03:50:52.8588541Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  17525.35,
+                                        "workingSetMiB":  9.09,
+                                        "totalProcessorTimeMs":  19171.88,
+                                        "recordedAt":  "2026-07-24T03:51:52.8803495Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  17585.38,
+                                        "workingSetMiB":  9.09,
+                                        "totalProcessorTimeMs":  19171.88,
+                                        "recordedAt":  "2026-07-24T03:52:52.9063045Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  17645.4,
+                                        "workingSetMiB":  9.09,
+                                        "totalProcessorTimeMs":  19171.88,
+                                        "recordedAt":  "2026-07-24T03:53:52.9198340Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  17705.41,
+                                        "workingSetMiB":  9.09,
+                                        "totalProcessorTimeMs":  19171.88,
+                                        "recordedAt":  "2026-07-24T03:54:52.9332733Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  17765.42,
+                                        "workingSetMiB":  9.09,
+                                        "totalProcessorTimeMs":  19171.88,
+                                        "recordedAt":  "2026-07-24T03:55:52.9451799Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  17825.44,
+                                        "workingSetMiB":  9.09,
+                                        "totalProcessorTimeMs":  19171.88,
+                                        "recordedAt":  "2026-07-24T03:56:52.9686596Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  17885.48,
+                                        "workingSetMiB":  9.09,
+                                        "totalProcessorTimeMs":  19171.88,
+                                        "recordedAt":  "2026-07-24T03:57:53.0109839Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  17945.5,
+                                        "workingSetMiB":  9.09,
+                                        "totalProcessorTimeMs":  19171.88,
+                                        "recordedAt":  "2026-07-24T03:58:53.0215855Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  18005.51,
+                                        "workingSetMiB":  9.09,
+                                        "totalProcessorTimeMs":  19171.88,
+                                        "recordedAt":  "2026-07-24T03:59:53.0407898Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  18065.53,
+                                        "workingSetMiB":  9.09,
+                                        "totalProcessorTimeMs":  19171.88,
+                                        "recordedAt":  "2026-07-24T04:00:53.0587099Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  18125.55,
+                                        "workingSetMiB":  9.09,
+                                        "totalProcessorTimeMs":  19171.88,
+                                        "recordedAt":  "2026-07-24T04:01:53.0769553Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  18185.57,
+                                        "workingSetMiB":  9.09,
+                                        "totalProcessorTimeMs":  19171.88,
+                                        "recordedAt":  "2026-07-24T04:02:53.0947341Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  18245.59,
+                                        "workingSetMiB":  9.09,
+                                        "totalProcessorTimeMs":  19171.88,
+                                        "recordedAt":  "2026-07-24T04:03:53.1229014Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  18305.61,
+                                        "workingSetMiB":  9.09,
+                                        "totalProcessorTimeMs":  19171.88,
+                                        "recordedAt":  "2026-07-24T04:04:53.1383490Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  18365.62,
+                                        "workingSetMiB":  9.09,
+                                        "totalProcessorTimeMs":  19171.88,
+                                        "recordedAt":  "2026-07-24T04:05:53.1516163Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  18425.64,
+                                        "workingSetMiB":  9.09,
+                                        "totalProcessorTimeMs":  19171.88,
+                                        "recordedAt":  "2026-07-24T04:06:53.1729722Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  18485.66,
+                                        "workingSetMiB":  9.09,
+                                        "totalProcessorTimeMs":  19171.88,
+                                        "recordedAt":  "2026-07-24T04:07:53.1792948Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  18545.68,
+                                        "workingSetMiB":  9.09,
+                                        "totalProcessorTimeMs":  19171.88,
+                                        "recordedAt":  "2026-07-24T04:08:53.2017200Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  18605.7,
+                                        "workingSetMiB":  9.09,
+                                        "totalProcessorTimeMs":  19171.88,
+                                        "recordedAt":  "2026-07-24T04:09:53.2160685Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  18665.71,
+                                        "workingSetMiB":  9.09,
+                                        "totalProcessorTimeMs":  19171.88,
+                                        "recordedAt":  "2026-07-24T04:10:53.2450325Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  18725.73,
+                                        "workingSetMiB":  9.09,
+                                        "totalProcessorTimeMs":  19171.88,
+                                        "recordedAt":  "2026-07-24T04:11:53.2645105Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  18785.76,
+                                        "workingSetMiB":  9.09,
+                                        "totalProcessorTimeMs":  19171.88,
+                                        "recordedAt":  "2026-07-24T04:12:53.2873641Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  18845.77,
+                                        "workingSetMiB":  9.09,
+                                        "totalProcessorTimeMs":  19171.88,
+                                        "recordedAt":  "2026-07-24T04:13:53.2911754Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  18905.79,
+                                        "workingSetMiB":  9.09,
+                                        "totalProcessorTimeMs":  19171.88,
+                                        "recordedAt":  "2026-07-24T04:14:53.3131914Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  18965.8,
+                                        "workingSetMiB":  9.09,
+                                        "totalProcessorTimeMs":  19171.88,
+                                        "recordedAt":  "2026-07-24T04:15:53.3292818Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  19025.82,
+                                        "workingSetMiB":  9.09,
+                                        "totalProcessorTimeMs":  19171.88,
+                                        "recordedAt":  "2026-07-24T04:16:53.3481868Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  19085.83,
+                                        "workingSetMiB":  9.09,
+                                        "totalProcessorTimeMs":  19171.88,
+                                        "recordedAt":  "2026-07-24T04:17:53.3654339Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  19145.86,
+                                        "workingSetMiB":  9.09,
+                                        "totalProcessorTimeMs":  19171.88,
+                                        "recordedAt":  "2026-07-24T04:18:53.3836036Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  19205.87,
+                                        "workingSetMiB":  9.09,
+                                        "totalProcessorTimeMs":  19171.88,
+                                        "recordedAt":  "2026-07-24T04:19:53.4021595Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  19265.89,
+                                        "workingSetMiB":  9.09,
+                                        "totalProcessorTimeMs":  19171.88,
+                                        "recordedAt":  "2026-07-24T04:20:53.4197678Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  19325.91,
+                                        "workingSetMiB":  9.09,
+                                        "totalProcessorTimeMs":  19171.88,
+                                        "recordedAt":  "2026-07-24T04:21:53.4441715Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  19385.94,
+                                        "workingSetMiB":  9.09,
+                                        "totalProcessorTimeMs":  19171.88,
+                                        "recordedAt":  "2026-07-24T04:22:53.4600865Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  19445.95,
+                                        "workingSetMiB":  9.09,
+                                        "totalProcessorTimeMs":  19171.88,
+                                        "recordedAt":  "2026-07-24T04:23:53.4787870Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  19505.97,
+                                        "workingSetMiB":  9.09,
+                                        "totalProcessorTimeMs":  19171.88,
+                                        "recordedAt":  "2026-07-24T04:24:53.5035797Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  19566,
+                                        "workingSetMiB":  9.09,
+                                        "totalProcessorTimeMs":  19171.88,
+                                        "recordedAt":  "2026-07-24T04:25:53.5290769Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  19626.02,
+                                        "workingSetMiB":  9.09,
+                                        "totalProcessorTimeMs":  19171.88,
+                                        "recordedAt":  "2026-07-24T04:26:53.5481632Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  19686.03,
+                                        "workingSetMiB":  9.09,
+                                        "totalProcessorTimeMs":  19171.88,
+                                        "recordedAt":  "2026-07-24T04:27:53.5649082Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  19746.05,
+                                        "workingSetMiB":  9.09,
+                                        "totalProcessorTimeMs":  19171.88,
+                                        "recordedAt":  "2026-07-24T04:28:53.5802307Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  19806.07,
+                                        "workingSetMiB":  5.08,
+                                        "totalProcessorTimeMs":  19171.88,
+                                        "recordedAt":  "2026-07-24T04:29:53.6025459Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  19866.09,
+                                        "workingSetMiB":  5.08,
+                                        "totalProcessorTimeMs":  19171.88,
+                                        "recordedAt":  "2026-07-24T04:30:53.6204579Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  19926.11,
+                                        "workingSetMiB":  5.08,
+                                        "totalProcessorTimeMs":  19171.88,
+                                        "recordedAt":  "2026-07-24T04:31:53.6495642Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  19986.13,
+                                        "workingSetMiB":  5.08,
+                                        "totalProcessorTimeMs":  19171.88,
+                                        "recordedAt":  "2026-07-24T04:32:53.6642926Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  20046.15,
+                                        "workingSetMiB":  5.08,
+                                        "totalProcessorTimeMs":  19171.88,
+                                        "recordedAt":  "2026-07-24T04:33:53.6872055Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  20106.18,
+                                        "workingSetMiB":  5.08,
+                                        "totalProcessorTimeMs":  19171.88,
+                                        "recordedAt":  "2026-07-24T04:34:53.6984757Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  20166.19,
+                                        "workingSetMiB":  5.08,
+                                        "totalProcessorTimeMs":  19171.88,
+                                        "recordedAt":  "2026-07-24T04:35:53.7219076Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  20226.21,
+                                        "workingSetMiB":  5.08,
+                                        "totalProcessorTimeMs":  19171.88,
+                                        "recordedAt":  "2026-07-24T04:36:53.7394326Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  20286.23,
+                                        "workingSetMiB":  5.08,
+                                        "totalProcessorTimeMs":  19171.88,
+                                        "recordedAt":  "2026-07-24T04:37:53.7572525Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  20346.26,
+                                        "workingSetMiB":  5.08,
+                                        "totalProcessorTimeMs":  19171.88,
+                                        "recordedAt":  "2026-07-24T04:38:53.7835037Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  20406.27,
+                                        "workingSetMiB":  5.08,
+                                        "totalProcessorTimeMs":  19171.88,
+                                        "recordedAt":  "2026-07-24T04:39:53.8001316Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  20466.3,
+                                        "workingSetMiB":  5.08,
+                                        "totalProcessorTimeMs":  19171.88,
+                                        "recordedAt":  "2026-07-24T04:40:53.8296531Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  20526.33,
+                                        "workingSetMiB":  5.08,
+                                        "totalProcessorTimeMs":  19171.88,
+                                        "recordedAt":  "2026-07-24T04:41:53.8569331Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  20586.34,
+                                        "workingSetMiB":  5.08,
+                                        "totalProcessorTimeMs":  19171.88,
+                                        "recordedAt":  "2026-07-24T04:42:53.8750581Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  20646.36,
+                                        "workingSetMiB":  5.08,
+                                        "totalProcessorTimeMs":  19171.88,
+                                        "recordedAt":  "2026-07-24T04:43:53.8922298Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  20706.38,
+                                        "workingSetMiB":  5.08,
+                                        "totalProcessorTimeMs":  19171.88,
+                                        "recordedAt":  "2026-07-24T04:44:53.9081646Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  20766.39,
+                                        "workingSetMiB":  5.08,
+                                        "totalProcessorTimeMs":  19171.88,
+                                        "recordedAt":  "2026-07-24T04:45:53.9235946Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  20826.41,
+                                        "workingSetMiB":  3.08,
+                                        "totalProcessorTimeMs":  19171.88,
+                                        "recordedAt":  "2026-07-24T04:46:53.9388892Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  20886.43,
+                                        "workingSetMiB":  3.08,
+                                        "totalProcessorTimeMs":  19171.88,
+                                        "recordedAt":  "2026-07-24T04:47:53.9650560Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  20946.46,
+                                        "workingSetMiB":  3.08,
+                                        "totalProcessorTimeMs":  19171.88,
+                                        "recordedAt":  "2026-07-24T04:48:53.9905389Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  21006.49,
+                                        "workingSetMiB":  3.08,
+                                        "totalProcessorTimeMs":  19171.88,
+                                        "recordedAt":  "2026-07-24T04:49:54.0168619Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  21066.51,
+                                        "workingSetMiB":  3.08,
+                                        "totalProcessorTimeMs":  19171.88,
+                                        "recordedAt":  "2026-07-24T04:50:54.0431152Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  21126.53,
+                                        "workingSetMiB":  3.07,
+                                        "totalProcessorTimeMs":  19171.88,
+                                        "recordedAt":  "2026-07-24T04:51:54.0652236Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  21186.55,
+                                        "workingSetMiB":  3.07,
+                                        "totalProcessorTimeMs":  19171.88,
+                                        "recordedAt":  "2026-07-24T04:52:54.0836973Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  21246.58,
+                                        "workingSetMiB":  3.07,
+                                        "totalProcessorTimeMs":  19171.88,
+                                        "recordedAt":  "2026-07-24T04:53:54.1058898Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  21306.6,
+                                        "workingSetMiB":  10.54,
+                                        "totalProcessorTimeMs":  19484.38,
+                                        "recordedAt":  "2026-07-24T04:54:54.1279420Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  21366.63,
+                                        "workingSetMiB":  9.76,
+                                        "totalProcessorTimeMs":  19484.38,
+                                        "recordedAt":  "2026-07-24T04:55:54.1569687Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  21426.65,
+                                        "workingSetMiB":  9.79,
+                                        "totalProcessorTimeMs":  19484.38,
+                                        "recordedAt":  "2026-07-24T04:56:54.1785006Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  21486.67,
+                                        "workingSetMiB":  9.84,
+                                        "totalProcessorTimeMs":  19484.38,
+                                        "recordedAt":  "2026-07-24T04:57:54.2002421Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  21546.69,
+                                        "workingSetMiB":  9.81,
+                                        "totalProcessorTimeMs":  19484.38,
+                                        "recordedAt":  "2026-07-24T04:58:54.2192358Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  21606.7,
+                                        "workingSetMiB":  9.82,
+                                        "totalProcessorTimeMs":  19484.38,
+                                        "recordedAt":  "2026-07-24T04:59:54.2366526Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  21666.73,
+                                        "workingSetMiB":  9.82,
+                                        "totalProcessorTimeMs":  19484.38,
+                                        "recordedAt":  "2026-07-24T05:00:54.2628270Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  21726.75,
+                                        "workingSetMiB":  9.82,
+                                        "totalProcessorTimeMs":  19484.38,
+                                        "recordedAt":  "2026-07-24T05:01:54.2783603Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  21786.77,
+                                        "workingSetMiB":  9.82,
+                                        "totalProcessorTimeMs":  19484.38,
+                                        "recordedAt":  "2026-07-24T05:02:54.3176423Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  21846.8,
+                                        "workingSetMiB":  9.82,
+                                        "totalProcessorTimeMs":  19484.38,
+                                        "recordedAt":  "2026-07-24T05:03:54.3317666Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  21906.82,
+                                        "workingSetMiB":  6.69,
+                                        "totalProcessorTimeMs":  19484.38,
+                                        "recordedAt":  "2026-07-24T05:04:54.3737625Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  21966.86,
+                                        "workingSetMiB":  1.75,
+                                        "totalProcessorTimeMs":  19484.38,
+                                        "recordedAt":  "2026-07-24T05:05:54.3944143Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  22026.89,
+                                        "workingSetMiB":  0.8,
+                                        "totalProcessorTimeMs":  19484.38,
+                                        "recordedAt":  "2026-07-24T05:06:54.4267684Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  22086.92,
+                                        "workingSetMiB":  0.78,
+                                        "totalProcessorTimeMs":  19484.38,
+                                        "recordedAt":  "2026-07-24T05:07:54.4602337Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  22146.95,
+                                        "workingSetMiB":  0.67,
+                                        "totalProcessorTimeMs":  19484.38,
+                                        "recordedAt":  "2026-07-24T05:08:54.4859858Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  22206.98,
+                                        "workingSetMiB":  0.66,
+                                        "totalProcessorTimeMs":  19484.38,
+                                        "recordedAt":  "2026-07-24T05:09:54.5169419Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  22267.01,
+                                        "workingSetMiB":  13.18,
+                                        "totalProcessorTimeMs":  19484.38,
+                                        "recordedAt":  "2026-07-24T05:10:54.5406008Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  22327.03,
+                                        "workingSetMiB":  0.22,
+                                        "totalProcessorTimeMs":  19484.38,
+                                        "recordedAt":  "2026-07-24T05:11:54.5732465Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  22387.08,
+                                        "workingSetMiB":  0.02,
+                                        "totalProcessorTimeMs":  19484.38,
+                                        "recordedAt":  "2026-07-24T05:12:54.6179094Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  22447.12,
+                                        "workingSetMiB":  0.02,
+                                        "totalProcessorTimeMs":  19484.38,
+                                        "recordedAt":  "2026-07-24T05:13:54.6602885Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  22507.15,
+                                        "workingSetMiB":  0.02,
+                                        "totalProcessorTimeMs":  19484.38,
+                                        "recordedAt":  "2026-07-24T05:14:54.6944804Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  22567.2,
+                                        "workingSetMiB":  0.27,
+                                        "totalProcessorTimeMs":  19500,
+                                        "recordedAt":  "2026-07-24T05:15:54.7414286Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  22627.24,
+                                        "workingSetMiB":  0.17,
+                                        "totalProcessorTimeMs":  19500,
+                                        "recordedAt":  "2026-07-24T05:16:54.7795242Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  22687.28,
+                                        "workingSetMiB":  0.02,
+                                        "totalProcessorTimeMs":  19500,
+                                        "recordedAt":  "2026-07-24T05:17:54.8212086Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  22747.31,
+                                        "workingSetMiB":  0.02,
+                                        "totalProcessorTimeMs":  19500,
+                                        "recordedAt":  "2026-07-24T05:18:54.8496823Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  22807.34,
+                                        "workingSetMiB":  0.49,
+                                        "totalProcessorTimeMs":  19500,
+                                        "recordedAt":  "2026-07-24T05:19:54.8847868Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  22867.37,
+                                        "workingSetMiB":  0.49,
+                                        "totalProcessorTimeMs":  19500,
+                                        "recordedAt":  "2026-07-24T05:20:54.9295455Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  22927.43,
+                                        "workingSetMiB":  0.02,
+                                        "totalProcessorTimeMs":  19500,
+                                        "recordedAt":  "2026-07-24T05:21:54.9678131Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  22987.46,
+                                        "workingSetMiB":  0.02,
+                                        "totalProcessorTimeMs":  19500,
+                                        "recordedAt":  "2026-07-24T05:22:54.9957221Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  23047.49,
+                                        "workingSetMiB":  0.02,
+                                        "totalProcessorTimeMs":  19500,
+                                        "recordedAt":  "2026-07-24T05:23:55.0268857Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  23107.52,
+                                        "workingSetMiB":  0.54,
+                                        "totalProcessorTimeMs":  19500,
+                                        "recordedAt":  "2026-07-24T05:24:55.0562290Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  23167.55,
+                                        "workingSetMiB":  0.54,
+                                        "totalProcessorTimeMs":  19500,
+                                        "recordedAt":  "2026-07-24T05:25:55.0797453Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  23227.58,
+                                        "workingSetMiB":  0.54,
+                                        "totalProcessorTimeMs":  19500,
+                                        "recordedAt":  "2026-07-24T05:26:55.1075996Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  23287.6,
+                                        "workingSetMiB":  0.57,
+                                        "totalProcessorTimeMs":  19500,
+                                        "recordedAt":  "2026-07-24T05:27:55.1458439Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  23347.65,
+                                        "workingSetMiB":  0.52,
+                                        "totalProcessorTimeMs":  19500,
+                                        "recordedAt":  "2026-07-24T05:28:55.1858024Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  23407.68,
+                                        "workingSetMiB":  0.61,
+                                        "totalProcessorTimeMs":  19500,
+                                        "recordedAt":  "2026-07-24T05:29:55.2147892Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  23467.71,
+                                        "workingSetMiB":  0.24,
+                                        "totalProcessorTimeMs":  19500,
+                                        "recordedAt":  "2026-07-24T05:30:55.2503534Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  23527.74,
+                                        "workingSetMiB":  0.02,
+                                        "totalProcessorTimeMs":  19500,
+                                        "recordedAt":  "2026-07-24T05:31:55.2786039Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  23587.77,
+                                        "workingSetMiB":  0.02,
+                                        "totalProcessorTimeMs":  19500,
+                                        "recordedAt":  "2026-07-24T05:32:55.3119023Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  23647.81,
+                                        "workingSetMiB":  0.02,
+                                        "totalProcessorTimeMs":  19500,
+                                        "recordedAt":  "2026-07-24T05:33:55.3693186Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  23707.87,
+                                        "workingSetMiB":  0.02,
+                                        "totalProcessorTimeMs":  19500,
+                                        "recordedAt":  "2026-07-24T05:34:55.4071890Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  23767.89,
+                                        "workingSetMiB":  0.02,
+                                        "totalProcessorTimeMs":  19500,
+                                        "recordedAt":  "2026-07-24T05:35:55.4333758Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  23827.93,
+                                        "workingSetMiB":  0.02,
+                                        "totalProcessorTimeMs":  19500,
+                                        "recordedAt":  "2026-07-24T05:36:55.4636764Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  23887.95,
+                                        "workingSetMiB":  0.33,
+                                        "totalProcessorTimeMs":  19500,
+                                        "recordedAt":  "2026-07-24T05:37:55.4893179Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  23947.98,
+                                        "workingSetMiB":  0.11,
+                                        "totalProcessorTimeMs":  19500,
+                                        "recordedAt":  "2026-07-24T05:38:55.5177868Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  24008.03,
+                                        "workingSetMiB":  0.55,
+                                        "totalProcessorTimeMs":  19515.62,
+                                        "recordedAt":  "2026-07-24T05:39:55.5630746Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  24068.05,
+                                        "workingSetMiB":  0.5,
+                                        "totalProcessorTimeMs":  19515.62,
+                                        "recordedAt":  "2026-07-24T05:40:55.5861744Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  24128.09,
+                                        "workingSetMiB":  0.2,
+                                        "totalProcessorTimeMs":  19515.62,
+                                        "recordedAt":  "2026-07-24T05:41:55.6218336Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  24188.13,
+                                        "workingSetMiB":  0.2,
+                                        "totalProcessorTimeMs":  19515.62,
+                                        "recordedAt":  "2026-07-24T05:42:55.6720400Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  24248.17,
+                                        "workingSetMiB":  0.2,
+                                        "totalProcessorTimeMs":  19515.62,
+                                        "recordedAt":  "2026-07-24T05:43:55.7058991Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  24308.2,
+                                        "workingSetMiB":  0.2,
+                                        "totalProcessorTimeMs":  19515.62,
+                                        "recordedAt":  "2026-07-24T05:44:55.7383204Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  24368.22,
+                                        "workingSetMiB":  0.04,
+                                        "totalProcessorTimeMs":  19515.62,
+                                        "recordedAt":  "2026-07-24T05:45:55.7614373Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  24428.25,
+                                        "workingSetMiB":  0.27,
+                                        "totalProcessorTimeMs":  19515.62,
+                                        "recordedAt":  "2026-07-24T05:46:55.7846108Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  24488.28,
+                                        "workingSetMiB":  0.27,
+                                        "totalProcessorTimeMs":  19515.62,
+                                        "recordedAt":  "2026-07-24T05:47:55.8127350Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  24548.31,
+                                        "workingSetMiB":  0.14,
+                                        "totalProcessorTimeMs":  19515.62,
+                                        "recordedAt":  "2026-07-24T05:48:55.8444930Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  24608.34,
+                                        "workingSetMiB":  0.49,
+                                        "totalProcessorTimeMs":  19515.62,
+                                        "recordedAt":  "2026-07-24T05:49:55.8724930Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  24668.36,
+                                        "workingSetMiB":  0.25,
+                                        "totalProcessorTimeMs":  19515.62,
+                                        "recordedAt":  "2026-07-24T05:50:55.8931551Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  24728.39,
+                                        "workingSetMiB":  0.05,
+                                        "totalProcessorTimeMs":  19515.62,
+                                        "recordedAt":  "2026-07-24T05:51:55.9281246Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  24788.42,
+                                        "workingSetMiB":  0.02,
+                                        "totalProcessorTimeMs":  19515.62,
+                                        "recordedAt":  "2026-07-24T05:52:55.9547270Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  24848.45,
+                                        "workingSetMiB":  0.02,
+                                        "totalProcessorTimeMs":  19515.62,
+                                        "recordedAt":  "2026-07-24T05:53:55.9937339Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  24908.5,
+                                        "workingSetMiB":  0.02,
+                                        "totalProcessorTimeMs":  19515.62,
+                                        "recordedAt":  "2026-07-24T05:54:56.0393874Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  24968.53,
+                                        "workingSetMiB":  0.02,
+                                        "totalProcessorTimeMs":  19515.62,
+                                        "recordedAt":  "2026-07-24T05:55:56.0730096Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  25028.57,
+                                        "workingSetMiB":  0.02,
+                                        "totalProcessorTimeMs":  19515.62,
+                                        "recordedAt":  "2026-07-24T05:56:56.1236431Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  25088.61,
+                                        "workingSetMiB":  0.02,
+                                        "totalProcessorTimeMs":  19515.62,
+                                        "recordedAt":  "2026-07-24T05:57:56.1510214Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  25148.65,
+                                        "workingSetMiB":  0.02,
+                                        "totalProcessorTimeMs":  19515.62,
+                                        "recordedAt":  "2026-07-24T05:58:56.1844134Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  25208.68,
+                                        "workingSetMiB":  0.5,
+                                        "totalProcessorTimeMs":  19515.62,
+                                        "recordedAt":  "2026-07-24T05:59:56.2131080Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  25268.71,
+                                        "workingSetMiB":  0.96,
+                                        "totalProcessorTimeMs":  19515.62,
+                                        "recordedAt":  "2026-07-24T06:00:56.2425692Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  25328.74,
+                                        "workingSetMiB":  0.8,
+                                        "totalProcessorTimeMs":  19515.62,
+                                        "recordedAt":  "2026-07-24T06:01:56.2715686Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  25388.77,
+                                        "workingSetMiB":  0.03,
+                                        "totalProcessorTimeMs":  19515.62,
+                                        "recordedAt":  "2026-07-24T06:02:56.3205630Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  25448.83,
+                                        "workingSetMiB":  0.53,
+                                        "totalProcessorTimeMs":  19515.62,
+                                        "recordedAt":  "2026-07-24T06:03:56.3641783Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  25508.86,
+                                        "workingSetMiB":  0.16,
+                                        "totalProcessorTimeMs":  19515.62,
+                                        "recordedAt":  "2026-07-24T06:04:56.4016514Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  25568.9,
+                                        "workingSetMiB":  0.04,
+                                        "totalProcessorTimeMs":  19515.62,
+                                        "recordedAt":  "2026-07-24T06:05:56.4334023Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  25628.92,
+                                        "workingSetMiB":  0.02,
+                                        "totalProcessorTimeMs":  19515.62,
+                                        "recordedAt":  "2026-07-24T06:06:56.4666428Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  25688.95,
+                                        "workingSetMiB":  0.33,
+                                        "totalProcessorTimeMs":  19515.62,
+                                        "recordedAt":  "2026-07-24T06:07:56.4936888Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  25748.98,
+                                        "workingSetMiB":  0.33,
+                                        "totalProcessorTimeMs":  19515.62,
+                                        "recordedAt":  "2026-07-24T06:08:56.5207315Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  25809.02,
+                                        "workingSetMiB":  0.55,
+                                        "totalProcessorTimeMs":  19515.62,
+                                        "recordedAt":  "2026-07-24T06:09:56.5568267Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  25869.04,
+                                        "workingSetMiB":  0.53,
+                                        "totalProcessorTimeMs":  19515.62,
+                                        "recordedAt":  "2026-07-24T06:10:56.5799753Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  25929.08,
+                                        "workingSetMiB":  0.49,
+                                        "totalProcessorTimeMs":  19515.62,
+                                        "recordedAt":  "2026-07-24T06:11:56.6145753Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  25989.11,
+                                        "workingSetMiB":  0.2,
+                                        "totalProcessorTimeMs":  19515.62,
+                                        "recordedAt":  "2026-07-24T06:12:56.6474519Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  26049.14,
+                                        "workingSetMiB":  0.1,
+                                        "totalProcessorTimeMs":  19515.62,
+                                        "recordedAt":  "2026-07-24T06:13:56.6779793Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  26109.17,
+                                        "workingSetMiB":  0.02,
+                                        "totalProcessorTimeMs":  19515.62,
+                                        "recordedAt":  "2026-07-24T06:14:56.7080479Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  26169.2,
+                                        "workingSetMiB":  0.02,
+                                        "totalProcessorTimeMs":  19515.62,
+                                        "recordedAt":  "2026-07-24T06:15:56.7307526Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  26229.23,
+                                        "workingSetMiB":  0.27,
+                                        "totalProcessorTimeMs":  19515.62,
+                                        "recordedAt":  "2026-07-24T06:16:56.7614225Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  26289.25,
+                                        "workingSetMiB":  0.27,
+                                        "totalProcessorTimeMs":  19515.62,
+                                        "recordedAt":  "2026-07-24T06:17:56.7815766Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  26349.27,
+                                        "workingSetMiB":  0.33,
+                                        "totalProcessorTimeMs":  19515.62,
+                                        "recordedAt":  "2026-07-24T06:18:56.8116163Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  26409.3,
+                                        "workingSetMiB":  0.55,
+                                        "totalProcessorTimeMs":  19531.25,
+                                        "recordedAt":  "2026-07-24T06:19:56.8363127Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  26469.33,
+                                        "workingSetMiB":  0.55,
+                                        "totalProcessorTimeMs":  19531.25,
+                                        "recordedAt":  "2026-07-24T06:20:56.8658478Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  26529.35,
+                                        "workingSetMiB":  0.55,
+                                        "totalProcessorTimeMs":  19531.25,
+                                        "recordedAt":  "2026-07-24T06:21:56.8862166Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  26589.37,
+                                        "workingSetMiB":  0.44,
+                                        "totalProcessorTimeMs":  19531.25,
+                                        "recordedAt":  "2026-07-24T06:22:56.9205488Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  26649.42,
+                                        "workingSetMiB":  0.02,
+                                        "totalProcessorTimeMs":  19531.25,
+                                        "recordedAt":  "2026-07-24T06:23:56.9640884Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  26709.48,
+                                        "workingSetMiB":  0.02,
+                                        "totalProcessorTimeMs":  19531.25,
+                                        "recordedAt":  "2026-07-24T06:24:57.0184663Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  26769.51,
+                                        "workingSetMiB":  0.02,
+                                        "totalProcessorTimeMs":  19531.25,
+                                        "recordedAt":  "2026-07-24T06:25:57.0479219Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  26829.54,
+                                        "workingSetMiB":  0.02,
+                                        "totalProcessorTimeMs":  19531.25,
+                                        "recordedAt":  "2026-07-24T06:26:57.0800294Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  26889.57,
+                                        "workingSetMiB":  0.02,
+                                        "totalProcessorTimeMs":  19531.25,
+                                        "recordedAt":  "2026-07-24T06:27:57.1092269Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  26949.6,
+                                        "workingSetMiB":  0.02,
+                                        "totalProcessorTimeMs":  19531.25,
+                                        "recordedAt":  "2026-07-24T06:28:57.1743885Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  27009.67,
+                                        "workingSetMiB":  0.5,
+                                        "totalProcessorTimeMs":  19531.25,
+                                        "recordedAt":  "2026-07-24T06:29:57.2039279Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  27069.69,
+                                        "workingSetMiB":  0.5,
+                                        "totalProcessorTimeMs":  19531.25,
+                                        "recordedAt":  "2026-07-24T06:30:57.2356728Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  27129.73,
+                                        "workingSetMiB":  0.5,
+                                        "totalProcessorTimeMs":  19531.25,
+                                        "recordedAt":  "2026-07-24T06:31:57.2678293Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  27189.76,
+                                        "workingSetMiB":  0.02,
+                                        "totalProcessorTimeMs":  19531.25,
+                                        "recordedAt":  "2026-07-24T06:32:57.3005967Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  27249.79,
+                                        "workingSetMiB":  0.07,
+                                        "totalProcessorTimeMs":  19531.25,
+                                        "recordedAt":  "2026-07-24T06:33:57.3322845Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  27309.82,
+                                        "workingSetMiB":  0.02,
+                                        "totalProcessorTimeMs":  19531.25,
+                                        "recordedAt":  "2026-07-24T06:34:57.3618353Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  27369.85,
+                                        "workingSetMiB":  0.02,
+                                        "totalProcessorTimeMs":  19531.25,
+                                        "recordedAt":  "2026-07-24T06:35:57.4015890Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  27429.89,
+                                        "workingSetMiB":  0.02,
+                                        "totalProcessorTimeMs":  19531.25,
+                                        "recordedAt":  "2026-07-24T06:36:57.4310698Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  27489.93,
+                                        "workingSetMiB":  0.07,
+                                        "totalProcessorTimeMs":  19531.25,
+                                        "recordedAt":  "2026-07-24T06:37:57.4723910Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  27549.96,
+                                        "workingSetMiB":  0.33,
+                                        "totalProcessorTimeMs":  19531.25,
+                                        "recordedAt":  "2026-07-24T06:38:57.5032206Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  27609.99,
+                                        "workingSetMiB":  0.49,
+                                        "totalProcessorTimeMs":  19546.88,
+                                        "recordedAt":  "2026-07-24T06:39:57.5331276Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  27670.03,
+                                        "workingSetMiB":  0.49,
+                                        "totalProcessorTimeMs":  19546.88,
+                                        "recordedAt":  "2026-07-24T06:40:57.5732030Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  27730.07,
+                                        "workingSetMiB":  0.11,
+                                        "totalProcessorTimeMs":  19546.88,
+                                        "recordedAt":  "2026-07-24T06:41:57.6107413Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  27790.11,
+                                        "workingSetMiB":  0.02,
+                                        "totalProcessorTimeMs":  19546.88,
+                                        "recordedAt":  "2026-07-24T06:42:57.6475152Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  27850.15,
+                                        "workingSetMiB":  0.02,
+                                        "totalProcessorTimeMs":  19546.88,
+                                        "recordedAt":  "2026-07-24T06:43:57.6843119Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  27910.18,
+                                        "workingSetMiB":  0.02,
+                                        "totalProcessorTimeMs":  19546.88,
+                                        "recordedAt":  "2026-07-24T06:44:57.7207657Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  27970.22,
+                                        "workingSetMiB":  0.02,
+                                        "totalProcessorTimeMs":  19546.88,
+                                        "recordedAt":  "2026-07-24T06:45:57.7543393Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  28030.25,
+                                        "workingSetMiB":  0.02,
+                                        "totalProcessorTimeMs":  19546.88,
+                                        "recordedAt":  "2026-07-24T06:46:57.7940104Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  28090.29,
+                                        "workingSetMiB":  0.27,
+                                        "totalProcessorTimeMs":  19546.88,
+                                        "recordedAt":  "2026-07-24T06:47:57.8344545Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  28150.33,
+                                        "workingSetMiB":  0.04,
+                                        "totalProcessorTimeMs":  19546.88,
+                                        "recordedAt":  "2026-07-24T06:48:57.8676289Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  28210.37,
+                                        "workingSetMiB":  0.49,
+                                        "totalProcessorTimeMs":  19546.88,
+                                        "recordedAt":  "2026-07-24T06:49:57.9032302Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  28270.39,
+                                        "workingSetMiB":  0.49,
+                                        "totalProcessorTimeMs":  19546.88,
+                                        "recordedAt":  "2026-07-24T06:50:57.9298008Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  28330.42,
+                                        "workingSetMiB":  0.02,
+                                        "totalProcessorTimeMs":  19546.88,
+                                        "recordedAt":  "2026-07-24T06:51:57.9596948Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  28390.45,
+                                        "workingSetMiB":  0.02,
+                                        "totalProcessorTimeMs":  19546.88,
+                                        "recordedAt":  "2026-07-24T06:52:57.9941670Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  28450.51,
+                                        "workingSetMiB":  0.39,
+                                        "totalProcessorTimeMs":  19546.88,
+                                        "recordedAt":  "2026-07-24T06:53:58.0857536Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  28510.58,
+                                        "workingSetMiB":  0.04,
+                                        "totalProcessorTimeMs":  19546.88,
+                                        "recordedAt":  "2026-07-24T06:54:58.1163831Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  28570.64,
+                                        "workingSetMiB":  0.03,
+                                        "totalProcessorTimeMs":  19546.88,
+                                        "recordedAt":  "2026-07-24T06:55:58.1802937Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  28630.68,
+                                        "workingSetMiB":  0.06,
+                                        "totalProcessorTimeMs":  19546.88,
+                                        "recordedAt":  "2026-07-24T06:56:58.2176368Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  28690.71,
+                                        "workingSetMiB":  0.02,
+                                        "totalProcessorTimeMs":  19546.88,
+                                        "recordedAt":  "2026-07-24T06:57:58.2533829Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  28750.75,
+                                        "workingSetMiB":  0.02,
+                                        "totalProcessorTimeMs":  19546.88,
+                                        "recordedAt":  "2026-07-24T06:58:58.2901062Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  28810.78,
+                                        "workingSetMiB":  0.49,
+                                        "totalProcessorTimeMs":  19546.88,
+                                        "recordedAt":  "2026-07-24T06:59:58.3126557Z"
+                                    }
+                                ],
+                    "closeRequestAccepted":  true,
+                    "processStayedAlive":  true,
+                    "cpuTimeDeltaMs":  19390.62,
+                    "cpuAveragePercent":  0.0034,
+                    "memoryP95MiB":  31.53,
+                    "memoryGrowthMiB":  -31.01,
+                    "durationSatisfied":  true,
+                    "cpuThresholdSatisfied":  true,
+                    "memoryThresholdSatisfied":  true,
+                    "memoryGrowthThresholdSatisfied":  true
+                },
+    "limitations":  {
+                        "eightHourIdleMeasured":  true,
+                        "sevenDayLongRunMeasured":  false,
+                        "sleepWakeMeasured":  false,
+                        "realNetworkMeasured":  false,
+                        "namedQualitySignoff":  false
+                    },
+    "gateSatisfied":  false,
+    "result":  "automated-eight-hour-passed"
+}

@@ -1,0 +1,13 @@
+# 仅用于网络受限环境的显式构建命令：
+# cargo --config .cargo/rsproxy.toml check --manifest-path src-tauri/Cargo.toml
+# 常规 cargo 命令仍使用 crates.io。
+
+[source.crates-io]
+replace-with = "rsproxy-sparse"
+
+[source.rsproxy-sparse]
+registry = "sparse+https://rsproxy.cn/index/"
+
+[http]
+proxy = ""
+multiplexing = false

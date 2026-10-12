@@ -1,0 +1,79 @@
+{
+    "schemaVersion":  "1.0",
+    "product":  "WeatherPoem",
+    "version":  "0.2.0",
+    "testedAt":  "2026-09-09T18:46:16.8457800Z",
+    "os":  "Microsoft Windows NT 10.0.26100.0",
+    "architecture":  "AMD64",
+    "executable":  {
+                       "path":  "E:\\weatherpoem\\src-tauri\\target\\release\\weatherpoem.exe",
+                       "sha256":  "00DB4B15F96E151CD7AF795A197E422F39ABFC3CE13E4AB298BF1DE7EC2DD74B",
+                       "authenticodeStatus":  "NotSigned"
+                   },
+    "displayObservation":  {
+                               "physicalMonitorProbeCount":  2,
+                               "logicalDisplayCount":  2,
+                               "extendedDesktopTested":  true,
+                               "logicalScreens":  [
+                                                      {
+                                                          "deviceName":  "\\\\.\\DISPLAY5",
+                                                          "primary":  true,
+                                                          "bounds":  {
+                                                                         "x":  0,
+                                                                         "y":  0,
+                                                                         "width":  1920,
+                                                                         "height":  1080
+                                                                     },
+                                                          "workingArea":  {
+                                                                              "x":  0,
+                                                                              "y":  0,
+                                                                              "width":  1920,
+                                                                              "height":  1032
+                                                                          }
+                                                      },
+                                                      {
+                                                          "deviceName":  "\\\\.\\DISPLAY1",
+                                                          "primary":  false,
+                                                          "bounds":  {
+                                                                         "x":  1920,
+                                                                         "y":  0,
+                                                                         "width":  1920,
+                                                                         "height":  1080
+                                                                     },
+                                                          "workingArea":  {
+                                                                              "x":  1920,
+                                                                              "y":  0,
+                                                                              "width":  1920,
+                                                                              "height":  1032
+                                                                          }
+                                                      }
+                                                  ],
+                               "windowDpi":  96
+                           },
+    "position":  {
+                     "window":  {
+                                    "left":  1452,
+                                    "top":  321,
+                                    "right":  1898,
+                                    "bottom":  1010,
+                                    "width":  446,
+                                    "height":  689
+                                },
+                     "expectedMargin":  22,
+                     "tolerance":  4,
+                     "actualRightGap":  22,
+                     "actualBottomGap":  22
+                 },
+    "checks":  {
+                   "currentMonitorDetected":  "passed",
+                   "bottomRightMargin":  "passed",
+                   "insideWorkingArea":  "passed",
+                   "closeRequestHidesToTray":  "passed",
+                   "processRemainsAfterClose":  "passed"
+               },
+    "limitations":  {
+                        "extendedDesktopCrossMonitor":  "available-but-not-executed",
+                        "systemScaleMatrix":  "not-tested"
+                    },
+    "result":  "passed"
+}

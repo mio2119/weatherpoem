@@ -1,0 +1,60 @@
+{
+  "schemaVersion": "1.0",
+  "product": "WeatherPoem",
+  "identifier": "cn.weatherpoem.desktop",
+  "version": "0.2.0",
+  "channel": "trial",
+  "generatedDate": "2026-09-10",
+  "trustLevel": "unsigned-trial",
+  "notice": "未签名 M1 试用包，仅用于受控内部测试；不得冒充正式公开发行版。",
+  "artifacts": [
+    {
+      "kind": "portable",
+      "name": "weatherpoem.exe",
+      "size": 25101928,
+      "sha256": "00DB4B15F96E151CD7AF795A197E422F39ABFC3CE13E4AB298BF1DE7EC2DD74B",
+      "downloadUrl": null,
+      "signature": {
+        "status": "NotSigned",
+        "signerSubject": null,
+        "signerThumbprint": null,
+        "signerNotBefore": null,
+        "signerNotAfter": null,
+        "timestampSubject": null,
+        "timestampThumbprint": null
+      }
+    },
+    {
+      "kind": "nsis",
+      "name": "WeatherPoem_0.2.0_x64-setup.exe",
+      "size": 5868651,
+      "sha256": "FD46A8E141C01D3B1BBB72FE685C48D8E099465C5A744B8CC930BBF947A29EA5",
+      "downloadUrl": null,
+      "signature": {
+        "status": "NotSigned",
+        "signerSubject": null,
+        "signerThumbprint": null,
+        "signerNotBefore": null,
+        "signerNotAfter": null,
+        "timestampSubject": null,
+        "timestampThumbprint": null
+      }
+    },
+    {
+      "kind": "msi",
+      "name": "WeatherPoem_0.2.0_x64_en-US.msi",
+      "size": 17121280,
+      "sha256": "4A26D274384A9D39EBC75C967C2448C22DE66AAF4E3BAD640B0D5584C9C2352D",
+      "downloadUrl": null,
+      "signature": {
+        "status": "NotSigned",
+        "signerSubject": null,
+        "signerThumbprint": null,
+        "signerNotBefore": null,
+        "signerNotAfter": null,
+        "timestampSubject": null,
+        "timestampThumbprint": null
+      }
+    }
+  ]
+}

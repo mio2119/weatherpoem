@@ -1,0 +1,100 @@
+{
+  "schemaVersion": "1.0",
+  "product": "WeatherPoem",
+  "version": "0.2.0",
+  "scannedAt": "2026-09-09T18:49:32.101Z",
+  "locks": {
+    "npm": {
+      "name": "package-lock.json",
+      "bytes": 135118,
+      "sha256": "B25F08E34940D57B7A4DCB37CBDE24A0D9EE18DBFB450BDECC88BB5FB1BB7934"
+    },
+    "cargo": {
+      "name": "src-tauri/Cargo.lock",
+      "bytes": 146503,
+      "sha256": "D8E86E63299DCEC3E5FF9DC66D6D796159F51BBAF9085D4F0B3D5D4C7A82302A"
+    }
+  },
+  "scanners": {
+    "npm": {
+      "source": "npm-audit-v2",
+      "dependencyCount": 268,
+      "vulnerabilities": {
+        "info": 0,
+        "low": 0,
+        "moderate": 0,
+        "high": 0,
+        "critical": 0,
+        "total": 0
+      }
+    },
+    "rust": {
+      "source": "osv-querybatch-v1",
+      "endpoint": "https://api.osv.dev/v1/querybatch",
+      "ecosystem": "crates.io",
+      "target": "x86_64-pc-windows-msvc",
+      "edges": [
+        "normal",
+        "build"
+      ],
+      "packageCount": 285,
+      "findingCount": 5,
+      "vulnerabilityCount": 0,
+      "informationalCount": 5,
+      "findings": [
+        {
+          "id": "RUSTSEC-2025-0075",
+          "modified": "2025-10-22T14:41:04Z",
+          "package": "unic-char-range",
+          "version": "0.9.0",
+          "summary": "`unic-char-range` is unmaintained",
+          "informational": "unmaintained",
+          "severity": []
+        },
+        {
+          "id": "RUSTSEC-2025-0080",
+          "modified": "2025-10-21T11:12:59Z",
+          "package": "unic-common",
+          "version": "0.9.0",
+          "summary": "`unic-common` is unmaintained",
+          "informational": "unmaintained",
+          "severity": []
+        },
+        {
+          "id": "RUSTSEC-2025-0081",
+          "modified": "2025-10-21T11:12:59Z",
+          "package": "unic-char-property",
+          "version": "0.9.0",
+          "summary": "`unic-char-property` is unmaintained",
+          "informational": "unmaintained",
+          "severity": []
+        },
+        {
+          "id": "RUSTSEC-2025-0098",
+          "modified": "2025-10-21T11:12:59Z",
+          "package": "unic-ucd-version",
+          "version": "0.9.0",
+          "summary": "`unic-ucd-version` is unmaintained",
+          "informational": "unmaintained",
+          "severity": []
+        },
+        {
+          "id": "RUSTSEC-2025-0100",
+          "modified": "2025-10-21T11:12:59Z",
+          "package": "unic-ucd-ident",
+          "version": "0.9.0",
+          "summary": "`unic-ucd-ident` is unmaintained",
+          "informational": "unmaintained",
+          "severity": []
+        }
+      ]
+    }
+  },
+  "limitations": {
+    "pointInTimeKnownVulnerabilitiesOnly": true,
+    "sourceReviewStillRequired": true,
+    "cargoAuditNativeCompleted": false,
+    "cargoAuditReason": "本报告只覆盖 npm audit 与 Windows 目标 OSV；原生 RustSec 结果由 WeatherPoem_0.2.0_CARGO_AUDIT.json 独立记录和复核。"
+  },
+  "result": "passed"
+}

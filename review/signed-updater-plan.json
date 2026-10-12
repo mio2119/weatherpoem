@@ -1,0 +1,292 @@
+{
+  "schemaVersion": "1.0",
+  "planVersion": "1.0",
+  "product": "WeatherPoem",
+  "appVersion": "0.2.0",
+  "generatedAt": "2026-09-09T18:58:25.788Z",
+  "status": "implementation-plan-ready-not-enabled",
+  "inputs": {
+    "packageJson": {
+      "path": "package.json",
+      "sha256": "2E9DDA60A4664924B4A84EA71DDE11A2FC6E14548C911785B3DF5E63E75D5D5F"
+    },
+    "releaseManifest": {
+      "path": "output/WeatherPoem_0.2.0_RELEASE.json",
+      "sha256": "5D4FAF610A9EB29F9833055A12B943F870410D5C62F9D17D8BEB3C25F29F619B"
+    },
+    "tauriConfig": {
+      "path": "src-tauri/tauri.conf.json",
+      "sha256": "7CD31C25618D68E2683538DB617C60BBF2C85B391B7D18CF6B77A082D89CF855"
+    },
+    "cargoToml": {
+      "path": "src-tauri/Cargo.toml",
+      "sha256": "68C49068CC3BCBB2D6F6C09AB447067363DA764D693A07533B78D7DFDAB81577"
+    },
+    "cargoLock": {
+      "path": "src-tauri/Cargo.lock",
+      "sha256": "D8E86E63299DCEC3E5FF9DC66D6D796159F51BBAF9085D4F0B3D5D4C7A82302A"
+    },
+    "libRs": {
+      "path": "src-tauri/src/lib.rs",
+      "sha256": "E531BA451CC4972DDF9FF54E1D00BDD2A8D7C2EBD30889CC237DA9EF715205B3"
+    }
+  },
+  "baseline": {
+    "releaseChannel": "trial",
+    "releaseTrustLevel": "unsigned-trial",
+    "portableSha256": "00DB4B15F96E151CD7AF795A197E422F39ABFC3CE13E4AB298BF1DE7EC2DD74B",
+    "updaterCargoDependencyPresent": false,
+    "updaterPluginInitialized": false,
+    "updaterConfigPresent": false,
+    "updaterArtifactsEnabled": false,
+    "endpointConfigured": false,
+    "publicKeyConfigured": false
+  },
+  "officialConstraints": {
+    "createUpdaterArtifacts": true,
+    "v1CompatibilityRequired": false,
+    "publicKeyMustBeLiteralNotPath": true,
+    "productionEndpointsRequireTls": true,
+    "insecureTransportAllowed": false,
+    "supportedEndpointVariables": [
+      "{{current_version}}",
+      "{{target}}",
+      "{{arch}}"
+    ],
+    "windowsInstallMode": "passive",
+    "privateKeyEnvironmentVariables": [
+      "TAURI_SIGNING_PRIVATE_KEY",
+      "TAURI_SIGNING_PRIVATE_KEY_PASSWORD"
+    ],
+    "sources": {
+      "updater": "https://v2.tauri.app/plugin/updater/",
+      "cli": "https://v2.tauri.app/reference/cli/#signer",
+      "windowsCodeSigning": "https://v2.tauri.app/distribute/sign/windows/"
+    }
+  },
+  "proposedConfiguration": {
+    "cargoDependency": "tauri-plugin-updater@2",
+    "frontendDependency": "@tauri-apps/plugin-updater@2",
+    "createUpdaterArtifacts": true,
+    "publicKey": null,
+    "endpoints": [],
+    "dangerousInsecureTransportProtocol": false,
+    "windowsInstallMode": "passive",
+    "endpointHostAllowlist": [],
+    "clientCheckPolicy": "manual-settings-check-plus-low-frequency-background-check",
+    "automaticInstallWithoutUserConsent": false
+  },
+  "keyManagement": {
+    "generator": "tauri-cli-signer",
+    "publicKeyLocation": "src-tauri/tauri.conf.json",
+    "privateKeyRepositoryAllowed": false,
+    "privateKeyClientAllowed": false,
+    "privateKeyStorageDecision": null,
+    "keyCustodian": null,
+    "recoveryCustodian": null,
+    "signingRunnerDecision": null,
+    "rotationStrategy": "old-key-signed-bridge-release-embeds-new-public-key",
+    "revocationAndCompromiseRunbookApproved": false
+  },
+  "endpointContract": {
+    "baseUrl": null,
+    "transport": "https-only",
+    "allowedVariables": [
+      "{{current_version}}",
+      "{{target}}",
+      "{{arch}}"
+    ],
+    "responseFields": [
+      "version",
+      "notes",
+      "pub_date",
+      "platforms.<target-arch>.signature",
+      "platforms.<target-arch>.url"
+    ],
+    "artifactUrlRequiresHttps": true,
+    "artifactHashPublishedSeparately": true,
+    "downgradeAllowed": false,
+    "stagedRolloutPolicy": null,
+    "availabilityOwner": null
+  },
+  "releasePipeline": [
+    {
+      "order": 1,
+      "action": "在受控 Windows 发布机从已复核源码和锁文件构建。"
+    },
+    {
+      "order": 2,
+      "action": "由机密存储注入 updater 私钥环境变量；日志和构建产物不得包含私钥。"
+    },
+    {
+      "order": 3,
+      "action": "生成 createUpdaterArtifacts=true 的更新产物与 .sig，并验证固化公钥。"
+    },
+    {
+      "order": 4,
+      "action": "对 Windows 可执行文件和安装包完成独立 Authenticode 与可信时间戳签名。"
+    },
+    {
+      "order": 5,
+      "action": "生成 production 清单、哈希和更新元数据，在上传前运行全部正反场景。"
+    },
+    {
+      "order": 6,
+      "action": "先上传不可变版本化产物，再原子切换更新元数据；保留前一稳定版用于前向修复。"
+    },
+    {
+      "order": 7,
+      "action": "从公开 HTTPS 地址重下并复验 updater 签名、Authenticode、哈希与安装。"
+    }
+  ],
+  "testMatrix": [
+    {
+      "id": "UPD-01",
+      "name": "当前已是最新版",
+      "expected": "端点返回无更新语义，客户端不下载、不重启且不改变用户数据。",
+      "executor": null,
+      "executedAt": null,
+      "result": null,
+      "evidence": []
+    },
+    {
+      "id": "UPD-02",
+      "name": "有效签名的升级",
+      "expected": "Windows x86_64 正确下载、验签、安装更高版本并保留设置、收藏和反馈。",
+      "executor": null,
+      "executedAt": null,
+      "result": null,
+      "evidence": []
+    },
+    {
+      "id": "UPD-03",
+      "name": "更新包字节损坏",
+      "expected": "签名校验失败，拒绝安装，当前版本继续可用。",
+      "executor": null,
+      "executedAt": null,
+      "result": null,
+      "evidence": []
+    },
+    {
+      "id": "UPD-04",
+      "name": "签名字段被篡改",
+      "expected": "签名校验失败，拒绝安装且记录脱敏错误。",
+      "executor": null,
+      "executedAt": null,
+      "result": null,
+      "evidence": []
+    },
+    {
+      "id": "UPD-05",
+      "name": "错误私钥签名",
+      "expected": "固化公钥无法验证，拒绝安装。",
+      "executor": null,
+      "executedAt": null,
+      "result": null,
+      "evidence": []
+    },
+    {
+      "id": "UPD-06",
+      "name": "离线、超时和 TLS 失败",
+      "expected": "不破坏启动与本地诗笺；可稍后重试，不进入循环提示。",
+      "executor": null,
+      "executedAt": null,
+      "result": null,
+      "evidence": []
+    },
+    {
+      "id": "UPD-07",
+      "name": "主端点非 2XX 后备用端点",
+      "expected": "只按官方端点回退语义尝试备用 HTTPS 地址，并记录实际命中端点。",
+      "executor": null,
+      "executedAt": null,
+      "result": null,
+      "evidence": []
+    },
+    {
+      "id": "UPD-08",
+      "name": "降级版本元数据",
+      "expected": "默认拒绝低于当前版本的更新，不以降级覆盖用户安装。",
+      "executor": null,
+      "executedAt": null,
+      "result": null,
+      "evidence": []
+    },
+    {
+      "id": "UPD-09",
+      "name": "前向修复回滚",
+      "expected": "用更高补丁版本恢复已知稳定行为，不伪造版本号执行静默降级。",
+      "executor": null,
+      "executedAt": null,
+      "result": null,
+      "evidence": []
+    },
+    {
+      "id": "UPD-10",
+      "name": "元数据平台或架构不匹配",
+      "expected": "Windows x86_64 客户端不下载其他平台/架构产物。",
+      "executor": null,
+      "executedAt": null,
+      "result": null,
+      "evidence": []
+    },
+    {
+      "id": "UPD-11",
+      "name": "安装权限与被占用文件",
+      "expected": "passive 模式给出可理解进度；权限不足或文件占用时安全失败并保留旧版。",
+      "executor": null,
+      "executedAt": null,
+      "result": null,
+      "evidence": []
+    },
+    {
+      "id": "UPD-12",
+      "name": "公钥轮换桥接版本",
+      "expected": "先由旧私钥签署嵌入新公钥的桥接版本；未安装桥接版本的客户端仍有明确支持策略。",
+      "executor": null,
+      "executedAt": null,
+      "result": null,
+      "evidence": []
+    }
+  ],
+  "requiredDecisions": [
+    {
+      "id": "updater-key-custody",
+      "ownerRole": "组织发布负责人",
+      "decision": null
+    },
+    {
+      "id": "updater-endpoint-and-hostname",
+      "ownerRole": "发布与后端负责人",
+      "decision": null
+    },
+    {
+      "id": "updater-rollout-and-forward-rollback",
+      "ownerRole": "产品与发布负责人",
+      "decision": null
+    },
+    {
+      "id": "updater-incident-and-key-compromise",
+      "ownerRole": "安全负责人",
+      "decision": null
+    }
+  ],
+  "approval": {
+    "releaseOwner": null,
+    "backendOwner": null,
+    "securityOwner": null,
+    "decision": null,
+    "approvedAt": null,
+    "evidencePath": "review/evidence/RQT-20-signed-updater.json"
+  },
+  "limitations": {
+    "pluginIntegrated": false,
+    "keysGenerated": false,
+    "endpointDeployed": false,
+    "signedArtifactsGenerated": false,
+    "scenariosExecuted": false,
+    "namedApprovalCompleted": false
+  },
+  "gateSatisfied": false,
+  "result": "implementation-plan-complete-signed-updater-not-implemented"
+}

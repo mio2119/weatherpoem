@@ -1,0 +1,19 @@
+{
+    "schemaVersion":  "1.0",
+    "product":  "WeatherPoem",
+    "appVersion":  "0.2.0",
+    "runId":  "9b325c9b23a949d3ad0092c722912ce4",
+    "startedAt":  "2026-07-23T22:59:45.5259046Z",
+    "requestedDurationMinutes":  480,
+    "sampleIntervalSeconds":  60,
+    "launcherProcessId":  77768,
+    "artifact":  {
+                     "path":  "src-tauri/target/release/weatherpoem.exe",
+                     "sha256":  "830FBE885FCCECD24C43A9209085F053CA78687558DE7A3B466A00024AC310A5"
+                 },
+    "checkpoint":  "output/WeatherPoem_0.2.0_PERFORMANCE_LONG_RUN_CHECKPOINT.json",
+    "report":  "output/WeatherPoem_0.2.0_PERFORMANCE_8H.json",
+    "stdout":  "output/WeatherPoem_0.2.0_PERFORMANCE_8H_9b325c9b23a949d3ad0092c722912ce4.stdout.log",
+    "stderr":  "output/WeatherPoem_0.2.0_PERFORMANCE_8H_9b325c9b23a949d3ad0092c722912ce4.stderr.log",
+    "status":  "launched"
+}

@@ -1,0 +1,52 @@
+{
+    "schemaVersion":  "1.0",
+    "product":  "WeatherPoem",
+    "version":  "0.2.0",
+    "testedAt":  "2026-09-09T18:46:03.6421016Z",
+    "os":  "Microsoft Windows NT 10.0.26100.0",
+    "architecture":  "AMD64",
+    "installer":  {
+                      "path":  "E:\\weatherpoem\\src-tauri\\target\\release\\bundle\\nsis\\WeatherPoem_0.2.0_x64-setup.exe",
+                      "sha256":  "FD46A8E141C01D3B1BBB72FE685C48D8E099465C5A744B8CC930BBF947A29EA5",
+                      "authenticodeStatus":  "NotSigned"
+                  },
+    "isolation":  {
+                      "existingInstallationProtected":  true,
+                      "temporaryInstallRoot":  "C:\\Users\\zzh\\AppData\\Local\\Temp\\weatherpoem-nsis-lifecycle-099016928c1a4d45acc8527db6d6d973",
+                      "applicationDataDeleted":  false,
+                      "applicationDataBefore":  [
+                                                    {
+                                                        "path":  "C:\\Users\\zzh\\AppData\\Roaming\\cn.weatherpoem.desktop",
+                                                        "exists":  true
+                                                    },
+                                                    {
+                                                        "path":  "C:\\Users\\zzh\\AppData\\Local\\cn.weatherpoem.desktop",
+                                                        "exists":  true
+                                                    }
+                                                ],
+                      "applicationDataAfter":  [
+                                                   {
+                                                       "path":  "C:\\Users\\zzh\\AppData\\Roaming\\cn.weatherpoem.desktop",
+                                                       "exists":  true
+                                                   },
+                                                   {
+                                                       "path":  "C:\\Users\\zzh\\AppData\\Local\\cn.weatherpoem.desktop",
+                                                       "exists":  true
+                                                   }
+                                               ]
+                  },
+    "checks":  {
+                   "silentInstall":  "passed",
+                   "installedExecutableCount":  1,
+                   "uninstallExecutableCount":  1,
+                   "uninstallRegistration":  "passed",
+                   "installedLaunchSeconds":  6,
+                   "installedLaunch":  "passed",
+                   "silentUninstall":  "passed",
+                   "installDirectoryRemoved":  "passed",
+                   "uninstallRegistrationRemoved":  "passed",
+                   "shortcutResidue":  "passed",
+                   "autostartResidue":  "passed"
+               },
+    "result":  "passed"
+}

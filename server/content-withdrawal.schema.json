@@ -1,0 +1,47 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://weatherpoem.example/schemas/content-withdrawal.schema.json",
+  "title": "WeatherPoem content withdrawal manifest",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "contentVersion",
+    "revision",
+    "issuedAt",
+    "suspendRecommendations",
+    "withdrawnWorkIds"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": "1.0"
+    },
+    "contentVersion": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 64
+    },
+    "revision": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 2147483647
+    },
+    "issuedAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "suspendRecommendations": {
+      "type": "boolean"
+    },
+    "withdrawnWorkIds": {
+      "type": "array",
+      "maxItems": 500,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 120
+      }
+    }
+  }
+}

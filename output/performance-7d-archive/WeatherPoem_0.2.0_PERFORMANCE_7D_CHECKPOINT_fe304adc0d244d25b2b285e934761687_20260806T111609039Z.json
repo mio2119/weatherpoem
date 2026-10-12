@@ -1,0 +1,21 @@
+{
+    "schemaVersion":  "1.0",
+    "product":  "WeatherPoem",
+    "appVersion":  "0.2.0",
+    "mode":  "seven-day",
+    "status":  "running",
+    "startedAt":  "2026-08-05T10:40:17.6447891Z",
+    "updatedAt":  "2026-08-06T02:48:57.1926812Z",
+    "requestedDurationMinutes":  10080,
+    "sampleIntervalSeconds":  60,
+    "processId":  116244,
+    "sampleCount":  343,
+    "lastSample":  {
+                       "elapsedSeconds":  58117.99,
+                       "workingSetMiB":  1.48,
+                       "totalProcessorTimeMs":  234.38,
+                       "recordedAt":  "2026-08-06T02:48:57.1916813Z"
+                   },
+    "message":  "",
+    "runId":  "fe304adc0d244d25b2b285e934761687"
+}

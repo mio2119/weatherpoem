@@ -1,0 +1,48 @@
+{
+  "schemaVersion": "1.0",
+  "gateId": "RQT-23",
+  "product": "WeatherPoem",
+  "appVersion": "0.2.0",
+  "contentVersion": "2026.07.1",
+  "executedBy": [
+    {
+      "role": "内容权利负责人",
+      "name": "",
+      "organization": ""
+    },
+    {
+      "role": "设计资产负责人",
+      "name": "",
+      "organization": ""
+    },
+    {
+      "role": "数据服务负责人",
+      "name": "",
+      "organization": ""
+    }
+  ],
+  "approvedBy": {
+    "role": "法务复核人",
+    "name": "",
+    "organization": ""
+  },
+  "executedAt": "",
+  "approvedAt": "",
+  "decision": "",
+  "scope": {
+    "projectCodeAndDocsCleared": false,
+    "poetryEditionProvenanceCleared": false,
+    "modernEditorialOwnershipCleared": false,
+    "visualAssetsCleared": false,
+    "noBundledFontFilesConfirmed": false,
+    "openMeteoAttributionImplemented": false,
+    "openMeteoServiceTierApproved": false,
+    "thirdPartyNoticesGeneratedAndReviewed": false,
+    "disabledServicesRequireFreshApproval": true
+  },
+  "evidenceItems": [],
+  "limitations": [],
+  "inventoryPath": "review/content-asset-license-inventory.json",
+  "inventorySha256": "",
+  "notes": "模板中的空值和 false 必须由真实责任人依据原始材料填写，不得作为通过证据直接改名使用。"
+}

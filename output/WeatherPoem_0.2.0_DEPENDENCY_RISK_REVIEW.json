@@ -1,0 +1,98 @@
+{
+  "schemaVersion": "1.0",
+  "product": "WeatherPoem",
+  "appVersion": "0.2.0",
+  "generatedAt": "2026-09-09T18:51:47.614Z",
+  "status": "review-ready-not-approved",
+  "inputs": {
+    "cargoAuditReport": "output/WeatherPoem_0.2.0_CARGO_AUDIT.json",
+    "cargoAuditSha256": "D4303DF89B580DF72E0DE7602D9E9456289B471043A3D273260941DEFC868D74",
+    "cargoLock": "src-tauri/Cargo.lock",
+    "cargoLockSha256": "D8E86E63299DCEC3E5FF9DC66D6D796159F51BBAF9085D4F0B3D5D4C7A82302A",
+    "targetTriple": "x86_64-pc-windows-msvc"
+  },
+  "currentTarget": {
+    "vulnerabilityCount": 0,
+    "blockingWarningCount": 0,
+    "unmaintainedWarningCount": 5,
+    "unmaintainedWarnings": [
+      {
+        "advisoryId": "RUSTSEC-2025-0081",
+        "package": "unic-char-property",
+        "version": "0.9.0"
+      },
+      {
+        "advisoryId": "RUSTSEC-2025-0075",
+        "package": "unic-char-range",
+        "version": "0.9.0"
+      },
+      {
+        "advisoryId": "RUSTSEC-2025-0080",
+        "package": "unic-common",
+        "version": "0.9.0"
+      },
+      {
+        "advisoryId": "RUSTSEC-2025-0100",
+        "package": "unic-ucd-ident",
+        "version": "0.9.0"
+      },
+      {
+        "advisoryId": "RUSTSEC-2025-0098",
+        "package": "unic-ucd-version",
+        "version": "0.9.0"
+      }
+    ]
+  },
+  "dependencyCluster": {
+    "independentRiskCount": 1,
+    "clusteredWarningCount": 5,
+    "frameworkPackage": "tauri-utils@2.9.3",
+    "rootPackage": "urlpattern@0.3.0",
+    "leafPackage": "unic-ucd-ident@0.9.0",
+    "path": [
+      "weatherpoem@0.2.0",
+      "tauri@2.11.5",
+      "tauri-utils@2.9.3",
+      "urlpattern@0.3.0",
+      "unic-ucd-ident@0.9.0"
+    ]
+  },
+  "upstream": {
+    "checkedAt": "2026-09-09T18:51:47.614Z",
+    "tauriLatestStable": "2.11.5",
+    "tauriUtilsLatestStable": "2.9.3",
+    "urlpatternLatestStable": "0.6.0",
+    "urlpattern060RemovesUnicUcdIdent": true,
+    "tauriPullRequest": "https://github.com/tauri-apps/tauri/pull/15660",
+    "mergeCommitSha": "dd725f4b13c30a86b398ccc59eb498f151f461c5",
+    "mergedAt": "2026-07-06T16:50:43Z",
+    "tauriDevDependency": "urlpattern@0.6",
+    "sources": {
+      "tauriCrate": "https://crates.io/crates/tauri",
+      "tauriUtilsCrate": "https://crates.io/crates/tauri-utils",
+      "urlpatternCrate": "https://crates.io/crates/urlpattern",
+      "pullRequest": "https://github.com/tauri-apps/tauri/pull/15660",
+      "tauriDevCargoToml": "https://github.com/tauri-apps/tauri/blob/dev/crates/tauri-utils/Cargo.toml"
+    }
+  },
+  "proposedDisposition": {
+    "action": "upgrade-next-stable-tauri-release",
+    "reason": "avoid-unreleased-core-framework-git-patch",
+    "temporaryControl": "block-vulnerabilities-unsound-yanked-and-review-each-candidate",
+    "upgradeTrigger": "stable-tauri-release-containing-pr-15660",
+    "targetDate": "2026-12-07"
+  },
+  "approval": {
+    "securityOwner": null,
+    "decision": null,
+    "approvedAt": null,
+    "evidencePath": "review/evidence/RQT-15-security-privacy-review.json"
+  },
+  "limitations": {
+    "upstreamFixMergedNotReleased": true,
+    "runtimeWarningStillPresent": true,
+    "namedSecurityReviewCompleted": false
+  },
+  "gateSatisfied": false,
+  "result": "automated-disposition-draft-ready"
+}

@@ -1,0 +1,119 @@
+{
+  "schemaVersion": "1.1",
+  "generatedAt": "2026-07-24T03:35:32.394Z",
+  "entries": [
+    {
+      "sourceKind": "npm-registry-archive",
+      "packageId": "npm:node_modules/@emnapi/core",
+      "name": "@emnapi/core",
+      "version": "1.11.1",
+      "license": "MIT",
+      "resolved": "https://registry.npmjs.org/@emnapi/core/-/core-1.11.1.tgz",
+      "integrity": "sha512-RSvbQmHzdKzNsLYa/wHrbc3KN4sYLKAdPZxqiM2HATqv/SBk2/ENSHpvXGaLOMcsAyz0poEGqkmmKYG3OWiJEQ==",
+      "archiveSha512": "452BDB4261F374ACCDB0B61AFF01EB6DCDCA378B182CA01D3D9C6A88CD87013AAFFD2064DBF10D487A6F5C668B38C72C032CF4A68106AA49A62981B739688911",
+      "files": [
+        {
+          "archivePath": "package/LICENSE",
+          "path": "third_party/license-texts/npm/at-emnapi--core@1.11.1/LICENSE",
+          "bytes": 1076,
+          "sha256": "2088F55C6731498410B20C95EBD345ED4A4A800BF74C0FBA4D282FD2A021DAAA"
+        }
+      ]
+    },
+    {
+      "sourceKind": "npm-registry-archive",
+      "packageId": "npm:node_modules/@emnapi/runtime",
+      "name": "@emnapi/runtime",
+      "version": "1.11.1",
+      "license": "MIT",
+      "resolved": "https://registry.npmjs.org/@emnapi/runtime/-/runtime-1.11.1.tgz",
+      "integrity": "sha512-vgj7R3y3Wgx24IQaGPA/R6YFXLHVMOZ0uVEyIQPaWs+rd1AzfEMXlAC22FYwO1XkKR6NPsq7mUandH8oIRdZFw==",
+      "archiveSha512": "BE08FB477CB75A0C76E0841A18F03F47A6055CB1D530E674B951322103DA5ACFAB7750337C43179400B6D856303B55E4291E8D3ECABB9946A7747F2821175917",
+      "files": [
+        {
+          "archivePath": "package/LICENSE",
+          "path": "third_party/license-texts/npm/at-emnapi--runtime@1.11.1/LICENSE",
+          "bytes": 1076,
+          "sha256": "2088F55C6731498410B20C95EBD345ED4A4A800BF74C0FBA4D282FD2A021DAAA"
+        }
+      ]
+    },
+    {
+      "sourceKind": "npm-registry-archive",
+      "packageId": "npm:node_modules/@emnapi/wasi-threads",
+      "name": "@emnapi/wasi-threads",
+      "version": "1.2.2",
+      "license": "MIT",
+      "resolved": "https://registry.npmjs.org/@emnapi/wasi-threads/-/wasi-threads-1.2.2.tgz",
+      "integrity": "sha512-c95qOXkHdydNKhscBTebqEC1CVAZpyqOfVfBzQ1qgzyl3gfeldUjIggDbIZgDKsHLgnsM+igH7TJ/eAasaVuMA==",
+      "archiveSha512": "73DE6A39790777274D2A1B1C05379BA840B5095019A72A8E7D57C1CD0D6A833CA5DE07DE95D5232208036C86600CAB072E09EC33E8A01FB4C9FDE01AB1A56E30",
+      "files": [
+        {
+          "archivePath": "package/LICENSE",
+          "path": "third_party/license-texts/npm/at-emnapi--wasi-threads@1.2.2/LICENSE",
+          "bytes": 1076,
+          "sha256": "2088F55C6731498410B20C95EBD345ED4A4A800BF74C0FBA4D282FD2A021DAAA"
+        }
+      ]
+    },
+    {
+      "sourceKind": "npm-git-commit",
+      "packageId": "npm:node_modules/@napi-rs/wasm-runtime",
+      "name": "@napi-rs/wasm-runtime",
+      "version": "1.1.6",
+      "license": "MIT",
+      "resolved": "https://registry.npmjs.org/@napi-rs/wasm-runtime/-/wasm-runtime-1.1.6.tgz",
+      "integrity": "sha512-ZLv/JdUfkvOy9eCnnBaGfiO+XimbjebAeO+MRQqD/B+FR1tnRN0tpKSJHRbE8sFfS6aqsXZ67TQjfwfsxULVbg==",
+      "archiveSha512": "64BBFF25D51F92F3B2F5E0A79C16867E23BE5E299B8DE6C078EF8C450A83FC1F85475B6744DD2DA4A4891D16C4F2C15F4BA6AAB1767AED34237F07ECC542D56E",
+      "registryMetadataUrl": "https://registry.npmjs.org/%40napi-rs%2Fwasm-runtime/1.1.6",
+      "registryMetadataSha256": "090C44446F8D8920BB3A80122757062F2D2F0DA27FCEF0066F8C5B6DE45923A2",
+      "repository": "https://github.com/napi-rs/napi-rs",
+      "gitHead": "b77119e711704cc453949e056b45a4996ea0386c",
+      "files": [
+        {
+          "repositoryPath": "LICENSE",
+          "sourceUrl": "https://api.github.com/repos/napi-rs/napi-rs/contents/LICENSE?ref=b77119e711704cc453949e056b45a4996ea0386c",
+          "path": "third_party/license-texts/npm/at-napi-rs--wasm-runtime@1.1.6/LICENSE",
+          "bytes": 2138,
+          "sha256": "3F1CE66533302DF3A32EDBFDFC0B78F0DD34659E4C1F5817162E5EA3C2297215"
+        }
+      ]
+    },
+    {
+      "sourceKind": "npm-registry-archive",
+      "packageId": "npm:node_modules/fsevents",
+      "name": "fsevents",
+      "version": "2.3.3",
+      "license": "MIT",
+      "resolved": "https://registry.npmjs.org/fsevents/-/fsevents-2.3.3.tgz",
+      "integrity": "sha512-5xoDfX+fL7faATnagmWPpbFtwh/R77WmMMqqHGS65C3vvB0YHrgF+B1YmZ3441tMj5n63k0212XNoJwzlhffQw==",
+      "archiveSha512": "E71A037D7F9F2FB7DA0139DA82658FA5B16DC21FD1EFB5A630CAAA1C64BAE42DEFBC1D181EB805F81D58999DF8E35B4C8F99FADE4D36D765CDA09C339617DF43",
+      "files": [
+        {
+          "archivePath": "package/LICENSE",
+          "path": "third_party/license-texts/npm/fsevents@2.3.3/LICENSE",
+          "bytes": 1133,
+          "sha256": "2A8A5D6197BB97A018B8A190DD3ED853D750CA87C8E80C17AAD41D6C6FF448E1"
+        }
+      ]
+    },
+    {
+      "sourceKind": "npm-registry-archive",
+      "packageId": "npm:node_modules/tslib",
+      "name": "tslib",
+      "version": "2.8.1",
+      "license": "0BSD",
+      "resolved": "https://registry.npmjs.org/tslib/-/tslib-2.8.1.tgz",
+      "integrity": "sha512-oJFu94HQb+KVduSUQL7wnpmqnfmLsOA/nAh6b6EH0wCEoK0/mPeXU6c3wKDV83MkOuHPRHtSXKKU99IBazS/2w==",
+      "archiveSha512": "A0916EF781D06FE29576E49440BEF09E99AA9DF98BB0E03F9C087A6FA107D30084A0AD3F98F79753A737C0A0D5F373243AE1CF447B525CA294F7D2016B34BFDB",
+      "files": [
+        {
+          "archivePath": "package/LICENSE.txt",
+          "path": "third_party/license-texts/npm/tslib@2.8.1/LICENSE.txt",
+          "bytes": 655,
+          "sha256": "210B19E543130388C68654B7497E967119CE17145F66AB7D85688FBD70F08751"
+        }
+      ]
+    }
+  ]
+}

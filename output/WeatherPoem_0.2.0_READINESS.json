@@ -1,0 +1,1348 @@
+{
+  "schemaVersion": "1.0",
+  "product": "WeatherPoem",
+  "appVersion": "0.2.0",
+  "contentVersion": "2026.07.1",
+  "asOf": "2026-08-05",
+  "overallStatus": "internal-trial-ready-only",
+  "claimBoundary": "本报告只按逐项证据声明当前范围；内部试用就绪不等于校园试点或公开发布就绪。",
+  "observations": {
+    "content": {
+      "workCount": 120,
+      "contentVersion": "2026.07.1"
+    },
+    "release": {
+      "channel": "trial",
+      "trustLevel": "unsigned-trial",
+      "artifactCount": 3
+    },
+    "deviceMatrix": {
+      "passedCaseCount": 0,
+      "requiredCaseCount": 9,
+      "currentMachineResult": "partial"
+    },
+    "manualWindowsEvidence": {
+      "msiElevatedLifecycle": false,
+      "autostartReboot": false
+    }
+  },
+  "statusCounts": {
+    "passed": 7,
+    "partial": 16,
+    "pending": 1,
+    "blocked": 0,
+    "failed": 0
+  },
+  "milestones": [
+    {
+      "id": "internal-trial",
+      "name": "M1 未签名内部试用",
+      "status": "ready",
+      "passedGateCount": 7,
+      "requiredGateCount": 7,
+      "blockingGates": []
+    },
+    {
+      "id": "campus-pilot",
+      "name": "30—50 人校园试点",
+      "status": "not-ready",
+      "passedGateCount": 7,
+      "requiredGateCount": 18,
+      "blockingGates": [
+        {
+          "id": "RQT-08",
+          "title": "具名双人内容专家完成 120 首权威底本复核",
+          "status": "pending",
+          "ownerRole": "内容审核负责人",
+          "nextAction": "确定初审人、复核人和权威底本，逐首完成工作簿并生成具名证据文件。"
+        },
+        {
+          "id": "RQT-09",
+          "title": "正式天气预警数据授权、HTTPS 网关和撤销链路可用",
+          "status": "partial",
+          "ownerRole": "数据与后端负责人",
+          "nextAction": "完成供应商与授权决策，部署 HTTPS 网关并提交不含密钥的授权与验收摘要。"
+        },
+        {
+          "id": "RQT-10",
+          "title": "Windows 10/11、缩放、多显示器与特殊模式设备矩阵完成",
+          "status": "partial",
+          "ownerRole": "质量负责人",
+          "nextAction": "在 Windows 10/11、125%/150%/200%、双显示器、专注和演示场景逐项执行并填写证据。"
+        },
+        {
+          "id": "RQT-11",
+          "title": "管理员 MSI 生命周期与开机自启启停经历真实系统验证",
+          "status": "partial",
+          "ownerRole": "Windows 发布负责人",
+          "nextAction": "在专用测试账户按 WINDOWS_MANUAL_EVIDENCE.md 完成管理员 MSI 与两次重启。"
+        },
+        {
+          "id": "RQT-12",
+          "title": "版本升级、回滚、内容撤回和用户数据保护演练完成",
+          "status": "partial",
+          "ownerRole": "发布与内容负责人",
+          "nextAction": "在无既有数据的专用账号执行安装升级回滚；部署受控撤回网关，在试点客户端完成撤回、断网、恢复和数据保留的具名演练。"
+        },
+        {
+          "id": "RQT-13",
+          "title": "启动、绘制、资源、长稳和降级性能达到试点门槛",
+          "status": "partial",
+          "ownerRole": "性能负责人",
+          "nextAction": "保持候选 EXE 冻结，补测真实天气/AI/预警、七天跨日长稳与休眠唤醒、内容更新和事件积压，再由性能负责人具名签署。"
+        },
+        {
+          "id": "RQT-14",
+          "title": "真实系统键盘、屏幕阅读器、高对比和 200% 可访问性通过",
+          "status": "partial",
+          "ownerRole": "设计与质量负责人",
+          "nextAction": "按 docs/ACCESSIBILITY.md 由具名测试人员完成五项真实系统走查，关闭 P0/P1 后提交 RQT-14 人工证据。"
+        },
+        {
+          "id": "RQT-15",
+          "title": "P0/P1 安全、隐私、依赖与数据清除评审通过",
+          "status": "partial",
+          "ownerRole": "安全与隐私负责人",
+          "nextAction": "安全负责人复核依赖处置草案、未启用的 rsa/GTK3/GLib 路径、权限、日志、清除行为与隐私文本；批准或修改升级期限。包含 PR #15660 的稳定 Tauri 发布后升级、重建并重跑两类依赖审计。"
+        },
+        {
+          "id": "RQT-16",
+          "title": "试点同意、退出、反馈和最小测量方案可执行",
+          "status": "partial",
+          "ownerRole": "试点负责人",
+          "nextAction": "由试点负责人和隐私责任人补入真实联系人并具名批准 v2 口径；按学校要求完成伦理判断，由质量负责人在冻结候选验证正常退出、强制终止和下次启动计数，再邀请非开发人员走查同意/退出/清除并冻结招募材料。"
+        },
+        {
+          "id": "RQT-17",
+          "title": "试点候选缺陷签署与独立安装验收完成",
+          "status": "partial",
+          "ownerRole": "质量与试点负责人",
+          "nextAction": "邀请两名未参与开发的测试者按 docs/RELEASE_CANDIDATE_UAT.md 自助执行并留证；汇总 P0/P1，关闭或具名接受例外后提交 RQT-17 证据。"
+        },
+        {
+          "id": "RQT-18",
+          "title": "发布范围、AI 模式、试点版本和责任人完成决策冻结",
+          "status": "partial",
+          "ownerRole": "项目发起人",
+          "nextAction": "项目发起人为七个责任角色指定真实姓名，批准或修改预算、AI、预警、统计和分发范围，召开 Go/No-Go 并提交 RQT-18 具名决策记录。"
+        }
+      ]
+    },
+    {
+      "id": "public-release",
+      "name": "正式公开发布",
+      "status": "not-ready",
+      "passedGateCount": 7,
+      "requiredGateCount": 24,
+      "blockingGates": [
+        {
+          "id": "RQT-08",
+          "title": "具名双人内容专家完成 120 首权威底本复核",
+          "status": "pending",
+          "ownerRole": "内容审核负责人",
+          "nextAction": "确定初审人、复核人和权威底本，逐首完成工作簿并生成具名证据文件。"
+        },
+        {
+          "id": "RQT-09",
+          "title": "正式天气预警数据授权、HTTPS 网关和撤销链路可用",
+          "status": "partial",
+          "ownerRole": "数据与后端负责人",
+          "nextAction": "完成供应商与授权决策，部署 HTTPS 网关并提交不含密钥的授权与验收摘要。"
+        },
+        {
+          "id": "RQT-10",
+          "title": "Windows 10/11、缩放、多显示器与特殊模式设备矩阵完成",
+          "status": "partial",
+          "ownerRole": "质量负责人",
+          "nextAction": "在 Windows 10/11、125%/150%/200%、双显示器、专注和演示场景逐项执行并填写证据。"
+        },
+        {
+          "id": "RQT-11",
+          "title": "管理员 MSI 生命周期与开机自启启停经历真实系统验证",
+          "status": "partial",
+          "ownerRole": "Windows 发布负责人",
+          "nextAction": "在专用测试账户按 WINDOWS_MANUAL_EVIDENCE.md 完成管理员 MSI 与两次重启。"
+        },
+        {
+          "id": "RQT-12",
+          "title": "版本升级、回滚、内容撤回和用户数据保护演练完成",
+          "status": "partial",
+          "ownerRole": "发布与内容负责人",
+          "nextAction": "在无既有数据的专用账号执行安装升级回滚；部署受控撤回网关，在试点客户端完成撤回、断网、恢复和数据保留的具名演练。"
+        },
+        {
+          "id": "RQT-13",
+          "title": "启动、绘制、资源、长稳和降级性能达到试点门槛",
+          "status": "partial",
+          "ownerRole": "性能负责人",
+          "nextAction": "保持候选 EXE 冻结，补测真实天气/AI/预警、七天跨日长稳与休眠唤醒、内容更新和事件积压，再由性能负责人具名签署。"
+        },
+        {
+          "id": "RQT-14",
+          "title": "真实系统键盘、屏幕阅读器、高对比和 200% 可访问性通过",
+          "status": "partial",
+          "ownerRole": "设计与质量负责人",
+          "nextAction": "按 docs/ACCESSIBILITY.md 由具名测试人员完成五项真实系统走查，关闭 P0/P1 后提交 RQT-14 人工证据。"
+        },
+        {
+          "id": "RQT-15",
+          "title": "P0/P1 安全、隐私、依赖与数据清除评审通过",
+          "status": "partial",
+          "ownerRole": "安全与隐私负责人",
+          "nextAction": "安全负责人复核依赖处置草案、未启用的 rsa/GTK3/GLib 路径、权限、日志、清除行为与隐私文本；批准或修改升级期限。包含 PR #15660 的稳定 Tauri 发布后升级、重建并重跑两类依赖审计。"
+        },
+        {
+          "id": "RQT-16",
+          "title": "试点同意、退出、反馈和最小测量方案可执行",
+          "status": "partial",
+          "ownerRole": "试点负责人",
+          "nextAction": "由试点负责人和隐私责任人补入真实联系人并具名批准 v2 口径；按学校要求完成伦理判断，由质量负责人在冻结候选验证正常退出、强制终止和下次启动计数，再邀请非开发人员走查同意/退出/清除并冻结招募材料。"
+        },
+        {
+          "id": "RQT-17",
+          "title": "试点候选缺陷签署与独立安装验收完成",
+          "status": "partial",
+          "ownerRole": "质量与试点负责人",
+          "nextAction": "邀请两名未参与开发的测试者按 docs/RELEASE_CANDIDATE_UAT.md 自助执行并留证；汇总 P0/P1，关闭或具名接受例外后提交 RQT-17 证据。"
+        },
+        {
+          "id": "RQT-18",
+          "title": "发布范围、AI 模式、试点版本和责任人完成决策冻结",
+          "status": "partial",
+          "ownerRole": "项目发起人",
+          "nextAction": "项目发起人为七个责任角色指定真实姓名，批准或修改预算、AI、预警、统计和分发范围，召开 Go/No-Go 并提交 RQT-18 具名决策记录。"
+        },
+        {
+          "id": "RQT-19",
+          "title": "正式发布物完成 Authenticode 签名、时间戳和证书允许列表验证",
+          "status": "partial",
+          "ownerRole": "组织发布负责人",
+          "nextAction": "由项目发起人、发布、安全和法务负责人完成 WINDOWS_CODE_SIGNING_PLAN 的六项组织准备；在受控发布机签署最终字节、生成 production 清单、执行 10 场景后运行 release:verify:production 并提交具名证据。"
+        },
+        {
+          "id": "RQT-20",
+          "title": "Tauri 更新包签名、端点、损坏拒绝、降级和回滚通过",
+          "status": "partial",
+          "ownerRole": "发布与后端负责人",
+          "nextAction": "待冻结候选八小时采样结束并由发布/后端/安全负责人确定密钥托管、更新域名、发布策略和事故责任后接入插件；在独立 Windows 环境执行 SIGNED_UPDATER_PLAN 的 12 个场景并具名签署。"
+        },
+        {
+          "id": "RQT-21",
+          "title": "公开下载、哈希复验、回滚和撤回演练完成",
+          "status": "partial",
+          "ownerRole": "发布负责人",
+          "nextAction": "待 RQT-19 与 RQT-20 通过后，由发布、事故和安全负责人批准主机/CDN/撤回权限；按 PUBLIC_DISTRIBUTION_REHEARSAL 在独立 Windows 设备执行 10 个场景并提交具名证据。"
+        },
+        {
+          "id": "RQT-22",
+          "title": "四周校园试点完成并形成指标、问卷、访谈和 Go/No-Go",
+          "status": "partial",
+          "ownerRole": "试点负责人",
+          "nextAction": "先关闭全部 campus-pilot 门禁；由隐私负责人批准 v2 会话口径，质量负责人验证正常退出不误报、强制终止可在下次启动计入且当前会话不进入分母；随后冻结候选，按 FOUR_WEEK_PILOT_EXECUTION 招募并执行 28 天，填写九项指标、缺陷、质性结果和具名 Go/No-Go。"
+        },
+        {
+          "id": "RQT-23",
+          "title": "诗词底本、现代解释、字体、图片和第三方数据使用权完成确认",
+          "status": "partial",
+          "ownerRole": "内容与法务负责人",
+          "nextAction": "在用户明确批准 UAC 且无既有安装冲突的专用测试账户完成管理员 MSI 真实安装、安装后 NOTICE 逐字节校验、修复和卸载，再运行 npm run licenses:notices:installed:check；同时由内容、设计、数据服务和法务真实责任人按 CONTENT_ASSET_LICENSES 补齐原始证据，复核 11 个规范文本例外及复合许可义务，选择项目根发布许可并确认 Open-Meteo 服务档位。机器安装证据只证明安装字节一致，SPDX 规范补充只证明分发文本可读，二者均不能替代具名法律签署。"
+        },
+        {
+          "id": "RQT-24",
+          "title": "日志、告警、事故响应、回滚和内容撤回 Runbook 完成演练",
+          "status": "partial",
+          "ownerRole": "运维与内容负责人",
+          "nextAction": "由项目发起人指定具名值守与批准人，连接生产监控和撤回网关，按 INCIDENT_RUNBOOK 完成预警源失效与错误内容撤回演练并签署。"
+        }
+      ]
+    }
+  ],
+  "gates": [
+    {
+      "id": "RQT-01",
+      "title": "产品对象、问题、范围和优先级已形成基线",
+      "proofType": "document",
+      "status": "passed",
+      "ownerRole": "产品负责人",
+      "exitCriterion": "目标用户为大学生；节日＞天气＞节气；低打扰主卡片和渐进阅读；实时新闻不进入 MVP。",
+      "evidenceAvailability": [
+        {
+          "path": "docs/WeatherPoem_产品设计工作稿.md",
+          "exists": true
+        },
+        {
+          "path": "output/WeatherPoem_项目需求与落地实施方案_v3.0.docx",
+          "exists": true
+        },
+        {
+          "path": "README.md",
+          "exists": true
+        }
+      ],
+      "verificationCommands": [],
+      "issue": "",
+      "nextAction": ""
+    },
+    {
+      "id": "RQT-02",
+      "title": "离线桌面核心闭环、托盘和本地交互可运行",
+      "proofType": "automatic",
+      "status": "passed",
+      "ownerRole": "客户端负责人",
+      "exitCriterion": "首次设置、诗笺、阅读、收藏、反馈、托盘和本地数据核心路径通过自动检查。",
+      "evidenceAvailability": [
+        {
+          "path": "src/App.vue",
+          "exists": true
+        },
+        {
+          "path": "src-tauri/src/lib.rs",
+          "exists": true
+        },
+        {
+          "path": "src/services/persistence.ts",
+          "exists": true
+        },
+        {
+          "path": "src/services/desktop.test.ts",
+          "exists": true
+        },
+        {
+          "path": "src/components/SettingsPanel.test.ts",
+          "exists": true
+        }
+      ],
+      "verificationCommands": [
+        "npm run test",
+        "cargo check --manifest-path src-tauri/Cargo.toml --offline"
+      ],
+      "issue": "",
+      "nextAction": ""
+    },
+    {
+      "id": "RQT-03",
+      "title": "推荐优先级、去重、多样性和安全暂停可确定执行",
+      "proofType": "automatic",
+      "status": "passed",
+      "ownerRole": "推荐负责人",
+      "exitCriterion": "节日＞天气＞节气，语境冲突被排除，近期重复受罚，危险天气先暂停普通推荐。",
+      "evidenceAvailability": [
+        {
+          "path": "src/core/recommendation.ts",
+          "exists": true
+        },
+        {
+          "path": "src/core/recommendation.test.ts",
+          "exists": true
+        },
+        {
+          "path": "src/services/weather.ts",
+          "exists": true
+        },
+        {
+          "path": "src/services/weather.test.ts",
+          "exists": true
+        }
+      ],
+      "verificationCommands": [
+        "npm run test"
+      ],
+      "issue": "",
+      "nextAction": ""
+    },
+    {
+      "id": "RQT-04",
+      "title": "断网、天气失败和 AI 失败不破坏基础体验",
+      "proofType": "automatic",
+      "status": "passed",
+      "ownerRole": "客户端负责人",
+      "exitCriterion": "缓存、内置日历、规则理由和本地内容能够在外部服务失败时继续工作。",
+      "evidenceAvailability": [
+        {
+          "path": "src/services/weather.ts",
+          "exists": true
+        },
+        {
+          "path": "src/services/weather.test.ts",
+          "exists": true
+        },
+        {
+          "path": "src/services/reason.ts",
+          "exists": true
+        },
+        {
+          "path": "src/services/reason.test.ts",
+          "exists": true
+        },
+        {
+          "path": "src/core/date-context.test.ts",
+          "exists": true
+        }
+      ],
+      "verificationCommands": [
+        "npm run test",
+        "npm run reason:check"
+      ],
+      "issue": "",
+      "nextAction": ""
+    },
+    {
+      "id": "RQT-05",
+      "title": "120 首内容工程数量、结构和场景覆盖达到门槛",
+      "proofType": "automatic",
+      "status": "passed",
+      "ownerRole": "内容工程负责人",
+      "exitCriterion": "至少 120 首工程发布内容，覆盖八个节日、二十四节气、四季、四时段及主要天气。",
+      "evidenceAvailability": [
+        {
+          "path": "review/content-review-catalog.json",
+          "exists": true
+        },
+        {
+          "path": "src/data/content-validation.test.ts",
+          "exists": true
+        },
+        {
+          "path": "docs/CONTENT_WORKFLOW.md",
+          "exists": true
+        }
+      ],
+      "verificationCommands": [
+        "npm run content:review:check",
+        "npm run content:check"
+      ],
+      "issue": "",
+      "nextAction": ""
+    },
+    {
+      "id": "RQT-06",
+      "title": "低信息密度主卡片与渐进式阅读通过当前逻辑尺寸检查",
+      "proofType": "hybrid",
+      "status": "passed",
+      "ownerRole": "设计与客户端负责人",
+      "exitCriterion": "430×680 与 390×620 的四类场景无横向溢出，主卡片只给核心信息，详情按需展开。",
+      "evidenceAvailability": [
+        {
+          "path": "src/components/PoemCard.vue",
+          "exists": true
+        },
+        {
+          "path": "src/components/ReadingPanel.vue",
+          "exists": true
+        },
+        {
+          "path": "src/styles.css",
+          "exists": true
+        },
+        {
+          "path": "review/device-matrix-plan.json",
+          "exists": true
+        },
+        {
+          "path": "docs/DEVICE_MATRIX.md",
+          "exists": true
+        }
+      ],
+      "verificationCommands": [
+        "npm run device:matrix:check"
+      ],
+      "issue": "",
+      "nextAction": ""
+    },
+    {
+      "id": "RQT-07",
+      "title": "当前未签名内部试用发布物和自动证据与哈希一致",
+      "proofType": "automatic",
+      "status": "passed",
+      "ownerRole": "发布负责人",
+      "exitCriterion": "trial/unsigned-trial 状态明确，EXE、NSIS、MSI、清单及基础生命周期证据相互绑定。",
+      "evidenceAvailability": [
+        {
+          "path": "output/WeatherPoem_0.2.0_RELEASE.json",
+          "exists": true
+        },
+        {
+          "path": "output/WeatherPoem_0.2.0_SHA256.txt",
+          "exists": true
+        },
+        {
+          "path": "output/WeatherPoem_0.2.0_NSIS_LIFECYCLE.json",
+          "exists": true
+        },
+        {
+          "path": "output/WeatherPoem_0.2.0_MSI_IMAGE.json",
+          "exists": true
+        },
+        {
+          "path": "output/WeatherPoem_0.2.0_SINGLE_INSTANCE.json",
+          "exists": true
+        },
+        {
+          "path": "output/WeatherPoem_0.2.0_WINDOW_POSITION.json",
+          "exists": true
+        }
+      ],
+      "verificationCommands": [
+        "npm run release:verify"
+      ],
+      "issue": "",
+      "nextAction": ""
+    },
+    {
+      "id": "RQT-08",
+      "title": "具名双人内容专家完成 120 首权威底本复核",
+      "proofType": "manual",
+      "status": "pending",
+      "ownerRole": "内容审核负责人",
+      "exitCriterion": "初审人与复核人具名且不同；事实审核率 100%；已知错误和未完成项为 0。",
+      "evidenceAvailability": [
+        {
+          "path": "review/evidence/RQT-08-content-expert-review.json",
+          "exists": false
+        }
+      ],
+      "verificationCommands": [
+        "npm run content:review:validate"
+      ],
+      "issue": "审核工作簿和回收门禁已生成，但真实专家尚未填写并回传完成版。",
+      "nextAction": "确定初审人、复核人和权威底本，逐首完成工作簿并生成具名证据文件。"
+    },
+    {
+      "id": "RQT-09",
+      "title": "正式天气预警数据授权、HTTPS 网关和撤销链路可用",
+      "proofType": "external",
+      "status": "partial",
+      "ownerRole": "数据与后端负责人",
+      "exitCriterion": "取得合法授权，部署唯一 HTTPS 源，CSP 收窄，真实活动/撤销/超时/弱网用例通过。",
+      "evidenceAvailability": [
+        {
+          "path": "src/services/warning-gateway.test.ts",
+          "exists": true
+        },
+        {
+          "path": "docs/WARNING_GATEWAY.md",
+          "exists": true
+        },
+        {
+          "path": "review/evidence/RQT-09-warning-production.json",
+          "exists": false
+        }
+      ],
+      "verificationCommands": [
+        "npm run test"
+      ],
+      "issue": "客户端适配与安全降级已完成，但没有数据授权、正式网关、唯一 CSP 源和真实撤销证据。",
+      "nextAction": "完成供应商与授权决策，部署 HTTPS 网关并提交不含密钥的授权与验收摘要。"
+    },
+    {
+      "id": "RQT-10",
+      "title": "Windows 10/11、缩放、多显示器与特殊模式设备矩阵完成",
+      "proofType": "manual",
+      "status": "partial",
+      "ownerRole": "质量负责人",
+      "exitCriterion": "review/device-matrix-plan.json 九项 requiredCases 全部具名、带时间和证据且为 passed。",
+      "evidenceAvailability": [
+        {
+          "path": "review/device-matrix-plan.json",
+          "exists": true
+        },
+        {
+          "path": "docs/DEVICE_MATRIX.md",
+          "exists": true
+        }
+      ],
+      "verificationCommands": [
+        "npm run device:matrix:check"
+      ],
+      "issue": "浏览器尺寸与本机 Windows 11/100%/单逻辑显示区已有证据，九项真实设备用例仍为 pending。",
+      "nextAction": "在 Windows 10/11、125%/150%/200%、双显示器、专注和演示场景逐项执行并填写证据。"
+    },
+    {
+      "id": "RQT-11",
+      "title": "管理员 MSI 生命周期与开机自启启停经历真实系统验证",
+      "proofType": "manual",
+      "status": "partial",
+      "ownerRole": "Windows 发布负责人",
+      "exitCriterion": "当前 MSI 安装/修复/卸载通过，开机自启启用和禁用各经历一次真实重启。",
+      "evidenceAvailability": [
+        {
+          "path": "output/WeatherPoem_0.2.0_MSI_ELEVATED_LIFECYCLE.json",
+          "exists": false
+        },
+        {
+          "path": "output/WeatherPoem_0.2.0_AUTOSTART_REBOOT.json",
+          "exists": false
+        }
+      ],
+      "verificationCommands": [
+        "npm run release:verify:manual-windows"
+      ],
+      "issue": "安全脚本和证据契约已就绪，但当前没有获批管理员执行和两次重启报告。",
+      "nextAction": "在专用测试账户按 WINDOWS_MANUAL_EVIDENCE.md 完成管理员 MSI 与两次重启。"
+    },
+    {
+      "id": "RQT-12",
+      "title": "版本升级、回滚、内容撤回和用户数据保护演练完成",
+      "proofType": "manual",
+      "status": "partial",
+      "ownerRole": "发布与内容负责人",
+      "exitCriterion": "从已发布基线升级到候选版、失败回滚、内容撤回和卸载均不破坏用户数据。",
+      "evidenceAvailability": [
+        {
+          "path": "scripts/test-nsis-upgrade-rollback.ps1",
+          "exists": true
+        },
+        {
+          "path": "src/services/content-control.ts",
+          "exists": true
+        },
+        {
+          "path": "scripts/content-withdrawal-drill.mjs",
+          "exists": true
+        },
+        {
+          "path": "output/WeatherPoem_0.2.0_CONTENT_WITHDRAWAL_DRILL.json",
+          "exists": true
+        },
+        {
+          "path": "docs/CONTENT_CONTROL.md",
+          "exists": true
+        },
+        {
+          "path": "output/WeatherPoem_0.2.0_NSIS_UPGRADE_ROLLBACK.json",
+          "exists": false
+        },
+        {
+          "path": "review/evidence/RQT-12-upgrade-rollback-withdrawal.json",
+          "exists": false
+        }
+      ],
+      "verificationCommands": [
+        "npm run content:withdrawal:check",
+        "npm run release:verify:upgrade"
+      ],
+      "issue": "0.1.0 升级回滚框架与内容撤回运行时、离线缓存、防回退和自动演练已就绪；当前账户有应用数据而未执行安装生命周期，生产网关和具名客户端撤回演练也未完成。",
+      "nextAction": "在无既有数据的专用账号执行安装升级回滚；部署受控撤回网关，在试点客户端完成撤回、断网、恢复和数据保留的具名演练。"
+    },
+    {
+      "id": "RQT-13",
+      "title": "启动、绘制、资源、长稳和降级性能达到试点门槛",
+      "proofType": "manual",
+      "status": "partial",
+      "ownerRole": "性能负责人",
+      "exitCriterion": "冷启动、首帧、在线/离线准备、八小时空闲和七天长稳达到阈值或有书面例外。",
+      "evidenceAvailability": [
+        {
+          "path": "src-tauri/src/lib.rs",
+          "exists": true
+        },
+        {
+          "path": "src/services/desktop.ts",
+          "exists": true
+        },
+        {
+          "path": "scripts/test-performance-smoke.ps1",
+          "exists": true
+        },
+        {
+          "path": "scripts/seed-performance-profile.mjs",
+          "exists": true
+        },
+        {
+          "path": "scripts/performance-smoke-check.mjs",
+          "exists": true
+        },
+        {
+          "path": "scripts/performance-smoke-contract.test.mjs",
+          "exists": true
+        },
+        {
+          "path": "scripts/performance-fault-matrix.mjs",
+          "exists": true
+        },
+        {
+          "path": "scripts/performance-fault-matrix-check.mjs",
+          "exists": true
+        },
+        {
+          "path": "scripts/performance-fault-matrix-contract.test.mjs",
+          "exists": true
+        },
+        {
+          "path": "scripts/test-performance-long-run.ps1",
+          "exists": true
+        },
+        {
+          "path": "scripts/performance-long-run-check.mjs",
+          "exists": true
+        },
+        {
+          "path": "scripts/performance-long-run-contract.test.mjs",
+          "exists": true
+        },
+        {
+          "path": "scripts/start-performance-eight-hour.ps1",
+          "exists": true
+        },
+        {
+          "path": "scripts/performance-eight-hour-status.mjs",
+          "exists": true
+        },
+        {
+          "path": "scripts/performance-eight-hour-check.mjs",
+          "exists": true
+        },
+        {
+          "path": "scripts/performance-eight-hour-contract.test.mjs",
+          "exists": true
+        },
+        {
+          "path": "output/WeatherPoem_0.2.0_PERFORMANCE_SMOKE.json",
+          "exists": true
+        },
+        {
+          "path": "output/WeatherPoem_0.2.0_PERFORMANCE_FAULT_MATRIX.json",
+          "exists": true
+        },
+        {
+          "path": "output/WeatherPoem_0.2.0_PERFORMANCE_LONG_RUN_REHEARSAL.json",
+          "exists": true
+        },
+        {
+          "path": "output/WeatherPoem_0.2.0_PERFORMANCE_8H_LAUNCH.json",
+          "exists": true
+        },
+        {
+          "path": "output/WeatherPoem_0.2.0_PERFORMANCE_LONG_RUN_CHECKPOINT.json",
+          "exists": true
+        },
+        {
+          "path": "output/WeatherPoem_0.2.0_PERFORMANCE_8H.json",
+          "exists": true
+        },
+        {
+          "path": "docs/PERFORMANCE_VERIFICATION.md",
+          "exists": true
+        },
+        {
+          "path": "review/evidence/RQT-13-performance-long-run.json",
+          "exists": false
+        }
+      ],
+      "verificationCommands": [
+        "npm run performance:check"
+      ],
+      "issue": "绑定当前 EXE SHA-256 D388D9484A7B81B1039CFAA1D21CBAD178750E5375B8FBCA7D8334A8C681609A 的短性能烟测、三类受控故障矩阵和两分钟采样器演练已在无显著外部负载的受控环境重新生成并通过 npm run performance:check；短测覆盖 10 次隔离冷启动、10 次离线规则诗笺准备、诗笺首帧和 60 秒托盘资源。相同 EXE 的正式八小时长测 runId 33be449f01544d368baa862bdfd731b4 已完成 480/480 次采样，launcher 与应用进程自然退出，npm run performance:eight-hour:check 正式门禁通过。上述证据仍不覆盖真实在线/预警、七天长稳、休眠唤醒、内容更新、事件积压与具名签署。",
+      "nextAction": "保持候选 EXE 冻结，补测真实天气/AI/预警、七天跨日长稳与休眠唤醒、内容更新和事件积压，再由性能负责人具名签署。"
+    },
+    {
+      "id": "RQT-14",
+      "title": "真实系统键盘、屏幕阅读器、高对比和 200% 可访问性通过",
+      "proofType": "manual",
+      "status": "partial",
+      "ownerRole": "设计与质量负责人",
+      "exitCriterion": "仅键盘完成核心路径，读屏可读，高对比与 200% 不裁切，减少动态有效。",
+      "evidenceAvailability": [
+        {
+          "path": "src/styles.css",
+          "exists": true
+        },
+        {
+          "path": "src/composables/useInitialFocus.test.ts",
+          "exists": true
+        },
+        {
+          "path": "docs/ACCESSIBILITY.md",
+          "exists": true
+        },
+        {
+          "path": "review/accessibility-plan.json",
+          "exists": true
+        },
+        {
+          "path": "review/evidence/RQT-14-accessibility.json",
+          "exists": false
+        }
+      ],
+      "verificationCommands": [
+        "npm run test",
+        "npm run accessibility:check"
+      ],
+      "issue": "焦点、语义、关键文本对比度、窄视口回流、高对比和减少动态自动基线已通过；尚无真实安装版的仅键盘、NVDA、讲述人、Windows 对比度主题和 200% 系统测试。",
+      "nextAction": "按 docs/ACCESSIBILITY.md 由具名测试人员完成五项真实系统走查，关闭 P0/P1 后提交 RQT-14 人工证据。"
+    },
+    {
+      "id": "RQT-15",
+      "title": "P0/P1 安全、隐私、依赖与数据清除评审通过",
+      "proofType": "hybrid",
+      "status": "partial",
+      "ownerRole": "安全与隐私负责人",
+      "exitCriterion": "密钥不入客户端，CSP/权限最小，依赖高危为 0，遥测同意与清除行为被验证。",
+      "evidenceAvailability": [
+        {
+          "path": "src-tauri/capabilities/default.json",
+          "exists": true
+        },
+        {
+          "path": "src-tauri/tauri.conf.json",
+          "exists": true
+        },
+        {
+          "path": "src-tauri/src/lib.rs",
+          "exists": true
+        },
+        {
+          "path": "src/components/SettingsPanel.test.ts",
+          "exists": true
+        },
+        {
+          "path": "src/services/data-reset.ts",
+          "exists": true
+        },
+        {
+          "path": "src/services/data-reset.test.ts",
+          "exists": true
+        },
+        {
+          "path": "src/services/persistence.ts",
+          "exists": true
+        },
+        {
+          "path": "src/services/persistence.test.ts",
+          "exists": true
+        },
+        {
+          "path": "src/core/pilot.ts",
+          "exists": true
+        },
+        {
+          "path": "src/core/pilot.test.ts",
+          "exists": true
+        },
+        {
+          "path": "src/components/PilotPanel.vue",
+          "exists": true
+        },
+        {
+          "path": "review/pilot-plan.json",
+          "exists": true
+        },
+        {
+          "path": "src/services/weather.test.ts",
+          "exists": true
+        },
+        {
+          "path": "scripts/desktop-capability-contract.test.mjs",
+          "exists": true
+        },
+        {
+          "path": "scripts/dependency-audit.mjs",
+          "exists": true
+        },
+        {
+          "path": "scripts/native-cargo-audit.ps1",
+          "exists": true
+        },
+        {
+          "path": "scripts/native-cargo-audit-check.mjs",
+          "exists": true
+        },
+        {
+          "path": "scripts/generate-dependency-risk-review.mjs",
+          "exists": true
+        },
+        {
+          "path": "scripts/dependency-risk-review-check.mjs",
+          "exists": true
+        },
+        {
+          "path": "scripts/dependency-risk-review-contract.test.mjs",
+          "exists": true
+        },
+        {
+          "path": "output/WeatherPoem_0.2.0_DEPENDENCY_AUDIT.json",
+          "exists": true
+        },
+        {
+          "path": "output/WeatherPoem_0.2.0_CARGO_AUDIT.json",
+          "exists": true
+        },
+        {
+          "path": "output/WeatherPoem_0.2.0_DEPENDENCY_RISK_REVIEW.json",
+          "exists": true
+        },
+        {
+          "path": "docs/SECURITY_PRIVACY.md",
+          "exists": true
+        },
+        {
+          "path": "review/evidence/RQT-15-security-privacy-review.json",
+          "exists": false
+        }
+      ],
+      "verificationCommands": [
+        "npm run desktop:capability:check",
+        "npm run security:audit:check",
+        "npm run security:cargo-audit:check",
+        "npm run security:dependency-review:check",
+        "npm run check"
+      ],
+      "issue": "最小 capability、数据清除和当前锁文件 npm/OSV/原生 RustSec 扫描已有证据；Windows 目标漏洞与 unsound/yanked 为 0。5 项 unic-* 公告已归并为同一 Tauri→urlpattern 链，上游修复 PR #15660 已合并但未进入稳定版，机器草案提出下一稳定版升级和 2026-08-31 复核期限；该期限、非目标过滤与完整安全隐私评审仍未具名批准。",
+      "nextAction": "安全负责人复核依赖处置草案、未启用的 rsa/GTK3/GLib 路径、权限、日志、清除行为与隐私文本；批准或修改升级期限。包含 PR #15660 的稳定 Tauri 发布后升级、重建并重跑两类依赖审计。"
+    },
+    {
+      "id": "RQT-16",
+      "title": "试点同意、退出、反馈和最小测量方案可执行",
+      "proofType": "external",
+      "status": "partial",
+      "ownerRole": "试点负责人",
+      "exitCriterion": "事件最小集、保留期、同意、退出、反馈、问卷和访谈方案冻结且不复用旧授权。",
+      "evidenceAvailability": [
+        {
+          "path": "review/pilot-plan.json",
+          "exists": true
+        },
+        {
+          "path": "docs/PILOT_PLAN.md",
+          "exists": true
+        },
+        {
+          "path": "src/core/pilot.ts",
+          "exists": true
+        },
+        {
+          "path": "src/core/pilot.test.ts",
+          "exists": true
+        },
+        {
+          "path": "src/components/PilotPanel.vue",
+          "exists": true
+        },
+        {
+          "path": "src/components/PilotPanel.test.ts",
+          "exists": true
+        },
+        {
+          "path": "src/services/desktop.ts",
+          "exists": true
+        },
+        {
+          "path": "src/services/desktop.test.ts",
+          "exists": true
+        },
+        {
+          "path": "src/services/persistence.ts",
+          "exists": true
+        },
+        {
+          "path": "src-tauri/src/lib.rs",
+          "exists": true
+        },
+        {
+          "path": "scripts/pilot-plan-check.mjs",
+          "exists": true
+        },
+        {
+          "path": "review/evidence/RQT-16-pilot-session-measurement-validation.template.json",
+          "exists": true
+        },
+        {
+          "path": "review/evidence/RQT-16-pilot-consent-measurement.json",
+          "exists": false
+        }
+      ],
+      "verificationCommands": [
+        "npm run pilot:check",
+        "npm run test"
+      ],
+      "issue": "v2 已实现 28 天本地按日聚合、无标识/无时间戳的已结束与异常中断会话计数、托盘正常退出握手、零自动上传、重新同意、退出即删、第 35 天起下次启动清除、摘要、问卷和访谈候选方案；真实负责人、联系方式、隐私/伦理批准、冻结候选真机异常中断验证、非开发人员走查与正式招募尚未完成。",
+      "nextAction": "由试点负责人和隐私责任人补入真实联系人并具名批准 v2 口径；按学校要求完成伦理判断，由质量负责人在冻结候选验证正常退出、强制终止和下次启动计数，再邀请非开发人员走查同意/退出/清除并冻结招募材料。"
+    },
+    {
+      "id": "RQT-17",
+      "title": "试点候选缺陷签署与独立安装验收完成",
+      "proofType": "manual",
+      "status": "partial",
+      "ownerRole": "质量与试点负责人",
+      "exitCriterion": "阻断级/P0/P1 未接受缺陷为 0，非开发人员可按说明独立安装、使用和卸载。",
+      "evidenceAvailability": [
+        {
+          "path": "review/release-candidate-uat-plan.json",
+          "exists": true
+        },
+        {
+          "path": "docs/RELEASE_CANDIDATE_UAT.md",
+          "exists": true
+        },
+        {
+          "path": "scripts/generate-release-uat-plan.mjs",
+          "exists": true
+        },
+        {
+          "path": "scripts/release-uat-check.mjs",
+          "exists": true
+        },
+        {
+          "path": "scripts/release-uat-contract.test.mjs",
+          "exists": true
+        },
+        {
+          "path": "review/evidence/RQT-17-defect-signoff-installer-uat.json",
+          "exists": false
+        }
+      ],
+      "verificationCommands": [
+        "npm run uat:plan:check"
+      ],
+      "issue": "非开发人员 UAT 计划已绑定当前 portable/NSIS/MSI 三项哈希，要求两名非开发者在干净账号完成 11 个安装、核心使用、离线、托盘、数据清除和卸载场景，并定义 P0—P3 与例外字段；真实测试者、缺陷统计和质量/试点签署仍未完成。",
+      "nextAction": "邀请两名未参与开发的测试者按 docs/RELEASE_CANDIDATE_UAT.md 自助执行并留证；汇总 P0/P1，关闭或具名接受例外后提交 RQT-17 证据。"
+    },
+    {
+      "id": "RQT-18",
+      "title": "发布范围、AI 模式、试点版本和责任人完成决策冻结",
+      "proofType": "external",
+      "status": "partial",
+      "ownerRole": "项目发起人",
+      "exitCriterion": "明确内部试点/展示/公开分发范围、AI 启停方式、预算、回滚人、审核人与试点版本。",
+      "evidenceAvailability": [
+        {
+          "path": "review/scope-freeze-proposal.json",
+          "exists": true
+        },
+        {
+          "path": "docs/SCOPE_FREEZE_PROPOSAL.md",
+          "exists": true
+        },
+        {
+          "path": "scripts/generate-scope-freeze-proposal.mjs",
+          "exists": true
+        },
+        {
+          "path": "scripts/scope-freeze-check.mjs",
+          "exists": true
+        },
+        {
+          "path": "scripts/scope-freeze-contract.test.mjs",
+          "exists": true
+        },
+        {
+          "path": "review/evidence/RQT-18-scope-ai-version-freeze.json",
+          "exists": false
+        }
+      ],
+      "verificationCommands": [
+        "npm run scope:freeze:check"
+      ],
+      "issue": "安全默认提案已绑定 0.2.0/2026.07.1 候选：仅内部受控分发，校园试点待门禁，公开分发关闭，AI 使用本地规则，付费服务预算为 0，官方预警待授权，统计为单独同意的本地聚合；真实责任人、预算决定和 Go/No-Go 尚未具名批准。",
+      "nextAction": "项目发起人为七个责任角色指定真实姓名，批准或修改预算、AI、预警、统计和分发范围，召开 Go/No-Go 并提交 RQT-18 具名决策记录。"
+    },
+    {
+      "id": "RQT-19",
+      "title": "正式发布物完成 Authenticode 签名、时间戳和证书允许列表验证",
+      "proofType": "external",
+      "status": "partial",
+      "ownerRole": "组织发布负责人",
+      "exitCriterion": "production 渠道三项发布物均 Valid、有时间戳、证书受信且 HTTPS 地址完整。",
+      "evidenceAvailability": [
+        {
+          "path": "output/WeatherPoem_0.2.0_RELEASE.json",
+          "exists": true
+        },
+        {
+          "path": "review/windows-code-signing-plan.json",
+          "exists": true
+        },
+        {
+          "path": "docs/WINDOWS_CODE_SIGNING_PLAN.md",
+          "exists": true
+        },
+        {
+          "path": "review/evidence/RQT-19-code-signing-approval.json",
+          "exists": false
+        }
+      ],
+      "verificationCommands": [
+        "npm run signing:plan:check",
+        "npm run release:verify:production"
+      ],
+      "issue": "绑定当前三项 NotSigned 发布物的组织签名计划已明确发布主体、证书/服务、私钥与发布机边界、时间戳、允许列表、签名后生成清单和 10 个正反场景；当前仍未批准主体和预算、取得证书/签名服务、配置受控发布机或生成任何签名 production 产物。",
+      "nextAction": "由项目发起人、发布、安全和法务负责人完成 WINDOWS_CODE_SIGNING_PLAN 的六项组织准备；在受控发布机签署最终字节、生成 production 清单、执行 10 场景后运行 release:verify:production 并提交具名证据。"
+    },
+    {
+      "id": "RQT-20",
+      "title": "Tauri 更新包签名、端点、损坏拒绝、降级和回滚通过",
+      "proofType": "external",
+      "status": "partial",
+      "ownerRole": "发布与后端负责人",
+      "exitCriterion": "独立 updater 公钥固化，私钥受控，HTTPS 端点、签名包、损坏/断网/降级/回滚均验证。",
+      "evidenceAvailability": [
+        {
+          "path": "review/signed-updater-plan.json",
+          "exists": true
+        },
+        {
+          "path": "docs/SIGNED_UPDATER_PLAN.md",
+          "exists": true
+        },
+        {
+          "path": "review/evidence/RQT-20-signed-updater.json",
+          "exists": false
+        }
+      ],
+      "verificationCommands": [
+        "npm run updater:plan:check"
+      ],
+      "issue": "安全实施计划已绑定当前 0.2.0 试用候选，明确 Tauri v2 配置、私钥边界、HTTPS 元数据、前向修复回滚、公钥轮换和 12 个正反场景；当前仍未集成 updater、生成密钥、部署端点、生成签名更新包或执行真实演练。",
+      "nextAction": "待冻结候选八小时采样结束并由发布/后端/安全负责人确定密钥托管、更新域名、发布策略和事故责任后接入插件；在独立 Windows 环境执行 SIGNED_UPDATER_PLAN 的 12 个场景并具名签署。"
+    },
+    {
+      "id": "RQT-21",
+      "title": "公开下载、哈希复验、回滚和撤回演练完成",
+      "proofType": "manual",
+      "status": "partial",
+      "ownerRole": "发布负责人",
+      "exitCriterion": "从公开 HTTPS 下载后哈希一致，错误发布可回滚，内容与二进制撤回流程可执行。",
+      "evidenceAvailability": [
+        {
+          "path": "review/public-distribution-rehearsal-plan.json",
+          "exists": true
+        },
+        {
+          "path": "docs/PUBLIC_DISTRIBUTION_REHEARSAL.md",
+          "exists": true
+        },
+        {
+          "path": "review/evidence/RQT-21-public-distribution-rehearsal.json",
+          "exists": false
+        }
+      ],
+      "verificationCommands": [
+        "npm run distribution:plan:check"
+      ],
+      "issue": "绑定当前三项未签名发布物的公开分发计划已覆盖不可变上传、独立重下、TLS/重定向、哈希/签名、部分上传、内容在线/离线撤回、二进制撤回、前向修复和通知审计；当前仍无 production 包、正式 HTTPS 主机、CDN 决策或真实演练。",
+      "nextAction": "待 RQT-19 与 RQT-20 通过后，由发布、事故和安全负责人批准主机/CDN/撤回权限；按 PUBLIC_DISTRIBUTION_REHEARSAL 在独立 Windows 设备执行 10 个场景并提交具名证据。"
+    },
+    {
+      "id": "RQT-22",
+      "title": "四周校园试点完成并形成指标、问卷、访谈和 Go/No-Go",
+      "proofType": "external",
+      "status": "partial",
+      "ownerRole": "试点负责人",
+      "exitCriterion": "30—50 名大学生连续四周试用，全部成功指标有原始口径、汇总与具名决策。",
+      "evidenceAvailability": [
+        {
+          "path": "review/four-week-pilot-execution-plan.json",
+          "exists": true
+        },
+        {
+          "path": "docs/FOUR_WEEK_PILOT_EXECUTION.md",
+          "exists": true
+        },
+        {
+          "path": "src/core/pilot.ts",
+          "exists": true
+        },
+        {
+          "path": "src/core/pilot.test.ts",
+          "exists": true
+        },
+        {
+          "path": "src/services/desktop.ts",
+          "exists": true
+        },
+        {
+          "path": "src-tauri/src/lib.rs",
+          "exists": true
+        },
+        {
+          "path": "review/evidence/RQT-22-four-week-pilot-results.template.json",
+          "exists": true
+        },
+        {
+          "path": "review/evidence/RQT-22-four-week-pilot-results.json",
+          "exists": false
+        }
+      ],
+      "verificationCommands": [
+        "npm run pilot:four-week:check"
+      ],
+      "issue": "四周执行包已绑定当前候选，固定 30—50 名 18+ 大学生、28 天、六阶段、九项成功门槛、分析口径、停止规则和结果模板；客户端已补齐无标识、无时间戳的会话/异常中断聚合，但该口径仍待隐私批准和冻结候选真机验证，因此 measurementReady 保持 false。校园试点仍有 11 项入口阻断，且尚未招募、取得真实同意、执行问卷/访谈或召开 Go/No-Go。",
+      "nextAction": "先关闭全部 campus-pilot 门禁；由隐私负责人批准 v2 会话口径，质量负责人验证正常退出不误报、强制终止可在下次启动计入且当前会话不进入分母；随后冻结候选，按 FOUR_WEEK_PILOT_EXECUTION 招募并执行 28 天，填写九项指标、缺陷、质性结果和具名 Go/No-Go。"
+    },
+    {
+      "id": "RQT-23",
+      "title": "诗词底本、现代解释、字体、图片和第三方数据使用权完成确认",
+      "proofType": "external",
+      "status": "partial",
+      "ownerRole": "内容与法务负责人",
+      "exitCriterion": "所有公开分发内容和资产有来源、许可范围、责任人和撤回方式。",
+      "evidenceAvailability": [
+        {
+          "path": "review/content-asset-license-inventory.json",
+          "exists": true
+        },
+        {
+          "path": "review/third-party-notice-index.json",
+          "exists": true
+        },
+        {
+          "path": "review/third-party-license-source-map.json",
+          "exists": true
+        },
+        {
+          "path": "review/npm-license-text-supplements.json",
+          "exists": true
+        },
+        {
+          "path": "review/cargo-license-text-supplements.json",
+          "exists": true
+        },
+        {
+          "path": "review/canonical-license-text-policy.json",
+          "exists": true
+        },
+        {
+          "path": "review/canonical-license-text-supplements.json",
+          "exists": true
+        },
+        {
+          "path": "docs/CONTENT_ASSET_LICENSES.md",
+          "exists": true
+        },
+        {
+          "path": "docs/THIRD_PARTY_NOTICES.md",
+          "exists": true
+        },
+        {
+          "path": "scripts/sync-npm-license-texts.mjs",
+          "exists": true
+        },
+        {
+          "path": "scripts/sync-cargo-license-texts.mjs",
+          "exists": true
+        },
+        {
+          "path": "scripts/sync-spdx-license-texts.mjs",
+          "exists": true
+        },
+        {
+          "path": "scripts/canonical-license-text-support.mjs",
+          "exists": true
+        },
+        {
+          "path": "scripts/canonical-license-text-contract.test.mjs",
+          "exists": true
+        },
+        {
+          "path": "scripts/third-party-notices-support.mjs",
+          "exists": true
+        },
+        {
+          "path": "scripts/installed-notice-support.mjs",
+          "exists": true
+        },
+        {
+          "path": "scripts/verify-installed-notice.mjs",
+          "exists": true
+        },
+        {
+          "path": "scripts/installed-notice-check.mjs",
+          "exists": true
+        },
+        {
+          "path": "scripts/installed-notice-contract.test.mjs",
+          "exists": true
+        },
+        {
+          "path": "scripts/installed-notice-command-contract.test.mjs",
+          "exists": true
+        },
+        {
+          "path": "output/WeatherPoem_0.2.0_INSTALLED_NOTICE.json",
+          "exists": true
+        },
+        {
+          "path": "src/components/SettingsPanel.vue",
+          "exists": true
+        },
+        {
+          "path": "src/components/SettingsPanel.test.ts",
+          "exists": true
+        },
+        {
+          "path": "src/services/desktop.ts",
+          "exists": true
+        },
+        {
+          "path": "src/services/desktop.test.ts",
+          "exists": true
+        },
+        {
+          "path": "src-tauri/tauri.conf.json",
+          "exists": true
+        },
+        {
+          "path": "src-tauri/capabilities/default.json",
+          "exists": true
+        },
+        {
+          "path": "src-tauri/src/lib.rs",
+          "exists": true
+        },
+        {
+          "path": "review/evidence/RQT-23-content-asset-licenses.template.json",
+          "exists": true
+        },
+        {
+          "path": "review/evidence/RQT-23-content-asset-licenses.json",
+          "exists": false
+        }
+      ],
+      "verificationCommands": [
+        "npm run licenses:check",
+        "npm run licenses:notices:installed:check"
+      ],
+      "issue": "机器台账已覆盖 120 首底本字段、现代解释、全部图标、系统字体策略、Open-Meteo/OpenAI/预警服务及锁定依赖许可元数据；设置页已实现 Open-Meteo/CC BY 4.0 可见署名、官方许可链接和字段选择/天气代码映射/缓存说明，外链权限仅允许该官方页面。NOTICE 草案已收集 300 份去重文本：上游可验证文本覆盖 259/268 个 npm 与 284/286 个 Windows Rust 包，9 + 2 个上游发布物文本缺口仍如实保留；分发侧通过 SPDX v3.28.0 固定提交的五份规范文本补充 11 个受控例外，分发可读许可文本覆盖达到 268/268 与 286/286。37 个同版同仓库包映射、npm integrity/整包 SHA-512 与 gitHead、Cargo.lock checksum/crate 内 VCS 提交、SPDX 固定提交和逐文件 SHA-256 均可复验。当前 NSIS 真实安装生命周期已通过，安装目录中的 NOTICE 与源文件逐字节校验通过并绑定当前安装包哈希；MSI 行政镜像及其 payload 哈希已通过，但管理员 MSI 真实安装、修复、卸载和安装后 NOTICE 验证仍待完成，因此 WeatherPoem_0.2.0_INSTALLED_NOTICE.json 保持 partial。普通静态发布验证不要求完整安装证据，人工 Windows 与 production 门禁必须要求 NSIS/MSI 双覆盖。规范补充不冒充上游随包文件，也不代表许可兼容性或法务批准。项目根 LICENSE、具体点校版本、现代内容/图标权属、Open-Meteo 服务档位、许可义务判断及具名批准仍未完成。",
+      "nextAction": "在用户明确批准 UAC 且无既有安装冲突的专用测试账户完成管理员 MSI 真实安装、安装后 NOTICE 逐字节校验、修复和卸载，再运行 npm run licenses:notices:installed:check；同时由内容、设计、数据服务和法务真实责任人按 CONTENT_ASSET_LICENSES 补齐原始证据，复核 11 个规范文本例外及复合许可义务，选择项目根发布许可并确认 Open-Meteo 服务档位。机器安装证据只证明安装字节一致，SPDX 规范补充只证明分发文本可读，二者均不能替代具名法律签署。"
+    },
+    {
+      "id": "RQT-24",
+      "title": "日志、告警、事故响应、回滚和内容撤回 Runbook 完成演练",
+      "proofType": "manual",
+      "status": "partial",
+      "ownerRole": "运维与内容负责人",
+      "exitCriterion": "P0/P1 事故联系人、告警、通知、回滚、撤回和复盘流程至少演练一次。",
+      "evidenceAvailability": [
+        {
+          "path": "docs/MVP_VERIFICATION.md",
+          "exists": true
+        },
+        {
+          "path": "docs/WARNING_GATEWAY.md",
+          "exists": true
+        },
+        {
+          "path": "docs/CONTENT_CONTROL.md",
+          "exists": true
+        },
+        {
+          "path": "docs/INCIDENT_RUNBOOK.md",
+          "exists": true
+        },
+        {
+          "path": "output/WeatherPoem_0.2.0_CONTENT_WITHDRAWAL_DRILL.json",
+          "exists": true
+        },
+        {
+          "path": "review/evidence/RQT-24-operations-incident-drill.json",
+          "exists": false
+        }
+      ],
+      "verificationCommands": [
+        "npm run content:withdrawal:check"
+      ],
+      "issue": "P0/P1 Runbook、通知模板、全局暂停、撤回自动演练和防回退证据已完成；仍没有具名值守、生产告警接收、真实预警源失效与客户端演练记录。",
+      "nextAction": "由项目发起人指定具名值守与批准人，连接生产监控和撤回网关，按 INCIDENT_RUNBOOK 完成预警源失效与错误内容撤回演练并签署。"
+    }
+  ]
+}

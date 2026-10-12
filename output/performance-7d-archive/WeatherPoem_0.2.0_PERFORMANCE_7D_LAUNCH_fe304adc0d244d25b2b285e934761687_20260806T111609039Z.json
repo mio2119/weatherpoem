@@ -1,0 +1,38 @@
+{
+    "schemaVersion":  "1.0",
+    "product":  "WeatherPoem",
+    "appVersion":  "0.2.0",
+    "runId":  "fe304adc0d244d25b2b285e934761687",
+    "startedAt":  "2026-08-05T10:40:17.3469139Z",
+    "requestedDurationMinutes":  10080,
+    "sampleIntervalSeconds":  60,
+    "launcherProcessId":  110540,
+    "artifact":  {
+                     "path":  "src-tauri/target/release/weatherpoem.exe",
+                     "sha256":  "D388D9484A7B81B1039CFAA1D21CBAD178750E5375B8FBCA7D8334A8C681609A",
+                     "sizeBytes":  25102136
+                 },
+    "releaseManifest":  {
+                            "path":  "output/WeatherPoem_0.2.0_RELEASE.json",
+                            "sha256":  "47FC4ECB1E21314AC94928134E55A1A82EE8E331C719B8598148F75CD57F3C59"
+                        },
+    "protectedEvidence":  [
+                              {
+                                  "path":  "output/WeatherPoem_0.2.0_PERFORMANCE_8H_LAUNCH.json",
+                                  "sha256":  "475CFC066DFEB152E578756683FB2A1749AF5C8CF60A249BB1F2C87DA2A29B58"
+                              },
+                              {
+                                  "path":  "output/WeatherPoem_0.2.0_PERFORMANCE_LONG_RUN_CHECKPOINT.json",
+                                  "sha256":  "AADD88C1394AA2E998D7060C34B850F06E74599FCF2BE283ABDEA8686D1543F3"
+                              },
+                              {
+                                  "path":  "output/WeatherPoem_0.2.0_PERFORMANCE_8H.json",
+                                  "sha256":  "E150190D3D3E32865E8642C8616FC52CA3E047786EBAF727DAAB8FD65C2EDC4C"
+                              }
+                          ],
+    "checkpoint":  "output/WeatherPoem_0.2.0_PERFORMANCE_7D_CHECKPOINT.json",
+    "report":  "output/WeatherPoem_0.2.0_PERFORMANCE_7D.json",
+    "stdout":  "output/WeatherPoem_0.2.0_PERFORMANCE_7D_fe304adc0d244d25b2b285e934761687.stdout.log",
+    "stderr":  "output/WeatherPoem_0.2.0_PERFORMANCE_7D_fe304adc0d244d25b2b285e934761687.stderr.log",
+    "status":  "launched"
+}

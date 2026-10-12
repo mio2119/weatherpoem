@@ -1,0 +1,306 @@
+import { createHash } from "node:crypto";
+import { readFile } from "node:fs/promises";
+
+export const DEPENDENCY_RISK_REVIEW_REPORT =
+  "output/WeatherPoem_0.2.0_DEPENDENCY_RISK_REVIEW.json";
+export const DEPENDENCY_RISK_REVIEW_SCHEMA = "1.0";
+
+export const EXPECTED_UNIC_WARNINGS = [
+  {
+    advisoryId: "RUSTSEC-2025-0081",
+    package: "unic-char-property",
+    version: "0.9.0",
+  },
+  {
+    advisoryId: "RUSTSEC-2025-0075",
+    package: "unic-char-range",
+    version: "0.9.0",
+  },
+  {
+    advisoryId: "RUSTSEC-2025-0080",
+    package: "unic-common",
+    version: "0.9.0",
+  },
+  {
+    advisoryId: "RUSTSEC-2025-0100",
+    package: "unic-ucd-ident",
+    version: "0.9.0",
+  },
+  {
+    advisoryId: "RUSTSEC-2025-0098",
+    package: "unic-ucd-version",
+    version: "0.9.0",
+  },
+];
+
+function assert(condition, message) {
+  if (!condition) throw new Error(message);
+}
+
+function exactKeys(value, keys, label) {
+  assert(
+    value && typeof value === "object" && !Array.isArray(value),
+    `${label} 必须是对象`,
+  );
+  assert(
+    JSON.stringify(Object.keys(value).sort()) ===
+      JSON.stringify([...keys].sort()),
+    `${label} 字段不符合契约`,
+  );
+}
+
+function sortedWarnings(warnings) {
+  return warnings
+    .map(({ advisoryId, package: packageName, version }) => ({
+      advisoryId,
+      package: packageName,
+      version,
+    }))
+    .sort((left, right) =>
+      left.advisoryId.localeCompare(right.advisoryId),
+    );
+}
+
+function isSha256(value) {
+  return typeof value === "string" && /^[A-F0-9]{64}$/.test(value);
+}
+
+function isCommitSha(value) {
+  return typeof value === "string" && /^[a-f0-9]{40}$/.test(value);
+}
+
+export async function sha256File(path) {
+  return createHash("sha256")
+    .update(await readFile(path))
+    .digest("hex")
+    .toUpperCase();
+}
+
+export function validateDependencyRiskReview(report, expected) {
+  exactKeys(
+    report,
+    [
+      "schemaVersion",
+      "product",
+      "appVersion",
+      "generatedAt",
+      "status",
+      "inputs",
+      "currentTarget",
+      "dependencyCluster",
+      "upstream",
+      "proposedDisposition",
+      "approval",
+      "limitations",
+      "gateSatisfied",
+      "result",
+    ],
+    "依赖风险处置草案",
+  );
+  assert(
+    report.schemaVersion === DEPENDENCY_RISK_REVIEW_SCHEMA &&
+      report.product === "WeatherPoem" &&
+      report.appVersion === expected.appVersion &&
+      report.status === "review-ready-not-approved",
+    "依赖风险处置草案身份无效",
+  );
+  const generatedAt = Date.parse(report.generatedAt);
+  assert(
+    Number.isFinite(generatedAt) &&
+      generatedAt <= Date.now() + 10 * 60 * 1000 &&
+      generatedAt >= Date.now() - 31 * 24 * 60 * 60 * 1000,
+    "依赖风险处置草案已过期或时间无效",
+  );
+
+  exactKeys(
+    report.inputs,
+    [
+      "cargoAuditReport",
+      "cargoAuditSha256",
+      "cargoLock",
+      "cargoLockSha256",
+      "targetTriple",
+    ],
+    "处置输入",
+  );
+  assert(
+    report.inputs.cargoAuditReport ===
+        "output/WeatherPoem_0.2.0_CARGO_AUDIT.json" &&
+      report.inputs.cargoAuditSha256 ===
+        expected.cargoAuditSha256 &&
+      isSha256(report.inputs.cargoAuditSha256) &&
+      report.inputs.cargoLock === "src-tauri/Cargo.lock" &&
+      report.inputs.cargoLockSha256 === expected.cargoLockSha256 &&
+      isSha256(report.inputs.cargoLockSha256) &&
+      report.inputs.targetTriple === "x86_64-pc-windows-msvc",
+    "处置草案未绑定当前 RustSec 报告、锁文件或 Windows 目标",
+  );
+
+  exactKeys(
+    report.currentTarget,
+    [
+      "vulnerabilityCount",
+      "blockingWarningCount",
+      "unmaintainedWarningCount",
+      "unmaintainedWarnings",
+    ],
+    "当前 Windows 目标",
+  );
+  const expectedWarnings = sortedWarnings(
+    expected.targetUnmaintainedWarnings,
+  );
+  assert(
+    report.currentTarget.vulnerabilityCount === 0 &&
+      report.currentTarget.blockingWarningCount === 0 &&
+      report.currentTarget.unmaintainedWarningCount === 5 &&
+      JSON.stringify(
+        sortedWarnings(report.currentTarget.unmaintainedWarnings),
+      ) === JSON.stringify(expectedWarnings) &&
+      JSON.stringify(expectedWarnings) ===
+        JSON.stringify(sortedWarnings(EXPECTED_UNIC_WARNINGS)),
+    "处置草案中的 Windows 目标风险与 cargo-audit 不一致",
+  );
+
+  exactKeys(
+    report.dependencyCluster,
+    [
+      "independentRiskCount",
+      "clusteredWarningCount",
+      "frameworkPackage",
+      "rootPackage",
+      "leafPackage",
+      "path",
+    ],
+    "停止维护依赖簇",
+  );
+  assert(
+    report.dependencyCluster.independentRiskCount === 1 &&
+      report.dependencyCluster.clusteredWarningCount === 5 &&
+      report.dependencyCluster.frameworkPackage ===
+        "tauri-utils@2.9.3" &&
+      report.dependencyCluster.rootPackage === "urlpattern@0.3.0" &&
+      report.dependencyCluster.leafPackage ===
+        "unic-ucd-ident@0.9.0" &&
+      JSON.stringify(report.dependencyCluster.path) ===
+        JSON.stringify([
+          "weatherpoem@0.2.0",
+          "tauri@2.11.5",
+          "tauri-utils@2.9.3",
+          "urlpattern@0.3.0",
+          "unic-ucd-ident@0.9.0",
+        ]),
+    "5 项停止维护公告没有准确归并到同一依赖链",
+  );
+
+  exactKeys(
+    report.upstream,
+    [
+      "checkedAt",
+      "tauriLatestStable",
+      "tauriUtilsLatestStable",
+      "urlpatternLatestStable",
+      "urlpattern060RemovesUnicUcdIdent",
+      "tauriPullRequest",
+      "mergeCommitSha",
+      "mergedAt",
+      "tauriDevDependency",
+      "sources",
+    ],
+    "上游处置状态",
+  );
+  assert(
+    Math.abs(Date.parse(report.upstream.checkedAt) - generatedAt) <=
+      1000 &&
+      report.upstream.tauriLatestStable === "2.11.5" &&
+      report.upstream.tauriUtilsLatestStable === "2.9.3" &&
+      report.upstream.urlpatternLatestStable === "0.6.0" &&
+      report.upstream.urlpattern060RemovesUnicUcdIdent === true &&
+      report.upstream.tauriPullRequest ===
+        "https://github.com/tauri-apps/tauri/pull/15660" &&
+      report.upstream.mergeCommitSha ===
+        "dd725f4b13c30a86b398ccc59eb498f151f461c5" &&
+      isCommitSha(report.upstream.mergeCommitSha) &&
+      report.upstream.mergedAt === "2026-07-06T16:50:43Z" &&
+      report.upstream.tauriDevDependency === "urlpattern@0.6",
+    "上游已合并但未发布的修复状态不准确",
+  );
+  exactKeys(
+    report.upstream.sources,
+    [
+      "tauriCrate",
+      "tauriUtilsCrate",
+      "urlpatternCrate",
+      "pullRequest",
+      "tauriDevCargoToml",
+    ],
+    "上游来源",
+  );
+  assert(
+    Object.values(report.upstream.sources).every(
+      (value) =>
+        typeof value === "string" &&
+        value.startsWith("https://"),
+    ),
+    "上游来源必须是无凭据 HTTPS 地址",
+  );
+
+  exactKeys(
+    report.proposedDisposition,
+    [
+      "action",
+      "reason",
+      "temporaryControl",
+      "upgradeTrigger",
+      "targetDate",
+    ],
+    "拟议处置",
+  );
+  const targetDate = Date.parse(
+    `${report.proposedDisposition.targetDate}T23:59:59Z`,
+  );
+  assert(
+    report.proposedDisposition.action ===
+      "upgrade-next-stable-tauri-release" &&
+      report.proposedDisposition.reason ===
+        "avoid-unreleased-core-framework-git-patch" &&
+      report.proposedDisposition.temporaryControl ===
+        "block-vulnerabilities-unsound-yanked-and-review-each-candidate" &&
+      report.proposedDisposition.upgradeTrigger ===
+        "stable-tauri-release-containing-pr-15660" &&
+      Number.isFinite(targetDate) &&
+      targetDate >= generatedAt &&
+      targetDate <= generatedAt + 90 * 24 * 60 * 60 * 1000,
+    "拟议处置缺少稳定版升级触发条件或限期",
+  );
+
+  exactKeys(
+    report.approval,
+    ["securityOwner", "decision", "approvedAt", "evidencePath"],
+    "安全批准",
+  );
+  assert(
+    report.approval.securityOwner === null &&
+      report.approval.decision === null &&
+      report.approval.approvedAt === null &&
+      report.approval.evidencePath ===
+        "review/evidence/RQT-15-security-privacy-review.json",
+    "自动草案不得伪造具名安全批准",
+  );
+  exactKeys(
+    report.limitations,
+    [
+      "upstreamFixMergedNotReleased",
+      "runtimeWarningStillPresent",
+      "namedSecurityReviewCompleted",
+    ],
+    "处置限制",
+  );
+  assert(
+    report.limitations.upstreamFixMergedNotReleased === true &&
+      report.limitations.runtimeWarningStillPresent === true &&
+      report.limitations.namedSecurityReviewCompleted === false &&
+      report.gateSatisfied === false &&
+      report.result === "automated-disposition-draft-ready",
+    "处置草案掩盖了未发布修复或未批准状态",
+  );
+}

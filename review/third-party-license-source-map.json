@@ -1,0 +1,79 @@
+{
+  "schemaVersion": "1.0",
+  "purpose": "把同一上游仓库、同一发布版本、同一许可表达式的平台子包或工作区兄弟包绑定到来源包实际携带的许可文本；本映射不使用通用 SPDX 模板替代上游文件。上游发布物确无可验证许可全文时，由 review/canonical-license-text-policy.json 的显式例外和 review/canonical-license-text-supplements.json 的固定 SPDX 提交证据单独处理，两类来源不得混写。",
+  "groups": [
+    {
+      "id": "npm-rolldown-platform-bindings-1.1.5",
+      "ecosystem": "npm",
+      "relationship": "same-release-platform-package",
+      "repository": "https://github.com/rolldown/rolldown",
+      "sourcePackageId": "npm:node_modules/rolldown",
+      "targetPackageIds": [
+        "npm:node_modules/@rolldown/binding-android-arm64",
+        "npm:node_modules/@rolldown/binding-darwin-arm64",
+        "npm:node_modules/@rolldown/binding-darwin-x64",
+        "npm:node_modules/@rolldown/binding-freebsd-x64",
+        "npm:node_modules/@rolldown/binding-linux-arm-gnueabihf",
+        "npm:node_modules/@rolldown/binding-linux-arm64-gnu",
+        "npm:node_modules/@rolldown/binding-linux-arm64-musl",
+        "npm:node_modules/@rolldown/binding-linux-ppc64-gnu",
+        "npm:node_modules/@rolldown/binding-linux-s390x-gnu",
+        "npm:node_modules/@rolldown/binding-linux-x64-gnu",
+        "npm:node_modules/@rolldown/binding-linux-x64-musl",
+        "npm:node_modules/@rolldown/binding-openharmony-arm64",
+        "npm:node_modules/@rolldown/binding-wasm32-wasi",
+        "npm:node_modules/@rolldown/binding-win32-arm64-msvc",
+        "npm:node_modules/@rolldown/binding-win32-x64-msvc"
+      ]
+    },
+    {
+      "id": "npm-tauri-cli-platform-binaries-2.11.4",
+      "ecosystem": "npm",
+      "relationship": "same-release-platform-package",
+      "repository": "https://github.com/tauri-apps/tauri",
+      "sourcePackageId": "npm:node_modules/@tauri-apps/cli",
+      "targetPackageIds": [
+        "npm:node_modules/@tauri-apps/cli-darwin-arm64",
+        "npm:node_modules/@tauri-apps/cli-darwin-x64",
+        "npm:node_modules/@tauri-apps/cli-linux-arm-gnueabihf",
+        "npm:node_modules/@tauri-apps/cli-linux-arm64-gnu",
+        "npm:node_modules/@tauri-apps/cli-linux-arm64-musl",
+        "npm:node_modules/@tauri-apps/cli-linux-riscv64-gnu",
+        "npm:node_modules/@tauri-apps/cli-linux-x64-gnu",
+        "npm:node_modules/@tauri-apps/cli-linux-x64-musl",
+        "npm:node_modules/@tauri-apps/cli-win32-arm64-msvc",
+        "npm:node_modules/@tauri-apps/cli-win32-ia32-msvc",
+        "npm:node_modules/@tauri-apps/cli-win32-x64-msvc"
+      ]
+    },
+    {
+      "id": "npm-lightningcss-platform-bindings-1.33.0",
+      "ecosystem": "npm",
+      "relationship": "same-release-platform-package",
+      "repository": "https://github.com/parcel-bundler/lightningcss",
+      "sourcePackageId": "npm:node_modules/lightningcss",
+      "targetPackageIds": [
+        "npm:node_modules/lightningcss-android-arm64",
+        "npm:node_modules/lightningcss-darwin-arm64",
+        "npm:node_modules/lightningcss-darwin-x64",
+        "npm:node_modules/lightningcss-freebsd-x64",
+        "npm:node_modules/lightningcss-linux-arm-gnueabihf",
+        "npm:node_modules/lightningcss-linux-arm64-gnu",
+        "npm:node_modules/lightningcss-linux-arm64-musl",
+        "npm:node_modules/lightningcss-linux-x64-gnu",
+        "npm:node_modules/lightningcss-linux-x64-musl",
+        "npm:node_modules/lightningcss-win32-arm64-msvc"
+      ]
+    },
+    {
+      "id": "cargo-tauri-plugin-workspace-package-2.6.3",
+      "ecosystem": "cargo",
+      "relationship": "same-release-workspace-package",
+      "repository": "https://github.com/tauri-apps/tauri",
+      "sourcePackageId": "cargo:tauri-build@2.6.3",
+      "targetPackageIds": [
+        "cargo:tauri-plugin@2.6.3"
+      ]
+    }
+  ]
+}

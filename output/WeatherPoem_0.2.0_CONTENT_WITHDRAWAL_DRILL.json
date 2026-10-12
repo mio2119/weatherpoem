@@ -1,0 +1,39 @@
+{
+  "schemaVersion": "1.0",
+  "product": "WeatherPoem",
+  "version": "0.2.0",
+  "contentVersion": "2026.07.1",
+  "drilledAt": "2026-09-09T17:12:42.003Z",
+  "scope": "automated-content-withdrawal-simulation",
+  "catalog": {
+    "workCount": 120,
+    "sha256": "8794448C2F48FAF3C1A337C98A03B72E314B674EC2180D879D1ED4F0BDEA9CCF"
+  },
+  "implementation": {
+    "serviceSha256": "C8C4000D4464913BA42587879E8286F15636CBDFE5170A647766310CDDDB95C0",
+    "schemaSha256": "A110CBF06B7CC8347FE046C854359FC1998BF67E3E89E45CA4745E8E3F4B4134"
+  },
+  "sample": {
+    "workId": "wang-an-shi-yuan-ri",
+    "beforeCount": 120,
+    "afterCount": 119,
+    "revision": 41
+  },
+  "checks": {
+    "remoteManifestAccepted": "passed",
+    "requestContainsVersionsOnly": "passed",
+    "cacheWritten": "passed",
+    "offlineCacheRetained": "passed",
+    "lowerRevisionRejected": "passed",
+    "sameRevisionConflictRejected": "passed",
+    "withdrawnWorkExcluded": "passed",
+    "currentWorkShowsCorrection": "passed"
+  },
+  "limitations": {
+    "signedManifestVerified": false,
+    "productionGatewayTested": false,
+    "liveClientDrill": false,
+    "namedOperatorSignoff": false
+  },
+  "result": "automated-passed"
+}

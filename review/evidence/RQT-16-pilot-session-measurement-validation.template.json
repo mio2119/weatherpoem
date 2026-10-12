@@ -1,0 +1,117 @@
+{
+  "schemaVersion": "1.0",
+  "gateId": "RQT-16",
+  "product": "WeatherPoem",
+  "appVersion": "0.2.0",
+  "contentVersion": "2026.07.1",
+  "measurementVersion": "2026.07-pilot-local-v2",
+  "candidate": {
+    "executableSha256": "",
+    "installerSha256": "",
+    "operatingSystem": "",
+    "architecture": "",
+    "testedAt": ""
+  },
+  "executors": {
+    "qualityReviewer": {
+      "name": "",
+      "role": ""
+    },
+    "privacyReviewer": {
+      "name": "",
+      "role": ""
+    },
+    "nonDeveloperWalker": {
+      "name": "",
+      "role": ""
+    }
+  },
+  "scenarios": [
+    {
+      "id": "SESSION-01",
+      "name": "正常托盘退出不计异常中断",
+      "procedure": [
+        "启动冻结候选并完成 v2 试点单独同意",
+        "记录本地摘要中的已结束与异常中断会话数",
+        "从托盘选择退出，然后重新启动应用",
+        "再次复制本地摘要并核对计数"
+      ],
+      "expected": "已结束会话数增加 1，异常中断会话数不变。",
+      "actual": "",
+      "status": null,
+      "evidence": []
+    },
+    {
+      "id": "SESSION-02",
+      "name": "强制终止在下次启动计为异常中断",
+      "procedure": [
+        "启动冻结候选并确认当前会话已打开",
+        "通过任务管理器强制结束 WeatherPoem 进程",
+        "重新启动应用并复制本地摘要",
+        "核对已结束与异常中断会话数"
+      ],
+      "expected": "已结束会话数和异常中断会话数各增加 1。",
+      "actual": "",
+      "status": null,
+      "evidence": []
+    },
+    {
+      "id": "SESSION-03",
+      "name": "当前打开会话不进入分母",
+      "procedure": [
+        "启动冻结候选并保持应用运行",
+        "复制本地摘要",
+        "核对当前会话打开时的已结束会话分母"
+      ],
+      "expected": "当前打开会话不增加已结束会话数；分母为 0 时无异常中断会话率为 null。",
+      "actual": "",
+      "status": null,
+      "evidence": []
+    },
+    {
+      "id": "SESSION-04",
+      "name": "退出试点会删除本地聚合",
+      "procedure": [
+        "产生至少一个已结束会话记录",
+        "在应用内退出试点并确认清除",
+        "重新进入试点页面"
+      ],
+      "expected": "会话计数、打开标记和按日聚合均已删除，且不再继续记录。",
+      "actual": "",
+      "status": null,
+      "evidence": []
+    },
+    {
+      "id": "SESSION-05",
+      "name": "v1 同意不会静默授权新增测量",
+      "procedure": [
+        "准备只含 2026.07-pilot-local-v1 同意的旧版状态",
+        "启动冻结候选",
+        "检查试点页面和本地状态"
+      ],
+      "expected": "旧同意被视为无效，应用要求重新完成 v2 单独同意，未同意前不记录会话。",
+      "actual": "",
+      "status": null,
+      "evidence": []
+    }
+  ],
+  "privacyAssertions": {
+    "automaticUploadAbsent": null,
+    "participantOrDeviceIdentifiersAbsent": null,
+    "sessionTimestampsAbsent": null,
+    "crashDumpOrStackAbsent": null,
+    "rawEventLogAbsent": null,
+    "manualAggregateExportOnly": null
+  },
+  "approvals": {
+    "measurementPrivacyApproved": null,
+    "qualityValidationApproved": null,
+    "nonDeveloperWalkthroughApproved": null,
+    "approvedAt": "",
+    "approvedBy": []
+  },
+  "result": "not-executed",
+  "limitations": [],
+  "evidenceItems": [],
+  "notes": "本模板不是通过证据。必须绑定冻结候选哈希，在 Windows 真机完成五个场景，填写真实人员、结果、证据定位和批准后，另存为 RQT-16-pilot-consent-measurement.json。"
+}

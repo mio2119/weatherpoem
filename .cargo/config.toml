@@ -1,0 +1,12 @@
+# 项目级 Cargo 源配置，避免开发机的全局代理影响可复现构建。
+# crates.io 的逻辑依赖仍由 Cargo.lock 固定，下载由 rsproxy 镜像提供。
+
+[source.crates-io]
+replace-with = "rsproxy-sparse"
+
+[source.rsproxy-sparse]
+registry = "sparse+https://rsproxy.cn/index/"
+
+[http]
+proxy = ""
+multiplexing = false

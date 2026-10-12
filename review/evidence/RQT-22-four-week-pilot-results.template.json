@@ -1,0 +1,111 @@
+{
+  "schemaVersion": "1.0",
+  "gateId": "RQT-22",
+  "product": "WeatherPoem",
+  "appVersion": "0.2.0",
+  "contentVersion": "2026.07.1",
+  "planVersion": "2026.07-four-week-v1",
+  "pilotOwner": "",
+  "privacyReviewer": "",
+  "qualityReviewer": "",
+  "projectSponsor": "",
+  "startedAt": "",
+  "endedAt": "",
+  "participantFlow": {
+    "consented": null,
+    "installed": null,
+    "withdrew": null,
+    "submittedLocalSummary": null,
+    "completedFinalSurvey": null,
+    "interviewed": null
+  },
+  "versions": [],
+  "metrics": [
+    {
+      "id": "MET-01",
+      "numerator": null,
+      "denominator": null,
+      "value": null,
+      "thresholdMet": null,
+      "evidence": []
+    },
+    {
+      "id": "MET-02",
+      "numerator": null,
+      "denominator": null,
+      "value": null,
+      "thresholdMet": null,
+      "evidence": []
+    },
+    {
+      "id": "MET-03",
+      "numerator": null,
+      "denominator": null,
+      "value": null,
+      "thresholdMet": null,
+      "evidence": []
+    },
+    {
+      "id": "MET-04",
+      "numerator": null,
+      "denominator": null,
+      "value": null,
+      "thresholdMet": null,
+      "evidence": []
+    },
+    {
+      "id": "MET-05",
+      "numerator": null,
+      "denominator": null,
+      "value": null,
+      "thresholdMet": null,
+      "evidence": []
+    },
+    {
+      "id": "MET-06",
+      "numerator": null,
+      "denominator": null,
+      "value": null,
+      "thresholdMet": null,
+      "evidence": []
+    },
+    {
+      "id": "MET-07",
+      "numerator": null,
+      "denominator": null,
+      "value": null,
+      "thresholdMet": null,
+      "evidence": []
+    },
+    {
+      "id": "MET-08",
+      "numerator": null,
+      "denominator": null,
+      "value": null,
+      "thresholdMet": null,
+      "evidence": []
+    },
+    {
+      "id": "MET-09",
+      "numerator": null,
+      "denominator": null,
+      "value": null,
+      "thresholdMet": null,
+      "evidence": []
+    }
+  ],
+  "defects": {
+    "p0": null,
+    "p1": null,
+    "acceptedExceptions": []
+  },
+  "qualitativeFindings": [],
+  "goNoGo": {
+    "decision": null,
+    "decidedAt": null,
+    "approvedBy": []
+  },
+  "limitations": [],
+  "evidenceItems": [],
+  "notes": "空模板不能改名后直接作为通过证据；必须填写真实参与者流、九项指标、缺陷、质性结果和具名 Go/No-Go。"
+}

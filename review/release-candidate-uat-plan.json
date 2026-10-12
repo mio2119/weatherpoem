@@ -1,0 +1,176 @@
+{
+  "schemaVersion": "1.0",
+  "planVersion": "2026.07-non-developer-uat-v1",
+  "status": "ready-for-human-execution",
+  "generatedAt": "2026-09-09T18:58:25.139Z",
+  "candidate": {
+    "product": "WeatherPoem",
+    "appVersion": "0.2.0",
+    "contentVersion": "2026.07.1",
+    "channel": "trial",
+    "trustLevel": "unsigned-trial",
+    "artifacts": [
+      {
+        "kind": "portable",
+        "name": "weatherpoem.exe",
+        "sha256": "00DB4B15F96E151CD7AF795A197E422F39ABFC3CE13E4AB298BF1DE7EC2DD74B"
+      },
+      {
+        "kind": "nsis",
+        "name": "WeatherPoem_0.2.0_x64-setup.exe",
+        "sha256": "FD46A8E141C01D3B1BBB72FE685C48D8E099465C5A744B8CC930BBF947A29EA5"
+      },
+      {
+        "kind": "msi",
+        "name": "WeatherPoem_0.2.0_x64_en-US.msi",
+        "sha256": "4A26D274384A9D39EBC75C967C2448C22DE66AAF4E3BAD640B0D5584C9C2352D"
+      }
+    ]
+  },
+  "participants": {
+    "requiredCount": 2,
+    "mustBeNonDevelopers": true,
+    "mustUseDedicatedOrCleanAccount": true,
+    "mustBeNamedInFinalEvidence": true
+  },
+  "scenarios": [
+    {
+      "id": "read-trial-warning",
+      "required": true,
+      "expected": "Tester understands this is an unsigned controlled trial.",
+      "evidenceRequired": [
+        "screenshot",
+        "tester-note"
+      ]
+    },
+    {
+      "id": "nsis-clean-install",
+      "required": true,
+      "expected": "NSIS installs without developer assistance.",
+      "evidenceRequired": [
+        "installer-log",
+        "installed-version",
+        "screenshot"
+      ]
+    },
+    {
+      "id": "first-run-onboarding",
+      "required": true,
+      "expected": "Tester independently chooses city and startup preference.",
+      "evidenceRequired": [
+        "screenshot",
+        "tester-note"
+      ]
+    },
+    {
+      "id": "daily-poem-and-reading",
+      "required": true,
+      "expected": "Poem card and extended reading are understandable and usable.",
+      "evidenceRequired": [
+        "screenshot",
+        "tester-note"
+      ]
+    },
+    {
+      "id": "favorite-feedback-and-replace",
+      "required": true,
+      "expected": "Favorite, not-relevant, and once-per-day replacement work.",
+      "evidenceRequired": [
+        "screenshot",
+        "tester-note"
+      ]
+    },
+    {
+      "id": "offline-fallback",
+      "required": true,
+      "expected": "Core poem experience remains usable without network.",
+      "evidenceRequired": [
+        "network-state",
+        "screenshot"
+      ]
+    },
+    {
+      "id": "close-to-tray-and-reopen",
+      "required": true,
+      "expected": "Closing hides to tray and tray action restores the window.",
+      "evidenceRequired": [
+        "screen-recording-or-timestamps"
+      ]
+    },
+    {
+      "id": "autostart-choice",
+      "required": true,
+      "expected": "Startup preference can be enabled and disabled without ambiguity.",
+      "evidenceRequired": [
+        "settings-screenshot",
+        "tester-note"
+      ]
+    },
+    {
+      "id": "data-clear",
+      "required": true,
+      "expected": "Clear data explains scope and removes user-accessible content.",
+      "evidenceRequired": [
+        "before-after-screenshots",
+        "tester-note"
+      ]
+    },
+    {
+      "id": "nsis-uninstall-data-preservation",
+      "required": true,
+      "expected": "Uninstall removes program files without silently deleting user data.",
+      "evidenceRequired": [
+        "uninstaller-log",
+        "residual-check"
+      ]
+    },
+    {
+      "id": "msi-admin-lifecycle-observation",
+      "required": true,
+      "expected": "Approved administrator observes MSI install, repair, and uninstall.",
+      "evidenceRequired": [
+        "msi-log",
+        "administrator-note"
+      ]
+    }
+  ],
+  "defectPolicy": {
+    "levels": [
+      "P0",
+      "P1",
+      "P2",
+      "P3"
+    ],
+    "goCondition": "zero-unaccepted-P0-and-P1",
+    "acceptedExceptionRequires": [
+      "defect-id",
+      "impact",
+      "workaround",
+      "owner",
+      "deadline",
+      "approver"
+    ]
+  },
+  "execution": {
+    "completedParticipantCount": 0,
+    "executors": [],
+    "openP0": null,
+    "openP1": null,
+    "acceptedExceptions": [],
+    "completedAt": null
+  },
+  "approval": {
+    "qualityOwner": null,
+    "pilotOwner": null,
+    "decision": null,
+    "approvedAt": null,
+    "evidencePath": "review/evidence/RQT-17-defect-signoff-installer-uat.json"
+  },
+  "limitations": {
+    "humanExecutionCompleted": false,
+    "defectSignoffCompleted": false,
+    "namedApprovalCompleted": false
+  },
+  "gateSatisfied": false,
+  "result": "execution-plan-ready"
+}

@@ -1,0 +1,7681 @@
+{
+  "schemaVersion": "1.0",
+  "contentVersion": "2026.07.1",
+  "workCount": 120,
+  "works": [
+    {
+      "id": "wang-an-shi-yuan-ri",
+      "title": "元日",
+      "literaryForm": "七言绝句",
+      "author": "王安石",
+      "dynasty": "宋",
+      "fullText": [
+        "爆竹声中一岁除，春风送暖入屠苏。",
+        "千门万户曈曈日，总把新桃换旧符。"
+      ],
+      "excerpt": [
+        "千门万户曈曈日",
+        "总把新桃换旧符"
+      ],
+      "sourceName": "《全宋诗》",
+      "oneLineSummary": "新岁在晨光与新桃中徐徐展开。",
+      "culturalBackground": "诗中写饮屠苏酒、换桃符等宋代新年习俗，也写出了辞旧迎新的公共气象。",
+      "contemporaryConnection": "新年不必只是一句祝福，也可以是一次整理房间、更新计划、重新出发。",
+      "annotations": [
+        {
+          "term": "元日",
+          "explanation": "农历正月初一。"
+        },
+        {
+          "term": "曈曈",
+          "explanation": "日出时光亮温暖的样子。"
+        },
+        {
+          "term": "桃符",
+          "explanation": "古人新年悬挂在门旁以祈福的桃木板。"
+        }
+      ],
+      "tags": {
+        "festivals": [
+          "春节"
+        ],
+        "weather": [
+          "clear"
+        ],
+        "solarTerms": [
+          "立春"
+        ],
+        "seasons": [
+          "winter",
+          "spring"
+        ],
+        "timePeriods": [
+          "morning"
+        ],
+        "emotions": [
+          "喜悦",
+          "希望"
+        ],
+        "lifeScenes": [
+          "新年",
+          "焕新"
+        ]
+      },
+      "quality": 10,
+      "engineeringReview": {
+        "workId": "wang-an-shi-yuan-ri",
+        "status": "published",
+        "reviewedAt": "2026-07-23",
+        "reviewedBy": "WeatherPoem 内容初审",
+        "sourceVerified": true,
+        "notes": "MVP 公版古典诗词种子内容；发布前仍建议按权威点校本复核。"
+      }
+    },
+    {
+      "id": "su-wei-dao-zheng-yue-shi-wu-ye",
+      "title": "正月十五夜",
+      "literaryForm": "五言律诗",
+      "author": "苏味道",
+      "dynasty": "唐",
+      "fullText": [
+        "火树银花合，星桥铁锁开。",
+        "暗尘随马去，明月逐人来。",
+        "游伎皆秾李，行歌尽落梅。",
+        "金吾不禁夜，玉漏莫相催。"
+      ],
+      "excerpt": [
+        "火树银花合",
+        "星桥铁锁开"
+      ],
+      "sourceName": "《全唐诗》",
+      "oneLineSummary": "灯月交辉，把城市照成一场流动的相聚。",
+      "culturalBackground": "唐代元宵前后开放夜禁，市民赏灯夜游，诗中保存了盛大的城市节日景象。",
+      "contemporaryConnection": "灯会、夜游和与朋友相聚，仍是今天进入传统节日最自然的方式。",
+      "annotations": [
+        {
+          "term": "火树银花",
+          "explanation": "形容灯彩灿烂。"
+        },
+        {
+          "term": "金吾不禁夜",
+          "explanation": "元宵之夜暂时取消宵禁。"
+        }
+      ],
+      "tags": {
+        "festivals": [
+          "元宵节"
+        ],
+        "weather": [
+          "clear"
+        ],
+        "solarTerms": [],
+        "seasons": [
+          "winter"
+        ],
+        "timePeriods": [
+          "evening",
+          "night"
+        ],
+        "emotions": [
+          "欢聚",
+          "明朗"
+        ],
+        "lifeScenes": [
+          "夜游",
+          "灯会"
+        ]
+      },
+      "quality": 10,
+      "engineeringReview": {
+        "workId": "su-wei-dao-zheng-yue-shi-wu-ye",
+        "status": "published",
+        "reviewedAt": "2026-07-23",
+        "reviewedBy": "WeatherPoem 内容初审",
+        "sourceVerified": true,
+        "notes": "MVP 公版古典诗词种子内容；发布前仍建议按权威点校本复核。"
+      }
+    },
+    {
+      "id": "du-mu-qing-ming",
+      "title": "清明",
+      "literaryForm": "七言绝句",
+      "author": "杜牧",
+      "dynasty": "唐",
+      "fullText": [
+        "清明时节雨纷纷，路上行人欲断魂。",
+        "借问酒家何处有？牧童遥指杏花村。"
+      ],
+      "excerpt": [
+        "清明时节雨纷纷",
+        "路上行人欲断魂"
+      ],
+      "sourceName": "《全唐诗》",
+      "oneLineSummary": "一场春雨，让思念有了可以停驻的地方。",
+      "culturalBackground": "清明兼具节气与慎终追远的节日意味，诗把天气、行旅和人的情绪连在一起。",
+      "contemporaryConnection": "在忙碌的生活里，给思念留出一点安静，也是理解清明的一种方式。",
+      "annotations": [
+        {
+          "term": "欲断魂",
+          "explanation": "形容心情低落、黯然神伤。"
+        },
+        {
+          "term": "杏花村",
+          "explanation": "杏花深处的村庄，此处代指酒家所在。"
+        }
+      ],
+      "tags": {
+        "festivals": [
+          "清明节"
+        ],
+        "weather": [
+          "light-rain",
+          "rain"
+        ],
+        "solarTerms": [
+          "清明"
+        ],
+        "seasons": [
+          "spring"
+        ],
+        "timePeriods": [
+          "day"
+        ],
+        "emotions": [
+          "思念",
+          "惆怅"
+        ],
+        "lifeScenes": [
+          "行路",
+          "追思"
+        ]
+      },
+      "quality": 10,
+      "engineeringReview": {
+        "workId": "du-mu-qing-ming",
+        "status": "published",
+        "reviewedAt": "2026-07-23",
+        "reviewedBy": "WeatherPoem 内容初审",
+        "sourceVerified": true,
+        "notes": "MVP 公版古典诗词种子内容；发布前仍建议按权威点校本复核。"
+      }
+    },
+    {
+      "id": "wen-xiu-duan-wu",
+      "title": "端午",
+      "literaryForm": "七言绝句",
+      "author": "文秀",
+      "dynasty": "唐",
+      "fullText": [
+        "节分端午自谁言，万古传闻为屈原。",
+        "堪笑楚江空渺渺，不能洗得直臣冤。"
+      ],
+      "excerpt": [
+        "节分端午自谁言",
+        "万古传闻为屈原"
+      ],
+      "sourceName": "《全唐诗》",
+      "oneLineSummary": "节日的热闹背后，也保留着对人格与选择的追问。",
+      "culturalBackground": "作品从端午纪念屈原的传说出发，表达对忠直之士的追怀。",
+      "contemporaryConnection": "吃粽子、看龙舟之外，端午也提醒我们理解一个节日为何被长久记住。",
+      "annotations": [
+        {
+          "term": "直臣",
+          "explanation": "忠直敢谏的臣子，此处指屈原。"
+        }
+      ],
+      "tags": {
+        "festivals": [
+          "端午节"
+        ],
+        "weather": [
+          "overcast",
+          "rain"
+        ],
+        "solarTerms": [
+          "芒种",
+          "夏至"
+        ],
+        "seasons": [
+          "summer"
+        ],
+        "timePeriods": [
+          "day"
+        ],
+        "emotions": [
+          "追怀",
+          "感慨"
+        ],
+        "lifeScenes": [
+          "节日",
+          "纪念"
+        ]
+      },
+      "quality": 9,
+      "engineeringReview": {
+        "workId": "wen-xiu-duan-wu",
+        "status": "published",
+        "reviewedAt": "2026-07-23",
+        "reviewedBy": "WeatherPoem 内容初审",
+        "sourceVerified": true,
+        "notes": "MVP 公版古典诗词种子内容；发布前仍建议按权威点校本复核。"
+      }
+    },
+    {
+      "id": "qin-guan-que-qiao-xian",
+      "title": "鹊桥仙·纤云弄巧",
+      "literaryForm": "词",
+      "author": "秦观",
+      "dynasty": "宋",
+      "fullText": [
+        "纤云弄巧，飞星传恨，银汉迢迢暗度。",
+        "金风玉露一相逢，便胜却人间无数。",
+        "柔情似水，佳期如梦，忍顾鹊桥归路。",
+        "两情若是久长时，又岂在朝朝暮暮。"
+      ],
+      "excerpt": [
+        "两情若是久长时",
+        "又岂在朝朝暮暮"
+      ],
+      "sourceName": "《淮海居士长短句》",
+      "oneLineSummary": "真正长久的关系，不只由相见的频率定义。",
+      "culturalBackground": "词借牛郎织女七夕相会的传说，写相逢、离别与长久情意。",
+      "contemporaryConnection": "异地、忙碌或短暂分别时，它仍能安放对关系的信任。",
+      "annotations": [
+        {
+          "term": "银汉",
+          "explanation": "银河。"
+        },
+        {
+          "term": "金风玉露",
+          "explanation": "秋风白露，点明初秋时节。"
+        }
+      ],
+      "tags": {
+        "festivals": [
+          "七夕节"
+        ],
+        "weather": [
+          "clear"
+        ],
+        "solarTerms": [
+          "立秋",
+          "处暑"
+        ],
+        "seasons": [
+          "autumn"
+        ],
+        "timePeriods": [
+          "night"
+        ],
+        "emotions": [
+          "爱意",
+          "思念"
+        ],
+        "lifeScenes": [
+          "相聚",
+          "异地"
+        ]
+      },
+      "quality": 10,
+      "engineeringReview": {
+        "workId": "qin-guan-que-qiao-xian",
+        "status": "published",
+        "reviewedAt": "2026-07-23",
+        "reviewedBy": "WeatherPoem 内容初审",
+        "sourceVerified": true,
+        "notes": "MVP 公版古典诗词种子内容；发布前仍建议按权威点校本复核。"
+      }
+    },
+    {
+      "id": "su-shi-shui-diao-ge-tou",
+      "title": "水调歌头·明月几时有",
+      "literaryForm": "词",
+      "author": "苏轼",
+      "dynasty": "宋",
+      "fullText": [
+        "明月几时有？把酒问青天。",
+        "不知天上宫阙，今夕是何年。",
+        "我欲乘风归去，又恐琼楼玉宇，高处不胜寒。",
+        "起舞弄清影，何似在人间。",
+        "转朱阁，低绮户，照无眠。",
+        "不应有恨，何事长向别时圆？",
+        "人有悲欢离合，月有阴晴圆缺，此事古难全。",
+        "但愿人长久，千里共婵娟。"
+      ],
+      "excerpt": [
+        "但愿人长久",
+        "千里共婵娟"
+      ],
+      "sourceName": "《东坡乐府》",
+      "oneLineSummary": "共望一轮明月，距离也能变成联结。",
+      "culturalBackground": "苏轼在中秋怀念弟弟，由月的圆缺写到人的离合，最终转向旷达祝愿。",
+      "contemporaryConnection": "不能团聚的时刻，一次问候和共同仰望，也能让关系重新靠近。",
+      "annotations": [
+        {
+          "term": "婵娟",
+          "explanation": "本指美好姿态，此处代指明月。"
+        },
+        {
+          "term": "绮户",
+          "explanation": "雕花的窗户。"
+        }
+      ],
+      "tags": {
+        "festivals": [
+          "中秋节"
+        ],
+        "weather": [
+          "clear",
+          "cloudy"
+        ],
+        "solarTerms": [
+          "白露",
+          "秋分"
+        ],
+        "seasons": [
+          "autumn"
+        ],
+        "timePeriods": [
+          "night"
+        ],
+        "emotions": [
+          "思念",
+          "旷达"
+        ],
+        "lifeScenes": [
+          "团聚",
+          "远行"
+        ]
+      },
+      "quality": 10,
+      "engineeringReview": {
+        "workId": "su-shi-shui-diao-ge-tou",
+        "status": "published",
+        "reviewedAt": "2026-07-23",
+        "reviewedBy": "WeatherPoem 内容初审",
+        "sourceVerified": true,
+        "notes": "MVP 公版古典诗词种子内容；发布前仍建议按权威点校本复核。"
+      }
+    },
+    {
+      "id": "wang-wei-jiu-yue-jiu-ri",
+      "title": "九月九日忆山东兄弟",
+      "literaryForm": "七言绝句",
+      "author": "王维",
+      "dynasty": "唐",
+      "fullText": [
+        "独在异乡为异客，每逢佳节倍思亲。",
+        "遥知兄弟登高处，遍插茱萸少一人。"
+      ],
+      "excerpt": [
+        "独在异乡为异客",
+        "每逢佳节倍思亲"
+      ],
+      "sourceName": "《全唐诗》",
+      "oneLineSummary": "佳节放大了远方，也让牵挂变得清晰。",
+      "culturalBackground": "重阳有登高、佩茱萸等习俗，年轻的王维在异乡写下对家人的思念。",
+      "contemporaryConnection": "离家求学的大学生，会很容易理解节日里那种突然变浓的乡愁。",
+      "annotations": [
+        {
+          "term": "山东",
+          "explanation": "此处指华山以东，诗人家乡蒲州一带。"
+        },
+        {
+          "term": "茱萸",
+          "explanation": "重阳习俗中佩戴的一种香草。"
+        }
+      ],
+      "tags": {
+        "festivals": [
+          "重阳节"
+        ],
+        "weather": [
+          "clear",
+          "wind"
+        ],
+        "solarTerms": [
+          "寒露",
+          "霜降"
+        ],
+        "seasons": [
+          "autumn"
+        ],
+        "timePeriods": [
+          "day"
+        ],
+        "emotions": [
+          "思乡",
+          "牵挂"
+        ],
+        "lifeScenes": [
+          "异乡",
+          "登高"
+        ]
+      },
+      "quality": 10,
+      "engineeringReview": {
+        "workId": "wang-wei-jiu-yue-jiu-ri",
+        "status": "published",
+        "reviewedAt": "2026-07-23",
+        "reviewedBy": "WeatherPoem 内容初审",
+        "sourceVerified": true,
+        "notes": "MVP 公版古典诗词种子内容；发布前仍建议按权威点校本复核。"
+      }
+    },
+    {
+      "id": "gao-shi-chu-ye-zuo",
+      "title": "除夜作",
+      "literaryForm": "七言绝句",
+      "author": "高适",
+      "dynasty": "唐",
+      "fullText": [
+        "旅馆寒灯独不眠，客心何事转凄然。",
+        "故乡今夜思千里，霜鬓明朝又一年。"
+      ],
+      "excerpt": [
+        "故乡今夜思千里",
+        "霜鬓明朝又一年"
+      ],
+      "sourceName": "《全唐诗》",
+      "oneLineSummary": "辞旧的夜里，故乡与时间同时来到心中。",
+      "culturalBackground": "除夕本是团聚之夜，羁旅中的诗人以一盏寒灯写尽未能归家的感受。",
+      "contemporaryConnection": "无法回家的春节，也可以通过一通电话、一次长谈重新确认彼此牵挂。",
+      "annotations": [
+        {
+          "term": "除夜",
+          "explanation": "除夕夜。"
+        },
+        {
+          "term": "霜鬓",
+          "explanation": "斑白的鬓发，感叹年华流逝。"
+        }
+      ],
+      "tags": {
+        "festivals": [
+          "除夕"
+        ],
+        "weather": [
+          "cold",
+          "snow"
+        ],
+        "solarTerms": [
+          "大寒"
+        ],
+        "seasons": [
+          "winter"
+        ],
+        "timePeriods": [
+          "night"
+        ],
+        "emotions": [
+          "思乡",
+          "感时"
+        ],
+        "lifeScenes": [
+          "独处",
+          "旅宿"
+        ]
+      },
+      "quality": 10,
+      "engineeringReview": {
+        "workId": "gao-shi-chu-ye-zuo",
+        "status": "published",
+        "reviewedAt": "2026-07-23",
+        "reviewedBy": "WeatherPoem 内容初审",
+        "sourceVerified": true,
+        "notes": "MVP 公版古典诗词种子内容；发布前仍建议按权威点校本复核。"
+      }
+    },
+    {
+      "id": "han-yu-zao-chun",
+      "title": "早春呈水部张十八员外",
+      "literaryForm": "七言绝句",
+      "author": "韩愈",
+      "dynasty": "唐",
+      "fullText": [
+        "天街小雨润如酥，草色遥看近却无。",
+        "最是一年春好处，绝胜烟柳满皇都。"
+      ],
+      "excerpt": [
+        "天街小雨润如酥",
+        "草色遥看近却无"
+      ],
+      "sourceName": "《全唐诗》",
+      "oneLineSummary": "春天最先出现的地方，往往要稍微退后一步才能看见。",
+      "culturalBackground": "诗人捕捉初春细雨与若有若无的草色，写的是季节刚刚转身的瞬间。",
+      "contemporaryConnection": "在校园里慢走十分钟，会比天气软件更早发现季节的变化。",
+      "annotations": [
+        {
+          "term": "天街",
+          "explanation": "京城街道。"
+        },
+        {
+          "term": "润如酥",
+          "explanation": "形容春雨细密滋润。"
+        }
+      ],
+      "tags": {
+        "festivals": [],
+        "weather": [
+          "light-rain"
+        ],
+        "solarTerms": [
+          "雨水",
+          "惊蛰"
+        ],
+        "seasons": [
+          "spring"
+        ],
+        "timePeriods": [
+          "morning",
+          "day"
+        ],
+        "emotions": [
+          "欣喜",
+          "明朗"
+        ],
+        "lifeScenes": [
+          "校园",
+          "散步"
+        ]
+      },
+      "quality": 10,
+      "engineeringReview": {
+        "workId": "han-yu-zao-chun",
+        "status": "published",
+        "reviewedAt": "2026-07-23",
+        "reviewedBy": "WeatherPoem 内容初审",
+        "sourceVerified": true,
+        "notes": "MVP 公版古典诗词种子内容；发布前仍建议按权威点校本复核。"
+      }
+    },
+    {
+      "id": "zhi-nan-jue-ju",
+      "title": "绝句",
+      "literaryForm": "七言绝句",
+      "author": "志南",
+      "dynasty": "宋",
+      "fullText": [
+        "古木阴中系短篷，杖藜扶我过桥东。",
+        "沾衣欲湿杏花雨，吹面不寒杨柳风。"
+      ],
+      "excerpt": [
+        "沾衣欲湿杏花雨",
+        "吹面不寒杨柳风"
+      ],
+      "sourceName": "《宋诗纪事》",
+      "oneLineSummary": "雨和风都很轻，刚好适合把步子放慢。",
+      "culturalBackground": "杏花雨与杨柳风构成典型江南春景，写出春日出游的舒展。",
+      "contemporaryConnection": "小雨天不一定要匆忙赶路，撑伞散步也可以成为一天的留白。",
+      "annotations": [
+        {
+          "term": "短篷",
+          "explanation": "有篷的小船。"
+        },
+        {
+          "term": "杖藜",
+          "explanation": "拄着藜杖。"
+        }
+      ],
+      "tags": {
+        "festivals": [],
+        "weather": [
+          "light-rain",
+          "wind"
+        ],
+        "solarTerms": [
+          "春分",
+          "清明"
+        ],
+        "seasons": [
+          "spring"
+        ],
+        "timePeriods": [
+          "day"
+        ],
+        "emotions": [
+          "闲适",
+          "轻快"
+        ],
+        "lifeScenes": [
+          "散步",
+          "出游"
+        ]
+      },
+      "quality": 9,
+      "engineeringReview": {
+        "workId": "zhi-nan-jue-ju",
+        "status": "published",
+        "reviewedAt": "2026-07-23",
+        "reviewedBy": "WeatherPoem 内容初审",
+        "sourceVerified": true,
+        "notes": "MVP 公版古典诗词种子内容；发布前仍建议按权威点校本复核。"
+      }
+    },
+    {
+      "id": "du-mu-shan-xing",
+      "title": "山行",
+      "literaryForm": "七言绝句",
+      "author": "杜牧",
+      "dynasty": "唐",
+      "fullText": [
+        "远上寒山石径斜，白云生处有人家。",
+        "停车坐爱枫林晚，霜叶红于二月花。"
+      ],
+      "excerpt": [
+        "停车坐爱枫林晚",
+        "霜叶红于二月花"
+      ],
+      "sourceName": "《全唐诗》",
+      "oneLineSummary": "秋天并非只有萧瑟，也有明亮得让人停下来的颜色。",
+      "culturalBackground": "晚秋霜叶因气温变化转红，诗人以一次驻足重新发现秋景的生命力。",
+      "contemporaryConnection": "路过一片好看的树时允许自己停几分钟，是对日常感受力的保护。",
+      "annotations": [
+        {
+          "term": "坐",
+          "explanation": "因为。"
+        },
+        {
+          "term": "寒山",
+          "explanation": "深秋时节的山。"
+        }
+      ],
+      "tags": {
+        "festivals": [],
+        "weather": [
+          "clear",
+          "cold"
+        ],
+        "solarTerms": [
+          "寒露",
+          "霜降"
+        ],
+        "seasons": [
+          "autumn"
+        ],
+        "timePeriods": [
+          "evening"
+        ],
+        "emotions": [
+          "赞叹",
+          "明朗"
+        ],
+        "lifeScenes": [
+          "登山",
+          "驻足"
+        ]
+      },
+      "quality": 10,
+      "engineeringReview": {
+        "workId": "du-mu-shan-xing",
+        "status": "published",
+        "reviewedAt": "2026-07-23",
+        "reviewedBy": "WeatherPoem 内容初审",
+        "sourceVerified": true,
+        "notes": "MVP 公版古典诗词种子内容；发布前仍建议按权威点校本复核。"
+      }
+    },
+    {
+      "id": "liu-zong-yuan-jiang-xue",
+      "title": "江雪",
+      "literaryForm": "五言绝句",
+      "author": "柳宗元",
+      "dynasty": "唐",
+      "fullText": [
+        "千山鸟飞绝，万径人踪灭。",
+        "孤舟蓑笠翁，独钓寒江雪。"
+      ],
+      "excerpt": [
+        "孤舟蓑笠翁",
+        "独钓寒江雪"
+      ],
+      "sourceName": "《全唐诗》",
+      "oneLineSummary": "大雪收去喧响，留下一个不被环境改变的身影。",
+      "culturalBackground": "诗作于柳宗元被贬永州期间，以极静的雪景寄托孤高坚守。",
+      "contemporaryConnection": "外部评价很嘈杂时，专注完成眼前的一件事，也是一种安定。",
+      "annotations": [
+        {
+          "term": "蓑笠",
+          "explanation": "蓑衣和斗笠，都是雨雪天的用具。"
+        }
+      ],
+      "tags": {
+        "festivals": [],
+        "weather": [
+          "snow",
+          "cold"
+        ],
+        "solarTerms": [
+          "大雪",
+          "冬至",
+          "小寒"
+        ],
+        "seasons": [
+          "winter"
+        ],
+        "timePeriods": [
+          "day"
+        ],
+        "emotions": [
+          "孤独",
+          "坚守"
+        ],
+        "lifeScenes": [
+          "独处",
+          "专注"
+        ]
+      },
+      "quality": 10,
+      "engineeringReview": {
+        "workId": "liu-zong-yuan-jiang-xue",
+        "status": "published",
+        "reviewedAt": "2026-07-23",
+        "reviewedBy": "WeatherPoem 内容初审",
+        "sourceVerified": true,
+        "notes": "MVP 公版古典诗词种子内容；发布前仍建议按权威点校本复核。"
+      }
+    },
+    {
+      "id": "su-shi-yin-hu-shang",
+      "title": "饮湖上初晴后雨",
+      "literaryForm": "七言绝句",
+      "author": "苏轼",
+      "dynasty": "宋",
+      "fullText": [
+        "水光潋滟晴方好，山色空蒙雨亦奇。",
+        "欲把西湖比西子，淡妆浓抹总相宜。"
+      ],
+      "excerpt": [
+        "水光潋滟晴方好",
+        "山色空蒙雨亦奇"
+      ],
+      "sourceName": "《全宋诗》",
+      "oneLineSummary": "晴雨各有神情，变化本身就是风景。",
+      "culturalBackground": "苏轼写西湖由晴转雨，以西施作比，赞美不同状态中的自然之美。",
+      "contemporaryConnection": "天气改变计划时，也许可以换一种节奏，而不是认定这一天被打乱了。",
+      "annotations": [
+        {
+          "term": "潋滟",
+          "explanation": "水面波光闪动的样子。"
+        },
+        {
+          "term": "空蒙",
+          "explanation": "雨雾迷蒙。"
+        }
+      ],
+      "tags": {
+        "festivals": [],
+        "weather": [
+          "clear",
+          "light-rain",
+          "rain",
+          "fog"
+        ],
+        "solarTerms": [
+          "谷雨",
+          "小满"
+        ],
+        "seasons": [
+          "spring",
+          "summer"
+        ],
+        "timePeriods": [
+          "day"
+        ],
+        "emotions": [
+          "欣赏",
+          "旷达"
+        ],
+        "lifeScenes": [
+          "湖边",
+          "出游"
+        ]
+      },
+      "quality": 10,
+      "engineeringReview": {
+        "workId": "su-shi-yin-hu-shang",
+        "status": "published",
+        "reviewedAt": "2026-07-23",
+        "reviewedBy": "WeatherPoem 内容初审",
+        "sourceVerified": true,
+        "notes": "MVP 公版古典诗词种子内容；发布前仍建议按权威点校本复核。"
+      }
+    },
+    {
+      "id": "zhang-ji-feng-qiao-ye-bo",
+      "title": "枫桥夜泊",
+      "literaryForm": "七言绝句",
+      "author": "张继",
+      "dynasty": "唐",
+      "fullText": [
+        "月落乌啼霜满天，江枫渔火对愁眠。",
+        "姑苏城外寒山寺，夜半钟声到客船。"
+      ],
+      "excerpt": [
+        "姑苏城外寒山寺",
+        "夜半钟声到客船"
+      ],
+      "sourceName": "《全唐诗》",
+      "oneLineSummary": "睡不着的夜里，远处钟声让时间有了形状。",
+      "culturalBackground": "旅夜停舟、月落霜寒与寺钟共同构成江南夜景，也保存了羁旅人的愁绪。",
+      "contemporaryConnection": "失眠时不必急着对抗，听一听窗外的声音，也能让情绪慢慢落地。",
+      "annotations": [
+        {
+          "term": "夜泊",
+          "explanation": "夜晚把船停靠岸边。"
+        },
+        {
+          "term": "渔火",
+          "explanation": "渔船上的灯火。"
+        }
+      ],
+      "tags": {
+        "festivals": [],
+        "weather": [
+          "clear",
+          "cold",
+          "fog"
+        ],
+        "solarTerms": [
+          "霜降"
+        ],
+        "seasons": [
+          "autumn",
+          "winter"
+        ],
+        "timePeriods": [
+          "night"
+        ],
+        "emotions": [
+          "愁思",
+          "安静"
+        ],
+        "lifeScenes": [
+          "失眠",
+          "旅途"
+        ]
+      },
+      "quality": 10,
+      "engineeringReview": {
+        "workId": "zhang-ji-feng-qiao-ye-bo",
+        "status": "published",
+        "reviewedAt": "2026-07-23",
+        "reviewedBy": "WeatherPoem 内容初审",
+        "sourceVerified": true,
+        "notes": "MVP 公版古典诗词种子内容；发布前仍建议按权威点校本复核。"
+      }
+    },
+    {
+      "id": "meng-hao-ran-chun-xiao",
+      "title": "春晓",
+      "literaryForm": "五言绝句",
+      "author": "孟浩然",
+      "dynasty": "唐",
+      "fullText": [
+        "春眠不觉晓，处处闻啼鸟。",
+        "夜来风雨声，花落知多少。"
+      ],
+      "excerpt": [
+        "春眠不觉晓",
+        "处处闻啼鸟"
+      ],
+      "sourceName": "《全唐诗》",
+      "oneLineSummary": "从睡梦醒来，先听见春天，再想起昨夜的风雨。",
+      "culturalBackground": "短短二十字由晨起听觉转向对落花的想象，呈现春日细微的惜意。",
+      "contemporaryConnection": "起床后先听一会儿环境，而不是立刻看手机，清晨会有不同质地。",
+      "annotations": [
+        {
+          "term": "晓",
+          "explanation": "天刚亮的时候。"
+        }
+      ],
+      "tags": {
+        "festivals": [],
+        "weather": [
+          "light-rain",
+          "rain",
+          "wind",
+          "clear"
+        ],
+        "solarTerms": [
+          "惊蛰",
+          "春分"
+        ],
+        "seasons": [
+          "spring"
+        ],
+        "timePeriods": [
+          "morning"
+        ],
+        "emotions": [
+          "慵懒",
+          "惜春"
+        ],
+        "lifeScenes": [
+          "晨起",
+          "宿舍"
+        ]
+      },
+      "quality": 10,
+      "engineeringReview": {
+        "workId": "meng-hao-ran-chun-xiao",
+        "status": "published",
+        "reviewedAt": "2026-07-23",
+        "reviewedBy": "WeatherPoem 内容初审",
+        "sourceVerified": true,
+        "notes": "MVP 公版古典诗词种子内容；发布前仍建议按权威点校本复核。"
+      }
+    },
+    {
+      "id": "wang-chang-ling-fu-rong-lou",
+      "title": "芙蓉楼送辛渐",
+      "literaryForm": "七言绝句",
+      "author": "王昌龄",
+      "dynasty": "唐",
+      "fullText": [
+        "寒雨连江夜入吴，平明送客楚山孤。",
+        "洛阳亲友如相问，一片冰心在玉壶。"
+      ],
+      "excerpt": [
+        "洛阳亲友如相问",
+        "一片冰心在玉壶"
+      ],
+      "sourceName": "《全唐诗》",
+      "oneLineSummary": "在雨夜送别之后，把坦荡留作最简洁的自我说明。",
+      "culturalBackground": "诗人以寒雨孤山衬托送别，并以冰心玉壶表明清白自守。",
+      "contemporaryConnection": "面对误解时，不必过度解释；持续诚实地行动，也是回答。",
+      "annotations": [
+        {
+          "term": "平明",
+          "explanation": "天刚亮。"
+        },
+        {
+          "term": "冰心",
+          "explanation": "比喻纯洁澄澈的内心。"
+        }
+      ],
+      "tags": {
+        "festivals": [],
+        "weather": [
+          "rain",
+          "cold"
+        ],
+        "solarTerms": [
+          "寒露",
+          "小寒"
+        ],
+        "seasons": [
+          "autumn",
+          "winter"
+        ],
+        "timePeriods": [
+          "morning",
+          "night"
+        ],
+        "emotions": [
+          "送别",
+          "坚定"
+        ],
+        "lifeScenes": [
+          "离别",
+          "误解"
+        ]
+      },
+      "quality": 10,
+      "engineeringReview": {
+        "workId": "wang-chang-ling-fu-rong-lou",
+        "status": "published",
+        "reviewedAt": "2026-07-23",
+        "reviewedBy": "WeatherPoem 内容初审",
+        "sourceVerified": true,
+        "notes": "MVP 公版古典诗词种子内容；发布前仍建议按权威点校本复核。"
+      }
+    },
+    {
+      "id": "liu-yu-xi-qiu-ci",
+      "title": "秋词",
+      "literaryForm": "七言绝句",
+      "author": "刘禹锡",
+      "dynasty": "唐",
+      "fullText": [
+        "自古逢秋悲寂寥，我言秋日胜春朝。",
+        "晴空一鹤排云上，便引诗情到碧霄。"
+      ],
+      "excerpt": [
+        "晴空一鹤排云上",
+        "便引诗情到碧霄"
+      ],
+      "sourceName": "《全唐诗》",
+      "oneLineSummary": "清秋也可以向上，不必沿用别人规定的情绪。",
+      "culturalBackground": "诗人反转传统悲秋主题，以晴空飞鹤写昂扬开阔的精神。",
+      "contemporaryConnection": "当周围人都说某段日子很难熬时，你仍可以形成自己的感受和节奏。",
+      "annotations": [
+        {
+          "term": "排云",
+          "explanation": "冲开云层。"
+        },
+        {
+          "term": "碧霄",
+          "explanation": "青天。"
+        }
+      ],
+      "tags": {
+        "festivals": [],
+        "weather": [
+          "clear",
+          "wind"
+        ],
+        "solarTerms": [
+          "白露",
+          "秋分"
+        ],
+        "seasons": [
+          "autumn"
+        ],
+        "timePeriods": [
+          "day"
+        ],
+        "emotions": [
+          "昂扬",
+          "开阔"
+        ],
+        "lifeScenes": [
+          "振作",
+          "远望"
+        ]
+      },
+      "quality": 10,
+      "engineeringReview": {
+        "workId": "liu-yu-xi-qiu-ci",
+        "status": "published",
+        "reviewedAt": "2026-07-23",
+        "reviewedBy": "WeatherPoem 内容初审",
+        "sourceVerified": true,
+        "notes": "MVP 公版古典诗词种子内容；发布前仍建议按权威点校本复核。"
+      }
+    },
+    {
+      "id": "bai-ju-yi-wen-liu-shi-jiu",
+      "title": "问刘十九",
+      "literaryForm": "五言绝句",
+      "author": "白居易",
+      "dynasty": "唐",
+      "fullText": [
+        "绿蚁新醅酒，红泥小火炉。",
+        "晚来天欲雪，能饮一杯无？"
+      ],
+      "excerpt": [
+        "晚来天欲雪",
+        "能饮一杯无"
+      ],
+      "sourceName": "《全唐诗》",
+      "oneLineSummary": "天将下雪，一句简单邀请就足以温暖傍晚。",
+      "culturalBackground": "新酒、火炉与暮雪构成亲切的冬日生活场景，语言近乎日常问候。",
+      "contemporaryConnection": "与其等一场隆重聚会，不如主动问朋友：今晚一起吃点东西吗？",
+      "annotations": [
+        {
+          "term": "绿蚁",
+          "explanation": "新酿米酒表面细小的绿色泡沫。"
+        },
+        {
+          "term": "醅",
+          "explanation": "未过滤的酒。"
+        }
+      ],
+      "tags": {
+        "festivals": [],
+        "weather": [
+          "snow",
+          "cold",
+          "overcast"
+        ],
+        "solarTerms": [
+          "小雪",
+          "大雪"
+        ],
+        "seasons": [
+          "winter"
+        ],
+        "timePeriods": [
+          "evening"
+        ],
+        "emotions": [
+          "温暖",
+          "期待"
+        ],
+        "lifeScenes": [
+          "邀友",
+          "晚餐"
+        ]
+      },
+      "quality": 10,
+      "engineeringReview": {
+        "workId": "bai-ju-yi-wen-liu-shi-jiu",
+        "status": "published",
+        "reviewedAt": "2026-07-23",
+        "reviewedBy": "WeatherPoem 内容初审",
+        "sourceVerified": true,
+        "notes": "MVP 公版古典诗词种子内容；发布前仍建议按权威点校本复核。"
+      }
+    },
+    {
+      "id": "wang-zhi-huan-deng-guan-que-lou",
+      "title": "登鹳雀楼",
+      "literaryForm": "五言绝句",
+      "author": "王之涣",
+      "dynasty": "唐",
+      "fullText": [
+        "白日依山尽，黄河入海流。",
+        "欲穷千里目，更上一层楼。"
+      ],
+      "excerpt": [
+        "欲穷千里目",
+        "更上一层楼"
+      ],
+      "sourceName": "《全唐诗》",
+      "oneLineSummary": "视野的变化，有时只差再向前走一层。",
+      "culturalBackground": "诗从日落黄河的壮阔景象转入登高哲思，空间与行动彼此推动。",
+      "contemporaryConnection": "遇到卡住的问题时，换一个资料来源、找一个人讨论，可能就是那一层楼。",
+      "annotations": [
+        {
+          "term": "穷",
+          "explanation": "尽，达到极点。"
+        }
+      ],
+      "tags": {
+        "festivals": [],
+        "weather": [
+          "clear"
+        ],
+        "solarTerms": [],
+        "seasons": [
+          "spring",
+          "summer",
+          "autumn",
+          "winter"
+        ],
+        "timePeriods": [
+          "evening"
+        ],
+        "emotions": [
+          "进取",
+          "开阔"
+        ],
+        "lifeScenes": [
+          "学习",
+          "登高"
+        ]
+      },
+      "quality": 10,
+      "engineeringReview": {
+        "workId": "wang-zhi-huan-deng-guan-que-lou",
+        "status": "published",
+        "reviewedAt": "2026-07-23",
+        "reviewedBy": "WeatherPoem 内容初审",
+        "sourceVerified": true,
+        "notes": "MVP 公版古典诗词种子内容；发布前仍建议按权威点校本复核。"
+      }
+    },
+    {
+      "id": "li-bai-jing-ye-si",
+      "title": "静夜思",
+      "literaryForm": "五言绝句",
+      "author": "李白",
+      "dynasty": "唐",
+      "fullText": [
+        "床前明月光，疑是地上霜。",
+        "举头望明月，低头思故乡。"
+      ],
+      "excerpt": [
+        "举头望明月",
+        "低头思故乡"
+      ],
+      "sourceName": "《全唐诗》",
+      "oneLineSummary": "月光让一个普通夜晚突然通向故乡。",
+      "culturalBackground": "诗以极简动作完成从眼前月色到内心乡思的转换，成为最普遍的离乡经验。",
+      "contemporaryConnection": "离家求学后，某个熟悉的气味或月色，都可能让家忽然变得很近。",
+      "annotations": [
+        {
+          "term": "疑",
+          "explanation": "好像，以为。"
+        }
+      ],
+      "tags": {
+        "festivals": [
+          "中秋节"
+        ],
+        "weather": [
+          "clear",
+          "cold"
+        ],
+        "solarTerms": [],
+        "seasons": [
+          "autumn",
+          "winter"
+        ],
+        "timePeriods": [
+          "night"
+        ],
+        "emotions": [
+          "思乡",
+          "安静"
+        ],
+        "lifeScenes": [
+          "宿舍",
+          "独处"
+        ]
+      },
+      "quality": 10,
+      "engineeringReview": {
+        "workId": "li-bai-jing-ye-si",
+        "status": "published",
+        "reviewedAt": "2026-07-23",
+        "reviewedBy": "WeatherPoem 内容初审",
+        "sourceVerified": true,
+        "notes": "MVP 公版古典诗词种子内容；发布前仍建议按权威点校本复核。"
+      }
+    },
+    {
+      "id": "wang-bo-song-du-shao-fu",
+      "title": "送杜少府之任蜀州",
+      "literaryForm": "五言律诗",
+      "author": "王勃",
+      "dynasty": "唐",
+      "fullText": [
+        "城阙辅三秦，风烟望五津。",
+        "与君离别意，同是宦游人。",
+        "海内存知己，天涯若比邻。",
+        "无为在歧路，儿女共沾巾。"
+      ],
+      "excerpt": [
+        "海内存知己",
+        "天涯若比邻"
+      ],
+      "sourceName": "《全唐诗》",
+      "oneLineSummary": "真正的朋友，不会被毕业、远行或距离轻易冲淡。",
+      "culturalBackground": "初唐送别诗一改缠绵伤感，以开阔胸襟理解友情与远行。",
+      "contemporaryConnection": "毕业季、交换学习或朋友转学时，它仍是一句不落俗套的祝福。",
+      "annotations": [
+        {
+          "term": "之任",
+          "explanation": "赴任。"
+        },
+        {
+          "term": "比邻",
+          "explanation": "近邻。"
+        }
+      ],
+      "tags": {
+        "festivals": [],
+        "weather": [
+          "wind",
+          "cloudy"
+        ],
+        "solarTerms": [],
+        "seasons": [
+          "spring",
+          "autumn"
+        ],
+        "timePeriods": [
+          "day"
+        ],
+        "emotions": [
+          "友情",
+          "旷达"
+        ],
+        "lifeScenes": [
+          "毕业",
+          "送别"
+        ]
+      },
+      "quality": 10,
+      "engineeringReview": {
+        "workId": "wang-bo-song-du-shao-fu",
+        "status": "published",
+        "reviewedAt": "2026-07-23",
+        "reviewedBy": "WeatherPoem 内容初审",
+        "sourceVerified": true,
+        "notes": "MVP 公版古典诗词种子内容；发布前仍建议按权威点校本复核。"
+      }
+    },
+    {
+      "id": "su-shi-ding-feng-bo",
+      "title": "定风波·莫听穿林打叶声",
+      "literaryForm": "词",
+      "author": "苏轼",
+      "dynasty": "宋",
+      "fullText": [
+        "莫听穿林打叶声，何妨吟啸且徐行。",
+        "竹杖芒鞋轻胜马，谁怕？一蓑烟雨任平生。",
+        "料峭春风吹酒醒，微冷，山头斜照却相迎。",
+        "回首向来萧瑟处，归去，也无风雨也无晴。"
+      ],
+      "excerpt": [
+        "竹杖芒鞋轻胜马",
+        "一蓑烟雨任平生"
+      ],
+      "sourceName": "《东坡乐府》",
+      "oneLineSummary": "风雨来时仍能徐行，是一种具体而轻盈的从容。",
+      "culturalBackground": "苏轼途中遇雨，借日常行路写面对人生风雨的旷达态度。",
+      "contemporaryConnection": "计划受挫时先把下一步走稳，常常比急于证明一切都没问题更有力量。",
+      "annotations": [
+        {
+          "term": "吟啸",
+          "explanation": "吟诗长啸。"
+        },
+        {
+          "term": "芒鞋",
+          "explanation": "草鞋。"
+        }
+      ],
+      "tags": {
+        "festivals": [],
+        "weather": [
+          "rain",
+          "wind",
+          "light-rain"
+        ],
+        "solarTerms": [
+          "惊蛰",
+          "春分"
+        ],
+        "seasons": [
+          "spring"
+        ],
+        "timePeriods": [
+          "day",
+          "evening"
+        ],
+        "emotions": [
+          "从容",
+          "旷达"
+        ],
+        "lifeScenes": [
+          "挫折",
+          "行路"
+        ]
+      },
+      "quality": 10,
+      "engineeringReview": {
+        "workId": "su-shi-ding-feng-bo",
+        "status": "published",
+        "reviewedAt": "2026-07-23",
+        "reviewedBy": "WeatherPoem 内容初审",
+        "sourceVerified": true,
+        "notes": "MVP 公版古典诗词种子内容；发布前仍建议按权威点校本复核。"
+      }
+    },
+    {
+      "id": "wang-an-shi-mei-hua",
+      "title": "梅花",
+      "literaryForm": "五言绝句",
+      "author": "王安石",
+      "dynasty": "宋",
+      "fullText": [
+        "墙角数枝梅，凌寒独自开。",
+        "遥知不是雪，为有暗香来。"
+      ],
+      "excerpt": [
+        "墙角数枝梅",
+        "凌寒独自开"
+      ],
+      "sourceName": "《全宋诗》",
+      "oneLineSummary": "安静开放的事物，也会用自己的方式抵达别人。",
+      "culturalBackground": "梅花凌寒开放，在传统文化中常被赋予坚贞、高洁的品格意味。",
+      "contemporaryConnection": "不被注意的积累并非没有价值，稳定做好一件事，自会留下气息。",
+      "annotations": [
+        {
+          "term": "凌寒",
+          "explanation": "冒着严寒。"
+        },
+        {
+          "term": "暗香",
+          "explanation": "清幽的香气。"
+        }
+      ],
+      "tags": {
+        "festivals": [],
+        "weather": [
+          "cold",
+          "snow"
+        ],
+        "solarTerms": [
+          "小寒",
+          "大寒"
+        ],
+        "seasons": [
+          "winter"
+        ],
+        "timePeriods": [
+          "morning",
+          "day"
+        ],
+        "emotions": [
+          "坚定",
+          "安静"
+        ],
+        "lifeScenes": [
+          "独处",
+          "积累"
+        ]
+      },
+      "quality": 10,
+      "engineeringReview": {
+        "workId": "wang-an-shi-mei-hua",
+        "status": "published",
+        "reviewedAt": "2026-07-23",
+        "reviewedBy": "WeatherPoem 内容初审",
+        "sourceVerified": true,
+        "notes": "MVP 公版古典诗词种子内容；发布前仍建议按权威点校本复核。"
+      }
+    },
+    {
+      "id": "du-fu-chun-ye-xi-yu",
+      "title": "春夜喜雨",
+      "literaryForm": "五言律诗",
+      "author": "杜甫",
+      "dynasty": "唐",
+      "fullText": [
+        "好雨知时节，当春乃发生。",
+        "随风潜入夜，润物细无声。",
+        "野径云俱黑，江船火独明。",
+        "晓看红湿处，花重锦官城。"
+      ],
+      "excerpt": [
+        "随风潜入夜",
+        "润物细无声"
+      ],
+      "sourceName": "《全唐诗》",
+      "oneLineSummary": "真正有效的滋养，常常安静得不被立即察觉。",
+      "culturalBackground": "杜甫在成都草堂写春雨及时而来，从夜雨推想到清晨繁花。",
+      "contemporaryConnection": "读书、运动和一段可靠关系的作用，也常在日复一日中慢慢显现。",
+      "annotations": [
+        {
+          "term": "发生",
+          "explanation": "催发植物生长。"
+        },
+        {
+          "term": "花重",
+          "explanation": "花朵饱含雨水而显得沉甸甸。"
+        }
+      ],
+      "tags": {
+        "festivals": [],
+        "weather": [
+          "light-rain",
+          "rain",
+          "overcast"
+        ],
+        "solarTerms": [
+          "雨水",
+          "惊蛰"
+        ],
+        "seasons": [
+          "spring"
+        ],
+        "timePeriods": [
+          "night",
+          "morning"
+        ],
+        "emotions": [
+          "欣喜",
+          "期待"
+        ],
+        "lifeScenes": [
+          "成长",
+          "夜读"
+        ]
+      },
+      "quality": 10,
+      "engineeringReview": {
+        "workId": "du-fu-chun-ye-xi-yu",
+        "status": "published",
+        "reviewedAt": "2026-07-23",
+        "reviewedBy": "WeatherPoem 内容初审",
+        "sourceVerified": true,
+        "notes": "MVP 公版古典诗词种子内容；发布前仍建议按权威点校本复核。"
+      }
+    },
+    {
+      "id": "bai-ju-yi-mu-jiang-yin",
+      "title": "暮江吟",
+      "literaryForm": "七言绝句",
+      "author": "白居易",
+      "dynasty": "唐",
+      "fullText": [
+        "一道残阳铺水中，半江瑟瑟半江红。",
+        "可怜九月初三夜，露似真珠月似弓。"
+      ],
+      "excerpt": [
+        "一道残阳铺水中",
+        "半江瑟瑟半江红"
+      ],
+      "sourceName": "《全唐诗》",
+      "oneLineSummary": "傍晚到初夜，颜色与光线把同一条江重新画了一遍。",
+      "culturalBackground": "作品连续捕捉日落、江色、露珠和新月，呈现秋夜的细致层次。",
+      "contemporaryConnection": "下课后抬头看一次天色，能把被课程切碎的一天重新接起来。",
+      "annotations": [
+        {
+          "term": "瑟瑟",
+          "explanation": "此处形容碧绿色。"
+        },
+        {
+          "term": "可怜",
+          "explanation": "可爱，令人怜爱。"
+        }
+      ],
+      "tags": {
+        "festivals": [],
+        "weather": [
+          "clear"
+        ],
+        "solarTerms": [
+          "白露",
+          "寒露"
+        ],
+        "seasons": [
+          "autumn"
+        ],
+        "timePeriods": [
+          "evening",
+          "night"
+        ],
+        "emotions": [
+          "喜爱",
+          "宁静"
+        ],
+        "lifeScenes": [
+          "下课",
+          "江边"
+        ]
+      },
+      "quality": 10,
+      "engineeringReview": {
+        "workId": "bai-ju-yi-mu-jiang-yin",
+        "status": "published",
+        "reviewedAt": "2026-07-23",
+        "reviewedBy": "WeatherPoem 内容初审",
+        "sourceVerified": true,
+        "notes": "MVP 公版古典诗词种子内容；发布前仍建议按权威点校本复核。"
+      }
+    },
+    {
+      "id": "lin-bu-shan-yuan-xiao-mei",
+      "title": "山园小梅",
+      "literaryForm": "七言律诗",
+      "author": "林逋",
+      "dynasty": "宋",
+      "fullText": [
+        "众芳摇落独暄妍，占尽风情向小园。",
+        "疏影横斜水清浅，暗香浮动月黄昏。",
+        "霜禽欲下先偷眼，粉蝶如知合断魂。",
+        "幸有微吟可相狎，不须檀板共金尊。"
+      ],
+      "excerpt": [
+        "疏影横斜水清浅",
+        "暗香浮动月黄昏"
+      ],
+      "sourceName": "《全宋诗》",
+      "oneLineSummary": "疏影与暗香，让冬日黄昏有了很轻的层次。",
+      "culturalBackground": "林逋隐居西湖孤山，咏梅名句将视觉与嗅觉结合，影响后世梅花书写。",
+      "contemporaryConnection": "审美不一定来自宏大景观，也可以来自桌上一枝花或窗边一束影。",
+      "annotations": [
+        {
+          "term": "暄妍",
+          "explanation": "明媚鲜丽。"
+        },
+        {
+          "term": "相狎",
+          "explanation": "亲近相伴。"
+        }
+      ],
+      "tags": {
+        "festivals": [],
+        "weather": [
+          "cold",
+          "clear",
+          "fog"
+        ],
+        "solarTerms": [
+          "小寒",
+          "大寒"
+        ],
+        "seasons": [
+          "winter"
+        ],
+        "timePeriods": [
+          "evening"
+        ],
+        "emotions": [
+          "清雅",
+          "自得"
+        ],
+        "lifeScenes": [
+          "独处",
+          "赏花"
+        ]
+      },
+      "quality": 10,
+      "engineeringReview": {
+        "workId": "lin-bu-shan-yuan-xiao-mei",
+        "status": "published",
+        "reviewedAt": "2026-07-23",
+        "reviewedBy": "WeatherPoem 内容初审",
+        "sourceVerified": true,
+        "notes": "MVP 公版古典诗词种子内容；发布前仍建议按权威点校本复核。"
+      }
+    },
+    {
+      "id": "yang-wan-li-xiao-chu-jing-ci-si",
+      "title": "晓出净慈寺送林子方",
+      "literaryForm": "七言绝句",
+      "author": "杨万里",
+      "dynasty": "宋",
+      "fullText": [
+        "毕竟西湖六月中，风光不与四时同。",
+        "接天莲叶无穷碧，映日荷花别样红。"
+      ],
+      "excerpt": [
+        "接天莲叶无穷碧",
+        "映日荷花别样红"
+      ],
+      "sourceName": "《全宋诗》",
+      "oneLineSummary": "盛夏把绿色与红色推到最饱满的程度。",
+      "culturalBackground": "诗以大面积荷叶与映日荷花，写出六月西湖明亮而旺盛的生命力。",
+      "contemporaryConnection": "炎热天气里，去有树荫和水面的地方走走，比一直待在空调房更能感知夏天。",
+      "annotations": [
+        {
+          "term": "四时",
+          "explanation": "四季。"
+        },
+        {
+          "term": "别样",
+          "explanation": "特别，不同寻常。"
+        }
+      ],
+      "tags": {
+        "festivals": [],
+        "weather": [
+          "clear",
+          "hot"
+        ],
+        "solarTerms": [
+          "夏至",
+          "小暑"
+        ],
+        "seasons": [
+          "summer"
+        ],
+        "timePeriods": [
+          "morning",
+          "day"
+        ],
+        "emotions": [
+          "明朗",
+          "赞叹"
+        ],
+        "lifeScenes": [
+          "湖边",
+          "出游"
+        ]
+      },
+      "quality": 10,
+      "engineeringReview": {
+        "workId": "yang-wan-li-xiao-chu-jing-ci-si",
+        "status": "published",
+        "reviewedAt": "2026-07-23",
+        "reviewedBy": "WeatherPoem 内容初审",
+        "sourceVerified": true,
+        "notes": "MVP 公版古典诗词种子内容；发布前仍建议按权威点校本复核。"
+      }
+    },
+    {
+      "id": "he-zhi-zhang-yong-liu",
+      "title": "咏柳",
+      "literaryForm": "七言绝句",
+      "author": "贺知章",
+      "dynasty": "唐",
+      "fullText": [
+        "碧玉妆成一树高，万条垂下绿丝绦。",
+        "不知细叶谁裁出，二月春风似剪刀。"
+      ],
+      "excerpt": [
+        "不知细叶谁裁出",
+        "二月春风似剪刀"
+      ],
+      "sourceName": "《全唐诗》",
+      "oneLineSummary": "春风像一把看不见的剪刀，让新叶有了精巧轮廓。",
+      "culturalBackground": "诗以碧玉、丝带和剪刀作比，赞美早春柳树的新鲜与轻盈。",
+      "contemporaryConnection": "熟悉的校园道路，也会因为第一批新叶而像换了一个场景。",
+      "annotations": [
+        {
+          "term": "丝绦",
+          "explanation": "丝织的带子。"
+        },
+        {
+          "term": "二月",
+          "explanation": "农历二月，已进入仲春。"
+        }
+      ],
+      "tags": {
+        "festivals": [],
+        "weather": [
+          "wind",
+          "clear"
+        ],
+        "solarTerms": [
+          "立春",
+          "雨水",
+          "惊蛰"
+        ],
+        "seasons": [
+          "spring"
+        ],
+        "timePeriods": [
+          "day"
+        ],
+        "emotions": [
+          "欣喜",
+          "轻快"
+        ],
+        "lifeScenes": [
+          "校园",
+          "观察"
+        ]
+      },
+      "quality": 10,
+      "engineeringReview": {
+        "workId": "he-zhi-zhang-yong-liu",
+        "status": "published",
+        "reviewedAt": "2026-07-23",
+        "reviewedBy": "WeatherPoem 内容初审",
+        "sourceVerified": true,
+        "notes": "MVP 公版古典诗词种子内容；发布前仍建议按权威点校本复核。"
+      }
+    },
+    {
+      "id": "wang-wei-niao-ming-jian",
+      "title": "鸟鸣涧",
+      "literaryForm": "五言绝句",
+      "author": "王维",
+      "dynasty": "唐",
+      "fullText": [
+        "人闲桂花落，夜静春山空。",
+        "月出惊山鸟，时鸣春涧中。"
+      ],
+      "excerpt": [
+        "月出惊山鸟",
+        "时鸣春涧中"
+      ],
+      "sourceName": "《全唐诗》",
+      "oneLineSummary": "越安静，越能听见细小事物的发生。",
+      "culturalBackground": "王维以花落、月出、鸟鸣等微小动态反衬春山夜晚的幽静。",
+      "contemporaryConnection": "摘下耳机走一段路，环境中的风、树叶和脚步声会重新回来。",
+      "annotations": [
+        {
+          "term": "人闲",
+          "explanation": "人心闲静。"
+        },
+        {
+          "term": "时鸣",
+          "explanation": "偶尔鸣叫。"
+        }
+      ],
+      "tags": {
+        "festivals": [],
+        "weather": [
+          "clear"
+        ],
+        "solarTerms": [
+          "春分",
+          "谷雨"
+        ],
+        "seasons": [
+          "spring"
+        ],
+        "timePeriods": [
+          "night"
+        ],
+        "emotions": [
+          "宁静",
+          "专注"
+        ],
+        "lifeScenes": [
+          "散步",
+          "独处"
+        ]
+      },
+      "quality": 10,
+      "engineeringReview": {
+        "workId": "wang-wei-niao-ming-jian",
+        "status": "published",
+        "reviewedAt": "2026-07-23",
+        "reviewedBy": "WeatherPoem 内容初审",
+        "sourceVerified": true,
+        "notes": "MVP 公版古典诗词种子内容；发布前仍建议按权威点校本复核。"
+      }
+    },
+    {
+      "id": "liu-chang-qing-feng-xue",
+      "title": "逢雪宿芙蓉山主人",
+      "literaryForm": "五言绝句",
+      "author": "刘长卿",
+      "dynasty": "唐",
+      "fullText": [
+        "日暮苍山远，天寒白屋贫。",
+        "柴门闻犬吠，风雪夜归人。"
+      ],
+      "excerpt": [
+        "柴门闻犬吠",
+        "风雪夜归人"
+      ],
+      "sourceName": "《全唐诗》",
+      "oneLineSummary": "风雪夜归，一声犬吠让寒冷的画面有了人间气息。",
+      "culturalBackground": "暮色、寒山、白屋与归人构成极简叙事，写旅途中借宿所见。",
+      "contemporaryConnection": "冬夜回到亮着灯的宿舍，普通的归来本身也带着安稳。",
+      "annotations": [
+        {
+          "term": "白屋",
+          "explanation": "简朴的茅屋。"
+        },
+        {
+          "term": "夜归人",
+          "explanation": "夜间冒着风雪归来的人。"
+        }
+      ],
+      "tags": {
+        "festivals": [],
+        "weather": [
+          "snow",
+          "wind",
+          "cold"
+        ],
+        "solarTerms": [
+          "大雪",
+          "冬至"
+        ],
+        "seasons": [
+          "winter"
+        ],
+        "timePeriods": [
+          "evening",
+          "night"
+        ],
+        "emotions": [
+          "安稳",
+          "孤清"
+        ],
+        "lifeScenes": [
+          "归家",
+          "旅宿"
+        ]
+      },
+      "quality": 10,
+      "engineeringReview": {
+        "workId": "liu-chang-qing-feng-xue",
+        "status": "published",
+        "reviewedAt": "2026-07-23",
+        "reviewedBy": "WeatherPoem 内容初审",
+        "sourceVerified": true,
+        "notes": "MVP 公版古典诗词种子内容；发布前仍建议按权威点校本复核。"
+      }
+    },
+    {
+      "id": "li-bai-zao-fa-bai-di-cheng",
+      "title": "早发白帝城",
+      "literaryForm": "七言绝句",
+      "author": "李白",
+      "dynasty": "唐",
+      "fullText": [
+        "朝辞白帝彩云间，千里江陵一日还。",
+        "两岸猿声啼不住，轻舟已过万重山。"
+      ],
+      "excerpt": [
+        "两岸猿声啼不住",
+        "轻舟已过万重山"
+      ],
+      "sourceName": "《全唐诗》",
+      "oneLineSummary": "走过最难的一段，舟行忽然变得轻快。",
+      "culturalBackground": "李白流放途中遇赦东归，以疾驰轻舟写摆脱困境后的畅快。",
+      "contemporaryConnection": "交完大作业、结束考试周的清晨，很适合感受这种轻舟已过的松快。",
+      "annotations": [
+        {
+          "term": "朝辞",
+          "explanation": "清晨告别。"
+        },
+        {
+          "term": "江陵",
+          "explanation": "今湖北荆州一带。"
+        }
+      ],
+      "tags": {
+        "festivals": [],
+        "weather": [
+          "clear",
+          "cloudy"
+        ],
+        "solarTerms": [],
+        "seasons": [
+          "spring",
+          "summer",
+          "autumn"
+        ],
+        "timePeriods": [
+          "morning"
+        ],
+        "emotions": [
+          "轻快",
+          "释然"
+        ],
+        "lifeScenes": [
+          "考试",
+          "出发"
+        ]
+      },
+      "quality": 10,
+      "engineeringReview": {
+        "workId": "li-bai-zao-fa-bai-di-cheng",
+        "status": "published",
+        "reviewedAt": "2026-07-23",
+        "reviewedBy": "WeatherPoem 内容初审",
+        "sourceVerified": true,
+        "notes": "MVP 公版古典诗词种子内容；发布前仍建议按权威点校本复核。"
+      }
+    },
+    {
+      "id": "li-qing-zhao-ru-meng-ling",
+      "title": "如梦令·昨夜雨疏风骤",
+      "literaryForm": "词",
+      "author": "李清照",
+      "dynasty": "宋",
+      "fullText": [
+        "昨夜雨疏风骤，浓睡不消残酒。",
+        "试问卷帘人，却道海棠依旧。",
+        "知否，知否？应是绿肥红瘦。"
+      ],
+      "excerpt": [
+        "知否，知否",
+        "应是绿肥红瘦"
+      ],
+      "sourceName": "《漱玉词》",
+      "oneLineSummary": "一夜风雨之后，最先被惦记的是窗外海棠。",
+      "culturalBackground": "词用主仆问答写惜花心情，“绿肥红瘦”精炼呈现暮春景象。",
+      "contemporaryConnection": "真正的观察不是只看天气结果，而是关心一场风雨改变了什么。",
+      "annotations": [
+        {
+          "term": "雨疏风骤",
+          "explanation": "雨点稀疏而风势急猛。"
+        },
+        {
+          "term": "绿肥红瘦",
+          "explanation": "绿叶繁茂、红花凋零。"
+        }
+      ],
+      "tags": {
+        "festivals": [],
+        "weather": [
+          "rain",
+          "wind",
+          "heavy-rain"
+        ],
+        "solarTerms": [
+          "谷雨",
+          "立夏"
+        ],
+        "seasons": [
+          "spring"
+        ],
+        "timePeriods": [
+          "morning"
+        ],
+        "emotions": [
+          "惜春",
+          "关切"
+        ],
+        "lifeScenes": [
+          "晨起",
+          "观察"
+        ]
+      },
+      "quality": 10,
+      "engineeringReview": {
+        "workId": "li-qing-zhao-ru-meng-ling",
+        "status": "published",
+        "reviewedAt": "2026-07-23",
+        "reviewedBy": "WeatherPoem 内容初审",
+        "sourceVerified": true,
+        "notes": "MVP 公版古典诗词种子内容；发布前仍建议按权威点校本复核。"
+      }
+    },
+    {
+      "id": "fan-zhong-yan-su-mu-zhe",
+      "title": "苏幕遮·怀旧",
+      "literaryForm": "词",
+      "author": "范仲淹",
+      "dynasty": "宋",
+      "fullText": [
+        "碧云天，黄叶地，秋色连波，波上寒烟翠。",
+        "山映斜阳天接水，芳草无情，更在斜阳外。",
+        "黯乡魂，追旅思，夜夜除非，好梦留人睡。",
+        "明月楼高休独倚，酒入愁肠，化作相思泪。"
+      ],
+      "excerpt": [
+        "碧云天，黄叶地",
+        "秋色连波，波上寒烟翠"
+      ],
+      "sourceName": "《范文正公词》",
+      "oneLineSummary": "辽阔秋色越是明净，远行人的乡思越显得深。",
+      "culturalBackground": "词先铺写碧云黄叶、斜阳秋水，再转入羁旅乡愁，景与情层层相接。",
+      "contemporaryConnection": "远离家乡后的想念不必回避，它也是我们确认归属的一种方式。",
+      "annotations": [
+        {
+          "term": "黯乡魂",
+          "explanation": "思乡而心情黯然。"
+        },
+        {
+          "term": "追旅思",
+          "explanation": "羁旅愁思绵延不绝。"
+        }
+      ],
+      "tags": {
+        "festivals": [],
+        "weather": [
+          "clear",
+          "fog",
+          "cold"
+        ],
+        "solarTerms": [
+          "白露",
+          "寒露"
+        ],
+        "seasons": [
+          "autumn"
+        ],
+        "timePeriods": [
+          "evening",
+          "night"
+        ],
+        "emotions": [
+          "思乡",
+          "惆怅"
+        ],
+        "lifeScenes": [
+          "远行",
+          "独处"
+        ]
+      },
+      "quality": 9,
+      "engineeringReview": {
+        "workId": "fan-zhong-yan-su-mu-zhe",
+        "status": "published",
+        "reviewedAt": "2026-07-23",
+        "reviewedBy": "WeatherPoem 内容初审",
+        "sourceVerified": true,
+        "notes": "MVP 公版古典诗词种子内容；发布前仍建议按权威点校本复核。"
+      }
+    },
+    {
+      "id": "zhao-shi-xiu-yue-ke",
+      "title": "约客",
+      "literaryForm": "七言绝句",
+      "author": "赵师秀",
+      "dynasty": "宋",
+      "fullText": [
+        "黄梅时节家家雨，青草池塘处处蛙。",
+        "有约不来过夜半，闲敲棋子落灯花。"
+      ],
+      "excerpt": [
+        "黄梅时节家家雨",
+        "青草池塘处处蛙"
+      ],
+      "sourceName": "《清苑斋集》",
+      "oneLineSummary": "夏雨拉长了等待，也让蛙声和灯花变得清晰。",
+      "culturalBackground": "江南梅雨季连日阴雨，诗人在夜半等候友人，以敲棋子的细节写等待中的闲闷。",
+      "contemporaryConnection": "约好的人迟到、计划被雨打乱时，留意手边的小事，也能让等待不只剩焦躁。",
+      "annotations": [
+        {
+          "term": "黄梅时节",
+          "explanation": "江南初夏梅子成熟、阴雨连绵的时节。"
+        },
+        {
+          "term": "灯花",
+          "explanation": "灯芯燃烧后结成的花状物。"
+        }
+      ],
+      "tags": {
+        "festivals": [],
+        "weather": [
+          "overcast",
+          "light-rain",
+          "rain"
+        ],
+        "solarTerms": [
+          "芒种",
+          "夏至",
+          "小暑",
+          "大暑"
+        ],
+        "seasons": [
+          "summer"
+        ],
+        "timePeriods": [
+          "evening",
+          "night"
+        ],
+        "emotions": [
+          "闲适",
+          "等待"
+        ],
+        "lifeScenes": [
+          "等人",
+          "独处"
+        ]
+      },
+      "quality": 10,
+      "engineeringReview": {
+        "workId": "zhao-shi-xiu-yue-ke",
+        "status": "published",
+        "reviewedAt": "2026-07-23",
+        "reviewedBy": "WeatherPoem 内容初审",
+        "sourceVerified": true,
+        "notes": "MVP 公版古典诗词种子内容；发布前仍建议按权威点校本复核。"
+      }
+    },
+    {
+      "id": "li-bai-wang-lu-shan-pu-bu",
+      "title": "望庐山瀑布",
+      "literaryForm": "七言绝句",
+      "author": "李白",
+      "dynasty": "唐",
+      "fullText": [
+        "日照香炉生紫烟，遥看瀑布挂前川。",
+        "飞流直下三千尺，疑是银河落九天。"
+      ],
+      "excerpt": [
+        "日照香炉生紫烟，遥看瀑布挂前川。",
+        "飞流直下三千尺，疑是银河落九天。"
+      ],
+      "sourceName": "《全唐诗》",
+      "oneLineSummary": "阳光、山雾与瀑布共同把眼前景象推向银河般的想象。",
+      "culturalBackground": "李白游历庐山时以夸张和比喻写香炉峰瀑布，体现盛唐山水诗的开阔想象。",
+      "contemporaryConnection": "面对真正壮阔的景物时，暂时放下拍照，先用自己的语言描述一次。",
+      "annotations": [
+        {
+          "term": "香炉",
+          "explanation": "庐山香炉峰。"
+        },
+        {
+          "term": "九天",
+          "explanation": "极高的天空。"
+        }
+      ],
+      "tags": {
+        "festivals": [],
+        "weather": [
+          "clear",
+          "fog"
+        ],
+        "solarTerms": [
+          "小满",
+          "芒种"
+        ],
+        "seasons": [
+          "summer"
+        ],
+        "timePeriods": [
+          "morning",
+          "day"
+        ],
+        "emotions": [
+          "赞叹",
+          "开阔"
+        ],
+        "lifeScenes": [
+          "旅行",
+          "观瀑"
+        ]
+      },
+      "quality": 10,
+      "engineeringReview": {
+        "workId": "li-bai-wang-lu-shan-pu-bu",
+        "status": "published",
+        "reviewedAt": "2026-07-23",
+        "reviewedBy": "WeatherPoem 内容初审",
+        "sourceVerified": true,
+        "notes": "MVP 公版古典诗词种子内容；发布前仍建议按权威点校本复核。"
+      }
+    },
+    {
+      "id": "li-bai-zeng-wang-lun",
+      "title": "赠汪伦",
+      "literaryForm": "七言绝句",
+      "author": "李白",
+      "dynasty": "唐",
+      "fullText": [
+        "李白乘舟将欲行，忽闻岸上踏歌声。",
+        "桃花潭水深千尺，不及汪伦送我情。"
+      ],
+      "excerpt": [
+        "李白乘舟将欲行，忽闻岸上踏歌声。",
+        "桃花潭水深千尺，不及汪伦送我情。"
+      ],
+      "sourceName": "《全唐诗》",
+      "oneLineSummary": "临行时忽然响起的歌声，让友情比潭水更有分量。",
+      "culturalBackground": "李白离开桃花潭时，友人汪伦踏歌相送，诗以潭水之深映衬送别之情。",
+      "contemporaryConnection": "朋友离开校园或城市时，真诚出现并认真道别，比复杂仪式更难忘。",
+      "annotations": [
+        {
+          "term": "踏歌",
+          "explanation": "边走边唱、以脚踏地为节拍的歌唱形式。"
+        }
+      ],
+      "tags": {
+        "festivals": [],
+        "weather": [
+          "clear",
+          "cloudy"
+        ],
+        "solarTerms": [
+          "清明",
+          "谷雨"
+        ],
+        "seasons": [
+          "spring"
+        ],
+        "timePeriods": [
+          "day"
+        ],
+        "emotions": [
+          "友情",
+          "不舍"
+        ],
+        "lifeScenes": [
+          "送别",
+          "乘船"
+        ]
+      },
+      "quality": 10,
+      "engineeringReview": {
+        "workId": "li-bai-zeng-wang-lun",
+        "status": "published",
+        "reviewedAt": "2026-07-23",
+        "reviewedBy": "WeatherPoem 内容初审",
+        "sourceVerified": true,
+        "notes": "MVP 公版古典诗词种子内容；发布前仍建议按权威点校本复核。"
+      }
+    },
+    {
+      "id": "li-bai-huang-he-lou-song-meng-hao-ran",
+      "title": "黄鹤楼送孟浩然之广陵",
+      "literaryForm": "七言绝句",
+      "author": "李白",
+      "dynasty": "唐",
+      "fullText": [
+        "故人西辞黄鹤楼，烟花三月下扬州。",
+        "孤帆远影碧空尽，唯见长江天际流。"
+      ],
+      "excerpt": [
+        "故人西辞黄鹤楼，烟花三月下扬州。",
+        "孤帆远影碧空尽，唯见长江天际流。"
+      ],
+      "sourceName": "《全唐诗》",
+      "oneLineSummary": "船影已经消失，目光仍沿着长江送朋友去远方。",
+      "culturalBackground": "诗写李白在黄鹤楼送孟浩然东下扬州，以孤帆远去呈现绵长惜别。",
+      "contemporaryConnection": "送站后仍在原地站一会儿，是许多人都懂得的告别方式。",
+      "annotations": [
+        {
+          "term": "广陵",
+          "explanation": "今江苏扬州。"
+        },
+        {
+          "term": "烟花三月",
+          "explanation": "暮春三月繁花与烟雾交织的景象。"
+        }
+      ],
+      "tags": {
+        "festivals": [],
+        "weather": [
+          "clear",
+          "fog"
+        ],
+        "solarTerms": [
+          "春分",
+          "清明"
+        ],
+        "seasons": [
+          "spring"
+        ],
+        "timePeriods": [
+          "day"
+        ],
+        "emotions": [
+          "友情",
+          "惜别"
+        ],
+        "lifeScenes": [
+          "送别",
+          "远行"
+        ]
+      },
+      "quality": 10,
+      "engineeringReview": {
+        "workId": "li-bai-huang-he-lou-song-meng-hao-ran",
+        "status": "published",
+        "reviewedAt": "2026-07-23",
+        "reviewedBy": "WeatherPoem 内容初审",
+        "sourceVerified": true,
+        "notes": "MVP 公版古典诗词种子内容；发布前仍建议按权威点校本复核。"
+      }
+    },
+    {
+      "id": "li-bai-wang-tian-men-shan",
+      "title": "望天门山",
+      "literaryForm": "七言绝句",
+      "author": "李白",
+      "dynasty": "唐",
+      "fullText": [
+        "天门中断楚江开，碧水东流至此回。",
+        "两岸青山相对出，孤帆一片日边来。"
+      ],
+      "excerpt": [
+        "天门中断楚江开，碧水东流至此回。",
+        "两岸青山相对出，孤帆一片日边来。"
+      ],
+      "sourceName": "《全唐诗》",
+      "oneLineSummary": "舟行江上，山水仿佛主动向眼前打开。",
+      "culturalBackground": "李白舟行长江经过天门山，以动态视角写江流、青山和孤帆相互推进。",
+      "contemporaryConnection": "移动中的视角会改变熟悉景物，乘车或骑行时不妨留心窗外的空间变化。",
+      "annotations": [
+        {
+          "term": "楚江",
+          "explanation": "流经古楚地一带的长江。"
+        }
+      ],
+      "tags": {
+        "festivals": [],
+        "weather": [
+          "clear",
+          "wind"
+        ],
+        "solarTerms": [
+          "立夏",
+          "小满"
+        ],
+        "seasons": [
+          "summer"
+        ],
+        "timePeriods": [
+          "day",
+          "evening"
+        ],
+        "emotions": [
+          "畅快",
+          "开阔"
+        ],
+        "lifeScenes": [
+          "乘船",
+          "旅行"
+        ]
+      },
+      "quality": 10,
+      "engineeringReview": {
+        "workId": "li-bai-wang-tian-men-shan",
+        "status": "published",
+        "reviewedAt": "2026-07-23",
+        "reviewedBy": "WeatherPoem 内容初审",
+        "sourceVerified": true,
+        "notes": "MVP 公版古典诗词种子内容；发布前仍建议按权威点校本复核。"
+      }
+    },
+    {
+      "id": "li-bai-du-zuo-jing-ting-shan",
+      "title": "独坐敬亭山",
+      "literaryForm": "五言绝句",
+      "author": "李白",
+      "dynasty": "唐",
+      "fullText": [
+        "众鸟高飞尽，孤云独去闲。",
+        "相看两不厌，只有敬亭山。"
+      ],
+      "excerpt": [
+        "众鸟高飞尽，孤云独去闲。",
+        "相看两不厌，只有敬亭山。"
+      ],
+      "sourceName": "《全唐诗》",
+      "oneLineSummary": "鸟云散尽之后，一座山成为可以长久相看的陪伴。",
+      "culturalBackground": "李白以鸟尽云闲写环境渐静，最终把敬亭山人格化为彼此不厌的知己。",
+      "contemporaryConnection": "独处并不等于空白，一棵树、一扇窗或一座山都能成为稳定的参照。",
+      "annotations": [
+        {
+          "term": "两不厌",
+          "explanation": "彼此看不够，不感到厌倦。"
+        }
+      ],
+      "tags": {
+        "festivals": [],
+        "weather": [
+          "clear",
+          "cloudy"
+        ],
+        "solarTerms": [
+          "处暑",
+          "白露"
+        ],
+        "seasons": [
+          "autumn"
+        ],
+        "timePeriods": [
+          "day"
+        ],
+        "emotions": [
+          "孤独",
+          "宁静"
+        ],
+        "lifeScenes": [
+          "独处",
+          "看山"
+        ]
+      },
+      "quality": 10,
+      "engineeringReview": {
+        "workId": "li-bai-du-zuo-jing-ting-shan",
+        "status": "published",
+        "reviewedAt": "2026-07-23",
+        "reviewedBy": "WeatherPoem 内容初审",
+        "sourceVerified": true,
+        "notes": "MVP 公版古典诗词种子内容；发布前仍建议按权威点校本复核。"
+      }
+    },
+    {
+      "id": "li-bai-ye-su-shan-si",
+      "title": "夜宿山寺",
+      "literaryForm": "五言绝句",
+      "author": "李白",
+      "dynasty": "唐",
+      "fullText": [
+        "危楼高百尺，手可摘星辰。",
+        "不敢高声语，恐惊天上人。"
+      ],
+      "excerpt": [
+        "危楼高百尺，手可摘星辰。",
+        "不敢高声语，恐惊天上人。"
+      ],
+      "sourceName": "《全唐诗》",
+      "oneLineSummary": "高楼、星辰和轻声说话，让夜空忽然变得触手可及。",
+      "culturalBackground": "诗以夸张想象山寺高楼直入星空，并用不敢高声的动作增添童真和神秘。",
+      "contemporaryConnection": "住在高处或露营的夜晚，抬头看一会儿星空，会重新校准日常尺度。",
+      "annotations": [
+        {
+          "term": "危楼",
+          "explanation": "高楼；危在此处意为高。"
+        }
+      ],
+      "tags": {
+        "festivals": [],
+        "weather": [
+          "clear",
+          "cold"
+        ],
+        "solarTerms": [
+          "寒露",
+          "霜降"
+        ],
+        "seasons": [
+          "autumn"
+        ],
+        "timePeriods": [
+          "night"
+        ],
+        "emotions": [
+          "惊奇",
+          "童真"
+        ],
+        "lifeScenes": [
+          "夜宿",
+          "观星"
+        ]
+      },
+      "quality": 9,
+      "engineeringReview": {
+        "workId": "li-bai-ye-su-shan-si",
+        "status": "published",
+        "reviewedAt": "2026-07-23",
+        "reviewedBy": "WeatherPoem 内容初审",
+        "sourceVerified": true,
+        "notes": "MVP 公版古典诗词种子内容；发布前仍建议按权威点校本复核。"
+      }
+    },
+    {
+      "id": "li-bai-qiu-pu-ge",
+      "title": "秋浦歌·白发三千丈",
+      "literaryForm": "五言绝句",
+      "author": "李白",
+      "dynasty": "唐",
+      "fullText": [
+        "白发三千丈，缘愁似个长。",
+        "不知明镜里，何处得秋霜。"
+      ],
+      "excerpt": [
+        "白发三千丈，缘愁似个长。",
+        "不知明镜里，何处得秋霜。"
+      ],
+      "sourceName": "《全唐诗》",
+      "oneLineSummary": "镜中的白发把无形愁绪变成一段可以看见的长度。",
+      "culturalBackground": "李白在秋浦组诗中用极度夸张的白发意象表达愁绪和年华之感。",
+      "contemporaryConnection": "压力积累时，先承认自己的疲惫，比强行表现轻松更接近解决问题。",
+      "annotations": [
+        {
+          "term": "缘",
+          "explanation": "因为。"
+        },
+        {
+          "term": "秋霜",
+          "explanation": "比喻白发。"
+        }
+      ],
+      "tags": {
+        "festivals": [],
+        "weather": [
+          "cold",
+          "overcast"
+        ],
+        "solarTerms": [
+          "寒露",
+          "霜降"
+        ],
+        "seasons": [
+          "autumn"
+        ],
+        "timePeriods": [
+          "evening",
+          "night"
+        ],
+        "emotions": [
+          "愁思",
+          "感时"
+        ],
+        "lifeScenes": [
+          "照镜",
+          "独处"
+        ]
+      },
+      "quality": 9,
+      "engineeringReview": {
+        "workId": "li-bai-qiu-pu-ge",
+        "status": "published",
+        "reviewedAt": "2026-07-23",
+        "reviewedBy": "WeatherPoem 内容初审",
+        "sourceVerified": true,
+        "notes": "MVP 公版古典诗词种子内容；发布前仍建议按权威点校本复核。"
+      }
+    },
+    {
+      "id": "li-bai-e-mei-shan-yue-ge",
+      "title": "峨眉山月歌",
+      "literaryForm": "七言绝句",
+      "author": "李白",
+      "dynasty": "唐",
+      "fullText": [
+        "峨眉山月半轮秋，影入平羌江水流。",
+        "夜发清溪向三峡，思君不见下渝州。"
+      ],
+      "excerpt": [
+        "峨眉山月半轮秋，影入平羌江水流。",
+        "夜发清溪向三峡，思君不见下渝州。"
+      ],
+      "sourceName": "《全唐诗》",
+      "oneLineSummary": "半轮秋月随江而行，也陪着第一次远游的思念。",
+      "culturalBackground": "年轻的李白离蜀远游，把沿途地名串入月夜舟行，形成连续的空间感。",
+      "contemporaryConnection": "第一次离开熟悉城市时，沿途景物会与对朋友和故乡的想念重叠。",
+      "annotations": [
+        {
+          "term": "平羌",
+          "explanation": "平羌江，即今青衣江。"
+        },
+        {
+          "term": "夜发",
+          "explanation": "夜间出发。"
+        }
+      ],
+      "tags": {
+        "festivals": [],
+        "weather": [
+          "clear"
+        ],
+        "solarTerms": [
+          "白露",
+          "秋分"
+        ],
+        "seasons": [
+          "autumn"
+        ],
+        "timePeriods": [
+          "night"
+        ],
+        "emotions": [
+          "思念",
+          "期待"
+        ],
+        "lifeScenes": [
+          "远游",
+          "乘船"
+        ]
+      },
+      "quality": 10,
+      "engineeringReview": {
+        "workId": "li-bai-e-mei-shan-yue-ge",
+        "status": "published",
+        "reviewedAt": "2026-07-23",
+        "reviewedBy": "WeatherPoem 内容初审",
+        "sourceVerified": true,
+        "notes": "MVP 公版古典诗词种子内容；发布前仍建议按权威点校本复核。"
+      }
+    },
+    {
+      "id": "li-bai-wen-wang-chang-ling",
+      "title": "闻王昌龄左迁龙标遥有此寄",
+      "literaryForm": "七言绝句",
+      "author": "李白",
+      "dynasty": "唐",
+      "fullText": [
+        "杨花落尽子规啼，闻道龙标过五溪。",
+        "我寄愁心与明月，随君直到夜郎西。"
+      ],
+      "excerpt": [
+        "杨花落尽子规啼，闻道龙标过五溪。",
+        "我寄愁心与明月，随君直到夜郎西。"
+      ],
+      "sourceName": "《全唐诗》",
+      "oneLineSummary": "无法同行时，诗人把牵挂托付给共同看见的月亮。",
+      "culturalBackground": "李白得知王昌龄被贬龙标，以暮春景物和明月寄托对友人的同情。",
+      "contemporaryConnection": "朋友身处低谷又相隔很远时，一条认真写下的消息也能成为陪伴。",
+      "annotations": [
+        {
+          "term": "左迁",
+          "explanation": "贬官。"
+        },
+        {
+          "term": "子规",
+          "explanation": "杜鹃鸟。"
+        }
+      ],
+      "tags": {
+        "festivals": [],
+        "weather": [
+          "cloudy",
+          "wind"
+        ],
+        "solarTerms": [
+          "谷雨",
+          "立夏"
+        ],
+        "seasons": [
+          "spring"
+        ],
+        "timePeriods": [
+          "evening",
+          "night"
+        ],
+        "emotions": [
+          "牵挂",
+          "同情"
+        ],
+        "lifeScenes": [
+          "写信",
+          "远方朋友"
+        ]
+      },
+      "quality": 10,
+      "engineeringReview": {
+        "workId": "li-bai-wen-wang-chang-ling",
+        "status": "published",
+        "reviewedAt": "2026-07-23",
+        "reviewedBy": "WeatherPoem 内容初审",
+        "sourceVerified": true,
+        "notes": "MVP 公版古典诗词种子内容；发布前仍建议按权威点校本复核。"
+      }
+    },
+    {
+      "id": "li-bai-ke-zhong-xing",
+      "title": "客中行",
+      "literaryForm": "七言绝句",
+      "author": "李白",
+      "dynasty": "唐",
+      "fullText": [
+        "兰陵美酒郁金香，玉碗盛来琥珀光。",
+        "但使主人能醉客，不知何处是他乡。"
+      ],
+      "excerpt": [
+        "兰陵美酒郁金香，玉碗盛来琥珀光。",
+        "但使主人能醉客，不知何处是他乡。"
+      ],
+      "sourceName": "《全唐诗》",
+      "oneLineSummary": "真诚的款待让异乡暂时不再显得陌生。",
+      "culturalBackground": "李白客居兰陵，以酒香、玉碗和主人的热情淡化羁旅中的乡愁。",
+      "contemporaryConnection": "刚到新学校或新城市时，一顿被认真招待的饭常能迅速建立归属感。",
+      "annotations": [
+        {
+          "term": "郁金香",
+          "explanation": "指用郁金香草浸制的酒香。"
+        },
+        {
+          "term": "琥珀光",
+          "explanation": "形容酒色晶莹。"
+        }
+      ],
+      "tags": {
+        "festivals": [],
+        "weather": [
+          "clear"
+        ],
+        "solarTerms": [],
+        "seasons": [
+          "spring",
+          "autumn"
+        ],
+        "timePeriods": [
+          "evening"
+        ],
+        "emotions": [
+          "欢聚",
+          "自在"
+        ],
+        "lifeScenes": [
+          "聚餐",
+          "异乡"
+        ]
+      },
+      "quality": 9,
+      "engineeringReview": {
+        "workId": "li-bai-ke-zhong-xing",
+        "status": "published",
+        "reviewedAt": "2026-07-23",
+        "reviewedBy": "WeatherPoem 内容初审",
+        "sourceVerified": true,
+        "notes": "MVP 公版古典诗词种子内容；发布前仍建议按权威点校本复核。"
+      }
+    },
+    {
+      "id": "du-fu-jue-ju-liang-ge-huang-li",
+      "title": "绝句·两个黄鹂鸣翠柳",
+      "literaryForm": "七言绝句",
+      "author": "杜甫",
+      "dynasty": "唐",
+      "fullText": [
+        "两个黄鹂鸣翠柳，一行白鹭上青天。",
+        "窗含西岭千秋雪，门泊东吴万里船。"
+      ],
+      "excerpt": [
+        "两个黄鹂鸣翠柳，一行白鹭上青天。",
+        "窗含西岭千秋雪，门泊东吴万里船。"
+      ],
+      "sourceName": "《全唐诗》",
+      "oneLineSummary": "一扇窗同时容纳近处鸟鸣、远山积雪和即将出发的船。",
+      "culturalBackground": "杜甫居成都草堂时以对偶组织颜色、远近和动静，呈现明朗春景。",
+      "contemporaryConnection": "书桌前的一扇窗也能成为观察框，帮助被任务占满的注意力重新伸向远处。",
+      "annotations": [
+        {
+          "term": "窗含",
+          "explanation": "从窗口望去，远景仿佛被窗框包含。"
+        }
+      ],
+      "tags": {
+        "festivals": [],
+        "weather": [
+          "clear"
+        ],
+        "solarTerms": [
+          "惊蛰",
+          "春分"
+        ],
+        "seasons": [
+          "spring"
+        ],
+        "timePeriods": [
+          "morning",
+          "day"
+        ],
+        "emotions": [
+          "明朗",
+          "欣喜"
+        ],
+        "lifeScenes": [
+          "窗边",
+          "观鸟"
+        ]
+      },
+      "quality": 10,
+      "engineeringReview": {
+        "workId": "du-fu-jue-ju-liang-ge-huang-li",
+        "status": "published",
+        "reviewedAt": "2026-07-23",
+        "reviewedBy": "WeatherPoem 内容初审",
+        "sourceVerified": true,
+        "notes": "MVP 公版古典诗词种子内容；发布前仍建议按权威点校本复核。"
+      }
+    },
+    {
+      "id": "du-fu-jue-ju-chi-ri",
+      "title": "绝句·迟日江山丽",
+      "literaryForm": "五言绝句",
+      "author": "杜甫",
+      "dynasty": "唐",
+      "fullText": [
+        "迟日江山丽，春风花草香。",
+        "泥融飞燕子，沙暖睡鸳鸯。"
+      ],
+      "excerpt": [
+        "迟日江山丽，春风花草香。",
+        "泥融飞燕子，沙暖睡鸳鸯。"
+      ],
+      "sourceName": "《全唐诗》",
+      "oneLineSummary": "春日变长，花草、燕子和暖沙都恢复了自己的节奏。",
+      "culturalBackground": "诗人以视觉、嗅觉和动物活动写浣花溪一带春日的温暖安稳。",
+      "contemporaryConnection": "天气转暖时，去户外坐一会儿，比在日历上看到“春天”更直接。",
+      "annotations": [
+        {
+          "term": "迟日",
+          "explanation": "春日白昼渐长。"
+        }
+      ],
+      "tags": {
+        "festivals": [],
+        "weather": [
+          "clear",
+          "wind"
+        ],
+        "solarTerms": [
+          "春分",
+          "清明"
+        ],
+        "seasons": [
+          "spring"
+        ],
+        "timePeriods": [
+          "day"
+        ],
+        "emotions": [
+          "安宁",
+          "欣喜"
+        ],
+        "lifeScenes": [
+          "郊游",
+          "晒太阳"
+        ]
+      },
+      "quality": 10,
+      "engineeringReview": {
+        "workId": "du-fu-jue-ju-chi-ri",
+        "status": "published",
+        "reviewedAt": "2026-07-23",
+        "reviewedBy": "WeatherPoem 内容初审",
+        "sourceVerified": true,
+        "notes": "MVP 公版古典诗词种子内容；发布前仍建议按权威点校本复核。"
+      }
+    },
+    {
+      "id": "du-fu-jiang-pan-du-bu-xun-hua",
+      "title": "江畔独步寻花·其六",
+      "literaryForm": "七言绝句",
+      "author": "杜甫",
+      "dynasty": "唐",
+      "fullText": [
+        "黄四娘家花满蹊，千朵万朵压枝低。",
+        "留连戏蝶时时舞，自在娇莺恰恰啼。"
+      ],
+      "excerpt": [
+        "黄四娘家花满蹊，千朵万朵压枝低。",
+        "留连戏蝶时时舞，自在娇莺恰恰啼。"
+      ],
+      "sourceName": "《全唐诗》",
+      "oneLineSummary": "花开得让枝条低垂，蝴蝶与黄莺把散步变成一场停留。",
+      "culturalBackground": "杜甫在成都江畔独步赏花，以密集花朵和自在虫鸟表现春日生机。",
+      "contemporaryConnection": "没有明确目的的散步，常常更容易发现校园角落正在发生的变化。",
+      "annotations": [
+        {
+          "term": "蹊",
+          "explanation": "小路。"
+        },
+        {
+          "term": "恰恰",
+          "explanation": "形容鸟鸣和谐。"
+        }
+      ],
+      "tags": {
+        "festivals": [],
+        "weather": [
+          "clear",
+          "cloudy"
+        ],
+        "solarTerms": [
+          "清明",
+          "谷雨"
+        ],
+        "seasons": [
+          "spring"
+        ],
+        "timePeriods": [
+          "day"
+        ],
+        "emotions": [
+          "喜悦",
+          "自在"
+        ],
+        "lifeScenes": [
+          "散步",
+          "赏花"
+        ]
+      },
+      "quality": 10,
+      "engineeringReview": {
+        "workId": "du-fu-jiang-pan-du-bu-xun-hua",
+        "status": "published",
+        "reviewedAt": "2026-07-23",
+        "reviewedBy": "WeatherPoem 内容初审",
+        "sourceVerified": true,
+        "notes": "MVP 公版古典诗词种子内容；发布前仍建议按权威点校本复核。"
+      }
+    },
+    {
+      "id": "du-fu-wang-yue",
+      "title": "望岳",
+      "literaryForm": "五言古诗",
+      "author": "杜甫",
+      "dynasty": "唐",
+      "fullText": [
+        "岱宗夫如何？齐鲁青未了。",
+        "造化钟神秀，阴阳割昏晓。",
+        "荡胸生曾云，决眦入归鸟。",
+        "会当凌绝顶，一览众山小。"
+      ],
+      "excerpt": [
+        "岱宗夫如何？齐鲁青未了。",
+        "造化钟神秀，阴阳割昏晓。"
+      ],
+      "sourceName": "《全唐诗》",
+      "oneLineSummary": "仰望高山并非停在赞叹，而是生出亲自登顶的愿望。",
+      "culturalBackground": "青年杜甫望泰山，由山势雄伟写到攀登志向，展现昂扬进取的精神。",
+      "contemporaryConnection": "长期目标太大时，先确认自己真心想抵达的高度，再拆出今天的一步。",
+      "annotations": [
+        {
+          "term": "岱宗",
+          "explanation": "泰山的尊称。"
+        },
+        {
+          "term": "凌",
+          "explanation": "登上。"
+        }
+      ],
+      "tags": {
+        "festivals": [],
+        "weather": [
+          "clear",
+          "cloudy"
+        ],
+        "solarTerms": [
+          "立秋",
+          "处暑"
+        ],
+        "seasons": [
+          "autumn"
+        ],
+        "timePeriods": [
+          "day"
+        ],
+        "emotions": [
+          "进取",
+          "豪迈"
+        ],
+        "lifeScenes": [
+          "登山",
+          "立志"
+        ]
+      },
+      "quality": 10,
+      "engineeringReview": {
+        "workId": "du-fu-wang-yue",
+        "status": "published",
+        "reviewedAt": "2026-07-23",
+        "reviewedBy": "WeatherPoem 内容初审",
+        "sourceVerified": true,
+        "notes": "MVP 公版古典诗词种子内容；发布前仍建议按权威点校本复核。"
+      }
+    },
+    {
+      "id": "du-fu-yue-ye-yi-she-di",
+      "title": "月夜忆舍弟",
+      "literaryForm": "五言律诗",
+      "author": "杜甫",
+      "dynasty": "唐",
+      "fullText": [
+        "戍鼓断人行，边秋一雁声。",
+        "露从今夜白，月是故乡明。",
+        "有弟皆分散，无家问死生。",
+        "寄书长不达，况乃未休兵。"
+      ],
+      "excerpt": [
+        "戍鼓断人行，边秋一雁声。",
+        "露从今夜白，月是故乡明。"
+      ],
+      "sourceName": "《全唐诗》",
+      "oneLineSummary": "白露夜的月亮照见故乡，也照见战乱中失去联系的亲人。",
+      "culturalBackground": "安史之乱期间杜甫与弟弟分散，边地秋夜触发对家人安危的深切牵挂。",
+      "contemporaryConnection": "无法及时联系家人时，担忧会被夜色放大；主动报平安是一种重要体贴。",
+      "annotations": [
+        {
+          "term": "舍弟",
+          "explanation": "对自己弟弟的谦称。"
+        },
+        {
+          "term": "戍鼓",
+          "explanation": "边防驻军所击的鼓。"
+        }
+      ],
+      "tags": {
+        "festivals": [
+          "中秋节"
+        ],
+        "weather": [
+          "clear",
+          "cold"
+        ],
+        "solarTerms": [
+          "白露"
+        ],
+        "seasons": [
+          "autumn"
+        ],
+        "timePeriods": [
+          "night"
+        ],
+        "emotions": [
+          "思亲",
+          "忧虑"
+        ],
+        "lifeScenes": [
+          "异乡",
+          "家书"
+        ]
+      },
+      "quality": 10,
+      "engineeringReview": {
+        "workId": "du-fu-yue-ye-yi-she-di",
+        "status": "published",
+        "reviewedAt": "2026-07-23",
+        "reviewedBy": "WeatherPoem 内容初审",
+        "sourceVerified": true,
+        "notes": "MVP 公版古典诗词种子内容；发布前仍建议按权威点校本复核。"
+      }
+    },
+    {
+      "id": "du-fu-lv-ye-shu-huai",
+      "title": "旅夜书怀",
+      "literaryForm": "五言律诗",
+      "author": "杜甫",
+      "dynasty": "唐",
+      "fullText": [
+        "细草微风岸，危樯独夜舟。",
+        "星垂平野阔，月涌大江流。",
+        "名岂文章著，官应老病休。",
+        "飘飘何所似，天地一沙鸥。"
+      ],
+      "excerpt": [
+        "细草微风岸，危樯独夜舟。",
+        "星垂平野阔，月涌大江流。"
+      ],
+      "sourceName": "《全唐诗》",
+      "oneLineSummary": "星野与大江越辽阔，一叶夜舟上的漂泊感越清晰。",
+      "culturalBackground": "杜甫离开成都后舟行长江，以雄阔夜景反衬个人身世的孤独漂泊。",
+      "contemporaryConnection": "环境越大越容易感到渺小，但承认这种感受也能让人更诚实地看见自己。",
+      "annotations": [
+        {
+          "term": "危樯",
+          "explanation": "高高的桅杆。"
+        },
+        {
+          "term": "沙鸥",
+          "explanation": "水边沙洲上的鸥鸟。"
+        }
+      ],
+      "tags": {
+        "festivals": [],
+        "weather": [
+          "clear",
+          "wind"
+        ],
+        "solarTerms": [
+          "白露",
+          "秋分"
+        ],
+        "seasons": [
+          "autumn"
+        ],
+        "timePeriods": [
+          "night"
+        ],
+        "emotions": [
+          "孤独",
+          "感怀"
+        ],
+        "lifeScenes": [
+          "夜航",
+          "漂泊"
+        ]
+      },
+      "quality": 10,
+      "engineeringReview": {
+        "workId": "du-fu-lv-ye-shu-huai",
+        "status": "published",
+        "reviewedAt": "2026-07-23",
+        "reviewedBy": "WeatherPoem 内容初审",
+        "sourceVerified": true,
+        "notes": "MVP 公版古典诗词种子内容；发布前仍建议按权威点校本复核。"
+      }
+    },
+    {
+      "id": "du-fu-wen-guan-jun",
+      "title": "闻官军收河南河北",
+      "literaryForm": "七言律诗",
+      "author": "杜甫",
+      "dynasty": "唐",
+      "fullText": [
+        "剑外忽传收蓟北，初闻涕泪满衣裳。",
+        "却看妻子愁何在，漫卷诗书喜欲狂。",
+        "白日放歌须纵酒，青春作伴好还乡。",
+        "即从巴峡穿巫峡，便下襄阳向洛阳。"
+      ],
+      "excerpt": [
+        "剑外忽传收蓟北，初闻涕泪满衣裳。",
+        "却看妻子愁何在，漫卷诗书喜欲狂。"
+      ],
+      "sourceName": "《全唐诗》",
+      "oneLineSummary": "一个好消息让多年压抑突然松开，归乡路线也立刻清晰起来。",
+      "culturalBackground": "杜甫听闻唐军收复失地，以连贯动作写战乱中久违的狂喜和还乡愿望。",
+      "contemporaryConnection": "等待很久的结果终于到来时，允许自己完整地高兴一次，而不必立刻进入下一项任务。",
+      "annotations": [
+        {
+          "term": "剑外",
+          "explanation": "剑门关以南，此处指诗人所在的蜀地。"
+        },
+        {
+          "term": "妻子",
+          "explanation": "妻子和儿女。"
+        }
+      ],
+      "tags": {
+        "festivals": [],
+        "weather": [
+          "clear"
+        ],
+        "solarTerms": [],
+        "seasons": [
+          "spring"
+        ],
+        "timePeriods": [
+          "day"
+        ],
+        "emotions": [
+          "狂喜",
+          "释然"
+        ],
+        "lifeScenes": [
+          "好消息",
+          "归乡"
+        ]
+      },
+      "quality": 10,
+      "engineeringReview": {
+        "workId": "du-fu-wen-guan-jun",
+        "status": "published",
+        "reviewedAt": "2026-07-23",
+        "reviewedBy": "WeatherPoem 内容初审",
+        "sourceVerified": true,
+        "notes": "MVP 公版古典诗词种子内容；发布前仍建议按权威点校本复核。"
+      }
+    },
+    {
+      "id": "bai-ju-yi-fu-de-gu-yuan-cao",
+      "title": "赋得古原草送别",
+      "literaryForm": "五言律诗",
+      "author": "白居易",
+      "dynasty": "唐",
+      "fullText": [
+        "离离原上草，一岁一枯荣。",
+        "野火烧不尽，春风吹又生。",
+        "远芳侵古道，晴翠接荒城。",
+        "又送王孙去，萋萋满别情。"
+      ],
+      "excerpt": [
+        "离离原上草，一岁一枯荣。",
+        "野火烧不尽，春风吹又生。"
+      ],
+      "sourceName": "《全唐诗》",
+      "oneLineSummary": "草木枯荣与春风再生，让离别之外仍保留持续生长的力量。",
+      "culturalBackground": "白居易以古原野草完成应试命题，既写生命循环，也把萋萋草色引向送别。",
+      "contemporaryConnection": "一次失败并不等于能力消失，恢复往往从下一轮日常积累开始。",
+      "annotations": [
+        {
+          "term": "离离",
+          "explanation": "草木茂盛的样子。"
+        },
+        {
+          "term": "王孙",
+          "explanation": "此处指远行的朋友。"
+        }
+      ],
+      "tags": {
+        "festivals": [],
+        "weather": [
+          "clear",
+          "wind"
+        ],
+        "solarTerms": [
+          "立春",
+          "雨水"
+        ],
+        "seasons": [
+          "spring"
+        ],
+        "timePeriods": [
+          "day"
+        ],
+        "emotions": [
+          "坚韧",
+          "惜别"
+        ],
+        "lifeScenes": [
+          "送别",
+          "重新开始"
+        ]
+      },
+      "quality": 10,
+      "engineeringReview": {
+        "workId": "bai-ju-yi-fu-de-gu-yuan-cao",
+        "status": "published",
+        "reviewedAt": "2026-07-23",
+        "reviewedBy": "WeatherPoem 内容初审",
+        "sourceVerified": true,
+        "notes": "MVP 公版古典诗词种子内容；发布前仍建议按权威点校本复核。"
+      }
+    },
+    {
+      "id": "bai-ju-yi-qian-tang-hu-chun-xing",
+      "title": "钱塘湖春行",
+      "literaryForm": "七言律诗",
+      "author": "白居易",
+      "dynasty": "唐",
+      "fullText": [
+        "孤山寺北贾亭西，水面初平云脚低。",
+        "几处早莺争暖树，谁家新燕啄春泥。",
+        "乱花渐欲迷人眼，浅草才能没马蹄。",
+        "最爱湖东行不足，绿杨阴里白沙堤。"
+      ],
+      "excerpt": [
+        "孤山寺北贾亭西，水面初平云脚低。",
+        "几处早莺争暖树，谁家新燕啄春泥。"
+      ],
+      "sourceName": "《全唐诗》",
+      "oneLineSummary": "早莺、新燕、浅草和低云共同标记春天正在到来。",
+      "culturalBackground": "白居易任杭州刺史时春游西湖，按行进路线写早春景物的连续变化。",
+      "contemporaryConnection": "同一条日常路线每周走一次，会比偶尔打卡更容易发现季节进度。",
+      "annotations": [
+        {
+          "term": "暖树",
+          "explanation": "向阳温暖的树。"
+        },
+        {
+          "term": "云脚",
+          "explanation": "低垂接近水面的云。"
+        }
+      ],
+      "tags": {
+        "festivals": [],
+        "weather": [
+          "cloudy",
+          "clear"
+        ],
+        "solarTerms": [
+          "惊蛰",
+          "春分"
+        ],
+        "seasons": [
+          "spring"
+        ],
+        "timePeriods": [
+          "morning",
+          "day"
+        ],
+        "emotions": [
+          "喜爱",
+          "轻快"
+        ],
+        "lifeScenes": [
+          "骑行",
+          "湖边"
+        ]
+      },
+      "quality": 10,
+      "engineeringReview": {
+        "workId": "bai-ju-yi-qian-tang-hu-chun-xing",
+        "status": "published",
+        "reviewedAt": "2026-07-23",
+        "reviewedBy": "WeatherPoem 内容初审",
+        "sourceVerified": true,
+        "notes": "MVP 公版古典诗词种子内容；发布前仍建议按权威点校本复核。"
+      }
+    },
+    {
+      "id": "bai-ju-yi-da-lin-si-tao-hua",
+      "title": "大林寺桃花",
+      "literaryForm": "七言绝句",
+      "author": "白居易",
+      "dynasty": "唐",
+      "fullText": [
+        "人间四月芳菲尽，山寺桃花始盛开。",
+        "长恨春归无觅处，不知转入此中来。"
+      ],
+      "excerpt": [
+        "人间四月芳菲尽，山寺桃花始盛开。",
+        "长恨春归无觅处，不知转入此中来。"
+      ],
+      "sourceName": "《全唐诗》",
+      "oneLineSummary": "山下春意已尽，山中桃花却刚刚开始。",
+      "culturalBackground": "庐山海拔造成物候差异，白居易把山寺迟开的桃花写成春天转入别处。",
+      "contemporaryConnection": "别人已经进入下一阶段时，你的节奏仍可能刚刚开花，不必用同一时钟衡量。",
+      "annotations": [
+        {
+          "term": "芳菲",
+          "explanation": "盛开的花草。"
+        },
+        {
+          "term": "人间",
+          "explanation": "此处指山下。"
+        }
+      ],
+      "tags": {
+        "festivals": [],
+        "weather": [
+          "clear",
+          "cloudy"
+        ],
+        "solarTerms": [
+          "谷雨",
+          "立夏"
+        ],
+        "seasons": [
+          "spring"
+        ],
+        "timePeriods": [
+          "day"
+        ],
+        "emotions": [
+          "惊喜",
+          "释然"
+        ],
+        "lifeScenes": [
+          "登山",
+          "赏花"
+        ]
+      },
+      "quality": 10,
+      "engineeringReview": {
+        "workId": "bai-ju-yi-da-lin-si-tao-hua",
+        "status": "published",
+        "reviewedAt": "2026-07-23",
+        "reviewedBy": "WeatherPoem 内容初审",
+        "sourceVerified": true,
+        "notes": "MVP 公版古典诗词种子内容；发布前仍建议按权威点校本复核。"
+      }
+    },
+    {
+      "id": "bai-ju-yi-yi-jiang-nan",
+      "title": "忆江南·江南好",
+      "literaryForm": "词",
+      "author": "白居易",
+      "dynasty": "唐",
+      "fullText": [
+        "江南好，风景旧曾谙。",
+        "日出江花红胜火，春来江水绿如蓝。",
+        "能不忆江南？"
+      ],
+      "excerpt": [
+        "江南好，风景旧曾谙。",
+        "日出江花红胜火，春来江水绿如蓝。"
+      ],
+      "sourceName": "《白氏长庆集》",
+      "oneLineSummary": "日出江花与碧绿春水，让记忆中的江南颜色始终鲜明。",
+      "culturalBackground": "白居易晚年回忆杭州生活，以高度凝练的色彩概括江南春景。",
+      "contemporaryConnection": "离开一座城市后，最常留在记忆里的往往不是地标，而是某种光线和颜色。",
+      "annotations": [
+        {
+          "term": "谙",
+          "explanation": "熟悉。"
+        },
+        {
+          "term": "蓝",
+          "explanation": "可制青色染料的植物。"
+        }
+      ],
+      "tags": {
+        "festivals": [],
+        "weather": [
+          "clear"
+        ],
+        "solarTerms": [
+          "春分",
+          "清明"
+        ],
+        "seasons": [
+          "spring"
+        ],
+        "timePeriods": [
+          "morning"
+        ],
+        "emotions": [
+          "怀念",
+          "明朗"
+        ],
+        "lifeScenes": [
+          "忆旧",
+          "江边"
+        ]
+      },
+      "quality": 10,
+      "engineeringReview": {
+        "workId": "bai-ju-yi-yi-jiang-nan",
+        "status": "published",
+        "reviewedAt": "2026-07-23",
+        "reviewedBy": "WeatherPoem 内容初审",
+        "sourceVerified": true,
+        "notes": "MVP 公版古典诗词种子内容；发布前仍建议按权威点校本复核。"
+      }
+    },
+    {
+      "id": "bai-ju-yi-chi-shang",
+      "title": "池上",
+      "literaryForm": "五言绝句",
+      "author": "白居易",
+      "dynasty": "唐",
+      "fullText": [
+        "小娃撑小艇，偷采白莲回。",
+        "不解藏踪迹，浮萍一道开。"
+      ],
+      "excerpt": [
+        "小娃撑小艇，偷采白莲回。",
+        "不解藏踪迹，浮萍一道开。"
+      ],
+      "sourceName": "《全唐诗》",
+      "oneLineSummary": "孩子想藏住采莲的小秘密，浮萍却留下清楚水痕。",
+      "culturalBackground": "白居易以小艇、白莲和浮萍水迹捕捉儿童天真活泼的瞬间。",
+      "contemporaryConnection": "偶尔保留一点无伤大雅的好奇和玩心，会让熟悉生活重新有趣。",
+      "annotations": [
+        {
+          "term": "踪迹",
+          "explanation": "行动后留下的痕迹。"
+        }
+      ],
+      "tags": {
+        "festivals": [],
+        "weather": [
+          "clear",
+          "hot"
+        ],
+        "solarTerms": [
+          "小暑",
+          "大暑"
+        ],
+        "seasons": [
+          "summer"
+        ],
+        "timePeriods": [
+          "day"
+        ],
+        "emotions": [
+          "童真",
+          "轻快"
+        ],
+        "lifeScenes": [
+          "玩耍",
+          "池塘"
+        ]
+      },
+      "quality": 9,
+      "engineeringReview": {
+        "workId": "bai-ju-yi-chi-shang",
+        "status": "published",
+        "reviewedAt": "2026-07-23",
+        "reviewedBy": "WeatherPoem 内容初审",
+        "sourceVerified": true,
+        "notes": "MVP 公版古典诗词种子内容；发布前仍建议按权威点校本复核。"
+      }
+    },
+    {
+      "id": "bai-ju-yi-cun-ye",
+      "title": "村夜",
+      "literaryForm": "七言绝句",
+      "author": "白居易",
+      "dynasty": "唐",
+      "fullText": [
+        "霜草苍苍虫切切，村南村北行人绝。",
+        "独出门前望野田，月明荞麦花如雪。"
+      ],
+      "excerpt": [
+        "霜草苍苍虫切切，村南村北行人绝。",
+        "独出门前望野田，月明荞麦花如雪。"
+      ],
+      "sourceName": "《全唐诗》",
+      "oneLineSummary": "霜夜本来寂寥，月下荞麦花却忽然把田野照亮。",
+      "culturalBackground": "白居易以虫声、无人村路和月下荞麦花完成由萧瑟到明净的转折。",
+      "contemporaryConnection": "心情低落时走出室内看一眼真实环境，有时会遇见意料之外的开阔。",
+      "annotations": [
+        {
+          "term": "切切",
+          "explanation": "虫鸣细密急促。"
+        },
+        {
+          "term": "苍苍",
+          "explanation": "灰白或深青的样子。"
+        }
+      ],
+      "tags": {
+        "festivals": [],
+        "weather": [
+          "clear",
+          "cold"
+        ],
+        "solarTerms": [
+          "霜降",
+          "立冬"
+        ],
+        "seasons": [
+          "autumn",
+          "winter"
+        ],
+        "timePeriods": [
+          "night"
+        ],
+        "emotions": [
+          "孤清",
+          "惊喜"
+        ],
+        "lifeScenes": [
+          "夜行",
+          "乡村"
+        ]
+      },
+      "quality": 9,
+      "engineeringReview": {
+        "workId": "bai-ju-yi-cun-ye",
+        "status": "published",
+        "reviewedAt": "2026-07-23",
+        "reviewedBy": "WeatherPoem 内容初审",
+        "sourceVerified": true,
+        "notes": "MVP 公版古典诗词种子内容；发布前仍建议按权威点校本复核。"
+      }
+    },
+    {
+      "id": "liu-yu-xi-wang-dong-ting",
+      "title": "望洞庭",
+      "literaryForm": "七言绝句",
+      "author": "刘禹锡",
+      "dynasty": "唐",
+      "fullText": [
+        "湖光秋月两相和，潭面无风镜未磨。",
+        "遥望洞庭山水翠，白银盘里一青螺。"
+      ],
+      "excerpt": [
+        "湖光秋月两相和，潭面无风镜未磨。",
+        "遥望洞庭山水翠，白银盘里一青螺。"
+      ],
+      "sourceName": "《全唐诗》",
+      "oneLineSummary": "无风秋夜里，洞庭湖与君山被缩成银盘和青螺。",
+      "culturalBackground": "刘禹锡以镜、银盘和青螺层层设喻，从近水写到远山，呈现宁静湖景。",
+      "contemporaryConnection": "从远处看问题，复杂细节会重新组合成更清楚的整体关系。",
+      "annotations": [
+        {
+          "term": "潭面",
+          "explanation": "洞庭湖面。"
+        },
+        {
+          "term": "青螺",
+          "explanation": "青色螺壳，比喻湖中的君山。"
+        }
+      ],
+      "tags": {
+        "festivals": [
+          "中秋节"
+        ],
+        "weather": [
+          "clear"
+        ],
+        "solarTerms": [
+          "白露",
+          "秋分"
+        ],
+        "seasons": [
+          "autumn"
+        ],
+        "timePeriods": [
+          "night"
+        ],
+        "emotions": [
+          "宁静",
+          "赞叹"
+        ],
+        "lifeScenes": [
+          "湖边",
+          "赏月"
+        ]
+      },
+      "quality": 10,
+      "engineeringReview": {
+        "workId": "liu-yu-xi-wang-dong-ting",
+        "status": "published",
+        "reviewedAt": "2026-07-23",
+        "reviewedBy": "WeatherPoem 内容初审",
+        "sourceVerified": true,
+        "notes": "MVP 公版古典诗词种子内容；发布前仍建议按权威点校本复核。"
+      }
+    },
+    {
+      "id": "liu-yu-xi-lang-tao-sha",
+      "title": "浪淘沙·九曲黄河万里沙",
+      "literaryForm": "七言绝句",
+      "author": "刘禹锡",
+      "dynasty": "唐",
+      "fullText": [
+        "九曲黄河万里沙，浪淘风簸自天涯。",
+        "如今直上银河去，同到牵牛织女家。"
+      ],
+      "excerpt": [
+        "九曲黄河万里沙，浪淘风簸自天涯。",
+        "如今直上银河去，同到牵牛织女家。"
+      ],
+      "sourceName": "《全唐诗》",
+      "oneLineSummary": "黄河风浪被想象成直上银河的道路，艰险因此有了浪漫尺度。",
+      "culturalBackground": "刘禹锡将黄河实景与牛郎织女传说连接，表现逆流而上的豪迈想象。",
+      "contemporaryConnection": "困难路径不必被美化，但可以为它设定一个值得抵达的清晰方向。",
+      "annotations": [
+        {
+          "term": "簸",
+          "explanation": "颠簸摇荡。"
+        },
+        {
+          "term": "九曲",
+          "explanation": "形容黄河河道曲折。"
+        }
+      ],
+      "tags": {
+        "festivals": [
+          "七夕节"
+        ],
+        "weather": [
+          "wind",
+          "clear"
+        ],
+        "solarTerms": [
+          "立秋"
+        ],
+        "seasons": [
+          "summer",
+          "autumn"
+        ],
+        "timePeriods": [
+          "day"
+        ],
+        "emotions": [
+          "豪迈",
+          "想象"
+        ],
+        "lifeScenes": [
+          "远望",
+          "挑战"
+        ]
+      },
+      "quality": 9,
+      "engineeringReview": {
+        "workId": "liu-yu-xi-lang-tao-sha",
+        "status": "published",
+        "reviewedAt": "2026-07-23",
+        "reviewedBy": "WeatherPoem 内容初审",
+        "sourceVerified": true,
+        "notes": "MVP 公版古典诗词种子内容；发布前仍建议按权威点校本复核。"
+      }
+    },
+    {
+      "id": "liu-yu-xi-wu-yi-xiang",
+      "title": "乌衣巷",
+      "literaryForm": "七言绝句",
+      "author": "刘禹锡",
+      "dynasty": "唐",
+      "fullText": [
+        "朱雀桥边野草花，乌衣巷口夕阳斜。",
+        "旧时王谢堂前燕，飞入寻常百姓家。"
+      ],
+      "excerpt": [
+        "朱雀桥边野草花，乌衣巷口夕阳斜。",
+        "旧时王谢堂前燕，飞入寻常百姓家。"
+      ],
+      "sourceName": "《全唐诗》",
+      "oneLineSummary": "燕子仍然飞来，昔日显赫的庭院却已成为寻常人家。",
+      "culturalBackground": "诗人借南京旧迹和燕子意象感叹六朝豪门兴衰、时代变迁。",
+      "contemporaryConnection": "走过城市旧街时，留意建筑用途的变化，会看到历史如何进入普通生活。",
+      "annotations": [
+        {
+          "term": "王谢",
+          "explanation": "东晋王导、谢安等世家大族。"
+        },
+        {
+          "term": "乌衣巷",
+          "explanation": "六朝时贵族聚居地，在今南京。"
+        }
+      ],
+      "tags": {
+        "festivals": [],
+        "weather": [
+          "clear",
+          "cloudy"
+        ],
+        "solarTerms": [
+          "处暑",
+          "白露"
+        ],
+        "seasons": [
+          "autumn"
+        ],
+        "timePeriods": [
+          "evening"
+        ],
+        "emotions": [
+          "怀古",
+          "感慨"
+        ],
+        "lifeScenes": [
+          "城市漫步",
+          "旧址"
+        ]
+      },
+      "quality": 10,
+      "engineeringReview": {
+        "workId": "liu-yu-xi-wu-yi-xiang",
+        "status": "published",
+        "reviewedAt": "2026-07-23",
+        "reviewedBy": "WeatherPoem 内容初审",
+        "sourceVerified": true,
+        "notes": "MVP 公版古典诗词种子内容；发布前仍建议按权威点校本复核。"
+      }
+    },
+    {
+      "id": "liu-yu-xi-zhu-zhi-ci",
+      "title": "竹枝词·杨柳青青江水平",
+      "literaryForm": "七言绝句",
+      "author": "刘禹锡",
+      "dynasty": "唐",
+      "fullText": [
+        "杨柳青青江水平，闻郎江上踏歌声。",
+        "东边日出西边雨，道是无晴却有晴。"
+      ],
+      "excerpt": [
+        "杨柳青青江水平，闻郎江上踏歌声。",
+        "东边日出西边雨，道是无晴却有晴。"
+      ],
+      "sourceName": "《全唐诗》",
+      "oneLineSummary": "一边日出一边下雨，也像一句含蓄而不确定的回应。",
+      "culturalBackground": "刘禹锡吸收巴蜀民歌语调，以晴与情的谐音写少女听歌时的微妙心情。",
+      "contemporaryConnection": "关系中含糊的信息很容易被反复猜测，必要时坦率确认会更轻松。",
+      "annotations": [
+        {
+          "term": "竹枝词",
+          "explanation": "源自巴渝地区民歌的诗体。"
+        },
+        {
+          "term": "晴",
+          "explanation": "与“情”谐音。"
+        }
+      ],
+      "tags": {
+        "festivals": [],
+        "weather": [
+          "light-rain",
+          "clear",
+          "cloudy"
+        ],
+        "solarTerms": [
+          "谷雨",
+          "立夏"
+        ],
+        "seasons": [
+          "spring",
+          "summer"
+        ],
+        "timePeriods": [
+          "day"
+        ],
+        "emotions": [
+          "爱意",
+          "忐忑"
+        ],
+        "lifeScenes": [
+          "江边",
+          "心动"
+        ]
+      },
+      "quality": 10,
+      "engineeringReview": {
+        "workId": "liu-yu-xi-zhu-zhi-ci",
+        "status": "published",
+        "reviewedAt": "2026-07-23",
+        "reviewedBy": "WeatherPoem 内容初审",
+        "sourceVerified": true,
+        "notes": "MVP 公版古典诗词种子内容；发布前仍建议按权威点校本复核。"
+      }
+    },
+    {
+      "id": "liu-yu-xi-chou-le-tian",
+      "title": "酬乐天扬州初逢席上见赠",
+      "literaryForm": "七言律诗",
+      "author": "刘禹锡",
+      "dynasty": "唐",
+      "fullText": [
+        "巴山楚水凄凉地，二十三年弃置身。",
+        "怀旧空吟闻笛赋，到乡翻似烂柯人。",
+        "沉舟侧畔千帆过，病树前头万木春。",
+        "今日听君歌一曲，暂凭杯酒长精神。"
+      ],
+      "excerpt": [
+        "巴山楚水凄凉地，二十三年弃置身。",
+        "怀旧空吟闻笛赋，到乡翻似烂柯人。"
+      ],
+      "sourceName": "《全唐诗》",
+      "oneLineSummary": "承认长期失意，也看见沉舟之外仍有千帆、病树之前仍有春天。",
+      "culturalBackground": "刘禹锡被贬多年后与白居易相逢，以典故回望身世，最终转向豁达自励。",
+      "contemporaryConnection": "错过一些机会并不意味着未来停止，重新进入变化本身就是新的起点。",
+      "annotations": [
+        {
+          "term": "乐天",
+          "explanation": "白居易的字。"
+        },
+        {
+          "term": "烂柯人",
+          "explanation": "借典故形容离乡久远、归来恍如隔世。"
+        }
+      ],
+      "tags": {
+        "festivals": [],
+        "weather": [
+          "clear",
+          "cloudy"
+        ],
+        "solarTerms": [
+          "立春",
+          "雨水"
+        ],
+        "seasons": [
+          "spring"
+        ],
+        "timePeriods": [
+          "day",
+          "evening"
+        ],
+        "emotions": [
+          "旷达",
+          "振作"
+        ],
+        "lifeScenes": [
+          "重逢",
+          "重新开始"
+        ]
+      },
+      "quality": 10,
+      "engineeringReview": {
+        "workId": "liu-yu-xi-chou-le-tian",
+        "status": "published",
+        "reviewedAt": "2026-07-23",
+        "reviewedBy": "WeatherPoem 内容初审",
+        "sourceVerified": true,
+        "notes": "MVP 公版古典诗词种子内容；发布前仍建议按权威点校本复核。"
+      }
+    },
+    {
+      "id": "wang-wei-shan-ju-qiu-ming",
+      "title": "山居秋暝",
+      "literaryForm": "五言律诗",
+      "author": "王维",
+      "dynasty": "唐",
+      "fullText": [
+        "空山新雨后，天气晚来秋。",
+        "明月松间照，清泉石上流。",
+        "竹喧归浣女，莲动下渔舟。",
+        "随意春芳歇，王孙自可留。"
+      ],
+      "excerpt": [
+        "空山新雨后，天气晚来秋。",
+        "明月松间照，清泉石上流。"
+      ],
+      "sourceName": "《全唐诗》",
+      "oneLineSummary": "秋雨洗过山林，月光、清泉和归人共同恢复晚间秩序。",
+      "culturalBackground": "王维以雨后秋山的光、声与人物活动，构成清新而有人间气息的隐居图景。",
+      "contemporaryConnection": "忙碌一天后，用一段稳定的晚间散步或整理，让注意力慢慢回到自己。",
+      "annotations": [
+        {
+          "term": "暝",
+          "explanation": "日落、天色将晚。"
+        },
+        {
+          "term": "浣女",
+          "explanation": "洗衣归来的女子。"
+        }
+      ],
+      "tags": {
+        "festivals": [],
+        "weather": [
+          "light-rain",
+          "clear"
+        ],
+        "solarTerms": [
+          "处暑",
+          "白露"
+        ],
+        "seasons": [
+          "autumn"
+        ],
+        "timePeriods": [
+          "evening",
+          "night"
+        ],
+        "emotions": [
+          "宁静",
+          "自在"
+        ],
+        "lifeScenes": [
+          "山居",
+          "晚归"
+        ]
+      },
+      "quality": 10,
+      "engineeringReview": {
+        "workId": "wang-wei-shan-ju-qiu-ming",
+        "status": "published",
+        "reviewedAt": "2026-07-23",
+        "reviewedBy": "WeatherPoem 内容初审",
+        "sourceVerified": true,
+        "notes": "MVP 公版古典诗词种子内容；发布前仍建议按权威点校本复核。"
+      }
+    },
+    {
+      "id": "wang-wei-lu-chai",
+      "title": "鹿柴",
+      "literaryForm": "五言绝句",
+      "author": "王维",
+      "dynasty": "唐",
+      "fullText": [
+        "空山不见人，但闻人语响。",
+        "返景入深林，复照青苔上。"
+      ],
+      "excerpt": [
+        "空山不见人，但闻人语响。",
+        "返景入深林，复照青苔上。"
+      ],
+      "sourceName": "《全唐诗》",
+      "oneLineSummary": "看不见人，只听见声音；夕光进入深林，又落回青苔。",
+      "culturalBackground": "王维以听觉和返照刻画辋川山林的幽静，动静相生、明暗相映。",
+      "contemporaryConnection": "短暂离开信息流，听见环境里原本被忽略的声音，是有效的注意力休息。",
+      "annotations": [
+        {
+          "term": "柴",
+          "explanation": "同“寨”，有篱落的处所。"
+        },
+        {
+          "term": "返景",
+          "explanation": "夕阳返照的光。"
+        }
+      ],
+      "tags": {
+        "festivals": [],
+        "weather": [
+          "clear",
+          "fog"
+        ],
+        "solarTerms": [
+          "寒露",
+          "霜降"
+        ],
+        "seasons": [
+          "autumn"
+        ],
+        "timePeriods": [
+          "evening"
+        ],
+        "emotions": [
+          "幽静",
+          "专注"
+        ],
+        "lifeScenes": [
+          "林间",
+          "独处"
+        ]
+      },
+      "quality": 10,
+      "engineeringReview": {
+        "workId": "wang-wei-lu-chai",
+        "status": "published",
+        "reviewedAt": "2026-07-23",
+        "reviewedBy": "WeatherPoem 内容初审",
+        "sourceVerified": true,
+        "notes": "MVP 公版古典诗词种子内容；发布前仍建议按权威点校本复核。"
+      }
+    },
+    {
+      "id": "wang-wei-zhu-li-guan",
+      "title": "竹里馆",
+      "literaryForm": "五言绝句",
+      "author": "王维",
+      "dynasty": "唐",
+      "fullText": [
+        "独坐幽篁里，弹琴复长啸。",
+        "深林人不知，明月来相照。"
+      ],
+      "excerpt": [
+        "独坐幽篁里，弹琴复长啸。",
+        "深林人不知，明月来相照。"
+      ],
+      "sourceName": "《全唐诗》",
+      "oneLineSummary": "无人知晓的竹林里，琴声和月光已经构成完整陪伴。",
+      "culturalBackground": "王维写独坐竹林弹琴长啸，以明月相照表现独处中的自足和澄明。",
+      "contemporaryConnection": "不被他人看见的兴趣也有价值，它首先可以用来安顿自己。",
+      "annotations": [
+        {
+          "term": "幽篁",
+          "explanation": "幽深的竹林。"
+        }
+      ],
+      "tags": {
+        "festivals": [],
+        "weather": [
+          "clear"
+        ],
+        "solarTerms": [
+          "小暑",
+          "大暑"
+        ],
+        "seasons": [
+          "summer"
+        ],
+        "timePeriods": [
+          "night"
+        ],
+        "emotions": [
+          "自得",
+          "宁静"
+        ],
+        "lifeScenes": [
+          "独处",
+          "音乐"
+        ]
+      },
+      "quality": 10,
+      "engineeringReview": {
+        "workId": "wang-wei-zhu-li-guan",
+        "status": "published",
+        "reviewedAt": "2026-07-23",
+        "reviewedBy": "WeatherPoem 内容初审",
+        "sourceVerified": true,
+        "notes": "MVP 公版古典诗词种子内容；发布前仍建议按权威点校本复核。"
+      }
+    },
+    {
+      "id": "wang-wei-song-yuan-er",
+      "title": "送元二使安西",
+      "literaryForm": "七言绝句",
+      "author": "王维",
+      "dynasty": "唐",
+      "fullText": [
+        "渭城朝雨浥轻尘，客舍青青柳色新。",
+        "劝君更尽一杯酒，西出阳关无故人。"
+      ],
+      "excerpt": [
+        "渭城朝雨浥轻尘，客舍青青柳色新。",
+        "劝君更尽一杯酒，西出阳关无故人。"
+      ],
+      "sourceName": "《全唐诗》",
+      "oneLineSummary": "清晨雨洗柳色，临别的一杯酒承担了说不尽的牵挂。",
+      "culturalBackground": "王维在渭城送友人出使安西，写西行远路与最后相聚的珍重。",
+      "contemporaryConnection": "告别时不必寻找完美句子，认真陪对方走完最后一段路已经足够。",
+      "annotations": [
+        {
+          "term": "浥",
+          "explanation": "湿润。"
+        },
+        {
+          "term": "阳关",
+          "explanation": "古代通往西域的重要关隘。"
+        }
+      ],
+      "tags": {
+        "festivals": [],
+        "weather": [
+          "light-rain"
+        ],
+        "solarTerms": [
+          "清明",
+          "谷雨"
+        ],
+        "seasons": [
+          "spring"
+        ],
+        "timePeriods": [
+          "morning"
+        ],
+        "emotions": [
+          "惜别",
+          "友情"
+        ],
+        "lifeScenes": [
+          "送别",
+          "驿站"
+        ]
+      },
+      "quality": 10,
+      "engineeringReview": {
+        "workId": "wang-wei-song-yuan-er",
+        "status": "published",
+        "reviewedAt": "2026-07-23",
+        "reviewedBy": "WeatherPoem 内容初审",
+        "sourceVerified": true,
+        "notes": "MVP 公版古典诗词种子内容；发布前仍建议按权威点校本复核。"
+      }
+    },
+    {
+      "id": "wang-wei-shi-zhi-sai-shang",
+      "title": "使至塞上",
+      "literaryForm": "五言律诗",
+      "author": "王维",
+      "dynasty": "唐",
+      "fullText": [
+        "单车欲问边，属国过居延。",
+        "征蓬出汉塞，归雁入胡天。",
+        "大漠孤烟直，长河落日圆。",
+        "萧关逢候骑，都护在燕然。"
+      ],
+      "excerpt": [
+        "单车欲问边，属国过居延。",
+        "征蓬出汉塞，归雁入胡天。"
+      ],
+      "sourceName": "《全唐诗》",
+      "oneLineSummary": "辽阔沙漠把孤烟与落日压缩成最简洁、最稳定的线条。",
+      "culturalBackground": "王维奉使边塞，以征蓬自比，并留下大漠孤烟、长河落日的名句。",
+      "contemporaryConnection": "当信息过多时，尝试只抓住最重要的两三个变量，判断会更清楚。",
+      "annotations": [
+        {
+          "term": "征蓬",
+          "explanation": "随风远飞的蓬草，比喻漂泊的自己。"
+        },
+        {
+          "term": "候骑",
+          "explanation": "负责侦察联络的骑兵。"
+        }
+      ],
+      "tags": {
+        "festivals": [],
+        "weather": [
+          "clear",
+          "wind"
+        ],
+        "solarTerms": [
+          "处暑",
+          "白露"
+        ],
+        "seasons": [
+          "autumn"
+        ],
+        "timePeriods": [
+          "evening"
+        ],
+        "emotions": [
+          "苍茫",
+          "开阔"
+        ],
+        "lifeScenes": [
+          "远行",
+          "边塞"
+        ]
+      },
+      "quality": 10,
+      "engineeringReview": {
+        "workId": "wang-wei-shi-zhi-sai-shang",
+        "status": "published",
+        "reviewedAt": "2026-07-23",
+        "reviewedBy": "WeatherPoem 内容初审",
+        "sourceVerified": true,
+        "notes": "MVP 公版古典诗词种子内容；发布前仍建议按权威点校本复核。"
+      }
+    },
+    {
+      "id": "wang-wei-zhong-nan-bie-ye",
+      "title": "终南别业",
+      "literaryForm": "五言律诗",
+      "author": "王维",
+      "dynasty": "唐",
+      "fullText": [
+        "中岁颇好道，晚家南山陲。",
+        "兴来美独往，胜事空自知。",
+        "行到水穷处，坐看云起时。",
+        "偶然值林叟，谈笑无还期。"
+      ],
+      "excerpt": [
+        "中岁颇好道，晚家南山陲。",
+        "兴来美独往，胜事空自知。"
+      ],
+      "sourceName": "《全唐诗》",
+      "oneLineSummary": "走到水流尽头便坐下看云，不确定的路也能自然展开。",
+      "culturalBackground": "王维写终南山隐居生活，独行、看云和偶遇老人构成随缘自在的节奏。",
+      "contemporaryConnection": "计划走不通时，先停下来观察局面，新的路径常在暂停之后出现。",
+      "annotations": [
+        {
+          "term": "别业",
+          "explanation": "别墅，此处指终南山的居所。"
+        },
+        {
+          "term": "林叟",
+          "explanation": "山林中的老人。"
+        }
+      ],
+      "tags": {
+        "festivals": [],
+        "weather": [
+          "cloudy",
+          "clear"
+        ],
+        "solarTerms": [
+          "小满",
+          "芒种"
+        ],
+        "seasons": [
+          "summer"
+        ],
+        "timePeriods": [
+          "day"
+        ],
+        "emotions": [
+          "从容",
+          "自得"
+        ],
+        "lifeScenes": [
+          "散步",
+          "偶遇"
+        ]
+      },
+      "quality": 10,
+      "engineeringReview": {
+        "workId": "wang-wei-zhong-nan-bie-ye",
+        "status": "published",
+        "reviewedAt": "2026-07-23",
+        "reviewedBy": "WeatherPoem 内容初审",
+        "sourceVerified": true,
+        "notes": "MVP 公版古典诗词种子内容；发布前仍建议按权威点校本复核。"
+      }
+    },
+    {
+      "id": "meng-hao-ran-guo-gu-ren-zhuang",
+      "title": "过故人庄",
+      "literaryForm": "五言律诗",
+      "author": "孟浩然",
+      "dynasty": "唐",
+      "fullText": [
+        "故人具鸡黍，邀我至田家。",
+        "绿树村边合，青山郭外斜。",
+        "开轩面场圃，把酒话桑麻。",
+        "待到重阳日，还来就菊花。"
+      ],
+      "excerpt": [
+        "故人具鸡黍，邀我至田家。",
+        "绿树村边合，青山郭外斜。"
+      ],
+      "sourceName": "《全唐诗》",
+      "oneLineSummary": "一顿家常饭、窗外田园和下次相约，构成朴素而可靠的友情。",
+      "culturalBackground": "孟浩然应邀到老朋友乡村家中做客，以鸡黍、桑麻和重阳再会写人情淳厚。",
+      "contemporaryConnection": "关系不只靠重大时刻维系，一顿家常饭和下一次具体约定同样重要。",
+      "annotations": [
+        {
+          "term": "鸡黍",
+          "explanation": "鸡肉和黄米饭，指农家饭食。"
+        },
+        {
+          "term": "就菊花",
+          "explanation": "赏菊饮酒。"
+        }
+      ],
+      "tags": {
+        "festivals": [
+          "重阳节"
+        ],
+        "weather": [
+          "clear",
+          "cloudy"
+        ],
+        "solarTerms": [
+          "寒露"
+        ],
+        "seasons": [
+          "autumn"
+        ],
+        "timePeriods": [
+          "day",
+          "evening"
+        ],
+        "emotions": [
+          "友情",
+          "温暖"
+        ],
+        "lifeScenes": [
+          "聚餐",
+          "乡村"
+        ]
+      },
+      "quality": 10,
+      "engineeringReview": {
+        "workId": "meng-hao-ran-guo-gu-ren-zhuang",
+        "status": "published",
+        "reviewedAt": "2026-07-23",
+        "reviewedBy": "WeatherPoem 内容初审",
+        "sourceVerified": true,
+        "notes": "MVP 公版古典诗词种子内容；发布前仍建议按权威点校本复核。"
+      }
+    },
+    {
+      "id": "meng-hao-ran-su-jian-de-jiang",
+      "title": "宿建德江",
+      "literaryForm": "五言绝句",
+      "author": "孟浩然",
+      "dynasty": "唐",
+      "fullText": [
+        "移舟泊烟渚，日暮客愁新。",
+        "野旷天低树，江清月近人。"
+      ],
+      "excerpt": [
+        "移舟泊烟渚，日暮客愁新。",
+        "野旷天低树，江清月近人。"
+      ],
+      "sourceName": "《全唐诗》",
+      "oneLineSummary": "日暮停舟，旷野拉低天空，清江却把月亮送到近处。",
+      "culturalBackground": "孟浩然旅途中夜宿建德江，以开阔暮景写羁旅新愁，也以近月带来慰藉。",
+      "contemporaryConnection": "旅途中情绪容易在傍晚涌来，给自己一个稳定的落脚点会有所帮助。",
+      "annotations": [
+        {
+          "term": "烟渚",
+          "explanation": "烟雾笼罩的水中小洲。"
+        },
+        {
+          "term": "客愁",
+          "explanation": "旅人身处异乡的愁绪。"
+        }
+      ],
+      "tags": {
+        "festivals": [],
+        "weather": [
+          "fog",
+          "clear"
+        ],
+        "solarTerms": [
+          "白露",
+          "寒露"
+        ],
+        "seasons": [
+          "autumn"
+        ],
+        "timePeriods": [
+          "evening",
+          "night"
+        ],
+        "emotions": [
+          "旅愁",
+          "安静"
+        ],
+        "lifeScenes": [
+          "夜宿",
+          "乘船"
+        ]
+      },
+      "quality": 10,
+      "engineeringReview": {
+        "workId": "meng-hao-ran-su-jian-de-jiang",
+        "status": "published",
+        "reviewedAt": "2026-07-23",
+        "reviewedBy": "WeatherPoem 内容初审",
+        "sourceVerified": true,
+        "notes": "MVP 公版古典诗词种子内容；发布前仍建议按权威点校本复核。"
+      }
+    },
+    {
+      "id": "meng-hao-ran-wang-dong-ting-hu",
+      "title": "望洞庭湖赠张丞相",
+      "literaryForm": "五言律诗",
+      "author": "孟浩然",
+      "dynasty": "唐",
+      "fullText": [
+        "八月湖水平，涵虚混太清。",
+        "气蒸云梦泽，波撼岳阳城。",
+        "欲济无舟楫，端居耻圣明。",
+        "坐观垂钓者，徒有羡鱼情。"
+      ],
+      "excerpt": [
+        "八月湖水平，涵虚混太清。",
+        "气蒸云梦泽，波撼岳阳城。"
+      ],
+      "sourceName": "《全唐诗》",
+      "oneLineSummary": "洞庭湖水势浩大，求取机会的愿望也被写得坦荡而含蓄。",
+      "culturalBackground": "孟浩然借洞庭湖壮景向张九龄表达出仕愿望，以无舟楫和羡鱼作比。",
+      "contemporaryConnection": "想争取机会时，既要表达愿望，也要准备能让别人信任的实际能力。",
+      "annotations": [
+        {
+          "term": "涵虚",
+          "explanation": "水面映照天空。"
+        },
+        {
+          "term": "舟楫",
+          "explanation": "船和桨，比喻实现愿望的凭借。"
+        }
+      ],
+      "tags": {
+        "festivals": [],
+        "weather": [
+          "cloudy",
+          "wind",
+          "fog"
+        ],
+        "solarTerms": [
+          "处暑",
+          "白露"
+        ],
+        "seasons": [
+          "autumn"
+        ],
+        "timePeriods": [
+          "day"
+        ],
+        "emotions": [
+          "进取",
+          "壮阔"
+        ],
+        "lifeScenes": [
+          "求职",
+          "湖边"
+        ]
+      },
+      "quality": 10,
+      "engineeringReview": {
+        "workId": "meng-hao-ran-wang-dong-ting-hu",
+        "status": "published",
+        "reviewedAt": "2026-07-23",
+        "reviewedBy": "WeatherPoem 内容初审",
+        "sourceVerified": true,
+        "notes": "MVP 公版古典诗词种子内容；发布前仍建议按权威点校本复核。"
+      }
+    },
+    {
+      "id": "wang-chang-ling-chu-sai",
+      "title": "出塞",
+      "literaryForm": "七言绝句",
+      "author": "王昌龄",
+      "dynasty": "唐",
+      "fullText": [
+        "秦时明月汉时关，万里长征人未还。",
+        "但使龙城飞将在，不教胡马度阴山。"
+      ],
+      "excerpt": [
+        "秦时明月汉时关，万里长征人未还。",
+        "但使龙城飞将在，不教胡马度阴山。"
+      ],
+      "sourceName": "《全唐诗》",
+      "oneLineSummary": "同一轮明月照过古关，也照见战争中长久未归的人。",
+      "culturalBackground": "王昌龄把秦汉时空压缩进边关明月，表达对战争持久和守边良将的感慨。",
+      "contemporaryConnection": "读宏大历史时，也应记得其中每个无法回家的人和具体家庭。",
+      "annotations": [
+        {
+          "term": "飞将",
+          "explanation": "指汉代名将李广。"
+        },
+        {
+          "term": "阴山",
+          "explanation": "中国北部重要山脉。"
+        }
+      ],
+      "tags": {
+        "festivals": [],
+        "weather": [
+          "clear",
+          "cold"
+        ],
+        "solarTerms": [
+          "寒露",
+          "霜降"
+        ],
+        "seasons": [
+          "autumn"
+        ],
+        "timePeriods": [
+          "night"
+        ],
+        "emotions": [
+          "悲壮",
+          "思归"
+        ],
+        "lifeScenes": [
+          "边塞",
+          "守望"
+        ]
+      },
+      "quality": 10,
+      "engineeringReview": {
+        "workId": "wang-chang-ling-chu-sai",
+        "status": "published",
+        "reviewedAt": "2026-07-23",
+        "reviewedBy": "WeatherPoem 内容初审",
+        "sourceVerified": true,
+        "notes": "MVP 公版古典诗词种子内容；发布前仍建议按权威点校本复核。"
+      }
+    },
+    {
+      "id": "wang-chang-ling-cong-jun-xing",
+      "title": "从军行·青海长云暗雪山",
+      "literaryForm": "七言绝句",
+      "author": "王昌龄",
+      "dynasty": "唐",
+      "fullText": [
+        "青海长云暗雪山，孤城遥望玉门关。",
+        "黄沙百战穿金甲，不破楼兰终不还。"
+      ],
+      "excerpt": [
+        "青海长云暗雪山，孤城遥望玉门关。",
+        "黄沙百战穿金甲，不破楼兰终不还。"
+      ],
+      "sourceName": "《全唐诗》",
+      "oneLineSummary": "长云、雪山与黄沙之中，守边意志显得坚决而沉重。",
+      "culturalBackground": "诗以西北边地景象和金甲磨穿的细节，表现战事艰苦与将士决心。",
+      "contemporaryConnection": "坚持不是口号，它通常意味着清楚代价之后仍愿意完成责任。",
+      "annotations": [
+        {
+          "term": "穿金甲",
+          "explanation": "铠甲因长期征战而磨穿。"
+        },
+        {
+          "term": "楼兰",
+          "explanation": "汉代西域国名，此处借指敌对势力。"
+        }
+      ],
+      "tags": {
+        "festivals": [],
+        "weather": [
+          "overcast",
+          "wind",
+          "snow",
+          "cold"
+        ],
+        "solarTerms": [
+          "大雪",
+          "冬至"
+        ],
+        "seasons": [
+          "winter"
+        ],
+        "timePeriods": [
+          "day"
+        ],
+        "emotions": [
+          "坚定",
+          "悲壮"
+        ],
+        "lifeScenes": [
+          "边塞",
+          "责任"
+        ]
+      },
+      "quality": 10,
+      "engineeringReview": {
+        "workId": "wang-chang-ling-cong-jun-xing",
+        "status": "published",
+        "reviewedAt": "2026-07-23",
+        "reviewedBy": "WeatherPoem 内容初审",
+        "sourceVerified": true,
+        "notes": "MVP 公版古典诗词种子内容；发布前仍建议按权威点校本复核。"
+      }
+    },
+    {
+      "id": "wang-chang-ling-cai-lian-qu",
+      "title": "采莲曲",
+      "literaryForm": "七言绝句",
+      "author": "王昌龄",
+      "dynasty": "唐",
+      "fullText": [
+        "荷叶罗裙一色裁，芙蓉向脸两边开。",
+        "乱入池中看不见，闻歌始觉有人来。"
+      ],
+      "excerpt": [
+        "荷叶罗裙一色裁，芙蓉向脸两边开。",
+        "乱入池中看不见，闻歌始觉有人来。"
+      ],
+      "sourceName": "《全唐诗》",
+      "oneLineSummary": "采莲少女与荷叶花色融在一起，先听见歌声才发现有人。",
+      "culturalBackground": "王昌龄把人物衣裙、面容与荷塘颜色相融，以听觉完成灵动显现。",
+      "contemporaryConnection": "真正进入一种环境时，人不必总成为中心，也可以成为整体的一部分。",
+      "annotations": [
+        {
+          "term": "芙蓉",
+          "explanation": "荷花。"
+        },
+        {
+          "term": "罗裙",
+          "explanation": "轻软丝织的裙子。"
+        }
+      ],
+      "tags": {
+        "festivals": [],
+        "weather": [
+          "clear",
+          "hot"
+        ],
+        "solarTerms": [
+          "夏至",
+          "小暑"
+        ],
+        "seasons": [
+          "summer"
+        ],
+        "timePeriods": [
+          "day"
+        ],
+        "emotions": [
+          "轻快",
+          "明朗"
+        ],
+        "lifeScenes": [
+          "荷塘",
+          "劳动"
+        ]
+      },
+      "quality": 9,
+      "engineeringReview": {
+        "workId": "wang-chang-ling-cai-lian-qu",
+        "status": "published",
+        "reviewedAt": "2026-07-23",
+        "reviewedBy": "WeatherPoem 内容初审",
+        "sourceVerified": true,
+        "notes": "MVP 公版古典诗词种子内容；发布前仍建议按权威点校本复核。"
+      }
+    },
+    {
+      "id": "wang-zhi-huan-liang-zhou-ci",
+      "title": "凉州词·黄河远上白云间",
+      "literaryForm": "七言绝句",
+      "author": "王之涣",
+      "dynasty": "唐",
+      "fullText": [
+        "黄河远上白云间，一片孤城万仞山。",
+        "羌笛何须怨杨柳，春风不度玉门关。"
+      ],
+      "excerpt": [
+        "黄河远上白云间，一片孤城万仞山。",
+        "羌笛何须怨杨柳，春风不度玉门关。"
+      ],
+      "sourceName": "《全唐诗》",
+      "oneLineSummary": "孤城立在高山远河之间，羌笛吹出边地难有春风的苍凉。",
+      "culturalBackground": "诗以西北边塞的辽阔与荒寒，回应《折杨柳》曲中的思乡情绪。",
+      "contemporaryConnection": "不同环境拥有不同条件，理解限制之后再规划，比照搬别人的路径可靠。",
+      "annotations": [
+        {
+          "term": "羌笛",
+          "explanation": "古代西北地区的管乐器。"
+        },
+        {
+          "term": "杨柳",
+          "explanation": "指《折杨柳》曲，也含送别意味。"
+        }
+      ],
+      "tags": {
+        "festivals": [],
+        "weather": [
+          "wind",
+          "cold",
+          "clear"
+        ],
+        "solarTerms": [
+          "立冬",
+          "小雪"
+        ],
+        "seasons": [
+          "winter"
+        ],
+        "timePeriods": [
+          "day"
+        ],
+        "emotions": [
+          "苍凉",
+          "思乡"
+        ],
+        "lifeScenes": [
+          "边塞",
+          "远望"
+        ]
+      },
+      "quality": 10,
+      "engineeringReview": {
+        "workId": "wang-zhi-huan-liang-zhou-ci",
+        "status": "published",
+        "reviewedAt": "2026-07-23",
+        "reviewedBy": "WeatherPoem 内容初审",
+        "sourceVerified": true,
+        "notes": "MVP 公版古典诗词种子内容；发布前仍建议按权威点校本复核。"
+      }
+    },
+    {
+      "id": "he-zhi-zhang-hui-xiang-ou-shu",
+      "title": "回乡偶书",
+      "literaryForm": "七言绝句",
+      "author": "贺知章",
+      "dynasty": "唐",
+      "fullText": [
+        "少小离家老大回，乡音无改鬓毛衰。",
+        "儿童相见不相识，笑问客从何处来。"
+      ],
+      "excerpt": [
+        "少小离家老大回，乡音无改鬓毛衰。",
+        "儿童相见不相识，笑问客从何处来。"
+      ],
+      "sourceName": "《全唐诗》",
+      "oneLineSummary": "乡音仍在，故乡儿童却把归来的人当作远客。",
+      "culturalBackground": "贺知章晚年告老还乡，以儿童提问写时间造成的熟悉与陌生交叠。",
+      "contemporaryConnection": "离家多年后归来，接受家乡和自己都已变化，才能建立新的关系。",
+      "annotations": [
+        {
+          "term": "偶书",
+          "explanation": "偶然写下。"
+        },
+        {
+          "term": "鬓毛衰",
+          "explanation": "鬓发已经稀疏斑白。"
+        }
+      ],
+      "tags": {
+        "festivals": [
+          "春节"
+        ],
+        "weather": [
+          "clear",
+          "cloudy"
+        ],
+        "solarTerms": [],
+        "seasons": [
+          "spring",
+          "autumn"
+        ],
+        "timePeriods": [
+          "day"
+        ],
+        "emotions": [
+          "乡情",
+          "感时"
+        ],
+        "lifeScenes": [
+          "归乡",
+          "重逢"
+        ]
+      },
+      "quality": 10,
+      "engineeringReview": {
+        "workId": "he-zhi-zhang-hui-xiang-ou-shu",
+        "status": "published",
+        "reviewedAt": "2026-07-23",
+        "reviewedBy": "WeatherPoem 内容初审",
+        "sourceVerified": true,
+        "notes": "MVP 公版古典诗词种子内容；发布前仍建议按权威点校本复核。"
+      }
+    },
+    {
+      "id": "luo-bin-wang-yong-e",
+      "title": "咏鹅",
+      "literaryForm": "五言古诗",
+      "author": "骆宾王",
+      "dynasty": "唐",
+      "fullText": [
+        "鹅，鹅，鹅，曲项向天歌。",
+        "白毛浮绿水，红掌拨清波。"
+      ],
+      "excerpt": [
+        "鹅，鹅，鹅，曲项向天歌。",
+        "白毛浮绿水，红掌拨清波。"
+      ],
+      "sourceName": "《全唐诗》",
+      "oneLineSummary": "白毛、绿水和红掌，把水边一只鹅写得鲜明又有动作感。",
+      "culturalBackground": "相传骆宾王幼年所作，以声音、色彩和动作呈现儿童直接的观察。",
+      "contemporaryConnection": "练习描述眼前一个普通事物，是恢复观察力最简单的方法之一。",
+      "annotations": [
+        {
+          "term": "曲项",
+          "explanation": "弯着脖颈。"
+        }
+      ],
+      "tags": {
+        "festivals": [],
+        "weather": [
+          "clear"
+        ],
+        "solarTerms": [
+          "立夏",
+          "小满"
+        ],
+        "seasons": [
+          "summer"
+        ],
+        "timePeriods": [
+          "day"
+        ],
+        "emotions": [
+          "童真",
+          "欢快"
+        ],
+        "lifeScenes": [
+          "观察",
+          "水边"
+        ]
+      },
+      "quality": 9,
+      "engineeringReview": {
+        "workId": "luo-bin-wang-yong-e",
+        "status": "published",
+        "reviewedAt": "2026-07-23",
+        "reviewedBy": "WeatherPoem 内容初审",
+        "sourceVerified": true,
+        "notes": "MVP 公版古典诗词种子内容；发布前仍建议按权威点校本复核。"
+      }
+    },
+    {
+      "id": "lu-lun-sai-xia-qu",
+      "title": "塞下曲·月黑雁飞高",
+      "literaryForm": "五言绝句",
+      "author": "卢纶",
+      "dynasty": "唐",
+      "fullText": [
+        "月黑雁飞高，单于夜遁逃。",
+        "欲将轻骑逐，大雪满弓刀。"
+      ],
+      "excerpt": [
+        "月黑雁飞高，单于夜遁逃。",
+        "欲将轻骑逐，大雪满弓刀。"
+      ],
+      "sourceName": "《全唐诗》",
+      "oneLineSummary": "风雪暗夜里，追骑蓄势待发，紧张感凝结在落满弓刀的大雪中。",
+      "culturalBackground": "这是卢纶《和张仆射塞下曲》组诗之一，以极少笔墨写边塞雪夜追敌的瞬间。",
+      "contemporaryConnection": "真正艰难的任务往往发生在条件最差的时候，准备与协作比一时冲动更重要。",
+      "annotations": [
+        {
+          "term": "单于",
+          "explanation": "古代匈奴君主称号，诗中代指敌军首领。"
+        },
+        {
+          "term": "轻骑",
+          "explanation": "装备轻便、行动迅速的骑兵。"
+        }
+      ],
+      "tags": {
+        "festivals": [],
+        "weather": [
+          "snow",
+          "cold",
+          "wind"
+        ],
+        "solarTerms": [
+          "大雪",
+          "冬至"
+        ],
+        "seasons": [
+          "winter"
+        ],
+        "timePeriods": [
+          "night"
+        ],
+        "emotions": [
+          "紧张",
+          "果敢"
+        ],
+        "lifeScenes": [
+          "雪夜",
+          "边塞"
+        ]
+      },
+      "quality": 9,
+      "engineeringReview": {
+        "workId": "lu-lun-sai-xia-qu",
+        "status": "published",
+        "reviewedAt": "2026-07-23",
+        "reviewedBy": "WeatherPoem 内容初审",
+        "sourceVerified": true,
+        "notes": "MVP 公版古典诗词种子内容；发布前仍建议按权威点校本复核。"
+      }
+    },
+    {
+      "id": "cui-hao-huang-he-lou",
+      "title": "黄鹤楼",
+      "literaryForm": "七言律诗",
+      "author": "崔颢",
+      "dynasty": "唐",
+      "fullText": [
+        "昔人已乘黄鹤去，此地空余黄鹤楼。",
+        "黄鹤一去不复返，白云千载空悠悠。",
+        "晴川历历汉阳树，芳草萋萋鹦鹉洲。",
+        "日暮乡关何处是？烟波江上使人愁。"
+      ],
+      "excerpt": [
+        "昔人已乘黄鹤去，此地空余黄鹤楼。",
+        "黄鹤一去不复返，白云千载空悠悠。"
+      ],
+      "sourceName": "《全唐诗》",
+      "oneLineSummary": "登楼所见从千载白云落到日暮烟波，最终触发远行人的乡愁。",
+      "culturalBackground": "崔颢登临武昌黄鹤楼，从传说写到眼前江景，再由暮色转入思乡，是唐代登临诗名篇。",
+      "contemporaryConnection": "在外求学时，一次傍晚远眺也可能突然唤起对家乡具体街道和人的想念。",
+      "annotations": [
+        {
+          "term": "历历",
+          "explanation": "清楚分明的样子。"
+        },
+        {
+          "term": "乡关",
+          "explanation": "故乡。"
+        }
+      ],
+      "tags": {
+        "festivals": [],
+        "weather": [
+          "clear",
+          "fog",
+          "cloudy"
+        ],
+        "solarTerms": [
+          "白露",
+          "秋分"
+        ],
+        "seasons": [
+          "autumn"
+        ],
+        "timePeriods": [
+          "evening"
+        ],
+        "emotions": [
+          "乡愁",
+          "怅惘"
+        ],
+        "lifeScenes": [
+          "登楼",
+          "远眺"
+        ]
+      },
+      "quality": 10,
+      "engineeringReview": {
+        "workId": "cui-hao-huang-he-lou",
+        "status": "published",
+        "reviewedAt": "2026-07-23",
+        "reviewedBy": "WeatherPoem 内容初审",
+        "sourceVerified": true,
+        "notes": "MVP 公版古典诗词种子内容；发布前仍建议按权威点校本复核。"
+      }
+    },
+    {
+      "id": "cen-shen-feng-ru-jing-shi",
+      "title": "逢入京使",
+      "literaryForm": "七言绝句",
+      "author": "岑参",
+      "dynasty": "唐",
+      "fullText": [
+        "故园东望路漫漫，双袖龙钟泪不干。",
+        "马上相逢无纸笔，凭君传语报平安。"
+      ],
+      "excerpt": [
+        "故园东望路漫漫，双袖龙钟泪不干。",
+        "马上相逢无纸笔，凭君传语报平安。"
+      ],
+      "sourceName": "《全唐诗》",
+      "oneLineSummary": "匆匆相逢来不及写信，只托一句平安穿过漫长归路。",
+      "culturalBackground": "岑参赴西域途中遇见返京使者，思乡之情与军旅行程交织在马上片刻。",
+      "contemporaryConnection": "忙碌时无法长谈，一句及时的“我很好”也能安定远方家人的牵挂。",
+      "annotations": [
+        {
+          "term": "龙钟",
+          "explanation": "泪流纵横、沾湿衣袖的样子。"
+        },
+        {
+          "term": "凭君",
+          "explanation": "请托您。"
+        }
+      ],
+      "tags": {
+        "festivals": [],
+        "weather": [
+          "clear",
+          "wind",
+          "cloudy"
+        ],
+        "solarTerms": [],
+        "seasons": [
+          "spring",
+          "autumn"
+        ],
+        "timePeriods": [
+          "day"
+        ],
+        "emotions": [
+          "思乡",
+          "牵挂"
+        ],
+        "lifeScenes": [
+          "远行",
+          "报平安"
+        ]
+      },
+      "quality": 9,
+      "engineeringReview": {
+        "workId": "cen-shen-feng-ru-jing-shi",
+        "status": "published",
+        "reviewedAt": "2026-07-23",
+        "reviewedBy": "WeatherPoem 内容初审",
+        "sourceVerified": true,
+        "notes": "MVP 公版古典诗词种子内容；发布前仍建议按权威点校本复核。"
+      }
+    },
+    {
+      "id": "han-yu-wan-chun",
+      "title": "晚春",
+      "literaryForm": "七言绝句",
+      "author": "韩愈",
+      "dynasty": "唐",
+      "fullText": [
+        "草树知春不久归，百般红紫斗芳菲。",
+        "杨花榆荚无才思，惟解漫天作雪飞。"
+      ],
+      "excerpt": [
+        "草树知春不久归，百般红紫斗芳菲。",
+        "杨花榆荚无才思，惟解漫天作雪飞。"
+      ],
+      "sourceName": "《全唐诗》",
+      "oneLineSummary": "春将离去，连寻常草木也用尽颜色加入最后一场盛放。",
+      "culturalBackground": "韩愈以拟人笔法写暮春百花争艳，杨花榆荚也以飞絮参与春光。",
+      "contemporaryConnection": "学期和青春都不会停下，意识到时间有限，反而更适合认真做完眼前的小事。",
+      "annotations": [
+        {
+          "term": "芳菲",
+          "explanation": "花草芳香而繁盛。"
+        },
+        {
+          "term": "榆荚",
+          "explanation": "榆树的果实，成熟时呈片状。"
+        }
+      ],
+      "tags": {
+        "festivals": [],
+        "weather": [
+          "clear",
+          "wind",
+          "cloudy"
+        ],
+        "solarTerms": [
+          "谷雨",
+          "立夏"
+        ],
+        "seasons": [
+          "spring"
+        ],
+        "timePeriods": [
+          "day"
+        ],
+        "emotions": [
+          "明快",
+          "惜春"
+        ],
+        "lifeScenes": [
+          "赏花",
+          "校园散步"
+        ]
+      },
+      "quality": 9,
+      "engineeringReview": {
+        "workId": "han-yu-wan-chun",
+        "status": "published",
+        "reviewedAt": "2026-07-23",
+        "reviewedBy": "WeatherPoem 内容初审",
+        "sourceVerified": true,
+        "notes": "MVP 公版古典诗词种子内容；发布前仍建议按权威点校本复核。"
+      }
+    },
+    {
+      "id": "han-yu-zuo-qian-lan-guan",
+      "title": "左迁至蓝关示侄孙湘",
+      "literaryForm": "七言律诗",
+      "author": "韩愈",
+      "dynasty": "唐",
+      "fullText": [
+        "一封朝奏九重天，夕贬潮州路八千。",
+        "欲为圣明除弊事，肯将衰朽惜残年！",
+        "云横秦岭家何在？雪拥蓝关马不前。",
+        "知汝远来应有意，好收吾骨瘴江边。"
+      ],
+      "excerpt": [
+        "一封朝奏九重天，夕贬潮州路八千。",
+        "欲为圣明除弊事，肯将衰朽惜残年！"
+      ],
+      "sourceName": "《全唐诗》",
+      "oneLineSummary": "骤然被贬的沉痛，在秦岭横云与蓝关积雪中获得了具体形状。",
+      "culturalBackground": "韩愈因谏迎佛骨被贬潮州，途经蓝关写给前来相送的侄孙韩湘。",
+      "contemporaryConnection": "面对重大挫折，可以悲伤，也应把事实、原则和后续安排清楚地说给可信任的人。",
+      "annotations": [
+        {
+          "term": "左迁",
+          "explanation": "贬官。"
+        },
+        {
+          "term": "九重天",
+          "explanation": "借指朝廷和皇帝。"
+        }
+      ],
+      "tags": {
+        "festivals": [],
+        "weather": [
+          "snow",
+          "overcast",
+          "cold"
+        ],
+        "solarTerms": [
+          "小寒",
+          "大寒"
+        ],
+        "seasons": [
+          "winter"
+        ],
+        "timePeriods": [
+          "day",
+          "evening"
+        ],
+        "emotions": [
+          "悲愤",
+          "坚定"
+        ],
+        "lifeScenes": [
+          "受挫",
+          "风雪远行"
+        ]
+      },
+      "quality": 10,
+      "engineeringReview": {
+        "workId": "han-yu-zuo-qian-lan-guan",
+        "status": "published",
+        "reviewedAt": "2026-07-23",
+        "reviewedBy": "WeatherPoem 内容初审",
+        "sourceVerified": true,
+        "notes": "MVP 公版古典诗词种子内容；发布前仍建议按权威点校本复核。"
+      }
+    },
+    {
+      "id": "liu-zong-yuan-yu-weng",
+      "title": "渔翁",
+      "literaryForm": "七言古诗",
+      "author": "柳宗元",
+      "dynasty": "唐",
+      "fullText": [
+        "渔翁夜傍西岩宿，晓汲清湘燃楚竹。",
+        "烟销日出不见人，欸乃一声山水绿。",
+        "回看天际下中流，岩上无心云相逐。"
+      ],
+      "excerpt": [
+        "渔翁夜傍西岩宿，晓汲清湘燃楚竹。",
+        "烟销日出不见人，欸乃一声山水绿。"
+      ],
+      "sourceName": "《全唐诗》",
+      "oneLineSummary": "晨烟散去，一声船歌让整片山水忽然显出清绿。",
+      "culturalBackground": "柳宗元贬居永州时写潇湘渔翁，以奇特的声色转换塑造清幽自由的山水境界。",
+      "contemporaryConnection": "清晨暂时离开消息流，听一段真实环境声，能重新建立对时间和空间的感受。",
+      "annotations": [
+        {
+          "term": "汲",
+          "explanation": "从水中取水。"
+        },
+        {
+          "term": "欸乃",
+          "explanation": "摇橹声，也可指船歌声。"
+        }
+      ],
+      "tags": {
+        "festivals": [],
+        "weather": [
+          "clear",
+          "fog",
+          "cloudy"
+        ],
+        "solarTerms": [
+          "谷雨",
+          "小满"
+        ],
+        "seasons": [
+          "spring",
+          "summer"
+        ],
+        "timePeriods": [
+          "morning"
+        ],
+        "emotions": [
+          "清寂",
+          "自在"
+        ],
+        "lifeScenes": [
+          "临水",
+          "清晨独处"
+        ]
+      },
+      "quality": 10,
+      "engineeringReview": {
+        "workId": "liu-zong-yuan-yu-weng",
+        "status": "published",
+        "reviewedAt": "2026-07-23",
+        "reviewedBy": "WeatherPoem 内容初审",
+        "sourceVerified": true,
+        "notes": "MVP 公版古典诗词种子内容；发布前仍建议按权威点校本复核。"
+      }
+    },
+    {
+      "id": "wei-ying-wu-chu-zhou-xi-jian",
+      "title": "滁州西涧",
+      "literaryForm": "七言绝句",
+      "author": "韦应物",
+      "dynasty": "唐",
+      "fullText": [
+        "独怜幽草涧边生，上有黄鹂深树鸣。",
+        "春潮带雨晚来急，野渡无人舟自横。"
+      ],
+      "excerpt": [
+        "独怜幽草涧边生，上有黄鹂深树鸣。",
+        "春潮带雨晚来急，野渡无人舟自横。"
+      ],
+      "sourceName": "《全唐诗》",
+      "oneLineSummary": "春雨催急涧水，无人野渡的一叶横舟让喧闹归于安静。",
+      "culturalBackground": "韦应物任滁州刺史时游西涧，写幽草、黄鹂、春潮与野渡，意境清幽。",
+      "contemporaryConnection": "雨天行程被打断时，不必立刻填满空白，观察窗外也可以成为完整的一段时间。",
+      "annotations": [
+        {
+          "term": "独怜",
+          "explanation": "格外喜爱。"
+        },
+        {
+          "term": "自横",
+          "explanation": "自在地横泊水面。"
+        }
+      ],
+      "tags": {
+        "festivals": [],
+        "weather": [
+          "light-rain",
+          "rain",
+          "overcast"
+        ],
+        "solarTerms": [
+          "春分",
+          "清明",
+          "谷雨"
+        ],
+        "seasons": [
+          "spring"
+        ],
+        "timePeriods": [
+          "evening"
+        ],
+        "emotions": [
+          "宁静",
+          "闲适"
+        ],
+        "lifeScenes": [
+          "听雨",
+          "独处"
+        ]
+      },
+      "quality": 10,
+      "engineeringReview": {
+        "workId": "wei-ying-wu-chu-zhou-xi-jian",
+        "status": "published",
+        "reviewedAt": "2026-07-23",
+        "reviewedBy": "WeatherPoem 内容初审",
+        "sourceVerified": true,
+        "notes": "MVP 公版古典诗词种子内容；发布前仍建议按权威点校本复核。"
+      }
+    },
+    {
+      "id": "wang-jian-shi-wu-ye-wang-yue",
+      "title": "十五夜望月",
+      "literaryForm": "七言绝句",
+      "author": "王建",
+      "dynasty": "唐",
+      "fullText": [
+        "中庭地白树栖鸦，冷露无声湿桂花。",
+        "今夜月明人尽望，不知秋思落谁家。"
+      ],
+      "excerpt": [
+        "中庭地白树栖鸦，冷露无声湿桂花。",
+        "今夜月明人尽望，不知秋思落谁家。"
+      ],
+      "sourceName": "《全唐诗》",
+      "oneLineSummary": "月光、冷露和桂花把共同仰望的中秋夜写得清亮而含蓄。",
+      "culturalBackground": "诗写中秋望月，由庭院静景推向天下人的秋思，是唐代中秋诗名篇。",
+      "contemporaryConnection": "异地度过中秋时，抬头看同一轮月亮，再给想念的人发一句问候。",
+      "annotations": [
+        {
+          "term": "地白",
+          "explanation": "月光照地，仿佛铺上一层白霜。"
+        },
+        {
+          "term": "冷露",
+          "explanation": "深秋夜间凝结的露水。"
+        }
+      ],
+      "tags": {
+        "festivals": [
+          "中秋节"
+        ],
+        "weather": [
+          "clear",
+          "cold"
+        ],
+        "solarTerms": [
+          "白露",
+          "秋分"
+        ],
+        "seasons": [
+          "autumn"
+        ],
+        "timePeriods": [
+          "night"
+        ],
+        "emotions": [
+          "思念",
+          "清寂"
+        ],
+        "lifeScenes": [
+          "赏月",
+          "异地过节"
+        ]
+      },
+      "quality": 10,
+      "engineeringReview": {
+        "workId": "wang-jian-shi-wu-ye-wang-yue",
+        "status": "published",
+        "reviewedAt": "2026-07-23",
+        "reviewedBy": "WeatherPoem 内容初审",
+        "sourceVerified": true,
+        "notes": "MVP 公版古典诗词种子内容；发布前仍建议按权威点校本复核。"
+      }
+    },
+    {
+      "id": "zhang-jiu-ling-wang-yue-huai-yuan",
+      "title": "望月怀远",
+      "literaryForm": "五言律诗",
+      "author": "张九龄",
+      "dynasty": "唐",
+      "fullText": [
+        "海上生明月，天涯共此时。",
+        "情人怨遥夜，竟夕起相思。",
+        "灭烛怜光满，披衣觉露滋。",
+        "不堪盈手赠，还寝梦佳期。"
+      ],
+      "excerpt": [
+        "海上生明月，天涯共此时。",
+        "情人怨遥夜，竟夕起相思。"
+      ],
+      "sourceName": "《全唐诗》",
+      "oneLineSummary": "海上明月把远隔天涯的人放在同一个夜晚，也让思念无法入睡。",
+      "culturalBackground": "张九龄以海上月升开篇，从宏阔空间转入独夜怀人的细微动作。",
+      "contemporaryConnection": "屏幕让联系变快，却不能消除距离；一次专注的通话仍比零碎点赞更接近陪伴。",
+      "annotations": [
+        {
+          "term": "竟夕",
+          "explanation": "整个夜晚。"
+        },
+        {
+          "term": "露滋",
+          "explanation": "露水沾湿衣裳。"
+        }
+      ],
+      "tags": {
+        "festivals": [
+          "中秋节"
+        ],
+        "weather": [
+          "clear",
+          "cold"
+        ],
+        "solarTerms": [
+          "白露",
+          "秋分"
+        ],
+        "seasons": [
+          "autumn"
+        ],
+        "timePeriods": [
+          "night"
+        ],
+        "emotions": [
+          "思念",
+          "温柔"
+        ],
+        "lifeScenes": [
+          "望月",
+          "夜不能寐"
+        ]
+      },
+      "quality": 10,
+      "engineeringReview": {
+        "workId": "zhang-jiu-ling-wang-yue-huai-yuan",
+        "status": "published",
+        "reviewedAt": "2026-07-23",
+        "reviewedBy": "WeatherPoem 内容初审",
+        "sourceVerified": true,
+        "notes": "MVP 公版古典诗词种子内容；发布前仍建议按权威点校本复核。"
+      }
+    },
+    {
+      "id": "zhang-zhi-he-yu-ge-zi",
+      "title": "渔歌子·西塞山前白鹭飞",
+      "literaryForm": "词",
+      "author": "张志和",
+      "dynasty": "唐",
+      "fullText": [
+        "西塞山前白鹭飞，桃花流水鳜鱼肥。",
+        "青箬笠，绿蓑衣，斜风细雨不须归。"
+      ],
+      "excerpt": [
+        "西塞山前白鹭飞，桃花流水鳜鱼肥。",
+        "青箬笠，绿蓑衣，斜风细雨不须归。"
+      ],
+      "sourceName": "《全唐诗》",
+      "oneLineSummary": "桃花水、白鹭与斜风细雨，共同构成不急着归去的江南春日。",
+      "culturalBackground": "张志和以渔父形象写江南水乡春汛，颜色明丽，兼有隐逸生活的自在。",
+      "contemporaryConnection": "小雨并不总等于坏天气，准备合适之后，短途散步也能发现城市更安静的一面。",
+      "annotations": [
+        {
+          "term": "箬笠",
+          "explanation": "用箬竹叶编成的斗笠。"
+        },
+        {
+          "term": "蓑衣",
+          "explanation": "用草或棕制成的防雨衣。"
+        }
+      ],
+      "tags": {
+        "festivals": [],
+        "weather": [
+          "light-rain",
+          "wind",
+          "cloudy"
+        ],
+        "solarTerms": [
+          "惊蛰",
+          "春分",
+          "清明"
+        ],
+        "seasons": [
+          "spring"
+        ],
+        "timePeriods": [
+          "day"
+        ],
+        "emotions": [
+          "自在",
+          "明快"
+        ],
+        "lifeScenes": [
+          "春游",
+          "临水"
+        ]
+      },
+      "quality": 10,
+      "engineeringReview": {
+        "workId": "zhang-zhi-he-yu-ge-zi",
+        "status": "published",
+        "reviewedAt": "2026-07-23",
+        "reviewedBy": "WeatherPoem 内容初审",
+        "sourceVerified": true,
+        "notes": "MVP 公版古典诗词种子内容；发布前仍建议按权威点校本复核。"
+      }
+    },
+    {
+      "id": "zhang-ji-qiu-si",
+      "title": "秋思",
+      "literaryForm": "七言绝句",
+      "author": "张籍",
+      "dynasty": "唐",
+      "fullText": [
+        "洛阳城里见秋风，欲作家书意万重。",
+        "复恐匆匆说不尽，行人临发又开封。"
+      ],
+      "excerpt": [
+        "洛阳城里见秋风，欲作家书意万重。",
+        "复恐匆匆说不尽，行人临发又开封。"
+      ],
+      "sourceName": "《全唐诗》",
+      "oneLineSummary": "一封已经写好的家书，因为担心话未说尽，又在临行前被重新拆开。",
+      "culturalBackground": "张籍客居洛阳，见秋风而思乡，以“又开封”的生活细节写尽游子牵挂。",
+      "contemporaryConnection": "给家人的消息不必只报结果，偶尔写下具体近况，会让远方的人真正参与生活。",
+      "annotations": [
+        {
+          "term": "意万重",
+          "explanation": "想要表达的心意很多。"
+        },
+        {
+          "term": "开封",
+          "explanation": "拆开已经封好的书信。"
+        }
+      ],
+      "tags": {
+        "festivals": [],
+        "weather": [
+          "wind",
+          "clear",
+          "cloudy"
+        ],
+        "solarTerms": [
+          "白露",
+          "秋分",
+          "寒露"
+        ],
+        "seasons": [
+          "autumn"
+        ],
+        "timePeriods": [
+          "day",
+          "evening"
+        ],
+        "emotions": [
+          "思乡",
+          "牵挂"
+        ],
+        "lifeScenes": [
+          "写信",
+          "客居"
+        ]
+      },
+      "quality": 10,
+      "engineeringReview": {
+        "workId": "zhang-ji-qiu-si",
+        "status": "published",
+        "reviewedAt": "2026-07-23",
+        "reviewedBy": "WeatherPoem 内容初审",
+        "sourceVerified": true,
+        "notes": "MVP 公版古典诗词种子内容；发布前仍建议按权威点校本复核。"
+      }
+    },
+    {
+      "id": "dai-shu-lun-lan-xi-zhao-ge",
+      "title": "兰溪棹歌",
+      "literaryForm": "七言绝句",
+      "author": "戴叔伦",
+      "dynasty": "唐",
+      "fullText": [
+        "凉月如眉挂柳湾，越中山色镜中看。",
+        "兰溪三日桃花雨，半夜鲤鱼来上滩。"
+      ],
+      "excerpt": [
+        "凉月如眉挂柳湾，越中山色镜中看。",
+        "兰溪三日桃花雨，半夜鲤鱼来上滩。"
+      ],
+      "sourceName": "《全唐诗》",
+      "oneLineSummary": "雨后兰溪水涨，弯月与山影静静映水，半夜又有鲤鱼涌上浅滩。",
+      "culturalBackground": "戴叔伦夜行兰溪，以新月、柳湾和桃花汛写江南春夜水乡。",
+      "contemporaryConnection": "夜晚的校园和白天不同，安全范围内的一次慢走能让熟悉空间重新变得可见。",
+      "annotations": [
+        {
+          "term": "棹歌",
+          "explanation": "船工行船时所唱的歌。"
+        },
+        {
+          "term": "桃花雨",
+          "explanation": "春季桃花开放时节的雨水。"
+        }
+      ],
+      "tags": {
+        "festivals": [],
+        "weather": [
+          "light-rain",
+          "cloudy",
+          "clear"
+        ],
+        "solarTerms": [
+          "惊蛰",
+          "春分"
+        ],
+        "seasons": [
+          "spring"
+        ],
+        "timePeriods": [
+          "night"
+        ],
+        "emotions": [
+          "清新",
+          "惊喜"
+        ],
+        "lifeScenes": [
+          "夜游",
+          "临水"
+        ]
+      },
+      "quality": 9,
+      "engineeringReview": {
+        "workId": "dai-shu-lun-lan-xi-zhao-ge",
+        "status": "published",
+        "reviewedAt": "2026-07-23",
+        "reviewedBy": "WeatherPoem 内容初审",
+        "sourceVerified": true,
+        "notes": "MVP 公版古典诗词种子内容；发布前仍建议按权威点校本复核。"
+      }
+    },
+    {
+      "id": "du-mu-bo-qin-huai",
+      "title": "泊秦淮",
+      "literaryForm": "七言绝句",
+      "author": "杜牧",
+      "dynasty": "唐",
+      "fullText": [
+        "烟笼寒水月笼沙，夜泊秦淮近酒家。",
+        "商女不知亡国恨，隔江犹唱后庭花。"
+      ],
+      "excerpt": [
+        "烟笼寒水月笼沙，夜泊秦淮近酒家。",
+        "商女不知亡国恨，隔江犹唱后庭花。"
+      ],
+      "sourceName": "《全唐诗》",
+      "oneLineSummary": "秦淮迷蒙夜色看似柔美，却被历史记忆和现实忧思骤然刺破。",
+      "culturalBackground": "杜牧夜泊秦淮，由朦胧水月联想到六朝亡国旧事，寄托对现实的忧虑。",
+      "contemporaryConnection": "欣赏城市夜景时，也可以追问空间曾发生过什么，让风景不止是消费背景。",
+      "annotations": [
+        {
+          "term": "商女",
+          "explanation": "以歌唱为业的女子。"
+        },
+        {
+          "term": "后庭花",
+          "explanation": "《玉树后庭花》，后世常被视为亡国之音。"
+        }
+      ],
+      "tags": {
+        "festivals": [],
+        "weather": [
+          "fog",
+          "cloudy",
+          "cold"
+        ],
+        "solarTerms": [
+          "寒露",
+          "霜降"
+        ],
+        "seasons": [
+          "autumn"
+        ],
+        "timePeriods": [
+          "night"
+        ],
+        "emotions": [
+          "忧思",
+          "警醒"
+        ],
+        "lifeScenes": [
+          "夜泊",
+          "城市漫游"
+        ]
+      },
+      "quality": 10,
+      "engineeringReview": {
+        "workId": "du-mu-bo-qin-huai",
+        "status": "published",
+        "reviewedAt": "2026-07-23",
+        "reviewedBy": "WeatherPoem 内容初审",
+        "sourceVerified": true,
+        "notes": "MVP 公版古典诗词种子内容；发布前仍建议按权威点校本复核。"
+      }
+    },
+    {
+      "id": "du-mu-chi-bi",
+      "title": "赤壁",
+      "literaryForm": "七言绝句",
+      "author": "杜牧",
+      "dynasty": "唐",
+      "fullText": [
+        "折戟沉沙铁未销，自将磨洗认前朝。",
+        "东风不与周郎便，铜雀春深锁二乔。"
+      ],
+      "excerpt": [
+        "折戟沉沙铁未销，自将磨洗认前朝。",
+        "东风不与周郎便，铜雀春深锁二乔。"
+      ],
+      "sourceName": "《全唐诗》",
+      "oneLineSummary": "一截沉沙旧戟引出对历史偶然与个人际遇的重新设想。",
+      "culturalBackground": "杜牧游赤壁古战场，以遗物起兴，评论三国赤壁之战中东风与周瑜的关系。",
+      "contemporaryConnection": "复盘成功时，既看个人能力，也看环境与偶然条件，判断会更诚实。",
+      "annotations": [
+        {
+          "term": "折戟",
+          "explanation": "折断的兵器戟。"
+        },
+        {
+          "term": "周郎",
+          "explanation": "周瑜，东吴名将。"
+        }
+      ],
+      "tags": {
+        "festivals": [],
+        "weather": [
+          "wind",
+          "clear",
+          "cloudy"
+        ],
+        "solarTerms": [
+          "立春",
+          "春分"
+        ],
+        "seasons": [
+          "spring",
+          "autumn"
+        ],
+        "timePeriods": [
+          "day"
+        ],
+        "emotions": [
+          "怀古",
+          "思辨"
+        ],
+        "lifeScenes": [
+          "访古",
+          "复盘"
+        ]
+      },
+      "quality": 10,
+      "engineeringReview": {
+        "workId": "du-mu-chi-bi",
+        "status": "published",
+        "reviewedAt": "2026-07-23",
+        "reviewedBy": "WeatherPoem 内容初审",
+        "sourceVerified": true,
+        "notes": "MVP 公版古典诗词种子内容；发布前仍建议按权威点校本复核。"
+      }
+    },
+    {
+      "id": "du-mu-jiang-nan-chun",
+      "title": "江南春",
+      "literaryForm": "七言绝句",
+      "author": "杜牧",
+      "dynasty": "唐",
+      "fullText": [
+        "千里莺啼绿映红，水村山郭酒旗风。",
+        "南朝四百八十寺，多少楼台烟雨中。"
+      ],
+      "excerpt": [
+        "千里莺啼绿映红，水村山郭酒旗风。",
+        "南朝四百八十寺，多少楼台烟雨中。"
+      ],
+      "sourceName": "《全唐诗》",
+      "oneLineSummary": "江南千里春色从明艳铺展到烟雨深处，空间辽阔又带历史层次。",
+      "culturalBackground": "杜牧将莺啼、红绿、水村、山城和南朝寺院并置，写出江南春景与怀古意味。",
+      "contemporaryConnection": "一座城市既有当下颜色，也有历史叠层；散步时选择一处旧建筑了解来历。",
+      "annotations": [
+        {
+          "term": "山郭",
+          "explanation": "依山而建的城镇。"
+        },
+        {
+          "term": "酒旗",
+          "explanation": "酒家悬挂的招牌旗。"
+        }
+      ],
+      "tags": {
+        "festivals": [],
+        "weather": [
+          "light-rain",
+          "rain",
+          "fog",
+          "cloudy"
+        ],
+        "solarTerms": [
+          "春分",
+          "清明",
+          "谷雨"
+        ],
+        "seasons": [
+          "spring"
+        ],
+        "timePeriods": [
+          "day"
+        ],
+        "emotions": [
+          "明丽",
+          "怀古"
+        ],
+        "lifeScenes": [
+          "春游",
+          "城市漫步"
+        ]
+      },
+      "quality": 10,
+      "engineeringReview": {
+        "workId": "du-mu-jiang-nan-chun",
+        "status": "published",
+        "reviewedAt": "2026-07-23",
+        "reviewedBy": "WeatherPoem 内容初审",
+        "sourceVerified": true,
+        "notes": "MVP 公版古典诗词种子内容；发布前仍建议按权威点校本复核。"
+      }
+    },
+    {
+      "id": "li-shang-yin-ye-yu-ji-bei",
+      "title": "夜雨寄北",
+      "literaryForm": "七言绝句",
+      "author": "李商隐",
+      "dynasty": "唐",
+      "fullText": [
+        "君问归期未有期，巴山夜雨涨秋池。",
+        "何当共剪西窗烛，却话巴山夜雨时。"
+      ],
+      "excerpt": [
+        "君问归期未有期，巴山夜雨涨秋池。",
+        "何当共剪西窗烛，却话巴山夜雨时。"
+      ],
+      "sourceName": "《全唐诗》",
+      "oneLineSummary": "眼前无法归去的秋夜，被想象成未来团聚时可以共同回望的故事。",
+      "culturalBackground": "李商隐滞留巴蜀，在秋雨夜写给北方亲友，以时间回环表现思念与期待。",
+      "contemporaryConnection": "当答案仍不确定时，坦白现状并约定下一次联系，比含糊失联更能维系关系。",
+      "annotations": [
+        {
+          "term": "寄北",
+          "explanation": "寄给身在北方的人。"
+        },
+        {
+          "term": "剪西窗烛",
+          "explanation": "剪去烛芯使烛火明亮，借指夜谈。"
+        }
+      ],
+      "tags": {
+        "festivals": [],
+        "weather": [
+          "rain",
+          "heavy-rain",
+          "overcast"
+        ],
+        "solarTerms": [
+          "白露",
+          "秋分",
+          "寒露"
+        ],
+        "seasons": [
+          "autumn"
+        ],
+        "timePeriods": [
+          "night"
+        ],
+        "emotions": [
+          "思念",
+          "期待"
+        ],
+        "lifeScenes": [
+          "听雨",
+          "异地联系"
+        ]
+      },
+      "quality": 10,
+      "engineeringReview": {
+        "workId": "li-shang-yin-ye-yu-ji-bei",
+        "status": "published",
+        "reviewedAt": "2026-07-23",
+        "reviewedBy": "WeatherPoem 内容初审",
+        "sourceVerified": true,
+        "notes": "MVP 公版古典诗词种子内容；发布前仍建议按权威点校本复核。"
+      }
+    },
+    {
+      "id": "li-shang-yin-chang-e",
+      "title": "嫦娥",
+      "literaryForm": "七言绝句",
+      "author": "李商隐",
+      "dynasty": "唐",
+      "fullText": [
+        "云母屏风烛影深，长河渐落晓星沉。",
+        "嫦娥应悔偷灵药，碧海青天夜夜心。"
+      ],
+      "excerpt": [
+        "云母屏风烛影深，长河渐落晓星沉。",
+        "嫦娥应悔偷灵药，碧海青天夜夜心。"
+      ],
+      "sourceName": "《全唐诗》",
+      "oneLineSummary": "长夜将尽，嫦娥神话被写成拥有永恒之后仍无法摆脱的孤独。",
+      "culturalBackground": "诗借嫦娥奔月传说写深夜孤寂，寓意历来有多种解释，含蓄而幽深。",
+      "contemporaryConnection": "追求独特和成就时，也要计算它可能带来的孤独、代价与长期生活方式。",
+      "annotations": [
+        {
+          "term": "云母屏风",
+          "explanation": "以云母石装饰的屏风。"
+        },
+        {
+          "term": "长河",
+          "explanation": "银河。"
+        }
+      ],
+      "tags": {
+        "festivals": [
+          "中秋节"
+        ],
+        "weather": [
+          "clear",
+          "cold"
+        ],
+        "solarTerms": [
+          "白露",
+          "秋分"
+        ],
+        "seasons": [
+          "autumn"
+        ],
+        "timePeriods": [
+          "night",
+          "morning"
+        ],
+        "emotions": [
+          "孤独",
+          "反思"
+        ],
+        "lifeScenes": [
+          "夜读",
+          "望月"
+        ]
+      },
+      "quality": 9,
+      "engineeringReview": {
+        "workId": "li-shang-yin-chang-e",
+        "status": "published",
+        "reviewedAt": "2026-07-23",
+        "reviewedBy": "WeatherPoem 内容初审",
+        "sourceVerified": true,
+        "notes": "MVP 公版古典诗词种子内容；发布前仍建议按权威点校本复核。"
+      }
+    },
+    {
+      "id": "li-shang-yin-le-you-yuan",
+      "title": "乐游原",
+      "literaryForm": "五言绝句",
+      "author": "李商隐",
+      "dynasty": "唐",
+      "fullText": [
+        "向晚意不适，驱车登古原。",
+        "夕阳无限好，只是近黄昏。"
+      ],
+      "excerpt": [
+        "向晚意不适，驱车登古原。",
+        "夕阳无限好，只是近黄昏。"
+      ],
+      "sourceName": "《全唐诗》",
+      "oneLineSummary": "心绪低落时登高遇见壮丽夕阳，美好与即将消逝同时发生。",
+      "culturalBackground": "李商隐傍晚登长安乐游原，由眼前夕照写出对盛景难久的复杂感受。",
+      "contemporaryConnection": "状态不好时先换一个空间走动，不必强迫自己立刻积极，只需看见眼前仍有美好。",
+      "annotations": [
+        {
+          "term": "向晚",
+          "explanation": "接近傍晚。"
+        },
+        {
+          "term": "意不适",
+          "explanation": "心情不舒畅。"
+        }
+      ],
+      "tags": {
+        "festivals": [],
+        "weather": [
+          "clear",
+          "cloudy"
+        ],
+        "solarTerms": [
+          "处暑",
+          "秋分"
+        ],
+        "seasons": [
+          "autumn"
+        ],
+        "timePeriods": [
+          "evening"
+        ],
+        "emotions": [
+          "低落",
+          "珍惜"
+        ],
+        "lifeScenes": [
+          "登高",
+          "看夕阳"
+        ]
+      },
+      "quality": 10,
+      "engineeringReview": {
+        "workId": "li-shang-yin-le-you-yuan",
+        "status": "published",
+        "reviewedAt": "2026-07-23",
+        "reviewedBy": "WeatherPoem 内容初审",
+        "sourceVerified": true,
+        "notes": "MVP 公版古典诗词种子内容；发布前仍建议按权威点校本复核。"
+      }
+    },
+    {
+      "id": "luo-yin-feng",
+      "title": "蜂",
+      "literaryForm": "七言绝句",
+      "author": "罗隐",
+      "dynasty": "唐",
+      "fullText": [
+        "不论平地与山尖，无限风光尽被占。",
+        "采得百花成蜜后，为谁辛苦为谁甜？"
+      ],
+      "excerpt": [
+        "不论平地与山尖，无限风光尽被占。",
+        "采得百花成蜜后，为谁辛苦为谁甜？"
+      ],
+      "sourceName": "《全唐诗》",
+      "oneLineSummary": "蜜蜂采尽百花之后的反问，把勤劳与成果归属放在一起审视。",
+      "culturalBackground": "罗隐咏蜂而不止于物态描写，借采蜜辛劳寄寓对劳动者处境的思考。",
+      "contemporaryConnection": "团队项目结束后，除了庆祝成果，也要确认付出如何被看见、署名与分配。",
+      "annotations": [
+        {
+          "term": "山尖",
+          "explanation": "山峰高处。"
+        },
+        {
+          "term": "尽被占",
+          "explanation": "到处都有蜜蜂采花的踪迹。"
+        }
+      ],
+      "tags": {
+        "festivals": [],
+        "weather": [
+          "clear",
+          "hot"
+        ],
+        "solarTerms": [
+          "清明",
+          "谷雨",
+          "小满"
+        ],
+        "seasons": [
+          "spring",
+          "summer"
+        ],
+        "timePeriods": [
+          "day"
+        ],
+        "emotions": [
+          "勤勉",
+          "思辨"
+        ],
+        "lifeScenes": [
+          "观察自然",
+          "团队协作"
+        ]
+      },
+      "quality": 9,
+      "engineeringReview": {
+        "workId": "luo-yin-feng",
+        "status": "published",
+        "reviewedAt": "2026-07-23",
+        "reviewedBy": "WeatherPoem 内容初审",
+        "sourceVerified": true,
+        "notes": "MVP 公版古典诗词种子内容；发布前仍建议按权威点校本复核。"
+      }
+    },
+    {
+      "id": "hu-ling-neng-xiao-er-chui-diao",
+      "title": "小儿垂钓",
+      "literaryForm": "七言绝句",
+      "author": "胡令能",
+      "dynasty": "唐",
+      "fullText": [
+        "蓬头稚子学垂纶，侧坐莓苔草映身。",
+        "路人借问遥招手，怕得鱼惊不应人。"
+      ],
+      "excerpt": [
+        "蓬头稚子学垂纶，侧坐莓苔草映身。",
+        "路人借问遥招手，怕得鱼惊不应人。"
+      ],
+      "sourceName": "《全唐诗》",
+      "oneLineSummary": "学钓的孩子只敢远远招手，专注、紧张又天真得令人会心。",
+      "culturalBackground": "胡令能以路人问路的瞬间捕捉儿童垂钓神态，语言浅近而富有生活趣味。",
+      "contemporaryConnection": "进入专注状态后，可以用一个简短手势说明稍后回应，为自己保留不被打断的时间。",
+      "annotations": [
+        {
+          "term": "垂纶",
+          "explanation": "垂下钓线，指钓鱼。"
+        },
+        {
+          "term": "莓苔",
+          "explanation": "低矮野草与青苔。"
+        }
+      ],
+      "tags": {
+        "festivals": [],
+        "weather": [
+          "clear",
+          "cloudy"
+        ],
+        "solarTerms": [
+          "小满",
+          "芒种",
+          "小暑"
+        ],
+        "seasons": [
+          "summer"
+        ],
+        "timePeriods": [
+          "day"
+        ],
+        "emotions": [
+          "童趣",
+          "专注"
+        ],
+        "lifeScenes": [
+          "休闲",
+          "户外观察"
+        ]
+      },
+      "quality": 9,
+      "engineeringReview": {
+        "workId": "hu-ling-neng-xiao-er-chui-diao",
+        "status": "published",
+        "reviewedAt": "2026-07-23",
+        "reviewedBy": "WeatherPoem 内容初审",
+        "sourceVerified": true,
+        "notes": "MVP 公版古典诗词种子内容；发布前仍建议按权威点校本复核。"
+      }
+    },
+    {
+      "id": "gao-pian-shan-ting-xia-ri",
+      "title": "山亭夏日",
+      "literaryForm": "七言绝句",
+      "author": "高骈",
+      "dynasty": "唐",
+      "fullText": [
+        "绿树阴浓夏日长，楼台倒影入池塘。",
+        "水晶帘动微风起，满架蔷薇一院香。"
+      ],
+      "excerpt": [
+        "绿树阴浓夏日长，楼台倒影入池塘。",
+        "水晶帘动微风起，满架蔷薇一院香。"
+      ],
+      "sourceName": "《全唐诗》",
+      "oneLineSummary": "浓荫、池影、微风与蔷薇香气，把漫长夏日写得清凉可感。",
+      "culturalBackground": "高骈以视觉、触觉和嗅觉层层推进，描绘山亭纳凉时的庭院景象。",
+      "contemporaryConnection": "炎热日子里不妨主动寻找树荫、风口与水边，让身体先恢复舒适再继续工作。",
+      "annotations": [
+        {
+          "term": "水晶帘",
+          "explanation": "形容帘子洁净通透。"
+        },
+        {
+          "term": "蔷薇",
+          "explanation": "夏季常见的攀援花木。"
+        }
+      ],
+      "tags": {
+        "festivals": [],
+        "weather": [
+          "hot",
+          "clear",
+          "wind"
+        ],
+        "solarTerms": [
+          "夏至",
+          "小暑",
+          "大暑"
+        ],
+        "seasons": [
+          "summer"
+        ],
+        "timePeriods": [
+          "day"
+        ],
+        "emotions": [
+          "清凉",
+          "闲适"
+        ],
+        "lifeScenes": [
+          "纳凉",
+          "庭院休息"
+        ]
+      },
+      "quality": 9,
+      "engineeringReview": {
+        "workId": "gao-pian-shan-ting-xia-ri",
+        "status": "published",
+        "reviewedAt": "2026-07-23",
+        "reviewedBy": "WeatherPoem 内容初审",
+        "sourceVerified": true,
+        "notes": "MVP 公版古典诗词种子内容；发布前仍建议按权威点校本复核。"
+      }
+    },
+    {
+      "id": "zu-yong-zhong-nan-wang-yu-xue",
+      "title": "终南望余雪",
+      "literaryForm": "五言绝句",
+      "author": "祖咏",
+      "dynasty": "唐",
+      "fullText": [
+        "终南阴岭秀，积雪浮云端。",
+        "林表明霁色，城中增暮寒。"
+      ],
+      "excerpt": [
+        "终南阴岭秀，积雪浮云端。",
+        "林表明霁色，城中增暮寒。"
+      ],
+      "sourceName": "《全唐诗》",
+      "oneLineSummary": "雪后终南山在云端明亮起来，城中的人却先感到傍晚寒意加深。",
+      "culturalBackground": "祖咏应试时以终南山余雪为题，兼写远山晴色与城市体感的变化。",
+      "contemporaryConnection": "雪后放晴不等于升温，出门前仍要关注路面结冰和傍晚体感。",
+      "annotations": [
+        {
+          "term": "阴岭",
+          "explanation": "山的北坡，日照较少。"
+        },
+        {
+          "term": "霁色",
+          "explanation": "雨雪停止、天空放晴后的光色。"
+        }
+      ],
+      "tags": {
+        "festivals": [],
+        "weather": [
+          "snow",
+          "clear",
+          "cold"
+        ],
+        "solarTerms": [
+          "小雪",
+          "大雪",
+          "小寒"
+        ],
+        "seasons": [
+          "winter"
+        ],
+        "timePeriods": [
+          "evening"
+        ],
+        "emotions": [
+          "清寒",
+          "赞叹"
+        ],
+        "lifeScenes": [
+          "雪后远眺",
+          "归途"
+        ]
+      },
+      "quality": 10,
+      "engineeringReview": {
+        "workId": "zu-yong-zhong-nan-wang-yu-xue",
+        "status": "published",
+        "reviewedAt": "2026-07-23",
+        "reviewedBy": "WeatherPoem 内容初审",
+        "sourceVerified": true,
+        "notes": "MVP 公版古典诗词种子内容；发布前仍建议按权威点校本复核。"
+      }
+    },
+    {
+      "id": "su-shi-ti-xi-lin-bi",
+      "title": "题西林壁",
+      "literaryForm": "七言绝句",
+      "author": "苏轼",
+      "dynasty": "宋",
+      "fullText": [
+        "横看成岭侧成峰，远近高低各不同。",
+        "不识庐山真面目，只缘身在此山中。"
+      ],
+      "excerpt": [
+        "横看成岭侧成峰，远近高低各不同。",
+        "不识庐山真面目，只缘身在此山中。"
+      ],
+      "sourceName": "《东坡七集》",
+      "oneLineSummary": "同一座山随位置改变而显出不同形态，认识也受自身处境限制。",
+      "culturalBackground": "苏轼游庐山题写在西林寺墙壁上，以观山经验说明视角与认识的关系。",
+      "contemporaryConnection": "遇到争论时，先描述彼此所处的位置和掌握的信息，再判断谁对谁错。",
+      "annotations": [
+        {
+          "term": "题西林壁",
+          "explanation": "题写在庐山西林寺墙壁上的诗。"
+        },
+        {
+          "term": "缘",
+          "explanation": "因为。"
+        }
+      ],
+      "tags": {
+        "festivals": [],
+        "weather": [
+          "clear",
+          "fog",
+          "cloudy"
+        ],
+        "solarTerms": [
+          "小满",
+          "白露"
+        ],
+        "seasons": [
+          "summer",
+          "autumn"
+        ],
+        "timePeriods": [
+          "day"
+        ],
+        "emotions": [
+          "思辨",
+          "开阔"
+        ],
+        "lifeScenes": [
+          "登山",
+          "换位思考"
+        ]
+      },
+      "quality": 10,
+      "engineeringReview": {
+        "workId": "su-shi-ti-xi-lin-bi",
+        "status": "published",
+        "reviewedAt": "2026-07-23",
+        "reviewedBy": "WeatherPoem 内容初审",
+        "sourceVerified": true,
+        "notes": "MVP 公版古典诗词种子内容；发布前仍建议按权威点校本复核。"
+      }
+    },
+    {
+      "id": "su-shi-hui-chong-chun-jiang",
+      "title": "惠崇春江晚景",
+      "literaryForm": "七言绝句",
+      "author": "苏轼",
+      "dynasty": "宋",
+      "fullText": [
+        "竹外桃花三两枝，春江水暖鸭先知。",
+        "蒌蒿满地芦芽短，正是河豚欲上时。"
+      ],
+      "excerpt": [
+        "竹外桃花三两枝，春江水暖鸭先知。",
+        "蒌蒿满地芦芽短，正是河豚欲上时。"
+      ],
+      "sourceName": "《东坡七集》",
+      "oneLineSummary": "从桃花、鸭群到新生芦芽，初春温度的变化被一连串生命先感知。",
+      "culturalBackground": "苏轼为惠崇春江画作题诗，以画中景物并结合物候想象补出触觉与时令。",
+      "contemporaryConnection": "季节变化常先落在植物、鸟类和穿衣感受上，记录这些细节比日期更有现场感。",
+      "annotations": [
+        {
+          "term": "蒌蒿",
+          "explanation": "生于水边的草本植物。"
+        },
+        {
+          "term": "河豚欲上",
+          "explanation": "河豚春季溯江而上的时令现象。"
+        }
+      ],
+      "tags": {
+        "festivals": [],
+        "weather": [
+          "clear",
+          "cloudy"
+        ],
+        "solarTerms": [
+          "雨水",
+          "惊蛰",
+          "春分"
+        ],
+        "seasons": [
+          "spring"
+        ],
+        "timePeriods": [
+          "day"
+        ],
+        "emotions": [
+          "欣喜",
+          "生机"
+        ],
+        "lifeScenes": [
+          "观察物候",
+          "临水散步"
+        ]
+      },
+      "quality": 10,
+      "engineeringReview": {
+        "workId": "su-shi-hui-chong-chun-jiang",
+        "status": "published",
+        "reviewedAt": "2026-07-23",
+        "reviewedBy": "WeatherPoem 内容初审",
+        "sourceVerified": true,
+        "notes": "MVP 公版古典诗词种子内容；发布前仍建议按权威点校本复核。"
+      }
+    },
+    {
+      "id": "su-shi-wang-hu-lou-zui-shu",
+      "title": "六月二十七日望湖楼醉书",
+      "literaryForm": "七言绝句",
+      "author": "苏轼",
+      "dynasty": "宋",
+      "fullText": [
+        "黑云翻墨未遮山，白雨跳珠乱入船。",
+        "卷地风来忽吹散，望湖楼下水如天。"
+      ],
+      "excerpt": [
+        "黑云翻墨未遮山，白雨跳珠乱入船。",
+        "卷地风来忽吹散，望湖楼下水如天。"
+      ],
+      "sourceName": "《东坡七集》",
+      "oneLineSummary": "骤雨从黑云、跳珠到风散天开，短短四句完成一场天气转场。",
+      "culturalBackground": "苏轼任杭州通判时游西湖，在望湖楼写夏季阵雨来去迅疾的动态景象。",
+      "contemporaryConnection": "夏季天气突变很快，外出看见积雨云时应先寻找可靠遮蔽并关注预警。",
+      "annotations": [
+        {
+          "term": "翻墨",
+          "explanation": "形容乌云像打翻的墨汁。"
+        },
+        {
+          "term": "跳珠",
+          "explanation": "形容大雨点落下如珠子弹跳。"
+        }
+      ],
+      "tags": {
+        "festivals": [],
+        "weather": [
+          "heavy-rain",
+          "thunderstorm",
+          "wind"
+        ],
+        "solarTerms": [
+          "夏至",
+          "小暑",
+          "大暑"
+        ],
+        "seasons": [
+          "summer"
+        ],
+        "timePeriods": [
+          "day"
+        ],
+        "emotions": [
+          "惊奇",
+          "畅快"
+        ],
+        "lifeScenes": [
+          "观雨",
+          "临时避雨"
+        ]
+      },
+      "quality": 10,
+      "engineeringReview": {
+        "workId": "su-shi-wang-hu-lou-zui-shu",
+        "status": "published",
+        "reviewedAt": "2026-07-23",
+        "reviewedBy": "WeatherPoem 内容初审",
+        "sourceVerified": true,
+        "notes": "MVP 公版古典诗词种子内容；发布前仍建议按权威点校本复核。"
+      }
+    },
+    {
+      "id": "su-shi-huan-xi-sha-you-qi-shui",
+      "title": "浣溪沙·游蕲水清泉寺",
+      "literaryForm": "词",
+      "author": "苏轼",
+      "dynasty": "宋",
+      "fullText": [
+        "山下兰芽短浸溪，松间沙路净无泥，萧萧暮雨子规啼。",
+        "谁道人生无再少？门前流水尚能西！休将白发唱黄鸡。"
+      ],
+      "excerpt": [
+        "山下兰芽短浸溪，松间沙路净无泥，萧萧暮雨子规啼。",
+        "谁道人生无再少？门前流水尚能西！休将白发唱黄鸡。"
+      ],
+      "sourceName": "《东坡乐府》",
+      "oneLineSummary": "暮雨中的清泉逆向西流，让诗人从自然发现不向衰老低头的理由。",
+      "culturalBackground": "苏轼贬居黄州期间游蕲水清泉寺，由溪水西流生发积极自勉。",
+      "contemporaryConnection": "年龄和一次受挫都不是停止学习的理由，可以从今天重启一个很小的长期习惯。",
+      "annotations": [
+        {
+          "term": "子规",
+          "explanation": "杜鹃鸟。"
+        },
+        {
+          "term": "唱黄鸡",
+          "explanation": "感叹时光流逝、人生衰老。"
+        }
+      ],
+      "tags": {
+        "festivals": [],
+        "weather": [
+          "light-rain",
+          "rain",
+          "cloudy"
+        ],
+        "solarTerms": [
+          "清明",
+          "谷雨"
+        ],
+        "seasons": [
+          "spring"
+        ],
+        "timePeriods": [
+          "evening"
+        ],
+        "emotions": [
+          "自勉",
+          "豁达"
+        ],
+        "lifeScenes": [
+          "雨中漫步",
+          "重新开始"
+        ]
+      },
+      "quality": 10,
+      "engineeringReview": {
+        "workId": "su-shi-huan-xi-sha-you-qi-shui",
+        "status": "published",
+        "reviewedAt": "2026-07-23",
+        "reviewedBy": "WeatherPoem 内容初审",
+        "sourceVerified": true,
+        "notes": "MVP 公版古典诗词种子内容；发布前仍建议按权威点校本复核。"
+      }
+    },
+    {
+      "id": "wang-an-shi-bo-chuan-gua-zhou",
+      "title": "泊船瓜洲",
+      "literaryForm": "七言绝句",
+      "author": "王安石",
+      "dynasty": "宋",
+      "fullText": [
+        "京口瓜洲一水间，钟山只隔数重山。",
+        "春风又绿江南岸，明月何时照我还。"
+      ],
+      "excerpt": [
+        "京口瓜洲一水间，钟山只隔数重山。",
+        "春风又绿江南岸，明月何时照我还。"
+      ],
+      "sourceName": "《临川先生文集》",
+      "oneLineSummary": "春风让江南岸重新变绿，也让隔水望乡的人更急切地想归去。",
+      "culturalBackground": "王安石泊船瓜洲，隔江遥望钟山，以“绿”字写春风带来的江南变化。",
+      "contemporaryConnection": "返校或启程时，记住沿途季节颜色，也给下一次回家留下一个具体期待。",
+      "annotations": [
+        {
+          "term": "京口",
+          "explanation": "今江苏镇江。"
+        },
+        {
+          "term": "钟山",
+          "explanation": "今南京紫金山，王安石居所所在方向。"
+        }
+      ],
+      "tags": {
+        "festivals": [],
+        "weather": [
+          "wind",
+          "clear",
+          "cloudy"
+        ],
+        "solarTerms": [
+          "立春",
+          "雨水",
+          "惊蛰"
+        ],
+        "seasons": [
+          "spring"
+        ],
+        "timePeriods": [
+          "evening",
+          "night"
+        ],
+        "emotions": [
+          "思乡",
+          "期待"
+        ],
+        "lifeScenes": [
+          "乘船",
+          "返乡"
+        ]
+      },
+      "quality": 10,
+      "engineeringReview": {
+        "workId": "wang-an-shi-bo-chuan-gua-zhou",
+        "status": "published",
+        "reviewedAt": "2026-07-23",
+        "reviewedBy": "WeatherPoem 内容初审",
+        "sourceVerified": true,
+        "notes": "MVP 公版古典诗词种子内容；发布前仍建议按权威点校本复核。"
+      }
+    },
+    {
+      "id": "wang-an-shi-shu-hu-yin-xian-sheng-bi",
+      "title": "书湖阴先生壁",
+      "literaryForm": "七言绝句",
+      "author": "王安石",
+      "dynasty": "宋",
+      "fullText": [
+        "茅檐长扫净无苔，花木成畦手自栽。",
+        "一水护田将绿绕，两山排闼送青来。"
+      ],
+      "excerpt": [
+        "茅檐长扫净无苔，花木成畦手自栽。",
+        "一水护田将绿绕，两山排闼送青来。"
+      ],
+      "sourceName": "《临川先生文集》",
+      "oneLineSummary": "整洁庭院与环田青山彼此照应，日常劳作也能营造有秩序的美。",
+      "culturalBackground": "王安石题写邻居湖阴先生居所，以对偶和拟人赞美庭院环境与主人勤劳。",
+      "contemporaryConnection": "整理书桌、照料一盆植物，会让生活空间从临时落脚处变成可以安顿自己的地方。",
+      "annotations": [
+        {
+          "term": "成畦",
+          "explanation": "整理成一块块整齐的田圃。"
+        },
+        {
+          "term": "排闼",
+          "explanation": "推开门，闼指小门。"
+        }
+      ],
+      "tags": {
+        "festivals": [],
+        "weather": [
+          "clear",
+          "cloudy"
+        ],
+        "solarTerms": [
+          "谷雨",
+          "小满",
+          "芒种"
+        ],
+        "seasons": [
+          "spring",
+          "summer"
+        ],
+        "timePeriods": [
+          "morning",
+          "day"
+        ],
+        "emotions": [
+          "清新",
+          "安定"
+        ],
+        "lifeScenes": [
+          "整理空间",
+          "园艺"
+        ]
+      },
+      "quality": 9,
+      "engineeringReview": {
+        "workId": "wang-an-shi-shu-hu-yin-xian-sheng-bi",
+        "status": "published",
+        "reviewedAt": "2026-07-23",
+        "reviewedBy": "WeatherPoem 内容初审",
+        "sourceVerified": true,
+        "notes": "MVP 公版古典诗词种子内容；发布前仍建议按权威点校本复核。"
+      }
+    },
+    {
+      "id": "wang-an-shi-deng-fei-lai-feng",
+      "title": "登飞来峰",
+      "literaryForm": "七言绝句",
+      "author": "王安石",
+      "dynasty": "宋",
+      "fullText": [
+        "飞来山上千寻塔，闻说鸡鸣见日升。",
+        "不畏浮云遮望眼，自缘身在最高层。"
+      ],
+      "excerpt": [
+        "飞来山上千寻塔，闻说鸡鸣见日升。",
+        "不畏浮云遮望眼，自缘身在最高层。"
+      ],
+      "sourceName": "《临川先生文集》",
+      "oneLineSummary": "站到更高处，遮蔽视线的浮云不再决定判断和方向。",
+      "culturalBackground": "王安石早年登浙江飞来峰，以登高所见表达开阔眼界与政治抱负。",
+      "contemporaryConnection": "被眼前问题困住时，回到长期目标和完整证据，常能看清局部情绪遮住了什么。",
+      "annotations": [
+        {
+          "term": "千寻",
+          "explanation": "极言塔高，寻为古代长度单位。"
+        },
+        {
+          "term": "自缘",
+          "explanation": "正因为。"
+        }
+      ],
+      "tags": {
+        "festivals": [],
+        "weather": [
+          "cloudy",
+          "fog",
+          "clear"
+        ],
+        "solarTerms": [
+          "春分",
+          "秋分"
+        ],
+        "seasons": [
+          "spring",
+          "autumn"
+        ],
+        "timePeriods": [
+          "morning"
+        ],
+        "emotions": [
+          "坚定",
+          "开阔"
+        ],
+        "lifeScenes": [
+          "登高",
+          "确定方向"
+        ]
+      },
+      "quality": 10,
+      "engineeringReview": {
+        "workId": "wang-an-shi-deng-fei-lai-feng",
+        "status": "published",
+        "reviewedAt": "2026-07-23",
+        "reviewedBy": "WeatherPoem 内容初审",
+        "sourceVerified": true,
+        "notes": "MVP 公版古典诗词种子内容；发布前仍建议按权威点校本复核。"
+      }
+    },
+    {
+      "id": "lu-you-you-shan-xi-cun",
+      "title": "游山西村",
+      "literaryForm": "七言律诗",
+      "author": "陆游",
+      "dynasty": "宋",
+      "fullText": [
+        "莫笑农家腊酒浑，丰年留客足鸡豚。",
+        "山重水复疑无路，柳暗花明又一村。",
+        "箫鼓追随春社近，衣冠简朴古风存。",
+        "从今若许闲乘月，拄杖无时夜叩门。"
+      ],
+      "excerpt": [
+        "莫笑农家腊酒浑，丰年留客足鸡豚。",
+        "山重水复疑无路，柳暗花明又一村。"
+      ],
+      "sourceName": "《剑南诗稿》",
+      "oneLineSummary": "山路曲折之后忽见村落，热情人情与春社风俗让旅程重新明亮。",
+      "culturalBackground": "陆游罢官闲居山阴时游访乡村，写农家待客、山水转折与春社民俗。",
+      "contemporaryConnection": "项目遇到看似无路的节点时，先把问题拆小并多走一步，转机常出现在具体行动之后。",
+      "annotations": [
+        {
+          "term": "腊酒",
+          "explanation": "腊月酿造的酒。"
+        },
+        {
+          "term": "春社",
+          "explanation": "春季祭祀土地神、祈求丰收的民俗活动。"
+        }
+      ],
+      "tags": {
+        "festivals": [],
+        "weather": [
+          "clear",
+          "cloudy"
+        ],
+        "solarTerms": [
+          "惊蛰",
+          "春分"
+        ],
+        "seasons": [
+          "spring"
+        ],
+        "timePeriods": [
+          "day",
+          "night"
+        ],
+        "emotions": [
+          "喜悦",
+          "豁然"
+        ],
+        "lifeScenes": [
+          "乡村游访",
+          "克服困难"
+        ]
+      },
+      "quality": 10,
+      "engineeringReview": {
+        "workId": "lu-you-you-shan-xi-cun",
+        "status": "published",
+        "reviewedAt": "2026-07-23",
+        "reviewedBy": "WeatherPoem 内容初审",
+        "sourceVerified": true,
+        "notes": "MVP 公版古典诗词种子内容；发布前仍建议按权威点校本复核。"
+      }
+    },
+    {
+      "id": "lu-you-shi-er",
+      "title": "示儿",
+      "literaryForm": "七言绝句",
+      "author": "陆游",
+      "dynasty": "宋",
+      "fullText": [
+        "死去元知万事空，但悲不见九州同。",
+        "王师北定中原日，家祭无忘告乃翁。"
+      ],
+      "excerpt": [
+        "死去元知万事空，但悲不见九州同。",
+        "王师北定中原日，家祭无忘告乃翁。"
+      ],
+      "sourceName": "《剑南诗稿》",
+      "oneLineSummary": "生命将尽时仍未放下家国愿望，并把最后的嘱托交给后人。",
+      "culturalBackground": "陆游临终前写给儿子，表达未见国家统一的遗憾与至死不改的期待。",
+      "contemporaryConnection": "理解家国情怀不只需要口号，也需要知道一个人如何把信念坚持到生命最后。",
+      "annotations": [
+        {
+          "term": "元知",
+          "explanation": "本来知道，元同“原”。"
+        },
+        {
+          "term": "乃翁",
+          "explanation": "你们的父亲，诗人自指。"
+        }
+      ],
+      "tags": {
+        "festivals": [
+          "清明节"
+        ],
+        "weather": [
+          "overcast",
+          "cold"
+        ],
+        "solarTerms": [
+          "清明",
+          "大寒"
+        ],
+        "seasons": [
+          "winter",
+          "spring"
+        ],
+        "timePeriods": [
+          "day"
+        ],
+        "emotions": [
+          "悲壮",
+          "坚定"
+        ],
+        "lifeScenes": [
+          "纪念",
+          "家国教育"
+        ]
+      },
+      "quality": 10,
+      "engineeringReview": {
+        "workId": "lu-you-shi-er",
+        "status": "published",
+        "reviewedAt": "2026-07-23",
+        "reviewedBy": "WeatherPoem 内容初审",
+        "sourceVerified": true,
+        "notes": "MVP 公版古典诗词种子内容；发布前仍建议按权威点校本复核。"
+      }
+    },
+    {
+      "id": "lu-you-shi-yi-yue-si-ri",
+      "title": "十一月四日风雨大作",
+      "literaryForm": "七言绝句",
+      "author": "陆游",
+      "dynasty": "宋",
+      "fullText": [
+        "僵卧孤村不自哀，尚思为国戍轮台。",
+        "夜阑卧听风吹雨，铁马冰河入梦来。"
+      ],
+      "excerpt": [
+        "僵卧孤村不自哀，尚思为国戍轮台。",
+        "夜阑卧听风吹雨，铁马冰河入梦来。"
+      ],
+      "sourceName": "《剑南诗稿》",
+      "oneLineSummary": "风雨深夜里，衰病处境仍未压住驰骋边疆的家国之梦。",
+      "culturalBackground": "陆游晚年闲居山阴，夜听风雨，将现实声响转化为梦中铁骑冰河。",
+      "contemporaryConnection": "身体和现实限制会改变行动方式，但仍可以用学习、记录与服务保留对公共事务的关心。",
+      "annotations": [
+        {
+          "term": "夜阑",
+          "explanation": "夜深。"
+        },
+        {
+          "term": "轮台",
+          "explanation": "汉代西域地名，诗中代指边疆。"
+        }
+      ],
+      "tags": {
+        "festivals": [],
+        "weather": [
+          "heavy-rain",
+          "wind",
+          "cold"
+        ],
+        "solarTerms": [
+          "立冬",
+          "小雪"
+        ],
+        "seasons": [
+          "winter"
+        ],
+        "timePeriods": [
+          "night"
+        ],
+        "emotions": [
+          "豪壮",
+          "不屈"
+        ],
+        "lifeScenes": [
+          "听风雨",
+          "卧病自勉"
+        ]
+      },
+      "quality": 10,
+      "engineeringReview": {
+        "workId": "lu-you-shi-yi-yue-si-ri",
+        "status": "published",
+        "reviewedAt": "2026-07-23",
+        "reviewedBy": "WeatherPoem 内容初审",
+        "sourceVerified": true,
+        "notes": "MVP 公版古典诗词种子内容；发布前仍建议按权威点校本复核。"
+      }
+    },
+    {
+      "id": "yang-wan-li-xiao-chi",
+      "title": "小池",
+      "literaryForm": "七言绝句",
+      "author": "杨万里",
+      "dynasty": "宋",
+      "fullText": [
+        "泉眼无声惜细流，树阴照水爱晴柔。",
+        "小荷才露尖尖角，早有蜻蜓立上头。"
+      ],
+      "excerpt": [
+        "泉眼无声惜细流，树阴照水爱晴柔。",
+        "小荷才露尖尖角，早有蜻蜓立上头。"
+      ],
+      "sourceName": "《诚斋集》",
+      "oneLineSummary": "细泉、柔光和初生小荷共同托起一只先到的蜻蜓，轻巧而有生机。",
+      "culturalBackground": "杨万里以敏锐观察写初夏小池，捕捉荷叶刚露水面与蜻蜓停驻的瞬间。",
+      "contemporaryConnection": "在校园固定观察一棵树或一片水面，微小变化会让季节不再只是日历名词。",
+      "annotations": [
+        {
+          "term": "泉眼",
+          "explanation": "泉水流出的口子。"
+        },
+        {
+          "term": "晴柔",
+          "explanation": "晴日柔和的光景。"
+        }
+      ],
+      "tags": {
+        "festivals": [],
+        "weather": [
+          "clear",
+          "hot"
+        ],
+        "solarTerms": [
+          "立夏",
+          "小满"
+        ],
+        "seasons": [
+          "summer"
+        ],
+        "timePeriods": [
+          "morning",
+          "day"
+        ],
+        "emotions": [
+          "欣喜",
+          "轻盈"
+        ],
+        "lifeScenes": [
+          "观察自然",
+          "校园散步"
+        ]
+      },
+      "quality": 10,
+      "engineeringReview": {
+        "workId": "yang-wan-li-xiao-chi",
+        "status": "published",
+        "reviewedAt": "2026-07-23",
+        "reviewedBy": "WeatherPoem 内容初审",
+        "sourceVerified": true,
+        "notes": "MVP 公版古典诗词种子内容；发布前仍建议按权威点校本复核。"
+      }
+    },
+    {
+      "id": "yang-wan-li-su-xin-shi",
+      "title": "宿新市徐公店",
+      "literaryForm": "七言绝句",
+      "author": "杨万里",
+      "dynasty": "宋",
+      "fullText": [
+        "篱落疏疏一径深，树头新绿未成阴。",
+        "儿童急走追黄蝶，飞入菜花无处寻。"
+      ],
+      "excerpt": [
+        "篱落疏疏一径深，树头新绿未成阴。",
+        "儿童急走追黄蝶，飞入菜花无处寻。"
+      ],
+      "sourceName": "《诚斋集》",
+      "oneLineSummary": "黄蝶飞进大片菜花后突然消失，儿童追逐的热闹停在明亮春色里。",
+      "culturalBackground": "杨万里旅宿新市徐公店，写疏篱、新绿、菜花与追蝶儿童的暮春乡村。",
+      "contemporaryConnection": "允许自己偶尔追逐一件没有功利结果的小趣味，生活会恢复一些轻盈。",
+      "annotations": [
+        {
+          "term": "篱落",
+          "explanation": "篱笆。"
+        },
+        {
+          "term": "急走",
+          "explanation": "快速奔跑。"
+        }
+      ],
+      "tags": {
+        "festivals": [],
+        "weather": [
+          "clear",
+          "cloudy"
+        ],
+        "solarTerms": [
+          "清明",
+          "谷雨"
+        ],
+        "seasons": [
+          "spring"
+        ],
+        "timePeriods": [
+          "day"
+        ],
+        "emotions": [
+          "童趣",
+          "明快"
+        ],
+        "lifeScenes": [
+          "郊游",
+          "观察儿童"
+        ]
+      },
+      "quality": 10,
+      "engineeringReview": {
+        "workId": "yang-wan-li-su-xin-shi",
+        "status": "published",
+        "reviewedAt": "2026-07-23",
+        "reviewedBy": "WeatherPoem 内容初审",
+        "sourceVerified": true,
+        "notes": "MVP 公版古典诗词种子内容；发布前仍建议按权威点校本复核。"
+      }
+    },
+    {
+      "id": "yang-wan-li-zhou-guo-an-ren",
+      "title": "舟过安仁",
+      "literaryForm": "七言绝句",
+      "author": "杨万里",
+      "dynasty": "宋",
+      "fullText": [
+        "一叶渔船两小童，收篙停棹坐船中。",
+        "怪生无雨都张伞，不是遮头是使风。"
+      ],
+      "excerpt": [
+        "一叶渔船两小童，收篙停棹坐船中。",
+        "怪生无雨都张伞，不是遮头是使风。"
+      ],
+      "sourceName": "《诚斋集》",
+      "oneLineSummary": "无雨却张伞，原来孩子把伞当作船帆，聪明来自游戏般的观察。",
+      "culturalBackground": "杨万里舟行安仁，发现两名儿童用伞借风行船，写成富有童趣的生活片段。",
+      "contemporaryConnection": "做原型时可以暂时跳出标准用法，先用手边材料验证一个想法是否成立。",
+      "annotations": [
+        {
+          "term": "篙",
+          "explanation": "撑船用的长竹竿。"
+        },
+        {
+          "term": "棹",
+          "explanation": "船桨。"
+        }
+      ],
+      "tags": {
+        "festivals": [],
+        "weather": [
+          "wind",
+          "cloudy",
+          "clear"
+        ],
+        "solarTerms": [
+          "小满",
+          "芒种"
+        ],
+        "seasons": [
+          "summer"
+        ],
+        "timePeriods": [
+          "day"
+        ],
+        "emotions": [
+          "好奇",
+          "童趣"
+        ],
+        "lifeScenes": [
+          "乘船",
+          "创意实践"
+        ]
+      },
+      "quality": 9,
+      "engineeringReview": {
+        "workId": "yang-wan-li-zhou-guo-an-ren",
+        "status": "published",
+        "reviewedAt": "2026-07-23",
+        "reviewedBy": "WeatherPoem 内容初审",
+        "sourceVerified": true,
+        "notes": "MVP 公版古典诗词种子内容；发布前仍建议按权威点校本复核。"
+      }
+    },
+    {
+      "id": "ye-shao-weng-you-yuan-bu-zhi",
+      "title": "游园不值",
+      "literaryForm": "七言绝句",
+      "author": "叶绍翁",
+      "dynasty": "宋",
+      "fullText": [
+        "应怜屐齿印苍苔，小扣柴扉久不开。",
+        "春色满园关不住，一枝红杏出墙来。"
+      ],
+      "excerpt": [
+        "应怜屐齿印苍苔，小扣柴扉久不开。",
+        "春色满园关不住，一枝红杏出墙来。"
+      ],
+      "sourceName": "《靖逸小稿》",
+      "oneLineSummary": "园门虽然未开，一枝越墙红杏已经把满园春意递到门外。",
+      "culturalBackground": "叶绍翁访园未遇，由门外红杏想象园中春色，以小见大、转失望为惊喜。",
+      "contemporaryConnection": "计划落空时先看看现场还留下什么线索，意外收获可能来自原目标之外。",
+      "annotations": [
+        {
+          "term": "不值",
+          "explanation": "没有遇到主人。"
+        },
+        {
+          "term": "屐齿",
+          "explanation": "木屐底部的齿状部分。"
+        }
+      ],
+      "tags": {
+        "festivals": [],
+        "weather": [
+          "clear",
+          "cloudy"
+        ],
+        "solarTerms": [
+          "惊蛰",
+          "春分",
+          "清明"
+        ],
+        "seasons": [
+          "spring"
+        ],
+        "timePeriods": [
+          "day"
+        ],
+        "emotions": [
+          "惊喜",
+          "明快"
+        ],
+        "lifeScenes": [
+          "访友",
+          "赏春"
+        ]
+      },
+      "quality": 10,
+      "engineeringReview": {
+        "workId": "ye-shao-weng-you-yuan-bu-zhi",
+        "status": "published",
+        "reviewedAt": "2026-07-23",
+        "reviewedBy": "WeatherPoem 内容初审",
+        "sourceVerified": true,
+        "notes": "MVP 公版古典诗词种子内容；发布前仍建议按权威点校本复核。"
+      }
+    },
+    {
+      "id": "weng-juan-xiang-cun-si-yue",
+      "title": "乡村四月",
+      "literaryForm": "七言绝句",
+      "author": "翁卷",
+      "dynasty": "宋",
+      "fullText": [
+        "绿遍山原白满川，子规声里雨如烟。",
+        "乡村四月闲人少，才了蚕桑又插田。"
+      ],
+      "excerpt": [
+        "绿遍山原白满川，子规声里雨如烟。",
+        "乡村四月闲人少，才了蚕桑又插田。"
+      ],
+      "sourceName": "《苇碧轩集》",
+      "oneLineSummary": "烟雨中的青山白水很美，画面背后却是接续不断的农事劳动。",
+      "culturalBackground": "翁卷写江南初夏乡村，前两句写景，后两句转向蚕桑与插秧的繁忙。",
+      "contemporaryConnection": "看到优美农产品和乡村景观时，也应理解背后具体的季节劳动与生产节奏。",
+      "annotations": [
+        {
+          "term": "白满川",
+          "explanation": "水光映照，河川呈现白亮颜色。"
+        },
+        {
+          "term": "才了",
+          "explanation": "刚刚结束。"
+        }
+      ],
+      "tags": {
+        "festivals": [],
+        "weather": [
+          "light-rain",
+          "rain",
+          "fog"
+        ],
+        "solarTerms": [
+          "谷雨",
+          "立夏",
+          "小满"
+        ],
+        "seasons": [
+          "spring",
+          "summer"
+        ],
+        "timePeriods": [
+          "day"
+        ],
+        "emotions": [
+          "清新",
+          "勤勉"
+        ],
+        "lifeScenes": [
+          "乡村观察",
+          "劳动"
+        ]
+      },
+      "quality": 10,
+      "engineeringReview": {
+        "workId": "weng-juan-xiang-cun-si-yue",
+        "status": "published",
+        "reviewedAt": "2026-07-23",
+        "reviewedBy": "WeatherPoem 内容初审",
+        "sourceVerified": true,
+        "notes": "MVP 公版古典诗词种子内容；发布前仍建议按权威点校本复核。"
+      }
+    },
+    {
+      "id": "fan-cheng-da-si-shi-tian-yuan-mei-zi",
+      "title": "四时田园杂兴·梅子金黄杏子肥",
+      "literaryForm": "七言绝句",
+      "author": "范成大",
+      "dynasty": "宋",
+      "fullText": [
+        "梅子金黄杏子肥，麦花雪白菜花稀。",
+        "日长篱落无人过，惟有蜻蜓蛱蝶飞。"
+      ],
+      "excerpt": [
+        "梅子金黄杏子肥，麦花雪白菜花稀。",
+        "日长篱落无人过，惟有蜻蜓蛱蝶飞。"
+      ],
+      "sourceName": "《石湖居士诗集》",
+      "oneLineSummary": "初夏果实成熟、花事转换，长日静院里只有蜻蜓与蝴蝶来往。",
+      "culturalBackground": "范成大《四时田园杂兴》组诗记录四季农事与乡村生活，此首写初夏成熟与静谧。",
+      "contemporaryConnection": "完成密集阶段后，安静并非空白；给自己一段没有安排的恢复时间。",
+      "annotations": [
+        {
+          "term": "麦花",
+          "explanation": "麦子开出的细小白花。"
+        },
+        {
+          "term": "蛱蝶",
+          "explanation": "蝴蝶的一类。"
+        }
+      ],
+      "tags": {
+        "festivals": [],
+        "weather": [
+          "clear",
+          "hot"
+        ],
+        "solarTerms": [
+          "小满",
+          "芒种",
+          "夏至"
+        ],
+        "seasons": [
+          "summer"
+        ],
+        "timePeriods": [
+          "day"
+        ],
+        "emotions": [
+          "宁静",
+          "丰足"
+        ],
+        "lifeScenes": [
+          "田园观察",
+          "休息"
+        ]
+      },
+      "quality": 9,
+      "engineeringReview": {
+        "workId": "fan-cheng-da-si-shi-tian-yuan-mei-zi",
+        "status": "published",
+        "reviewedAt": "2026-07-23",
+        "reviewedBy": "WeatherPoem 内容初审",
+        "sourceVerified": true,
+        "notes": "MVP 公版古典诗词种子内容；发布前仍建议按权威点校本复核。"
+      }
+    },
+    {
+      "id": "fan-cheng-da-si-shi-tian-yuan-zhou-chu",
+      "title": "四时田园杂兴·昼出耘田夜绩麻",
+      "literaryForm": "七言绝句",
+      "author": "范成大",
+      "dynasty": "宋",
+      "fullText": [
+        "昼出耘田夜绩麻，村庄儿女各当家。",
+        "童孙未解供耕织，也傍桑阴学种瓜。"
+      ],
+      "excerpt": [
+        "昼出耘田夜绩麻，村庄儿女各当家。",
+        "童孙未解供耕织，也傍桑阴学种瓜。"
+      ],
+      "sourceName": "《石湖居士诗集》",
+      "oneLineSummary": "大人昼夜劳作，孩子也在桑树下模仿种瓜，劳动经验由生活自然传递。",
+      "culturalBackground": "范成大以乡村家庭为中心写夏日耕织，既见劳作强度，也见儿童模仿参与。",
+      "contemporaryConnection": "学习传统技艺时，观看之后亲手做一次，才会理解动作里的知识。",
+      "annotations": [
+        {
+          "term": "耘田",
+          "explanation": "在田间除草。"
+        },
+        {
+          "term": "绩麻",
+          "explanation": "把麻搓捻成线。"
+        }
+      ],
+      "tags": {
+        "festivals": [],
+        "weather": [
+          "clear",
+          "hot"
+        ],
+        "solarTerms": [
+          "芒种",
+          "夏至",
+          "小暑"
+        ],
+        "seasons": [
+          "summer"
+        ],
+        "timePeriods": [
+          "day",
+          "night"
+        ],
+        "emotions": [
+          "勤劳",
+          "温厚"
+        ],
+        "lifeScenes": [
+          "劳动",
+          "实践学习"
+        ]
+      },
+      "quality": 9,
+      "engineeringReview": {
+        "workId": "fan-cheng-da-si-shi-tian-yuan-zhou-chu",
+        "status": "published",
+        "reviewedAt": "2026-07-23",
+        "reviewedBy": "WeatherPoem 内容初审",
+        "sourceVerified": true,
+        "notes": "MVP 公版古典诗词种子内容；发布前仍建议按权威点校本复核。"
+      }
+    },
+    {
+      "id": "zhu-xi-chun-ri",
+      "title": "春日",
+      "literaryForm": "七言绝句",
+      "author": "朱熹",
+      "dynasty": "宋",
+      "fullText": [
+        "胜日寻芳泗水滨，无边光景一时新。",
+        "等闲识得东风面，万紫千红总是春。"
+      ],
+      "excerpt": [
+        "胜日寻芳泗水滨，无边光景一时新。",
+        "等闲识得东风面，万紫千红总是春。"
+      ],
+      "sourceName": "《晦庵先生朱文公文集》",
+      "oneLineSummary": "东风并不可见，却通过万紫千红让人认识春天更新万物的力量。",
+      "culturalBackground": "朱熹以泗水寻芳写春景，历来亦被理解为借春日比喻追寻圣贤之学。",
+      "contemporaryConnection": "抽象知识需要可见证据来理解，学习时主动寻找实例、现象与可操作的练习。",
+      "annotations": [
+        {
+          "term": "胜日",
+          "explanation": "天气晴好的日子。"
+        },
+        {
+          "term": "等闲",
+          "explanation": "轻易、寻常。"
+        }
+      ],
+      "tags": {
+        "festivals": [],
+        "weather": [
+          "clear",
+          "wind"
+        ],
+        "solarTerms": [
+          "春分",
+          "清明",
+          "谷雨"
+        ],
+        "seasons": [
+          "spring"
+        ],
+        "timePeriods": [
+          "day"
+        ],
+        "emotions": [
+          "欣喜",
+          "开阔"
+        ],
+        "lifeScenes": [
+          "踏青",
+          "学习"
+        ]
+      },
+      "quality": 10,
+      "engineeringReview": {
+        "workId": "zhu-xi-chun-ri",
+        "status": "published",
+        "reviewedAt": "2026-07-23",
+        "reviewedBy": "WeatherPoem 内容初审",
+        "sourceVerified": true,
+        "notes": "MVP 公版古典诗词种子内容；发布前仍建议按权威点校本复核。"
+      }
+    },
+    {
+      "id": "zhu-xi-guan-shu-you-gan",
+      "title": "观书有感",
+      "literaryForm": "七言绝句",
+      "author": "朱熹",
+      "dynasty": "宋",
+      "fullText": [
+        "半亩方塘一鉴开，天光云影共徘徊。",
+        "问渠那得清如许？为有源头活水来。"
+      ],
+      "excerpt": [
+        "半亩方塘一鉴开，天光云影共徘徊。",
+        "问渠那得清如许？为有源头活水来。"
+      ],
+      "sourceName": "《晦庵先生朱文公文集》",
+      "oneLineSummary": "方塘因源头活水保持清澈，人的认识也需要不断吸收新的真实经验。",
+      "culturalBackground": "朱熹借方塘水清与活水流入说明读书治学之理，是宋代理趣诗代表作。",
+      "contemporaryConnection": "知识库要保持有效，不能只收藏旧笔记，还要持续验证、更新并连接实践。",
+      "annotations": [
+        {
+          "term": "鉴",
+          "explanation": "镜子，诗中形容水面明净如镜。"
+        },
+        {
+          "term": "渠",
+          "explanation": "它，指方塘。"
+        }
+      ],
+      "tags": {
+        "festivals": [],
+        "weather": [
+          "clear",
+          "cloudy"
+        ],
+        "solarTerms": [],
+        "seasons": [
+          "spring",
+          "summer",
+          "autumn"
+        ],
+        "timePeriods": [
+          "day"
+        ],
+        "emotions": [
+          "澄明",
+          "求知"
+        ],
+        "lifeScenes": [
+          "阅读",
+          "知识整理"
+        ]
+      },
+      "quality": 10,
+      "engineeringReview": {
+        "workId": "zhu-xi-guan-shu-you-gan",
+        "status": "published",
+        "reviewedAt": "2026-07-23",
+        "reviewedBy": "WeatherPoem 内容初审",
+        "sourceVerified": true,
+        "notes": "MVP 公版古典诗词种子内容；发布前仍建议按权威点校本复核。"
+      }
+    },
+    {
+      "id": "li-qing-zhao-xia-ri-jue-ju",
+      "title": "夏日绝句",
+      "literaryForm": "五言绝句",
+      "author": "李清照",
+      "dynasty": "宋",
+      "fullText": [
+        "生当作人杰，死亦为鬼雄。",
+        "至今思项羽，不肯过江东。"
+      ],
+      "excerpt": [
+        "生当作人杰，死亦为鬼雄。",
+        "至今思项羽，不肯过江东。"
+      ],
+      "sourceName": "《漱玉集》",
+      "oneLineSummary": "以项羽不肯渡江的历史选择，鲜明表达对人格气节的判断。",
+      "culturalBackground": "李清照南渡后借咏项羽表达对英雄气节的推崇，也寄寓对现实的批评。",
+      "contemporaryConnection": "价值判断要落到选择上：在压力中仍明确什么不能交换，原则才不只是口号。",
+      "annotations": [
+        {
+          "term": "人杰",
+          "explanation": "人中的豪杰。"
+        },
+        {
+          "term": "江东",
+          "explanation": "长江下游江南地区，项羽起兵之地。"
+        }
+      ],
+      "tags": {
+        "festivals": [
+          "端午节"
+        ],
+        "weather": [
+          "hot",
+          "clear"
+        ],
+        "solarTerms": [
+          "芒种",
+          "夏至"
+        ],
+        "seasons": [
+          "summer"
+        ],
+        "timePeriods": [
+          "day"
+        ],
+        "emotions": [
+          "慷慨",
+          "坚定"
+        ],
+        "lifeScenes": [
+          "历史思考",
+          "价值选择"
+        ]
+      },
+      "quality": 10,
+      "engineeringReview": {
+        "workId": "li-qing-zhao-xia-ri-jue-ju",
+        "status": "published",
+        "reviewedAt": "2026-07-23",
+        "reviewedBy": "WeatherPoem 内容初审",
+        "sourceVerified": true,
+        "notes": "MVP 公版古典诗词种子内容；发布前仍建议按权威点校本复核。"
+      }
+    },
+    {
+      "id": "xin-qi-ji-xi-jiang-yue",
+      "title": "西江月·夜行黄沙道中",
+      "literaryForm": "词",
+      "author": "辛弃疾",
+      "dynasty": "宋",
+      "fullText": [
+        "明月别枝惊鹊，清风半夜鸣蝉。",
+        "稻花香里说丰年，听取蛙声一片。",
+        "七八个星天外，两三点雨山前。",
+        "旧时茅店社林边，路转溪桥忽见。"
+      ],
+      "excerpt": [
+        "明月别枝惊鹊，清风半夜鸣蝉。",
+        "稻花香里说丰年，听取蛙声一片。"
+      ],
+      "sourceName": "《稼轩长短句》",
+      "oneLineSummary": "月夜稻香、蝉鸣蛙声与几点急雨，把乡村丰年写成可以听见的现场。",
+      "culturalBackground": "辛弃疾闲居江西上饶时夜行黄沙岭，以多种感官写夏夜乡村与骤雨寻路。",
+      "contemporaryConnection": "夜间散步时降低耳机音量，留意风、虫鸣和湿度，熟悉的路也会出现新的层次。",
+      "annotations": [
+        {
+          "term": "别枝",
+          "explanation": "斜出的树枝。"
+        },
+        {
+          "term": "社林",
+          "explanation": "土地庙附近的树林。"
+        }
+      ],
+      "tags": {
+        "festivals": [],
+        "weather": [
+          "clear",
+          "light-rain",
+          "wind",
+          "hot"
+        ],
+        "solarTerms": [
+          "芒种",
+          "夏至",
+          "小暑"
+        ],
+        "seasons": [
+          "summer"
+        ],
+        "timePeriods": [
+          "night"
+        ],
+        "emotions": [
+          "喜悦",
+          "安闲"
+        ],
+        "lifeScenes": [
+          "夜行",
+          "听虫鸣"
+        ]
+      },
+      "quality": 10,
+      "engineeringReview": {
+        "workId": "xin-qi-ji-xi-jiang-yue",
+        "status": "published",
+        "reviewedAt": "2026-07-23",
+        "reviewedBy": "WeatherPoem 内容初审",
+        "sourceVerified": true,
+        "notes": "MVP 公版古典诗词种子内容；发布前仍建议按权威点校本复核。"
+      }
+    }
+  ]
+}

@@ -1,0 +1,271 @@
+{
+  "schemaVersion": "1.0",
+  "planVersion": "2026.07-four-week-v1",
+  "product": "WeatherPoem",
+  "appVersion": "0.2.0",
+  "contentVersion": "2026.07.1",
+  "generatedAt": "2026-09-09T18:58:26.412Z",
+  "status": "execution-kit-ready-entry-gates-not-satisfied",
+  "inputs": {
+    "packageJson": {
+      "path": "package.json",
+      "sha256": "2E9DDA60A4664924B4A84EA71DDE11A2FC6E14548C911785B3DF5E63E75D5D5F"
+    },
+    "contentCatalog": {
+      "path": "review/content-review-catalog.json",
+      "sha256": "9F06180D40278D10B8EB9C208A2DF8A207BB90ED1C16C1D126AEF3546F4D62FE"
+    },
+    "readiness": {
+      "path": "output/WeatherPoem_0.2.0_READINESS.json",
+      "sha256": "58B29DE4FF4CD0ADCABB48373F8EC481E77681B4A035DDB0B350DE1B0427DEB7"
+    },
+    "pilotPlan": {
+      "path": "review/pilot-plan.json",
+      "sha256": "6A5C19B3D41C756686BE6A222D5315F5A367EF9E6CBE7B7C7AB88E8B9B588CAD"
+    },
+    "pilotImplementation": {
+      "path": "src/core/pilot.ts",
+      "sha256": "EC1BB33FB920A3D361980BD0B3A12864CA07DA2D751C343A59C3CCB4D86323FB"
+    },
+    "scopeFreeze": {
+      "path": "review/scope-freeze-proposal.json",
+      "sha256": "B33F149D8D730279F19F85E6900F9263F6715DED15D732F2CB89CDC91E452A1D"
+    },
+    "releaseManifest": {
+      "path": "output/WeatherPoem_0.2.0_RELEASE.json",
+      "sha256": "5D4FAF610A9EB29F9833055A12B943F870410D5C62F9D17D8BEB3C25F29F619B"
+    }
+  },
+  "entryGate": {
+    "milestone": "campus-pilot",
+    "currentStatus": "not-ready",
+    "passedGateCount": 7,
+    "requiredGateCount": 18,
+    "blockingGateIds": [
+      "RQT-08",
+      "RQT-09",
+      "RQT-10",
+      "RQT-11",
+      "RQT-12",
+      "RQT-13",
+      "RQT-14",
+      "RQT-15",
+      "RQT-16",
+      "RQT-17",
+      "RQT-18"
+    ],
+    "goAllowed": false
+  },
+  "cohort": {
+    "minimumAge": 18,
+    "minimumParticipants": 30,
+    "maximumParticipants": 50,
+    "durationDays": 28,
+    "universityStudentRequired": true,
+    "voluntaryParticipationRequired": true,
+    "traditionalCultureInterestRequired": false,
+    "actualParticipantCount": null,
+    "recruitmentStarted": false
+  },
+  "versionPolicy": {
+    "appVersion": "0.2.0",
+    "contentVersion": "2026.07.1",
+    "ruleVersion": "rules-2026.07-v1",
+    "frozenCandidateSha256": "00DB4B15F96E151CD7AF795A197E422F39ABFC3CE13E4AB298BF1DE7EC2DD74B",
+    "changesDuringPilot": "P0安全、内容事实或隐私修复外不变更；任何变更分版本报告，不直接合并。"
+  },
+  "timeline": [
+    {
+      "period": "pre-pilot",
+      "action": "全部校园试点门禁通过；冻结版本；完成招募、同意、安装、退出和应急演示。"
+    },
+    {
+      "period": "week-1",
+      "action": "检查安装、自启、送达、重复弹出、崩溃和明显打扰。"
+    },
+    {
+      "period": "week-2",
+      "action": "检查情境贴合、深入阅读、不贴合反馈和天气安全。"
+    },
+    {
+      "period": "week-3",
+      "action": "检查内容重复、视觉疲劳、自启保留和主动收藏。"
+    },
+    {
+      "period": "week-4",
+      "action": "复制本地摘要、结束问卷、最终设备状态检查并邀请 6—10 人访谈。"
+    },
+    {
+      "period": "post-pilot",
+      "action": "退出并删除本地记录；汇总指标、缺陷、内容错误、问卷、访谈和 Go/No-Go。"
+    }
+  ],
+  "successMetrics": [
+    {
+      "id": "MET-01",
+      "name": "内容成功送达",
+      "operator": ">=",
+      "threshold": 95,
+      "unit": "percent",
+      "primarySource": "participant-local-aggregate",
+      "numerator": "successfulDeliveryDays",
+      "denominator": "eligibleDeliveryDays",
+      "measurementReady": true
+    },
+    {
+      "id": "MET-02",
+      "name": "同日重复自动弹出",
+      "operator": "=",
+      "threshold": 0,
+      "unit": "incidents",
+      "primarySource": "weekly-pulse-and-defect-log",
+      "numerator": "confirmedDuplicatePopupIncidents",
+      "denominator": null,
+      "measurementReady": true
+    },
+    {
+      "id": "MET-03",
+      "name": "原文、作者、篇名、出处错误",
+      "operator": "=",
+      "threshold": 0,
+      "unit": "confirmed-errors",
+      "primarySource": "content-correction-and-defect-log",
+      "numerator": "confirmedContentFactErrors",
+      "denominator": null,
+      "measurementReady": true
+    },
+    {
+      "id": "MET-04",
+      "name": "与今天不相关",
+      "operator": "<",
+      "threshold": 10,
+      "unit": "percent",
+      "primarySource": "participant-local-aggregate",
+      "numerator": "notRelevantDays",
+      "denominator": "successfulDeliveryDays",
+      "measurementReady": true
+    },
+    {
+      "id": "MET-05",
+      "name": "了解更多",
+      "operator": ">=",
+      "threshold": 15,
+      "unit": "percent",
+      "primarySource": "participant-local-aggregate",
+      "numerator": "detailOpenDays",
+      "denominator": "successfulDeliveryDays",
+      "measurementReady": true
+    },
+    {
+      "id": "MET-06",
+      "name": "四周后仍保留应用和开机启动",
+      "operator": ">=",
+      "threshold": 40,
+      "unit": "percent",
+      "primarySource": "final-device-check-and-survey",
+      "numerator": "participantsRetainingAppAndAutostart",
+      "denominator": "participantsInOutcomeDenominator",
+      "measurementReady": true
+    },
+    {
+      "id": "MET-07",
+      "name": "认为不明显打扰",
+      "operator": ">=",
+      "threshold": 85,
+      "unit": "percent",
+      "primarySource": "final-survey",
+      "numerator": "participantsReportingNotObviouslyDisruptive",
+      "denominator": "validFinalSurveyResponses",
+      "measurementReady": true
+    },
+    {
+      "id": "MET-08",
+      "name": "严重预警不当推荐",
+      "operator": "=",
+      "threshold": 0,
+      "unit": "incidents",
+      "primarySource": "warning-and-incident-log",
+      "numerator": "confirmedSevereWarningRecommendationIncidents",
+      "denominator": null,
+      "measurementReady": true
+    },
+    {
+      "id": "MET-09",
+      "name": "崩溃无感会话",
+      "operator": ">=",
+      "threshold": 99.5,
+      "unit": "percent",
+      "primarySource": "approved-local-session-aggregate-export",
+      "numerator": "sessionsWithoutUncleanExit",
+      "denominator": "completedSessions",
+      "measurementImplemented": true,
+      "measurementReady": false
+    }
+  ],
+  "analysisRules": {
+    "publishNumeratorAndDenominator": true,
+    "nullDenominatorCannotBecomeZeroPercent": true,
+    "pooledAndParticipantLevelResultsBothRequired": true,
+    "missingAndWithdrawalCountsRequired": true,
+    "versionCohortsReportedSeparately": true,
+    "confidenceIntervalsRequiredForPercentages": true,
+    "noPostHocThresholdChanges": true,
+    "qualitativeContradictionsMustBeReported": true
+  },
+  "instruments": {
+    "weeklyPulse": "docs/PILOT_PLAN.md#8-每周简短回访",
+    "finalSurvey": "docs/PILOT_PLAN.md#9-结束问卷",
+    "interviewGuide": "docs/PILOT_PLAN.md#10-半结构访谈",
+    "localSummary": "docs/PILOT_PLAN.md#5-本地匿名摘要",
+    "resultTemplate": "review/evidence/RQT-22-four-week-pilot-results.template.json"
+  },
+  "stopRules": [
+    {
+      "severity": "P0",
+      "condition": "严重预警仍推荐普通诗词、隐私数据外泄、广泛无法启动或数据破坏。",
+      "action": "立即暂停试点、停止分发、通知参与者并启动事故 Runbook。"
+    },
+    {
+      "severity": "P1",
+      "condition": "事实错误扩散、重复抢焦点、崩溃集中或退出/清除失效。",
+      "action": "冻结招募和版本，24 小时内决定修复、撤回或终止。"
+    }
+  ],
+  "knownMeasurementGap": {
+    "metricId": "MET-09",
+    "issue": "客户端已实现无标识、无时间戳的已结束会话与异常中断会话聚合，但尚未经隐私负责人批准，也未在冻结试点候选上完成正常退出、强制终止和崩溃恢复的具名 Windows 验证，因此仍不能声明 99.5% 崩溃无感会话可测。",
+    "requiredDecision": "由隐私负责人批准 v2 本地会话计数口径，并由质量负责人在冻结候选上验证正常退出不误报、强制终止可在下次启动计入、摘要分母排除当前未结束会话；具名签署后再冻结试点版本。",
+    "resolved": false
+  },
+  "execution": {
+    "pilotOwner": null,
+    "privacyOwner": null,
+    "qualityOwner": null,
+    "contentOwner": null,
+    "contactChannel": null,
+    "recruitmentOpenedAt": null,
+    "pilotStartedAt": null,
+    "pilotEndedAt": null,
+    "resultEvidencePath": "review/evidence/RQT-22-four-week-pilot-results.json"
+  },
+  "approval": {
+    "projectSponsor": null,
+    "pilotOwner": null,
+    "privacyReviewer": null,
+    "qualityReviewer": null,
+    "decision": null,
+    "approvedAt": null
+  },
+  "limitations": {
+    "campusPilotEntryGatePassed": false,
+    "participantsRecruited": false,
+    "fourWeeksCompleted": false,
+    "allMetricsMeasured": false,
+    "surveysCompleted": false,
+    "interviewsCompleted": false,
+    "goNoGoCompleted": false,
+    "namedApprovalCompleted": false
+  },
+  "gateSatisfied": false,
+  "result": "execution-kit-complete-real-four-week-pilot-not-started"
+}

@@ -1,0 +1,149 @@
+{
+  "schemaVersion": "1.0",
+  "baselineVersion": "2026.07-accessibility-v1",
+  "status": "automatic-baseline-ready-awaiting-manual-system-test",
+  "target": {
+    "platform": "Windows 11",
+    "runtime": "Microsoft Edge WebView2",
+    "corePath": [
+      "首次设置",
+      "今日诗笺",
+      "继续阅读",
+      "收藏",
+      "设置",
+      "天气安全暂停"
+    ]
+  },
+  "automaticBaseline": {
+    "routeFocus": {
+      "status": "passed",
+      "implementation": "src/composables/useInitialFocus.ts",
+      "test": "src/composables/useInitialFocus.test.ts",
+      "includesDailyCard": true
+    },
+    "screenReaderSemantics": {
+      "status": "passed",
+      "components": [
+        "src/components/PoemCard.vue",
+        "src/components/ReadingPanel.vue",
+        "src/components/WarningView.vue",
+        "src/components/ContentCorrectionView.vue"
+      ]
+    },
+    "contrast": {
+      "status": "passed",
+      "minimumRatio": 4.5,
+      "pairs": [
+        {
+          "name": "light-muted-on-paper",
+          "foreground": "#726b60",
+          "background": "#f4f0e7"
+        },
+        {
+          "name": "light-accent-on-paper",
+          "foreground": "#8f4636",
+          "background": "#f4f0e7"
+        },
+        {
+          "name": "dark-faint-on-surface",
+          "foreground": "#9e9689",
+          "background": "#28251f"
+        },
+        {
+          "name": "dark-accent-on-surface",
+          "foreground": "#d3917c",
+          "background": "#28251f"
+        },
+        {
+          "name": "dark-primary-text-on-accent",
+          "foreground": "#1f1d19",
+          "background": "#d3917c"
+        }
+      ]
+    },
+    "zoomReflow": {
+      "status": "passed",
+      "fixedMinimumViewportRemoved": true,
+      "narrowReflowBreakpointCssPixels": 300,
+      "scrollableViews": true,
+      "browserEquivalentObservation": {
+        "engine": "Codex in-app Chromium browser",
+        "viewport": {
+          "width": 215,
+          "height": 340,
+          "equivalentTo": "430x680 logical window at 200% browser-layout scale"
+        },
+        "scenarios": [
+          "首次设置",
+          "今日诗笺",
+          "继续阅读",
+          "设置",
+          "官方天气预警"
+        ],
+        "horizontalOverflow": false,
+        "routeFocus": "passed",
+        "limitation": "浏览器等效窄视口不能替代 Windows 文本大小、系统 DPI、WebView2 和真实辅助技术测试。"
+      }
+    },
+    "highContrastCss": {
+      "status": "passed",
+      "forcedColorsMediaQuery": true,
+      "prefersContrastMediaQuery": true
+    },
+    "reducedMotionCss": {
+      "status": "passed",
+      "systemPreference": true,
+      "inAppPreference": true
+    }
+  },
+  "manualSystemTests": [
+    {
+      "id": "A11Y-KEYBOARD",
+      "name": "仅键盘核心路径",
+      "environment": "真实 Windows 11 安装版",
+      "assistiveTechnology": "无",
+      "status": "pending",
+      "evidence": null
+    },
+    {
+      "id": "A11Y-NARRATOR",
+      "name": "Windows 讲述人核心路径",
+      "environment": "真实 Windows 11 安装版",
+      "assistiveTechnology": "Windows 讲述人",
+      "status": "pending",
+      "evidence": null
+    },
+    {
+      "id": "A11Y-NVDA",
+      "name": "NVDA 核心路径",
+      "environment": "真实 Windows 11 安装版",
+      "assistiveTechnology": "NVDA",
+      "status": "pending",
+      "evidence": null
+    },
+    {
+      "id": "A11Y-HIGH-CONTRAST",
+      "name": "Windows 对比度主题",
+      "environment": "真实 Windows 11 安装版",
+      "assistiveTechnology": "Windows 对比度主题",
+      "status": "pending",
+      "evidence": null
+    },
+    {
+      "id": "A11Y-200-PERCENT",
+      "name": "200% 文本与显示缩放",
+      "environment": "真实 Windows 11 安装版",
+      "assistiveTechnology": "文本大小 200% 与显示缩放 200%",
+      "status": "pending",
+      "evidence": null
+    }
+  ],
+  "limitations": {
+    "namedHumanTester": false,
+    "narratorExecuted": false,
+    "nvdaExecuted": false,
+    "highContrastExecuted": false,
+    "twoHundredPercentExecuted": false
+  },
+  "result": "partial-awaiting-named-manual-evidence"
+}

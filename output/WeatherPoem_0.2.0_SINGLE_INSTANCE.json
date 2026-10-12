@@ -1,0 +1,23 @@
+{
+    "schemaVersion":  "1.0",
+    "product":  "WeatherPoem",
+    "version":  "0.2.0",
+    "testedAt":  "2026-09-09T18:46:15.1753803Z",
+    "os":  "Microsoft Windows NT 10.0.26100.0",
+    "architecture":  "AMD64",
+    "executable":  {
+                       "path":  "E:\\weatherpoem\\src-tauri\\target\\release\\weatherpoem.exe",
+                       "sha256":  "00DB4B15F96E151CD7AF795A197E422F39ABFC3CE13E4AB298BF1DE7EC2DD74B",
+                       "authenticodeStatus":  "NotSigned"
+                   },
+    "checks":  {
+                   "primaryWindowVisible":  "passed",
+                   "closeRequestHidesToTray":  "passed",
+                   "primaryRemainsRunningAfterClose":  "passed",
+                   "secondaryExited":  "passed",
+                   "secondaryExitCode":  0,
+                   "singleProcessAfterSecondary":  "passed",
+                   "secondaryRevealsPrimary":  "passed"
+               },
+    "result":  "passed"
+}

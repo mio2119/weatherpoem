@@ -1,0 +1,29 @@
+{
+  "schemaVersion": "1.0",
+  "scope": "installed-notice-byte-verification-only",
+  "status": "partial",
+  "appVersion": "0.2.0",
+  "noticeSource": {
+    "relativePath": "docs/THIRD_PARTY_NOTICES.md",
+    "sha256": "E5FB8FDCD96E968E5958ECBE0EAB57FAD3BA64F1447AAA190AF962EE9A930B62",
+    "byteLength": 1104976
+  },
+  "installers": {
+    "nsis": {
+      "kind": "nsis",
+      "artifact": {
+        "relativePath": "src-tauri/target/release/bundle/nsis/WeatherPoem_0.2.0_x64-setup.exe",
+        "sha256": "FD46A8E141C01D3B1BBB72FE685C48D8E099465C5A744B8CC930BBF947A29EA5"
+      },
+      "installedNotice": {
+        "relativePath": "licenses/THIRD_PARTY_NOTICES.md",
+        "sha256": "E5FB8FDCD96E968E5958ECBE0EAB57FAD3BA64F1447AAA190AF962EE9A930B62",
+        "byteLength": 1104976,
+        "utf8Readable": true,
+        "exactByteMatch": true
+      },
+      "verifiedAt": "2026-09-09T18:46:01.236Z"
+    }
+  },
+  "generatedAt": "2026-09-09T18:46:01.246Z"
+}

@@ -1,0 +1,4254 @@
+{
+  "schemaVersion": "1.1",
+  "product": "WeatherPoem",
+  "appVersion": "0.2.0",
+  "contentVersion": "2026.07.1",
+  "generatedAt": "2026-09-09T18:40:33.996Z",
+  "status": "inventory-ready-awaiting-legal-review",
+  "scope": {
+    "target": "x86_64-pc-windows-msvc",
+    "distributionDecision": "public-release-not-cleared",
+    "legalConclusionProvided": false,
+    "note": "本台账只固化来源、许可表达式和待决事项，不构成法律意见或授权。"
+  },
+  "inputs": {
+    "packageJson": {
+      "path": "package.json",
+      "sha256": "2E9DDA60A4664924B4A84EA71DDE11A2FC6E14548C911785B3DF5E63E75D5D5F"
+    },
+    "packageLock": {
+      "path": "package-lock.json",
+      "sha256": "B25F08E34940D57B7A4DCB37CBDE24A0D9EE18DBFB450BDECC88BB5FB1BB7934"
+    },
+    "cargoLock": {
+      "path": "src-tauri/Cargo.lock",
+      "sha256": "D8E86E63299DCEC3E5FF9DC66D6D796159F51BBAF9085D4F0B3D5D4C7A82302A"
+    },
+    "cargoAudit": {
+      "path": "output/WeatherPoem_0.2.0_CARGO_AUDIT.json",
+      "sha256": "D4303DF89B580DF72E0DE7602D9E9456289B471043A3D273260941DEFC868D74"
+    },
+    "contentCatalog": {
+      "path": "review/content-review-catalog.json",
+      "sha256": "9F06180D40278D10B8EB9C208A2DF8A207BB90ED1C16C1D126AEF3546F4D62FE"
+    },
+    "iconSource": {
+      "path": "src-tauri/icons/app-icon.svg",
+      "sha256": "252E9957A6B5C33B316E183BA4AA5E6820F23D02E5242037416AE618479E3AB7"
+    },
+    "iconPng": {
+      "path": "src-tauri/icons/icon.png",
+      "sha256": "C2DEA7AF35A1DCF895B0487A64667894242524F906C1A5E76FC757081CC343D4"
+    },
+    "iconIco": {
+      "path": "src-tauri/icons/icon.ico",
+      "sha256": "FFEC7C8947EEA6C87730A06F0EFBAD44F6B29F361D429BB8F26E28E82972EF81"
+    },
+    "inlineIcons": {
+      "path": "src/components/IconSymbol.vue",
+      "sha256": "C5A8367A85AA0DFF9F9574D7DA147549CD0A3FB3048D8BA22469AD5396510F31"
+    },
+    "styles": {
+      "path": "src/styles.css",
+      "sha256": "98EF4284BE52EFE566049E8A2930A66590D1C82474C3A0D8C829D215CD433982"
+    },
+    "settingsPanel": {
+      "path": "src/components/SettingsPanel.vue",
+      "sha256": "DFB7DB06C32B23F68035E3AF468950581A1F67AE68AAA40FD64B60C2CA8DB224"
+    },
+    "desktopService": {
+      "path": "src/services/desktop.ts",
+      "sha256": "2D9E2F44908CF7E9BDE71C1067C8C85A39B04BB9B77764E7C101EA78F0522060"
+    },
+    "tauriConfig": {
+      "path": "src-tauri/tauri.conf.json",
+      "sha256": "7CD31C25618D68E2683538DB617C60BBF2C85B391B7D18CF6B77A082D89CF855"
+    },
+    "capability": {
+      "path": "src-tauri/capabilities/default.json",
+      "sha256": "8666E9E44C38E42A1BCDB3995BEFB2151DC31B78095515CD4A2DAFE7D47C1ACE"
+    },
+    "rustShell": {
+      "path": "src-tauri/src/lib.rs",
+      "sha256": "E531BA451CC4972DDF9FF54E1D00BDD2A8D7C2EBD30889CC237DA9EF715205B3"
+    }
+  },
+  "projectCode": {
+    "packageName": "weatherpoem",
+    "packagePrivate": true,
+    "declaredLicense": null,
+    "rootLicenseFiles": [],
+    "publicDistributionCleared": false,
+    "requiredAction": "由项目权利主体确认代码与文档权属，选择发布许可并提交根目录 LICENSE/NOTICE。"
+  },
+  "classicalContent": {
+    "workCount": 120,
+    "sourceNamePopulated": 120,
+    "distinctSourceNames": [
+      "《白氏长庆集》",
+      "《诚斋集》",
+      "《东坡乐府》",
+      "《东坡七集》",
+      "《范文正公词》",
+      "《淮海居士长短句》",
+      "《晦庵先生朱文公文集》",
+      "《稼轩长短句》",
+      "《剑南诗稿》",
+      "《靖逸小稿》",
+      "《临川先生文集》",
+      "《清苑斋集》",
+      "《全宋诗》",
+      "《全唐诗》",
+      "《石湖居士诗集》",
+      "《漱玉词》",
+      "《漱玉集》",
+      "《宋诗纪事》",
+      "《苇碧轩集》"
+    ],
+    "underlyingAncientWorksCandidatePublicDomain": true,
+    "editionOrTranscriptionRightsVerified": false,
+    "expertTextualReviewCompleted": false,
+    "withdrawalMechanism": "使用现有内容撤回清单按 workId 停用并清除缓存。",
+    "publicDistributionCleared": false,
+    "requiredAction": "逐首绑定可追溯的权威点校底本、页码或无版权限制数字源，并由内容专家和法务复核具体转录版本。"
+  },
+  "modernEditorialContent": {
+    "oneLineSummaryCount": 120,
+    "culturalBackgroundCount": 120,
+    "contemporaryConnectionCount": 120,
+    "annotationCount": 227,
+    "origin": "project-authored-candidate",
+    "namedOwnerConfirmed": false,
+    "thirdPartyMaterialExcludedByReview": false,
+    "publicDistributionCleared": false,
+    "requiredAction": "确认撰写者/委托关系与权利归属，检查是否改写第三方现代译注，并由内容与法务责任人签署。"
+  },
+  "visualAssets": {
+    "appIcon": {
+      "sourcePath": "src-tauri/icons/app-icon.svg",
+      "generatedVariantCount": 52,
+      "files": [
+        {
+          "path": "src-tauri/icons/128x128.png",
+          "bytes": 1601,
+          "sha256": "B7BEA6AC4CCA0205A1AC3E3DA45731927BC88C4159D890369F52B45957B3620A"
+        },
+        {
+          "path": "src-tauri/icons/128x128@2x.png",
+          "bytes": 2885,
+          "sha256": "A06649B5E8510342AFC995FE68B1B569AF51ABE679ED0FA903B44D4562941ACD"
+        },
+        {
+          "path": "src-tauri/icons/32x32.png",
+          "bytes": 513,
+          "sha256": "A9BDC53748D5EE3F8BA33E412CEB4EA81108B9D5FA952F0A962B93A773C1F9E6"
+        },
+        {
+          "path": "src-tauri/icons/64x64.png",
+          "bytes": 887,
+          "sha256": "33D915E51EBA3C9C44D702D3B429BB04D815CBB1227156555EC4440B920408B7"
+        },
+        {
+          "path": "src-tauri/icons/android/mipmap-anydpi-v26/ic_launcher.xml",
+          "bytes": 261,
+          "sha256": "760D4B8A06BF7163DD010C33AD2CAC9E4A75FA0177AFABA042F83E311EEF0C3E"
+        },
+        {
+          "path": "src-tauri/icons/android/mipmap-hdpi/ic_launcher_foreground.png",
+          "bytes": 1844,
+          "sha256": "2CFE9340210CA8800B7B957F08D83A0AB33F3C79B4CEC9AC24D914BE4F8B9FA2"
+        },
+        {
+          "path": "src-tauri/icons/android/mipmap-hdpi/ic_launcher_round.png",
+          "bytes": 1079,
+          "sha256": "DEC53E888371B0F25E87B0091F126C17AFF4D2CE34CE4DCA3BA8A8750E7519B1"
+        },
+        {
+          "path": "src-tauri/icons/android/mipmap-hdpi/ic_launcher.png",
+          "bytes": 1395,
+          "sha256": "DC19F0272E6D8C0DAA95795034E00E712557C0199E52983E41FA9246AEA56AB1"
+        },
+        {
+          "path": "src-tauri/icons/android/mipmap-mdpi/ic_launcher_foreground.png",
+          "bytes": 1291,
+          "sha256": "D34BB576DE45836A6781A481F629179905BB43C2F2CC807710E0EF63F6D3093E"
+        },
+        {
+          "path": "src-tauri/icons/android/mipmap-mdpi/ic_launcher_round.png",
+          "bytes": 1093,
+          "sha256": "94C25F4BBB958748B2CE3598338A96CE782D38E912309C406F8142A89A9EEFBA"
+        },
+        {
+          "path": "src-tauri/icons/android/mipmap-mdpi/ic_launcher.png",
+          "bytes": 1397,
+          "sha256": "B61691478506C0FE20E38B3BF6E3F54C1F9285173B49294577CDCC39A3CED3FB"
+        },
+        {
+          "path": "src-tauri/icons/android/mipmap-xhdpi/ic_launcher_foreground.png",
+          "bytes": 2480,
+          "sha256": "E2D6EF051C7F4B63A1C96F3FC85AAAE0E141CEA1A14820143B77EA11BB59E7EA"
+        },
+        {
+          "path": "src-tauri/icons/android/mipmap-xhdpi/ic_launcher_round.png",
+          "bytes": 1882,
+          "sha256": "3160E9242BC908DF4448B135706204DCF656D21CA4DA81FFD246CC362D136CA3"
+        },
+        {
+          "path": "src-tauri/icons/android/mipmap-xhdpi/ic_launcher.png",
+          "bytes": 2601,
+          "sha256": "78CDDF558CF1DC3373ECA6F0EA15B27CED22A1E07F35073A348A314A6DABF231"
+        },
+        {
+          "path": "src-tauri/icons/android/mipmap-xxhdpi/ic_launcher_foreground.png",
+          "bytes": 3641,
+          "sha256": "DCA21F17A2E11A86AF9CE2A9B6D75FABA70C1EEF2A84625A60B3D88645B8BD28"
+        },
+        {
+          "path": "src-tauri/icons/android/mipmap-xxhdpi/ic_launcher_round.png",
+          "bytes": 2729,
+          "sha256": "7CF395D576E102FB930BC741B228BBB0EEB770FF7FDD394B270DE0133654FEAF"
+        },
+        {
+          "path": "src-tauri/icons/android/mipmap-xxhdpi/ic_launcher.png",
+          "bytes": 4023,
+          "sha256": "E3D9385F929B8BA6D1FE1FBF4EAC19AFA18407AA650EB9AB86AEF83B1775316D"
+        },
+        {
+          "path": "src-tauri/icons/android/mipmap-xxxhdpi/ic_launcher_foreground.png",
+          "bytes": 4737,
+          "sha256": "D372F598BC24BF4C648B38F5784A616D4A99F7D2CDAFBF1108E92432714D60C4"
+        },
+        {
+          "path": "src-tauri/icons/android/mipmap-xxxhdpi/ic_launcher_round.png",
+          "bytes": 3405,
+          "sha256": "478C754BA03F03B9BF57EE65368AB5A7DF73927FAD1D83F52158E8363D5F8B94"
+        },
+        {
+          "path": "src-tauri/icons/android/mipmap-xxxhdpi/ic_launcher.png",
+          "bytes": 5283,
+          "sha256": "F3A932261F9FAE48B574FBD4BB43E0BDDBB99930A8B46FE9353A63BAB478FFF0"
+        },
+        {
+          "path": "src-tauri/icons/android/values/ic_launcher_background.xml",
+          "bytes": 115,
+          "sha256": "0687336F0CCC6F7EE09C7C95110667C63B75931238DF779A21AF401FB864CD34"
+        },
+        {
+          "path": "src-tauri/icons/app-icon.svg",
+          "bytes": 409,
+          "sha256": "252E9957A6B5C33B316E183BA4AA5E6820F23D02E5242037416AE618479E3AB7"
+        },
+        {
+          "path": "src-tauri/icons/icon.icns",
+          "bytes": 36015,
+          "sha256": "B844450739E8B678AF02280AAE8C9849C0DDB22F59659682CD5C3B40B4AA5291"
+        },
+        {
+          "path": "src-tauri/icons/icon.ico",
+          "bytes": 6630,
+          "sha256": "FFEC7C8947EEA6C87730A06F0EFBAD44F6B29F361D429BB8F26E28E82972EF81"
+        },
+        {
+          "path": "src-tauri/icons/icon.png",
+          "bytes": 5710,
+          "sha256": "C2DEA7AF35A1DCF895B0487A64667894242524F906C1A5E76FC757081CC343D4"
+        },
+        {
+          "path": "src-tauri/icons/ios/AppIcon-20x20@1x.png",
+          "bytes": 460,
+          "sha256": "315CB115B9DE885178000770BABF5A7EAC42FB3D67D055A52EB4BFF7C7FBB112"
+        },
+        {
+          "path": "src-tauri/icons/ios/AppIcon-20x20@2x-1.png",
+          "bytes": 626,
+          "sha256": "14CC17F2A59730C73A9F4C8B37C58C9151CE585BDA25E8F1C31A6EC2808E8B7A"
+        },
+        {
+          "path": "src-tauri/icons/ios/AppIcon-20x20@2x.png",
+          "bytes": 626,
+          "sha256": "14CC17F2A59730C73A9F4C8B37C58C9151CE585BDA25E8F1C31A6EC2808E8B7A"
+        },
+        {
+          "path": "src-tauri/icons/ios/AppIcon-20x20@3x.png",
+          "bytes": 775,
+          "sha256": "87FA3F92364A0F42D23CEA1ACC8FFB64ED8ADAA796D840521E3964B295C7AAF4"
+        },
+        {
+          "path": "src-tauri/icons/ios/AppIcon-29x29@1x.png",
+          "bytes": 499,
+          "sha256": "4F0B2D87DD78E3C365F267BD95E6DDFFB4AEEA86B6025D32AF6068F07ADB824B"
+        },
+        {
+          "path": "src-tauri/icons/ios/AppIcon-29x29@2x-1.png",
+          "bytes": 874,
+          "sha256": "CFA23633E841A067B7975720BD4CE04DE093C5EF57B49E21A1D85034238F00B8"
+        },
+        {
+          "path": "src-tauri/icons/ios/AppIcon-29x29@2x.png",
+          "bytes": 874,
+          "sha256": "CFA23633E841A067B7975720BD4CE04DE093C5EF57B49E21A1D85034238F00B8"
+        },
+        {
+          "path": "src-tauri/icons/ios/AppIcon-29x29@3x.png",
+          "bytes": 1117,
+          "sha256": "EF71621C5DBBD2C94C3A1955A033BBDC117922248F50E2FD5325916EDBB70DD4"
+        },
+        {
+          "path": "src-tauri/icons/ios/AppIcon-40x40@1x.png",
+          "bytes": 626,
+          "sha256": "14CC17F2A59730C73A9F4C8B37C58C9151CE585BDA25E8F1C31A6EC2808E8B7A"
+        },
+        {
+          "path": "src-tauri/icons/ios/AppIcon-40x40@2x-1.png",
+          "bytes": 982,
+          "sha256": "B270B9808A118A6A1F5593A905DC3EF5C9E681687CC2593A8A47EA4223F0D165"
+        },
+        {
+          "path": "src-tauri/icons/ios/AppIcon-40x40@2x.png",
+          "bytes": 982,
+          "sha256": "B270B9808A118A6A1F5593A905DC3EF5C9E681687CC2593A8A47EA4223F0D165"
+        },
+        {
+          "path": "src-tauri/icons/ios/AppIcon-40x40@3x.png",
+          "bytes": 1442,
+          "sha256": "56688C34374497904F0E89F1E1F1DE31CAC48EC436C41F52775293DF7C625572"
+        },
+        {
+          "path": "src-tauri/icons/ios/AppIcon-512@2x.png",
+          "bytes": 12739,
+          "sha256": "065447253ACF328143466956268636BF31037C7A860F58342413CD52D078E68B"
+        },
+        {
+          "path": "src-tauri/icons/ios/AppIcon-60x60@2x.png",
+          "bytes": 1442,
+          "sha256": "56688C34374497904F0E89F1E1F1DE31CAC48EC436C41F52775293DF7C625572"
+        },
+        {
+          "path": "src-tauri/icons/ios/AppIcon-60x60@3x.png",
+          "bytes": 2030,
+          "sha256": "9720A76553064770B1B1115B78FC450CA782360525BDF0DEEE0AC07030178BBA"
+        },
+        {
+          "path": "src-tauri/icons/ios/AppIcon-76x76@1x.png",
+          "bytes": 939,
+          "sha256": "E80C1EB2926849E4F3883B19297D37CD8860999EB07987A776AD2768413EEE47"
+        },
+        {
+          "path": "src-tauri/icons/ios/AppIcon-76x76@2x.png",
+          "bytes": 1771,
+          "sha256": "5E79A385A69D777392696A3A608BE574384F9243531A5DA04BCD974738304B3D"
+        },
+        {
+          "path": "src-tauri/icons/ios/AppIcon-83.5x83.5@2x.png",
+          "bytes": 1937,
+          "sha256": "EAA39C1507C15AB552B5D87120895107BB509EE092EF713EDA04F00CFDC8F1A9"
+        },
+        {
+          "path": "src-tauri/icons/Square107x107Logo.png",
+          "bytes": 1357,
+          "sha256": "74749DE1C81D2182548EBE57238733033B1AF1565DA04E8EC87811233B3D58A0"
+        },
+        {
+          "path": "src-tauri/icons/Square142x142Logo.png",
+          "bytes": 1634,
+          "sha256": "D3048F9C025F1CCCFE378CF0117E2766CFCF211F55903A5A1D7E142FAC260A11"
+        },
+        {
+          "path": "src-tauri/icons/Square150x150Logo.png",
+          "bytes": 1847,
+          "sha256": "F80DA7639922167CEF264A6CAF71AC1DDCF5B5B1E53038EFB64D46E075247CC4"
+        },
+        {
+          "path": "src-tauri/icons/Square284x284Logo.png",
+          "bytes": 3216,
+          "sha256": "C0FD7B8AFE19D09FAD54F61743162B6C03BBD0B532B29509E3B633FBDB3F954B"
+        },
+        {
+          "path": "src-tauri/icons/Square30x30Logo.png",
+          "bytes": 499,
+          "sha256": "E94E27BC4D478DC65A5A13025A9917E40E030CD903ACCBFD70201189CF9EA5A1"
+        },
+        {
+          "path": "src-tauri/icons/Square310x310Logo.png",
+          "bytes": 3408,
+          "sha256": "78162211C8814AE2D94B9190E9D25E4BB8C42B2C98AC308163DE05703EAD707F"
+        },
+        {
+          "path": "src-tauri/icons/Square44x44Logo.png",
+          "bytes": 715,
+          "sha256": "5131ECAA3AB547FD44E370F3D561D652A432B18D200B7F92EC49D257905A198D"
+        },
+        {
+          "path": "src-tauri/icons/Square71x71Logo.png",
+          "bytes": 904,
+          "sha256": "D082F1C418251E2F2F5216C79CFA063CC7A35C8287082947C8F4B0B27BB028D4"
+        },
+        {
+          "path": "src-tauri/icons/Square89x89Logo.png",
+          "bytes": 1148,
+          "sha256": "7AE15C2DA82245F9B4936E76DF6AF35B4B67B111C44EC286A83DFC7534D350FB"
+        },
+        {
+          "path": "src-tauri/icons/StoreLogo.png",
+          "bytes": 736,
+          "sha256": "280D8BEAACA36DCDE6C9CE7126E0AB1E5AAB9A736147949355B88E5483456390"
+        }
+      ],
+      "origin": "repository-authored-candidate",
+      "namedOwnerConfirmed": false,
+      "publicDistributionCleared": false
+    },
+    "inlineUiAssets": {
+      "paths": [
+        "src/components/IconSymbol.vue",
+        "src/styles.css"
+      ],
+      "externalImageDependencyDetected": false,
+      "origin": "code-native-candidate",
+      "namedOwnerConfirmed": false,
+      "publicDistributionCleared": false
+    },
+    "requiredAction": "由设计/项目权利主体确认图标和内联图形为原创或已获许可，并记录生成与交付链。"
+  },
+  "fonts": {
+    "bundledFontFileCount": 0,
+    "bundledFontFiles": [],
+    "cssStrategy": "system-font-fallback-only",
+    "referencedFamilies": [
+      "Source Han Sans SC",
+      "Microsoft YaHei UI",
+      "PingFang SC",
+      "Songti SC",
+      "STSong",
+      "Noto Serif SC",
+      "FZKai-Z03",
+      "KaiTi"
+    ],
+    "redistributionRequiredForCurrentBuild": false,
+    "publicDistributionClearedForCurrentBuild": true,
+    "requiredAction": "保持不打包字体；若未来内嵌字体，必须先登记具体文件、版本、许可文本与再分发范围。"
+  },
+  "externalServices": [
+    {
+      "id": "open-meteo",
+      "usage": "runtime-weather-forecast",
+      "enabledInCurrentClient": true,
+      "sourceUrl": "https://open-meteo.com/en/license",
+      "pricingUrl": "https://open-meteo.com/en/pricing",
+      "dataLicense": "CC BY 4.0",
+      "attributionRequired": true,
+      "attributionImplemented": true,
+      "attributionLocation": "settings/version-and-trust",
+      "modificationsDisclosed": true,
+      "serviceTierApproved": false,
+      "clientSecretBundled": false,
+      "publicDistributionCleared": false,
+      "requiredAction": "保留设置页的 Open-Meteo/CC BY 4.0 署名与转换说明；由项目负责人按非商业/商业用途确认服务档位。"
+    },
+    {
+      "id": "official-warning-gateway",
+      "usage": "optional-official-weather-warning",
+      "enabledInCurrentScope": false,
+      "providerSelected": false,
+      "dataLicenseConfirmed": false,
+      "publicDistributionCleared": false,
+      "requiredAction": "启用前选择合法数据提供方，取得授权，部署 HTTPS 网关并完成撤销链路。"
+    },
+    {
+      "id": "openai-api",
+      "usage": "optional-recommendation-reason-enhancement",
+      "enabledInCurrentScope": false,
+      "governingTermsUrl": "https://openai.com/policies/services-agreement/",
+      "organizationAgreementConfirmed": false,
+      "budgetApproved": false,
+      "publicDistributionCleared": false,
+      "requiredAction": "如启用，由组织确认适用条款、数据处理、密钥托管和预算；当前范围继续使用本地规则理由。"
+    }
+  ],
+  "thirdPartyDependencies": {
+    "npm": {
+      "scope": "locked-development-and-production-packages",
+      "packageCount": 268,
+      "missingLicenseMetadataCount": 0,
+      "licenseSummary": [
+        {
+          "expression": "0BSD",
+          "packageCount": 1
+        },
+        {
+          "expression": "Apache-2.0",
+          "packageCount": 16
+        },
+        {
+          "expression": "Apache-2.0 OR MIT",
+          "packageCount": 13
+        },
+        {
+          "expression": "BlueOak-1.0.0",
+          "packageCount": 5
+        },
+        {
+          "expression": "BSD-2-Clause",
+          "packageCount": 8
+        },
+        {
+          "expression": "BSD-3-Clause",
+          "packageCount": 2
+        },
+        {
+          "expression": "ISC",
+          "packageCount": 19
+        },
+        {
+          "expression": "MIT",
+          "packageCount": 189
+        },
+        {
+          "expression": "MIT OR Apache-2.0",
+          "packageCount": 3
+        },
+        {
+          "expression": "MPL-2.0",
+          "packageCount": 12
+        }
+      ],
+      "packages": [
+        {
+          "name": "@babel/helper-string-parser",
+          "version": "7.29.7",
+          "license": "MIT",
+          "resolved": "https://registry.npmjs.org/@babel/helper-string-parser/-/helper-string-parser-7.29.7.tgz"
+        },
+        {
+          "name": "@babel/helper-validator-identifier",
+          "version": "7.29.7",
+          "license": "MIT",
+          "resolved": "https://registry.npmjs.org/@babel/helper-validator-identifier/-/helper-validator-identifier-7.29.7.tgz"
+        },
+        {
+          "name": "@babel/parser",
+          "version": "7.29.7",
+          "license": "MIT",
+          "resolved": "https://registry.npmjs.org/@babel/parser/-/parser-7.29.7.tgz"
+        },
+        {
+          "name": "@babel/types",
+          "version": "7.29.7",
+          "license": "MIT",
+          "resolved": "https://registry.npmjs.org/@babel/types/-/types-7.29.7.tgz"
+        },
+        {
+          "name": "@emnapi/core",
+          "version": "1.11.1",
+          "license": "MIT",
+          "resolved": "https://registry.npmjs.org/@emnapi/core/-/core-1.11.1.tgz"
+        },
+        {
+          "name": "@emnapi/runtime",
+          "version": "1.11.1",
+          "license": "MIT",
+          "resolved": "https://registry.npmjs.org/@emnapi/runtime/-/runtime-1.11.1.tgz"
+        },
+        {
+          "name": "@emnapi/wasi-threads",
+          "version": "1.2.2",
+          "license": "MIT",
+          "resolved": "https://registry.npmjs.org/@emnapi/wasi-threads/-/wasi-threads-1.2.2.tgz"
+        },
+        {
+          "name": "@eslint-community/eslint-utils",
+          "version": "4.10.1",
+          "license": "MIT",
+          "resolved": "https://registry.npmjs.org/@eslint-community/eslint-utils/-/eslint-utils-4.10.1.tgz"
+        },
+        {
+          "name": "@eslint-community/regexpp",
+          "version": "4.12.2",
+          "license": "MIT",
+          "resolved": "https://registry.npmjs.org/@eslint-community/regexpp/-/regexpp-4.12.2.tgz"
+        },
+        {
+          "name": "@eslint/config-array",
+          "version": "0.23.5",
+          "license": "Apache-2.0",
+          "resolved": "https://registry.npmjs.org/@eslint/config-array/-/config-array-0.23.5.tgz"
+        },
+        {
+          "name": "@eslint/config-helpers",
+          "version": "0.6.0",
+          "license": "Apache-2.0",
+          "resolved": "https://registry.npmjs.org/@eslint/config-helpers/-/config-helpers-0.6.0.tgz"
+        },
+        {
+          "name": "@eslint/core",
+          "version": "1.2.1",
+          "license": "Apache-2.0",
+          "resolved": "https://registry.npmjs.org/@eslint/core/-/core-1.2.1.tgz"
+        },
+        {
+          "name": "@eslint/object-schema",
+          "version": "3.0.5",
+          "license": "Apache-2.0",
+          "resolved": "https://registry.npmjs.org/@eslint/object-schema/-/object-schema-3.0.5.tgz"
+        },
+        {
+          "name": "@eslint/plugin-kit",
+          "version": "0.7.2",
+          "license": "Apache-2.0",
+          "resolved": "https://registry.npmjs.org/@eslint/plugin-kit/-/plugin-kit-0.7.2.tgz"
+        },
+        {
+          "name": "@humanfs/core",
+          "version": "0.19.2",
+          "license": "Apache-2.0",
+          "resolved": "https://registry.npmjs.org/@humanfs/core/-/core-0.19.2.tgz"
+        },
+        {
+          "name": "@humanfs/node",
+          "version": "0.16.8",
+          "license": "Apache-2.0",
+          "resolved": "https://registry.npmjs.org/@humanfs/node/-/node-0.16.8.tgz"
+        },
+        {
+          "name": "@humanfs/types",
+          "version": "0.15.0",
+          "license": "Apache-2.0",
+          "resolved": "https://registry.npmjs.org/@humanfs/types/-/types-0.15.0.tgz"
+        },
+        {
+          "name": "@humanwhocodes/module-importer",
+          "version": "1.0.1",
+          "license": "Apache-2.0",
+          "resolved": "https://registry.npmjs.org/@humanwhocodes/module-importer/-/module-importer-1.0.1.tgz"
+        },
+        {
+          "name": "@humanwhocodes/retry",
+          "version": "0.4.3",
+          "license": "Apache-2.0",
+          "resolved": "https://registry.npmjs.org/@humanwhocodes/retry/-/retry-0.4.3.tgz"
+        },
+        {
+          "name": "@isaacs/cliui",
+          "version": "8.0.2",
+          "license": "ISC",
+          "resolved": "https://registry.npmjs.org/@isaacs/cliui/-/cliui-8.0.2.tgz"
+        },
+        {
+          "name": "@jridgewell/sourcemap-codec",
+          "version": "1.5.5",
+          "license": "MIT",
+          "resolved": "https://registry.npmjs.org/@jridgewell/sourcemap-codec/-/sourcemap-codec-1.5.5.tgz"
+        },
+        {
+          "name": "@napi-rs/wasm-runtime",
+          "version": "1.1.6",
+          "license": "MIT",
+          "resolved": "https://registry.npmjs.org/@napi-rs/wasm-runtime/-/wasm-runtime-1.1.6.tgz"
+        },
+        {
+          "name": "@one-ini/wasm",
+          "version": "0.1.1",
+          "license": "MIT",
+          "resolved": "https://registry.npmjs.org/@one-ini/wasm/-/wasm-0.1.1.tgz"
+        },
+        {
+          "name": "@oxc-project/types",
+          "version": "0.139.0",
+          "license": "MIT",
+          "resolved": "https://registry.npmjs.org/@oxc-project/types/-/types-0.139.0.tgz"
+        },
+        {
+          "name": "@pkgjs/parseargs",
+          "version": "0.11.0",
+          "license": "MIT",
+          "resolved": "https://registry.npmjs.org/@pkgjs/parseargs/-/parseargs-0.11.0.tgz"
+        },
+        {
+          "name": "@rolldown/binding-android-arm64",
+          "version": "1.1.5",
+          "license": "MIT",
+          "resolved": "https://registry.npmjs.org/@rolldown/binding-android-arm64/-/binding-android-arm64-1.1.5.tgz"
+        },
+        {
+          "name": "@rolldown/binding-darwin-arm64",
+          "version": "1.1.5",
+          "license": "MIT",
+          "resolved": "https://registry.npmjs.org/@rolldown/binding-darwin-arm64/-/binding-darwin-arm64-1.1.5.tgz"
+        },
+        {
+          "name": "@rolldown/binding-darwin-x64",
+          "version": "1.1.5",
+          "license": "MIT",
+          "resolved": "https://registry.npmjs.org/@rolldown/binding-darwin-x64/-/binding-darwin-x64-1.1.5.tgz"
+        },
+        {
+          "name": "@rolldown/binding-freebsd-x64",
+          "version": "1.1.5",
+          "license": "MIT",
+          "resolved": "https://registry.npmjs.org/@rolldown/binding-freebsd-x64/-/binding-freebsd-x64-1.1.5.tgz"
+        },
+        {
+          "name": "@rolldown/binding-linux-arm-gnueabihf",
+          "version": "1.1.5",
+          "license": "MIT",
+          "resolved": "https://registry.npmjs.org/@rolldown/binding-linux-arm-gnueabihf/-/binding-linux-arm-gnueabihf-1.1.5.tgz"
+        },
+        {
+          "name": "@rolldown/binding-linux-arm64-gnu",
+          "version": "1.1.5",
+          "license": "MIT",
+          "resolved": "https://registry.npmjs.org/@rolldown/binding-linux-arm64-gnu/-/binding-linux-arm64-gnu-1.1.5.tgz"
+        },
+        {
+          "name": "@rolldown/binding-linux-arm64-musl",
+          "version": "1.1.5",
+          "license": "MIT",
+          "resolved": "https://registry.npmjs.org/@rolldown/binding-linux-arm64-musl/-/binding-linux-arm64-musl-1.1.5.tgz"
+        },
+        {
+          "name": "@rolldown/binding-linux-ppc64-gnu",
+          "version": "1.1.5",
+          "license": "MIT",
+          "resolved": "https://registry.npmjs.org/@rolldown/binding-linux-ppc64-gnu/-/binding-linux-ppc64-gnu-1.1.5.tgz"
+        },
+        {
+          "name": "@rolldown/binding-linux-s390x-gnu",
+          "version": "1.1.5",
+          "license": "MIT",
+          "resolved": "https://registry.npmjs.org/@rolldown/binding-linux-s390x-gnu/-/binding-linux-s390x-gnu-1.1.5.tgz"
+        },
+        {
+          "name": "@rolldown/binding-linux-x64-gnu",
+          "version": "1.1.5",
+          "license": "MIT",
+          "resolved": "https://registry.npmjs.org/@rolldown/binding-linux-x64-gnu/-/binding-linux-x64-gnu-1.1.5.tgz"
+        },
+        {
+          "name": "@rolldown/binding-linux-x64-musl",
+          "version": "1.1.5",
+          "license": "MIT",
+          "resolved": "https://registry.npmjs.org/@rolldown/binding-linux-x64-musl/-/binding-linux-x64-musl-1.1.5.tgz"
+        },
+        {
+          "name": "@rolldown/binding-openharmony-arm64",
+          "version": "1.1.5",
+          "license": "MIT",
+          "resolved": "https://registry.npmjs.org/@rolldown/binding-openharmony-arm64/-/binding-openharmony-arm64-1.1.5.tgz"
+        },
+        {
+          "name": "@rolldown/binding-wasm32-wasi",
+          "version": "1.1.5",
+          "license": "MIT",
+          "resolved": "https://registry.npmjs.org/@rolldown/binding-wasm32-wasi/-/binding-wasm32-wasi-1.1.5.tgz"
+        },
+        {
+          "name": "@rolldown/binding-win32-arm64-msvc",
+          "version": "1.1.5",
+          "license": "MIT",
+          "resolved": "https://registry.npmjs.org/@rolldown/binding-win32-arm64-msvc/-/binding-win32-arm64-msvc-1.1.5.tgz"
+        },
+        {
+          "name": "@rolldown/binding-win32-x64-msvc",
+          "version": "1.1.5",
+          "license": "MIT",
+          "resolved": "https://registry.npmjs.org/@rolldown/binding-win32-x64-msvc/-/binding-win32-x64-msvc-1.1.5.tgz"
+        },
+        {
+          "name": "@rolldown/pluginutils",
+          "version": "1.0.1",
+          "license": "MIT",
+          "resolved": "https://registry.npmjs.org/@rolldown/pluginutils/-/pluginutils-1.0.1.tgz"
+        },
+        {
+          "name": "@standard-schema/spec",
+          "version": "1.1.0",
+          "license": "MIT",
+          "resolved": "https://registry.npmjs.org/@standard-schema/spec/-/spec-1.1.0.tgz"
+        },
+        {
+          "name": "@tauri-apps/api",
+          "version": "2.11.1",
+          "license": "Apache-2.0 OR MIT",
+          "resolved": "https://registry.npmjs.org/@tauri-apps/api/-/api-2.11.1.tgz"
+        },
+        {
+          "name": "@tauri-apps/cli",
+          "version": "2.11.4",
+          "license": "Apache-2.0 OR MIT",
+          "resolved": "https://registry.npmjs.org/@tauri-apps/cli/-/cli-2.11.4.tgz"
+        },
+        {
+          "name": "@tauri-apps/cli-darwin-arm64",
+          "version": "2.11.4",
+          "license": "Apache-2.0 OR MIT",
+          "resolved": "https://registry.npmjs.org/@tauri-apps/cli-darwin-arm64/-/cli-darwin-arm64-2.11.4.tgz"
+        },
+        {
+          "name": "@tauri-apps/cli-darwin-x64",
+          "version": "2.11.4",
+          "license": "Apache-2.0 OR MIT",
+          "resolved": "https://registry.npmjs.org/@tauri-apps/cli-darwin-x64/-/cli-darwin-x64-2.11.4.tgz"
+        },
+        {
+          "name": "@tauri-apps/cli-linux-arm-gnueabihf",
+          "version": "2.11.4",
+          "license": "Apache-2.0 OR MIT",
+          "resolved": "https://registry.npmjs.org/@tauri-apps/cli-linux-arm-gnueabihf/-/cli-linux-arm-gnueabihf-2.11.4.tgz"
+        },
+        {
+          "name": "@tauri-apps/cli-linux-arm64-gnu",
+          "version": "2.11.4",
+          "license": "Apache-2.0 OR MIT",
+          "resolved": "https://registry.npmjs.org/@tauri-apps/cli-linux-arm64-gnu/-/cli-linux-arm64-gnu-2.11.4.tgz"
+        },
+        {
+          "name": "@tauri-apps/cli-linux-arm64-musl",
+          "version": "2.11.4",
+          "license": "Apache-2.0 OR MIT",
+          "resolved": "https://registry.npmjs.org/@tauri-apps/cli-linux-arm64-musl/-/cli-linux-arm64-musl-2.11.4.tgz"
+        },
+        {
+          "name": "@tauri-apps/cli-linux-riscv64-gnu",
+          "version": "2.11.4",
+          "license": "Apache-2.0 OR MIT",
+          "resolved": "https://registry.npmjs.org/@tauri-apps/cli-linux-riscv64-gnu/-/cli-linux-riscv64-gnu-2.11.4.tgz"
+        },
+        {
+          "name": "@tauri-apps/cli-linux-x64-gnu",
+          "version": "2.11.4",
+          "license": "Apache-2.0 OR MIT",
+          "resolved": "https://registry.npmjs.org/@tauri-apps/cli-linux-x64-gnu/-/cli-linux-x64-gnu-2.11.4.tgz"
+        },
+        {
+          "name": "@tauri-apps/cli-linux-x64-musl",
+          "version": "2.11.4",
+          "license": "Apache-2.0 OR MIT",
+          "resolved": "https://registry.npmjs.org/@tauri-apps/cli-linux-x64-musl/-/cli-linux-x64-musl-2.11.4.tgz"
+        },
+        {
+          "name": "@tauri-apps/cli-win32-arm64-msvc",
+          "version": "2.11.4",
+          "license": "Apache-2.0 OR MIT",
+          "resolved": "https://registry.npmjs.org/@tauri-apps/cli-win32-arm64-msvc/-/cli-win32-arm64-msvc-2.11.4.tgz"
+        },
+        {
+          "name": "@tauri-apps/cli-win32-ia32-msvc",
+          "version": "2.11.4",
+          "license": "Apache-2.0 OR MIT",
+          "resolved": "https://registry.npmjs.org/@tauri-apps/cli-win32-ia32-msvc/-/cli-win32-ia32-msvc-2.11.4.tgz"
+        },
+        {
+          "name": "@tauri-apps/cli-win32-x64-msvc",
+          "version": "2.11.4",
+          "license": "Apache-2.0 OR MIT",
+          "resolved": "https://registry.npmjs.org/@tauri-apps/cli-win32-x64-msvc/-/cli-win32-x64-msvc-2.11.4.tgz"
+        },
+        {
+          "name": "@tauri-apps/plugin-autostart",
+          "version": "2.5.1",
+          "license": "MIT OR Apache-2.0",
+          "resolved": "https://registry.npmjs.org/@tauri-apps/plugin-autostart/-/plugin-autostart-2.5.1.tgz"
+        },
+        {
+          "name": "@tauri-apps/plugin-opener",
+          "version": "2.5.4",
+          "license": "MIT OR Apache-2.0",
+          "resolved": "https://registry.npmjs.org/@tauri-apps/plugin-opener/-/plugin-opener-2.5.4.tgz"
+        },
+        {
+          "name": "@tauri-apps/plugin-sql",
+          "version": "2.4.0",
+          "license": "MIT OR Apache-2.0",
+          "resolved": "https://registry.npmjs.org/@tauri-apps/plugin-sql/-/plugin-sql-2.4.0.tgz"
+        },
+        {
+          "name": "@tybys/wasm-util",
+          "version": "0.10.3",
+          "license": "MIT",
+          "resolved": "https://registry.npmjs.org/@tybys/wasm-util/-/wasm-util-0.10.3.tgz"
+        },
+        {
+          "name": "@types/chai",
+          "version": "5.2.3",
+          "license": "MIT",
+          "resolved": "https://registry.npmjs.org/@types/chai/-/chai-5.2.3.tgz"
+        },
+        {
+          "name": "@types/deep-eql",
+          "version": "4.0.2",
+          "license": "MIT",
+          "resolved": "https://registry.npmjs.org/@types/deep-eql/-/deep-eql-4.0.2.tgz"
+        },
+        {
+          "name": "@types/esrecurse",
+          "version": "4.3.1",
+          "license": "MIT",
+          "resolved": "https://registry.npmjs.org/@types/esrecurse/-/esrecurse-4.3.1.tgz"
+        },
+        {
+          "name": "@types/estree",
+          "version": "1.0.9",
+          "license": "MIT",
+          "resolved": "https://registry.npmjs.org/@types/estree/-/estree-1.0.9.tgz"
+        },
+        {
+          "name": "@types/json-schema",
+          "version": "7.0.15",
+          "license": "MIT",
+          "resolved": "https://registry.npmjs.org/@types/json-schema/-/json-schema-7.0.15.tgz"
+        },
+        {
+          "name": "@types/node",
+          "version": "26.1.1",
+          "license": "MIT",
+          "resolved": "https://registry.npmjs.org/@types/node/-/node-26.1.1.tgz"
+        },
+        {
+          "name": "@types/whatwg-mimetype",
+          "version": "3.0.2",
+          "license": "MIT",
+          "resolved": "https://registry.npmjs.org/@types/whatwg-mimetype/-/whatwg-mimetype-3.0.2.tgz"
+        },
+        {
+          "name": "@types/ws",
+          "version": "8.18.1",
+          "license": "MIT",
+          "resolved": "https://registry.npmjs.org/@types/ws/-/ws-8.18.1.tgz"
+        },
+        {
+          "name": "@typescript-eslint/eslint-plugin",
+          "version": "8.65.0",
+          "license": "MIT",
+          "resolved": "https://registry.npmjs.org/@typescript-eslint/eslint-plugin/-/eslint-plugin-8.65.0.tgz"
+        },
+        {
+          "name": "@typescript-eslint/parser",
+          "version": "8.65.0",
+          "license": "MIT",
+          "resolved": "https://registry.npmjs.org/@typescript-eslint/parser/-/parser-8.65.0.tgz"
+        },
+        {
+          "name": "@typescript-eslint/project-service",
+          "version": "8.65.0",
+          "license": "MIT",
+          "resolved": "https://registry.npmjs.org/@typescript-eslint/project-service/-/project-service-8.65.0.tgz"
+        },
+        {
+          "name": "@typescript-eslint/scope-manager",
+          "version": "8.65.0",
+          "license": "MIT",
+          "resolved": "https://registry.npmjs.org/@typescript-eslint/scope-manager/-/scope-manager-8.65.0.tgz"
+        },
+        {
+          "name": "@typescript-eslint/tsconfig-utils",
+          "version": "8.65.0",
+          "license": "MIT",
+          "resolved": "https://registry.npmjs.org/@typescript-eslint/tsconfig-utils/-/tsconfig-utils-8.65.0.tgz"
+        },
+        {
+          "name": "@typescript-eslint/type-utils",
+          "version": "8.65.0",
+          "license": "MIT",
+          "resolved": "https://registry.npmjs.org/@typescript-eslint/type-utils/-/type-utils-8.65.0.tgz"
+        },
+        {
+          "name": "@typescript-eslint/types",
+          "version": "8.65.0",
+          "license": "MIT",
+          "resolved": "https://registry.npmjs.org/@typescript-eslint/types/-/types-8.65.0.tgz"
+        },
+        {
+          "name": "@typescript-eslint/typescript-estree",
+          "version": "8.65.0",
+          "license": "MIT",
+          "resolved": "https://registry.npmjs.org/@typescript-eslint/typescript-estree/-/typescript-estree-8.65.0.tgz"
+        },
+        {
+          "name": "@typescript-eslint/utils",
+          "version": "8.65.0",
+          "license": "MIT",
+          "resolved": "https://registry.npmjs.org/@typescript-eslint/utils/-/utils-8.65.0.tgz"
+        },
+        {
+          "name": "@typescript-eslint/visitor-keys",
+          "version": "8.65.0",
+          "license": "MIT",
+          "resolved": "https://registry.npmjs.org/@typescript-eslint/visitor-keys/-/visitor-keys-8.65.0.tgz"
+        },
+        {
+          "name": "@vitejs/plugin-vue",
+          "version": "6.0.8",
+          "license": "MIT",
+          "resolved": "https://registry.npmjs.org/@vitejs/plugin-vue/-/plugin-vue-6.0.8.tgz"
+        },
+        {
+          "name": "@vitest/expect",
+          "version": "4.1.11",
+          "license": "MIT",
+          "resolved": "https://registry.npmjs.org/@vitest/expect/-/expect-4.1.11.tgz"
+        },
+        {
+          "name": "@vitest/mocker",
+          "version": "4.1.11",
+          "license": "MIT",
+          "resolved": "https://registry.npmjs.org/@vitest/mocker/-/mocker-4.1.11.tgz"
+        },
+        {
+          "name": "@vitest/pretty-format",
+          "version": "4.1.11",
+          "license": "MIT",
+          "resolved": "https://registry.npmjs.org/@vitest/pretty-format/-/pretty-format-4.1.11.tgz"
+        },
+        {
+          "name": "@vitest/runner",
+          "version": "4.1.11",
+          "license": "MIT",
+          "resolved": "https://registry.npmjs.org/@vitest/runner/-/runner-4.1.11.tgz"
+        },
+        {
+          "name": "@vitest/snapshot",
+          "version": "4.1.11",
+          "license": "MIT",
+          "resolved": "https://registry.npmjs.org/@vitest/snapshot/-/snapshot-4.1.11.tgz"
+        },
+        {
+          "name": "@vitest/spy",
+          "version": "4.1.11",
+          "license": "MIT",
+          "resolved": "https://registry.npmjs.org/@vitest/spy/-/spy-4.1.11.tgz"
+        },
+        {
+          "name": "@vitest/utils",
+          "version": "4.1.11",
+          "license": "MIT",
+          "resolved": "https://registry.npmjs.org/@vitest/utils/-/utils-4.1.11.tgz"
+        },
+        {
+          "name": "@volar/language-core",
+          "version": "2.4.28",
+          "license": "MIT",
+          "resolved": "https://registry.npmjs.org/@volar/language-core/-/language-core-2.4.28.tgz"
+        },
+        {
+          "name": "@volar/source-map",
+          "version": "2.4.28",
+          "license": "MIT",
+          "resolved": "https://registry.npmjs.org/@volar/source-map/-/source-map-2.4.28.tgz"
+        },
+        {
+          "name": "@volar/typescript",
+          "version": "2.4.28",
+          "license": "MIT",
+          "resolved": "https://registry.npmjs.org/@volar/typescript/-/typescript-2.4.28.tgz"
+        },
+        {
+          "name": "@vue/compiler-core",
+          "version": "3.5.40",
+          "license": "MIT",
+          "resolved": "https://registry.npmjs.org/@vue/compiler-core/-/compiler-core-3.5.40.tgz"
+        },
+        {
+          "name": "@vue/compiler-dom",
+          "version": "3.5.40",
+          "license": "MIT",
+          "resolved": "https://registry.npmjs.org/@vue/compiler-dom/-/compiler-dom-3.5.40.tgz"
+        },
+        {
+          "name": "@vue/compiler-sfc",
+          "version": "3.5.40",
+          "license": "MIT",
+          "resolved": "https://registry.npmjs.org/@vue/compiler-sfc/-/compiler-sfc-3.5.40.tgz"
+        },
+        {
+          "name": "@vue/compiler-ssr",
+          "version": "3.5.40",
+          "license": "MIT",
+          "resolved": "https://registry.npmjs.org/@vue/compiler-ssr/-/compiler-ssr-3.5.40.tgz"
+        },
+        {
+          "name": "@vue/language-core",
+          "version": "3.3.8",
+          "license": "MIT",
+          "resolved": "https://registry.npmjs.org/@vue/language-core/-/language-core-3.3.8.tgz"
+        },
+        {
+          "name": "@vue/reactivity",
+          "version": "3.5.40",
+          "license": "MIT",
+          "resolved": "https://registry.npmjs.org/@vue/reactivity/-/reactivity-3.5.40.tgz"
+        },
+        {
+          "name": "@vue/runtime-core",
+          "version": "3.5.40",
+          "license": "MIT",
+          "resolved": "https://registry.npmjs.org/@vue/runtime-core/-/runtime-core-3.5.40.tgz"
+        },
+        {
+          "name": "@vue/runtime-dom",
+          "version": "3.5.40",
+          "license": "MIT",
+          "resolved": "https://registry.npmjs.org/@vue/runtime-dom/-/runtime-dom-3.5.40.tgz"
+        },
+        {
+          "name": "@vue/server-renderer",
+          "version": "3.5.40",
+          "license": "MIT",
+          "resolved": "https://registry.npmjs.org/@vue/server-renderer/-/server-renderer-3.5.40.tgz"
+        },
+        {
+          "name": "@vue/shared",
+          "version": "3.5.40",
+          "license": "MIT",
+          "resolved": "https://registry.npmjs.org/@vue/shared/-/shared-3.5.40.tgz"
+        },
+        {
+          "name": "@vue/test-utils",
+          "version": "2.4.11",
+          "license": "MIT",
+          "resolved": "https://registry.npmjs.org/@vue/test-utils/-/test-utils-2.4.11.tgz"
+        },
+        {
+          "name": "abbrev",
+          "version": "2.0.0",
+          "license": "ISC",
+          "resolved": "https://registry.npmjs.org/abbrev/-/abbrev-2.0.0.tgz"
+        },
+        {
+          "name": "acorn",
+          "version": "8.17.0",
+          "license": "MIT",
+          "resolved": "https://registry.npmjs.org/acorn/-/acorn-8.17.0.tgz"
+        },
+        {
+          "name": "acorn-jsx",
+          "version": "5.3.2",
+          "license": "MIT",
+          "resolved": "https://registry.npmjs.org/acorn-jsx/-/acorn-jsx-5.3.2.tgz"
+        },
+        {
+          "name": "ajv",
+          "version": "6.15.0",
+          "license": "MIT",
+          "resolved": "https://registry.npmjs.org/ajv/-/ajv-6.15.0.tgz"
+        },
+        {
+          "name": "alien-signals",
+          "version": "3.2.1",
+          "license": "MIT",
+          "resolved": "https://registry.npmjs.org/alien-signals/-/alien-signals-3.2.1.tgz"
+        },
+        {
+          "name": "ansi-regex",
+          "version": "5.0.1",
+          "license": "MIT",
+          "resolved": "https://registry.npmjs.org/ansi-regex/-/ansi-regex-5.0.1.tgz"
+        },
+        {
+          "name": "ansi-regex",
+          "version": "5.0.1",
+          "license": "MIT",
+          "resolved": "https://registry.npmjs.org/ansi-regex/-/ansi-regex-5.0.1.tgz"
+        },
+        {
+          "name": "ansi-regex",
+          "version": "5.0.1",
+          "license": "MIT",
+          "resolved": "https://registry.npmjs.org/ansi-regex/-/ansi-regex-5.0.1.tgz"
+        },
+        {
+          "name": "ansi-regex",
+          "version": "6.2.2",
+          "license": "MIT",
+          "resolved": "https://registry.npmjs.org/ansi-regex/-/ansi-regex-6.2.2.tgz"
+        },
+        {
+          "name": "ansi-styles",
+          "version": "4.3.0",
+          "license": "MIT",
+          "resolved": "https://registry.npmjs.org/ansi-styles/-/ansi-styles-4.3.0.tgz"
+        },
+        {
+          "name": "ansi-styles",
+          "version": "6.2.3",
+          "license": "MIT",
+          "resolved": "https://registry.npmjs.org/ansi-styles/-/ansi-styles-6.2.3.tgz"
+        },
+        {
+          "name": "assertion-error",
+          "version": "2.0.1",
+          "license": "MIT",
+          "resolved": "https://registry.npmjs.org/assertion-error/-/assertion-error-2.0.1.tgz"
+        },
+        {
+          "name": "balanced-match",
+          "version": "1.0.2",
+          "license": "MIT",
+          "resolved": "https://registry.npmjs.org/balanced-match/-/balanced-match-1.0.2.tgz"
+        },
+        {
+          "name": "balanced-match",
+          "version": "1.0.2",
+          "license": "MIT",
+          "resolved": "https://registry.npmjs.org/balanced-match/-/balanced-match-1.0.2.tgz"
+        },
+        {
+          "name": "balanced-match",
+          "version": "4.0.4",
+          "license": "MIT",
+          "resolved": "https://registry.npmjs.org/balanced-match/-/balanced-match-4.0.4.tgz"
+        },
+        {
+          "name": "boolbase",
+          "version": "1.0.0",
+          "license": "ISC",
+          "resolved": "https://registry.npmjs.org/boolbase/-/boolbase-1.0.0.tgz"
+        },
+        {
+          "name": "brace-expansion",
+          "version": "2.1.4",
+          "license": "MIT",
+          "resolved": "https://registry.npmjs.org/brace-expansion/-/brace-expansion-2.1.4.tgz"
+        },
+        {
+          "name": "brace-expansion",
+          "version": "2.1.4",
+          "license": "MIT",
+          "resolved": "https://registry.npmjs.org/brace-expansion/-/brace-expansion-2.1.4.tgz"
+        },
+        {
+          "name": "brace-expansion",
+          "version": "5.0.9",
+          "license": "MIT",
+          "resolved": "https://registry.npmjs.org/brace-expansion/-/brace-expansion-5.0.9.tgz"
+        },
+        {
+          "name": "buffer-image-size",
+          "version": "0.6.4",
+          "license": "MIT",
+          "resolved": "https://registry.npmjs.org/buffer-image-size/-/buffer-image-size-0.6.4.tgz"
+        },
+        {
+          "name": "chai",
+          "version": "6.2.2",
+          "license": "MIT",
+          "resolved": "https://registry.npmjs.org/chai/-/chai-6.2.2.tgz"
+        },
+        {
+          "name": "color-convert",
+          "version": "2.0.1",
+          "license": "MIT",
+          "resolved": "https://registry.npmjs.org/color-convert/-/color-convert-2.0.1.tgz"
+        },
+        {
+          "name": "color-name",
+          "version": "1.1.4",
+          "license": "MIT",
+          "resolved": "https://registry.npmjs.org/color-name/-/color-name-1.1.4.tgz"
+        },
+        {
+          "name": "commander",
+          "version": "10.0.1",
+          "license": "MIT",
+          "resolved": "https://registry.npmjs.org/commander/-/commander-10.0.1.tgz"
+        },
+        {
+          "name": "config-chain",
+          "version": "1.1.13",
+          "license": "MIT",
+          "resolved": "https://registry.npmjs.org/config-chain/-/config-chain-1.1.13.tgz"
+        },
+        {
+          "name": "convert-source-map",
+          "version": "2.0.0",
+          "license": "MIT",
+          "resolved": "https://registry.npmjs.org/convert-source-map/-/convert-source-map-2.0.0.tgz"
+        },
+        {
+          "name": "cross-spawn",
+          "version": "7.0.6",
+          "license": "MIT",
+          "resolved": "https://registry.npmjs.org/cross-spawn/-/cross-spawn-7.0.6.tgz"
+        },
+        {
+          "name": "cssesc",
+          "version": "3.0.0",
+          "license": "MIT",
+          "resolved": "https://registry.npmjs.org/cssesc/-/cssesc-3.0.0.tgz"
+        },
+        {
+          "name": "csstype",
+          "version": "3.2.3",
+          "license": "MIT",
+          "resolved": "https://registry.npmjs.org/csstype/-/csstype-3.2.3.tgz"
+        },
+        {
+          "name": "debug",
+          "version": "4.4.3",
+          "license": "MIT",
+          "resolved": "https://registry.npmjs.org/debug/-/debug-4.4.3.tgz"
+        },
+        {
+          "name": "deep-is",
+          "version": "0.1.4",
+          "license": "MIT",
+          "resolved": "https://registry.npmjs.org/deep-is/-/deep-is-0.1.4.tgz"
+        },
+        {
+          "name": "detect-libc",
+          "version": "2.1.2",
+          "license": "Apache-2.0",
+          "resolved": "https://registry.npmjs.org/detect-libc/-/detect-libc-2.1.2.tgz"
+        },
+        {
+          "name": "eastasianwidth",
+          "version": "0.2.0",
+          "license": "MIT",
+          "resolved": "https://registry.npmjs.org/eastasianwidth/-/eastasianwidth-0.2.0.tgz"
+        },
+        {
+          "name": "editorconfig",
+          "version": "1.0.7",
+          "license": "MIT",
+          "resolved": "https://registry.npmjs.org/editorconfig/-/editorconfig-1.0.7.tgz"
+        },
+        {
+          "name": "emoji-regex",
+          "version": "8.0.0",
+          "license": "MIT",
+          "resolved": "https://registry.npmjs.org/emoji-regex/-/emoji-regex-8.0.0.tgz"
+        },
+        {
+          "name": "emoji-regex",
+          "version": "8.0.0",
+          "license": "MIT",
+          "resolved": "https://registry.npmjs.org/emoji-regex/-/emoji-regex-8.0.0.tgz"
+        },
+        {
+          "name": "emoji-regex",
+          "version": "9.2.2",
+          "license": "MIT",
+          "resolved": "https://registry.npmjs.org/emoji-regex/-/emoji-regex-9.2.2.tgz"
+        },
+        {
+          "name": "entities",
+          "version": "7.0.1",
+          "license": "BSD-2-Clause",
+          "resolved": "https://registry.npmjs.org/entities/-/entities-7.0.1.tgz"
+        },
+        {
+          "name": "es-module-lexer",
+          "version": "2.3.1",
+          "license": "MIT",
+          "resolved": "https://registry.npmjs.org/es-module-lexer/-/es-module-lexer-2.3.1.tgz"
+        },
+        {
+          "name": "escape-string-regexp",
+          "version": "4.0.0",
+          "license": "MIT",
+          "resolved": "https://registry.npmjs.org/escape-string-regexp/-/escape-string-regexp-4.0.0.tgz"
+        },
+        {
+          "name": "eslint",
+          "version": "10.7.0",
+          "license": "MIT",
+          "resolved": "https://registry.npmjs.org/eslint/-/eslint-10.7.0.tgz"
+        },
+        {
+          "name": "eslint-plugin-vue",
+          "version": "10.10.0",
+          "license": "MIT",
+          "resolved": "https://registry.npmjs.org/eslint-plugin-vue/-/eslint-plugin-vue-10.10.0.tgz"
+        },
+        {
+          "name": "eslint-scope",
+          "version": "9.1.2",
+          "license": "BSD-2-Clause",
+          "resolved": "https://registry.npmjs.org/eslint-scope/-/eslint-scope-9.1.2.tgz"
+        },
+        {
+          "name": "eslint-visitor-keys",
+          "version": "3.4.3",
+          "license": "Apache-2.0",
+          "resolved": "https://registry.npmjs.org/eslint-visitor-keys/-/eslint-visitor-keys-3.4.3.tgz"
+        },
+        {
+          "name": "eslint-visitor-keys",
+          "version": "5.0.1",
+          "license": "Apache-2.0",
+          "resolved": "https://registry.npmjs.org/eslint-visitor-keys/-/eslint-visitor-keys-5.0.1.tgz"
+        },
+        {
+          "name": "espree",
+          "version": "11.2.0",
+          "license": "BSD-2-Clause",
+          "resolved": "https://registry.npmjs.org/espree/-/espree-11.2.0.tgz"
+        },
+        {
+          "name": "esquery",
+          "version": "1.7.0",
+          "license": "BSD-3-Clause",
+          "resolved": "https://registry.npmjs.org/esquery/-/esquery-1.7.0.tgz"
+        },
+        {
+          "name": "esrecurse",
+          "version": "4.3.0",
+          "license": "BSD-2-Clause",
+          "resolved": "https://registry.npmjs.org/esrecurse/-/esrecurse-4.3.0.tgz"
+        },
+        {
+          "name": "estraverse",
+          "version": "5.3.0",
+          "license": "BSD-2-Clause",
+          "resolved": "https://registry.npmjs.org/estraverse/-/estraverse-5.3.0.tgz"
+        },
+        {
+          "name": "estree-walker",
+          "version": "2.0.2",
+          "license": "MIT",
+          "resolved": "https://registry.npmjs.org/estree-walker/-/estree-walker-2.0.2.tgz"
+        },
+        {
+          "name": "estree-walker",
+          "version": "3.0.3",
+          "license": "MIT",
+          "resolved": "https://registry.npmjs.org/estree-walker/-/estree-walker-3.0.3.tgz"
+        },
+        {
+          "name": "esutils",
+          "version": "2.0.3",
+          "license": "BSD-2-Clause",
+          "resolved": "https://registry.npmjs.org/esutils/-/esutils-2.0.3.tgz"
+        },
+        {
+          "name": "expect-type",
+          "version": "1.4.0",
+          "license": "Apache-2.0",
+          "resolved": "https://registry.npmjs.org/expect-type/-/expect-type-1.4.0.tgz"
+        },
+        {
+          "name": "fast-deep-equal",
+          "version": "3.1.3",
+          "license": "MIT",
+          "resolved": "https://registry.npmjs.org/fast-deep-equal/-/fast-deep-equal-3.1.3.tgz"
+        },
+        {
+          "name": "fast-json-stable-stringify",
+          "version": "2.1.0",
+          "license": "MIT",
+          "resolved": "https://registry.npmjs.org/fast-json-stable-stringify/-/fast-json-stable-stringify-2.1.0.tgz"
+        },
+        {
+          "name": "fast-levenshtein",
+          "version": "2.0.6",
+          "license": "MIT",
+          "resolved": "https://registry.npmjs.org/fast-levenshtein/-/fast-levenshtein-2.0.6.tgz"
+        },
+        {
+          "name": "fdir",
+          "version": "6.5.0",
+          "license": "MIT",
+          "resolved": "https://registry.npmjs.org/fdir/-/fdir-6.5.0.tgz"
+        },
+        {
+          "name": "file-entry-cache",
+          "version": "8.0.0",
+          "license": "MIT",
+          "resolved": "https://registry.npmjs.org/file-entry-cache/-/file-entry-cache-8.0.0.tgz"
+        },
+        {
+          "name": "find-up",
+          "version": "5.0.0",
+          "license": "MIT",
+          "resolved": "https://registry.npmjs.org/find-up/-/find-up-5.0.0.tgz"
+        },
+        {
+          "name": "flat-cache",
+          "version": "4.0.1",
+          "license": "MIT",
+          "resolved": "https://registry.npmjs.org/flat-cache/-/flat-cache-4.0.1.tgz"
+        },
+        {
+          "name": "flatted",
+          "version": "3.4.3",
+          "license": "ISC",
+          "resolved": "https://registry.npmjs.org/flatted/-/flatted-3.4.3.tgz"
+        },
+        {
+          "name": "foreground-child",
+          "version": "3.3.1",
+          "license": "ISC",
+          "resolved": "https://registry.npmjs.org/foreground-child/-/foreground-child-3.3.1.tgz"
+        },
+        {
+          "name": "fsevents",
+          "version": "2.3.3",
+          "license": "MIT",
+          "resolved": "https://registry.npmjs.org/fsevents/-/fsevents-2.3.3.tgz"
+        },
+        {
+          "name": "glob",
+          "version": "10.5.0",
+          "license": "ISC",
+          "resolved": "https://registry.npmjs.org/glob/-/glob-10.5.0.tgz"
+        },
+        {
+          "name": "glob-parent",
+          "version": "6.0.2",
+          "license": "ISC",
+          "resolved": "https://registry.npmjs.org/glob-parent/-/glob-parent-6.0.2.tgz"
+        },
+        {
+          "name": "happy-dom",
+          "version": "20.11.1",
+          "license": "MIT",
+          "resolved": "https://registry.npmjs.org/happy-dom/-/happy-dom-20.11.1.tgz"
+        },
+        {
+          "name": "ignore",
+          "version": "5.3.2",
+          "license": "MIT",
+          "resolved": "https://registry.npmjs.org/ignore/-/ignore-5.3.2.tgz"
+        },
+        {
+          "name": "ignore",
+          "version": "7.0.6",
+          "license": "MIT",
+          "resolved": "https://registry.npmjs.org/ignore/-/ignore-7.0.6.tgz"
+        },
+        {
+          "name": "imurmurhash",
+          "version": "0.1.4",
+          "license": "MIT",
+          "resolved": "https://registry.npmjs.org/imurmurhash/-/imurmurhash-0.1.4.tgz"
+        },
+        {
+          "name": "ini",
+          "version": "1.3.8",
+          "license": "ISC",
+          "resolved": "https://registry.npmjs.org/ini/-/ini-1.3.8.tgz"
+        },
+        {
+          "name": "is-extglob",
+          "version": "2.1.1",
+          "license": "MIT",
+          "resolved": "https://registry.npmjs.org/is-extglob/-/is-extglob-2.1.1.tgz"
+        },
+        {
+          "name": "is-fullwidth-code-point",
+          "version": "3.0.0",
+          "license": "MIT",
+          "resolved": "https://registry.npmjs.org/is-fullwidth-code-point/-/is-fullwidth-code-point-3.0.0.tgz"
+        },
+        {
+          "name": "is-glob",
+          "version": "4.0.3",
+          "license": "MIT",
+          "resolved": "https://registry.npmjs.org/is-glob/-/is-glob-4.0.3.tgz"
+        },
+        {
+          "name": "isexe",
+          "version": "2.0.0",
+          "license": "ISC",
+          "resolved": "https://registry.npmjs.org/isexe/-/isexe-2.0.0.tgz"
+        },
+        {
+          "name": "jackspeak",
+          "version": "3.4.3",
+          "license": "BlueOak-1.0.0",
+          "resolved": "https://registry.npmjs.org/jackspeak/-/jackspeak-3.4.3.tgz"
+        },
+        {
+          "name": "js-beautify",
+          "version": "1.15.4",
+          "license": "MIT",
+          "resolved": "https://registry.npmjs.org/js-beautify/-/js-beautify-1.15.4.tgz"
+        },
+        {
+          "name": "js-cookie",
+          "version": "3.0.8",
+          "license": "MIT",
+          "resolved": "https://registry.npmjs.org/js-cookie/-/js-cookie-3.0.8.tgz"
+        },
+        {
+          "name": "json-buffer",
+          "version": "3.0.1",
+          "license": "MIT",
+          "resolved": "https://registry.npmjs.org/json-buffer/-/json-buffer-3.0.1.tgz"
+        },
+        {
+          "name": "json-schema-traverse",
+          "version": "0.4.1",
+          "license": "MIT",
+          "resolved": "https://registry.npmjs.org/json-schema-traverse/-/json-schema-traverse-0.4.1.tgz"
+        },
+        {
+          "name": "json-stable-stringify-without-jsonify",
+          "version": "1.0.1",
+          "license": "MIT",
+          "resolved": "https://registry.npmjs.org/json-stable-stringify-without-jsonify/-/json-stable-stringify-without-jsonify-1.0.1.tgz"
+        },
+        {
+          "name": "keyv",
+          "version": "4.5.4",
+          "license": "MIT",
+          "resolved": "https://registry.npmjs.org/keyv/-/keyv-4.5.4.tgz"
+        },
+        {
+          "name": "levn",
+          "version": "0.4.1",
+          "license": "MIT",
+          "resolved": "https://registry.npmjs.org/levn/-/levn-0.4.1.tgz"
+        },
+        {
+          "name": "lightningcss",
+          "version": "1.33.0",
+          "license": "MPL-2.0",
+          "resolved": "https://registry.npmjs.org/lightningcss/-/lightningcss-1.33.0.tgz"
+        },
+        {
+          "name": "lightningcss-android-arm64",
+          "version": "1.33.0",
+          "license": "MPL-2.0",
+          "resolved": "https://registry.npmjs.org/lightningcss-android-arm64/-/lightningcss-android-arm64-1.33.0.tgz"
+        },
+        {
+          "name": "lightningcss-darwin-arm64",
+          "version": "1.33.0",
+          "license": "MPL-2.0",
+          "resolved": "https://registry.npmjs.org/lightningcss-darwin-arm64/-/lightningcss-darwin-arm64-1.33.0.tgz"
+        },
+        {
+          "name": "lightningcss-darwin-x64",
+          "version": "1.33.0",
+          "license": "MPL-2.0",
+          "resolved": "https://registry.npmjs.org/lightningcss-darwin-x64/-/lightningcss-darwin-x64-1.33.0.tgz"
+        },
+        {
+          "name": "lightningcss-freebsd-x64",
+          "version": "1.33.0",
+          "license": "MPL-2.0",
+          "resolved": "https://registry.npmjs.org/lightningcss-freebsd-x64/-/lightningcss-freebsd-x64-1.33.0.tgz"
+        },
+        {
+          "name": "lightningcss-linux-arm-gnueabihf",
+          "version": "1.33.0",
+          "license": "MPL-2.0",
+          "resolved": "https://registry.npmjs.org/lightningcss-linux-arm-gnueabihf/-/lightningcss-linux-arm-gnueabihf-1.33.0.tgz"
+        },
+        {
+          "name": "lightningcss-linux-arm64-gnu",
+          "version": "1.33.0",
+          "license": "MPL-2.0",
+          "resolved": "https://registry.npmjs.org/lightningcss-linux-arm64-gnu/-/lightningcss-linux-arm64-gnu-1.33.0.tgz"
+        },
+        {
+          "name": "lightningcss-linux-arm64-musl",
+          "version": "1.33.0",
+          "license": "MPL-2.0",
+          "resolved": "https://registry.npmjs.org/lightningcss-linux-arm64-musl/-/lightningcss-linux-arm64-musl-1.33.0.tgz"
+        },
+        {
+          "name": "lightningcss-linux-x64-gnu",
+          "version": "1.33.0",
+          "license": "MPL-2.0",
+          "resolved": "https://registry.npmjs.org/lightningcss-linux-x64-gnu/-/lightningcss-linux-x64-gnu-1.33.0.tgz"
+        },
+        {
+          "name": "lightningcss-linux-x64-musl",
+          "version": "1.33.0",
+          "license": "MPL-2.0",
+          "resolved": "https://registry.npmjs.org/lightningcss-linux-x64-musl/-/lightningcss-linux-x64-musl-1.33.0.tgz"
+        },
+        {
+          "name": "lightningcss-win32-arm64-msvc",
+          "version": "1.33.0",
+          "license": "MPL-2.0",
+          "resolved": "https://registry.npmjs.org/lightningcss-win32-arm64-msvc/-/lightningcss-win32-arm64-msvc-1.33.0.tgz"
+        },
+        {
+          "name": "lightningcss-win32-x64-msvc",
+          "version": "1.33.0",
+          "license": "MPL-2.0",
+          "resolved": "https://registry.npmjs.org/lightningcss-win32-x64-msvc/-/lightningcss-win32-x64-msvc-1.33.0.tgz"
+        },
+        {
+          "name": "locate-path",
+          "version": "6.0.0",
+          "license": "MIT",
+          "resolved": "https://registry.npmjs.org/locate-path/-/locate-path-6.0.0.tgz"
+        },
+        {
+          "name": "lru-cache",
+          "version": "10.4.3",
+          "license": "ISC",
+          "resolved": "https://registry.npmjs.org/lru-cache/-/lru-cache-10.4.3.tgz"
+        },
+        {
+          "name": "lunar-typescript",
+          "version": "1.8.6",
+          "license": "MIT",
+          "resolved": "https://registry.npmjs.org/lunar-typescript/-/lunar-typescript-1.8.6.tgz"
+        },
+        {
+          "name": "magic-string",
+          "version": "0.30.21",
+          "license": "MIT",
+          "resolved": "https://registry.npmjs.org/magic-string/-/magic-string-0.30.21.tgz"
+        },
+        {
+          "name": "minimatch",
+          "version": "10.2.5",
+          "license": "BlueOak-1.0.0",
+          "resolved": "https://registry.npmjs.org/minimatch/-/minimatch-10.2.5.tgz"
+        },
+        {
+          "name": "minimatch",
+          "version": "9.0.9",
+          "license": "ISC",
+          "resolved": "https://registry.npmjs.org/minimatch/-/minimatch-9.0.9.tgz"
+        },
+        {
+          "name": "minimatch",
+          "version": "9.0.9",
+          "license": "ISC",
+          "resolved": "https://registry.npmjs.org/minimatch/-/minimatch-9.0.9.tgz"
+        },
+        {
+          "name": "minipass",
+          "version": "7.1.3",
+          "license": "BlueOak-1.0.0",
+          "resolved": "https://registry.npmjs.org/minipass/-/minipass-7.1.3.tgz"
+        },
+        {
+          "name": "ms",
+          "version": "2.1.3",
+          "license": "MIT",
+          "resolved": "https://registry.npmjs.org/ms/-/ms-2.1.3.tgz"
+        },
+        {
+          "name": "muggle-string",
+          "version": "0.4.1",
+          "license": "MIT",
+          "resolved": "https://registry.npmjs.org/muggle-string/-/muggle-string-0.4.1.tgz"
+        },
+        {
+          "name": "nanoid",
+          "version": "3.3.18",
+          "license": "MIT",
+          "resolved": "https://registry.npmjs.org/nanoid/-/nanoid-3.3.18.tgz"
+        },
+        {
+          "name": "natural-compare",
+          "version": "1.4.0",
+          "license": "MIT",
+          "resolved": "https://registry.npmjs.org/natural-compare/-/natural-compare-1.4.0.tgz"
+        },
+        {
+          "name": "nopt",
+          "version": "7.2.1",
+          "license": "ISC",
+          "resolved": "https://registry.npmjs.org/nopt/-/nopt-7.2.1.tgz"
+        },
+        {
+          "name": "nth-check",
+          "version": "2.1.1",
+          "license": "BSD-2-Clause",
+          "resolved": "https://registry.npmjs.org/nth-check/-/nth-check-2.1.1.tgz"
+        },
+        {
+          "name": "obug",
+          "version": "2.1.4",
+          "license": "MIT",
+          "resolved": "https://registry.npmjs.org/obug/-/obug-2.1.4.tgz"
+        },
+        {
+          "name": "optionator",
+          "version": "0.9.4",
+          "license": "MIT",
+          "resolved": "https://registry.npmjs.org/optionator/-/optionator-0.9.4.tgz"
+        },
+        {
+          "name": "p-limit",
+          "version": "3.1.0",
+          "license": "MIT",
+          "resolved": "https://registry.npmjs.org/p-limit/-/p-limit-3.1.0.tgz"
+        },
+        {
+          "name": "p-locate",
+          "version": "5.0.0",
+          "license": "MIT",
+          "resolved": "https://registry.npmjs.org/p-locate/-/p-locate-5.0.0.tgz"
+        },
+        {
+          "name": "package-json-from-dist",
+          "version": "1.0.1",
+          "license": "BlueOak-1.0.0",
+          "resolved": "https://registry.npmjs.org/package-json-from-dist/-/package-json-from-dist-1.0.1.tgz"
+        },
+        {
+          "name": "path-browserify",
+          "version": "1.0.1",
+          "license": "MIT",
+          "resolved": "https://registry.npmjs.org/path-browserify/-/path-browserify-1.0.1.tgz"
+        },
+        {
+          "name": "path-exists",
+          "version": "4.0.0",
+          "license": "MIT",
+          "resolved": "https://registry.npmjs.org/path-exists/-/path-exists-4.0.0.tgz"
+        },
+        {
+          "name": "path-key",
+          "version": "3.1.1",
+          "license": "MIT",
+          "resolved": "https://registry.npmjs.org/path-key/-/path-key-3.1.1.tgz"
+        },
+        {
+          "name": "path-scurry",
+          "version": "1.11.1",
+          "license": "BlueOak-1.0.0",
+          "resolved": "https://registry.npmjs.org/path-scurry/-/path-scurry-1.11.1.tgz"
+        },
+        {
+          "name": "pathe",
+          "version": "2.0.3",
+          "license": "MIT",
+          "resolved": "https://registry.npmjs.org/pathe/-/pathe-2.0.3.tgz"
+        },
+        {
+          "name": "picocolors",
+          "version": "1.1.1",
+          "license": "ISC",
+          "resolved": "https://registry.npmjs.org/picocolors/-/picocolors-1.1.1.tgz"
+        },
+        {
+          "name": "picomatch",
+          "version": "4.0.5",
+          "license": "MIT",
+          "resolved": "https://registry.npmjs.org/picomatch/-/picomatch-4.0.5.tgz"
+        },
+        {
+          "name": "postcss",
+          "version": "8.5.28",
+          "license": "MIT",
+          "resolved": "https://registry.npmjs.org/postcss/-/postcss-8.5.28.tgz"
+        },
+        {
+          "name": "postcss-selector-parser",
+          "version": "7.1.4",
+          "license": "MIT",
+          "resolved": "https://registry.npmjs.org/postcss-selector-parser/-/postcss-selector-parser-7.1.4.tgz"
+        },
+        {
+          "name": "prelude-ls",
+          "version": "1.2.1",
+          "license": "MIT",
+          "resolved": "https://registry.npmjs.org/prelude-ls/-/prelude-ls-1.2.1.tgz"
+        },
+        {
+          "name": "proto-list",
+          "version": "1.2.4",
+          "license": "ISC",
+          "resolved": "https://registry.npmjs.org/proto-list/-/proto-list-1.2.4.tgz"
+        },
+        {
+          "name": "punycode",
+          "version": "2.3.1",
+          "license": "MIT",
+          "resolved": "https://registry.npmjs.org/punycode/-/punycode-2.3.1.tgz"
+        },
+        {
+          "name": "rolldown",
+          "version": "1.1.5",
+          "license": "MIT",
+          "resolved": "https://registry.npmjs.org/rolldown/-/rolldown-1.1.5.tgz"
+        },
+        {
+          "name": "semver",
+          "version": "7.8.5",
+          "license": "ISC",
+          "resolved": "https://registry.npmjs.org/semver/-/semver-7.8.5.tgz"
+        },
+        {
+          "name": "shebang-command",
+          "version": "2.0.0",
+          "license": "MIT",
+          "resolved": "https://registry.npmjs.org/shebang-command/-/shebang-command-2.0.0.tgz"
+        },
+        {
+          "name": "shebang-regex",
+          "version": "3.0.0",
+          "license": "MIT",
+          "resolved": "https://registry.npmjs.org/shebang-regex/-/shebang-regex-3.0.0.tgz"
+        },
+        {
+          "name": "siginfo",
+          "version": "2.0.0",
+          "license": "ISC",
+          "resolved": "https://registry.npmjs.org/siginfo/-/siginfo-2.0.0.tgz"
+        },
+        {
+          "name": "signal-exit",
+          "version": "4.1.0",
+          "license": "ISC",
+          "resolved": "https://registry.npmjs.org/signal-exit/-/signal-exit-4.1.0.tgz"
+        },
+        {
+          "name": "source-map-js",
+          "version": "1.2.1",
+          "license": "BSD-3-Clause",
+          "resolved": "https://registry.npmjs.org/source-map-js/-/source-map-js-1.2.1.tgz"
+        },
+        {
+          "name": "stackback",
+          "version": "0.0.2",
+          "license": "MIT",
+          "resolved": "https://registry.npmjs.org/stackback/-/stackback-0.0.2.tgz"
+        },
+        {
+          "name": "std-env",
+          "version": "4.2.0",
+          "license": "MIT",
+          "resolved": "https://registry.npmjs.org/std-env/-/std-env-4.2.0.tgz"
+        },
+        {
+          "name": "string-width",
+          "version": "4.2.3",
+          "license": "MIT",
+          "resolved": "https://registry.npmjs.org/string-width/-/string-width-4.2.3.tgz"
+        },
+        {
+          "name": "string-width",
+          "version": "4.2.3",
+          "license": "MIT",
+          "resolved": "https://registry.npmjs.org/string-width/-/string-width-4.2.3.tgz"
+        },
+        {
+          "name": "string-width",
+          "version": "5.1.2",
+          "license": "MIT",
+          "resolved": "https://registry.npmjs.org/string-width/-/string-width-5.1.2.tgz"
+        },
+        {
+          "name": "strip-ansi",
+          "version": "6.0.1",
+          "license": "MIT",
+          "resolved": "https://registry.npmjs.org/strip-ansi/-/strip-ansi-6.0.1.tgz"
+        },
+        {
+          "name": "strip-ansi",
+          "version": "6.0.1",
+          "license": "MIT",
+          "resolved": "https://registry.npmjs.org/strip-ansi/-/strip-ansi-6.0.1.tgz"
+        },
+        {
+          "name": "strip-ansi",
+          "version": "6.0.1",
+          "license": "MIT",
+          "resolved": "https://registry.npmjs.org/strip-ansi/-/strip-ansi-6.0.1.tgz"
+        },
+        {
+          "name": "strip-ansi",
+          "version": "7.2.0",
+          "license": "MIT",
+          "resolved": "https://registry.npmjs.org/strip-ansi/-/strip-ansi-7.2.0.tgz"
+        },
+        {
+          "name": "tinybench",
+          "version": "2.9.0",
+          "license": "MIT",
+          "resolved": "https://registry.npmjs.org/tinybench/-/tinybench-2.9.0.tgz"
+        },
+        {
+          "name": "tinyexec",
+          "version": "1.2.4",
+          "license": "MIT",
+          "resolved": "https://registry.npmjs.org/tinyexec/-/tinyexec-1.2.4.tgz"
+        },
+        {
+          "name": "tinyglobby",
+          "version": "0.2.17",
+          "license": "MIT",
+          "resolved": "https://registry.npmjs.org/tinyglobby/-/tinyglobby-0.2.17.tgz"
+        },
+        {
+          "name": "tinyrainbow",
+          "version": "3.1.1",
+          "license": "MIT",
+          "resolved": "https://registry.npmjs.org/tinyrainbow/-/tinyrainbow-3.1.1.tgz"
+        },
+        {
+          "name": "ts-api-utils",
+          "version": "2.5.0",
+          "license": "MIT",
+          "resolved": "https://registry.npmjs.org/ts-api-utils/-/ts-api-utils-2.5.0.tgz"
+        },
+        {
+          "name": "tslib",
+          "version": "2.8.1",
+          "license": "0BSD",
+          "resolved": "https://registry.npmjs.org/tslib/-/tslib-2.8.1.tgz"
+        },
+        {
+          "name": "type-check",
+          "version": "0.4.0",
+          "license": "MIT",
+          "resolved": "https://registry.npmjs.org/type-check/-/type-check-0.4.0.tgz"
+        },
+        {
+          "name": "typescript",
+          "version": "6.0.3",
+          "license": "Apache-2.0",
+          "resolved": "https://registry.npmjs.org/typescript/-/typescript-6.0.3.tgz"
+        },
+        {
+          "name": "typescript-eslint",
+          "version": "8.65.0",
+          "license": "MIT",
+          "resolved": "https://registry.npmjs.org/typescript-eslint/-/typescript-eslint-8.65.0.tgz"
+        },
+        {
+          "name": "undici-types",
+          "version": "8.3.0",
+          "license": "MIT",
+          "resolved": "https://registry.npmjs.org/undici-types/-/undici-types-8.3.0.tgz"
+        },
+        {
+          "name": "uri-js",
+          "version": "4.4.1",
+          "license": "BSD-2-Clause",
+          "resolved": "https://registry.npmjs.org/uri-js/-/uri-js-4.4.1.tgz"
+        },
+        {
+          "name": "util-deprecate",
+          "version": "1.0.2",
+          "license": "MIT",
+          "resolved": "https://registry.npmjs.org/util-deprecate/-/util-deprecate-1.0.2.tgz"
+        },
+        {
+          "name": "vite",
+          "version": "8.1.5",
+          "license": "MIT",
+          "resolved": "https://registry.npmjs.org/vite/-/vite-8.1.5.tgz"
+        },
+        {
+          "name": "vitest",
+          "version": "4.1.11",
+          "license": "MIT",
+          "resolved": "https://registry.npmjs.org/vitest/-/vitest-4.1.11.tgz"
+        },
+        {
+          "name": "vscode-uri",
+          "version": "3.1.0",
+          "license": "MIT",
+          "resolved": "https://registry.npmjs.org/vscode-uri/-/vscode-uri-3.1.0.tgz"
+        },
+        {
+          "name": "vue",
+          "version": "3.5.40",
+          "license": "MIT",
+          "resolved": "https://registry.npmjs.org/vue/-/vue-3.5.40.tgz"
+        },
+        {
+          "name": "vue-component-type-helpers",
+          "version": "3.3.8",
+          "license": "MIT",
+          "resolved": "https://registry.npmjs.org/vue-component-type-helpers/-/vue-component-type-helpers-3.3.8.tgz"
+        },
+        {
+          "name": "vue-eslint-parser",
+          "version": "10.4.1",
+          "license": "MIT",
+          "resolved": "https://registry.npmjs.org/vue-eslint-parser/-/vue-eslint-parser-10.4.1.tgz"
+        },
+        {
+          "name": "vue-tsc",
+          "version": "3.3.8",
+          "license": "MIT",
+          "resolved": "https://registry.npmjs.org/vue-tsc/-/vue-tsc-3.3.8.tgz"
+        },
+        {
+          "name": "whatwg-mimetype",
+          "version": "3.0.0",
+          "license": "MIT",
+          "resolved": "https://registry.npmjs.org/whatwg-mimetype/-/whatwg-mimetype-3.0.0.tgz"
+        },
+        {
+          "name": "which",
+          "version": "2.0.2",
+          "license": "ISC",
+          "resolved": "https://registry.npmjs.org/which/-/which-2.0.2.tgz"
+        },
+        {
+          "name": "why-is-node-running",
+          "version": "2.3.0",
+          "license": "MIT",
+          "resolved": "https://registry.npmjs.org/why-is-node-running/-/why-is-node-running-2.3.0.tgz"
+        },
+        {
+          "name": "word-wrap",
+          "version": "1.2.5",
+          "license": "MIT",
+          "resolved": "https://registry.npmjs.org/word-wrap/-/word-wrap-1.2.5.tgz"
+        },
+        {
+          "name": "wrap-ansi",
+          "version": "7.0.0",
+          "license": "MIT",
+          "resolved": "https://registry.npmjs.org/wrap-ansi/-/wrap-ansi-7.0.0.tgz"
+        },
+        {
+          "name": "wrap-ansi",
+          "version": "8.1.0",
+          "license": "MIT",
+          "resolved": "https://registry.npmjs.org/wrap-ansi/-/wrap-ansi-8.1.0.tgz"
+        },
+        {
+          "name": "ws",
+          "version": "8.21.1",
+          "license": "MIT",
+          "resolved": "https://registry.npmjs.org/ws/-/ws-8.21.1.tgz"
+        },
+        {
+          "name": "xml-name-validator",
+          "version": "5.0.0",
+          "license": "Apache-2.0",
+          "resolved": "https://registry.npmjs.org/xml-name-validator/-/xml-name-validator-5.0.0.tgz"
+        },
+        {
+          "name": "yocto-queue",
+          "version": "0.1.0",
+          "license": "MIT",
+          "resolved": "https://registry.npmjs.org/yocto-queue/-/yocto-queue-0.1.0.tgz"
+        }
+      ]
+    },
+    "cargo": {
+      "scope": "windows-target-normal-and-build:x86_64-pc-windows-msvc",
+      "packageCount": 285,
+      "missingLicenseMetadataCount": 0,
+      "licenseSummary": [
+        {
+          "expression": "(MIT OR Apache-2.0) AND Unicode-3.0",
+          "packageCount": 1
+        },
+        {
+          "expression": "0BSD OR MIT OR Apache-2.0",
+          "packageCount": 1
+        },
+        {
+          "expression": "Apache-2.0",
+          "packageCount": 1
+        },
+        {
+          "expression": "Apache-2.0 / MIT",
+          "packageCount": 1
+        },
+        {
+          "expression": "Apache-2.0 AND MIT",
+          "packageCount": 1
+        },
+        {
+          "expression": "Apache-2.0 OR BSL-1.0",
+          "packageCount": 1
+        },
+        {
+          "expression": "Apache-2.0 OR MIT",
+          "packageCount": 32
+        },
+        {
+          "expression": "Apache-2.0/MIT",
+          "packageCount": 1
+        },
+        {
+          "expression": "BSD-3-Clause",
+          "packageCount": 2
+        },
+        {
+          "expression": "BSD-3-Clause AND MIT",
+          "packageCount": 1
+        },
+        {
+          "expression": "BSD-3-Clause/MIT",
+          "packageCount": 1
+        },
+        {
+          "expression": "CC0-1.0 OR MIT-0 OR Apache-2.0",
+          "packageCount": 1
+        },
+        {
+          "expression": "MIT",
+          "packageCount": 50
+        },
+        {
+          "expression": "MIT OR Apache-2.0",
+          "packageCount": 145
+        },
+        {
+          "expression": "MIT OR Apache-2.0 OR Zlib",
+          "packageCount": 1
+        },
+        {
+          "expression": "MIT OR Zlib OR Apache-2.0",
+          "packageCount": 1
+        },
+        {
+          "expression": "MIT/Apache-2.0",
+          "packageCount": 13
+        },
+        {
+          "expression": "MPL-2.0",
+          "packageCount": 5
+        },
+        {
+          "expression": "Unicode-3.0",
+          "packageCount": 18
+        },
+        {
+          "expression": "Unlicense OR MIT",
+          "packageCount": 4
+        },
+        {
+          "expression": "Unlicense/MIT",
+          "packageCount": 2
+        },
+        {
+          "expression": "Zlib",
+          "packageCount": 2
+        }
+      ],
+      "packages": [
+        {
+          "name": "adler2",
+          "version": "2.0.1",
+          "license": "0BSD OR MIT OR Apache-2.0",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/oyvindln/adler2"
+        },
+        {
+          "name": "aho-corasick",
+          "version": "1.1.4",
+          "license": "Unlicense OR MIT",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/BurntSushi/aho-corasick"
+        },
+        {
+          "name": "alloc-no-stdlib",
+          "version": "2.0.4",
+          "license": "BSD-3-Clause",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/dropbox/rust-alloc-no-stdlib"
+        },
+        {
+          "name": "alloc-stdlib",
+          "version": "0.2.4",
+          "license": "BSD-3-Clause",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/dropbox/rust-alloc-no-stdlib"
+        },
+        {
+          "name": "allocator-api2",
+          "version": "0.2.21",
+          "license": "MIT OR Apache-2.0",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/zakarumych/allocator-api2"
+        },
+        {
+          "name": "anyhow",
+          "version": "1.0.104",
+          "license": "MIT OR Apache-2.0",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/dtolnay/anyhow"
+        },
+        {
+          "name": "arrayvec",
+          "version": "0.7.8",
+          "license": "MIT OR Apache-2.0",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/bluss/arrayvec"
+        },
+        {
+          "name": "atoi",
+          "version": "2.0.0",
+          "license": "MIT",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/pacman82/atoi-rs"
+        },
+        {
+          "name": "auto-launch",
+          "version": "0.5.0",
+          "license": "MIT",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/zzzgydi/auto-launch.git"
+        },
+        {
+          "name": "autocfg",
+          "version": "1.5.1",
+          "license": "Apache-2.0 OR MIT",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/cuviper/autocfg"
+        },
+        {
+          "name": "base64",
+          "version": "0.22.1",
+          "license": "MIT OR Apache-2.0",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/marshallpierce/rust-base64"
+        },
+        {
+          "name": "bit-set",
+          "version": "0.8.0",
+          "license": "Apache-2.0 OR MIT",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/contain-rs/bit-set"
+        },
+        {
+          "name": "bit-vec",
+          "version": "0.8.0",
+          "license": "Apache-2.0 OR MIT",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/contain-rs/bit-vec"
+        },
+        {
+          "name": "bitflags",
+          "version": "1.3.2",
+          "license": "MIT/Apache-2.0",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/bitflags/bitflags"
+        },
+        {
+          "name": "bitflags",
+          "version": "2.13.1",
+          "license": "MIT OR Apache-2.0",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/bitflags/bitflags"
+        },
+        {
+          "name": "block-buffer",
+          "version": "0.10.4",
+          "license": "MIT OR Apache-2.0",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/RustCrypto/utils"
+        },
+        {
+          "name": "brotli",
+          "version": "8.0.4",
+          "license": "BSD-3-Clause AND MIT",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/dropbox/rust-brotli"
+        },
+        {
+          "name": "brotli-decompressor",
+          "version": "5.0.3",
+          "license": "BSD-3-Clause/MIT",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/dropbox/rust-brotli-decompressor"
+        },
+        {
+          "name": "byteorder",
+          "version": "1.5.0",
+          "license": "Unlicense OR MIT",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/BurntSushi/byteorder"
+        },
+        {
+          "name": "bytes",
+          "version": "1.12.1",
+          "license": "MIT",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/tokio-rs/bytes"
+        },
+        {
+          "name": "camino",
+          "version": "1.2.4",
+          "license": "MIT OR Apache-2.0",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/camino-rs/camino"
+        },
+        {
+          "name": "cargo_metadata",
+          "version": "0.19.2",
+          "license": "MIT",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/oli-obk/cargo_metadata"
+        },
+        {
+          "name": "cargo_toml",
+          "version": "0.22.3",
+          "license": "Apache-2.0 OR MIT",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://gitlab.com/lib.rs/cargo_toml"
+        },
+        {
+          "name": "cargo-platform",
+          "version": "0.1.9",
+          "license": "MIT OR Apache-2.0",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/rust-lang/cargo"
+        },
+        {
+          "name": "cc",
+          "version": "1.3.0",
+          "license": "MIT OR Apache-2.0",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/rust-lang/cc-rs"
+        },
+        {
+          "name": "cfb",
+          "version": "0.7.3",
+          "license": "MIT",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/mdsteele/rust-cfb"
+        },
+        {
+          "name": "cfg-if",
+          "version": "1.0.4",
+          "license": "MIT OR Apache-2.0",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/rust-lang/cfg-if"
+        },
+        {
+          "name": "cookie",
+          "version": "0.18.1",
+          "license": "MIT OR Apache-2.0",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/SergioBenitez/cookie-rs"
+        },
+        {
+          "name": "cpufeatures",
+          "version": "0.2.17",
+          "license": "MIT OR Apache-2.0",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/RustCrypto/utils"
+        },
+        {
+          "name": "crc",
+          "version": "3.4.0",
+          "license": "MIT OR Apache-2.0",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/mrhooray/crc-rs.git"
+        },
+        {
+          "name": "crc-catalog",
+          "version": "2.5.0",
+          "license": "MIT OR Apache-2.0",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/akhilles/crc-catalog.git"
+        },
+        {
+          "name": "crc32fast",
+          "version": "1.5.0",
+          "license": "MIT OR Apache-2.0",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/srijs/rust-crc32fast"
+        },
+        {
+          "name": "crossbeam-channel",
+          "version": "0.5.16",
+          "license": "MIT OR Apache-2.0",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/crossbeam-rs/crossbeam"
+        },
+        {
+          "name": "crossbeam-queue",
+          "version": "0.3.13",
+          "license": "MIT OR Apache-2.0",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/crossbeam-rs/crossbeam"
+        },
+        {
+          "name": "crossbeam-utils",
+          "version": "0.8.22",
+          "license": "MIT OR Apache-2.0",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/crossbeam-rs/crossbeam"
+        },
+        {
+          "name": "crypto-common",
+          "version": "0.1.7",
+          "license": "MIT OR Apache-2.0",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/RustCrypto/traits"
+        },
+        {
+          "name": "cssparser",
+          "version": "0.36.0",
+          "license": "MPL-2.0",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/servo/rust-cssparser"
+        },
+        {
+          "name": "cssparser-macros",
+          "version": "0.6.1",
+          "license": "MPL-2.0",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/servo/rust-cssparser"
+        },
+        {
+          "name": "ctor",
+          "version": "0.8.0",
+          "license": "Apache-2.0 OR MIT",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/mmastrac/rust-ctor"
+        },
+        {
+          "name": "ctor-proc-macro",
+          "version": "0.0.7",
+          "license": "Apache-2.0 OR MIT",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/mmastrac/rust-ctor"
+        },
+        {
+          "name": "darling",
+          "version": "0.23.0",
+          "license": "MIT",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/TedDriggs/darling"
+        },
+        {
+          "name": "darling_core",
+          "version": "0.23.0",
+          "license": "MIT",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/TedDriggs/darling"
+        },
+        {
+          "name": "darling_macro",
+          "version": "0.23.0",
+          "license": "MIT",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/TedDriggs/darling"
+        },
+        {
+          "name": "deranged",
+          "version": "0.5.8",
+          "license": "MIT OR Apache-2.0",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/jhpratt/deranged"
+        },
+        {
+          "name": "derive_more",
+          "version": "2.1.1",
+          "license": "MIT",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/JelteF/derive_more"
+        },
+        {
+          "name": "derive_more-impl",
+          "version": "2.1.1",
+          "license": "MIT",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/JelteF/derive_more"
+        },
+        {
+          "name": "digest",
+          "version": "0.10.7",
+          "license": "MIT OR Apache-2.0",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/RustCrypto/traits"
+        },
+        {
+          "name": "dirs",
+          "version": "6.0.0",
+          "license": "MIT OR Apache-2.0",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/soc/dirs-rs"
+        },
+        {
+          "name": "dirs-sys",
+          "version": "0.5.0",
+          "license": "MIT OR Apache-2.0",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/dirs-dev/dirs-sys-rs"
+        },
+        {
+          "name": "displaydoc",
+          "version": "0.2.6",
+          "license": "MIT OR Apache-2.0",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/yaahc/displaydoc"
+        },
+        {
+          "name": "dom_query",
+          "version": "0.27.0",
+          "license": "MIT",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/niklak/dom_query"
+        },
+        {
+          "name": "dotenvy",
+          "version": "0.15.7",
+          "license": "MIT",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/allan2/dotenvy"
+        },
+        {
+          "name": "dpi",
+          "version": "0.1.2",
+          "license": "Apache-2.0 AND MIT",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/rust-windowing/winit"
+        },
+        {
+          "name": "dtoa",
+          "version": "1.0.11",
+          "license": "MIT OR Apache-2.0",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/dtolnay/dtoa"
+        },
+        {
+          "name": "dtoa-short",
+          "version": "0.3.5",
+          "license": "MPL-2.0",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/upsuper/dtoa-short"
+        },
+        {
+          "name": "dunce",
+          "version": "1.0.5",
+          "license": "CC0-1.0 OR MIT-0 OR Apache-2.0",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://gitlab.com/kornelski/dunce"
+        },
+        {
+          "name": "dyn-clone",
+          "version": "1.0.20",
+          "license": "MIT OR Apache-2.0",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/dtolnay/dyn-clone"
+        },
+        {
+          "name": "either",
+          "version": "1.16.0",
+          "license": "MIT OR Apache-2.0",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/rayon-rs/either"
+        },
+        {
+          "name": "embed-resource",
+          "version": "3.0.11",
+          "license": "MIT",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/nabijaczleweli/rust-embed-resource"
+        },
+        {
+          "name": "equivalent",
+          "version": "1.0.2",
+          "license": "Apache-2.0 OR MIT",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/indexmap-rs/equivalent"
+        },
+        {
+          "name": "erased-serde",
+          "version": "0.4.10",
+          "license": "MIT OR Apache-2.0",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/dtolnay/erased-serde"
+        },
+        {
+          "name": "event-listener",
+          "version": "5.4.2",
+          "license": "Apache-2.0 OR MIT",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/smol-rs/event-listener"
+        },
+        {
+          "name": "fastrand",
+          "version": "2.5.0",
+          "license": "Apache-2.0 OR MIT",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/smol-rs/fastrand"
+        },
+        {
+          "name": "fdeflate",
+          "version": "0.3.7",
+          "license": "MIT OR Apache-2.0",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/image-rs/fdeflate"
+        },
+        {
+          "name": "find-msvc-tools",
+          "version": "0.1.9",
+          "license": "MIT OR Apache-2.0",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/rust-lang/cc-rs"
+        },
+        {
+          "name": "flate2",
+          "version": "1.1.9",
+          "license": "MIT OR Apache-2.0",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/rust-lang/flate2-rs"
+        },
+        {
+          "name": "flume",
+          "version": "0.11.1",
+          "license": "Apache-2.0/MIT",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/zesterer/flume"
+        },
+        {
+          "name": "fnv",
+          "version": "1.0.7",
+          "license": "Apache-2.0 / MIT",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/servo/rust-fnv"
+        },
+        {
+          "name": "foldhash",
+          "version": "0.1.5",
+          "license": "Zlib",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/orlp/foldhash"
+        },
+        {
+          "name": "foldhash",
+          "version": "0.2.0",
+          "license": "Zlib",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/orlp/foldhash"
+        },
+        {
+          "name": "form_urlencoded",
+          "version": "1.2.2",
+          "license": "MIT OR Apache-2.0",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/servo/rust-url"
+        },
+        {
+          "name": "futures-channel",
+          "version": "0.3.33",
+          "license": "MIT OR Apache-2.0",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/rust-lang/futures-rs"
+        },
+        {
+          "name": "futures-core",
+          "version": "0.3.33",
+          "license": "MIT OR Apache-2.0",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/rust-lang/futures-rs"
+        },
+        {
+          "name": "futures-executor",
+          "version": "0.3.33",
+          "license": "MIT OR Apache-2.0",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/rust-lang/futures-rs"
+        },
+        {
+          "name": "futures-intrusive",
+          "version": "0.5.0",
+          "license": "MIT OR Apache-2.0",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/Matthias247/futures-intrusive"
+        },
+        {
+          "name": "futures-io",
+          "version": "0.3.33",
+          "license": "MIT OR Apache-2.0",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/rust-lang/futures-rs"
+        },
+        {
+          "name": "futures-sink",
+          "version": "0.3.33",
+          "license": "MIT OR Apache-2.0",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/rust-lang/futures-rs"
+        },
+        {
+          "name": "futures-task",
+          "version": "0.3.33",
+          "license": "MIT OR Apache-2.0",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/rust-lang/futures-rs"
+        },
+        {
+          "name": "futures-util",
+          "version": "0.3.33",
+          "license": "MIT OR Apache-2.0",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/rust-lang/futures-rs"
+        },
+        {
+          "name": "generic-array",
+          "version": "0.14.7",
+          "license": "MIT",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/fizyk20/generic-array.git"
+        },
+        {
+          "name": "getrandom",
+          "version": "0.3.4",
+          "license": "MIT OR Apache-2.0",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/rust-random/getrandom"
+        },
+        {
+          "name": "getrandom",
+          "version": "0.4.3",
+          "license": "MIT OR Apache-2.0",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/rust-random/getrandom"
+        },
+        {
+          "name": "glob",
+          "version": "0.3.4",
+          "license": "MIT OR Apache-2.0",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/rust-lang/glob"
+        },
+        {
+          "name": "hashbrown",
+          "version": "0.12.3",
+          "license": "MIT OR Apache-2.0",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/rust-lang/hashbrown"
+        },
+        {
+          "name": "hashbrown",
+          "version": "0.15.5",
+          "license": "MIT OR Apache-2.0",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/rust-lang/hashbrown"
+        },
+        {
+          "name": "hashbrown",
+          "version": "0.17.1",
+          "license": "MIT OR Apache-2.0",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/rust-lang/hashbrown"
+        },
+        {
+          "name": "hashlink",
+          "version": "0.10.0",
+          "license": "MIT OR Apache-2.0",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/kyren/hashlink"
+        },
+        {
+          "name": "heck",
+          "version": "0.5.0",
+          "license": "MIT OR Apache-2.0",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/withoutboats/heck"
+        },
+        {
+          "name": "hex",
+          "version": "0.4.3",
+          "license": "MIT OR Apache-2.0",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/KokaKiwi/rust-hex"
+        },
+        {
+          "name": "html5ever",
+          "version": "0.38.0",
+          "license": "MIT OR Apache-2.0",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/servo/html5ever"
+        },
+        {
+          "name": "http",
+          "version": "1.4.2",
+          "license": "MIT OR Apache-2.0",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/hyperium/http"
+        },
+        {
+          "name": "ico",
+          "version": "0.5.0",
+          "license": "MIT",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/mdsteele/rust-ico"
+        },
+        {
+          "name": "icu_collections",
+          "version": "2.2.0",
+          "license": "Unicode-3.0",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/unicode-org/icu4x"
+        },
+        {
+          "name": "icu_locale_core",
+          "version": "2.2.0",
+          "license": "Unicode-3.0",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/unicode-org/icu4x"
+        },
+        {
+          "name": "icu_normalizer",
+          "version": "2.2.0",
+          "license": "Unicode-3.0",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/unicode-org/icu4x"
+        },
+        {
+          "name": "icu_normalizer_data",
+          "version": "2.2.0",
+          "license": "Unicode-3.0",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/unicode-org/icu4x"
+        },
+        {
+          "name": "icu_properties",
+          "version": "2.2.0",
+          "license": "Unicode-3.0",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/unicode-org/icu4x"
+        },
+        {
+          "name": "icu_properties_data",
+          "version": "2.2.0",
+          "license": "Unicode-3.0",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/unicode-org/icu4x"
+        },
+        {
+          "name": "icu_provider",
+          "version": "2.2.0",
+          "license": "Unicode-3.0",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/unicode-org/icu4x"
+        },
+        {
+          "name": "ident_case",
+          "version": "1.0.1",
+          "license": "MIT/Apache-2.0",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/TedDriggs/ident_case"
+        },
+        {
+          "name": "idna",
+          "version": "1.1.0",
+          "license": "MIT OR Apache-2.0",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/servo/rust-url/"
+        },
+        {
+          "name": "idna_adapter",
+          "version": "1.2.2",
+          "license": "Apache-2.0 OR MIT",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/hsivonen/idna_adapter"
+        },
+        {
+          "name": "indexmap",
+          "version": "1.9.3",
+          "license": "Apache-2.0 OR MIT",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/bluss/indexmap"
+        },
+        {
+          "name": "indexmap",
+          "version": "2.14.0",
+          "license": "Apache-2.0 OR MIT",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/indexmap-rs/indexmap"
+        },
+        {
+          "name": "infer",
+          "version": "0.19.0",
+          "license": "MIT",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/bojand/infer"
+        },
+        {
+          "name": "itoa",
+          "version": "1.0.18",
+          "license": "MIT OR Apache-2.0",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/dtolnay/itoa"
+        },
+        {
+          "name": "json-patch",
+          "version": "3.0.1",
+          "license": "MIT/Apache-2.0",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/idubrov/json-patch"
+        },
+        {
+          "name": "jsonptr",
+          "version": "0.6.3",
+          "license": "MIT OR Apache-2.0",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/chanced/jsonptr"
+        },
+        {
+          "name": "keyboard-types",
+          "version": "0.7.0",
+          "license": "MIT OR Apache-2.0",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/pyfisch/keyboard-types"
+        },
+        {
+          "name": "libc",
+          "version": "0.2.189",
+          "license": "MIT OR Apache-2.0",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/rust-lang/libc"
+        },
+        {
+          "name": "libsqlite3-sys",
+          "version": "0.30.1",
+          "license": "MIT",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/rusqlite/rusqlite"
+        },
+        {
+          "name": "litemap",
+          "version": "0.8.2",
+          "license": "Unicode-3.0",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/unicode-org/icu4x"
+        },
+        {
+          "name": "lock_api",
+          "version": "0.4.14",
+          "license": "MIT OR Apache-2.0",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/Amanieu/parking_lot"
+        },
+        {
+          "name": "log",
+          "version": "0.4.33",
+          "license": "MIT OR Apache-2.0",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/rust-lang/log"
+        },
+        {
+          "name": "markup5ever",
+          "version": "0.38.0",
+          "license": "MIT OR Apache-2.0",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/servo/html5ever"
+        },
+        {
+          "name": "memchr",
+          "version": "2.8.3",
+          "license": "Unlicense OR MIT",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/BurntSushi/memchr"
+        },
+        {
+          "name": "mime",
+          "version": "0.3.17",
+          "license": "MIT OR Apache-2.0",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/hyperium/mime"
+        },
+        {
+          "name": "miniz_oxide",
+          "version": "0.8.9",
+          "license": "MIT OR Zlib OR Apache-2.0",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/Frommi/miniz_oxide/tree/master/miniz_oxide"
+        },
+        {
+          "name": "mio",
+          "version": "1.2.2",
+          "license": "MIT",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/tokio-rs/mio"
+        },
+        {
+          "name": "muda",
+          "version": "0.19.3",
+          "license": "Apache-2.0 OR MIT",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/tauri-apps/muda"
+        },
+        {
+          "name": "new_debug_unreachable",
+          "version": "1.0.6",
+          "license": "MIT",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/mbrubeck/rust-debug-unreachable"
+        },
+        {
+          "name": "num-conv",
+          "version": "0.2.2",
+          "license": "MIT OR Apache-2.0",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/jhpratt/num-conv"
+        },
+        {
+          "name": "num-traits",
+          "version": "0.2.19",
+          "license": "MIT OR Apache-2.0",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/rust-num/num-traits"
+        },
+        {
+          "name": "once_cell",
+          "version": "1.21.4",
+          "license": "MIT OR Apache-2.0",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/matklad/once_cell"
+        },
+        {
+          "name": "open",
+          "version": "5.4.0",
+          "license": "MIT",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/Byron/open-rs"
+        },
+        {
+          "name": "option-ext",
+          "version": "0.2.0",
+          "license": "MPL-2.0",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/soc/option-ext.git"
+        },
+        {
+          "name": "parking",
+          "version": "2.2.1",
+          "license": "Apache-2.0 OR MIT",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/smol-rs/parking"
+        },
+        {
+          "name": "parking_lot",
+          "version": "0.12.5",
+          "license": "MIT OR Apache-2.0",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/Amanieu/parking_lot"
+        },
+        {
+          "name": "parking_lot_core",
+          "version": "0.9.12",
+          "license": "MIT OR Apache-2.0",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/Amanieu/parking_lot"
+        },
+        {
+          "name": "percent-encoding",
+          "version": "2.3.2",
+          "license": "MIT OR Apache-2.0",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/servo/rust-url/"
+        },
+        {
+          "name": "phf",
+          "version": "0.13.1",
+          "license": "MIT",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/rust-phf/rust-phf"
+        },
+        {
+          "name": "phf_codegen",
+          "version": "0.13.1",
+          "license": "MIT",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/rust-phf/rust-phf"
+        },
+        {
+          "name": "phf_generator",
+          "version": "0.13.1",
+          "license": "MIT",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/rust-phf/rust-phf"
+        },
+        {
+          "name": "phf_macros",
+          "version": "0.13.1",
+          "license": "MIT",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/rust-phf/rust-phf"
+        },
+        {
+          "name": "phf_shared",
+          "version": "0.13.1",
+          "license": "MIT",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/rust-phf/rust-phf"
+        },
+        {
+          "name": "pin-project-lite",
+          "version": "0.2.17",
+          "license": "Apache-2.0 OR MIT",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/taiki-e/pin-project-lite"
+        },
+        {
+          "name": "pkg-config",
+          "version": "0.3.33",
+          "license": "MIT OR Apache-2.0",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/rust-lang/pkg-config-rs"
+        },
+        {
+          "name": "plist",
+          "version": "1.10.0",
+          "license": "MIT",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/ebarnard/rust-plist/"
+        },
+        {
+          "name": "png",
+          "version": "0.17.16",
+          "license": "MIT OR Apache-2.0",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/image-rs/image-png"
+        },
+        {
+          "name": "potential_utf",
+          "version": "0.1.5",
+          "license": "Unicode-3.0",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/unicode-org/icu4x"
+        },
+        {
+          "name": "powerfmt",
+          "version": "0.2.0",
+          "license": "MIT OR Apache-2.0",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/jhpratt/powerfmt"
+        },
+        {
+          "name": "precomputed-hash",
+          "version": "0.1.1",
+          "license": "MIT",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/emilio/precomputed-hash"
+        },
+        {
+          "name": "proc-macro2",
+          "version": "1.0.107",
+          "license": "MIT OR Apache-2.0",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/dtolnay/proc-macro2"
+        },
+        {
+          "name": "quick-xml",
+          "version": "0.41.0",
+          "license": "MIT",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/tafia/quick-xml"
+        },
+        {
+          "name": "quote",
+          "version": "1.0.47",
+          "license": "MIT OR Apache-2.0",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/dtolnay/quote"
+        },
+        {
+          "name": "raw-window-handle",
+          "version": "0.6.2",
+          "license": "MIT OR Apache-2.0 OR Zlib",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/rust-windowing/raw-window-handle"
+        },
+        {
+          "name": "regex",
+          "version": "1.13.1",
+          "license": "MIT OR Apache-2.0",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/rust-lang/regex"
+        },
+        {
+          "name": "regex-automata",
+          "version": "0.4.16",
+          "license": "MIT OR Apache-2.0",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/rust-lang/regex"
+        },
+        {
+          "name": "regex-syntax",
+          "version": "0.8.11",
+          "license": "MIT OR Apache-2.0",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/rust-lang/regex"
+        },
+        {
+          "name": "rust_decimal",
+          "version": "1.42.1",
+          "license": "MIT",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/paupino/rust-decimal"
+        },
+        {
+          "name": "rustc_version",
+          "version": "0.4.1",
+          "license": "MIT OR Apache-2.0",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/djc/rustc-version-rs"
+        },
+        {
+          "name": "rustc-hash",
+          "version": "2.1.3",
+          "license": "Apache-2.0 OR MIT",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/rust-lang/rustc-hash"
+        },
+        {
+          "name": "ryu",
+          "version": "1.0.23",
+          "license": "Apache-2.0 OR BSL-1.0",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/dtolnay/ryu"
+        },
+        {
+          "name": "same-file",
+          "version": "1.0.6",
+          "license": "Unlicense/MIT",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/BurntSushi/same-file"
+        },
+        {
+          "name": "schemars",
+          "version": "0.8.22",
+          "license": "MIT",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/GREsau/schemars"
+        },
+        {
+          "name": "schemars_derive",
+          "version": "0.8.22",
+          "license": "MIT",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/GREsau/schemars"
+        },
+        {
+          "name": "scopeguard",
+          "version": "1.2.0",
+          "license": "MIT OR Apache-2.0",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/bluss/scopeguard"
+        },
+        {
+          "name": "selectors",
+          "version": "0.36.1",
+          "license": "MPL-2.0",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/servo/stylo"
+        },
+        {
+          "name": "semver",
+          "version": "1.0.28",
+          "license": "MIT OR Apache-2.0",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/dtolnay/semver"
+        },
+        {
+          "name": "serde",
+          "version": "1.0.229",
+          "license": "MIT OR Apache-2.0",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/serde-rs/serde"
+        },
+        {
+          "name": "serde_core",
+          "version": "1.0.229",
+          "license": "MIT OR Apache-2.0",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/serde-rs/serde"
+        },
+        {
+          "name": "serde_derive",
+          "version": "1.0.229",
+          "license": "MIT OR Apache-2.0",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/serde-rs/serde"
+        },
+        {
+          "name": "serde_derive_internals",
+          "version": "0.29.1",
+          "license": "MIT OR Apache-2.0",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/serde-rs/serde"
+        },
+        {
+          "name": "serde_json",
+          "version": "1.0.151",
+          "license": "MIT OR Apache-2.0",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/serde-rs/json"
+        },
+        {
+          "name": "serde_repr",
+          "version": "0.1.21",
+          "license": "MIT OR Apache-2.0",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/dtolnay/serde-repr"
+        },
+        {
+          "name": "serde_spanned",
+          "version": "1.1.1",
+          "license": "MIT OR Apache-2.0",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/toml-rs/toml"
+        },
+        {
+          "name": "serde_urlencoded",
+          "version": "0.7.1",
+          "license": "MIT/Apache-2.0",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/nox/serde_urlencoded"
+        },
+        {
+          "name": "serde_with",
+          "version": "3.21.0",
+          "license": "MIT OR Apache-2.0",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/jonasbb/serde_with/"
+        },
+        {
+          "name": "serde_with_macros",
+          "version": "3.21.0",
+          "license": "MIT OR Apache-2.0",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/jonasbb/serde_with/"
+        },
+        {
+          "name": "serde-untagged",
+          "version": "0.1.9",
+          "license": "MIT OR Apache-2.0",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/dtolnay/serde-untagged"
+        },
+        {
+          "name": "serialize-to-javascript",
+          "version": "0.1.2",
+          "license": "MIT OR Apache-2.0",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/chippers/serialize-to-javascript"
+        },
+        {
+          "name": "serialize-to-javascript-impl",
+          "version": "0.1.2",
+          "license": "MIT OR Apache-2.0",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/chippers/serialize-to-javascript"
+        },
+        {
+          "name": "servo_arc",
+          "version": "0.4.3",
+          "license": "MIT OR Apache-2.0",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/servo/stylo"
+        },
+        {
+          "name": "sha2",
+          "version": "0.10.9",
+          "license": "MIT OR Apache-2.0",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/RustCrypto/hashes"
+        },
+        {
+          "name": "shlex",
+          "version": "2.0.1",
+          "license": "MIT OR Apache-2.0",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/comex/rust-shlex"
+        },
+        {
+          "name": "simd-adler32",
+          "version": "0.3.10",
+          "license": "MIT",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/mcountryman/simd-adler32"
+        },
+        {
+          "name": "siphasher",
+          "version": "1.0.3",
+          "license": "MIT/Apache-2.0",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/jedisct1/rust-siphash"
+        },
+        {
+          "name": "slab",
+          "version": "0.4.12",
+          "license": "MIT",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/tokio-rs/slab"
+        },
+        {
+          "name": "smallvec",
+          "version": "1.15.2",
+          "license": "MIT OR Apache-2.0",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/servo/rust-smallvec"
+        },
+        {
+          "name": "socket2",
+          "version": "0.6.5",
+          "license": "MIT OR Apache-2.0",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/rust-lang/socket2"
+        },
+        {
+          "name": "softbuffer",
+          "version": "0.4.8",
+          "license": "MIT OR Apache-2.0",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/rust-windowing/softbuffer"
+        },
+        {
+          "name": "spin",
+          "version": "0.9.9",
+          "license": "MIT",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/mvdnes/spin-rs.git"
+        },
+        {
+          "name": "sqlx",
+          "version": "0.8.6",
+          "license": "MIT OR Apache-2.0",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/launchbadge/sqlx"
+        },
+        {
+          "name": "sqlx-core",
+          "version": "0.8.6",
+          "license": "MIT OR Apache-2.0",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/launchbadge/sqlx"
+        },
+        {
+          "name": "sqlx-macros",
+          "version": "0.8.6",
+          "license": "MIT OR Apache-2.0",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/launchbadge/sqlx"
+        },
+        {
+          "name": "sqlx-macros-core",
+          "version": "0.8.6",
+          "license": "MIT OR Apache-2.0",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/launchbadge/sqlx"
+        },
+        {
+          "name": "sqlx-sqlite",
+          "version": "0.8.6",
+          "license": "MIT OR Apache-2.0",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/launchbadge/sqlx"
+        },
+        {
+          "name": "stable_deref_trait",
+          "version": "1.2.1",
+          "license": "MIT OR Apache-2.0",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/storyyeller/stable_deref_trait"
+        },
+        {
+          "name": "string_cache",
+          "version": "0.9.0",
+          "license": "MIT OR Apache-2.0",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/servo/string-cache"
+        },
+        {
+          "name": "string_cache_codegen",
+          "version": "0.6.1",
+          "license": "MIT OR Apache-2.0",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/servo/string-cache"
+        },
+        {
+          "name": "strsim",
+          "version": "0.11.1",
+          "license": "MIT",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/rapidfuzz/strsim-rs"
+        },
+        {
+          "name": "syn",
+          "version": "2.0.119",
+          "license": "MIT OR Apache-2.0",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/dtolnay/syn"
+        },
+        {
+          "name": "syn",
+          "version": "3.0.3",
+          "license": "MIT OR Apache-2.0",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/dtolnay/syn"
+        },
+        {
+          "name": "synstructure",
+          "version": "0.13.2",
+          "license": "MIT",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/mystor/synstructure"
+        },
+        {
+          "name": "tao",
+          "version": "0.35.3",
+          "license": "Apache-2.0",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/tauri-apps/tao"
+        },
+        {
+          "name": "tauri",
+          "version": "2.11.5",
+          "license": "Apache-2.0 OR MIT",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/tauri-apps/tauri"
+        },
+        {
+          "name": "tauri-build",
+          "version": "2.6.3",
+          "license": "Apache-2.0 OR MIT",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/tauri-apps/tauri"
+        },
+        {
+          "name": "tauri-codegen",
+          "version": "2.6.3",
+          "license": "Apache-2.0 OR MIT",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/tauri-apps/tauri"
+        },
+        {
+          "name": "tauri-macros",
+          "version": "2.6.3",
+          "license": "Apache-2.0 OR MIT",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/tauri-apps/tauri"
+        },
+        {
+          "name": "tauri-plugin",
+          "version": "2.6.3",
+          "license": "Apache-2.0 OR MIT",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/tauri-apps/tauri"
+        },
+        {
+          "name": "tauri-plugin-autostart",
+          "version": "2.5.1",
+          "license": "Apache-2.0 OR MIT",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/tauri-apps/plugins-workspace"
+        },
+        {
+          "name": "tauri-plugin-opener",
+          "version": "2.5.4",
+          "license": "Apache-2.0 OR MIT",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/tauri-apps/plugins-workspace"
+        },
+        {
+          "name": "tauri-plugin-single-instance",
+          "version": "2.4.3",
+          "license": "Apache-2.0 OR MIT",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/tauri-apps/plugins-workspace"
+        },
+        {
+          "name": "tauri-plugin-sql",
+          "version": "2.4.0",
+          "license": "Apache-2.0 OR MIT",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/tauri-apps/plugins-workspace"
+        },
+        {
+          "name": "tauri-runtime",
+          "version": "2.11.3",
+          "license": "Apache-2.0 OR MIT",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/tauri-apps/tauri"
+        },
+        {
+          "name": "tauri-runtime-wry",
+          "version": "2.11.4",
+          "license": "Apache-2.0 OR MIT",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/tauri-apps/tauri"
+        },
+        {
+          "name": "tauri-utils",
+          "version": "2.9.3",
+          "license": "Apache-2.0 OR MIT",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/tauri-apps/tauri"
+        },
+        {
+          "name": "tauri-winres",
+          "version": "0.3.6",
+          "license": "MIT",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/tauri-apps/winres"
+        },
+        {
+          "name": "tendril",
+          "version": "0.5.1",
+          "license": "MIT OR Apache-2.0",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/servo/html5ever"
+        },
+        {
+          "name": "thiserror",
+          "version": "1.0.69",
+          "license": "MIT OR Apache-2.0",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/dtolnay/thiserror"
+        },
+        {
+          "name": "thiserror",
+          "version": "2.0.19",
+          "license": "MIT OR Apache-2.0",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/dtolnay/thiserror"
+        },
+        {
+          "name": "thiserror-impl",
+          "version": "1.0.69",
+          "license": "MIT OR Apache-2.0",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/dtolnay/thiserror"
+        },
+        {
+          "name": "thiserror-impl",
+          "version": "2.0.19",
+          "license": "MIT OR Apache-2.0",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/dtolnay/thiserror"
+        },
+        {
+          "name": "time",
+          "version": "0.3.54",
+          "license": "MIT OR Apache-2.0",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/time-rs/time"
+        },
+        {
+          "name": "time-core",
+          "version": "0.1.9",
+          "license": "MIT OR Apache-2.0",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/time-rs/time"
+        },
+        {
+          "name": "time-macros",
+          "version": "0.2.32",
+          "license": "MIT OR Apache-2.0",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/time-rs/time"
+        },
+        {
+          "name": "tinystr",
+          "version": "0.8.3",
+          "license": "Unicode-3.0",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/unicode-org/icu4x"
+        },
+        {
+          "name": "tokio",
+          "version": "1.53.1",
+          "license": "MIT",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/tokio-rs/tokio"
+        },
+        {
+          "name": "tokio-stream",
+          "version": "0.1.19",
+          "license": "MIT",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/tokio-rs/tokio"
+        },
+        {
+          "name": "toml",
+          "version": "0.9.12+spec-1.1.0",
+          "license": "MIT OR Apache-2.0",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/toml-rs/toml"
+        },
+        {
+          "name": "toml",
+          "version": "1.1.3+spec-1.1.0",
+          "license": "MIT OR Apache-2.0",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/toml-rs/toml"
+        },
+        {
+          "name": "toml_datetime",
+          "version": "0.7.5+spec-1.1.0",
+          "license": "MIT OR Apache-2.0",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/toml-rs/toml"
+        },
+        {
+          "name": "toml_datetime",
+          "version": "1.1.1+spec-1.1.0",
+          "license": "MIT OR Apache-2.0",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/toml-rs/toml"
+        },
+        {
+          "name": "toml_parser",
+          "version": "1.1.2+spec-1.1.0",
+          "license": "MIT OR Apache-2.0",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/toml-rs/toml"
+        },
+        {
+          "name": "toml_writer",
+          "version": "1.1.2+spec-1.1.0",
+          "license": "MIT OR Apache-2.0",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/toml-rs/toml"
+        },
+        {
+          "name": "tracing",
+          "version": "0.1.44",
+          "license": "MIT",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/tokio-rs/tracing"
+        },
+        {
+          "name": "tracing-attributes",
+          "version": "0.1.31",
+          "license": "MIT",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/tokio-rs/tracing"
+        },
+        {
+          "name": "tracing-core",
+          "version": "0.1.36",
+          "license": "MIT",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/tokio-rs/tracing"
+        },
+        {
+          "name": "tray-icon",
+          "version": "0.24.1",
+          "license": "MIT OR Apache-2.0",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/tauri-apps/tray-icon"
+        },
+        {
+          "name": "typeid",
+          "version": "1.0.3",
+          "license": "MIT OR Apache-2.0",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/dtolnay/typeid"
+        },
+        {
+          "name": "typenum",
+          "version": "1.20.1",
+          "license": "MIT OR Apache-2.0",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/paholg/typenum"
+        },
+        {
+          "name": "unic-char-property",
+          "version": "0.9.0",
+          "license": "MIT/Apache-2.0",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/open-i18n/rust-unic/"
+        },
+        {
+          "name": "unic-char-range",
+          "version": "0.9.0",
+          "license": "MIT/Apache-2.0",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/open-i18n/rust-unic/"
+        },
+        {
+          "name": "unic-common",
+          "version": "0.9.0",
+          "license": "MIT/Apache-2.0",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/open-i18n/rust-unic/"
+        },
+        {
+          "name": "unic-ucd-ident",
+          "version": "0.9.0",
+          "license": "MIT/Apache-2.0",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/open-i18n/rust-unic/"
+        },
+        {
+          "name": "unic-ucd-version",
+          "version": "0.9.0",
+          "license": "MIT/Apache-2.0",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/open-i18n/rust-unic/"
+        },
+        {
+          "name": "unicode-ident",
+          "version": "1.0.24",
+          "license": "(MIT OR Apache-2.0) AND Unicode-3.0",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/dtolnay/unicode-ident"
+        },
+        {
+          "name": "unicode-segmentation",
+          "version": "1.13.3",
+          "license": "MIT OR Apache-2.0",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/unicode-rs/unicode-segmentation"
+        },
+        {
+          "name": "url",
+          "version": "2.5.8",
+          "license": "MIT OR Apache-2.0",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/servo/rust-url"
+        },
+        {
+          "name": "urlpattern",
+          "version": "0.3.0",
+          "license": "MIT",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/denoland/rust-urlpattern"
+        },
+        {
+          "name": "utf8_iter",
+          "version": "1.0.4",
+          "license": "Apache-2.0 OR MIT",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/hsivonen/utf8_iter"
+        },
+        {
+          "name": "uuid",
+          "version": "1.24.0",
+          "license": "Apache-2.0 OR MIT",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/uuid-rs/uuid"
+        },
+        {
+          "name": "vcpkg",
+          "version": "0.2.15",
+          "license": "MIT/Apache-2.0",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/mcgoo/vcpkg-rs"
+        },
+        {
+          "name": "version_check",
+          "version": "0.9.5",
+          "license": "MIT/Apache-2.0",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/SergioBenitez/version_check"
+        },
+        {
+          "name": "walkdir",
+          "version": "2.5.0",
+          "license": "Unlicense/MIT",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/BurntSushi/walkdir"
+        },
+        {
+          "name": "web_atoms",
+          "version": "0.2.5",
+          "license": "MIT OR Apache-2.0",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/servo/html5ever"
+        },
+        {
+          "name": "webview2-com",
+          "version": "0.38.2",
+          "license": "MIT",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/wravery/webview2-rs"
+        },
+        {
+          "name": "webview2-com-macros",
+          "version": "0.8.1",
+          "license": "MIT",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/wravery/webview2-rs"
+        },
+        {
+          "name": "webview2-com-sys",
+          "version": "0.38.2",
+          "license": "MIT",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/wravery/webview2-rs"
+        },
+        {
+          "name": "winapi",
+          "version": "0.3.9",
+          "license": "MIT/Apache-2.0",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/retep998/winapi-rs"
+        },
+        {
+          "name": "winapi-util",
+          "version": "0.1.11",
+          "license": "Unlicense OR MIT",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/BurntSushi/winapi-util"
+        },
+        {
+          "name": "window-vibrancy",
+          "version": "0.6.0",
+          "license": "Apache-2.0 OR MIT",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/tauri-apps/tauri-plugin-vibrancy"
+        },
+        {
+          "name": "windows",
+          "version": "0.61.3",
+          "license": "MIT OR Apache-2.0",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/microsoft/windows-rs"
+        },
+        {
+          "name": "windows_x86_64_msvc",
+          "version": "0.52.6",
+          "license": "MIT OR Apache-2.0",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/microsoft/windows-rs"
+        },
+        {
+          "name": "windows_x86_64_msvc",
+          "version": "0.53.1",
+          "license": "MIT OR Apache-2.0",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/microsoft/windows-rs"
+        },
+        {
+          "name": "windows-collections",
+          "version": "0.2.0",
+          "license": "MIT OR Apache-2.0",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/microsoft/windows-rs"
+        },
+        {
+          "name": "windows-core",
+          "version": "0.61.2",
+          "license": "MIT OR Apache-2.0",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/microsoft/windows-rs"
+        },
+        {
+          "name": "windows-future",
+          "version": "0.2.1",
+          "license": "MIT OR Apache-2.0",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/microsoft/windows-rs"
+        },
+        {
+          "name": "windows-implement",
+          "version": "0.60.2",
+          "license": "MIT OR Apache-2.0",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/microsoft/windows-rs"
+        },
+        {
+          "name": "windows-interface",
+          "version": "0.59.3",
+          "license": "MIT OR Apache-2.0",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/microsoft/windows-rs"
+        },
+        {
+          "name": "windows-link",
+          "version": "0.1.3",
+          "license": "MIT OR Apache-2.0",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/microsoft/windows-rs"
+        },
+        {
+          "name": "windows-link",
+          "version": "0.2.1",
+          "license": "MIT OR Apache-2.0",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/microsoft/windows-rs"
+        },
+        {
+          "name": "windows-numerics",
+          "version": "0.2.0",
+          "license": "MIT OR Apache-2.0",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/microsoft/windows-rs"
+        },
+        {
+          "name": "windows-result",
+          "version": "0.3.4",
+          "license": "MIT OR Apache-2.0",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/microsoft/windows-rs"
+        },
+        {
+          "name": "windows-strings",
+          "version": "0.4.2",
+          "license": "MIT OR Apache-2.0",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/microsoft/windows-rs"
+        },
+        {
+          "name": "windows-sys",
+          "version": "0.59.0",
+          "license": "MIT OR Apache-2.0",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/microsoft/windows-rs"
+        },
+        {
+          "name": "windows-sys",
+          "version": "0.60.2",
+          "license": "MIT OR Apache-2.0",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/microsoft/windows-rs"
+        },
+        {
+          "name": "windows-sys",
+          "version": "0.61.2",
+          "license": "MIT OR Apache-2.0",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/microsoft/windows-rs"
+        },
+        {
+          "name": "windows-targets",
+          "version": "0.52.6",
+          "license": "MIT OR Apache-2.0",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/microsoft/windows-rs"
+        },
+        {
+          "name": "windows-targets",
+          "version": "0.53.5",
+          "license": "MIT OR Apache-2.0",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/microsoft/windows-rs"
+        },
+        {
+          "name": "windows-threading",
+          "version": "0.1.0",
+          "license": "MIT OR Apache-2.0",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/microsoft/windows-rs"
+        },
+        {
+          "name": "windows-version",
+          "version": "0.1.7",
+          "license": "MIT OR Apache-2.0",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/microsoft/windows-rs"
+        },
+        {
+          "name": "winnow",
+          "version": "0.7.15",
+          "license": "MIT",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/winnow-rs/winnow"
+        },
+        {
+          "name": "winnow",
+          "version": "1.0.4",
+          "license": "MIT",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/winnow-rs/winnow"
+        },
+        {
+          "name": "winreg",
+          "version": "0.10.1",
+          "license": "MIT",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/gentoo90/winreg-rs"
+        },
+        {
+          "name": "writeable",
+          "version": "0.6.3",
+          "license": "Unicode-3.0",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/unicode-org/icu4x"
+        },
+        {
+          "name": "wry",
+          "version": "0.55.1",
+          "license": "Apache-2.0 OR MIT",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/tauri-apps/wry"
+        },
+        {
+          "name": "yoke",
+          "version": "0.8.3",
+          "license": "Unicode-3.0",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/unicode-org/icu4x"
+        },
+        {
+          "name": "yoke-derive",
+          "version": "0.8.2",
+          "license": "Unicode-3.0",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/unicode-org/icu4x"
+        },
+        {
+          "name": "zerofrom",
+          "version": "0.1.8",
+          "license": "Unicode-3.0",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/unicode-org/icu4x"
+        },
+        {
+          "name": "zerofrom-derive",
+          "version": "0.1.7",
+          "license": "Unicode-3.0",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/unicode-org/icu4x"
+        },
+        {
+          "name": "zerotrie",
+          "version": "0.2.4",
+          "license": "Unicode-3.0",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/unicode-org/icu4x"
+        },
+        {
+          "name": "zerovec",
+          "version": "0.11.6",
+          "license": "Unicode-3.0",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/unicode-org/icu4x"
+        },
+        {
+          "name": "zerovec-derive",
+          "version": "0.11.3",
+          "license": "Unicode-3.0",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/unicode-org/icu4x"
+        },
+        {
+          "name": "zmij",
+          "version": "1.0.23",
+          "license": "MIT",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/dtolnay/zmij"
+        }
+      ]
+    },
+    "noticeBundleConfigured": true,
+    "noticeBundleGenerated": false,
+    "noticeIncludedInCurrentInstaller": false,
+    "compatibilityReviewCompleted": false,
+    "publicDistributionCleared": false,
+    "requiredAction": "已配置下次构建把 NOTICE 作为固定资源随包提供；须补齐缺失文本，重建后验证安装包可访问，并由法务复核许可证兼容性和署名义务。"
+  },
+  "blockingItems": [
+    "project-root-license",
+    "poetry-edition-provenance",
+    "modern-editorial-ownership",
+    "icon-ownership",
+    "open-meteo-service-tier",
+    "third-party-notice-text-gaps",
+    "third-party-notice-installer-verification",
+    "official-warning-license-if-enabled",
+    "openai-terms-if-enabled",
+    "named-legal-signoff"
+  ],
+  "approval": {
+    "contentOwner": null,
+    "designOwner": null,
+    "dataServiceOwner": null,
+    "legalReviewer": null,
+    "decision": null,
+    "approvedAt": null,
+    "evidencePath": "review/evidence/RQT-23-content-asset-licenses.json"
+  },
+  "limitations": {
+    "metadataPresenceIsNotLicenseCompatibilityReview": true,
+    "publicDomainWorkIsNotEditionClearance": true,
+    "disabledServiceIsNotFutureAuthorization": true,
+    "namedLegalReviewCompleted": false
+  },
+  "gateSatisfied": false,
+  "result": "automated-inventory-complete-human-clearance-pending"
+}

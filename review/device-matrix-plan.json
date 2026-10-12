@@ -1,0 +1,195 @@
+{
+  "schemaVersion": "1.0",
+  "product": "WeatherPoem",
+  "appVersion": "0.2.0",
+  "updatedAt": "2026-07-24",
+  "releaseGate": {
+    "requiredForPublicRelease": true,
+    "requiredResult": "passed",
+    "allowedResults": [
+      "pending",
+      "blocked",
+      "failed",
+      "passed"
+    ]
+  },
+  "currentMachineObservation": {
+    "os": "Microsoft Windows 11 家庭中文版",
+    "version": "10.0.26100",
+    "architecture": "64-bit",
+    "appliedDpi": 96,
+    "scalePercent": 100,
+    "physicalMonitorProbeCount": 2,
+    "logicalDisplayCount": 1,
+    "displayMode": "one-logical-desktop-work-area",
+    "scope": [
+      "release-executable-startup-6s",
+      "nsis-silent-install-launch-uninstall",
+      "msi-administrative-image-extract-launch",
+      "close-to-tray-second-instance-reveal",
+      "current-logical-display-bottom-right-position",
+      "browser-layout-matrix"
+    ],
+    "result": "partial",
+    "note": "WMI 探测到 2 个物理面板，但 Windows 仅向应用暴露 1 个逻辑桌面工作区，不能称为扩展双显示器验证。已确认当前构建可启动、在 96 DPI 工作区右下角保持 22px 边距、完成 NSIS 静默安装/启动/卸载、MSI administrative image 解包/载荷启动、关闭到托盘/第二实例唤醒和真实渲染引擎布局检查；临时目录与系统注册均无残留，已有用户内容数据未删除。MSI 是 perMachine，尚未执行获批的管理员安装/修复/卸载；扩展桌面跨屏、真实开机自启和版本升级全链路也未完成，不能把此观察记为完整设备用例通过。"
+  },
+  "browserLayoutMatrix": {
+    "engine": "Codex in-app Chromium browser",
+    "sourceUrl": "http://127.0.0.1:1420/",
+    "sizes": [
+      {
+        "width": 430,
+        "height": 680,
+        "meaning": "默认逻辑窗口"
+      },
+      {
+        "width": 390,
+        "height": 620,
+        "meaning": "最小逻辑窗口"
+      }
+    ],
+    "scenarios": [
+      "onboarding",
+      "reading",
+      "warning",
+      "official-warning"
+    ],
+    "assertions": [
+      "document scrollWidth equals viewport width",
+      "no visible element crosses the horizontal viewport",
+      "settings use internal vertical scrolling when content is taller than the viewport",
+      "no browser console errors"
+    ],
+    "combinations": 8,
+    "result": "passed",
+    "limitations": "浏览器逻辑尺寸不能替代 Windows 125%/150%/200% 系统 DPI、WebView2 设备像素比、多显示器混合缩放或原生安装行为。"
+  },
+  "requiredCases": [
+    {
+      "id": "DM-01",
+      "os": "Windows 11 supported",
+      "scalePercent": 100,
+      "display": "single-primary",
+      "launch": "manual",
+      "specialMode": "normal",
+      "installLifecycle": "install-launch-uninstall",
+      "result": "pending",
+      "executor": "",
+      "executedAt": "",
+      "evidence": "",
+      "issue": ""
+    },
+    {
+      "id": "DM-02",
+      "os": "Windows 11 supported",
+      "scalePercent": 125,
+      "display": "single-primary",
+      "launch": "manual",
+      "specialMode": "normal",
+      "installLifecycle": "installed",
+      "result": "pending",
+      "executor": "",
+      "executedAt": "",
+      "evidence": "",
+      "issue": ""
+    },
+    {
+      "id": "DM-03",
+      "os": "Windows 11 supported",
+      "scalePercent": 150,
+      "display": "single-primary",
+      "launch": "autostart",
+      "specialMode": "focus-assist",
+      "installLifecycle": "installed",
+      "result": "pending",
+      "executor": "",
+      "executedAt": "",
+      "evidence": "",
+      "issue": ""
+    },
+    {
+      "id": "DM-04",
+      "os": "Windows 11 supported",
+      "scalePercent": 200,
+      "display": "single-primary",
+      "launch": "manual",
+      "specialMode": "normal",
+      "installLifecycle": "installed",
+      "result": "pending",
+      "executor": "",
+      "executedAt": "",
+      "evidence": "",
+      "issue": ""
+    },
+    {
+      "id": "DM-05",
+      "os": "Windows 11 supported",
+      "scalePercent": 150,
+      "display": "dual-mixed-dpi",
+      "launch": "autostart",
+      "specialMode": "move-between-displays",
+      "installLifecycle": "installed",
+      "result": "pending",
+      "executor": "",
+      "executedAt": "",
+      "evidence": "",
+      "issue": ""
+    },
+    {
+      "id": "DM-06",
+      "os": "Windows 10 22H2",
+      "scalePercent": 100,
+      "display": "single-primary",
+      "launch": "manual",
+      "specialMode": "normal",
+      "installLifecycle": "install-launch-uninstall",
+      "result": "pending",
+      "executor": "",
+      "executedAt": "",
+      "evidence": "",
+      "issue": ""
+    },
+    {
+      "id": "DM-07",
+      "os": "Windows 10 22H2",
+      "scalePercent": 150,
+      "display": "single-primary",
+      "launch": "autostart",
+      "specialMode": "focus-assist",
+      "installLifecycle": "installed",
+      "result": "pending",
+      "executor": "",
+      "executedAt": "",
+      "evidence": "",
+      "issue": ""
+    },
+    {
+      "id": "DM-08",
+      "os": "Windows 11 supported",
+      "scalePercent": 125,
+      "display": "projector-or-presentation",
+      "launch": "manual",
+      "specialMode": "fullscreen-presentation",
+      "installLifecycle": "installed",
+      "result": "pending",
+      "executor": "",
+      "executedAt": "",
+      "evidence": "",
+      "issue": ""
+    },
+    {
+      "id": "DM-09",
+      "os": "Windows 11 supported",
+      "scalePercent": 100,
+      "display": "dual-same-dpi",
+      "launch": "autostart",
+      "specialMode": "restart-and-second-instance",
+      "installLifecycle": "install-upgrade-uninstall",
+      "result": "pending",
+      "executor": "",
+      "executedAt": "",
+      "evidence": "",
+      "issue": ""
+    }
+  ]
+}

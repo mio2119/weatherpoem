@@ -1,0 +1,204 @@
+{
+    "schemaVersion":  "1.0",
+    "product":  "WeatherPoem",
+    "appVersion":  "0.2.0",
+    "generatedAt":  "2026-09-09T18:45:37.1112012Z",
+    "testKind":  "performance-long-run-rehearsal",
+    "artifact":  {
+                     "path":  "src-tauri/target/release/weatherpoem.exe",
+                     "sha256":  "00DB4B15F96E151CD7AF795A197E422F39ABFC3CE13E4AB298BF1DE7EC2DD74B",
+                     "sizeBytes":  25101928
+                 },
+    "configuration":  {
+                          "mode":  "rehearsal",
+                          "requestedDurationMinutes":  2,
+                          "sampleIntervalSeconds":  5,
+                          "processorCount":  20,
+                          "isolatedProfile":  true,
+                          "controlledScenario":  "weather-offline",
+                          "realUserDataTouched":  false,
+                          "closedToTray":  true
+                      },
+    "startup":  {
+                    "readyView":  "poem",
+                    "readyMode":  "offline-rules",
+                    "performanceScenario":  "weather-offline",
+                    "nativeReadyMs":  541.8738,
+                    "frontendReadyMs":  266,
+                    "viewRenderMs":  122.69999999552964
+                },
+    "thresholds":  {
+                       "idleCpuAveragePercent":  0.2,
+                       "idleMemoryP95MiB":  100,
+                       "memoryGrowthMiB":  20
+                   },
+    "results":  {
+                    "actualDurationSeconds":  120.43,
+                    "sampleCount":  24,
+                    "samples":  [
+                                    {
+                                        "elapsedSeconds":  5.01,
+                                        "workingSetMiB":  29.38,
+                                        "totalProcessorTimeMs":  140.62,
+                                        "recordedAt":  "2026-09-09T18:43:41.6247588Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  10.04,
+                                        "workingSetMiB":  29.38,
+                                        "totalProcessorTimeMs":  140.62,
+                                        "recordedAt":  "2026-09-09T18:43:46.6483365Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  15.05,
+                                        "workingSetMiB":  29.38,
+                                        "totalProcessorTimeMs":  140.62,
+                                        "recordedAt":  "2026-09-09T18:43:51.6575525Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  20.07,
+                                        "workingSetMiB":  29.38,
+                                        "totalProcessorTimeMs":  140.62,
+                                        "recordedAt":  "2026-09-09T18:43:56.6713652Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  25.11,
+                                        "workingSetMiB":  29.38,
+                                        "totalProcessorTimeMs":  140.62,
+                                        "recordedAt":  "2026-09-09T18:44:01.7111237Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  30.13,
+                                        "workingSetMiB":  29.36,
+                                        "totalProcessorTimeMs":  140.62,
+                                        "recordedAt":  "2026-09-09T18:44:06.7302798Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  35.14,
+                                        "workingSetMiB":  29.36,
+                                        "totalProcessorTimeMs":  140.62,
+                                        "recordedAt":  "2026-09-09T18:44:11.7444899Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  40.15,
+                                        "workingSetMiB":  29.36,
+                                        "totalProcessorTimeMs":  140.62,
+                                        "recordedAt":  "2026-09-09T18:44:16.7562074Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  45.17,
+                                        "workingSetMiB":  29.36,
+                                        "totalProcessorTimeMs":  140.62,
+                                        "recordedAt":  "2026-09-09T18:44:21.7707580Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  50.18,
+                                        "workingSetMiB":  29.36,
+                                        "totalProcessorTimeMs":  140.62,
+                                        "recordedAt":  "2026-09-09T18:44:26.7796298Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  55.19,
+                                        "workingSetMiB":  29.36,
+                                        "totalProcessorTimeMs":  140.62,
+                                        "recordedAt":  "2026-09-09T18:44:31.7976090Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  60.21,
+                                        "workingSetMiB":  29.34,
+                                        "totalProcessorTimeMs":  140.62,
+                                        "recordedAt":  "2026-09-09T18:44:36.8150785Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  65.22,
+                                        "workingSetMiB":  29.34,
+                                        "totalProcessorTimeMs":  140.62,
+                                        "recordedAt":  "2026-09-09T18:44:41.8389684Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  70.26,
+                                        "workingSetMiB":  29.32,
+                                        "totalProcessorTimeMs":  140.62,
+                                        "recordedAt":  "2026-09-09T18:44:46.8607130Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  75.27,
+                                        "workingSetMiB":  29.32,
+                                        "totalProcessorTimeMs":  140.62,
+                                        "recordedAt":  "2026-09-09T18:44:51.8750592Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  80.29,
+                                        "workingSetMiB":  29.32,
+                                        "totalProcessorTimeMs":  140.62,
+                                        "recordedAt":  "2026-09-09T18:44:56.8951430Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  85.31,
+                                        "workingSetMiB":  29.32,
+                                        "totalProcessorTimeMs":  140.62,
+                                        "recordedAt":  "2026-09-09T18:45:01.9099135Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  90.33,
+                                        "workingSetMiB":  29.32,
+                                        "totalProcessorTimeMs":  140.62,
+                                        "recordedAt":  "2026-09-09T18:45:06.9286952Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  95.34,
+                                        "workingSetMiB":  29.32,
+                                        "totalProcessorTimeMs":  140.62,
+                                        "recordedAt":  "2026-09-09T18:45:11.9456017Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  100.36,
+                                        "workingSetMiB":  29.32,
+                                        "totalProcessorTimeMs":  140.62,
+                                        "recordedAt":  "2026-09-09T18:45:16.9646395Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  105.38,
+                                        "workingSetMiB":  29.32,
+                                        "totalProcessorTimeMs":  140.62,
+                                        "recordedAt":  "2026-09-09T18:45:21.9813049Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  110.39,
+                                        "workingSetMiB":  29.32,
+                                        "totalProcessorTimeMs":  140.62,
+                                        "recordedAt":  "2026-09-09T18:45:26.9940551Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  115.41,
+                                        "workingSetMiB":  29.32,
+                                        "totalProcessorTimeMs":  140.62,
+                                        "recordedAt":  "2026-09-09T18:45:32.0137502Z"
+                                    },
+                                    {
+                                        "elapsedSeconds":  120.43,
+                                        "workingSetMiB":  29.32,
+                                        "totalProcessorTimeMs":  140.62,
+                                        "recordedAt":  "2026-09-09T18:45:37.0315763Z"
+                                    }
+                                ],
+                    "closeRequestAccepted":  true,
+                    "processStayedAlive":  true,
+                    "cpuTimeDeltaMs":  0,
+                    "cpuAveragePercent":  0,
+                    "memoryP95MiB":  29.38,
+                    "memoryGrowthMiB":  -0.06,
+                    "durationSatisfied":  true,
+                    "cpuThresholdSatisfied":  true,
+                    "memoryThresholdSatisfied":  true,
+                    "memoryGrowthThresholdSatisfied":  true
+                },
+    "limitations":  {
+                        "eightHourIdleMeasured":  false,
+                        "sevenDayLongRunMeasured":  false,
+                        "sleepWakeMeasured":  false,
+                        "realNetworkMeasured":  false,
+                        "namedQualitySignoff":  false
+                    },
+    "gateSatisfied":  false,
+    "result":  "automated-rehearsal-passed"
+}

@@ -1,0 +1,726 @@
+{
+  "schemaVersion": "1.0",
+  "contentVersion": "2026.07.1",
+  "ruleVersion": "1.0.0",
+  "acceptance": {
+    "minimumAutomatedPassRate": 1,
+    "maximumP95LatencyMs": 2000,
+    "minimumHumanQualityPassRate": 0.9,
+    "minimumHumanScore": 4,
+    "maximumFactualErrors": 0,
+    "maximumSafetyIssues": 0
+  },
+  "cases": [
+    {
+      "id": "solar-lichun",
+      "focus": "solar-term",
+      "workId": "bai-ju-yi-fu-de-gu-yuan-cao",
+      "context": {
+        "solarTerm": "立春",
+        "season": "spring",
+        "timePeriod": "day",
+        "weather": {
+          "kind": "clear",
+          "label": "晴"
+        }
+      },
+      "fallbackReason": "立春时读这首诗，正好留意季节的转身。"
+    },
+    {
+      "id": "solar-yushui",
+      "focus": "solar-term",
+      "workId": "bai-ju-yi-fu-de-gu-yuan-cao",
+      "context": {
+        "solarTerm": "雨水",
+        "season": "spring",
+        "timePeriod": "day",
+        "weather": {
+          "kind": "clear",
+          "label": "晴"
+        }
+      },
+      "fallbackReason": "雨水时读这首诗，正好留意季节的转身。"
+    },
+    {
+      "id": "solar-jingzhe",
+      "focus": "solar-term",
+      "workId": "bai-ju-yi-qian-tang-hu-chun-xing",
+      "context": {
+        "solarTerm": "惊蛰",
+        "season": "spring",
+        "timePeriod": "morning",
+        "weather": {
+          "kind": "cloudy",
+          "label": "多云"
+        }
+      },
+      "fallbackReason": "惊蛰时读这首诗，正好留意季节的转身。"
+    },
+    {
+      "id": "solar-chunfen",
+      "focus": "solar-term",
+      "workId": "bai-ju-yi-qian-tang-hu-chun-xing",
+      "context": {
+        "solarTerm": "春分",
+        "season": "spring",
+        "timePeriod": "morning",
+        "weather": {
+          "kind": "cloudy",
+          "label": "多云"
+        }
+      },
+      "fallbackReason": "春分时读这首诗，正好留意季节的转身。"
+    },
+    {
+      "id": "solar-qingming",
+      "focus": "solar-term",
+      "workId": "bai-ju-yi-yi-jiang-nan",
+      "context": {
+        "solarTerm": "清明",
+        "season": "spring",
+        "timePeriod": "morning",
+        "weather": {
+          "kind": "clear",
+          "label": "晴"
+        }
+      },
+      "fallbackReason": "清明时读这首诗，正好留意季节的转身。"
+    },
+    {
+      "id": "solar-guyu",
+      "focus": "solar-term",
+      "workId": "bai-ju-yi-da-lin-si-tao-hua",
+      "context": {
+        "solarTerm": "谷雨",
+        "season": "spring",
+        "timePeriod": "day",
+        "weather": {
+          "kind": "clear",
+          "label": "晴"
+        }
+      },
+      "fallbackReason": "谷雨时读这首诗，正好留意季节的转身。"
+    },
+    {
+      "id": "solar-lixia",
+      "focus": "solar-term",
+      "workId": "bai-ju-yi-da-lin-si-tao-hua",
+      "context": {
+        "solarTerm": "立夏",
+        "season": "spring",
+        "timePeriod": "day",
+        "weather": {
+          "kind": "clear",
+          "label": "晴"
+        }
+      },
+      "fallbackReason": "立夏时读这首诗，正好留意季节的转身。"
+    },
+    {
+      "id": "solar-xiaoman",
+      "focus": "solar-term",
+      "workId": "li-bai-wang-lu-shan-pu-bu",
+      "context": {
+        "solarTerm": "小满",
+        "season": "summer",
+        "timePeriod": "morning",
+        "weather": {
+          "kind": "clear",
+          "label": "晴"
+        }
+      },
+      "fallbackReason": "小满时读这首诗，正好留意季节的转身。"
+    },
+    {
+      "id": "solar-mangzhong",
+      "focus": "solar-term",
+      "workId": "li-bai-wang-lu-shan-pu-bu",
+      "context": {
+        "solarTerm": "芒种",
+        "season": "summer",
+        "timePeriod": "morning",
+        "weather": {
+          "kind": "clear",
+          "label": "晴"
+        }
+      },
+      "fallbackReason": "芒种时读这首诗，正好留意季节的转身。"
+    },
+    {
+      "id": "solar-xiazhi",
+      "focus": "solar-term",
+      "workId": "li-qing-zhao-xia-ri-jue-ju",
+      "context": {
+        "solarTerm": "夏至",
+        "season": "summer",
+        "timePeriod": "day",
+        "weather": {
+          "kind": "hot",
+          "label": "炎热"
+        }
+      },
+      "fallbackReason": "夏至时读这首诗，正好留意季节的转身。"
+    },
+    {
+      "id": "solar-xiaoshu",
+      "focus": "solar-term",
+      "workId": "su-shi-wang-hu-lou-zui-shu",
+      "context": {
+        "solarTerm": "小暑",
+        "season": "summer",
+        "timePeriod": "day",
+        "weather": {
+          "kind": "heavy-rain",
+          "label": "大雨"
+        }
+      },
+      "fallbackReason": "小暑时读这首诗，正好留意季节的转身。"
+    },
+    {
+      "id": "solar-dashu",
+      "focus": "solar-term",
+      "workId": "su-shi-wang-hu-lou-zui-shu",
+      "context": {
+        "solarTerm": "大暑",
+        "season": "summer",
+        "timePeriod": "day",
+        "weather": {
+          "kind": "heavy-rain",
+          "label": "大雨"
+        }
+      },
+      "fallbackReason": "大暑时读这首诗，正好留意季节的转身。"
+    },
+    {
+      "id": "solar-liqiu",
+      "focus": "solar-term",
+      "workId": "du-fu-wang-yue",
+      "context": {
+        "solarTerm": "立秋",
+        "season": "autumn",
+        "timePeriod": "day",
+        "weather": {
+          "kind": "clear",
+          "label": "晴"
+        }
+      },
+      "fallbackReason": "立秋时读这首诗，正好留意季节的转身。"
+    },
+    {
+      "id": "solar-chushu",
+      "focus": "solar-term",
+      "workId": "du-fu-wang-yue",
+      "context": {
+        "solarTerm": "处暑",
+        "season": "autumn",
+        "timePeriod": "day",
+        "weather": {
+          "kind": "clear",
+          "label": "晴"
+        }
+      },
+      "fallbackReason": "处暑时读这首诗，正好留意季节的转身。"
+    },
+    {
+      "id": "solar-bailu",
+      "focus": "solar-term",
+      "workId": "bai-ju-yi-mu-jiang-yin",
+      "context": {
+        "solarTerm": "白露",
+        "season": "autumn",
+        "timePeriod": "evening",
+        "weather": {
+          "kind": "clear",
+          "label": "晴"
+        }
+      },
+      "fallbackReason": "白露时读这首诗，正好留意季节的转身。"
+    },
+    {
+      "id": "solar-qiufen",
+      "focus": "solar-term",
+      "workId": "cui-hao-huang-he-lou",
+      "context": {
+        "solarTerm": "秋分",
+        "season": "autumn",
+        "timePeriod": "evening",
+        "weather": {
+          "kind": "clear",
+          "label": "晴"
+        }
+      },
+      "fallbackReason": "秋分时读这首诗，正好留意季节的转身。"
+    },
+    {
+      "id": "solar-hanlu",
+      "focus": "solar-term",
+      "workId": "bai-ju-yi-mu-jiang-yin",
+      "context": {
+        "solarTerm": "寒露",
+        "season": "autumn",
+        "timePeriod": "evening",
+        "weather": {
+          "kind": "clear",
+          "label": "晴"
+        }
+      },
+      "fallbackReason": "寒露时读这首诗，正好留意季节的转身。"
+    },
+    {
+      "id": "solar-shuangjiang",
+      "focus": "solar-term",
+      "workId": "du-mu-bo-qin-huai",
+      "context": {
+        "solarTerm": "霜降",
+        "season": "autumn",
+        "timePeriod": "night",
+        "weather": {
+          "kind": "fog",
+          "label": "雾"
+        }
+      },
+      "fallbackReason": "霜降时读这首诗，正好留意季节的转身。"
+    },
+    {
+      "id": "solar-lidong",
+      "focus": "solar-term",
+      "workId": "lu-you-shi-yi-yue-si-ri",
+      "context": {
+        "solarTerm": "立冬",
+        "season": "winter",
+        "timePeriod": "night",
+        "weather": {
+          "kind": "heavy-rain",
+          "label": "大雨"
+        }
+      },
+      "fallbackReason": "立冬时读这首诗，正好留意季节的转身。"
+    },
+    {
+      "id": "solar-xiaoxue",
+      "focus": "solar-term",
+      "workId": "bai-ju-yi-wen-liu-shi-jiu",
+      "context": {
+        "solarTerm": "小雪",
+        "season": "winter",
+        "timePeriod": "evening",
+        "weather": {
+          "kind": "snow",
+          "label": "雪"
+        }
+      },
+      "fallbackReason": "小雪时读这首诗，正好留意季节的转身。"
+    },
+    {
+      "id": "solar-daxue",
+      "focus": "solar-term",
+      "workId": "bai-ju-yi-wen-liu-shi-jiu",
+      "context": {
+        "solarTerm": "大雪",
+        "season": "winter",
+        "timePeriod": "evening",
+        "weather": {
+          "kind": "snow",
+          "label": "雪"
+        }
+      },
+      "fallbackReason": "大雪时读这首诗，正好留意季节的转身。"
+    },
+    {
+      "id": "solar-dongzhi",
+      "focus": "solar-term",
+      "workId": "liu-chang-qing-feng-xue",
+      "context": {
+        "solarTerm": "冬至",
+        "season": "winter",
+        "timePeriod": "evening",
+        "weather": {
+          "kind": "snow",
+          "label": "雪"
+        }
+      },
+      "fallbackReason": "冬至时读这首诗，正好留意季节的转身。"
+    },
+    {
+      "id": "solar-xiaohan",
+      "focus": "solar-term",
+      "workId": "han-yu-zuo-qian-lan-guan",
+      "context": {
+        "solarTerm": "小寒",
+        "season": "winter",
+        "timePeriod": "day",
+        "weather": {
+          "kind": "snow",
+          "label": "雪"
+        }
+      },
+      "fallbackReason": "小寒时读这首诗，正好留意季节的转身。"
+    },
+    {
+      "id": "solar-dahan",
+      "focus": "solar-term",
+      "workId": "gao-shi-chu-ye-zuo",
+      "context": {
+        "solarTerm": "大寒",
+        "season": "winter",
+        "timePeriod": "night",
+        "weather": {
+          "kind": "cold",
+          "label": "严寒"
+        }
+      },
+      "fallbackReason": "大寒时读这首诗，正好留意季节的转身。"
+    },
+    {
+      "id": "festival-chunjie",
+      "focus": "festival",
+      "workId": "he-zhi-zhang-hui-xiang-ou-shu",
+      "context": {
+        "festival": "春节",
+        "season": "spring",
+        "timePeriod": "day",
+        "weather": {
+          "kind": "clear",
+          "label": "晴"
+        }
+      },
+      "fallbackReason": "春节读这首诗，正好照见节日里的情意。"
+    },
+    {
+      "id": "festival-yuanxiao",
+      "focus": "festival",
+      "workId": "su-wei-dao-zheng-yue-shi-wu-ye",
+      "context": {
+        "festival": "元宵节",
+        "season": "winter",
+        "timePeriod": "evening",
+        "weather": {
+          "kind": "clear",
+          "label": "晴"
+        }
+      },
+      "fallbackReason": "元宵节读这首诗，正好照见节日里的情意。"
+    },
+    {
+      "id": "festival-qingming",
+      "focus": "festival",
+      "workId": "du-mu-qing-ming",
+      "context": {
+        "festival": "清明节",
+        "solarTerm": "清明",
+        "season": "spring",
+        "timePeriod": "day",
+        "weather": {
+          "kind": "light-rain",
+          "label": "小雨"
+        }
+      },
+      "fallbackReason": "清明节读这首诗，正好照见节日里的情意。"
+    },
+    {
+      "id": "festival-duanwu",
+      "focus": "festival",
+      "workId": "li-qing-zhao-xia-ri-jue-ju",
+      "context": {
+        "festival": "端午节",
+        "solarTerm": "芒种",
+        "season": "summer",
+        "timePeriod": "day",
+        "weather": {
+          "kind": "hot",
+          "label": "炎热"
+        }
+      },
+      "fallbackReason": "端午节读这首诗，正好照见节日里的情意。"
+    },
+    {
+      "id": "festival-qixi",
+      "focus": "festival",
+      "workId": "qin-guan-que-qiao-xian",
+      "context": {
+        "festival": "七夕节",
+        "solarTerm": "立秋",
+        "season": "autumn",
+        "timePeriod": "night",
+        "weather": {
+          "kind": "clear",
+          "label": "晴"
+        }
+      },
+      "fallbackReason": "七夕节读这首诗，正好照见节日里的情意。"
+    },
+    {
+      "id": "festival-zhongqiu",
+      "focus": "festival",
+      "workId": "du-fu-yue-ye-yi-she-di",
+      "context": {
+        "festival": "中秋节",
+        "solarTerm": "白露",
+        "season": "autumn",
+        "timePeriod": "night",
+        "weather": {
+          "kind": "clear",
+          "label": "晴"
+        }
+      },
+      "fallbackReason": "中秋节读这首诗，正好照见节日里的情意。"
+    },
+    {
+      "id": "festival-chongyang",
+      "focus": "festival",
+      "workId": "meng-hao-ran-guo-gu-ren-zhuang",
+      "context": {
+        "festival": "重阳节",
+        "solarTerm": "寒露",
+        "season": "autumn",
+        "timePeriod": "day",
+        "weather": {
+          "kind": "clear",
+          "label": "晴"
+        }
+      },
+      "fallbackReason": "重阳节读这首诗，正好照见节日里的情意。"
+    },
+    {
+      "id": "festival-chuxi",
+      "focus": "festival",
+      "workId": "gao-shi-chu-ye-zuo",
+      "context": {
+        "festival": "除夕",
+        "solarTerm": "大寒",
+        "season": "winter",
+        "timePeriod": "night",
+        "weather": {
+          "kind": "cold",
+          "label": "严寒"
+        }
+      },
+      "fallbackReason": "除夕读这首诗，正好照见节日里的情意。"
+    },
+    {
+      "id": "weather-clear",
+      "focus": "weather",
+      "workId": "bai-ju-yi-da-lin-si-tao-hua",
+      "context": {
+        "solarTerm": "谷雨",
+        "season": "spring",
+        "timePeriod": "day",
+        "weather": {
+          "kind": "clear",
+          "label": "晴"
+        }
+      },
+      "fallbackReason": "晴天读这首诗，让今日天气有了文化回声。"
+    },
+    {
+      "id": "weather-cloudy",
+      "focus": "weather",
+      "workId": "bai-ju-yi-da-lin-si-tao-hua",
+      "context": {
+        "solarTerm": "谷雨",
+        "season": "spring",
+        "timePeriod": "day",
+        "weather": {
+          "kind": "cloudy",
+          "label": "多云"
+        }
+      },
+      "fallbackReason": "多云天读这首诗，让今日天气有了文化回声。"
+    },
+    {
+      "id": "weather-overcast",
+      "focus": "weather",
+      "workId": "bai-ju-yi-wen-liu-shi-jiu",
+      "context": {
+        "solarTerm": "小雪",
+        "season": "winter",
+        "timePeriod": "evening",
+        "weather": {
+          "kind": "overcast",
+          "label": "阴"
+        }
+      },
+      "fallbackReason": "阴天读这首诗，让今日天气有了文化回声。"
+    },
+    {
+      "id": "weather-light-rain",
+      "focus": "weather",
+      "workId": "du-fu-chun-ye-xi-yu",
+      "context": {
+        "solarTerm": "雨水",
+        "season": "spring",
+        "timePeriod": "night",
+        "weather": {
+          "kind": "light-rain",
+          "label": "小雨"
+        }
+      },
+      "fallbackReason": "小雨天读这首诗，让今日天气有了文化回声。"
+    },
+    {
+      "id": "weather-rain",
+      "focus": "weather",
+      "workId": "du-fu-chun-ye-xi-yu",
+      "context": {
+        "solarTerm": "雨水",
+        "season": "spring",
+        "timePeriod": "night",
+        "weather": {
+          "kind": "rain",
+          "label": "雨"
+        }
+      },
+      "fallbackReason": "雨天读这首诗，让今日天气有了文化回声。"
+    },
+    {
+      "id": "weather-heavy-rain",
+      "focus": "weather",
+      "workId": "li-qing-zhao-ru-meng-ling",
+      "context": {
+        "solarTerm": "谷雨",
+        "season": "spring",
+        "timePeriod": "morning",
+        "weather": {
+          "kind": "heavy-rain",
+          "label": "大雨"
+        }
+      },
+      "fallbackReason": "大雨天读这首诗，让今日天气有了文化回声。"
+    },
+    {
+      "id": "weather-snow",
+      "focus": "weather",
+      "workId": "bai-ju-yi-wen-liu-shi-jiu",
+      "context": {
+        "solarTerm": "小雪",
+        "season": "winter",
+        "timePeriod": "evening",
+        "weather": {
+          "kind": "snow",
+          "label": "雪"
+        }
+      },
+      "fallbackReason": "雪天读这首诗，让今日天气有了文化回声。"
+    },
+    {
+      "id": "weather-fog",
+      "focus": "weather",
+      "workId": "cui-hao-huang-he-lou",
+      "context": {
+        "solarTerm": "白露",
+        "season": "autumn",
+        "timePeriod": "evening",
+        "weather": {
+          "kind": "fog",
+          "label": "雾"
+        }
+      },
+      "fallbackReason": "雾天读这首诗，让今日天气有了文化回声。"
+    },
+    {
+      "id": "weather-wind",
+      "focus": "weather",
+      "workId": "bai-ju-yi-fu-de-gu-yuan-cao",
+      "context": {
+        "solarTerm": "立春",
+        "season": "spring",
+        "timePeriod": "day",
+        "weather": {
+          "kind": "wind",
+          "label": "风"
+        }
+      },
+      "fallbackReason": "风天读这首诗，让今日天气有了文化回声。"
+    },
+    {
+      "id": "weather-hot",
+      "focus": "weather",
+      "workId": "li-qing-zhao-xia-ri-jue-ju",
+      "context": {
+        "solarTerm": "芒种",
+        "season": "summer",
+        "timePeriod": "day",
+        "weather": {
+          "kind": "hot",
+          "label": "炎热"
+        }
+      },
+      "fallbackReason": "炎热天读这首诗，让今日天气有了文化回声。"
+    },
+    {
+      "id": "weather-cold",
+      "focus": "weather",
+      "workId": "bai-ju-yi-wen-liu-shi-jiu",
+      "context": {
+        "solarTerm": "小雪",
+        "season": "winter",
+        "timePeriod": "evening",
+        "weather": {
+          "kind": "cold",
+          "label": "严寒"
+        }
+      },
+      "fallbackReason": "严寒天读这首诗，让今日天气有了文化回声。"
+    },
+    {
+      "id": "time-morning",
+      "focus": "time-period",
+      "workId": "bai-ju-yi-qian-tang-hu-chun-xing",
+      "context": {
+        "solarTerm": "惊蛰",
+        "season": "spring",
+        "timePeriod": "morning",
+        "weather": {
+          "kind": "cloudy",
+          "label": "多云"
+        }
+      },
+      "fallbackReason": "清晨读这首诗，让当下多一层安静的连接。"
+    },
+    {
+      "id": "time-day",
+      "focus": "time-period",
+      "workId": "bai-ju-yi-da-lin-si-tao-hua",
+      "context": {
+        "solarTerm": "谷雨",
+        "season": "spring",
+        "timePeriod": "day",
+        "weather": {
+          "kind": "clear",
+          "label": "晴"
+        }
+      },
+      "fallbackReason": "白天读这首诗，让当下多一层安静的连接。"
+    },
+    {
+      "id": "time-evening",
+      "focus": "time-period",
+      "workId": "bai-ju-yi-mu-jiang-yin",
+      "context": {
+        "solarTerm": "白露",
+        "season": "autumn",
+        "timePeriod": "evening",
+        "weather": {
+          "kind": "clear",
+          "label": "晴"
+        }
+      },
+      "fallbackReason": "傍晚读这首诗，让当下多一层安静的连接。"
+    },
+    {
+      "id": "time-night",
+      "focus": "time-period",
+      "workId": "bai-ju-yi-mu-jiang-yin",
+      "context": {
+        "solarTerm": "白露",
+        "season": "autumn",
+        "timePeriod": "night",
+        "weather": {
+          "kind": "clear",
+          "label": "晴"
+        }
+      },
+      "fallbackReason": "夜晚读这首诗，让当下多一层安静的连接。"
+    }
+  ]
+}

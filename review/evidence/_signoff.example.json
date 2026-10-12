@@ -1,0 +1,29 @@
+{
+  "schemaVersion": "1.0",
+  "gateId": "RQT-00",
+  "result": "passed",
+  "appVersion": "0.2.0",
+  "contentVersion": "2026.07.1",
+  "executedAt": "2026-07-24T00:00:00.000Z",
+  "executors": [
+    {
+      "name": "填写真实姓名",
+      "role": "填写实际责任角色"
+    }
+  ],
+  "evidenceItems": [
+    {
+      "description": "说明这项材料具体证明了什么",
+      "locator": "https://approved-evidence-system.example/item/123",
+      "checkedAt": "2026-07-24T00:00:00.000Z"
+    }
+  ],
+  "approval": {
+    "name": "填写真实批准人",
+    "role": "填写批准角色",
+    "approvedAt": "2026-07-24T00:00:00.000Z"
+  },
+  "limitations": [
+    "如无已知限制，使用空数组；不要删除本字段。"
+  ]
+}

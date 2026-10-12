@@ -1,0 +1,241 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <title>WeatherPoem 桌面体验原型</title>
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <main class="prototype" aria-label="WeatherPoem 桌面体验原型">
+    <section class="scenario-bar" aria-label="原型场景切换">
+      <div class="scenario-heading">
+        <span class="scenario-kicker">WEATHERPOEM</span>
+        <strong>原型场景</strong>
+      </div>
+      <div class="scenario-actions">
+        <button class="scenario-button is-active" type="button" data-scene="card">今日诗笺</button>
+        <button class="scenario-button" type="button" data-scene="reading">展开阅读</button>
+        <button class="scenario-button" type="button" data-scene="onboarding">首次设置</button>
+        <button class="scenario-button" type="button" data-scene="warning">预警状态</button>
+        <button class="icon-text-button" id="theme-toggle" type="button" aria-pressed="false">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M12 3.5v2.25M12 18.25v2.25M3.5 12h2.25M18.25 12h2.25M5.99 5.99l1.59 1.59M16.42 16.42l1.59 1.59M18.01 5.99l-1.59 1.59M7.58 16.42l-1.59 1.59"/>
+            <circle cx="12" cy="12" r="3.75"/>
+          </svg>
+          深色
+        </button>
+      </div>
+    </section>
+
+    <section class="desktop" aria-label="Windows 桌面模拟区域">
+      <div class="desktop-caption">
+        <span>桌面预览</span>
+        <time datetime="2026-04-20T08:42:00+08:00">2026年4月20日　08:42</time>
+      </div>
+
+      <div class="ambient-copy" aria-hidden="true">
+        <span class="ambient-number">04 / 20</span>
+        <span class="ambient-season">暮春</span>
+      </div>
+
+      <article class="poem-card" id="poem-card" aria-labelledby="poem-title">
+        <header class="card-header">
+          <div class="context-line">
+            <span>杭州</span>
+            <span aria-hidden="true">·</span>
+            <span>小雨</span>
+            <span aria-hidden="true">·</span>
+            <span>谷雨</span>
+          </div>
+          <button class="icon-button" id="close-card" type="button" aria-label="关闭今日诗笺">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M6.75 6.75l10.5 10.5M17.25 6.75l-10.5 10.5"/>
+            </svg>
+          </button>
+        </header>
+
+        <div class="poem-block">
+          <p class="poem-lines" id="poem-title">好雨知时节，<br>当春乃发生。</p>
+          <p class="poem-source">杜甫　《春夜喜雨》</p>
+        </div>
+
+        <p class="recommendation" id="recommendation">
+          谷雨时节草木正需雨水，今天的春雨恰好回应了诗中的生长。
+        </p>
+
+        <footer class="card-footer">
+          <button class="text-button" id="open-reading" type="button">
+            了解更多
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M5 12h13M13 7l5 5-5 5"/>
+            </svg>
+          </button>
+          <button class="icon-button" id="open-menu" type="button" aria-label="更多操作" aria-expanded="false">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <circle cx="5" cy="12" r="1.25" class="fill-shape"/>
+              <circle cx="12" cy="12" r="1.25" class="fill-shape"/>
+              <circle cx="19" cy="12" r="1.25" class="fill-shape"/>
+            </svg>
+          </button>
+        </footer>
+
+        <div class="action-menu" id="action-menu" hidden>
+          <button type="button" id="favorite-action">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M12 20.25s-7-4.1-7-10a4 4 0 0 1 7-2.35A4 4 0 0 1 19 10.25c0 5.9-7 10-7 10z"/>
+            </svg>
+            <span>收藏</span>
+          </button>
+          <button type="button" id="replace-action">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M19 7v4h-4M5 17v-4h4M18.1 11A6.5 6.5 0 0 0 7.3 6.7L5 9M5.9 13A6.5 6.5 0 0 0 16.7 17.3L19 15"/>
+            </svg>
+            <span>换一首</span>
+          </button>
+          <button type="button" id="dislike-action">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M5.5 5.5l13 13M18.5 5.5l-13 13"/>
+            </svg>
+            <span>不感兴趣</span>
+          </button>
+        </div>
+      </article>
+
+      <aside class="reading-panel" id="reading-panel" aria-labelledby="reading-title" aria-hidden="true">
+        <header class="panel-header">
+          <div>
+            <span class="eyebrow">今日诗笺</span>
+            <h1 id="reading-title">春夜喜雨</h1>
+          </div>
+          <button class="icon-button" id="close-reading" type="button" aria-label="关闭扩展阅读">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M6.75 6.75l10.5 10.5M17.25 6.75l-10.5 10.5"/>
+            </svg>
+          </button>
+        </header>
+
+        <div class="panel-scroll">
+          <div class="context-tags" aria-label="今日情境">
+            <span>杭州</span>
+            <span>小雨</span>
+            <span>谷雨</span>
+          </div>
+
+          <section class="why-today">
+            <span class="section-index">01</span>
+            <div>
+              <h2>为什么是今天</h2>
+              <p>谷雨连接着暮春的雨水与生长。杭州今天的小雨，让“好雨知时节”不只是书里的句子，也成为窗外正在发生的事。</p>
+            </div>
+          </section>
+
+          <section class="full-poem">
+            <span class="section-index">02</span>
+            <div>
+              <h2>作品原文</h2>
+              <p class="full-poem-text">
+                好雨知时节，当春乃发生。<br>
+                随风潜入夜，润物细无声。<br>
+                野径云俱黑，江船火独明。<br>
+                晓看红湿处，花重锦官城。
+              </p>
+              <p class="full-source">唐 · 杜甫　《春夜喜雨》</p>
+            </div>
+          </section>
+
+          <div class="reading-accordions">
+            <details>
+              <summary>
+                <span><b>03</b>一句读懂</span>
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+              </summary>
+              <p>诗人写一场在夜里悄悄到来的春雨。它没有声势，却真正滋养了草木。</p>
+            </details>
+            <details>
+              <summary>
+                <span><b>04</b>文化背景</span>
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+              </summary>
+              <p>作品写于成都草堂时期。诗中没有直接议论，而是通过夜色、江船灯火和清晨湿润的花朵，呈现春雨带来的变化。</p>
+            </details>
+            <details>
+              <summary>
+                <span><b>05</b>它与今天</span>
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+              </summary>
+              <p>许多真正有用的成长并不热闹。一次安静的阅读、一段持续的练习，也可能像春雨一样慢慢发生作用。</p>
+            </details>
+          </div>
+
+          <div class="source-note">
+            <span>内容来源</span>
+            <p>原文依据公开古籍资料核对；解释文字由项目编辑整理。内容版本 v1.0。</p>
+          </div>
+        </div>
+
+        <footer class="panel-footer">
+          <button class="secondary-button" id="panel-favorite" type="button">收藏这首</button>
+          <span>今日仅自动推荐一次</span>
+        </footer>
+      </aside>
+
+      <section class="onboarding-card" id="onboarding-card" aria-labelledby="onboarding-title" hidden>
+        <div class="onboarding-progress" aria-label="设置进度">
+          <span class="is-current"></span>
+          <span></span>
+          <span></span>
+        </div>
+        <span class="eyebrow">开始之前</span>
+        <h1 id="onboarding-title">你通常在哪座城市？</h1>
+        <p>城市只用于匹配当地天气。我们不需要精确位置，也不会读取你的桌面内容。</p>
+        <label for="city-input">所在城市</label>
+        <div class="input-row">
+          <input id="city-input" type="text" value="杭州" autocomplete="address-level2">
+          <button type="button" id="confirm-city">确认城市</button>
+        </div>
+        <div class="onboarding-note">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M12 3.75a6.25 6.25 0 0 0-6.25 6.25c0 4.75 6.25 10.25 6.25 10.25s6.25-5.5 6.25-10.25A6.25 6.25 0 0 0 12 3.75z"/>
+            <circle cx="12" cy="10" r="2"/>
+          </svg>
+          <span>以后可以随时在设置中修改</span>
+        </div>
+      </section>
+
+      <section class="warning-card" id="warning-card" aria-labelledby="warning-title" hidden>
+        <header>
+          <span class="warning-mark" aria-hidden="true"></span>
+          <span>杭州 · 气象预警</span>
+          <button class="icon-button" id="close-warning" type="button" aria-label="关闭预警提示">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M6.75 6.75l10.5 10.5M17.25 6.75l-10.5 10.5"/>
+            </svg>
+          </button>
+        </header>
+        <h1 id="warning-title">今日诗笺已暂停</h1>
+        <p>当地存在暴雨橙色预警。请优先关注官方气象信息，普通文化内容今天不再自动弹出。</p>
+        <button type="button" class="warning-link">查看官方信息来源</button>
+      </section>
+
+      <footer class="taskbar" aria-label="模拟 Windows 任务栏">
+        <button class="tray-button" id="tray-button" type="button" aria-label="打开 WeatherPoem 今日诗笺">
+          <svg viewBox="0 0 32 32" aria-hidden="true">
+            <rect x="5" y="5" width="22" height="22" rx="5"/>
+            <path d="M10 12.5h12M10 16h9M10 19.5h7"/>
+          </svg>
+        </button>
+        <div class="taskbar-time">
+          <span>08:42</span>
+          <span>2026/4/20</span>
+        </div>
+      </footer>
+
+      <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+    </section>
+  </main>
+
+  <script src="./app.js"></script>
+</body>
+</html>

@@ -1,0 +1,21 @@
+{
+    "schemaVersion":  "1.0",
+    "product":  "WeatherPoem",
+    "appVersion":  "0.2.0",
+    "mode":  "seven-day",
+    "status":  "failed",
+    "startedAt":  "2026-08-06T11:16:09.8287904Z",
+    "updatedAt":  "2026-08-07T12:17:26.1995574Z",
+    "requestedDurationMinutes":  10080,
+    "sampleIntervalSeconds":  60,
+    "processId":  28884,
+    "sampleCount":  298,
+    "lastSample":  {
+                       "elapsedSeconds":  17886.39,
+                       "workingSetMiB":  1.19,
+                       "totalProcessorTimeMs":  218.75,
+                       "recordedAt":  "2026-08-06T16:14:19.0698785Z"
+                   },
+    "message":  "Seven-day sample continuity exceeded 150 seconds.",
+    "runId":  "36596379e50a470caa08c5961cd27506"
+}

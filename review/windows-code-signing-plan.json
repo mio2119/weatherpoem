@@ -1,0 +1,268 @@
+{
+  "schemaVersion": "1.0",
+  "planVersion": "1.0",
+  "product": "WeatherPoem",
+  "appVersion": "0.2.0",
+  "generatedAt": "2026-09-09T18:58:25.456Z",
+  "status": "acquisition-and-signing-plan-ready-not-approved",
+  "inputs": {
+    "packageJson": {
+      "path": "package.json",
+      "sha256": "2E9DDA60A4664924B4A84EA71DDE11A2FC6E14548C911785B3DF5E63E75D5D5F"
+    },
+    "releaseManifest": {
+      "path": "output/WeatherPoem_0.2.0_RELEASE.json",
+      "sha256": "5D4FAF610A9EB29F9833055A12B943F870410D5C62F9D17D8BEB3C25F29F619B"
+    },
+    "checksums": {
+      "path": "output/WeatherPoem_0.2.0_SHA256.txt",
+      "sha256": "F745407E9DBEE18A087B220E2B468D8EB6FB68CBF7BF2096E7247EBB032E9A4B"
+    },
+    "tauriConfig": {
+      "path": "src-tauri/tauri.conf.json",
+      "sha256": "7CD31C25618D68E2683538DB617C60BBF2C85B391B7D18CF6B77A082D89CF855"
+    },
+    "releaseSupport": {
+      "path": "scripts/release-support.mjs",
+      "sha256": "F045DAB93F6BC50F844E1201AD71638DA34DD34275D94CBD45D8517BE8E0EC5C"
+    },
+    "releaseTrust": {
+      "path": "docs/WINDOWS_RELEASE_TRUST.md",
+      "sha256": "95B3C0F241CEC47EBECD901A07B41F29843950447DCC3488B4E9E9DB6E52595C"
+    }
+  },
+  "baseline": {
+    "releaseChannel": "trial",
+    "releaseTrustLevel": "unsigned-trial",
+    "artifacts": [
+      {
+        "kind": "portable",
+        "name": "weatherpoem.exe",
+        "size": 25101928,
+        "sha256": "00DB4B15F96E151CD7AF795A197E422F39ABFC3CE13E4AB298BF1DE7EC2DD74B",
+        "signatureStatus": "NotSigned"
+      },
+      {
+        "kind": "nsis",
+        "name": "WeatherPoem_0.2.0_x64-setup.exe",
+        "size": 5868651,
+        "sha256": "FD46A8E141C01D3B1BBB72FE685C48D8E099465C5A744B8CC930BBF947A29EA5",
+        "signatureStatus": "NotSigned"
+      },
+      {
+        "kind": "msi",
+        "name": "WeatherPoem_0.2.0_x64_en-US.msi",
+        "size": 17121280,
+        "sha256": "4A26D274384A9D39EBC75C967C2448C22DE66AAF4E3BAD640B0D5584C9C2352D",
+        "signatureStatus": "NotSigned"
+      }
+    ],
+    "allNotSigned": true,
+    "signingConfigPresent": false,
+    "productionDownloadUrlsPresent": false
+  },
+  "organizationDecisions": {
+    "legalPublisherName": null,
+    "certificateOrSigningService": null,
+    "certificateType": null,
+    "signerSubjectAllowlist": [],
+    "signerThumbprintAllowlist": [],
+    "timestampAuthority": null,
+    "rfc3161TimestampRequired": true,
+    "keyCustodyOwner": null,
+    "releaseRunnerOwner": null,
+    "securityReviewer": null,
+    "renewalLeadDays": null,
+    "revocationAuthority": null,
+    "budgetApproved": false
+  },
+  "keyAndRunnerControls": {
+    "privateKeyInRepositoryAllowed": false,
+    "privateKeyInClientAllowed": false,
+    "privateKeyInWorkbenchAllowed": false,
+    "privateKeyExportAllowed": false,
+    "ordinaryDeveloperCanSignProduction": false,
+    "approvedRunnerRequired": true,
+    "multiPartyReleaseApprovalRequired": true,
+    "signingAuditLogRequired": true,
+    "secretRedactionRequired": true
+  },
+  "proposedTauriConfiguration": {
+    "method": null,
+    "certificateThumbprint": null,
+    "timestampUrl": null,
+    "tsp": true,
+    "signCommand": null,
+    "note": "只有选定组织签名能力后才写入真实非秘密配置；密钥材料永不写入 tauri.conf.json。"
+  },
+  "releaseSequence": [
+    {
+      "order": 1,
+      "action": "在受控 Windows 发布机从批准源码、锁文件和版本构建未签名暂存物。"
+    },
+    {
+      "order": 2,
+      "action": "对主 EXE 及最终 portable、NSIS、MSI 执行组织签名和可信时间戳。"
+    },
+    {
+      "order": 3,
+      "action": "用 Windows 原生工具复核状态、主体、指纹、证书有效期和时间戳。"
+    },
+    {
+      "order": 4,
+      "action": "对最终签名字节计算尺寸与 SHA-256，生成 production 清单。"
+    },
+    {
+      "order": 5,
+      "action": "运行 release:verify:production，任何一项失败都不得上传。"
+    },
+    {
+      "order": 6,
+      "action": "进入公开分发演练，从独立 HTTPS 地址重下并再次验证。"
+    }
+  ],
+  "testMatrix": [
+    {
+      "id": "SIG-01",
+      "name": "三项发布物签名有效",
+      "expected": "portable、NSIS、MSI 均由批准主体签名，Get-AuthenticodeSignature 返回 Valid。",
+      "executor": null,
+      "executedAt": null,
+      "result": null,
+      "evidence": []
+    },
+    {
+      "id": "SIG-02",
+      "name": "可信时间戳完整",
+      "expected": "三项发布物均有批准的时间戳链，签名时间在证书有效期内。",
+      "executor": null,
+      "executedAt": null,
+      "result": null,
+      "evidence": []
+    },
+    {
+      "id": "SIG-03",
+      "name": "错误签名主体或指纹",
+      "expected": "签名虽为 Valid 但不在允许列表时 production 门禁拒绝。",
+      "executor": null,
+      "executedAt": null,
+      "result": null,
+      "evidence": []
+    },
+    {
+      "id": "SIG-04",
+      "name": "签名后字节被修改",
+      "expected": "Authenticode 或哈希校验失败，阻止上传和安装。",
+      "executor": null,
+      "executedAt": null,
+      "result": null,
+      "evidence": []
+    },
+    {
+      "id": "SIG-05",
+      "name": "一项发布物未签名",
+      "expected": "任一 portable、NSIS、MSI 为 NotSigned 时整体 production 门禁失败。",
+      "executor": null,
+      "executedAt": null,
+      "result": null,
+      "evidence": []
+    },
+    {
+      "id": "SIG-06",
+      "name": "过期、吊销或链不受信",
+      "expected": "签名状态、证书链或吊销检查异常时停止发布并升级到安全负责人。",
+      "executor": null,
+      "executedAt": null,
+      "result": null,
+      "evidence": []
+    },
+    {
+      "id": "SIG-07",
+      "name": "签名后清单生成顺序",
+      "expected": "只对最终签名字节计算尺寸和 SHA-256，production 清单与实际文件完全一致。",
+      "executor": null,
+      "executedAt": null,
+      "result": null,
+      "evidence": []
+    },
+    {
+      "id": "SIG-08",
+      "name": "密钥不可导出与最小权限",
+      "expected": "构建任务只能请求签名，不能读取或导出私钥；普通开发机和工作台没有密钥。",
+      "executor": null,
+      "executedAt": null,
+      "result": null,
+      "evidence": []
+    },
+    {
+      "id": "SIG-09",
+      "name": "证书续期与允许列表切换",
+      "expected": "旧证书仍有效期间先批准新证书并完成双指纹过渡，不接受未知主体。",
+      "executor": null,
+      "executedAt": null,
+      "result": null,
+      "evidence": []
+    },
+    {
+      "id": "SIG-10",
+      "name": "签名服务不可用",
+      "expected": "构建可失败但不能退化为未签名公开包；保留内部 trial 与 production 渠道隔离。",
+      "executor": null,
+      "executedAt": null,
+      "result": null,
+      "evidence": []
+    }
+  ],
+  "procurementChecklist": [
+    {
+      "id": "publisher-identity",
+      "ownerRole": "项目发起人",
+      "completed": false
+    },
+    {
+      "id": "certificate-or-service-selection",
+      "ownerRole": "组织发布负责人",
+      "completed": false
+    },
+    {
+      "id": "budget-and-contract",
+      "ownerRole": "预算与法务负责人",
+      "completed": false
+    },
+    {
+      "id": "key-custody-and-recovery",
+      "ownerRole": "安全负责人",
+      "completed": false
+    },
+    {
+      "id": "runner-and-audit-log",
+      "ownerRole": "发布工程负责人",
+      "completed": false
+    },
+    {
+      "id": "renewal-and-revocation-runbook",
+      "ownerRole": "安全与运维负责人",
+      "completed": false
+    }
+  ],
+  "approval": {
+    "projectSponsor": null,
+    "releaseOwner": null,
+    "securityOwner": null,
+    "legalReviewer": null,
+    "decision": null,
+    "approvedAt": null,
+    "evidencePath": "review/evidence/RQT-19-code-signing-approval.json"
+  },
+  "limitations": {
+    "publisherIdentityApproved": false,
+    "certificateAcquired": false,
+    "signingRunnerConfigured": false,
+    "artifactsSigned": false,
+    "timestampVerified": false,
+    "scenariosExecuted": false,
+    "namedApprovalCompleted": false
+  },
+  "gateSatisfied": false,
+  "result": "signing-plan-complete-production-signing-not-performed"
+}

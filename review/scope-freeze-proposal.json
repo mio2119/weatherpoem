@@ -1,0 +1,101 @@
+{
+  "schemaVersion": "1.0",
+  "proposalVersion": "2026.07-safe-pilot-v1",
+  "status": "proposal-ready-not-approved",
+  "generatedAt": "2026-09-09T18:58:24.831Z",
+  "candidate": {
+    "product": "WeatherPoem",
+    "appVersion": "0.2.0",
+    "contentVersion": "2026.07.1",
+    "ruleVersion": "2026.07.1",
+    "releaseChannel": "trial",
+    "trustLevel": "unsigned-trial",
+    "portableSha256": "00DB4B15F96E151CD7AF795A197E422F39ABFC3CE13E4AB298BF1DE7EC2DD74B"
+  },
+  "distribution": {
+    "currentAllowedScope": [
+      "internal-demonstration",
+      "controlled-internal-testing"
+    ],
+    "campusPilotAllowedAfterRequiredGates": true,
+    "publicDistributionAllowed": false,
+    "downloadUrl": null,
+    "platforms": [
+      "windows-x64"
+    ]
+  },
+  "pilot": {
+    "minimumParticipants": 30,
+    "maximumParticipants": 50,
+    "minimumAge": 18,
+    "durationDays": 28,
+    "recruitmentStarted": false,
+    "requiresSeparateConsent": true
+  },
+  "onlineCapabilities": {
+    "weather": "open-meteo-best-effort-with-cache-and-offline-fallback",
+    "aiReason": "local-rules-only-until-production-gate",
+    "officialWarning": "disabled-until-authorized-gateway-and-csp-gate",
+    "pilotTelemetry": "local-daily-and-session-aggregate-manual-export-v2-separate-opt-in",
+    "clientSecrets": "none"
+  },
+  "budget": {
+    "paidAiEnabled": false,
+    "paidAiMonthlyCapCny": 0,
+    "otherPaidServiceMonthlyCapCny": 0,
+    "budgetOwner": null,
+    "changeRequiresSignedApproval": true
+  },
+  "rollback": {
+    "binary": "manual-reinstall-last-approved-build",
+    "content": "signed-off-withdrawal-manifest-or-global-suspension",
+    "onlineEnhancements": "disable-endpoint-and-fall-back-to-local-rules",
+    "rollbackOwnerRole": "发布负责人",
+    "secondApproverRole": "安全或内容负责人"
+  },
+  "responsibilities": {
+    "projectSponsor": {
+      "role": "项目发起人",
+      "name": null
+    },
+    "pilotOwner": {
+      "role": "试点负责人",
+      "name": null
+    },
+    "releaseOwner": {
+      "role": "发布负责人",
+      "name": null
+    },
+    "rollbackOwner": {
+      "role": "回滚负责人",
+      "name": null
+    },
+    "contentReviewer": {
+      "role": "内容审核负责人",
+      "name": null
+    },
+    "securityPrivacyOwner": {
+      "role": "安全与隐私负责人",
+      "name": null
+    },
+    "qualityOwner": {
+      "role": "质量负责人",
+      "name": null
+    }
+  },
+  "approval": {
+    "projectSponsorName": null,
+    "decision": null,
+    "decidedAt": null,
+    "evidencePath": "review/evidence/RQT-18-scope-ai-version-freeze.json"
+  },
+  "limitations": {
+    "namedPeopleAssigned": false,
+    "budgetApproved": false,
+    "goNoGoHeld": false,
+    "campusPilotAuthorized": false,
+    "publicReleaseAuthorized": false
+  },
+  "gateSatisfied": false,
+  "result": "safe-default-proposal-ready"
+}

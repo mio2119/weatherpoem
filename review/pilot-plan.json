@@ -1,0 +1,67 @@
+{
+  "schemaVersion": "1.1",
+  "planVersion": "2026.07-pilot-local-v2",
+  "status": "draft-awaiting-human-approval",
+  "audience": {
+    "description": "30—50 名年满 18 周岁的在校大学生",
+    "minimumAge": 18,
+    "minimumParticipants": 30,
+    "maximumParticipants": 50,
+    "traditionalCultureInterestRequired": false
+  },
+  "consent": {
+    "separateOptInRequired": true,
+    "priorConsentReusable": false,
+    "requiredConfirmations": [
+      "adult",
+      "voluntary",
+      "local-aggregate-and-session-counts"
+    ],
+    "contactConfigured": false,
+    "approvedBy": []
+  },
+  "collection": {
+    "mode": "local-aggregate-manual-export",
+    "automaticUpload": false,
+    "endpoint": null,
+    "rawEventLog": false,
+    "identifiers": [],
+    "exportsCity": false,
+    "exportsWorkId": false,
+    "exportsDeviceData": false,
+    "sessionOpenMarker": true,
+    "sessionTimestamps": false,
+    "crashDumps": false,
+    "eventTypes": [
+      "app-opened",
+      "poem-presented",
+      "warning-suppressed",
+      "detail-opened",
+      "not-relevant",
+      "poem-replaced",
+      "favorite-added"
+    ]
+  },
+  "retention": {
+    "recordingDays": 28,
+    "intendedMaximumLocalDays": 35,
+    "automaticPurgeOnNextLaunch": true,
+    "backgroundDeletionWhileAppNotRunning": false,
+    "withdrawalDeletion": "immediate",
+    "fullDataClearIncludesPilot": true
+  },
+  "instruments": {
+    "weeklyPulse": "docs/PILOT_PLAN.md#每周简短回访",
+    "finalSurvey": "docs/PILOT_PLAN.md#结束问卷",
+    "interviewGuide": "docs/PILOT_PLAN.md#半结构访谈",
+    "localSummary": "docs/PILOT_PLAN.md#本地匿名摘要"
+  },
+  "limitations": {
+    "namedPilotOwner": false,
+    "contactConfigured": false,
+    "humanPrivacyApproval": false,
+    "ethicsOrInstitutionalReview": false,
+    "recruitmentStarted": false
+  },
+  "result": "implementation-ready-awaiting-approval"
+}

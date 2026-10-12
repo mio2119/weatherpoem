@@ -1,0 +1,847 @@
+{
+  "schemaVersion": "1.0",
+  "contentVersion": "2026.07.1",
+  "ruleVersion": "1.0.0",
+  "works": [
+    {
+      "id": "wang-an-shi-yuan-ri",
+      "title": "元日",
+      "author": "王安石",
+      "dynasty": "宋",
+      "summary": "新岁在晨光与新桃中徐徐展开。"
+    },
+    {
+      "id": "su-wei-dao-zheng-yue-shi-wu-ye",
+      "title": "正月十五夜",
+      "author": "苏味道",
+      "dynasty": "唐",
+      "summary": "灯月交辉，把城市照成一场流动的相聚。"
+    },
+    {
+      "id": "du-mu-qing-ming",
+      "title": "清明",
+      "author": "杜牧",
+      "dynasty": "唐",
+      "summary": "一场春雨，让思念有了可以停驻的地方。"
+    },
+    {
+      "id": "wen-xiu-duan-wu",
+      "title": "端午",
+      "author": "文秀",
+      "dynasty": "唐",
+      "summary": "节日的热闹背后，也保留着对人格与选择的追问。"
+    },
+    {
+      "id": "qin-guan-que-qiao-xian",
+      "title": "鹊桥仙·纤云弄巧",
+      "author": "秦观",
+      "dynasty": "宋",
+      "summary": "真正长久的关系，不只由相见的频率定义。"
+    },
+    {
+      "id": "su-shi-shui-diao-ge-tou",
+      "title": "水调歌头·明月几时有",
+      "author": "苏轼",
+      "dynasty": "宋",
+      "summary": "共望一轮明月，距离也能变成联结。"
+    },
+    {
+      "id": "wang-wei-jiu-yue-jiu-ri",
+      "title": "九月九日忆山东兄弟",
+      "author": "王维",
+      "dynasty": "唐",
+      "summary": "佳节放大了远方，也让牵挂变得清晰。"
+    },
+    {
+      "id": "gao-shi-chu-ye-zuo",
+      "title": "除夜作",
+      "author": "高适",
+      "dynasty": "唐",
+      "summary": "辞旧的夜里，故乡与时间同时来到心中。"
+    },
+    {
+      "id": "han-yu-zao-chun",
+      "title": "早春呈水部张十八员外",
+      "author": "韩愈",
+      "dynasty": "唐",
+      "summary": "春天最先出现的地方，往往要稍微退后一步才能看见。"
+    },
+    {
+      "id": "zhi-nan-jue-ju",
+      "title": "绝句",
+      "author": "志南",
+      "dynasty": "宋",
+      "summary": "雨和风都很轻，刚好适合把步子放慢。"
+    },
+    {
+      "id": "du-mu-shan-xing",
+      "title": "山行",
+      "author": "杜牧",
+      "dynasty": "唐",
+      "summary": "秋天并非只有萧瑟，也有明亮得让人停下来的颜色。"
+    },
+    {
+      "id": "liu-zong-yuan-jiang-xue",
+      "title": "江雪",
+      "author": "柳宗元",
+      "dynasty": "唐",
+      "summary": "大雪收去喧响，留下一个不被环境改变的身影。"
+    },
+    {
+      "id": "su-shi-yin-hu-shang",
+      "title": "饮湖上初晴后雨",
+      "author": "苏轼",
+      "dynasty": "宋",
+      "summary": "晴雨各有神情，变化本身就是风景。"
+    },
+    {
+      "id": "zhang-ji-feng-qiao-ye-bo",
+      "title": "枫桥夜泊",
+      "author": "张继",
+      "dynasty": "唐",
+      "summary": "睡不着的夜里，远处钟声让时间有了形状。"
+    },
+    {
+      "id": "meng-hao-ran-chun-xiao",
+      "title": "春晓",
+      "author": "孟浩然",
+      "dynasty": "唐",
+      "summary": "从睡梦醒来，先听见春天，再想起昨夜的风雨。"
+    },
+    {
+      "id": "wang-chang-ling-fu-rong-lou",
+      "title": "芙蓉楼送辛渐",
+      "author": "王昌龄",
+      "dynasty": "唐",
+      "summary": "在雨夜送别之后，把坦荡留作最简洁的自我说明。"
+    },
+    {
+      "id": "liu-yu-xi-qiu-ci",
+      "title": "秋词",
+      "author": "刘禹锡",
+      "dynasty": "唐",
+      "summary": "清秋也可以向上，不必沿用别人规定的情绪。"
+    },
+    {
+      "id": "bai-ju-yi-wen-liu-shi-jiu",
+      "title": "问刘十九",
+      "author": "白居易",
+      "dynasty": "唐",
+      "summary": "天将下雪，一句简单邀请就足以温暖傍晚。"
+    },
+    {
+      "id": "wang-zhi-huan-deng-guan-que-lou",
+      "title": "登鹳雀楼",
+      "author": "王之涣",
+      "dynasty": "唐",
+      "summary": "视野的变化，有时只差再向前走一层。"
+    },
+    {
+      "id": "li-bai-jing-ye-si",
+      "title": "静夜思",
+      "author": "李白",
+      "dynasty": "唐",
+      "summary": "月光让一个普通夜晚突然通向故乡。"
+    },
+    {
+      "id": "wang-bo-song-du-shao-fu",
+      "title": "送杜少府之任蜀州",
+      "author": "王勃",
+      "dynasty": "唐",
+      "summary": "真正的朋友，不会被毕业、远行或距离轻易冲淡。"
+    },
+    {
+      "id": "su-shi-ding-feng-bo",
+      "title": "定风波·莫听穿林打叶声",
+      "author": "苏轼",
+      "dynasty": "宋",
+      "summary": "风雨来时仍能徐行，是一种具体而轻盈的从容。"
+    },
+    {
+      "id": "wang-an-shi-mei-hua",
+      "title": "梅花",
+      "author": "王安石",
+      "dynasty": "宋",
+      "summary": "安静开放的事物，也会用自己的方式抵达别人。"
+    },
+    {
+      "id": "du-fu-chun-ye-xi-yu",
+      "title": "春夜喜雨",
+      "author": "杜甫",
+      "dynasty": "唐",
+      "summary": "真正有效的滋养，常常安静得不被立即察觉。"
+    },
+    {
+      "id": "bai-ju-yi-mu-jiang-yin",
+      "title": "暮江吟",
+      "author": "白居易",
+      "dynasty": "唐",
+      "summary": "傍晚到初夜，颜色与光线把同一条江重新画了一遍。"
+    },
+    {
+      "id": "lin-bu-shan-yuan-xiao-mei",
+      "title": "山园小梅",
+      "author": "林逋",
+      "dynasty": "宋",
+      "summary": "疏影与暗香，让冬日黄昏有了很轻的层次。"
+    },
+    {
+      "id": "yang-wan-li-xiao-chu-jing-ci-si",
+      "title": "晓出净慈寺送林子方",
+      "author": "杨万里",
+      "dynasty": "宋",
+      "summary": "盛夏把绿色与红色推到最饱满的程度。"
+    },
+    {
+      "id": "he-zhi-zhang-yong-liu",
+      "title": "咏柳",
+      "author": "贺知章",
+      "dynasty": "唐",
+      "summary": "春风像一把看不见的剪刀，让新叶有了精巧轮廓。"
+    },
+    {
+      "id": "wang-wei-niao-ming-jian",
+      "title": "鸟鸣涧",
+      "author": "王维",
+      "dynasty": "唐",
+      "summary": "越安静，越能听见细小事物的发生。"
+    },
+    {
+      "id": "liu-chang-qing-feng-xue",
+      "title": "逢雪宿芙蓉山主人",
+      "author": "刘长卿",
+      "dynasty": "唐",
+      "summary": "风雪夜归，一声犬吠让寒冷的画面有了人间气息。"
+    },
+    {
+      "id": "li-bai-zao-fa-bai-di-cheng",
+      "title": "早发白帝城",
+      "author": "李白",
+      "dynasty": "唐",
+      "summary": "走过最难的一段，舟行忽然变得轻快。"
+    },
+    {
+      "id": "li-qing-zhao-ru-meng-ling",
+      "title": "如梦令·昨夜雨疏风骤",
+      "author": "李清照",
+      "dynasty": "宋",
+      "summary": "一夜风雨之后，最先被惦记的是窗外海棠。"
+    },
+    {
+      "id": "fan-zhong-yan-su-mu-zhe",
+      "title": "苏幕遮·怀旧",
+      "author": "范仲淹",
+      "dynasty": "宋",
+      "summary": "辽阔秋色越是明净，远行人的乡思越显得深。"
+    },
+    {
+      "id": "zhao-shi-xiu-yue-ke",
+      "title": "约客",
+      "author": "赵师秀",
+      "dynasty": "宋",
+      "summary": "夏雨拉长了等待，也让蛙声和灯花变得清晰。"
+    },
+    {
+      "id": "li-bai-wang-lu-shan-pu-bu",
+      "title": "望庐山瀑布",
+      "author": "李白",
+      "dynasty": "唐",
+      "summary": "阳光、山雾与瀑布共同把眼前景象推向银河般的想象。"
+    },
+    {
+      "id": "li-bai-zeng-wang-lun",
+      "title": "赠汪伦",
+      "author": "李白",
+      "dynasty": "唐",
+      "summary": "临行时忽然响起的歌声，让友情比潭水更有分量。"
+    },
+    {
+      "id": "li-bai-huang-he-lou-song-meng-hao-ran",
+      "title": "黄鹤楼送孟浩然之广陵",
+      "author": "李白",
+      "dynasty": "唐",
+      "summary": "船影已经消失，目光仍沿着长江送朋友去远方。"
+    },
+    {
+      "id": "li-bai-wang-tian-men-shan",
+      "title": "望天门山",
+      "author": "李白",
+      "dynasty": "唐",
+      "summary": "舟行江上，山水仿佛主动向眼前打开。"
+    },
+    {
+      "id": "li-bai-du-zuo-jing-ting-shan",
+      "title": "独坐敬亭山",
+      "author": "李白",
+      "dynasty": "唐",
+      "summary": "鸟云散尽之后，一座山成为可以长久相看的陪伴。"
+    },
+    {
+      "id": "li-bai-ye-su-shan-si",
+      "title": "夜宿山寺",
+      "author": "李白",
+      "dynasty": "唐",
+      "summary": "高楼、星辰和轻声说话，让夜空忽然变得触手可及。"
+    },
+    {
+      "id": "li-bai-qiu-pu-ge",
+      "title": "秋浦歌·白发三千丈",
+      "author": "李白",
+      "dynasty": "唐",
+      "summary": "镜中的白发把无形愁绪变成一段可以看见的长度。"
+    },
+    {
+      "id": "li-bai-e-mei-shan-yue-ge",
+      "title": "峨眉山月歌",
+      "author": "李白",
+      "dynasty": "唐",
+      "summary": "半轮秋月随江而行，也陪着第一次远游的思念。"
+    },
+    {
+      "id": "li-bai-wen-wang-chang-ling",
+      "title": "闻王昌龄左迁龙标遥有此寄",
+      "author": "李白",
+      "dynasty": "唐",
+      "summary": "无法同行时，诗人把牵挂托付给共同看见的月亮。"
+    },
+    {
+      "id": "li-bai-ke-zhong-xing",
+      "title": "客中行",
+      "author": "李白",
+      "dynasty": "唐",
+      "summary": "真诚的款待让异乡暂时不再显得陌生。"
+    },
+    {
+      "id": "du-fu-jue-ju-liang-ge-huang-li",
+      "title": "绝句·两个黄鹂鸣翠柳",
+      "author": "杜甫",
+      "dynasty": "唐",
+      "summary": "一扇窗同时容纳近处鸟鸣、远山积雪和即将出发的船。"
+    },
+    {
+      "id": "du-fu-jue-ju-chi-ri",
+      "title": "绝句·迟日江山丽",
+      "author": "杜甫",
+      "dynasty": "唐",
+      "summary": "春日变长，花草、燕子和暖沙都恢复了自己的节奏。"
+    },
+    {
+      "id": "du-fu-jiang-pan-du-bu-xun-hua",
+      "title": "江畔独步寻花·其六",
+      "author": "杜甫",
+      "dynasty": "唐",
+      "summary": "花开得让枝条低垂，蝴蝶与黄莺把散步变成一场停留。"
+    },
+    {
+      "id": "du-fu-wang-yue",
+      "title": "望岳",
+      "author": "杜甫",
+      "dynasty": "唐",
+      "summary": "仰望高山并非停在赞叹，而是生出亲自登顶的愿望。"
+    },
+    {
+      "id": "du-fu-yue-ye-yi-she-di",
+      "title": "月夜忆舍弟",
+      "author": "杜甫",
+      "dynasty": "唐",
+      "summary": "白露夜的月亮照见故乡，也照见战乱中失去联系的亲人。"
+    },
+    {
+      "id": "du-fu-lv-ye-shu-huai",
+      "title": "旅夜书怀",
+      "author": "杜甫",
+      "dynasty": "唐",
+      "summary": "星野与大江越辽阔，一叶夜舟上的漂泊感越清晰。"
+    },
+    {
+      "id": "du-fu-wen-guan-jun",
+      "title": "闻官军收河南河北",
+      "author": "杜甫",
+      "dynasty": "唐",
+      "summary": "一个好消息让多年压抑突然松开，归乡路线也立刻清晰起来。"
+    },
+    {
+      "id": "bai-ju-yi-fu-de-gu-yuan-cao",
+      "title": "赋得古原草送别",
+      "author": "白居易",
+      "dynasty": "唐",
+      "summary": "草木枯荣与春风再生，让离别之外仍保留持续生长的力量。"
+    },
+    {
+      "id": "bai-ju-yi-qian-tang-hu-chun-xing",
+      "title": "钱塘湖春行",
+      "author": "白居易",
+      "dynasty": "唐",
+      "summary": "早莺、新燕、浅草和低云共同标记春天正在到来。"
+    },
+    {
+      "id": "bai-ju-yi-da-lin-si-tao-hua",
+      "title": "大林寺桃花",
+      "author": "白居易",
+      "dynasty": "唐",
+      "summary": "山下春意已尽，山中桃花却刚刚开始。"
+    },
+    {
+      "id": "bai-ju-yi-yi-jiang-nan",
+      "title": "忆江南·江南好",
+      "author": "白居易",
+      "dynasty": "唐",
+      "summary": "日出江花与碧绿春水，让记忆中的江南颜色始终鲜明。"
+    },
+    {
+      "id": "bai-ju-yi-chi-shang",
+      "title": "池上",
+      "author": "白居易",
+      "dynasty": "唐",
+      "summary": "孩子想藏住采莲的小秘密，浮萍却留下清楚水痕。"
+    },
+    {
+      "id": "bai-ju-yi-cun-ye",
+      "title": "村夜",
+      "author": "白居易",
+      "dynasty": "唐",
+      "summary": "霜夜本来寂寥，月下荞麦花却忽然把田野照亮。"
+    },
+    {
+      "id": "liu-yu-xi-wang-dong-ting",
+      "title": "望洞庭",
+      "author": "刘禹锡",
+      "dynasty": "唐",
+      "summary": "无风秋夜里，洞庭湖与君山被缩成银盘和青螺。"
+    },
+    {
+      "id": "liu-yu-xi-lang-tao-sha",
+      "title": "浪淘沙·九曲黄河万里沙",
+      "author": "刘禹锡",
+      "dynasty": "唐",
+      "summary": "黄河风浪被想象成直上银河的道路，艰险因此有了浪漫尺度。"
+    },
+    {
+      "id": "liu-yu-xi-wu-yi-xiang",
+      "title": "乌衣巷",
+      "author": "刘禹锡",
+      "dynasty": "唐",
+      "summary": "燕子仍然飞来，昔日显赫的庭院却已成为寻常人家。"
+    },
+    {
+      "id": "liu-yu-xi-zhu-zhi-ci",
+      "title": "竹枝词·杨柳青青江水平",
+      "author": "刘禹锡",
+      "dynasty": "唐",
+      "summary": "一边日出一边下雨，也像一句含蓄而不确定的回应。"
+    },
+    {
+      "id": "liu-yu-xi-chou-le-tian",
+      "title": "酬乐天扬州初逢席上见赠",
+      "author": "刘禹锡",
+      "dynasty": "唐",
+      "summary": "承认长期失意，也看见沉舟之外仍有千帆、病树之前仍有春天。"
+    },
+    {
+      "id": "wang-wei-shan-ju-qiu-ming",
+      "title": "山居秋暝",
+      "author": "王维",
+      "dynasty": "唐",
+      "summary": "秋雨洗过山林，月光、清泉和归人共同恢复晚间秩序。"
+    },
+    {
+      "id": "wang-wei-lu-chai",
+      "title": "鹿柴",
+      "author": "王维",
+      "dynasty": "唐",
+      "summary": "看不见人，只听见声音；夕光进入深林，又落回青苔。"
+    },
+    {
+      "id": "wang-wei-zhu-li-guan",
+      "title": "竹里馆",
+      "author": "王维",
+      "dynasty": "唐",
+      "summary": "无人知晓的竹林里，琴声和月光已经构成完整陪伴。"
+    },
+    {
+      "id": "wang-wei-song-yuan-er",
+      "title": "送元二使安西",
+      "author": "王维",
+      "dynasty": "唐",
+      "summary": "清晨雨洗柳色，临别的一杯酒承担了说不尽的牵挂。"
+    },
+    {
+      "id": "wang-wei-shi-zhi-sai-shang",
+      "title": "使至塞上",
+      "author": "王维",
+      "dynasty": "唐",
+      "summary": "辽阔沙漠把孤烟与落日压缩成最简洁、最稳定的线条。"
+    },
+    {
+      "id": "wang-wei-zhong-nan-bie-ye",
+      "title": "终南别业",
+      "author": "王维",
+      "dynasty": "唐",
+      "summary": "走到水流尽头便坐下看云，不确定的路也能自然展开。"
+    },
+    {
+      "id": "meng-hao-ran-guo-gu-ren-zhuang",
+      "title": "过故人庄",
+      "author": "孟浩然",
+      "dynasty": "唐",
+      "summary": "一顿家常饭、窗外田园和下次相约，构成朴素而可靠的友情。"
+    },
+    {
+      "id": "meng-hao-ran-su-jian-de-jiang",
+      "title": "宿建德江",
+      "author": "孟浩然",
+      "dynasty": "唐",
+      "summary": "日暮停舟，旷野拉低天空，清江却把月亮送到近处。"
+    },
+    {
+      "id": "meng-hao-ran-wang-dong-ting-hu",
+      "title": "望洞庭湖赠张丞相",
+      "author": "孟浩然",
+      "dynasty": "唐",
+      "summary": "洞庭湖水势浩大，求取机会的愿望也被写得坦荡而含蓄。"
+    },
+    {
+      "id": "wang-chang-ling-chu-sai",
+      "title": "出塞",
+      "author": "王昌龄",
+      "dynasty": "唐",
+      "summary": "同一轮明月照过古关，也照见战争中长久未归的人。"
+    },
+    {
+      "id": "wang-chang-ling-cong-jun-xing",
+      "title": "从军行·青海长云暗雪山",
+      "author": "王昌龄",
+      "dynasty": "唐",
+      "summary": "长云、雪山与黄沙之中，守边意志显得坚决而沉重。"
+    },
+    {
+      "id": "wang-chang-ling-cai-lian-qu",
+      "title": "采莲曲",
+      "author": "王昌龄",
+      "dynasty": "唐",
+      "summary": "采莲少女与荷叶花色融在一起，先听见歌声才发现有人。"
+    },
+    {
+      "id": "wang-zhi-huan-liang-zhou-ci",
+      "title": "凉州词·黄河远上白云间",
+      "author": "王之涣",
+      "dynasty": "唐",
+      "summary": "孤城立在高山远河之间，羌笛吹出边地难有春风的苍凉。"
+    },
+    {
+      "id": "he-zhi-zhang-hui-xiang-ou-shu",
+      "title": "回乡偶书",
+      "author": "贺知章",
+      "dynasty": "唐",
+      "summary": "乡音仍在，故乡儿童却把归来的人当作远客。"
+    },
+    {
+      "id": "luo-bin-wang-yong-e",
+      "title": "咏鹅",
+      "author": "骆宾王",
+      "dynasty": "唐",
+      "summary": "白毛、绿水和红掌，把水边一只鹅写得鲜明又有动作感。"
+    },
+    {
+      "id": "lu-lun-sai-xia-qu",
+      "title": "塞下曲·月黑雁飞高",
+      "author": "卢纶",
+      "dynasty": "唐",
+      "summary": "风雪暗夜里，追骑蓄势待发，紧张感凝结在落满弓刀的大雪中。"
+    },
+    {
+      "id": "cui-hao-huang-he-lou",
+      "title": "黄鹤楼",
+      "author": "崔颢",
+      "dynasty": "唐",
+      "summary": "登楼所见从千载白云落到日暮烟波，最终触发远行人的乡愁。"
+    },
+    {
+      "id": "cen-shen-feng-ru-jing-shi",
+      "title": "逢入京使",
+      "author": "岑参",
+      "dynasty": "唐",
+      "summary": "匆匆相逢来不及写信，只托一句平安穿过漫长归路。"
+    },
+    {
+      "id": "han-yu-wan-chun",
+      "title": "晚春",
+      "author": "韩愈",
+      "dynasty": "唐",
+      "summary": "春将离去，连寻常草木也用尽颜色加入最后一场盛放。"
+    },
+    {
+      "id": "han-yu-zuo-qian-lan-guan",
+      "title": "左迁至蓝关示侄孙湘",
+      "author": "韩愈",
+      "dynasty": "唐",
+      "summary": "骤然被贬的沉痛，在秦岭横云与蓝关积雪中获得了具体形状。"
+    },
+    {
+      "id": "liu-zong-yuan-yu-weng",
+      "title": "渔翁",
+      "author": "柳宗元",
+      "dynasty": "唐",
+      "summary": "晨烟散去，一声船歌让整片山水忽然显出清绿。"
+    },
+    {
+      "id": "wei-ying-wu-chu-zhou-xi-jian",
+      "title": "滁州西涧",
+      "author": "韦应物",
+      "dynasty": "唐",
+      "summary": "春雨催急涧水，无人野渡的一叶横舟让喧闹归于安静。"
+    },
+    {
+      "id": "wang-jian-shi-wu-ye-wang-yue",
+      "title": "十五夜望月",
+      "author": "王建",
+      "dynasty": "唐",
+      "summary": "月光、冷露和桂花把共同仰望的中秋夜写得清亮而含蓄。"
+    },
+    {
+      "id": "zhang-jiu-ling-wang-yue-huai-yuan",
+      "title": "望月怀远",
+      "author": "张九龄",
+      "dynasty": "唐",
+      "summary": "海上明月把远隔天涯的人放在同一个夜晚，也让思念无法入睡。"
+    },
+    {
+      "id": "zhang-zhi-he-yu-ge-zi",
+      "title": "渔歌子·西塞山前白鹭飞",
+      "author": "张志和",
+      "dynasty": "唐",
+      "summary": "桃花水、白鹭与斜风细雨，共同构成不急着归去的江南春日。"
+    },
+    {
+      "id": "zhang-ji-qiu-si",
+      "title": "秋思",
+      "author": "张籍",
+      "dynasty": "唐",
+      "summary": "一封已经写好的家书，因为担心话未说尽，又在临行前被重新拆开。"
+    },
+    {
+      "id": "dai-shu-lun-lan-xi-zhao-ge",
+      "title": "兰溪棹歌",
+      "author": "戴叔伦",
+      "dynasty": "唐",
+      "summary": "雨后兰溪水涨，弯月与山影静静映水，半夜又有鲤鱼涌上浅滩。"
+    },
+    {
+      "id": "du-mu-bo-qin-huai",
+      "title": "泊秦淮",
+      "author": "杜牧",
+      "dynasty": "唐",
+      "summary": "秦淮迷蒙夜色看似柔美，却被历史记忆和现实忧思骤然刺破。"
+    },
+    {
+      "id": "du-mu-chi-bi",
+      "title": "赤壁",
+      "author": "杜牧",
+      "dynasty": "唐",
+      "summary": "一截沉沙旧戟引出对历史偶然与个人际遇的重新设想。"
+    },
+    {
+      "id": "du-mu-jiang-nan-chun",
+      "title": "江南春",
+      "author": "杜牧",
+      "dynasty": "唐",
+      "summary": "江南千里春色从明艳铺展到烟雨深处，空间辽阔又带历史层次。"
+    },
+    {
+      "id": "li-shang-yin-ye-yu-ji-bei",
+      "title": "夜雨寄北",
+      "author": "李商隐",
+      "dynasty": "唐",
+      "summary": "眼前无法归去的秋夜，被想象成未来团聚时可以共同回望的故事。"
+    },
+    {
+      "id": "li-shang-yin-chang-e",
+      "title": "嫦娥",
+      "author": "李商隐",
+      "dynasty": "唐",
+      "summary": "长夜将尽，嫦娥神话被写成拥有永恒之后仍无法摆脱的孤独。"
+    },
+    {
+      "id": "li-shang-yin-le-you-yuan",
+      "title": "乐游原",
+      "author": "李商隐",
+      "dynasty": "唐",
+      "summary": "心绪低落时登高遇见壮丽夕阳，美好与即将消逝同时发生。"
+    },
+    {
+      "id": "luo-yin-feng",
+      "title": "蜂",
+      "author": "罗隐",
+      "dynasty": "唐",
+      "summary": "蜜蜂采尽百花之后的反问，把勤劳与成果归属放在一起审视。"
+    },
+    {
+      "id": "hu-ling-neng-xiao-er-chui-diao",
+      "title": "小儿垂钓",
+      "author": "胡令能",
+      "dynasty": "唐",
+      "summary": "学钓的孩子只敢远远招手，专注、紧张又天真得令人会心。"
+    },
+    {
+      "id": "gao-pian-shan-ting-xia-ri",
+      "title": "山亭夏日",
+      "author": "高骈",
+      "dynasty": "唐",
+      "summary": "浓荫、池影、微风与蔷薇香气，把漫长夏日写得清凉可感。"
+    },
+    {
+      "id": "zu-yong-zhong-nan-wang-yu-xue",
+      "title": "终南望余雪",
+      "author": "祖咏",
+      "dynasty": "唐",
+      "summary": "雪后终南山在云端明亮起来，城中的人却先感到傍晚寒意加深。"
+    },
+    {
+      "id": "su-shi-ti-xi-lin-bi",
+      "title": "题西林壁",
+      "author": "苏轼",
+      "dynasty": "宋",
+      "summary": "同一座山随位置改变而显出不同形态，认识也受自身处境限制。"
+    },
+    {
+      "id": "su-shi-hui-chong-chun-jiang",
+      "title": "惠崇春江晚景",
+      "author": "苏轼",
+      "dynasty": "宋",
+      "summary": "从桃花、鸭群到新生芦芽，初春温度的变化被一连串生命先感知。"
+    },
+    {
+      "id": "su-shi-wang-hu-lou-zui-shu",
+      "title": "六月二十七日望湖楼醉书",
+      "author": "苏轼",
+      "dynasty": "宋",
+      "summary": "骤雨从黑云、跳珠到风散天开，短短四句完成一场天气转场。"
+    },
+    {
+      "id": "su-shi-huan-xi-sha-you-qi-shui",
+      "title": "浣溪沙·游蕲水清泉寺",
+      "author": "苏轼",
+      "dynasty": "宋",
+      "summary": "暮雨中的清泉逆向西流，让诗人从自然发现不向衰老低头的理由。"
+    },
+    {
+      "id": "wang-an-shi-bo-chuan-gua-zhou",
+      "title": "泊船瓜洲",
+      "author": "王安石",
+      "dynasty": "宋",
+      "summary": "春风让江南岸重新变绿，也让隔水望乡的人更急切地想归去。"
+    },
+    {
+      "id": "wang-an-shi-shu-hu-yin-xian-sheng-bi",
+      "title": "书湖阴先生壁",
+      "author": "王安石",
+      "dynasty": "宋",
+      "summary": "整洁庭院与环田青山彼此照应，日常劳作也能营造有秩序的美。"
+    },
+    {
+      "id": "wang-an-shi-deng-fei-lai-feng",
+      "title": "登飞来峰",
+      "author": "王安石",
+      "dynasty": "宋",
+      "summary": "站到更高处，遮蔽视线的浮云不再决定判断和方向。"
+    },
+    {
+      "id": "lu-you-you-shan-xi-cun",
+      "title": "游山西村",
+      "author": "陆游",
+      "dynasty": "宋",
+      "summary": "山路曲折之后忽见村落，热情人情与春社风俗让旅程重新明亮。"
+    },
+    {
+      "id": "lu-you-shi-er",
+      "title": "示儿",
+      "author": "陆游",
+      "dynasty": "宋",
+      "summary": "生命将尽时仍未放下家国愿望，并把最后的嘱托交给后人。"
+    },
+    {
+      "id": "lu-you-shi-yi-yue-si-ri",
+      "title": "十一月四日风雨大作",
+      "author": "陆游",
+      "dynasty": "宋",
+      "summary": "风雨深夜里，衰病处境仍未压住驰骋边疆的家国之梦。"
+    },
+    {
+      "id": "yang-wan-li-xiao-chi",
+      "title": "小池",
+      "author": "杨万里",
+      "dynasty": "宋",
+      "summary": "细泉、柔光和初生小荷共同托起一只先到的蜻蜓，轻巧而有生机。"
+    },
+    {
+      "id": "yang-wan-li-su-xin-shi",
+      "title": "宿新市徐公店",
+      "author": "杨万里",
+      "dynasty": "宋",
+      "summary": "黄蝶飞进大片菜花后突然消失，儿童追逐的热闹停在明亮春色里。"
+    },
+    {
+      "id": "yang-wan-li-zhou-guo-an-ren",
+      "title": "舟过安仁",
+      "author": "杨万里",
+      "dynasty": "宋",
+      "summary": "无雨却张伞，原来孩子把伞当作船帆，聪明来自游戏般的观察。"
+    },
+    {
+      "id": "ye-shao-weng-you-yuan-bu-zhi",
+      "title": "游园不值",
+      "author": "叶绍翁",
+      "dynasty": "宋",
+      "summary": "园门虽然未开，一枝越墙红杏已经把满园春意递到门外。"
+    },
+    {
+      "id": "weng-juan-xiang-cun-si-yue",
+      "title": "乡村四月",
+      "author": "翁卷",
+      "dynasty": "宋",
+      "summary": "烟雨中的青山白水很美，画面背后却是接续不断的农事劳动。"
+    },
+    {
+      "id": "fan-cheng-da-si-shi-tian-yuan-mei-zi",
+      "title": "四时田园杂兴·梅子金黄杏子肥",
+      "author": "范成大",
+      "dynasty": "宋",
+      "summary": "初夏果实成熟、花事转换，长日静院里只有蜻蜓与蝴蝶来往。"
+    },
+    {
+      "id": "fan-cheng-da-si-shi-tian-yuan-zhou-chu",
+      "title": "四时田园杂兴·昼出耘田夜绩麻",
+      "author": "范成大",
+      "dynasty": "宋",
+      "summary": "大人昼夜劳作，孩子也在桑树下模仿种瓜，劳动经验由生活自然传递。"
+    },
+    {
+      "id": "zhu-xi-chun-ri",
+      "title": "春日",
+      "author": "朱熹",
+      "dynasty": "宋",
+      "summary": "东风并不可见，却通过万紫千红让人认识春天更新万物的力量。"
+    },
+    {
+      "id": "zhu-xi-guan-shu-you-gan",
+      "title": "观书有感",
+      "author": "朱熹",
+      "dynasty": "宋",
+      "summary": "方塘因源头活水保持清澈，人的认识也需要不断吸收新的真实经验。"
+    },
+    {
+      "id": "li-qing-zhao-xia-ri-jue-ju",
+      "title": "夏日绝句",
+      "author": "李清照",
+      "dynasty": "宋",
+      "summary": "以项羽不肯渡江的历史选择，鲜明表达对人格气节的判断。"
+    },
+    {
+      "id": "xin-qi-ji-xi-jiang-yue",
+      "title": "西江月·夜行黄沙道中",
+      "author": "辛弃疾",
+      "dynasty": "宋",
+      "summary": "月夜稻香、蝉鸣蛙声与几点急雨，把乡村丰年写成可以听见的现场。"
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+node_modules/
+dist/
+coverage/
+.vite/
+.env
+.env.*
+!.env.example
+src-tauri/target/
+src-tauri/gen/
+*.log
+*.sqlite
+*.sqlite3
+output/*_AUTOSTART_REBOOT_STATE.json
+.DS_Store
+Thumbs.db
+
+# Local control, rendering and test workspaces
+.codex-workbench/
+.work/
+tmp/
+outputs/
+__pycache__/
+*.pyc
+
+# Generated documents and review exports are kept locally; JSON evidence remains versioned.
+*.docx
+*.pdf
+*.xlsx
+output/*.csv

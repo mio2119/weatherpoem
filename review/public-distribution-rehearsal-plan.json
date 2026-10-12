@@ -1,0 +1,277 @@
+{
+  "schemaVersion": "1.0",
+  "planVersion": "1.0",
+  "product": "WeatherPoem",
+  "appVersion": "0.2.0",
+  "generatedAt": "2026-09-09T18:58:26.109Z",
+  "status": "rehearsal-plan-ready-production-artifacts-missing",
+  "inputs": {
+    "packageJson": {
+      "path": "package.json",
+      "sha256": "2E9DDA60A4664924B4A84EA71DDE11A2FC6E14548C911785B3DF5E63E75D5D5F"
+    },
+    "releaseManifest": {
+      "path": "output/WeatherPoem_0.2.0_RELEASE.json",
+      "sha256": "5D4FAF610A9EB29F9833055A12B943F870410D5C62F9D17D8BEB3C25F29F619B"
+    },
+    "checksums": {
+      "path": "output/WeatherPoem_0.2.0_SHA256.txt",
+      "sha256": "F745407E9DBEE18A087B220E2B468D8EB6FB68CBF7BF2096E7247EBB032E9A4B"
+    },
+    "withdrawalReport": {
+      "path": "output/WeatherPoem_0.2.0_CONTENT_WITHDRAWAL_DRILL.json",
+      "sha256": "10570C1FA4AB038E82F77ABA14E8E26CBEB373029DA691BE8E5E3EAA0096513E"
+    },
+    "incidentRunbook": {
+      "path": "docs/INCIDENT_RUNBOOK.md",
+      "sha256": "CCBAD115E0E1BACD1F4A38FE08FE2E4BCC76590335B973F48BB564D66AD08FEC"
+    },
+    "releaseTrust": {
+      "path": "docs/WINDOWS_RELEASE_TRUST.md",
+      "sha256": "95B3C0F241CEC47EBECD901A07B41F29843950447DCC3488B4E9E9DB6E52595C"
+    }
+  },
+  "baseline": {
+    "releaseChannel": "trial",
+    "releaseTrustLevel": "unsigned-trial",
+    "artifacts": [
+      {
+        "kind": "portable",
+        "name": "weatherpoem.exe",
+        "size": 25101928,
+        "sha256": "00DB4B15F96E151CD7AF795A197E422F39ABFC3CE13E4AB298BF1DE7EC2DD74B",
+        "signatureStatus": "NotSigned",
+        "downloadUrl": null
+      },
+      {
+        "kind": "nsis",
+        "name": "WeatherPoem_0.2.0_x64-setup.exe",
+        "size": 5868651,
+        "sha256": "FD46A8E141C01D3B1BBB72FE685C48D8E099465C5A744B8CC930BBF947A29EA5",
+        "signatureStatus": "NotSigned",
+        "downloadUrl": null
+      },
+      {
+        "kind": "msi",
+        "name": "WeatherPoem_0.2.0_x64_en-US.msi",
+        "size": 17121280,
+        "sha256": "4A26D274384A9D39EBC75C967C2448C22DE66AAF4E3BAD640B0D5584C9C2352D",
+        "signatureStatus": "NotSigned",
+        "downloadUrl": null
+      }
+    ],
+    "allArtifactsSigned": false,
+    "allDownloadUrlsConfigured": false,
+    "contentWithdrawalAutomated": true
+  },
+  "entryCriteria": {
+    "campusPilotGatePassed": false,
+    "productionArtifactsSigned": false,
+    "trustedTimestampsPresent": false,
+    "signerAllowlistApproved": false,
+    "immutableHttpsHostApproved": false,
+    "signedUpdaterGatePassed": false,
+    "releaseAndIncidentOwnersNamed": false
+  },
+  "hostingDecision": {
+    "primaryDownloadHost": null,
+    "backupDownloadHost": null,
+    "cdnProvider": null,
+    "immutableVersionPathPattern": null,
+    "latestPointerPath": null,
+    "tlsAndRedirectAllowlist": [],
+    "retentionPolicy": null,
+    "cachePurgeOwner": null
+  },
+  "publicationSequence": [
+    {
+      "order": 1,
+      "action": "在受控发布机生成并复核 production 清单、哈希、签名和时间戳。"
+    },
+    {
+      "order": 2,
+      "action": "将三项发布物上传到不可变、版本化的暂存路径，保持 latest 与 updater 元数据不变。"
+    },
+    {
+      "order": 3,
+      "action": "从独立 Windows 设备重下暂存产物，复验最终主机、TLS、重定向、尺寸、哈希和 Authenticode。"
+    },
+    {
+      "order": 4,
+      "action": "完成 NSIS/MSI 安装、启动、数据保留与 signed updater 联合验证。"
+    },
+    {
+      "order": 5,
+      "action": "先原子发布版本清单和校验文件，再切换 latest/更新元数据。"
+    },
+    {
+      "order": 6,
+      "action": "记录公开后第二次重下证据、可用性检查和发布公告。"
+    },
+    {
+      "order": 7,
+      "action": "演练单首内容在线/离线撤回并验证修订防回退。"
+    },
+    {
+      "order": 8,
+      "action": "演练二进制撤回：停止 latest/更新元数据、移除下载入口、处理 CDN 缓存并发布通知。"
+    },
+    {
+      "order": 9,
+      "action": "以更高补丁版本执行前向修复，重新完成签名、上传、重下和安装。"
+    },
+    {
+      "order": 10,
+      "action": "由发布与事故负责人复核时间线、影响、证据和改进项并签署。"
+    }
+  ],
+  "testMatrix": [
+    {
+      "id": "DST-01",
+      "name": "三项正式发布物公开重下",
+      "expected": "独立 Windows 设备从版本化 HTTPS 地址下载 portable、NSIS、MSI，尺寸与 SHA-256 均匹配 production 清单。",
+      "executor": null,
+      "executedAt": null,
+      "result": null,
+      "evidence": []
+    },
+    {
+      "id": "DST-02",
+      "name": "哈希不一致",
+      "expected": "任何字节差异都阻止安装和继续发布，进入 P0/P1 处置。",
+      "executor": null,
+      "executedAt": null,
+      "result": null,
+      "evidence": []
+    },
+    {
+      "id": "DST-03",
+      "name": "签名、时间戳或证书不受信",
+      "expected": "Authenticode 非 Valid、缺少可信时间戳或证书不在允许列表时拒绝公开。",
+      "executor": null,
+      "executedAt": null,
+      "result": null,
+      "evidence": []
+    },
+    {
+      "id": "DST-04",
+      "name": "错误主机、重定向或 TLS 失败",
+      "expected": "最终下载主机必须属于批准清单且 TLS 有效；意外跨域重定向被拒绝。",
+      "executor": null,
+      "executedAt": null,
+      "result": null,
+      "evidence": []
+    },
+    {
+      "id": "DST-05",
+      "name": "部分上传或缓存旧清单",
+      "expected": "先上传不可变产物、后原子发布清单；缺失产物或清单/产物版本不一致时不切换 latest。",
+      "executor": null,
+      "executedAt": null,
+      "result": null,
+      "evidence": []
+    },
+    {
+      "id": "DST-06",
+      "name": "错误内容在线撤回",
+      "expected": "指定 workId 在线停用，候选排除、当日推荐校正和客户端证据完整。",
+      "executor": null,
+      "executedAt": null,
+      "result": null,
+      "evidence": []
+    },
+    {
+      "id": "DST-07",
+      "name": "错误内容离线撤回",
+      "expected": "缓存清单在有效期内阻止回退；恢复联网后接收更高修订并清除受影响缓存。",
+      "executor": null,
+      "executedAt": null,
+      "result": null,
+      "evidence": []
+    },
+    {
+      "id": "DST-08",
+      "name": "二进制紧急撤回",
+      "expected": "停止 latest/更新元数据与公开下载，保留证据和公告；已安装客户端继续使用安全本地能力。",
+      "executor": null,
+      "executedAt": null,
+      "result": null,
+      "evidence": []
+    },
+    {
+      "id": "DST-09",
+      "name": "前向修复与恢复发布",
+      "expected": "以更高补丁版本恢复稳定能力，重新签名、上传、重下和验证，不静默降级。",
+      "executor": null,
+      "executedAt": null,
+      "result": null,
+      "evidence": []
+    },
+    {
+      "id": "DST-10",
+      "name": "审计与通知闭环",
+      "expected": "上传、切换、撤回、CDN 处理、用户通知、恢复和复盘均有具名时间线与不可变证据定位。",
+      "executor": null,
+      "executedAt": null,
+      "result": null,
+      "evidence": []
+    }
+  ],
+  "evidenceContract": {
+    "requiredArtifactKinds": [
+      "portable",
+      "nsis",
+      "msi"
+    ],
+    "requiredSignatureStatus": "Valid",
+    "requireTrustedTimestamp": true,
+    "requireSignerAllowlist": true,
+    "requireHttps": true,
+    "requireFinalHostAllowlist": true,
+    "requireIndependentRedownload": true,
+    "requireHashMatch": true,
+    "requireContentWithdrawalRevisionIncrease": true,
+    "requireBinaryWithdrawalTimeline": true,
+    "requireNamedExecutorsAndApprovers": true
+  },
+  "requiredDecisions": [
+    {
+      "id": "public-hosting-and-cdn",
+      "ownerRole": "发布与后端负责人",
+      "decision": null
+    },
+    {
+      "id": "binary-withdrawal-authority",
+      "ownerRole": "组织发布负责人",
+      "decision": null
+    },
+    {
+      "id": "content-withdrawal-authority",
+      "ownerRole": "内容负责人",
+      "decision": null
+    },
+    {
+      "id": "public-notification-channel",
+      "ownerRole": "用户沟通负责人",
+      "decision": null
+    }
+  ],
+  "approval": {
+    "releaseOwner": null,
+    "incidentOwner": null,
+    "securityReviewer": null,
+    "decision": null,
+    "approvedAt": null,
+    "evidencePath": "review/evidence/RQT-21-public-distribution-rehearsal.json"
+  },
+  "limitations": {
+    "publicUploadPerformed": false,
+    "independentRedownloadPerformed": false,
+    "productionSignaturesVerified": false,
+    "binaryWithdrawalPerformed": false,
+    "recoveryReleasePerformed": false,
+    "namedApprovalCompleted": false
+  },
+  "gateSatisfied": false,
+  "result": "rehearsal-plan-complete-public-distribution-not-executed"
+}

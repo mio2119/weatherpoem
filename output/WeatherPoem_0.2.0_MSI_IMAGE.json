@@ -1,0 +1,60 @@
+{
+    "schemaVersion":  "1.0",
+    "product":  "WeatherPoem",
+    "version":  "0.2.0",
+    "testedAt":  "2026-09-09T18:46:13.6248628Z",
+    "os":  "Microsoft Windows NT 10.0.26100.0",
+    "architecture":  "AMD64",
+    "scope":  "administrative-image-extraction",
+    "limitations":  {
+                        "realInstallTested":  false,
+                        "repairTested":  false,
+                        "uninstallTested":  false,
+                        "reason":  "The generated MSI is perMachine and requires an approved elevated test."
+                    },
+    "package":  {
+                    "path":  "E:\\weatherpoem\\src-tauri\\target\\release\\bundle\\msi\\WeatherPoem_0.2.0_x64_en-US.msi",
+                    "sha256":  "4A26D274384A9D39EBC75C967C2448C22DE66AAF4E3BAD640B0D5584C9C2352D",
+                    "authenticodeStatus":  "NotSigned",
+                    "wixInstallScope":  "perMachine"
+                },
+    "isolation":  {
+                      "existingInstallationProtected":  true,
+                      "temporaryExtractRoot":  "C:\\Users\\zzh\\AppData\\Local\\Temp\\weatherpoem-msi-image-5e9bff0542404358a897ecfce4d55ccc",
+                      "temporaryExtractRootRemoved":  true,
+                      "applicationDataDeleted":  false,
+                      "applicationDataBefore":  [
+                                                    {
+                                                        "path":  "C:\\Users\\zzh\\AppData\\Roaming\\cn.weatherpoem.desktop",
+                                                        "exists":  true
+                                                    },
+                                                    {
+                                                        "path":  "C:\\Users\\zzh\\AppData\\Local\\cn.weatherpoem.desktop",
+                                                        "exists":  true
+                                                    }
+                                                ],
+                      "applicationDataAfter":  [
+                                                   {
+                                                       "path":  "C:\\Users\\zzh\\AppData\\Roaming\\cn.weatherpoem.desktop",
+                                                       "exists":  true
+                                                   },
+                                                   {
+                                                       "path":  "C:\\Users\\zzh\\AppData\\Local\\cn.weatherpoem.desktop",
+                                                       "exists":  true
+                                                   }
+                                               ]
+                  },
+    "checks":  {
+                   "administrativeImage":  "passed",
+                   "msiexecExitCode":  0,
+                   "payloadExecutableCount":  1,
+                   "payloadExecutableSha256":  "EAFA0664F7418B61573B7728A7633D7173AB3831A1196FECFF4B01953DA34043",
+                   "payloadLaunchSeconds":  6,
+                   "payloadLaunch":  "passed",
+                   "installRegistrationResidue":  "passed",
+                   "shortcutResidue":  "passed",
+                   "autostartResidue":  "passed",
+                   "extractionCleanup":  "passed"
+               },
+    "result":  "passed"
+}
