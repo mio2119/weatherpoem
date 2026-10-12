@@ -37,6 +37,7 @@ import {
   completeAppExit,
   getLaunchContext,
   getPerformanceWeatherScenario,
+  fitGlanceWindowHeight,
   listenForOpenMain,
   listenForExitRequest,
   listenForReadingResize,
@@ -98,6 +99,7 @@ const recommendationsSuspended = ref(false);
 const contentCorrectionPending = ref(false);
 const pilotState = ref<PilotState>();
 const readingReturnPanel = ref<"card" | "favorites">("card");
+const favoritesReturnPanel = ref<"card" | "settings">("card");
 let toastTimer: number | undefined;
 let contentControlTimer: number | undefined;
 let dateCheckTimer: number | undefined;
@@ -111,6 +113,7 @@ let pilotSessionOpened = false;
 let exitInProgress = false;
 let windowModeReady = false;
 let windowModeTask: Promise<void> = Promise.resolve();
+let glanceContentHeight = 320;
 
 const configured = computed(() => settings.value.configured);
 const windowMode = computed<WindowMode>(() => {
@@ -124,11 +127,27 @@ const windowMode = computed<WindowMode>(() => {
 function queueWindowMode(mode: WindowMode): Promise<void> {
   windowModeTask = windowModeTask
     .catch(() => undefined)
-    .then(() => setWindowMode(mode, settings.value.readingWindowSize))
+    .then(async () => {
+      await setWindowMode(mode, settings.value.readingWindowSize);
+      if (mode === "glance") {
+        await fitGlanceWindowHeight(glanceContentHeight);
+      }
+    })
     .catch((error) => {
       console.warn("窗口尺寸未能按阅读状态调整。", error);
     });
   return windowModeTask;
+}
+
+function fitGlanceToContent(height: number): void {
+  glanceContentHeight = Math.max(320, height);
+  if (windowModeReady && windowMode.value === "glance") {
+    void windowModeTask.then(() => {
+      if (windowMode.value === "glance") {
+        return fitGlanceWindowHeight(glanceContentHeight);
+      }
+    });
+  }
 }
 
 watch(windowMode, (mode) => {
@@ -627,6 +646,11 @@ function openFavoriteReading(poem: Poem): void {
   panel.value = "reading";
 }
 
+function openFavorites(from: "card" | "settings"): void {
+  favoritesReturnPanel.value = from;
+  panel.value = "favorites";
+}
+
 function contextTags(selected: Recommendation): string[] {
   return [
     selected.primaryContext,
@@ -1088,7 +1112,7 @@ onBeforeUnmount(() => {
       @save="saveSettings"
       @draft-change="settingsDraft = $event"
       @reset="resetData"
-      @favorites="panel = 'favorites'"
+      @favorites="openFavorites('settings')"
       @pilot="panel = 'pilot'"
       @undo-feedback="undoLatestDislike"
     />
@@ -1105,7 +1129,8 @@ onBeforeUnmount(() => {
     <FavoritesPanel
       v-else-if="panel === 'favorites'"
       :poems="favoritePoems"
-      @back="panel = 'settings'"
+      :back-label="favoritesReturnPanel === 'card' ? '今日诗笺' : '设置'"
+      @back="panel = favoritesReturnPanel"
       @open="openFavoriteReading"
       @remove="toggleFavorite"
     />
@@ -1139,11 +1164,14 @@ onBeforeUnmount(() => {
       :calendar="calendar"
       :weather="weather"
       :favorite="favorite"
+      :favorite-count="favoritePoems.length"
       :can-replace="!replacedToday"
       @read="openDailyReading"
       @favorite="toggleFavorite"
+      @favorites="openFavorites('card')"
       @replace="replacePoem"
       @dislike="dislikePoem"
+      @height-needed="fitGlanceToContent"
     />
 
     <Transition name="toast">

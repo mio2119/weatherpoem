@@ -5,6 +5,7 @@ import IconSymbol from "./IconSymbol.vue";
 
 defineProps<{
   poems: Poem[];
+  backLabel: string;
 }>();
 
 const emit = defineEmits<{
@@ -26,7 +27,7 @@ useInitialFocus();
     <header class="panel-header">
       <button class="back-button" type="button" @click="emit('back')">
         <IconSymbol name="back" :size="18" />
-        设置
+        {{ backLabel }}
       </button>
       <h1 id="favorites-title">我的收藏</h1>
       <span class="header-spacer" />

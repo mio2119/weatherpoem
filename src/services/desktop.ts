@@ -239,6 +239,26 @@ export async function setWindowMode(
   await appWindow.setPosition(new PhysicalPosition(x, y));
 }
 
+export async function fitGlanceWindowHeight(requiredHeight: number): Promise<void> {
+  if (!isTauri() || !Number.isFinite(requiredHeight)) return;
+  const [{ LogicalSize }, windowApi] = await Promise.all([
+    import("@tauri-apps/api/dpi"),
+    import("@tauri-apps/api/window"),
+  ]);
+  const appWindow = windowApi.getCurrentWindow();
+  const monitor = await windowApi.currentMonitor() ?? await windowApi.primaryMonitor();
+  if (!monitor) return;
+  const scale = monitor.scaleFactor;
+  const current = await appWindow.innerSize();
+  const target = Math.min(
+    Math.max(320, Math.ceil(requiredHeight)),
+    Math.max(1, Math.floor(monitor.workArea.size.height / scale) - 32),
+  );
+  if (target <= current.height / scale + 2) return;
+  await appWindow.setSize(new LogicalSize(current.width / scale, target));
+  await positionWindowBottomRight();
+}
+
 export async function listenForReadingResize(
   callback: (size: WindowDimensions) => void,
 ): Promise<() => void> {
