@@ -20,6 +20,14 @@ export const DEFAULT_SETTINGS: AppSettings = {
   poemFontSize: "medium",
 };
 
+export class DesktopStorageUnavailableError extends Error {
+  constructor(cause: unknown) {
+    super("本地资料暂时无法读取。为保护收藏和设置，已停止载入；请重试。");
+    this.name = "DesktopStorageUnavailableError";
+    this.cause = cause;
+  }
+}
+
 export interface AppRepository {
   load(): Promise<AppBootstrap>;
   saveSettings(settings: AppSettings): Promise<void>;
@@ -520,7 +528,7 @@ export async function createRepository(): Promise<AppRepository> {
     try {
       return await SqliteRepository.create();
     } catch (error) {
-      console.warn("SQLite 初始化失败，使用浏览器本地存储降级。", error);
+      throw new DesktopStorageUnavailableError(error);
     }
   }
   return new BrowserRepository();

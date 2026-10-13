@@ -54,6 +54,7 @@ import {
 import {
   createRepository,
   DEFAULT_SETTINGS,
+  DesktopStorageUnavailableError,
   type AppRepository,
 } from "./services/persistence";
 import { enrichRecommendationReason } from "./services/reason";
@@ -251,6 +252,9 @@ function showToast(message: string): void {
 }
 
 function dailyLoadErrorMessage(error: unknown): string {
+  if (error instanceof DesktopStorageUnavailableError) {
+    return error.message;
+  }
   return error instanceof Error &&
     error.message === "当前情境下没有适合推荐的作品"
     ? "今天暂未找到与当前情境贴合的诗词，请稍后再试。"
@@ -1024,6 +1028,7 @@ async function exitFromShell(): Promise<void> {
 
 async function initialize(): Promise<void> {
   loading.value = true;
+  errorMessage.value = "";
   let revealAfterInitialization = true;
   let revealWithFocus = true;
   let pendingWeather: Promise<WeatherContext> | undefined;
