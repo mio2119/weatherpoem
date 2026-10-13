@@ -161,6 +161,30 @@ describe("browser preview user flow", () => {
     });
   });
 
+  it("clears browser preview data without claiming a system autostart change", async () => {
+    localStorage.setItem("weatherpoem.local.v1", JSON.stringify({
+      settings: { configured: true, cityId: "beijing" },
+      history: [],
+      favorites: ["a-favorite"],
+      feedback: [],
+    }));
+    vi.stubGlobal("confirm", vi.fn(() => true));
+    wrapper = mount(App, { attachTo: document.body });
+    await vi.waitFor(() => expect(wrapper!.find(".poem-view").exists()).toBe(true));
+    await wrapper.get('button[aria-label="设置"]').trigger("click");
+    await vi.waitFor(() => expect(wrapper!.find(".settings-panel").exists()).toBe(true));
+    await wrapper.get(".settings-panel .danger-link").trigger("click");
+
+    await vi.waitFor(async () => {
+      expect(wrapper!.find(".onboarding-view").exists()).toBe(true);
+      expect(wrapper!.get(".toast-message").text())
+        .toContain("此处没有系统开机启动设置");
+      const saved = await (await createRepository()).load();
+      expect(saved.settings.configured).toBe(false);
+      expect(saved.favorites).toEqual([]);
+    });
+  });
+
   it("refreshes the visible poem after local midnight without duplicating same-day history", async () => {
     vi.useFakeTimers({ toFake: ["Date"] });
     vi.setSystemTime(new Date(2026, 9, 13, 23, 59, 30));

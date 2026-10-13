@@ -3,16 +3,22 @@ import type { AppRepository } from "./persistence";
 import { clearWeatherCache } from "./weather";
 
 export interface DataResetDependencies {
-  disableAutostart(): Promise<void>;
+  disableAutostart(): Promise<AutostartResetStatus>;
   clearTransientCaches(): void;
 }
+
+export type AutostartResetStatus = "disabled" | "unavailable" | "isolated";
 
 const defaultDependencies: DataResetDependencies = {
   disableAutostart: async () => {
     const result = await syncAutostart(false);
     if (result.status === "failed") {
-      throw new Error("本地数据已清除，但无法确认开机启动已关闭");
+      throw new Error("无法确认开机启动已关闭；本地资料尚未清除");
     }
+    if (result.status === "applied" && result.enabled === false) return "disabled";
+    if (result.status === "unavailable") return "unavailable";
+    if (result.status === "isolated") return "isolated";
+    throw new Error("无法确认开机启动已关闭；本地资料尚未清除");
   },
   clearTransientCaches: clearWeatherCache,
 };
@@ -20,8 +26,9 @@ const defaultDependencies: DataResetDependencies = {
 export async function clearAllLocalUserData(
   repository: AppRepository,
   dependencies: DataResetDependencies = defaultDependencies,
-): Promise<void> {
+): Promise<AutostartResetStatus> {
+  const autostart = await dependencies.disableAutostart();
   await repository.clearUserData();
   dependencies.clearTransientCaches();
-  await dependencies.disableAutostart();
+  return autostart;
 }

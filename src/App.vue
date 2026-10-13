@@ -959,16 +959,22 @@ async function resetData(): Promise<void> {
     return;
   }
   if (!repository.value) return;
+  let autostartReset: "disabled" | "unavailable" | "isolated";
   try {
-    await clearAllLocalUserData(repository.value);
+    autostartReset = await clearAllLocalUserData(repository.value);
   } catch (error) {
     console.error(error);
-    bootstrap.value = await repository.value.load();
-    settings.value = { ...bootstrap.value.settings };
-    settingsDraft.value = { ...settings.value };
-    autostartWarning.value =
-      "数据清除未完整完成，请核对系统开机启动状态后重试。";
-    errorMessage.value = autostartWarning.value;
+    try {
+      bootstrap.value = await repository.value.load();
+      settings.value = { ...bootstrap.value.settings };
+      settingsDraft.value = { ...settings.value };
+      autostartWarning.value =
+        "本次清除未完整完成，请核对个人资料与开机启动状态后重试。";
+      showToast(autostartWarning.value);
+    } catch (loadError) {
+      console.error(loadError);
+      errorMessage.value = dailyLoadErrorMessage(loadError);
+    }
     return;
   }
   bootstrap.value = {
@@ -986,7 +992,13 @@ async function resetData(): Promise<void> {
   panel.value = "card";
   applyTheme("system");
   applyMotionPreference(false);
-  showToast("本地数据已清除，开机启动已关闭");
+  showToast(
+    autostartReset === "disabled"
+      ? "本地数据已清除，开机启动已关闭"
+      : autostartReset === "isolated"
+        ? "隔离测试资料已清除，未修改系统开机启动"
+        : "浏览器预览资料已清除，此处没有系统开机启动设置",
+  );
 }
 
 async function openMainFromShell(): Promise<void> {
