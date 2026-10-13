@@ -145,6 +145,7 @@ test("可控天气故障只能从合法临时性能账户传入", () => {
     "weather-offline",
     "weather-timeout",
     "official-warning",
+    "scene-rain",
   ]) {
     assert.match(desktopShell, new RegExp(`"${scenario}"`));
     assert.match(weatherService, new RegExp(`"${scenario}"`));

@@ -431,6 +431,17 @@ describe("desktop frontend ready classification", () => {
       input: {
         configured: true,
         hasError: false,
+        warning: false,
+        contentCorrection: false,
+        hasRecommendation: true,
+        weatherSource: "synthetic" as const,
+      },
+      expected: { view: "poem", mode: "offline-rules" },
+    },
+    {
+      input: {
+        configured: true,
+        hasError: false,
         warning: true,
         contentCorrection: false,
         hasRecommendation: false,

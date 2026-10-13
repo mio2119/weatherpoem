@@ -62,6 +62,20 @@ describe("recommendPoem", () => {
     expect(result.breakdown.weather).toBe(20);
   });
 
+  it("隔离天气匹配的理由不冒充当地实况", () => {
+    const result = recommend({
+      calendar: { ...calendar, festival: undefined, localDate: "2026-07-23" },
+      weather: {
+        ...rainyWeather,
+        source: "synthetic",
+        label: "小雨（隔离演练）",
+      },
+    });
+    expect(result.breakdown.weather).toBe(20);
+    expect(result.reason).toContain("隔离场景模拟");
+    expect(result.reason).not.toContain("当地正有");
+  });
+
   it("天气不可用时仍能依据节气推荐", () => {
     const result = recommend({
       calendar: {

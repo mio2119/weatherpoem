@@ -110,6 +110,20 @@ describe("weather mapping", () => {
     });
   });
 
+  it("隔离动态诗境只给出明确标记的合成小雨", async () => {
+    const weather = await fetchWeather(testCity, {
+      performanceScenario: "scene-rain",
+    });
+    expect(weather).toMatchObject({
+      kind: "light-rain",
+      label: "小雨（隔离演练）",
+      freshness: "fresh",
+      source: "synthetic",
+      warnings: [],
+      shouldSuppressPoem: false,
+    });
+  });
+
   it("任何有效官方预警都优先暂停诗笺，基础代理仅在较高风险时暂停", () => {
     expect(
       shouldSuppressForWarnings([

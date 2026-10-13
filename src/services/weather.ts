@@ -69,6 +69,16 @@ async function controlledPerformanceWeather(
     });
     return controlledOfflineWeather();
   }
+  if (scenario === "scene-rain") {
+    return {
+      kind: "light-rain",
+      label: "小雨（隔离演练）",
+      freshness: "fresh",
+      source: "synthetic",
+      warnings: [],
+      shouldSuppressPoem: false,
+    };
+  }
   if (scenario !== "official-warning") {
     throw new Error("未知的隔离性能天气场景");
   }

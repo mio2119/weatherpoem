@@ -203,9 +203,11 @@ function buildReason(
     return {
       primaryContext: weather.label,
       reason: reasonWithContext(
-        weather.freshness === "fresh"
-          ? `当地正有${weather.label}`
-          : `最近的天气记录显示${weather.label}`,
+        weather.source === "synthetic"
+          ? `隔离场景模拟${weather.label}`
+          : weather.freshness === "fresh"
+            ? `当地正有${weather.label}`
+            : `最近的天气记录显示${weather.label}`,
         poem.oneLineSummary,
       ),
     };

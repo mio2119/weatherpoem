@@ -1,6 +1,7 @@
 import type {
   PerformanceWeatherScenario,
   ThemePreference,
+  WeatherContext,
 } from "../types";
 
 export const OPEN_METEO_LICENSE_URL =
@@ -78,7 +79,7 @@ export function classifyFrontendReady(input: {
   warning: boolean;
   contentCorrection: boolean;
   hasRecommendation: boolean;
-  weatherSource: "open-meteo" | "cache" | "offline";
+  weatherSource: WeatherContext["source"];
 }): Pick<FrontendReadyContext, "view" | "mode"> {
   if (input.hasError) return { view: "error", mode: "error" };
   if (!input.configured) {

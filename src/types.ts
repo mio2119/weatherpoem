@@ -71,7 +71,7 @@ export interface WeatherContext {
   precipitation?: number;
   observedAt?: string;
   freshness: "fresh" | "stale" | "unavailable";
-  source: "open-meteo" | "cache" | "offline";
+  source: "open-meteo" | "cache" | "offline" | "synthetic";
   warnings: WeatherWarning[];
   shouldSuppressPoem: boolean;
 }
@@ -79,7 +79,8 @@ export interface WeatherContext {
 export type PerformanceWeatherScenario =
   | "weather-offline"
   | "weather-timeout"
-  | "official-warning";
+  | "official-warning"
+  | "scene-rain";
 
 export interface PoemTags {
   festivals: string[];

@@ -139,7 +139,7 @@ fn resolve_performance_profile() -> Result<Option<PerformanceProfile>, String> {
     if let Some(value) = scenario.as_deref() {
         if !matches!(
             value,
-            "weather-offline" | "weather-timeout" | "official-warning"
+            "weather-offline" | "weather-timeout" | "official-warning" | "scene-rain"
         ) {
             return Err("性能故障场景名称不合法".to_string());
         }

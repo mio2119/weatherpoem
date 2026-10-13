@@ -30,16 +30,23 @@ export function selectPoemScene(input: {
     };
   }
   if (weather.freshness === "fresh") {
+    const weatherDescription = weather.source === "synthetic"
+      ? `隔离场景：${weather.label}；不代表当地实时天气`
+      : `当地天气：${weather.label}`;
     if (["light-rain", "rain", "heavy-rain"].includes(weather.kind)) {
-      return { kind: "rain", glyph: "雨", description: `当地天气：${weather.label}` };
+      return { kind: "rain", glyph: "雨", description: weatherDescription };
     }
     if (weather.kind === "snow") {
-      return { kind: "snow", glyph: "雪", description: `当地天气：${weather.label}` };
+      return { kind: "snow", glyph: "雪", description: weatherDescription };
     }
     if (weather.kind === "clear") {
       return calendar.timePeriod === "night"
-        ? { kind: "night", glyph: "夜", description: "当地晴夜" }
-        : { kind: "sun", glyph: "晴", description: `当地天气：${weather.label}` };
+        ? {
+            kind: "night",
+            glyph: "夜",
+            description: weather.source === "synthetic" ? weatherDescription : "当地晴夜",
+          }
+        : { kind: "sun", glyph: "晴", description: weatherDescription };
     }
   }
   if (calendar.solarTerm && poem.tags.solarTerms.includes(calendar.solarTerm)) {

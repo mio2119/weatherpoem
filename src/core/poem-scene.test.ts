@@ -39,9 +39,16 @@ describe("poem scene grounding", () => {
     const scene = (weather: WeatherContext, timePeriod: CalendarContext["timePeriod"] = "day") =>
       selectPoemScene({ poem, calendar: { ...baseCalendar, timePeriod }, weather });
     expect(scene(baseWeather).kind).toBe("rain");
+    expect(scene({ ...baseWeather, source: "synthetic", label: "小雨（隔离演练）" }))
+      .toMatchObject({
+        kind: "rain",
+        description: "隔离场景：小雨（隔离演练）；不代表当地实时天气",
+      });
     expect(scene({ ...baseWeather, kind: "snow", label: "雪" }).kind).toBe("snow");
     expect(scene({ ...baseWeather, kind: "clear", label: "晴" }).kind).toBe("sun");
     expect(scene({ ...baseWeather, kind: "clear", label: "晴" }, "night").kind).toBe("night");
+    expect(scene({ ...baseWeather, kind: "clear", label: "晴（隔离演练）", source: "synthetic" }, "night").description)
+      .toContain("不代表当地实时天气");
     expect(scene({ ...baseWeather, freshness: "stale", source: "cache" }).kind)
       .toBe("season");
     expect(scene({ ...baseWeather, kind: "unknown", freshness: "unavailable", source: "offline" }).kind)
