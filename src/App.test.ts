@@ -58,13 +58,18 @@ describe("browser preview user flow", () => {
     await wrapper.get<HTMLSelectElement>(".settings-form select").setValue("hangzhou");
     await wrapper.get<HTMLSelectElement>('select[name="poem-layout"]').setValue("vertical");
     await wrapper.get<HTMLSelectElement>('select[name="poem-font-size"]').setValue("large");
+    await wrapper.get('button[aria-label="设置"]').trigger("click");
+    await flushPromises();
+    expect(wrapper.get<HTMLSelectElement>(".settings-form select").element.value)
+      .toBe("hangzhou");
     const favoritesButton = wrapper.findAll(".settings-navigation").find((button) =>
       button.text().includes("我的收藏"),
     );
     expect(favoritesButton).toBeDefined();
     await favoritesButton!.trigger("click");
     expect(wrapper.find(".favorites-panel").exists()).toBe(true);
-    await wrapper.get(".favorites-panel .back-button").trigger("click");
+    await wrapper.get('button[aria-label="设置"]').trigger("click");
+    await vi.waitFor(() => expect(wrapper!.find(".settings-panel").exists()).toBe(true));
     expect(wrapper.get<HTMLSelectElement>(".settings-form select").element.value)
       .toBe("hangzhou");
     expect(wrapper.get<HTMLSelectElement>('select[name="poem-layout"]').element.value)
@@ -91,6 +96,31 @@ describe("browser preview user flow", () => {
       .toBe("vertical");
     expect(wrapper.get<HTMLSelectElement>('select[name="poem-font-size"]').element.value)
       .toBe("large");
+  });
+
+  it("discards a settings draft only after the user confirms leaving", async () => {
+    localStorage.setItem("weatherpoem.local.v1", JSON.stringify({
+      settings: { configured: true, cityId: "beijing" },
+      history: [],
+      favorites: [],
+      feedback: [],
+    }));
+    wrapper = mount(App, { attachTo: document.body });
+    await vi.waitFor(() => expect(wrapper!.find(".poem-view").exists()).toBe(true));
+    await wrapper.get('button[aria-label="设置"]').trigger("click");
+    await vi.waitFor(() => expect(wrapper!.find(".settings-panel").exists()).toBe(true));
+    await wrapper.get<HTMLSelectElement>(".settings-form select").setValue("hangzhou");
+    await wrapper.get(".settings-panel .back-button").trigger("click");
+    expect(wrapper.get(".settings-discard").text()).toContain("修改尚未保存");
+    expect(wrapper.get<HTMLSelectElement>(".settings-form select").element.value)
+      .toBe("hangzhou");
+
+    await wrapper.findAll(".settings-discard button")[1]!.trigger("click");
+    await vi.waitFor(() => expect(wrapper!.find(".poem-view").exists()).toBe(true));
+    await wrapper.get('button[aria-label="设置"]').trigger("click");
+    await vi.waitFor(() => expect(wrapper!.find(".settings-panel").exists()).toBe(true));
+    expect(wrapper.get<HTMLSelectElement>(".settings-form select").element.value)
+      .toBe("beijing");
   });
 
   it("refreshes the visible poem after local midnight without duplicating same-day history", async () => {

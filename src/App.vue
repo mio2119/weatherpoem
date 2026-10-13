@@ -970,10 +970,10 @@ async function openMainFromShell(): Promise<void> {
 
 async function openSettingsFromShell(): Promise<void> {
   if (!settings.value.configured) return;
+  if (panel.value === "settings") return;
   loading.value = true;
   try {
     await ensurePoemCatalog();
-    settingsDraft.value = { ...settings.value };
     panel.value = "settings";
   } catch (error) {
     console.error(error);
