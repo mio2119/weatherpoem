@@ -572,6 +572,21 @@ export async function sha256File(filePath) {
 }
 
 export function resolvePerformancePaths(projectRoot, variant = "release") {
+  if (variant.startsWith("candidate:")) {
+    const name = variant.slice("candidate:".length);
+    assert(
+      /^[a-z0-9][a-z0-9-]{0,39}$/.test(name) && name !== "target",
+      "内部候选名称不合法",
+    );
+    const artifactPath = `.work/redesign-${name}/release/weatherpoem.exe`;
+    const relativeReportPath =
+      `review/redesign/evidence/T09_PERFORMANCE_SMOKE_${name}.json`;
+    return {
+      artifactPath,
+      exePath: path.join(projectRoot, ...artifactPath.split("/")),
+      reportPath: path.join(projectRoot, ...relativeReportPath.split("/")),
+    };
+  }
   if (variant === "redesign") {
     return {
       artifactPath: REDESIGN_EXE_PATH,

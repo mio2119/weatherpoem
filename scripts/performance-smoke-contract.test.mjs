@@ -8,6 +8,24 @@ import {
 
 const HASH = "A".repeat(64);
 
+test("具名内部候选只解析到隔离构建与独立报告路径", () => {
+  const paths = resolvePerformancePaths(
+    "E:/weatherpoem",
+    "candidate:overlap-20261013",
+  );
+  assert.equal(
+    paths.artifactPath,
+    ".work/redesign-overlap-20261013/release/weatherpoem.exe",
+  );
+  assert.match(paths.reportPath, /T09_PERFORMANCE_SMOKE_overlap-20261013\.json$/);
+  assert.throws(() =>
+    resolvePerformancePaths("E:/weatherpoem", "candidate:../release"),
+  );
+  assert.throws(() =>
+    resolvePerformancePaths("E:/weatherpoem", "candidate:target"),
+  );
+});
+
 function fixture() {
   return {
     schemaVersion: "1.2",

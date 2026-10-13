@@ -13,17 +13,21 @@ const packageJson = JSON.parse(
 const argument = process.argv[2];
 if (
   process.argv.length > 3 ||
-  (argument && !["--redesign-candidate", "--baseline-comparison"].includes(argument))
+  (argument &&
+    !["--redesign-candidate", "--baseline-comparison"].includes(argument) &&
+    !/^--candidate=(?!target$)[a-z0-9][a-z0-9-]{0,39}$/.test(argument))
 ) {
-  throw new Error("仅支持 --redesign-candidate 或 --baseline-comparison 参数");
+  throw new Error("仅支持 --redesign-candidate、--baseline-comparison 或 --candidate=名称");
 }
 const { artifactPath, exePath, reportPath } = resolvePerformancePaths(
   projectRoot,
-  argument === "--redesign-candidate"
-    ? "redesign"
-    : argument === "--baseline-comparison"
-      ? "baseline-comparison"
-      : "release",
+  argument?.startsWith("--candidate=")
+    ? `candidate:${argument.slice("--candidate=".length)}`
+    : argument === "--redesign-candidate"
+      ? "redesign"
+      : argument === "--baseline-comparison"
+        ? "baseline-comparison"
+        : "release",
 );
 const report = JSON.parse(await readFile(reportPath, "utf8"));
 const exeSha256 = await sha256File(exePath);

@@ -411,6 +411,7 @@ async function persistRecommendation(
 async function loadToday(
   forceNew = false,
   contentControlChecked = false,
+  pendingWeather?: Promise<WeatherContext>,
 ): Promise<void> {
   const nextCalendar = buildCalendarContext();
   if (nextCalendar.localDate !== calendar.value.localDate) {
@@ -421,9 +422,13 @@ async function loadToday(
   weather.value = offlineWeather();
   errorMessage.value = "";
   const city = findCity(settings.value.cityId);
-  weather.value = await fetchWeather(city, {
+  const catalogReady = ensurePoemCatalog().then(
+    () => ({ ok: true as const }),
+    (error: unknown) => ({ ok: false as const, error }),
+  );
+  weather.value = await (pendingWeather ?? fetchWeather(city, {
     performanceScenario: performanceWeatherScenario,
-  });
+  }));
   if (buildCalendarContext().localDate !== calendar.value.localDate) {
     await loadToday(forceNew);
     return;
@@ -485,7 +490,8 @@ async function loadToday(
     return;
   }
 
-  await ensurePoemCatalog();
+  const catalogResult = await catalogReady;
+  if (!catalogResult.ok) throw catalogResult.error;
   const contentScenario =
     import.meta.env.DEV &&
     new URLSearchParams(window.location.search).get("scenario");
@@ -1016,6 +1022,7 @@ async function initialize(): Promise<void> {
   loading.value = true;
   let revealAfterInitialization = true;
   let revealWithFocus = true;
+  let pendingWeather: Promise<WeatherContext> | undefined;
   try {
     const [launchContext, controlledScenario] = await Promise.all([
       getLaunchContext(),
@@ -1028,6 +1035,27 @@ async function initialize(): Promise<void> {
     settings.value = { ...bootstrap.value.settings };
     settingsDraft.value = { ...settings.value };
     pilotState.value = bootstrap.value.pilotState;
+    const demoScenario =
+      import.meta.env.DEV &&
+      new URLSearchParams(window.location.search).get("scenario");
+    if (demoScenario === "onboarding") {
+      settings.value.configured = false;
+    } else {
+      revealAfterInitialization = shouldRevealOnLaunch({
+        isAutostart: launchContext.isAutostart,
+        foregroundPresentation: launchContext.foregroundPresentation,
+        configured: settings.value.configured,
+        lastHandledDate: bootstrap.value.dailyState?.localDate,
+        today: buildCalendarContext().localDate,
+      });
+      if (settings.value.configured && revealAfterInitialization) {
+        pendingWeather = fetchWeather(findCity(settings.value.cityId), {
+          performanceScenario: performanceWeatherScenario,
+        });
+        // 初始化监听器期间天气请求已经开始；失败仍交给 loadToday 处理。
+        void pendingWeather.catch(() => undefined);
+      }
+    }
     stopExitRequestListener ??= await listenForExitRequest(() =>
       exitFromShell(),
     );
@@ -1055,22 +1083,8 @@ async function initialize(): Promise<void> {
     window.addEventListener("focus", checkVisibleDate);
     document.addEventListener("visibilitychange", checkVisibleDate);
 
-    const demoScenario =
-      import.meta.env.DEV &&
-      new URLSearchParams(window.location.search).get("scenario");
-    if (demoScenario === "onboarding") {
-      settings.value.configured = false;
-    } else {
-      revealAfterInitialization = shouldRevealOnLaunch({
-        isAutostart: launchContext.isAutostart,
-        foregroundPresentation: launchContext.foregroundPresentation,
-        configured: settings.value.configured,
-        lastHandledDate: bootstrap.value.dailyState?.localDate,
-        today: buildCalendarContext().localDate,
-      });
-      if (settings.value.configured && revealAfterInitialization) {
-        await loadToday();
-      }
+    if (settings.value.configured && revealAfterInitialization) {
+      await loadToday(false, false, pendingWeather);
     }
   } catch (error) {
     console.error(error);

@@ -13,7 +13,10 @@ param(
 
     [switch]$RedesignCandidate,
 
-    [switch]$BaselineComparison
+    [switch]$BaselineComparison,
+
+    [ValidatePattern('^[a-z0-9][a-z0-9-]{0,39}$')]
+    [string]$CandidateName
 )
 
 Set-StrictMode -Version Latest
@@ -30,7 +33,18 @@ $appVersion = [string]$packageJson.version
 if ($RedesignCandidate -and $BaselineComparison) {
     throw "RedesignCandidate and BaselineComparison are mutually exclusive."
 }
-if ($RedesignCandidate) {
+if ($PSBoundParameters.ContainsKey('CandidateName') -and
+    ([string]::IsNullOrWhiteSpace($CandidateName) -or $CandidateName -eq 'target')) {
+    throw "CandidateName must be a nonempty new candidate name, not target."
+}
+if ($CandidateName -and ($RedesignCandidate -or $BaselineComparison)) {
+    throw "CandidateName cannot be combined with another candidate switch."
+}
+if ($CandidateName) {
+    $artifactPath = ".work/redesign-$CandidateName/release/weatherpoem.exe"
+    $reportRelativePath = "review/redesign/evidence/T09_PERFORMANCE_SMOKE_$CandidateName.json"
+}
+elseif ($RedesignCandidate) {
     $artifactPath = ".work/redesign-target/release/weatherpoem.exe"
     $reportRelativePath = "review/redesign/evidence/T09_PERFORMANCE_SMOKE.json"
 }
