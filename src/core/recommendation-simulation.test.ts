@@ -95,13 +95,21 @@ describe("long-term recommendation diversity", () => {
     for (const result of Object.values(results)) {
       expect(result.unmatchedDays).toBe(0);
       expect(result.distinctWorks).toBeGreaterThan(0);
+      expect(result.shortestWorkRepeat ?? Number.POSITIVE_INFINITY)
+        .toBeGreaterThanOrEqual(15);
     }
     if (days === 60) {
-      expect(results.autumnClear.distinctWorks).toBeGreaterThan(23);
-      expect(results.autumnClear.shortestWorkRepeat).toBeGreaterThan(8);
+      expect(results.autumnClear.distinctWorks).toBeGreaterThanOrEqual(45);
+      expect(results.springCloud.distinctWorks).toBeGreaterThanOrEqual(45);
+      expect(results.winterRain.shortestWorkRepeat).toBeGreaterThanOrEqual(15);
     }
     if (days === 30) {
       expect(results.winterRain.shortestWorkRepeat).toBeGreaterThanOrEqual(14);
+    }
+    if (days === 90) {
+      expect(results.autumnClear.distinctWorks).toBeGreaterThanOrEqual(60);
+      expect(results.winterRain.distinctWorks).toBeGreaterThanOrEqual(50);
+      expect(results.springCloud.distinctWorks).toBeGreaterThanOrEqual(50);
     }
   });
 });

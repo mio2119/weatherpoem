@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { POEMS } from "../data/poems";
+import { buildCalendarContext } from "./date-context";
 import type {
   CalendarContext,
   RecommendationHistoryItem,
@@ -95,6 +96,185 @@ describe("recommendPoem", () => {
     });
     expect(result.poem.tags.solarTerms).toContain("清明");
     expect(result.breakdown.solarTerm).toBe(10);
+  });
+
+  it("节气作品其他分数更高时，仍优先使用新鲜天气匹配", () => {
+    const base = POEMS[0]!;
+    const sharedTags = {
+      ...base.tags,
+      festivals: [],
+      seasons: ["spring" as const],
+      emotions: [],
+      lifeScenes: [],
+    };
+    const weatherPoem = {
+      ...base,
+      id: "weather-priority-case",
+      quality: 0,
+      tags: {
+        ...sharedTags,
+        weather: ["rain" as const],
+        solarTerms: [],
+        timePeriods: [],
+      },
+    };
+    const solarPoem = {
+      ...base,
+      id: "solar-priority-case",
+      quality: 10,
+      tags: {
+        ...sharedTags,
+        weather: [],
+        solarTerms: ["清明"],
+        timePeriods: ["morning" as const],
+      },
+    };
+    const result = recommendPoem({
+      poems: [weatherPoem, solarPoem],
+      calendar: {
+        ...calendar,
+        festival: undefined,
+        solarTerm: "清明",
+        localDate: "2026-04-05",
+        season: "spring",
+      },
+      weather: rainyWeather,
+      history: [],
+      feedback: [],
+    });
+    expect(result.poem.id).toBe(weatherPoem.id);
+    expect(result.primaryContext).toBe("雨");
+  });
+
+  it("天气匹配作品刚展示过时，先用未展示的节气作品避免早期重复", () => {
+    const base = POEMS[0]!;
+    const sharedTags = {
+      ...base.tags,
+      festivals: [],
+      seasons: ["spring" as const],
+      emotions: [],
+      lifeScenes: [],
+      timePeriods: [],
+    };
+    const weatherPoem = {
+      ...base,
+      id: "recent-weather-poem",
+      tags: { ...sharedTags, weather: ["rain" as const], solarTerms: [] },
+    };
+    const solarPoem = {
+      ...base,
+      id: "fresh-solar-poem",
+      tags: { ...sharedTags, weather: [], solarTerms: ["清明"] },
+    };
+    const result = recommendPoem({
+      poems: [weatherPoem, solarPoem],
+      calendar: {
+        ...calendar,
+        festival: undefined,
+        solarTerm: "清明",
+        localDate: "2026-04-05",
+        season: "spring",
+      },
+      weather: rainyWeather,
+      history: [{
+        localDate: "2026-04-04",
+        workId: weatherPoem.id,
+        author: weatherPoem.author,
+        primaryContext: "雨",
+      }],
+      feedback: [],
+    });
+    expect(result.poem.id).toBe(solarPoem.id);
+    expect(result.primaryContext).toBe("清明");
+  });
+
+  it("同一情境与新鲜度下有其他作者时，避免连续推荐同一作者", () => {
+    const base = POEMS[0]!;
+    const tags = {
+      ...base.tags,
+      festivals: [],
+      seasons: ["spring" as const],
+      weather: ["rain" as const],
+      solarTerms: [],
+      emotions: [],
+      lifeScenes: [],
+    };
+    const recentAuthorPoem = {
+      ...base,
+      id: "recent-author-poem",
+      author: "甲",
+      quality: 10,
+      tags: { ...tags, timePeriods: ["morning" as const] },
+    };
+    const otherAuthorPoem = {
+      ...base,
+      id: "other-author-poem",
+      author: "乙",
+      quality: 0,
+      tags: { ...tags, timePeriods: [] },
+    };
+    const result = recommendPoem({
+      poems: [recentAuthorPoem, otherAuthorPoem],
+      calendar: {
+        ...calendar,
+        festival: undefined,
+        solarTerm: undefined,
+        localDate: "2026-04-05",
+        season: "spring",
+      },
+      weather: rainyWeather,
+      history: [{
+        localDate: "2026-04-04",
+        workId: "previous-work-by-recent-author",
+        author: "甲",
+        primaryContext: "雨",
+      }],
+      feedback: [],
+    });
+    expect(result.poem.id).toBe(otherAuthorPoem.id);
+    expect(result.primaryContext).toBe("雨");
+  });
+
+  it("临近稀缺节日前先保留唯一的直关联作品", () => {
+    const base = POEMS[0]!;
+    const festivalPoem = {
+      ...base,
+      id: "unique-new-years-eve-poem",
+      quality: 10,
+      tags: {
+        ...base.tags,
+        festivals: ["除夕"],
+        seasons: ["winter" as const],
+        weather: ["rain" as const],
+        solarTerms: [],
+      },
+    };
+    const ordinaryPoem = {
+      ...base,
+      id: "ordinary-winter-poem",
+      quality: 0,
+      tags: {
+        ...base.tags,
+        festivals: [],
+        seasons: ["winter" as const],
+        weather: [],
+        solarTerms: [],
+      },
+    };
+    const ordinaryDay = buildCalendarContext(new Date(2026, 1, 9, 9));
+    const festivalDay = buildCalendarContext(new Date(2026, 1, 16, 9));
+    expect(ordinaryDay.festival).toBeUndefined();
+    expect(festivalDay.festival).toBe("除夕");
+    const input = {
+      poems: [festivalPoem, ordinaryPoem],
+      weather: rainyWeather,
+      history: [],
+      feedback: [],
+    };
+    expect(recommendPoem({ ...input, calendar: ordinaryDay }).poem.id)
+      .toBe(ordinaryPoem.id);
+    expect(recommendPoem({ ...input, calendar: festivalDay }).poem.id)
+      .toBe(festivalPoem.id);
   });
 
   it("七天内已展示作品不会立即重复", () => {

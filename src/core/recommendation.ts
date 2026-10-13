@@ -8,8 +8,9 @@ import type {
   WeatherContext,
 } from "../types";
 import { feedbackLocalDate } from "./daily-behavior";
+import { buildCalendarContext } from "./date-context";
 
-export const RULE_VERSION = "1.1.0";
+export const RULE_VERSION = "1.2.0";
 export const CONTENT_VERSION = "2026.07.1";
 
 interface RecommendationInput {
@@ -68,6 +69,31 @@ function isSeasonallyEligible(
     (calendar.solarTerm &&
       poem.tags.solarTerms.includes(calendar.solarTerm)),
   );
+}
+
+function scarceUpcomingFestivals(
+  poems: Poem[],
+  calendar: CalendarContext,
+): Set<string> {
+  const dateParts = /^(\d{4})-(\d{2})-(\d{2})$/.exec(calendar.localDate);
+  if (!dateParts || calendar.festival) return new Set();
+  const year = Number(dateParts[1]);
+  const month = Number(dateParts[2]);
+  const day = Number(dateParts[3]);
+  const festivals = new Set<string>();
+  for (let offset = 1; offset <= 14; offset += 1) {
+    // Local noon avoids a midnight offset on DST transition days.
+    const future = new Date(year, month - 1, day + offset, 12);
+    const festival = buildCalendarContext(future).festival;
+    if (!festival) continue;
+    const directlyRelated = poems.filter((poem) =>
+      poem.tags.festivals.includes(festival),
+    ).length;
+    if (directlyRelated > 0 && directlyRelated <= 2) {
+      festivals.add(festival);
+    }
+  }
+  return festivals;
 }
 
 function scorePoem(
@@ -234,32 +260,73 @@ function buildReason(
 }
 
 export function recommendPoem(input: RecommendationInput): Recommendation {
-  const eligible = input.poems
+  const daysSince = (poem: Poem) => daysSinceLastDisplay(
+    poem.id,
+    input.history,
+    input.calendar.localDate,
+  );
+  const seasonEligible = input.poems
     .filter(
       (poem) =>
         poem.id !== input.excludedWorkId &&
         isSeasonallyEligible(poem, input.calendar),
     );
+  const upcoming = scarceUpcomingFestivals(seasonEligible, input.calendar);
+  const unreserved = seasonEligible.filter((poem) =>
+    !poem.tags.festivals.some((festival) => upcoming.has(festival)),
+  );
+  const eligible = unreserved.some((poem) => daysSince(poem) > 14)
+    ? unreserved
+    : seasonEligible;
   const festivalMatches = input.calendar.festival
     ? eligible.filter((poem) =>
         poem.tags.festivals.includes(input.calendar.festival!),
       )
     : [];
-  const contextPool = festivalMatches.length > 0
-    ? festivalMatches
-    : eligible;
-  const notRecentlyShown = contextPool.filter(
-    (poem) =>
-      daysSinceLastDisplay(
-        poem.id,
-        input.history,
-        input.calendar.localDate,
-      ) > 14,
+  const weatherMatches =
+    input.weather.freshness !== "unavailable" &&
+    input.weather.kind !== "unknown"
+      ? eligible.filter((poem) =>
+          poem.tags.weather.includes(input.weather.kind),
+        )
+      : [];
+  const solarTermMatches = input.calendar.solarTerm
+    ? eligible.filter((poem) =>
+        poem.tags.solarTerms.includes(input.calendar.solarTerm!),
+      )
+    : [];
+  // A directly related festival is exceptional and stays ahead of ordinary
+  // variety. Otherwise, prefer weather then solar-term relevance *within the
+  // same novelty band*. An unseen seasonal poem beats a weather poem shown
+  // recently; this avoids a small weather-tagged pool cycling every few weeks.
+  const tiers = [weatherMatches, solarTermMatches, eligible];
+  const noveltyBands = [
+    (days: number) => !Number.isFinite(days),
+    (days: number) => days > 45,
+    (days: number) => days > 14,
+    () => true,
+  ];
+  const restedFestivalMatches = festivalMatches.filter((poem) =>
+    daysSince(poem) > 14,
   );
-  const candidatePool = notRecentlyShown.length > 0
-    ? notRecentlyShown
-    : contextPool;
-  const candidates = candidatePool
+  const candidatePool = festivalMatches.length > 0
+    ? restedFestivalMatches.length > 0
+      ? restedFestivalMatches
+      : festivalMatches
+    : noveltyBands
+        .flatMap((isRested) =>
+          tiers.map((tier) => tier.filter((poem) => isRested(daysSince(poem)))),
+        )
+        .find((pool) => pool.length > 0) ?? [];
+  const authorRested = festivalMatches.length > 0
+    ? []
+    : candidatePool.filter((poem) =>
+        !input.history.some((item) =>
+          item.author === poem.author &&
+          elapsedLocalDays(input.calendar.localDate, item.localDate) <= 5,
+        ),
+      );
+  const candidates = (authorRested.length > 0 ? authorRested : candidatePool)
     .map((poem) => {
       const breakdown = scorePoem(poem, input);
       return { poem, breakdown, score: totalScore(breakdown) };
