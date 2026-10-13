@@ -115,6 +115,7 @@ function Start-IsolatedProbe {
     param(
         [string]$ProfilePath,
         [string]$RunId,
+        [string]$SampleLabel,
         [switch]$Configured
     )
 
@@ -161,7 +162,7 @@ function Start-IsolatedProbe {
         }
         if ([DateTime]::UtcNow -ge $deadline) {
             Stop-LaunchedProcess -Process $process
-            throw "WeatherPoem did not emit the ready marker within 15 seconds."
+            throw "WeatherPoem did not emit the ready marker within 15 seconds ($SampleLabel)."
         }
         Start-Sleep -Milliseconds 20
     }
@@ -215,11 +216,12 @@ function Start-IsolatedProbe {
 $startupResults = [System.Collections.Generic.List[object]]::new()
 $contentResults = [System.Collections.Generic.List[object]]::new()
 $idleProcess = $null
+$testFailure = $null
 try {
     for ($index = 1; $index -le $StartupSamples; $index++) {
         $profilePath = Join-Path $runRoot ("startup-" + $index.ToString("00"))
         [System.IO.Directory]::CreateDirectory($profilePath) | Out-Null
-        $probe = Start-IsolatedProbe -ProfilePath $profilePath -RunId ([System.Guid]::NewGuid().ToString("D"))
+        $probe = Start-IsolatedProbe -ProfilePath $profilePath -RunId ([System.Guid]::NewGuid().ToString("D")) -SampleLabel "startup-$index"
         try {
             if ($probe.ReadyView -ne "onboarding" -or $probe.ReadyMode -ne "local-onboarding") {
                 throw "Clean profile did not render onboarding as its final view."
@@ -242,6 +244,7 @@ try {
         $probe = Start-IsolatedProbe `
             -ProfilePath $profilePath `
             -RunId ([System.Guid]::NewGuid().ToString("D")) `
+            -SampleLabel "content-$index" `
             -Configured
         try {
             $contentResults.Add([pscustomobject]@{
@@ -261,7 +264,7 @@ try {
 
     $idleProfile = Join-Path $runRoot "idle"
     [System.IO.Directory]::CreateDirectory($idleProfile) | Out-Null
-    $idleProbe = Start-IsolatedProbe -ProfilePath $idleProfile -RunId ([System.Guid]::NewGuid().ToString("D"))
+    $idleProbe = Start-IsolatedProbe -ProfilePath $idleProfile -RunId ([System.Guid]::NewGuid().ToString("D")) -SampleLabel "idle"
     $idleProcess = $idleProbe.Process
     $closeRequestAccepted = $idleProcess.CloseMainWindow()
     Start-Sleep -Milliseconds 750
@@ -503,6 +506,10 @@ try {
     }
     Write-Host "Performance smoke passed: $reportPath"
 }
+catch {
+    $testFailure = $_
+    throw
+}
 finally {
     if ($null -ne $idleProcess) {
         Stop-LaunchedProcess -Process $idleProcess
@@ -513,16 +520,20 @@ finally {
         (Split-Path -Leaf $resolvedRunRoot).StartsWith("WeatherPoem.Performance.", [System.StringComparison]::Ordinal)
     ) {
         if (Test-Path -LiteralPath $resolvedRunRoot) {
-            foreach ($attempt in 1..5) {
+            foreach ($attempt in 1..16) {
                 try {
-                    Remove-Item -LiteralPath $resolvedRunRoot -Recurse -Force
+                    Remove-Item -LiteralPath $resolvedRunRoot -Recurse -Force -ErrorAction Stop
                     break
                 }
                 catch {
-                    if ($attempt -eq 5) {
-                        throw
+                    if ($attempt -eq 16) {
+                        if ($null -ne $testFailure) {
+                            Write-Warning "Isolated WebView data remained locked after performance smoke: $resolvedRunRoot. Original test failure is preserved."
+                            break
+                        }
+                        throw "Isolated WebView data remained locked after performance smoke: $resolvedRunRoot"
                     }
-                    Start-Sleep -Seconds 1
+                    Start-Sleep -Milliseconds 750
                 }
             }
         }
