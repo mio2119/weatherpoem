@@ -15,7 +15,7 @@ import {
   RULE_VERSION,
 } from "./core/recommendation";
 import { buildCalendarContext, localDateKey } from "./core/date-context";
-import { hasReplacedOnDate } from "./core/daily-behavior";
+import { hasDislikedWorkOnDate, hasReplacedOnDate } from "./core/daily-behavior";
 import {
   buildPilotSummary,
   closePilotSession,
@@ -91,6 +91,7 @@ let performanceWeatherScenario:
   | undefined;
 const recommendation = ref<Recommendation>();
 const replacementInProgress = ref(false);
+const dislikeInProgress = ref(false);
 const panel = ref<Panel>("card");
 const loading = ref(true);
 const errorMessage = ref("");
@@ -213,6 +214,15 @@ const latestDislikeTitle = computed(() =>
 );
 const replacedToday = computed(() =>
   hasReplacedOnDate(bootstrap.value.feedback, calendar.value.localDate),
+);
+const dislikedCurrentToday = computed(() =>
+  recommendation.value
+    ? hasDislikedWorkOnDate(
+        bootstrap.value.feedback,
+        recommendation.value.poem.id,
+        calendar.value.localDate,
+      )
+    : false,
 );
 const pilotSummary = computed(() =>
   pilotState.value
@@ -759,23 +769,40 @@ async function replaceWithdrawnContent(): Promise<void> {
 async function dislikePoem(): Promise<void> {
   if (await refreshDateIfChanged()) return;
   const current = recommendation.value;
-  if (!current || !repository.value) return;
+  if (
+    !current ||
+    dislikeInProgress.value ||
+    hasDislikedWorkOnDate(
+      bootstrap.value.feedback,
+      current.poem.id,
+      calendar.value.localDate,
+    ) ||
+    !repository.value
+  ) return;
   const eventTime = new Date();
   if (localDateKey(eventTime) !== calendar.value.localDate) {
     await refreshDateIfChanged();
     return;
   }
-  const feedback: FeedbackItem = {
-    workId: current.poem.id,
-    type: "disliked",
-    contextTags: contextTags(current),
-    createdAt: eventTime.toISOString(),
-    localDate: localDateKey(eventTime),
-  };
-  await repository.value.recordFeedback(feedback);
-  bootstrap.value.feedback = [feedback, ...bootstrap.value.feedback];
-  await recordPilotActivity("not-relevant");
-  showToast("已记下：两周内减少这首诗，可在设置中撤销");
+  dislikeInProgress.value = true;
+  try {
+    const feedback: FeedbackItem = {
+      workId: current.poem.id,
+      type: "disliked",
+      contextTags: contextTags(current),
+      createdAt: eventTime.toISOString(),
+      localDate: localDateKey(eventTime),
+    };
+    await repository.value.recordFeedback(feedback);
+    bootstrap.value.feedback = [feedback, ...bootstrap.value.feedback];
+    await recordPilotActivity("not-relevant");
+    showToast("已记下：两周内减少这首诗，可在设置中撤销");
+  } catch (error) {
+    console.error(error);
+    showToast("暂时没能记下反馈，请再试一次");
+  } finally {
+    dislikeInProgress.value = false;
+  }
 }
 
 async function undoLatestDislike(): Promise<void> {
@@ -1263,6 +1290,8 @@ onBeforeUnmount(() => {
       :favorite-count="favoritePoems.length"
       :can-replace="!replacedToday"
       :replacing="replacementInProgress"
+      :can-dislike="!dislikedCurrentToday"
+      :disliking="dislikeInProgress"
       :poem-layout="settings.poemLayout"
       :poem-font-size="settings.poemFontSize"
       @read="openDailyReading"

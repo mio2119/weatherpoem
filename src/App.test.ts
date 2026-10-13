@@ -251,6 +251,77 @@ describe("browser preview user flow", () => {
     });
   });
 
+  it("records one mismatch per poem and allows undo before another try", async () => {
+    localStorage.setItem("weatherpoem.local.v1", JSON.stringify({
+      settings: { configured: true, cityId: "beijing" },
+      history: [],
+      favorites: [],
+      feedback: [],
+    }));
+    wrapper = mount(App, { attachTo: document.body });
+    await vi.waitFor(() => expect(wrapper!.find(".poem-view").exists()).toBe(true));
+    await wrapper.get(".more-action").trigger("click");
+    const dislike = wrapper.findAll(".secondary-actions button")[1]!;
+    await Promise.all([dislike.trigger("click"), dislike.trigger("click")]);
+    await vi.waitFor(async () => {
+      const state = await (await createRepository()).load();
+      expect(state.feedback.filter((item) => item.type === "disliked")).toHaveLength(1);
+    });
+    expect(dislike.text()).toBe("已记录不太贴合");
+    expect(dislike.attributes("disabled")).toBeDefined();
+    await dislike.trigger("click");
+    expect((await (await createRepository()).load()).feedback).toHaveLength(1);
+
+    await wrapper.get('button[aria-label="设置"]').trigger("click");
+    await vi.waitFor(() => expect(wrapper!.find(".settings-panel").exists()).toBe(true));
+    const undo = wrapper.findAll(".settings-navigation").find((button) =>
+      button.text().includes("撤销最近一次"),
+    );
+    expect(undo).toBeDefined();
+    await undo!.trigger("click");
+    await vi.waitFor(async () => {
+      expect((await (await createRepository()).load()).feedback).toHaveLength(0);
+    });
+    await wrapper.get(".settings-panel .back-button").trigger("click");
+    await vi.waitFor(() => expect(wrapper!.find(".poem-view").exists()).toBe(true));
+    await wrapper.get(".more-action").trigger("click");
+    const restored = wrapper.findAll(".secondary-actions button")[1]!;
+    expect(restored.text()).toBe("不太贴合");
+    expect(restored.attributes("disabled")).toBeUndefined();
+  });
+
+  it("keeps mismatch feedback retryable when local storage rejects the write", async () => {
+    localStorage.setItem("weatherpoem.local.v1", JSON.stringify({
+      settings: { configured: true, cityId: "beijing" },
+      history: [],
+      favorites: [],
+      feedback: [],
+    }));
+    wrapper = mount(App, { attachTo: document.body });
+    await vi.waitFor(() => expect(wrapper!.find(".poem-view").exists()).toBe(true));
+    await wrapper.get(".more-action").trigger("click");
+    const dislike = wrapper.findAll(".secondary-actions button")[1]!;
+    const originalSetItem = localStorage.setItem.bind(localStorage);
+    const storageSpy = vi.spyOn(localStorage, "setItem")
+      .mockImplementation((key, value) => {
+        if (key === "weatherpoem.local.v1") throw new Error("storage full");
+        return originalSetItem(key, value);
+      });
+    await dislike.trigger("click");
+    await vi.waitFor(() => {
+      expect(wrapper!.get(".toast-message").text()).toContain("没能记下反馈");
+      expect(dislike.attributes("disabled")).toBeUndefined();
+    });
+    expect((await (await createRepository()).load()).feedback).toHaveLength(0);
+
+    storageSpy.mockRestore();
+    await dislike.trigger("click");
+    await vi.waitFor(async () => {
+      expect((await (await createRepository()).load()).feedback).toHaveLength(1);
+      expect(dislike.text()).toBe("已记录不太贴合");
+    });
+  });
+
   it("closes a withdrawn favorite during reading and lets its record be removed", async () => {
     vi.useFakeTimers({ toFake: ["Date"] });
     vi.setSystemTime(new Date(2026, 9, 13, 9));

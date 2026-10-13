@@ -15,6 +15,8 @@ const props = defineProps<{
   favoriteCount: number;
   canReplace: boolean;
   replacing: boolean;
+  canDislike: boolean;
+  disliking: boolean;
   poemLayout: PoemLayout;
   poemFontSize: PoemFontSize;
 }>();
@@ -183,7 +185,9 @@ onBeforeUnmount(() => resizeObserver?.disconnect());
           <button type="button" :disabled="!canReplace || replacing" @click="emit('replace')">
             {{ replacing ? "正在换诗" : canReplace ? "换一首" : "今日已换" }}
           </button>
-          <button type="button" @click="emit('dislike')">不太贴合</button>
+          <button type="button" :disabled="!canDislike || disliking" @click="emit('dislike')">
+            {{ disliking ? "正在记录" : canDislike ? "不太贴合" : "已记录不太贴合" }}
+          </button>
         </div>
       </article>
     </div>

@@ -1,5 +1,9 @@
 import { afterEach, describe, expect, it, vi } from "vitest";
-import { feedbackLocalDate, hasReplacedOnDate } from "./daily-behavior";
+import {
+  feedbackLocalDate,
+  hasDislikedWorkOnDate,
+  hasReplacedOnDate,
+} from "./daily-behavior";
 import { localDateKey } from "./date-context";
 import type { FeedbackItem } from "../types";
 
@@ -58,5 +62,20 @@ describe("local daily behavior", () => {
         "2026-07-24",
       ),
     ).toBe(false);
+  });
+
+  it("counts a mismatch once for the same work and local date", () => {
+    const disliked: FeedbackItem = {
+      ...replacement("2026-07-24T00:00:00Z", "2026-07-24"),
+      type: "disliked",
+    };
+    expect(hasDislikedWorkOnDate([disliked], "original-poem", "2026-07-24"))
+      .toBe(true);
+    expect(hasDislikedWorkOnDate([disliked], "another-poem", "2026-07-24"))
+      .toBe(false);
+    expect(hasDislikedWorkOnDate([disliked], "original-poem", "2026-07-25"))
+      .toBe(false);
+    expect(hasDislikedWorkOnDate([replacement(disliked.createdAt, disliked.localDate)], "original-poem", "2026-07-24"))
+      .toBe(false);
   });
 });

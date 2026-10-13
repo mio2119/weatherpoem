@@ -43,6 +43,8 @@ function render(overrides: Record<string, unknown> = {}) {
       favoriteCount: 2,
       canReplace: true,
       replacing: false,
+      canDislike: true,
+      disliking: false,
       poemLayout: "horizontal",
       poemFontSize: "medium",
       ...overrides,
@@ -85,6 +87,17 @@ describe("glance poem card", () => {
     const replace = wrapper.findAll(".secondary-actions button")[0]!;
     expect(replace.text()).toBe("正在换诗");
     expect(replace.attributes("disabled")).toBeDefined();
+  });
+
+  it("shows a pending or recorded mismatch without accepting another click", async () => {
+    const wrapper = render({ disliking: true });
+    await wrapper.get(".more-action").trigger("click");
+    const dislike = wrapper.findAll(".secondary-actions button")[1]!;
+    expect(dislike.text()).toBe("正在记录");
+    expect(dislike.attributes("disabled")).toBeDefined();
+    await wrapper.setProps({ disliking: false, canDislike: false });
+    expect(dislike.text()).toBe("已记录不太贴合");
+    expect(dislike.attributes("disabled")).toBeDefined();
   });
 
   it("labels stale and unavailable weather without claiming live conditions", () => {

@@ -22,3 +22,16 @@ export function hasReplacedOnDate(
       item.type === "replaced" && feedbackLocalDate(item) === localDate,
   );
 }
+
+export function hasDislikedWorkOnDate(
+  feedback: FeedbackItem[],
+  workId: string,
+  localDate: string,
+): boolean {
+  return feedback.some(
+    (item) =>
+      item.type === "disliked" &&
+      item.workId === workId &&
+      feedbackLocalDate(item) === localDate,
+  );
+}
