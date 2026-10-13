@@ -181,6 +181,11 @@ fn performance_scenario() -> Option<String> {
         .and_then(|profile| profile.scenario.clone())
 }
 
+#[tauri::command]
+fn is_performance_profile() -> bool {
+    PERFORMANCE_PROFILE.get().and_then(Option::as_ref).is_some()
+}
+
 fn is_valid_ready_pair(view: &str, mode: &str) -> bool {
     matches!(
         (view, mode),
@@ -356,6 +361,7 @@ pub fn run() {
             launch_context,
             open_third_party_notices,
             performance_scenario,
+            is_performance_profile,
             report_frontend_ready
         ])
         .setup(move |app| {

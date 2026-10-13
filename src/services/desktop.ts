@@ -301,7 +301,7 @@ export async function startWindowDrag(): Promise<void> {
 }
 
 export interface AutostartSyncResult {
-  status: "applied" | "unavailable" | "failed";
+  status: "applied" | "unavailable" | "isolated" | "failed";
   enabled?: boolean;
 }
 
@@ -311,6 +311,10 @@ export async function syncAutostart(
   if (!isTauri()) return { status: "unavailable" };
   let autostart: typeof import("@tauri-apps/plugin-autostart") | undefined;
   try {
+    const { invoke } = await import("@tauri-apps/api/core");
+    if (await invoke<boolean>("is_performance_profile")) {
+      return { status: "isolated" };
+    }
     autostart = await import("@tauri-apps/plugin-autostart");
     const current = await autostart.isEnabled();
     if (enabled && !current) await autostart.enable();

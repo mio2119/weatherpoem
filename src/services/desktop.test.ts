@@ -285,6 +285,7 @@ describe("desktop autostart synchronization", () => {
       value: {},
       configurable: true,
     });
+    tauriMocks.invoke.mockResolvedValue(false);
     autostartMocks.enable.mockResolvedValue();
     autostartMocks.disable.mockResolvedValue();
   });
@@ -340,6 +341,15 @@ describe("desktop autostart synchronization", () => {
       expect(autostartMocks.disable).toHaveBeenCalledTimes(disables);
     },
   );
+
+  it("隔离性能资料不读取或修改真实系统启动项", async () => {
+    tauriMocks.invoke.mockResolvedValue(true);
+    await expect(syncAutostart(true)).resolves.toEqual({ status: "isolated" });
+    expect(tauriMocks.invoke).toHaveBeenCalledWith("is_performance_profile");
+    expect(autostartMocks.isEnabled).not.toHaveBeenCalled();
+    expect(autostartMocks.enable).not.toHaveBeenCalled();
+    expect(autostartMocks.disable).not.toHaveBeenCalled();
+  });
 
   it("系统自启接口失败时报告未知状态而不伪称成功", async () => {
     const warning = vi

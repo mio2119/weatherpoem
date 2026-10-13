@@ -618,6 +618,8 @@ async function completeOnboarding(next: AppSettings): Promise<void> {
           : "开机启动未按所选状态生效，已显示系统当前状态。"
         : sync.status === "unavailable"
           ? "浏览器预览无法设置系统开机启动。"
+          : sync.status === "isolated"
+            ? "隔离测试不会修改系统开机启动；此处仅保存测试偏好。"
           : "";
     await loadToday(true);
     if (autostartWarning.value) showToast(autostartWarning.value);
@@ -798,6 +800,8 @@ async function saveSettings(next: AppSettings): Promise<void> {
           : "其他设置已保存；开机启动未按所选状态生效，已显示系统当前状态。"
         : sync.status === "unavailable"
           ? "其他设置已保存；浏览器预览无法设置系统开机启动。"
+          : sync.status === "isolated"
+            ? "其他设置已保存；隔离测试不会修改系统开机启动。"
           : "";
     if (cityChanged) {
       loading.value = true;
