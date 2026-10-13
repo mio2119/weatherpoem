@@ -35,9 +35,21 @@ describe("poem scene grounding", () => {
   });
 
   it("uses weather art only for fresh, known conditions", () => {
-    const poem = POEMS.find((item) => !item.tags.festivals.includes("春节"))!;
-    const scene = (weather: WeatherContext, timePeriod: CalendarContext["timePeriod"] = "day") =>
-      selectPoemScene({ poem, calendar: { ...baseCalendar, timePeriod }, weather });
+    const scene = (
+      weather: WeatherContext,
+      timePeriod: CalendarContext["timePeriod"] = "day",
+    ) => {
+      const poem = POEMS.find((item) =>
+        item.tags.weather.includes(weather.kind === "unknown" ? "rain" : weather.kind) &&
+        !item.tags.festivals.includes("春节"),
+      );
+      expect(poem).toBeDefined();
+      return selectPoemScene({
+        poem: poem!,
+        calendar: { ...baseCalendar, timePeriod },
+        weather,
+      });
+    };
     expect(scene(baseWeather).kind).toBe("rain");
     expect(scene({ ...baseWeather, source: "synthetic", label: "小雨（隔离演练）" }))
       .toMatchObject({
@@ -54,5 +66,21 @@ describe("poem scene grounding", () => {
     expect(scene({ ...baseWeather, kind: "unknown", freshness: "unavailable", source: "offline" }).kind)
       .toBe("season");
     expect(scene({ ...baseWeather, shouldSuppressPoem: true }).kind).toBe("season");
+  });
+
+  it("does not draw current weather over a poem chosen for another context", () => {
+    const poem = POEMS.find((item) =>
+      !item.tags.weather.includes("rain") &&
+      !item.tags.festivals.includes("春节"),
+    );
+    expect(poem).toBeDefined();
+    expect(selectPoemScene({
+      poem: poem!,
+      calendar: baseCalendar,
+      weather: baseWeather,
+    })).toMatchObject({
+      kind: "season",
+      description: "抽象季节纹样，不代表当地实时天气",
+    });
   });
 });

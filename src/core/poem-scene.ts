@@ -29,7 +29,12 @@ export function selectPoemScene(input: {
       description: `节日意象：${calendar.festival}`,
     };
   }
-  if (weather.freshness === "fresh") {
+  // Weather remains visible in the context strip, but the decorative scene
+  // should not imply that a poem chosen for another reason depicts it.
+  if (
+    weather.freshness === "fresh" &&
+    poem.tags.weather.includes(weather.kind)
+  ) {
     const weatherDescription = weather.source === "synthetic"
       ? `隔离场景：${weather.label}；不代表当地实时天气`
       : `当地天气：${weather.label}`;

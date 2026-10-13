@@ -92,6 +92,27 @@ describe("glance poem card", () => {
       .toContain("不代表当地实时天气");
   });
 
+  it("shows actual weather without painting it onto an unrelated poem", () => {
+    const poem = POEMS.find((item) =>
+      !item.tags.weather.includes("rain") &&
+      !item.tags.festivals.includes("春节"),
+    );
+    expect(poem).toBeDefined();
+    const wrapper = render({
+      recommendation: {
+        ...recommendation,
+        poem: poem!,
+        primaryContext: "冬日",
+      },
+      calendar: { ...calendar, festival: undefined },
+      weather: { ...weather, kind: "rain", label: "雨" },
+    });
+    expect(wrapper.get(".context-strip").text()).toContain("雨");
+    expect(wrapper.get(".poem-paper").attributes("data-scene")).toBe("season");
+    expect(wrapper.get(".scene-mark").attributes("aria-label"))
+      .toContain("不代表当地实时天气");
+  });
+
   it("switches to vertical columns without changing the poem text", async () => {
     const wrapper = render();
     await wrapper.get(".layout-toggle").trigger("click");
