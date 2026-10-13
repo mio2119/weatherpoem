@@ -5,6 +5,7 @@ import { CONTENT_VERSION } from "./core/recommendation";
 import { POEMS } from "./data/poems";
 import { CONTENT_WITHDRAWAL_CACHE_KEY } from "./services/content-control";
 import { createRepository } from "./services/persistence";
+import * as reasonService from "./services/reason";
 
 vi.mock("./services/weather", async (importOriginal) => {
   const original = await importOriginal<typeof import("./services/weather")>();
@@ -176,6 +177,78 @@ describe("browser preview user flow", () => {
     await flushPromises();
     const sameDay = await (await createRepository()).load();
     expect(sameDay.history).toHaveLength(3);
+  });
+
+  it("allows only one replacement while its recommendation reason is pending", async () => {
+    localStorage.setItem("weatherpoem.local.v1", JSON.stringify({
+      settings: { configured: true, cityId: "beijing" },
+      history: [],
+      favorites: [],
+      feedback: [],
+    }));
+    wrapper = mount(App, { attachTo: document.body });
+    await vi.waitFor(() => expect(wrapper!.find(".poem-view").exists()).toBe(true));
+    await wrapper.get(".more-action").trigger("click");
+
+    let releaseReason!: () => void;
+    const pendingReason = new Promise<void>((resolve) => { releaseReason = resolve; });
+    const reasonSpy = vi.spyOn(reasonService, "enrichRecommendationReason")
+      .mockImplementation(async (selected) => {
+        await pendingReason;
+        return selected;
+      });
+    const replaceButton = wrapper.findAll(".secondary-actions button")[0]!;
+    try {
+      await replaceButton.trigger("click");
+      await vi.waitFor(() => expect(reasonSpy).toHaveBeenCalledTimes(1));
+      expect(replaceButton.attributes("disabled")).toBeDefined();
+      await replaceButton.trigger("click");
+      await flushPromises();
+      expect(reasonSpy).toHaveBeenCalledTimes(1);
+    } finally {
+      releaseReason();
+    }
+    await vi.waitFor(async () => {
+      const state = await (await createRepository()).load();
+      expect(state.feedback.filter((item) => item.type === "replaced")).toHaveLength(1);
+      expect(state.history).toHaveLength(2);
+    });
+  });
+
+  it("cancels a pending replacement when the local date rolls over", async () => {
+    vi.useFakeTimers({ toFake: ["Date"] });
+    vi.setSystemTime(new Date(2026, 9, 13, 23, 59, 30));
+    localStorage.setItem("weatherpoem.local.v1", JSON.stringify({
+      settings: { configured: true, cityId: "beijing" },
+      history: [],
+      favorites: [],
+      feedback: [],
+    }));
+    wrapper = mount(App, { attachTo: document.body });
+    await vi.waitFor(() => expect(wrapper!.find(".poem-view").exists()).toBe(true));
+    await wrapper.get(".more-action").trigger("click");
+
+    let releaseReason!: () => void;
+    const pendingReason = new Promise<void>((resolve) => { releaseReason = resolve; });
+    const reasonSpy = vi.spyOn(reasonService, "enrichRecommendationReason")
+      .mockImplementation(async (selected) => {
+        await pendingReason;
+        return selected;
+      });
+    await wrapper.findAll(".secondary-actions button")[0]!.trigger("click");
+    await vi.waitFor(() => expect(reasonSpy).toHaveBeenCalledTimes(1));
+    vi.setSystemTime(new Date(2026, 9, 14, 0, 1));
+    releaseReason();
+
+    await vi.waitFor(async () => {
+      const state = await (await createRepository()).load();
+      expect(state.dailyState?.localDate).toBe("2026-10-14");
+      expect(state.feedback.filter((item) => item.type === "replaced")).toHaveLength(0);
+      expect(state.history.map((item) => item.localDate)).toEqual([
+        "2026-10-14",
+        "2026-10-13",
+      ]);
+    });
   });
 
   it("closes a withdrawn favorite during reading and lets its record be removed", async () => {

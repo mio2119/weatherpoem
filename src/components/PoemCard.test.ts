@@ -42,6 +42,7 @@ function render(overrides: Record<string, unknown> = {}) {
       favorite: false,
       favoriteCount: 2,
       canReplace: true,
+      replacing: false,
       poemLayout: "horizontal",
       poemFontSize: "medium",
       ...overrides,
@@ -76,6 +77,14 @@ describe("glance poem card", () => {
     await buttons[1]!.trigger("click");
     expect(wrapper.emitted("replace")).toHaveLength(1);
     expect(wrapper.emitted("dislike")).toHaveLength(1);
+  });
+
+  it("shows a pending label while replacement is in progress", async () => {
+    const wrapper = render({ replacing: true });
+    await wrapper.get(".more-action").trigger("click");
+    const replace = wrapper.findAll(".secondary-actions button")[0]!;
+    expect(replace.text()).toBe("正在换诗");
+    expect(replace.attributes("disabled")).toBeDefined();
   });
 
   it("labels stale and unavailable weather without claiming live conditions", () => {

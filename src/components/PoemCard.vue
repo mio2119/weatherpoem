@@ -14,6 +14,7 @@ const props = defineProps<{
   favorite: boolean;
   favoriteCount: number;
   canReplace: boolean;
+  replacing: boolean;
   poemLayout: PoemLayout;
   poemFontSize: PoemFontSize;
 }>();
@@ -179,8 +180,8 @@ onBeforeUnmount(() => resizeObserver?.disconnect());
         </div>
 
         <div v-if="moreOpen" id="poem-secondary-actions" class="secondary-actions">
-          <button type="button" :disabled="!canReplace" @click="emit('replace')">
-            {{ canReplace ? "换一首" : "今日已换" }}
+          <button type="button" :disabled="!canReplace || replacing" @click="emit('replace')">
+            {{ replacing ? "正在换诗" : canReplace ? "换一首" : "今日已换" }}
           </button>
           <button type="button" @click="emit('dislike')">不太贴合</button>
         </div>

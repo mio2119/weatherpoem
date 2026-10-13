@@ -90,6 +90,7 @@ let performanceWeatherScenario:
   | PerformanceWeatherScenario
   | undefined;
 const recommendation = ref<Recommendation>();
+const replacementInProgress = ref(false);
 const panel = ref<Panel>("card");
 const loading = ref(true);
 const errorMessage = ref("");
@@ -694,37 +695,51 @@ function contextTags(selected: Recommendation): string[] {
 async function replacePoem(): Promise<void> {
   if (await refreshDateIfChanged()) return;
   const current = recommendation.value;
-  if (!current || replacedToday.value || !repository.value) return;
+  if (
+    !current ||
+    replacedToday.value ||
+    replacementInProgress.value ||
+    !repository.value
+  ) return;
   const eventTime = new Date();
   if (localDateKey(eventTime) !== calendar.value.localDate) {
     await refreshDateIfChanged();
     return;
   }
-  const feedback: FeedbackItem = {
-    workId: current.poem.id,
-    type: "replaced",
-    contextTags: contextTags(current),
-    createdAt: eventTime.toISOString(),
-    localDate: localDateKey(eventTime),
-  };
-  const next = await enrichRecommendationReason(
-    recommendPoem({
-      poems: availablePoems.value,
-      calendar: calendar.value,
-      weather: weather.value,
-      history: bootstrap.value.history,
-      feedback: bootstrap.value.feedback,
-      excludedWorkId: current.poem.id,
-    }),
-    calendar.value,
-    weather.value,
-  );
-  await repository.value.recordFeedback(feedback);
-  bootstrap.value.feedback = [feedback, ...bootstrap.value.feedback];
-  recommendation.value = next;
-  await persistRecommendation(next, "shown");
-  await recordPilotActivity("poem-replaced");
-  showToast("已换一首，今天不会再打扰你");
+  replacementInProgress.value = true;
+  try {
+    const feedback: FeedbackItem = {
+      workId: current.poem.id,
+      type: "replaced",
+      contextTags: contextTags(current),
+      createdAt: eventTime.toISOString(),
+      localDate: localDateKey(eventTime),
+    };
+    const next = await enrichRecommendationReason(
+      recommendPoem({
+        poems: availablePoems.value,
+        calendar: calendar.value,
+        weather: weather.value,
+        history: bootstrap.value.history,
+        feedback: bootstrap.value.feedback,
+        excludedWorkId: current.poem.id,
+      }),
+      calendar.value,
+      weather.value,
+    );
+    if (buildCalendarContext().localDate !== calendar.value.localDate) {
+      await refreshDateIfChanged();
+      return;
+    }
+    await repository.value.recordFeedback(feedback);
+    bootstrap.value.feedback = [feedback, ...bootstrap.value.feedback];
+    recommendation.value = next;
+    await persistRecommendation(next, "shown");
+    await recordPilotActivity("poem-replaced");
+    showToast("已换一首，今天不会再打扰你");
+  } finally {
+    replacementInProgress.value = false;
+  }
 }
 
 async function replaceWithdrawnContent(): Promise<void> {
@@ -1247,6 +1262,7 @@ onBeforeUnmount(() => {
       :favorite="favorite"
       :favorite-count="favoritePoems.length"
       :can-replace="!replacedToday"
+      :replacing="replacementInProgress"
       :poem-layout="settings.poemLayout"
       :poem-font-size="settings.poemFontSize"
       @read="openDailyReading"
