@@ -29,7 +29,11 @@ import {
   filterWithdrawnWorks,
   shouldShowContentCorrection,
 } from "./services/content-control";
-import { clearAllLocalUserData } from "./services/data-reset";
+import {
+  clearAllLocalUserData,
+  DataResetError,
+  dataResetFailureMessage,
+} from "./services/data-reset";
 import {
   applyMotionPreference,
   applyTheme,
@@ -966,10 +970,15 @@ async function resetData(): Promise<void> {
     console.error(error);
     try {
       bootstrap.value = await repository.value.load();
-      settings.value = { ...bootstrap.value.settings };
+      settings.value = {
+        ...bootstrap.value.settings,
+        autostart: error instanceof DataResetError && error.autostartStatus === "disabled"
+          ? false
+          : bootstrap.value.settings.autostart,
+      };
       settingsDraft.value = { ...settings.value };
-      autostartWarning.value =
-        "本次清除未完整完成，请核对个人资料与开机启动状态后重试。";
+      bootstrap.value.settings = settings.value;
+      autostartWarning.value = dataResetFailureMessage(error);
       showToast(autostartWarning.value);
     } catch (loadError) {
       console.error(loadError);

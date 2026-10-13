@@ -185,6 +185,40 @@ describe("browser preview user flow", () => {
     });
   });
 
+  it("explains a partial reset and retains data until a failed deletion can be retried", async () => {
+    localStorage.setItem("weatherpoem.local.v1", JSON.stringify({
+      settings: { configured: true, cityId: "beijing" },
+      history: [],
+      favorites: ["a-favorite"],
+      feedback: [],
+    }));
+    vi.stubGlobal("confirm", vi.fn(() => true));
+    wrapper = mount(App, { attachTo: document.body });
+    await vi.waitFor(() => expect(wrapper!.find(".poem-view").exists()).toBe(true));
+    await wrapper.get('button[aria-label="设置"]').trigger("click");
+    await vi.waitFor(() => expect(wrapper!.find(".settings-panel").exists()).toBe(true));
+
+    const originalRemoveItem = localStorage.removeItem.bind(localStorage);
+    const storageSpy = vi.spyOn(localStorage, "removeItem")
+      .mockImplementation((key) => {
+        if (key === "weatherpoem.local.v1") throw new Error("storage locked");
+        return originalRemoveItem(key);
+      });
+    await wrapper.get(".settings-panel .danger-link").trigger("click");
+    await vi.waitFor(() => {
+      expect(wrapper!.get(".toast-message").text()).toContain("资料未完整清除");
+    });
+    expect(wrapper.find(".settings-panel").exists()).toBe(true);
+    expect((await (await createRepository()).load()).favorites).toEqual(["a-favorite"]);
+
+    storageSpy.mockRestore();
+    await wrapper.get(".settings-panel .danger-link").trigger("click");
+    await vi.waitFor(async () => {
+      expect(wrapper!.find(".onboarding-view").exists()).toBe(true);
+      expect((await (await createRepository()).load()).favorites).toEqual([]);
+    });
+  });
+
   it("refreshes the visible poem after local midnight without duplicating same-day history", async () => {
     vi.useFakeTimers({ toFake: ["Date"] });
     vi.setSystemTime(new Date(2026, 9, 13, 23, 59, 30));

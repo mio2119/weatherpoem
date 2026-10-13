@@ -1,6 +1,10 @@
 import { describe, expect, it, vi } from "vitest";
 import type { AppRepository } from "./persistence";
-import { clearAllLocalUserData } from "./data-reset";
+import {
+  clearAllLocalUserData,
+  DataResetError,
+  dataResetFailureMessage,
+} from "./data-reset";
 
 const autostartMocks = vi.hoisted(() => ({ syncAutostart: vi.fn() }));
 vi.mock("./desktop", () => autostartMocks);
@@ -52,7 +56,11 @@ describe("clearAllLocalUserData", () => {
         clearTransientCaches,
         disableAutostart,
       }),
-    ).rejects.toThrow("database locked");
+    ).rejects.toMatchObject({
+      phase: "storage",
+      autostartStatus: "disabled",
+      message: "database locked",
+    });
     expect(clearTransientCaches).not.toHaveBeenCalled();
     expect(disableAutostart).toHaveBeenCalledOnce();
   });
@@ -97,4 +105,33 @@ describe("clearAllLocalUserData", () => {
       expect(repository.clearUserData).toHaveBeenCalledOnce();
     },
   );
+
+  it("区分资料删除失败和缓存清理失败，向用户说明已完成的步骤", async () => {
+    const repository = createRepository();
+    const clearTransientCaches = vi.fn(() => {
+      throw new Error("cache blocked");
+    });
+    const disableAutostart = vi.fn().mockResolvedValue("disabled");
+
+    const failure = await clearAllLocalUserData(repository, {
+      clearTransientCaches,
+      disableAutostart,
+    }).catch((error: unknown) => error);
+    expect(failure).toBeInstanceOf(DataResetError);
+    expect(failure).toMatchObject({
+      phase: "cache",
+      autostartStatus: "disabled",
+    });
+    expect(dataResetFailureMessage(failure)).toContain("天气缓存");
+    expect(repository.clearUserData).toHaveBeenCalledOnce();
+  });
+
+  it("失败提示明确区分未删除资料与已关闭启动项", () => {
+    expect(dataResetFailureMessage(
+      new DataResetError("autostart", undefined, new Error("access denied")),
+    )).toContain("本地资料未清除");
+    expect(dataResetFailureMessage(
+      new DataResetError("storage", "disabled", new Error("database locked")),
+    )).toContain("开机启动已关闭，但本地资料未完整清除");
+  });
 });
