@@ -1,6 +1,9 @@
 import { flushPromises, mount, type VueWrapper } from "@vue/test-utils";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import App from "./App.vue";
+import { CONTENT_VERSION } from "./core/recommendation";
+import { POEMS } from "./data/poems";
+import { CONTENT_WITHDRAWAL_CACHE_KEY } from "./services/content-control";
 import { createRepository } from "./services/persistence";
 
 vi.mock("./services/weather", async (importOriginal) => {
@@ -33,6 +36,7 @@ beforeEach(() => {
 afterEach(() => {
   wrapper?.unmount();
   wrapper = undefined;
+  vi.restoreAllMocks();
   vi.useRealTimers();
   localStorage.clear();
   vi.unstubAllGlobals();
@@ -142,5 +146,98 @@ describe("browser preview user flow", () => {
     await flushPromises();
     const sameDay = await (await createRepository()).load();
     expect(sameDay.history).toHaveLength(3);
+  });
+
+  it("closes a withdrawn favorite during reading and lets its record be removed", async () => {
+    vi.useFakeTimers({ toFake: ["Date"] });
+    vi.setSystemTime(new Date(2026, 9, 13, 9));
+    const favoritePoem = POEMS.find((poem) => poem.id === "wang-an-shi-yuan-ri")!;
+    expect(favoritePoem).toBeDefined();
+    localStorage.setItem("weatherpoem.local.v1", JSON.stringify({
+      settings: { configured: true, cityId: "beijing" },
+      history: [],
+      favorites: [favoritePoem.id],
+      feedback: [],
+    }));
+    const intervalSpy = vi.spyOn(window, "setInterval");
+    wrapper = mount(App, { attachTo: document.body });
+    await vi.waitFor(() => expect(wrapper!.find(".poem-view").exists()).toBe(true));
+    expect(wrapper.get(".poem-view h1").text()).not.toBe(favoritePoem.title);
+
+    await wrapper.get(".context-favorites").trigger("click");
+    await wrapper.get(".favorite-open").trigger("click");
+    expect(wrapper.get(".reading-panel h1").text()).toBe(favoritePoem.title);
+    expect(wrapper.get(".full-poem").text()).toContain(favoritePoem.fullText[0]);
+
+    localStorage.setItem(CONTENT_WITHDRAWAL_CACHE_KEY, JSON.stringify({
+      schemaVersion: "1.0",
+      contentVersion: CONTENT_VERSION,
+      revision: 1,
+      issuedAt: new Date().toISOString(),
+      suspendRecommendations: false,
+      withdrawnWorkIds: [favoritePoem.id],
+    }));
+    const tick = intervalSpy.mock.calls.find(([, delay]) => delay === 30 * 60 * 1000)?.[0];
+    expect(typeof tick).toBe("function");
+    if (typeof tick === "function") tick();
+
+    await vi.waitFor(() => {
+      expect(wrapper!.find(".reading-panel").exists()).toBe(false);
+      expect(wrapper!.find(".favorites-panel").exists()).toBe(true);
+      expect(wrapper!.get(".withdrawn-favorites").text()).toContain("已撤回");
+      expect(wrapper!.find(".favorite-open").exists()).toBe(false);
+    });
+    expect((await (await createRepository()).load()).favorites).toEqual([favoritePoem.id]);
+
+    await wrapper.get(".withdrawn-favorites button").trigger("click");
+    await vi.waitFor(async () => {
+      expect((await (await createRepository()).load()).favorites).toEqual([]);
+      expect(wrapper!.find(".withdrawn-favorites").exists()).toBe(false);
+    });
+  });
+
+  it("replaces a withdrawn daily poem without exposing its original text", async () => {
+    vi.useFakeTimers({ toFake: ["Date"] });
+    vi.setSystemTime(new Date(2026, 9, 13, 9));
+    localStorage.setItem("weatherpoem.local.v1", JSON.stringify({
+      settings: { configured: true, cityId: "beijing" },
+      history: [],
+      favorites: [],
+      feedback: [],
+    }));
+    const intervalSpy = vi.spyOn(window, "setInterval");
+    wrapper = mount(App, { attachTo: document.body });
+    await vi.waitFor(() => expect(wrapper!.find(".poem-view").exists()).toBe(true));
+    const originalId = (await (await createRepository()).load()).dailyState?.workId;
+    expect(originalId).toBeDefined();
+    const originalTitle = wrapper.get(".poem-view h1").text();
+
+    localStorage.setItem(CONTENT_WITHDRAWAL_CACHE_KEY, JSON.stringify({
+      schemaVersion: "1.0",
+      contentVersion: CONTENT_VERSION,
+      revision: 1,
+      issuedAt: new Date().toISOString(),
+      suspendRecommendations: false,
+      withdrawnWorkIds: [originalId],
+    }));
+    const tick = intervalSpy.mock.calls.find(([, delay]) => delay === 30 * 60 * 1000)?.[0];
+    expect(typeof tick).toBe("function");
+    if (typeof tick === "function") tick();
+
+    await vi.waitFor(async () => {
+      expect(wrapper!.find(".poem-view").exists()).toBe(false);
+      expect(wrapper!.get(".content-correction-view").text()).toContain("今日内容正在校正");
+      expect(wrapper!.get(".content-correction-view").text()).not.toContain(originalTitle);
+      const state = (await (await createRepository()).load()).dailyState;
+      expect(state).toMatchObject({ state: "content-withdrawn", workId: originalId });
+    });
+
+    await wrapper.get(".content-correction-view button").trigger("click");
+    await vi.waitFor(async () => {
+      expect(wrapper!.get(".poem-view h1").text()).not.toBe(originalTitle);
+      const state = (await (await createRepository()).load()).dailyState;
+      expect(state?.workId).not.toBe(originalId);
+      expect(state?.state).toBe("shown");
+    });
   });
 });
