@@ -32,4 +32,20 @@ describe("reading orientation", () => {
       .toEqual(["放回它的时代", "放进今天", "词句小注"]);
     expect(wrapper.get(".edition-note").text()).toContain(poem.sourceName);
   });
+
+  it("keeps an overlong line in vertical full reading even when the glance card falls back", () => {
+    const longLine = "江天万里云水相接连绵不绝";
+    const wrapper = mount(ReadingPanel, {
+      props: {
+        poem: { ...poem, fullText: [longLine] },
+        favorite: false,
+        backLabel: "今日诗笺",
+        poemLayout: "vertical",
+        poemFontSize: "large",
+      },
+    });
+    expect(wrapper.get(".full-poem").classes()).toContain("is-vertical");
+    expect(wrapper.get(".reading-poem-frame").attributes("tabindex")).toBe("0");
+    expect(wrapper.get(".full-poem").text()).toBe(longLine);
+  });
 });

@@ -976,6 +976,13 @@ button:disabled {
   cursor: pointer;
 }
 
+.layout-fallback-note {
+  margin-left: auto;
+  color: var(--muted);
+  font-size: 11px;
+  line-height: 1.4;
+}
+
 .layout-toggle {
   min-height: 30px;
   margin: -5px 0 -5px auto;

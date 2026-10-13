@@ -115,11 +115,29 @@ describe("glance poem card", () => {
 
   it("switches to vertical columns without changing the poem text", async () => {
     const wrapper = render();
+    const initialHeightReports = wrapper.emitted("heightNeeded")?.length ?? 0;
     await wrapper.get(".layout-toggle").trigger("click");
     expect(wrapper.emitted("layoutChange")?.[0]).toEqual(["vertical"]);
     await wrapper.setProps({ poemLayout: "vertical" });
     expect(wrapper.get(".poem-lines").classes()).toContain("is-vertical");
     expect(wrapper.findAll(".poem-lines p").map((line) => line.text()).join(""))
       .toBe(recommendation.poem.excerpt.join(""));
+    expect(wrapper.emitted("heightNeeded")?.length).toBeGreaterThan(initialHeightReports);
+  });
+
+  it("shows an overlong vertical excerpt in full horizontal text without changing the preference", () => {
+    const excerpt = ["江天万里云水相接连绵不绝"];
+    const wrapper = render({
+      recommendation: {
+        ...recommendation,
+        poem: { ...recommendation.poem, excerpt },
+      },
+      poemLayout: "vertical",
+    });
+    expect(wrapper.props("poemLayout")).toBe("vertical");
+    expect(wrapper.get(".poem-lines").classes()).not.toContain("is-vertical");
+    expect(wrapper.get(".poem-lines").text()).toBe(excerpt[0]);
+    expect(wrapper.find(".layout-toggle").exists()).toBe(false);
+    expect(wrapper.get(".layout-fallback-note").text()).toContain("暂用横排");
   });
 });

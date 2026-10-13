@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed, nextTick, onBeforeUnmount, onMounted, ref, useTemplateRef, watch } from "vue";
 import { useInitialFocus } from "../composables/useInitialFocus";
-import { displayedPoemLines } from "../core/poem-layout";
+import { displayedPoemLines, glancePoemLayout } from "../core/poem-layout";
 import { selectPoemScene } from "../core/poem-scene";
 import { hideWindow } from "../services/desktop";
 import type { CalendarContext, PoemFontSize, PoemLayout, Recommendation, WeatherContext } from "../types";
@@ -29,8 +29,11 @@ const emit = defineEmits<{
 }>();
 
 const moreOpen = ref(false);
+const effectivePoemLayout = computed(() =>
+  glancePoemLayout(props.recommendation.poem.excerpt, props.poemLayout),
+);
 const poemLines = computed(() =>
-  displayedPoemLines(props.recommendation.poem.excerpt, props.poemLayout),
+  displayedPoemLines(props.recommendation.poem.excerpt, effectivePoemLayout.value),
 );
 const scene = computed(() => selectPoemScene({
   poem: props.recommendation.poem,
@@ -79,6 +82,11 @@ watch(() => props.recommendation.poem.id, async () => {
   reportContentHeight();
 });
 
+watch(() => [props.poemLayout, props.poemFontSize], async () => {
+  await nextTick();
+  reportContentHeight();
+});
+
 onBeforeUnmount(() => resizeObserver?.disconnect());
 </script>
 
@@ -116,6 +124,7 @@ onBeforeUnmount(() => resizeObserver?.disconnect());
           <h1 id="daily-poem-title">{{ recommendation.poem.title }}</h1>
           <p>{{ recommendation.poem.author }} · {{ recommendation.poem.dynasty }}</p>
           <button
+            v-if="effectivePoemLayout === poemLayout"
             class="layout-toggle"
             type="button"
             :aria-label="poemLayout === 'horizontal' ? '改为竖排诗句' : '改为横排诗句'"
@@ -123,11 +132,16 @@ onBeforeUnmount(() => resizeObserver?.disconnect());
           >
             {{ poemLayout === "horizontal" ? "竖排" : "横排" }}
           </button>
+          <span
+            v-else
+            class="layout-fallback-note"
+            title="节选较长，诗笺暂用横排；展开全文后仍可竖排阅读"
+          >节选较长，暂用横排</span>
         </div>
 
         <div
           class="poem-lines"
-          :class="{ 'is-vertical': poemLayout === 'vertical' }"
+          :class="{ 'is-vertical': effectivePoemLayout === 'vertical' }"
           role="group"
           aria-label="诗句节选"
         >
