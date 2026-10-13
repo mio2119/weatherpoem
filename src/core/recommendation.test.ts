@@ -386,6 +386,84 @@ describe("recommendPoem", () => {
     expect(unavailable.primaryContext).not.toBe("雨");
   });
 
+  it("长摘要的缓存天气理由仍明确交代天气依据", () => {
+    const poem = POEMS.find((item) => item.id === "xin-qi-ji-xi-jiang-yue")!;
+    const result = recommendPoem({
+      poems: [poem],
+      calendar: {
+        ...calendar,
+        festival: undefined,
+        solarTerm: undefined,
+        season: "summer",
+        timePeriod: "night",
+        localDate: "2026-06-18",
+      },
+      weather: {
+        ...rainyWeather,
+        kind: "clear",
+        label: "晴",
+        freshness: "stale",
+        source: "cache",
+      },
+      history: [],
+      feedback: [],
+    });
+    expect(result.primaryContext).toBe("晴");
+    expect(result.reason).toContain("天气记录");
+    expect(result.reason).not.toContain("当地正有");
+    expect(Array.from(result.reason).length).toBeLessThanOrEqual(40);
+  });
+
+  it("全目录天气作品的缓存与隔离理由都保留来源语义", () => {
+    const weatherLabels: Record<Exclude<WeatherContext["kind"], "unknown">, string> = {
+      clear: "晴",
+      cloudy: "多云",
+      overcast: "阴",
+      "light-rain": "小雨",
+      rain: "雨",
+      "heavy-rain": "大雨",
+      snow: "雪",
+      fog: "雾",
+      wind: "风",
+      thunderstorm: "雷暴",
+      hot: "炎热",
+      cold: "严寒",
+    };
+    for (const poem of POEMS) {
+      const kind = poem.tags.weather[0];
+      if (!kind || kind === "unknown") continue;
+      for (const source of ["cache", "synthetic"] as const) {
+        const label = source === "synthetic"
+          ? `${weatherLabels[kind]}（隔离演练）`
+          : weatherLabels[kind];
+        const result = recommendPoem({
+          poems: [poem],
+          calendar: {
+            ...calendar,
+            festival: undefined,
+            solarTerm: undefined,
+            season: poem.tags.seasons[0] ?? calendar.season,
+          },
+          weather: {
+            ...rainyWeather,
+            kind,
+            label,
+            freshness: source === "cache" ? "stale" : "fresh",
+            source,
+          },
+          history: [],
+          feedback: [],
+        });
+        expect(result.primaryContext).toBe(label);
+        expect(result.reason).toContain(
+          source === "cache" ? "天气记录" : "演练",
+        );
+        expect(result.reason).not.toContain("当地正有");
+        expect(Array.from(result.reason).length).toBeLessThanOrEqual(40);
+      }
+    }
+  });
+
   it("120 首单作品在节日、天气、节气和离线情境中理由完整", () => {
     for (const poem of POEMS) {
       const context = {

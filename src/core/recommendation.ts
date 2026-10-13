@@ -10,7 +10,7 @@ import type {
 import { feedbackLocalDate } from "./daily-behavior";
 import { buildCalendarContext } from "./date-context";
 
-export const RULE_VERSION = "1.2.0";
+export const RULE_VERSION = "1.2.1";
 export const CONTENT_VERSION = "2026.07.1";
 
 interface RecommendationInput {
@@ -186,15 +186,24 @@ function completeSentence(value: string): string {
   return `${value.trim().replace(/[，。！？；]+$/u, "")}。`;
 }
 
-function reasonWithContext(context: string, summary: string): string {
+function reasonWithContext(
+  context: string,
+  summary: string,
+  compactContext?: string,
+): string {
   const completeSummary = completeSentence(summary);
   const contextual = completeSentence(
     `${context}，${completeSummary.slice(0, -1)}`,
   );
+  if (Array.from(contextual).length <= 40) return contextual;
+  if (compactContext) {
+    const compact = completeSentence(
+      `${compactContext}，${completeSummary.slice(0, -1)}`,
+    );
+    if (Array.from(compact).length <= 40) return compact;
+  }
   // Prefer a full summary over cutting a Chinese sentence mid-clause.
-  return Array.from(contextual).length <= 40
-    ? contextual
-    : completeSummary;
+  return completeSummary;
 }
 
 const SEASON_LABELS = {
@@ -226,6 +235,7 @@ function buildReason(
     weather.kind !== "unknown" &&
     poem.tags.weather.includes(weather.kind)
   ) {
+    const rehearsalLabel = weather.label.replace(/（隔离演练）$/u, "");
     return {
       primaryContext: weather.label,
       reason: reasonWithContext(
@@ -235,6 +245,11 @@ function buildReason(
             ? `当地正有${weather.label}`
             : `最近的天气记录显示${weather.label}`,
         poem.oneLineSummary,
+        weather.source === "synthetic"
+          ? `演练天气：${rehearsalLabel}`
+          : weather.freshness === "fresh"
+            ? `当地天气为${weather.label}`
+            : `天气记录为${weather.label}`,
       ),
     };
   }
