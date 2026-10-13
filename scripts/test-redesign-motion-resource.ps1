@@ -1,6 +1,6 @@
 param(
     [ValidatePattern('^[a-z0-9][a-z0-9-]{0,39}$')]
-    [string]$CandidateName = 'motion-20261013'
+    [string]$CandidateName = 'motion-probe-20261013'
 )
 
 Set-StrictMode -Version Latest
@@ -157,6 +157,25 @@ function Start-IsolatedScene {
             [string]$marker.readyView -ne 'poem') {
             throw 'Ready marker does not identify the expected isolated poem scene.'
         }
+        $sceneMotion = $marker.sceneMotion
+        if ($null -eq $sceneMotion -or
+            [string]$sceneMotion.sceneKind -ne 'rain' -or
+            -not [bool]$sceneMotion.sceneActive -or
+            [string]$sceneMotion.visibilityState -ne 'visible' -or
+            [bool]$sceneMotion.systemReduced -or
+            [bool]$sceneMotion.appReduced -ne $ReduceMotion) {
+            throw 'Computed scene or system motion state is not suitable for this comparison.'
+        }
+        if ($ReduceMotion) {
+            if ([string]$sceneMotion.animationName -ne 'none') {
+                throw 'Static preference still has a running scene animation.'
+            }
+        }
+        elseif ([string]$sceneMotion.animationName -ne 'scene-drift' -or
+            [string]$sceneMotion.animationIterationCount -ne 'infinite' -or
+            [string]$sceneMotion.animationDuration -ne '16s') {
+            throw 'Expected rain animation is not active in the native WebView.'
+        }
         return [pscustomobject]@{ process = $process; marker = $marker; runId = $runId }
     }
     catch {
@@ -243,7 +262,7 @@ try {
         $static.durationSeconds -ge 60 -and $motion.durationSeconds -ge 60 -and
         $cpuDelta -le 2.0 -and $memoryDelta -le 20.0
     $report = [ordered]@{
-        schemaVersion = '1.0'
+        schemaVersion = '1.1'
         testKind = 'isolated-motion-resource-comparison'
         generatedAt = [DateTime]::UtcNow.ToString('o')
         artifact = [ordered]@{ path = $artifactRelativePath; sha256 = $exeHash }
@@ -266,7 +285,8 @@ try {
         limitations = [ordered]@{
             syntheticWeatherNotRealLocalWeather = $true
             visibleMotionRecordingCaptured = $false
-            systemReducedMotionMediaQueryChecked = $false
+            systemReducedMotionMediaQueryChecked = $true
+            computedSceneAnimationVerified = $true
             a7OverallSatisfied = $false
         }
         result = if ($thresholdSatisfied) { 'resource-comparison-passed' } else { 'resource-comparison-failed' }

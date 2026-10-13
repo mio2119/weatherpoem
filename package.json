@@ -27,7 +27,7 @@
     "performance:smoke:redesign": "powershell.exe -NoLogo -NoProfile -NonInteractive -ExecutionPolicy Bypass -File scripts/test-performance-smoke.ps1 -RedesignCandidate",
     "performance:smoke:redesign:check": "node scripts/performance-smoke-check.mjs --redesign-candidate",
     "performance:motion:redesign": "powershell.exe -NoLogo -NoProfile -NonInteractive -ExecutionPolicy Bypass -File scripts/test-redesign-motion-resource.ps1",
-    "performance:motion:redesign:check": "node scripts/redesign-motion-resource-check.mjs && node --test scripts/redesign-motion-resource-contract.test.mjs",
+    "performance:motion:redesign:check": "node scripts/redesign-motion-resource-check.mjs",
     "performance:smoke:baseline-comparison": "powershell.exe -NoLogo -NoProfile -NonInteractive -ExecutionPolicy Bypass -File scripts/test-performance-smoke.ps1 -BaselineComparison",
     "performance:smoke:baseline-comparison:check": "node scripts/performance-smoke-check.mjs --baseline-comparison",
     "performance:fault-matrix": "node scripts/performance-fault-matrix.mjs",

@@ -70,6 +70,26 @@ test("同诗境静动资源报告由原始样本重算且绑定 EXE", () => {
   assert.equal(result.thresholdSatisfied, true);
 });
 
+test("原生计算样式证明雨纹确实仅在动态偏好下循环", () => {
+  const measured = report();
+  measured.schemaVersion = "1.1";
+  measured.results.static.readyMarker.sceneMotion = {
+    sceneKind: "rain", appReduced: true, systemReduced: false,
+    sceneActive: true, visibilityState: "visible", animationName: "none",
+  };
+  measured.results.motion.readyMarker.sceneMotion = {
+    sceneKind: "rain", appReduced: false, systemReduced: false,
+    sceneActive: true, visibilityState: "visible", animationName: "scene-drift",
+    animationDuration: "16s", animationIterationCount: "infinite",
+  };
+  measured.limitations.systemReducedMotionMediaQueryChecked = true;
+  measured.limitations.computedSceneAnimationVerified = true;
+  assert.equal(validateMotionResourceReport(measured, exeBytes).computedMotionVerified, true);
+
+  measured.results.motion.readyMarker.sceneMotion.systemReduced = true;
+  assert.throws(() => validateMotionResourceReport(measured, exeBytes));
+});
+
 test("样本、作品、哈希或隔离声明被篡改时拒绝报告", () => {
   const alteredSample = report();
   alteredSample.results.motion.samples[0].cpuDeltaMs = 100;

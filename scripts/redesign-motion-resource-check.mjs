@@ -17,13 +17,28 @@ function p95(values) {
   return ordered[Math.ceil(ordered.length * 0.95) - 1];
 }
 
-function checkRun(run, label, scenario) {
+function checkRun(run, label, scenario, schemaVersion) {
   assert.equal(run.label, label);
   assert.equal(run.reduceMotion, label === "static");
   assert.equal(run.readyMarker.schemaVersion, "1.2");
   assert.equal(run.readyMarker.runId, run.runId);
   assert.equal(run.readyMarker.readyView, "poem");
   assert.equal(run.readyMarker.performanceScenario, scenario);
+  if (schemaVersion === "1.1") {
+    const scene = run.readyMarker.sceneMotion;
+    assert.equal(scene.sceneKind, "rain");
+    assert.equal(scene.appReduced, label === "static");
+    assert.equal(scene.systemReduced, false);
+    assert.equal(scene.sceneActive, true);
+    assert.equal(scene.visibilityState, "visible");
+    if (label === "static") {
+      assert.equal(scene.animationName, "none");
+    } else {
+      assert.equal(scene.animationName, "scene-drift");
+      assert.equal(scene.animationDuration, "16s");
+      assert.equal(scene.animationIterationCount, "infinite");
+    }
+  }
   assert.ok(run.readyMarker.readyMode === "offline-rules" || run.readyMarker.readyMode === "live-weather");
   assert.ok(typeof run.dailyState.local_date === "string" && /^\d{4}-\d{2}-\d{2}$/.test(run.dailyState.local_date));
   assert.ok(typeof run.dailyState.work_id === "string" && run.dailyState.work_id.length > 0);
@@ -55,7 +70,7 @@ function checkRun(run, label, scenario) {
 }
 
 export function validateMotionResourceReport(report, exeBytes) {
-  assert.equal(report.schemaVersion, "1.0");
+  assert.ok(report.schemaVersion === "1.0" || report.schemaVersion === "1.1");
   assert.equal(report.testKind, "isolated-motion-resource-comparison");
   assert.equal(report.scenario, "scene-rain");
   assert.equal(report.isolation.profile, "system-temp-only");
@@ -69,8 +84,8 @@ export function validateMotionResourceReport(report, exeBytes) {
   assert.equal(report.thresholds.memoryP95IncreaseMiB, 20);
 
   const { static: staticRun, motion: motionRun } = report.results;
-  checkRun(staticRun, "static", report.scenario);
-  checkRun(motionRun, "motion", report.scenario);
+  checkRun(staticRun, "static", report.scenario, report.schemaVersion);
+  checkRun(motionRun, "motion", report.scenario, report.schemaVersion);
   assert.notEqual(staticRun.runId, motionRun.runId);
   const samePoem = staticRun.dailyState.local_date === motionRun.dailyState.local_date &&
     staticRun.dailyState.work_id === motionRun.dailyState.work_id;
@@ -84,13 +99,17 @@ export function validateMotionResourceReport(report, exeBytes) {
   assert.equal(report.results.resourceThresholdSatisfied, thresholdSatisfied);
   assert.equal(report.result, thresholdSatisfied ? "resource-comparison-passed" : "resource-comparison-failed");
   assert.equal(report.limitations.syntheticWeatherNotRealLocalWeather, true);
+  if (report.schemaVersion === "1.1") {
+    assert.equal(report.limitations.systemReducedMotionMediaQueryChecked, true);
+    assert.equal(report.limitations.computedSceneAnimationVerified, true);
+  }
   assert.equal(report.limitations.a7OverallSatisfied, false);
-  return { cpuDelta, memoryDelta, thresholdSatisfied };
+  return { cpuDelta, memoryDelta, thresholdSatisfied, computedMotionVerified: report.schemaVersion === "1.1" };
 }
 
 const invokedPath = process.argv[1] ? path.resolve(process.argv[1]) : "";
 if (invokedPath === fileURLToPath(import.meta.url)) {
-  const candidateName = process.argv[2] ?? "motion-20261013";
+  const candidateName = process.argv[2] ?? "motion-probe-20261013";
   assert.match(candidateName, /^[a-z0-9][a-z0-9-]{0,39}$/);
   const expectedArtifact = `.work/redesign-${candidateName}/release/weatherpoem.exe`;
   const reportPath = path.join(projectRoot, "review", "redesign", "evidence", `T07_MOTION_RESOURCE_${candidateName}.json`);

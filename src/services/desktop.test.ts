@@ -8,6 +8,7 @@ import {
 } from "vitest";
 import {
   classifyFrontendReady,
+  collectSceneMotionProbe,
   completeAppExit,
   fitGlanceWindowHeight,
   hideWindow,
@@ -107,6 +108,43 @@ describe("desktop reveal focus policy", () => {
     await showWindow(false);
     await minimizeWindow();
     expect(document.documentElement.dataset.sceneActive).toBe("false");
+  });
+
+  it("records computed scene animation and reduced-motion states", () => {
+    const paper = document.createElement("article");
+    paper.className = "poem-paper";
+    paper.dataset.scene = "rain";
+    document.body.append(paper);
+    document.documentElement.dataset.motion = "normal";
+    document.documentElement.dataset.sceneActive = "true";
+    const originalMatchMedia = window.matchMedia;
+    const styleSpy = vi.spyOn(window, "getComputedStyle").mockReturnValue({
+      animationName: "scene-drift",
+      animationDuration: "16s",
+      animationIterationCount: "infinite",
+    } as CSSStyleDeclaration);
+    Object.defineProperty(window, "matchMedia", {
+      configurable: true,
+      value: () => ({ matches: false }),
+    });
+    try {
+      expect(collectSceneMotionProbe()).toMatchObject({
+        sceneKind: "rain",
+        appReduced: false,
+        systemReduced: false,
+        sceneActive: true,
+        animationName: "scene-drift",
+        animationDuration: "16s",
+        animationIterationCount: "infinite",
+      });
+    } finally {
+      styleSpy.mockRestore();
+      Object.defineProperty(window, "matchMedia", {
+        configurable: true,
+        value: originalMatchMedia,
+      });
+      paper.remove();
+    }
   });
 });
 

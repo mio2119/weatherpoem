@@ -73,6 +73,33 @@ export interface FrontendReadyContext {
   viewRenderStartedAtMs: number;
 }
 
+export interface SceneMotionProbe {
+  sceneKind: string;
+  appReduced: boolean;
+  systemReduced: boolean;
+  sceneActive: boolean;
+  visibilityState: DocumentVisibilityState;
+  animationName: string;
+  animationDuration: string;
+  animationIterationCount: string;
+}
+
+export function collectSceneMotionProbe(): SceneMotionProbe | null {
+  const paper = document.querySelector<HTMLElement>(".poem-paper[data-scene]");
+  if (!paper) return null;
+  const animation = window.getComputedStyle(paper, "::before");
+  return {
+    sceneKind: paper.dataset.scene ?? "",
+    appReduced: document.documentElement.dataset.motion === "reduced",
+    systemReduced: window.matchMedia("(prefers-reduced-motion: reduce)").matches,
+    sceneActive: document.documentElement.dataset.sceneActive === "true",
+    visibilityState: document.visibilityState,
+    animationName: animation.animationName,
+    animationDuration: animation.animationDuration,
+    animationIterationCount: animation.animationIterationCount,
+  };
+}
+
 export function classifyFrontendReady(input: {
   configured: boolean;
   hasError: boolean;
@@ -148,12 +175,14 @@ export async function reportFrontendReady(
   const frontendElapsedMs = window.performance.now();
   const viewRenderMs =
     frontendElapsedMs - context.viewRenderStartedAtMs;
+  const sceneMotion = context.view === "poem" ? collectSceneMotionProbe() : null;
   const { invoke } = await import("@tauri-apps/api/core");
   await invoke("report_frontend_ready", {
     frontendElapsedMs,
     readyView: context.view,
     readyMode: context.mode,
     viewRenderMs,
+    sceneMotion,
   });
 }
 

@@ -44,7 +44,21 @@ struct PerformanceProbe {
     ready_mode: String,
     view_render_ms: f64,
     performance_scenario: Option<String>,
+    scene_motion: Option<SceneMotionProbe>,
     recorded_at_unix_ms: u128,
+}
+
+#[derive(serde::Deserialize, serde::Serialize)]
+#[serde(rename_all = "camelCase")]
+struct SceneMotionProbe {
+    scene_kind: String,
+    app_reduced: bool,
+    system_reduced: bool,
+    scene_active: bool,
+    visibility_state: String,
+    animation_name: String,
+    animation_duration: String,
+    animation_iteration_count: String,
 }
 
 #[tauri::command]
@@ -226,6 +240,7 @@ fn report_frontend_ready(
     ready_view: String,
     ready_mode: String,
     view_render_ms: f64,
+    scene_motion: Option<SceneMotionProbe>,
 ) -> Result<(), String> {
     let Some(probe_path) = std::env::var_os("WEATHERPOEM_PERFORMANCE_PROBE") else {
         return Ok(());
@@ -290,6 +305,7 @@ fn report_frontend_ready(
             .get()
             .and_then(Option::as_ref)
             .and_then(|profile| profile.scenario.clone()),
+        scene_motion,
         recorded_at_unix_ms,
     };
     let payload =
