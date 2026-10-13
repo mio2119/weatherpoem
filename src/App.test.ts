@@ -33,6 +33,7 @@ beforeEach(() => {
 afterEach(() => {
   wrapper?.unmount();
   wrapper = undefined;
+  vi.useRealTimers();
   localStorage.clear();
   vi.unstubAllGlobals();
 });
@@ -86,5 +87,60 @@ describe("browser preview user flow", () => {
       .toBe("vertical");
     expect(wrapper.get<HTMLSelectElement>('select[name="poem-font-size"]').element.value)
       .toBe("large");
+  });
+
+  it("refreshes the visible poem after local midnight without duplicating same-day history", async () => {
+    vi.useFakeTimers({ toFake: ["Date"] });
+    vi.setSystemTime(new Date(2026, 9, 13, 23, 59, 30));
+    localStorage.setItem("weatherpoem.local.v1", JSON.stringify({
+      settings: { configured: true, cityId: "beijing" },
+      history: [],
+      favorites: [],
+      feedback: [],
+    }));
+    wrapper = mount(App, { attachTo: document.body });
+    await vi.waitFor(() => expect(wrapper!.find(".poem-view").exists()).toBe(true));
+    expect(wrapper.get(".context-strip strong").text()).toBe("10月13日");
+    const first = await (await createRepository()).load();
+    expect(first.dailyState?.localDate).toBe("2026-10-13");
+    expect(first.history).toHaveLength(1);
+
+    await wrapper.get(".more-action").trigger("click");
+    const replace = wrapper.findAll(".secondary-actions button")[0]!;
+    expect(replace.attributes("disabled")).toBeUndefined();
+    await replace.trigger("click");
+    await vi.waitFor(async () => {
+      const replaced = await (await createRepository()).load();
+      expect(replaced.feedback.map((item) => item.localDate)).toEqual(["2026-10-13"]);
+      expect(replaced.history.map((item) => item.localDate)).toEqual([
+        "2026-10-13",
+        "2026-10-13",
+      ]);
+    });
+    await wrapper.get(".more-action").trigger("click");
+    expect(wrapper.findAll(".secondary-actions button")[0]!.attributes("disabled"))
+      .toBeDefined();
+
+    vi.setSystemTime(new Date(2026, 9, 14, 0, 1));
+    window.dispatchEvent(new Event("focus"));
+    await vi.waitFor(async () => {
+      const next = await (await createRepository()).load();
+      expect(next.dailyState?.localDate).toBe("2026-10-14");
+      expect(next.history.map((item) => item.localDate)).toEqual([
+        "2026-10-14",
+        "2026-10-13",
+        "2026-10-13",
+      ]);
+      expect(wrapper!.get(".context-strip strong").text()).toBe("10月14日");
+    });
+
+    await wrapper.get(".more-action").trigger("click");
+    expect(wrapper.findAll(".secondary-actions button")[0]!.attributes("disabled"))
+      .toBeUndefined();
+
+    window.dispatchEvent(new Event("focus"));
+    await flushPromises();
+    const sameDay = await (await createRepository()).load();
+    expect(sameDay.history).toHaveLength(3);
   });
 });
