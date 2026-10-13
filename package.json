@@ -28,6 +28,8 @@
     "performance:smoke:redesign:check": "node scripts/performance-smoke-check.mjs --redesign-candidate",
     "performance:motion:redesign": "powershell.exe -NoLogo -NoProfile -NonInteractive -ExecutionPolicy Bypass -File scripts/test-redesign-motion-resource.ps1",
     "performance:motion:redesign:check": "node scripts/redesign-motion-resource-check.mjs",
+    "performance:motion:system-reduced": "node scripts/test-redesign-system-reduced-motion.mjs",
+    "performance:motion:system-reduced:check": "node scripts/test-redesign-system-reduced-motion.mjs --check",
     "performance:smoke:baseline-comparison": "powershell.exe -NoLogo -NoProfile -NonInteractive -ExecutionPolicy Bypass -File scripts/test-performance-smoke.ps1 -BaselineComparison",
     "performance:smoke:baseline-comparison:check": "node scripts/performance-smoke-check.mjs --baseline-comparison",
     "performance:fault-matrix": "node scripts/performance-fault-matrix.mjs",
