@@ -316,14 +316,14 @@ function findPoem(workId?: string): Poem | undefined {
   return availablePoems.value.find((item) => item.id === workId);
 }
 
-function recommendationFor(workId?: string): Recommendation {
-  const retained = findPoem(workId);
+function recommendationFor(retained?: Poem): Recommendation {
   return recommendPoem({
     poems: retained ? [retained] : availablePoems.value,
     calendar: calendar.value,
     weather: weather.value,
     history: bootstrap.value.history,
     feedback: bootstrap.value.feedback,
+    retainedWorkId: retained?.id,
   });
 }
 
@@ -543,11 +543,15 @@ async function loadToday(
   contentCorrectionPending.value = false;
   const retainedId =
     !forceNew &&
-    bootstrap.value.dailyState?.localDate === calendar.value.localDate
+    bootstrap.value.dailyState?.localDate === calendar.value.localDate &&
+    (bootstrap.value.dailyState.state === "shown" ||
+      bootstrap.value.dailyState.state === "retained" ||
+      bootstrap.value.dailyState.state === "alert-suppressed")
       ? bootstrap.value.dailyState.workId
       : undefined;
+  const retainedPoem = findPoem(retainedId);
   recommendation.value = await enrichRecommendationReason(
-    recommendationFor(retainedId),
+    recommendationFor(retainedPoem),
     calendar.value,
     weather.value,
   );
@@ -568,7 +572,7 @@ async function loadToday(
   }
   await persistRecommendation(
     recommendation.value,
-    retainedId ? "retained" : "shown",
+    retainedPoem ? "retained" : "shown",
   );
   await recordPilotActivity("poem-presented");
 }

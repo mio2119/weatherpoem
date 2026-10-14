@@ -167,4 +167,32 @@ describe("AI reason adapter", () => {
     expect(result).toEqual(recommendation);
     expect(fetcher).not.toHaveBeenCalled();
   });
+
+  it("当天保留的跨季旧诗不交给远端重写成当前天气理由", async () => {
+    const poem = POEMS.find((item) => item.id === "fan-cheng-da-si-shi-tian-yuan-mei-zi")!;
+    const autumn = {
+      ...calendar,
+      localDate: "2026-10-14",
+      season: "autumn" as const,
+      solarTerm: undefined,
+      festival: undefined,
+    };
+    const retained = recommendPoem({
+      poems: [poem],
+      calendar: autumn,
+      weather,
+      history: [],
+      feedback: [],
+      retainedWorkId: poem.id,
+    });
+    const fetcher = vi.fn<typeof fetch>();
+    const result = await enrichRecommendationReason(
+      retained,
+      autumn,
+      weather,
+      { endpoint: "http://127.0.0.1:8787/reason", fetcher },
+    );
+    expect(result).toEqual(retained);
+    expect(fetcher).not.toHaveBeenCalled();
+  });
 });

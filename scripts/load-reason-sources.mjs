@@ -1,6 +1,6 @@
 import { build } from "vite";
 
-async function loadBundledModule(projectRoot, entry) {
+export async function loadBundledModule(projectRoot, entry) {
   // The middleware SSR module runner can time out on Windows while resolving
   // ordinary source imports. A write-free SSR bundle avoids that transport.
   const result = await build({
@@ -14,7 +14,7 @@ async function loadBundledModule(projectRoot, entry) {
     ? result.flatMap((item) => item.output)
     : result.output;
   const chunk = output.find((item) => item.type === "chunk" && item.isEntry);
-  if (!chunk) throw new Error(`无法载入理由源模块：${entry}`);
+  if (!chunk) throw new Error(`无法载入源模块：${entry}`);
   const encoded = Buffer.from(chunk.code).toString("base64");
   return import(`data:text/javascript;base64,${encoded}`);
 }

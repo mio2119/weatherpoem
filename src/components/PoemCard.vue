@@ -3,6 +3,7 @@ import { computed, nextTick, onBeforeUnmount, onMounted, ref, useTemplateRef, wa
 import { useInitialFocus } from "../composables/useInitialFocus";
 import { displayedPoemLines, glancePoemLayout } from "../core/poem-layout";
 import { selectPoemScene } from "../core/poem-scene";
+import { RETAINED_CONTEXT } from "../core/recommendation";
 import { hideWindow } from "../services/desktop";
 import type { CalendarContext, PoemFontSize, PoemLayout, Recommendation, WeatherContext } from "../types";
 import IconSymbol from "./IconSymbol.vue";
@@ -42,6 +43,7 @@ const scene = computed(() => selectPoemScene({
   poem: props.recommendation.poem,
   calendar: props.calendar,
   weather: props.weather,
+  retainedSelection: props.recommendation.primaryContext === RETAINED_CONTEXT,
 }));
 const contentMeasure = useTemplateRef<HTMLElement>("contentMeasure");
 let resizeObserver: ResizeObserver | undefined;

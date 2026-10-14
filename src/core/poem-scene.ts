@@ -1,6 +1,6 @@
 import type { CalendarContext, Poem, WeatherContext } from "../types";
 
-export type PoemSceneKind = "festival" | "rain" | "snow" | "sun" | "night" | "season";
+export type PoemSceneKind = "festival" | "rain" | "snow" | "sun" | "night" | "season" | "neutral";
 
 export interface PoemScene {
   kind: PoemSceneKind;
@@ -13,13 +13,21 @@ export function selectPoemScene(input: {
   poem: Poem;
   calendar: CalendarContext;
   weather: WeatherContext;
+  retainedSelection?: boolean;
 }): PoemScene {
-  const { poem, calendar, weather } = input;
+  const { poem, calendar, weather, retainedSelection } = input;
   if (weather.shouldSuppressPoem) {
     return {
       kind: "season",
       glyph: "安",
       description: "安全提醒优先；普通诗境不展示",
+    };
+  }
+  if (retainedSelection) {
+    return {
+      kind: "neutral",
+      glyph: "诗",
+      description: "今日已选作品；背景不代表当前天气或季节",
     };
   }
   if (calendar.festival && poem.tags.festivals.includes(calendar.festival)) {

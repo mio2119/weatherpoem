@@ -10,8 +10,9 @@ import type {
 import { feedbackLocalDate } from "./daily-behavior";
 import { buildCalendarContext } from "./date-context";
 
-export const RULE_VERSION = "1.2.1";
+export const RULE_VERSION = "1.2.2";
 export const CONTENT_VERSION = "2026.07.1";
+export const RETAINED_CONTEXT = "今日已选";
 
 interface RecommendationInput {
   poems: Poem[];
@@ -20,6 +21,7 @@ interface RecommendationInput {
   history: RecommendationHistoryItem[];
   feedback: FeedbackItem[];
   excludedWorkId?: string;
+  retainedWorkId?: string;
 }
 
 function stableFraction(value: string): number {
@@ -275,6 +277,23 @@ function buildReason(
 }
 
 export function recommendPoem(input: RecommendationInput): Recommendation {
+  // The caller must supply this ID only for a work already shown today.
+  // It is a reading-continuity exception, never a new-selection candidate.
+  const retained =
+    input.retainedWorkId && input.retainedWorkId !== input.excludedWorkId
+      ? input.poems.find((poem) => poem.id === input.retainedWorkId)
+      : undefined;
+  if (retained && !isSeasonallyEligible(retained, input.calendar)) {
+    const breakdown = scorePoem(retained, input);
+    return {
+      poem: retained,
+      breakdown,
+      score: totalScore(breakdown),
+      reason: "今天已选过这首诗，继续读它。",
+      primaryContext: RETAINED_CONTEXT,
+      source: "fallback",
+    };
+  }
   const daysSince = (poem: Poem) => daysSinceLastDisplay(
     poem.id,
     input.history,

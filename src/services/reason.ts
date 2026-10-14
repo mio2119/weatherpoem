@@ -5,6 +5,7 @@ import type {
 } from "../types";
 import {
   CONTENT_VERSION,
+  RETAINED_CONTEXT,
   RULE_VERSION,
 } from "../core/recommendation";
 
@@ -143,6 +144,7 @@ export async function enrichRecommendationReason(
   if (
     !endpoint ||
     !isAllowedReasonServiceUrl(endpoint) ||
+    recommendation.primaryContext === RETAINED_CONTEXT ||
     weather.shouldSuppressPoem ||
     weather.freshness === "unavailable"
   ) {

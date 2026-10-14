@@ -83,4 +83,17 @@ describe("poem scene grounding", () => {
       description: "抽象季节纹样，不代表当地实时天气",
     });
   });
+
+  it("uses neutral art for an old same-day poem kept outside the current season", () => {
+    expect(selectPoemScene({
+      poem: festivalPoem,
+      calendar: baseCalendar,
+      weather: baseWeather,
+      retainedSelection: true,
+    })).toMatchObject({
+      kind: "neutral",
+      glyph: "诗",
+      description: "今日已选作品；背景不代表当前天气或季节",
+    });
+  });
 });

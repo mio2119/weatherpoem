@@ -44,6 +44,84 @@ afterEach(() => {
 });
 
 describe("browser preview user flow", () => {
+  it("continues a same-day legacy poem even when the new season filter excludes new selection", async () => {
+    vi.useFakeTimers({ toFake: ["Date"] });
+    vi.setSystemTime(new Date(2026, 9, 14, 9));
+    localStorage.setItem("weatherpoem.local.v1", JSON.stringify({
+      settings: { configured: true, cityId: "beijing" },
+      dailyState: {
+        localDate: "2026-10-14",
+        state: "shown",
+        workId: "fan-cheng-da-si-shi-tian-yuan-mei-zi",
+        contentVersion: "legacy",
+        ruleVersion: "legacy",
+      },
+      history: [],
+      favorites: [],
+      feedback: [],
+    }));
+    wrapper = mount(App, { attachTo: document.body });
+    await vi.waitFor(() => expect(wrapper!.find(".poem-view").exists()).toBe(true));
+    expect(wrapper.get("#daily-poem-title").text())
+      .toBe("四时田园杂兴·梅子金黄杏子肥");
+    expect(wrapper.get(".reason-block").text()).toContain("今天已选");
+    expect(wrapper.get(".poem-paper").attributes("data-scene")).toBe("neutral");
+    expect(wrapper.find(".error-view").exists()).toBe(false);
+    const saved = await (await createRepository()).load();
+    expect(saved.dailyState?.workId).toBe("fan-cheng-da-si-shi-tian-yuan-mei-zi");
+  });
+
+  it("does not carry an old cross-season poem into the next local day", async () => {
+    vi.useFakeTimers({ toFake: ["Date"] });
+    vi.setSystemTime(new Date(2026, 9, 14, 9));
+    localStorage.setItem("weatherpoem.local.v1", JSON.stringify({
+      settings: { configured: true, cityId: "beijing" },
+      dailyState: {
+        localDate: "2026-10-13",
+        state: "shown",
+        workId: "fan-cheng-da-si-shi-tian-yuan-mei-zi",
+        contentVersion: "legacy",
+        ruleVersion: "legacy",
+      },
+      history: [], favorites: [], feedback: [],
+    }));
+    wrapper = mount(App, { attachTo: document.body });
+    await vi.waitFor(() => expect(wrapper!.find(".poem-view").exists()).toBe(true));
+    expect(wrapper!.get("#daily-poem-title").text())
+      .not.toBe("四时田园杂兴·梅子金黄杏子肥");
+    const saved = await (await createRepository()).load();
+    expect(saved.dailyState).toMatchObject({ localDate: "2026-10-14", state: "shown" });
+  });
+
+  it("does not retain withdrawn old content even when it was shown today", async () => {
+    vi.useFakeTimers({ toFake: ["Date"] });
+    vi.setSystemTime(new Date(2026, 9, 14, 9));
+    const workId = "fan-cheng-da-si-shi-tian-yuan-mei-zi";
+    localStorage.setItem("weatherpoem.local.v1", JSON.stringify({
+      settings: { configured: true, cityId: "beijing" },
+      dailyState: {
+        localDate: "2026-10-14", state: "shown", workId,
+        contentVersion: "legacy", ruleVersion: "legacy",
+      },
+      history: [], favorites: [], feedback: [],
+    }));
+    localStorage.setItem(CONTENT_WITHDRAWAL_CACHE_KEY, JSON.stringify({
+      schemaVersion: "1.0",
+      contentVersion: CONTENT_VERSION,
+      revision: 1,
+      issuedAt: new Date().toISOString(),
+      suspendRecommendations: false,
+      withdrawnWorkIds: [workId],
+    }));
+    wrapper = mount(App, { attachTo: document.body });
+    await vi.waitFor(() => expect(wrapper!.find(".content-correction-view").exists()).toBe(true));
+    expect(wrapper!.find(".poem-view").exists()).toBe(false);
+    expect(wrapper!.get(".content-correction-view").text())
+      .not.toContain("四时田园杂兴·梅子金黄杏子肥");
+    expect((await (await createRepository()).load()).dailyState)
+      .toMatchObject({ state: "content-withdrawn", workId });
+  });
+
   it("keeps a settings draft through favorites and persists it across remounts", async () => {
     localStorage.setItem("weatherpoem.local.v1", JSON.stringify({
       settings: { configured: true, cityId: "beijing" },

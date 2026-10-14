@@ -362,6 +362,44 @@ describe("recommendPoem", () => {
     ).toThrow("当前情境下没有适合推荐的作品");
   });
 
+  it("只为当天已经展示的旧作品保留跨季入口，不把它当作新候选", () => {
+    const summerOnly = POEMS.find(
+      (poem) => poem.id === "fan-cheng-da-si-shi-tian-yuan-mei-zi",
+    )!;
+    const autumn = buildCalendarContext(new Date(2026, 9, 14, 9));
+    const input = {
+      poems: [summerOnly],
+      calendar: autumn,
+      weather: { ...rainyWeather, kind: "unknown" as const, freshness: "unavailable" as const },
+      history: [],
+      feedback: [],
+    };
+    expect(() => recommendPoem(input)).toThrow("当前情境下没有适合推荐的作品");
+    const retained = recommendPoem({ ...input, retainedWorkId: summerOnly.id });
+    expect(retained.poem.id).toBe(summerOnly.id);
+    expect(retained.primaryContext).toBe("今日已选");
+    expect(retained.reason).toContain("今天已选");
+    expect(retained.reason).not.toContain("秋日");
+    expect(retained.source).toBe("fallback");
+    expect(() => recommendPoem({ ...input, retainedWorkId: "missing" }))
+      .toThrow("当前情境下没有适合推荐的作品");
+    expect(() => recommendPoem({
+      ...input,
+      retainedWorkId: summerOnly.id,
+      excludedWorkId: summerOnly.id,
+    })).toThrow("当前情境下没有适合推荐的作品");
+    const normalAutumn = POEMS.find((poem) =>
+      poem.tags.seasons.includes("autumn") && poem.id !== summerOnly.id,
+    )!;
+    expect(recommendPoem({ ...input, poems: [summerOnly, normalAutumn] }).poem.id)
+      .not.toBe(summerOnly.id);
+    expect(recommendPoem({
+      ...input,
+      poems: [summerOnly, normalAutumn],
+      retainedWorkId: summerOnly.id,
+    }).poem.id).toBe(summerOnly.id);
+  });
+
   it("缓存天气不被写成实时天气，不可用天气不作为推荐依据", () => {
     const winterCalendar = {
       ...calendar,
