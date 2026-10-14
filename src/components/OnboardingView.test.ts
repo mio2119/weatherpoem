@@ -47,4 +47,23 @@ describe("first-use city selection", () => {
     await wrapper.find<HTMLInputElement>("#city-search").setValue("深圳");
     expect(wrapper.text()).toContain("请选择一座城市");
   });
+
+  it("keeps the form visible but prevents duplicate submission while saving", async () => {
+    const wrapper = mount(OnboardingView, {
+      props: {
+        initialSettings: DEFAULT_SETTINGS,
+        saving: true,
+        saveError: "首次设置未能保存。你的城市选择还在，请再试一次。",
+      },
+    });
+    await wrapper.find<HTMLInputElement>("#city-search").setValue("杭州");
+    await wrapper.find<HTMLInputElement>('input[value="hangzhou"]').setValue(true);
+    await wrapper.find<HTMLInputElement>(".consent-row input").setValue(true);
+    expect(wrapper.find(".onboarding-save-error").attributes("role")).toBe("alert");
+    expect(wrapper.find(".onboarding-form").attributes("aria-busy")).toBe("true");
+    expect(wrapper.find<HTMLButtonElement>('button[type="submit"]').element.disabled)
+      .toBe(true);
+    await wrapper.find("form").trigger("submit");
+    expect(wrapper.emitted("complete")).toBeUndefined();
+  });
 });

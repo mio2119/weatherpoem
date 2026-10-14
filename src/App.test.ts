@@ -44,6 +44,41 @@ afterEach(() => {
 });
 
 describe("browser preview user flow", () => {
+  it("keeps first-use city and consent after a failed save, then retries", async () => {
+    wrapper = mount(App, { attachTo: document.body });
+    await vi.waitFor(() => expect(wrapper!.find(".onboarding-view").exists()).toBe(true));
+    await wrapper.get<HTMLInputElement>("#city-search").setValue("杭州");
+    await wrapper.get<HTMLInputElement>('input[value="hangzhou"]').setValue(true);
+    await wrapper.get<HTMLInputElement>(".consent-row input").setValue(true);
+
+    const originalSetItem = localStorage.setItem.bind(localStorage);
+    const storageSpy = vi.spyOn(localStorage, "setItem")
+      .mockImplementation((key, value) => {
+        if (key === "weatherpoem.local.v1") throw new Error("storage full");
+        return originalSetItem(key, value);
+      });
+    try {
+      await wrapper.get(".onboarding-form").trigger("submit");
+      await vi.waitFor(() => {
+        expect(wrapper!.get(".onboarding-save-error").text())
+          .toContain("首次设置未能保存");
+      });
+      expect(wrapper.find(".error-view").exists()).toBe(false);
+      expect(wrapper.get(".city-selection").text()).toContain("浙江 · 杭州");
+      expect(wrapper.get<HTMLInputElement>('input[value="hangzhou"]').element.checked)
+        .toBe(true);
+      expect(wrapper.get<HTMLInputElement>(".consent-row input").element.checked)
+        .toBe(true);
+      expect(wrapper.get<HTMLButtonElement>('.onboarding-form button[type="submit"]')
+        .element.disabled).toBe(false);
+    } finally {
+      storageSpy.mockRestore();
+    }
+    await wrapper.get(".onboarding-form").trigger("submit");
+    await vi.waitFor(() => expect(wrapper!.find(".poem-view").exists()).toBe(true));
+    expect((await (await createRepository()).load()).settings.cityId).toBe("hangzhou");
+  });
+
   it("continues a same-day legacy poem even when the new season filter excludes new selection", async () => {
     vi.useFakeTimers({ toFake: ["Date"] });
     vi.setSystemTime(new Date(2026, 9, 14, 9));

@@ -99,6 +99,8 @@ const dislikeInProgress = ref(false);
 const panel = ref<Panel>("card");
 const loading = ref(true);
 const errorMessage = ref("");
+const onboardingSaving = ref(false);
+const onboardingError = ref("");
 const toast = ref("");
 const autostartWarning = ref("");
 const selectedReadingPoem = ref<Poem>();
@@ -616,11 +618,15 @@ function checkVisibleDate(): void {
 }
 
 async function completeOnboarding(next: AppSettings): Promise<void> {
-  loading.value = true;
+  if (onboardingSaving.value) return;
+  onboardingSaving.value = true;
+  onboardingError.value = "";
   let saved = false;
   try {
-    await repository.value?.saveSettings(next);
+    if (!repository.value) throw new Error("Local repository is not ready");
+    await repository.value.saveSettings(next);
     saved = true;
+    loading.value = true;
     const sync = await syncAutostart(next.autostart);
     const effective =
       sync.status === "failed" && sync.enabled !== undefined
@@ -648,10 +654,13 @@ async function completeOnboarding(next: AppSettings): Promise<void> {
     if (autostartWarning.value) showToast(autostartWarning.value);
   } catch (error) {
     console.error(error);
-    errorMessage.value = saved
-      ? dailyLoadErrorMessage(error)
-      : "首次设置未能保存，请稍后重试。";
+    if (saved) {
+      errorMessage.value = dailyLoadErrorMessage(error);
+    } else {
+      onboardingError.value = "首次设置未能保存。你的城市选择还在，请再试一次。";
+    }
   } finally {
+    onboardingSaving.value = false;
     loading.value = false;
   }
 }
@@ -1240,6 +1249,8 @@ onBeforeUnmount(() => {
     <OnboardingView
       v-else-if="!configured"
       :initial-settings="settings"
+      :saving="onboardingSaving"
+      :save-error="onboardingError"
       @complete="completeOnboarding"
     />
 

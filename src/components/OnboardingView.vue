@@ -7,6 +7,8 @@ import IconSymbol from "./IconSymbol.vue";
 
 const props = defineProps<{
   initialSettings: AppSettings;
+  saving?: boolean;
+  saveError?: string;
 }>();
 
 const emit = defineEmits<{
@@ -36,7 +38,7 @@ watch(query, () => {
 });
 
 function submit(): void {
-  if (!consent.value || !selectedCity.value) return;
+  if (props.saving || !consent.value || !selectedCity.value) return;
   emit("complete", {
     ...props.initialSettings,
     configured: true,
@@ -62,7 +64,7 @@ function submit(): void {
       </p>
     </div>
 
-    <form class="onboarding-form" @submit.prevent="submit">
+    <form class="onboarding-form" :aria-busy="saving" @submit.prevent="submit">
       <label class="field-label" for="city-search">你所在的城市</label>
       <input
         id="city-search"
@@ -117,12 +119,16 @@ function submit(): void {
         </span>
       </label>
 
+      <p v-if="saveError" class="onboarding-save-error" role="alert">
+        {{ saveError }}
+      </p>
+
       <button
         class="primary-button"
         type="submit"
-        :disabled="!consent || !selectedCity"
+        :disabled="saving || !consent || !selectedCity"
       >
-        开始今日诗笺
+        {{ saving ? "正在保存" : "开始今日诗笺" }}
       </button>
     </form>
   </main>
