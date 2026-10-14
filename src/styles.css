@@ -954,6 +954,7 @@ button:disabled {
 }
 
 .poem-view .poem-heading h1 {
+  flex-basis: 100%;
   font-size: 16px;
   line-height: 1.35;
   letter-spacing: 0.04em;
@@ -961,6 +962,7 @@ button:disabled {
 }
 
 .poem-view .poem-heading p {
+  flex: 1;
   margin: 0;
   color: var(--muted);
   font-size: 11px;
@@ -972,7 +974,7 @@ button:disabled {
   border: 0;
   background: transparent;
   color: var(--accent);
-  font-size: 11px;
+  font-size: 12px;
   cursor: pointer;
 }
 
@@ -1038,8 +1040,8 @@ button:disabled {
   border-top: 1px solid var(--line);
   color: var(--muted);
   font-family: "Songti SC", "STSong", serif;
-  font-size: 12px;
-  line-height: 1.5;
+  font-size: 13px;
+  line-height: 1.55;
 }
 
 .poem-view .card-actions {
@@ -1056,7 +1058,7 @@ button:disabled {
   padding: 0 9px;
   border-color: var(--accent);
   color: var(--accent);
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 650;
 }
 
@@ -1064,7 +1066,7 @@ button:disabled {
   min-height: 32px;
   gap: 3px;
   padding: 0 5px;
-  font-size: 11px;
+  font-size: 12px;
 }
 
 .secondary-actions {
@@ -1081,7 +1083,7 @@ button:disabled {
   border: 0;
   background: transparent;
   color: var(--muted);
-  font-size: 11px;
+  font-size: 12px;
   cursor: pointer;
 }
 

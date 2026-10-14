@@ -1,18 +1,33 @@
 import { spawn } from "node:child_process";
-import { existsSync, mkdtempSync, readFileSync, realpathSync, rmSync } from "node:fs";
+import { existsSync, mkdtempSync, readFileSync, realpathSync, rmSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { basename, join, sep } from "node:path";
 import { setTimeout as delay } from "node:timers/promises";
 import { build, preview } from "vite";
 
+// --layout-audit inspects browser-preview geometry, not native WebView2.
+// --capture leaves screenshots in a separately named temporary directory.
 const chromeCandidates = [
   "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
   "C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe",
 ];
 const chromePath = chromeCandidates.find(existsSync);
 if (!chromePath) throw new Error("Chrome or Edge is required for the isolated browser storage check");
+const layoutAudit = process.argv.includes("--layout-audit");
+const captureLayout = layoutAudit && process.argv.includes("--capture");
+const layoutPoemId = process.argv.find((arg) => arg.startsWith("--poem-id="))
+  ?.slice("--poem-id=".length) ?? "cui-hao-huang-he-lou";
+const layoutDate = process.argv.find((arg) => arg.startsWith("--date="))
+  ?.slice("--date=".length);
+if (layoutDate && !/^\d{4}-\d{2}-\d{2}$/.test(layoutDate)) {
+  throw new Error("--date must be formatted YYYY-MM-DD");
+}
 
 const profileDirectory = mkdtempSync(join(tmpdir(), "weatherpoem-browser-storage-"));
+const captureDirectory = captureLayout
+  ? mkdtempSync(join(tmpdir(), "weatherpoem-layout-capture-"))
+  : undefined;
+const capturedScreenshots = [];
 let browser;
 let previewServer;
 let socket;
@@ -86,6 +101,53 @@ async function currentSettings() {
   }))()`);
 }
 
+async function measureGlance(width, height) {
+  await send("Emulation.setDeviceMetricsOverride", {
+    width, height, deviceScaleFactor: 1, mobile: false,
+  });
+  await delay(200);
+  return evaluate(`(() => {
+    const box = (selector) => {
+      const element = document.querySelector(selector);
+      const rect = element?.getBoundingClientRect();
+      return rect ? {
+        top: Math.round(rect.top), bottom: Math.round(rect.bottom),
+        left: Math.round(rect.left), right: Math.round(rect.right),
+      } : null;
+    };
+    const view = document.querySelector(".poem-view");
+    const content = document.querySelector(".glance-content");
+    return {
+      viewport: { width: innerWidth, height: innerHeight },
+      title: document.querySelector("#daily-poem-title")?.textContent,
+      fontSize: view?.dataset.poemFontSize,
+      vertical: Boolean(document.querySelector(".poem-lines.is-vertical")),
+      viewClientHeight: view?.clientHeight,
+      viewScrollHeight: view?.scrollHeight,
+      requestedWindowHeight: content ? Math.ceil(content.scrollHeight + 82) : null,
+      documentScrollWidth: document.documentElement.scrollWidth,
+      chrome: box(".window-chrome"),
+      context: box(".context-strip"),
+      titleBox: box(".poem-heading h1"),
+      authorBox: box(".poem-heading p"),
+      poem: box(".poem-lines"),
+      reason: box(".reason-block"),
+      actions: box(".card-actions"),
+      secondaryActions: box(".secondary-actions"),
+    };
+  })()`);
+}
+
+async function captureScreenshot(name) {
+  if (!captureDirectory) return;
+  const result = await send("Page.captureScreenshot", {
+    format: "png", captureBeyondViewport: false,
+  });
+  const path = join(captureDirectory, name);
+  writeFileSync(path, Buffer.from(result.data, "base64"));
+  capturedScreenshots.push(path);
+}
+
 async function closeOwnedBrowser() {
   if (!browser || browser.exitCode !== null) return;
   browser.kill();
@@ -143,18 +205,75 @@ try {
   });
   await send("Page.enable");
   await send("Runtime.enable");
+  if (layoutAudit && layoutDate) {
+    const fixedTime = Date.parse(`${layoutDate}T09:00:00+08:00`);
+    if (!Number.isFinite(fixedTime)) throw new Error("Invalid layout audit date");
+    await send("Emulation.setTimezoneOverride", { timezoneId: "Asia/Shanghai" });
+    await send("Page.addScriptToEvaluateOnNewDocument", {
+      source: `(() => {
+        const RealDate = Date;
+        const fixedTime = ${fixedTime};
+        function FixedDate(...args) {
+          if (new.target) return new RealDate(...(args.length ? args : [fixedTime]));
+          return new RealDate(fixedTime).toString();
+        }
+        FixedDate.prototype = RealDate.prototype;
+        Object.setPrototypeOf(FixedDate, RealDate);
+        FixedDate.now = () => fixedTime;
+        window.Date = FixedDate;
+      })();`,
+    });
+  }
   await send("Page.navigate", { url });
   await waitFor(() => evaluate("location.origin === " + JSON.stringify(new URL(url).origin)), "preview origin");
-  await evaluate(`localStorage.setItem("weatherpoem.local.v1", ${JSON.stringify(JSON.stringify({
+  const legacyProfile = {
     settings: { configured: true, cityId: "beijing" },
     history: [],
     favorites: ["wang-an-shi-yuan-ri"],
     feedback: [],
-  }))})`);
+  };
+  if (layoutAudit) {
+    const today = new Date();
+    const localDate = layoutDate ?? [
+      today.getFullYear(),
+      String(today.getMonth() + 1).padStart(2, "0"),
+      String(today.getDate()).padStart(2, "0"),
+    ].join("-");
+    legacyProfile.dailyState = {
+      localDate,
+      state: "shown",
+      workId: layoutPoemId,
+      contentVersion: "legacy",
+      ruleVersion: "legacy",
+    };
+  }
+  await evaluate(`localStorage.setItem("weatherpoem.local.v1", ${JSON.stringify(JSON.stringify(legacyProfile))})`);
   await send("Network.enable");
   await send("Network.setBlockedURLs", { urls: ["*://api.open-meteo.com/*"] });
   await send("Page.reload", { ignoreCache: true });
-  await waitFor(() => evaluate("Boolean(document.querySelector('.poem-view'))"), "legacy profile poem view");
+  try {
+    await waitFor(() => evaluate("Boolean(document.querySelector('.poem-view'))"), "legacy profile poem view");
+  } catch (error) {
+    const visibleText = await evaluate("document.body.innerText.slice(0, 500)").catch(() => "unavailable");
+    throw new Error(`${error.message}; visible page: ${visibleText}`);
+  }
+  const layoutMeasurements = [];
+  let moreMeasurement;
+  if (layoutAudit) {
+    for (const [width, height] of [[392, 320], [392, 430], [320, 260]]) {
+      layoutMeasurements.push(await measureGlance(width, height));
+      if (width === 392 && height === 430) {
+        await captureScreenshot("long-title-horizontal.png");
+      }
+    }
+    await send("Emulation.setDeviceMetricsOverride", {
+      width: 392, height: 470, deviceScaleFactor: 1, mobile: false,
+    });
+    await click(".more-action");
+    moreMeasurement = await measureGlance(392, 470);
+    await click(".more-action");
+    await send("Emulation.clearDeviceMetricsOverride");
+  }
 
   await click('button[aria-label="设置"]');
   await waitFor(() => evaluate("Boolean(document.querySelector('.settings-panel'))"), "settings panel");
@@ -198,6 +317,57 @@ try {
   const favoritePreserved = await evaluate(`JSON.parse(localStorage.getItem("weatherpoem.local.v1"))
     .favorites.includes("wang-an-shi-yuan-ri")`);
   if (!favoritePreserved) throw new Error("Legacy favorite was lost");
+  const largeVerticalMeasurements = [];
+  let lowWorkAreaActionsReachable = false;
+  if (layoutAudit) {
+    await evaluate(`(() => {
+      const data = JSON.parse(localStorage.getItem("weatherpoem.local.v1"));
+      data.dailyState.workId = ${JSON.stringify(layoutPoemId)};
+      localStorage.setItem("weatherpoem.local.v1", JSON.stringify(data));
+    })()`);
+    await send("Page.reload", { ignoreCache: true });
+    await waitFor(() => evaluate("Boolean(document.querySelector('.poem-view'))"), "large vertical poem view");
+    for (const [width, height] of [[392, 430], [392, 580], [320, 260]]) {
+      largeVerticalMeasurements.push(await measureGlance(width, height));
+      if (width === 392 && height === 580) {
+        await captureScreenshot("long-title-vertical-large.png");
+      }
+    }
+    lowWorkAreaActionsReachable = await evaluate(`(() => {
+      const view = document.querySelector(".poem-view");
+      const actions = document.querySelector(".card-actions");
+      view.scrollTop = view.scrollHeight;
+      const rect = actions.getBoundingClientRect();
+      return rect.top >= 59 && rect.bottom <= innerHeight;
+    })()`);
+    await send("Emulation.clearDeviceMetricsOverride");
+    const medium = layoutMeasurements[1];
+    const largeVertical = largeVerticalMeasurements[1];
+    const shortWorkArea = largeVerticalMeasurements[2];
+    if (
+      !medium?.actions || medium.actions.bottom >= medium.viewport.height ||
+      !medium.requestedWindowHeight || medium.requestedWindowHeight > medium.viewport.height ||
+      !moreMeasurement?.secondaryActions ||
+      moreMeasurement.secondaryActions.bottom >= moreMeasurement.viewport.height ||
+      !moreMeasurement.requestedWindowHeight ||
+      moreMeasurement.requestedWindowHeight > moreMeasurement.viewport.height ||
+      medium.documentScrollWidth > medium.viewport.width ||
+      !medium.titleBox || !medium.authorBox ||
+      medium.authorBox.top < medium.titleBox.bottom - 1 ||
+      !largeVertical?.actions ||
+      largeVertical.actions.bottom >= largeVertical.viewport.height ||
+      !largeVertical.requestedWindowHeight ||
+      largeVertical.requestedWindowHeight > largeVertical.viewport.height ||
+      largeVertical.documentScrollWidth > largeVertical.viewport.width ||
+      !largeVertical.vertical || largeVertical.fontSize !== "large" ||
+      !shortWorkArea ||
+      shortWorkArea.viewScrollHeight <= shortWorkArea.viewClientHeight ||
+      shortWorkArea.documentScrollWidth > shortWorkArea.viewport.width ||
+      !lowWorkAreaActionsReachable
+    ) {
+      throw new Error("Glance card layout failed the long-title viewport checks");
+    }
+  }
   console.log(JSON.stringify({
     result: "passed",
     browser: browserVersion.Browser ?? basename(chromePath),
@@ -206,6 +376,11 @@ try {
     legacyFavoritePreserved: true,
     legacyFavoriteVisible: favoriteVisible,
     isolatedProfile: true,
+    ...(layoutAudit ? {
+      layoutMeasurements, moreMeasurement, largeVerticalMeasurements,
+      lowWorkAreaActionsReachable,
+    } : {}),
+    ...(captureLayout ? { capturedScreenshots } : {}),
   }));
 } finally {
   for (const request of pending.values()) {
