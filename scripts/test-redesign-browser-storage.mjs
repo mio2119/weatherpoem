@@ -10,6 +10,7 @@ import { loadBundledModule } from "./load-reason-sources.mjs";
 // --matrix-audit additionally checks theme, layout, and font-size combinations.
 // --reading-audit checks the full reading panel and a labeled synthetic punctuation probe.
 // --favorites-audit follows a card-to-favorites round trip in an isolated browser.
+// --midnight-audit advances a page-local clock while returning from reading/favorites.
 // --capture leaves screenshots in a separately named temporary directory.
 const chromeCandidates = [
   "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
@@ -20,12 +21,14 @@ if (!chromePath) throw new Error("Chrome or Edge is required for the isolated br
 const matrixAudit = process.argv.includes("--matrix-audit");
 const readingAudit = process.argv.includes("--reading-audit");
 const favoritesAudit = process.argv.includes("--favorites-audit");
+const midnightAudit = process.argv.includes("--midnight-audit");
 const reasonBoundaryAudit = process.argv.includes("--reason-boundary");
 const layoutAudit = process.argv.includes("--layout-audit") || matrixAudit || readingAudit;
-const seededPoemAudit = layoutAudit || favoritesAudit;
+const seededPoemAudit = layoutAudit || favoritesAudit || midnightAudit;
 const captureLayout = seededPoemAudit && process.argv.includes("--capture");
-if (favoritesAudit && (matrixAudit || readingAudit)) {
-  throw new Error("--favorites-audit must run separately from layout matrices");
+if ((favoritesAudit && (matrixAudit || readingAudit || midnightAudit)) ||
+    (midnightAudit && (matrixAudit || readingAudit))) {
+  throw new Error("--favorites-audit and --midnight-audit must run separately from other audits");
 }
 const boundaryReason = "这是隔离排版样本，仅用于核对四十字理由完整显示，不能视为真实诗词推荐或天气说明。";
 if (reasonBoundaryAudit && (!matrixAudit || Array.from(boundaryReason).length !== 40)) {
@@ -46,12 +49,20 @@ const favoritesReportName = process.argv.find((arg) => arg.startsWith("--favorit
 if (favoritesReportName && (!favoritesAudit || !/^T08_[A-Za-z0-9_-]+\.json$/.test(favoritesReportName))) {
   throw new Error("--favorites-report requires --favorites-audit and a T08_*.json filename");
 }
+const midnightReportName = process.argv.find((arg) => arg.startsWith("--midnight-report="))
+  ?.slice("--midnight-report=".length);
+if (midnightReportName && (!midnightAudit || !/^T01_[A-Za-z0-9_-]+\.json$/.test(midnightReportName))) {
+  throw new Error("--midnight-report requires --midnight-audit and a T01_*.json filename");
+}
 const layoutPoemId = process.argv.find((arg) => arg.startsWith("--poem-id="))
   ?.slice("--poem-id=".length) ?? "cui-hao-huang-he-lou";
 const layoutDate = process.argv.find((arg) => arg.startsWith("--date="))
-  ?.slice("--date=".length);
+  ?.slice("--date=".length) ?? (midnightAudit ? "2026-10-13" : undefined);
 if (layoutDate && !/^\d{4}-\d{2}-\d{2}$/.test(layoutDate)) {
   throw new Error("--date must be formatted YYYY-MM-DD");
+}
+if (midnightAudit && layoutDate !== "2026-10-13") {
+  throw new Error("--midnight-audit uses the fixed 2026-10-13 to 2026-10-15 fixture");
 }
 
 const profileDirectory = mkdtempSync(join(tmpdir(), "weatherpoem-browser-storage-"));
@@ -155,6 +166,26 @@ async function favoriteFlowSnapshot(stage) {
       documentScrollWidth: document.documentElement.scrollWidth,
       viewportWidth: innerWidth,
       viewportHeight: innerHeight,
+    };
+  })()`);
+  return { stage, ...state };
+}
+
+async function midnightSnapshot(stage) {
+  const state = await evaluate(`(() => {
+    const saved = JSON.parse(localStorage.getItem("weatherpoem.local.v1") ?? "null");
+    return {
+      view: document.querySelector(".reading-panel") ? "reading" :
+        document.querySelector(".favorites-panel") ? "favorites" :
+        document.querySelector(".poem-view") ? "card" : "other",
+      displayDate: document.querySelector(".context-strip strong")?.textContent ?? null,
+      cardTitle: document.querySelector("#daily-poem-title")?.textContent ?? null,
+      dailyDate: saved?.dailyState?.localDate ?? null,
+      historyDates: saved?.history?.map((item) => item.localDate) ?? null,
+      favorites: saved?.favorites ?? null,
+      focusPanel: document.activeElement?.closest(".reading-panel, .favorites-panel, .poem-view")?.className ?? null,
+      documentScrollWidth: document.documentElement.scrollWidth,
+      viewportWidth: innerWidth,
     };
   })()`);
   return { stage, ...state };
@@ -318,20 +349,21 @@ try {
   await send("Page.enable");
   await send("Runtime.enable");
   if (seededPoemAudit && layoutDate) {
-    const fixedTime = Date.parse(`${layoutDate}T09:00:00+08:00`);
+    const fixedTime = Date.parse(`${layoutDate}T${midnightAudit ? "23:59:00" : "09:00:00"}+08:00`);
     if (!Number.isFinite(fixedTime)) throw new Error("Invalid layout audit date");
     await send("Emulation.setTimezoneOverride", { timezoneId: "Asia/Shanghai" });
     await send("Page.addScriptToEvaluateOnNewDocument", {
       source: `(() => {
         const RealDate = Date;
-        const fixedTime = ${fixedTime};
+        let currentTime = ${fixedTime};
+        window.__weatherpoemSetTestClock = (next) => { currentTime = next; };
         function FixedDate(...args) {
-          if (new.target) return new RealDate(...(args.length ? args : [fixedTime]));
-          return new RealDate(fixedTime).toString();
+          if (new.target) return new RealDate(...(args.length ? args : [currentTime]));
+          return new RealDate(currentTime).toString();
         }
         FixedDate.prototype = RealDate.prototype;
         Object.setPrototypeOf(FixedDate, RealDate);
-        FixedDate.now = () => fixedTime;
+        FixedDate.now = () => currentTime;
         window.Date = FixedDate;
       })();`,
     });
@@ -562,6 +594,78 @@ try {
       throw new Error(`Card/storage did not reflect removal: ${JSON.stringify(favoriteFlow.at(-1))}`);
     }
     await captureScreenshot("T08_card_after_remove.png");
+    await send("Emulation.clearDeviceMetricsOverride");
+  }
+  const midnightFlow = [];
+  if (midnightAudit) {
+    await evaluate(`(() => {
+      const data = JSON.parse(localStorage.getItem("weatherpoem.local.v1"));
+      data.dailyState.localDate = "2026-10-13";
+      data.dailyState.workId = ${JSON.stringify(layoutPoemId)};
+      data.dailyState.state = "shown";
+      data.history = [];
+      data.settings.poemLayout = "horizontal";
+      data.settings.poemFontSize = "medium";
+      localStorage.setItem("weatherpoem.local.v1", JSON.stringify(data));
+    })()`);
+    await send("Page.reload", { ignoreCache: true });
+    await waitFor(() => evaluate("Boolean(document.querySelector('.poem-view'))"), "pre-midnight card");
+    await send("Emulation.setDeviceMetricsOverride", {
+      width: 392, height: 430, deviceScaleFactor: 1, mobile: false,
+    });
+    midnightFlow.push(await midnightSnapshot("card-13"));
+    if (midnightFlow.at(-1).dailyDate !== "2026-10-13" ||
+        midnightFlow.at(-1).displayDate !== "10月13日") {
+      throw new Error(`Unexpected pre-midnight card: ${JSON.stringify(midnightFlow.at(-1))}`);
+    }
+    await captureScreenshot("T01_card_oct13.png");
+    await click(".read-button");
+    await waitFor(() => evaluate("Boolean(document.querySelector('.reading-panel'))"), "pre-midnight reading");
+    await evaluate(`window.__weatherpoemSetTestClock(${Date.parse("2026-10-14T00:01:00+08:00")})`);
+    await click(".reading-panel .back-button");
+    await waitFor(() => evaluate(`(() => {
+      const data = JSON.parse(localStorage.getItem("weatherpoem.local.v1"));
+      return document.querySelector(".context-strip strong")?.textContent === "10月14日" &&
+        data.dailyState?.localDate === "2026-10-14";
+    })()`), "October 14 card after reading return");
+    midnightFlow.push(await midnightSnapshot("card-14-after-reading"));
+    await captureScreenshot("T01_card_oct14_after_reading.png");
+
+    await click('.card-actions button[aria-pressed="false"]');
+    await waitFor(() => evaluate("document.querySelector('.card-actions button[aria-pressed]')?.getAttribute('aria-pressed') === 'true'"), "favorite on October 14");
+    const favoriteId = await evaluate(`(() => {
+      const data = JSON.parse(localStorage.getItem("weatherpoem.local.v1"));
+      return data.dailyState.workId;
+    })()`);
+    await click(".context-favorites");
+    await waitFor(() => evaluate("Boolean(document.querySelector('.favorites-panel'))"), "favorites before second midnight");
+    const opened = await evaluate(`(() => {
+      const button = document.querySelector(".favorite-open");
+      button?.click();
+      return Boolean(button);
+    })()`);
+    if (!opened) throw new Error("Cannot open a saved poem before second midnight");
+    await waitFor(() => evaluate("Boolean(document.querySelector('.reading-panel'))"), "favorite reading before second midnight");
+    await evaluate(`window.__weatherpoemSetTestClock(${Date.parse("2026-10-15T00:01:00+08:00")})`);
+    await click(".reading-panel .back-button");
+    await waitFor(() => evaluate("Boolean(document.querySelector('.favorites-panel'))"), "favorites after second midnight");
+    midnightFlow.push(await midnightSnapshot("favorites-15"));
+    await click(".favorites-panel .back-button");
+    await waitFor(() => evaluate(`(() => {
+      const data = JSON.parse(localStorage.getItem("weatherpoem.local.v1"));
+      return document.querySelector(".context-strip strong")?.textContent === "10月15日" &&
+        data.dailyState?.localDate === "2026-10-15";
+    })()`), "October 15 card after favorites return");
+    midnightFlow.push(await midnightSnapshot("card-15-after-favorites"));
+    await waitFor(() => evaluate("!document.querySelector('.toast-message')"), "favorite confirmation to clear");
+    await captureScreenshot("T01_card_oct15_after_favorites.png");
+    const final = midnightFlow.at(-1);
+    if (final.historyDates[0] !== "2026-10-15" ||
+        final.historyDates.filter((date) => date === "2026-10-15").length !== 1 ||
+        !final.favorites.includes(favoriteId) ||
+        final.documentScrollWidth > final.viewportWidth) {
+      throw new Error(`Midnight return lost history/favorite or overflowed: ${JSON.stringify(final)}`);
+    }
     await send("Emulation.clearDeviceMetricsOverride");
   }
   const largeVerticalMeasurements = [];
@@ -859,6 +963,19 @@ try {
       favoriteCompactReading,
     }, null, 2)}\n`);
   }
+  if (midnightReportName) {
+    const reportPath = join(process.cwd(), "review", "redesign", "evidence", midnightReportName);
+    if (existsSync(reportPath)) throw new Error(`Refusing to overwrite: ${reportPath}`);
+    writeFileSync(reportPath, `${JSON.stringify({
+      schemaVersion: "1.0",
+      browser: browserName,
+      isolatedProfile: true,
+      nativeWebView2: false,
+      weather: "offline-blocked",
+      clock: "page-local-controlled-Asia/Shanghai",
+      midnightFlow,
+    }, null, 2)}\n`);
+  }
   console.log(JSON.stringify({
     result: "passed",
     browser: browserName,
@@ -874,6 +991,7 @@ try {
     ...(matrixAudit ? { matrixMeasurements, reasonBoundaryAudit } : {}),
     ...(readingAudit ? { readingMeasurements, syntheticPunctuation } : {}),
     ...(favoritesAudit ? { favoriteFlow, favoriteCompactReading } : {}),
+    ...(midnightAudit ? { midnightFlow } : {}),
     ...(captureLayout ? { capturedScreenshots } : {}),
   }));
 } finally {

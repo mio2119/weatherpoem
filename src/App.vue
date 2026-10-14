@@ -711,6 +711,22 @@ function openFavorites(from: "card" | "settings"): void {
   panel.value = "favorites";
 }
 
+async function returnFromReading(): Promise<void> {
+  if (readingReturnPanel.value === "card") {
+    await returnToCard();
+  } else {
+    panel.value = "favorites";
+  }
+}
+
+async function returnFromFavorites(): Promise<void> {
+  if (favoritesReturnPanel.value === "card") {
+    await returnToCard();
+  } else {
+    panel.value = "settings";
+  }
+}
+
 function contextTags(selected: Recommendation): string[] {
   return [
     selected.primaryContext,
@@ -1286,7 +1302,7 @@ onBeforeUnmount(() => {
       :poems="favoritePoems"
       :withdrawn-work-ids="withdrawnFavoriteIds"
       :back-label="favoritesReturnPanel === 'card' ? '今日诗笺' : '设置'"
-      @back="panel = favoritesReturnPanel"
+      @back="returnFromFavorites"
       @open="openFavoriteReading"
       @remove="toggleFavorite"
     />
@@ -1312,7 +1328,7 @@ onBeforeUnmount(() => {
       :back-label="
         readingReturnPanel === 'favorites' ? '我的收藏' : '今日诗笺'
       "
-      @back="panel = readingReturnPanel"
+      @back="returnFromReading"
       @favorite="toggleFavorite"
       @layout-change="changePoemLayout"
     />

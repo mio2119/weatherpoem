@@ -387,6 +387,48 @@ describe("browser preview user flow", () => {
     expect(sameDay.history).toHaveLength(3);
   });
 
+  it("refreshes the local day immediately when returning from reading or favorites", async () => {
+    vi.useFakeTimers({ toFake: ["Date"] });
+    vi.setSystemTime(new Date(2026, 9, 13, 23, 59));
+    localStorage.setItem("weatherpoem.local.v1", JSON.stringify({
+      settings: { configured: true, cityId: "beijing" },
+      history: [], favorites: [], feedback: [],
+    }));
+    wrapper = mount(App, { attachTo: document.body });
+    await vi.waitFor(() => expect(wrapper!.find(".poem-view").exists()).toBe(true));
+    expect(wrapper.get(".context-strip strong").text()).toBe("10月13日");
+
+    await wrapper.get(".read-button").trigger("click");
+    await vi.waitFor(() => expect(wrapper!.find(".reading-panel").exists()).toBe(true));
+    vi.setSystemTime(new Date(2026, 9, 14, 0, 1));
+    await wrapper.get(".reading-panel .back-button").trigger("click");
+    await vi.waitFor(async () => {
+      expect(wrapper!.get(".context-strip strong").text()).toBe("10月14日");
+      expect((await (await createRepository()).load()).dailyState?.localDate)
+        .toBe("2026-10-14");
+    });
+
+    await wrapper.get('.card-actions button[aria-pressed="false"]').trigger("click");
+    await vi.waitFor(() => expect(wrapper!.get('.card-actions button[aria-pressed="true"]')).toBeDefined());
+    await wrapper.get(".context-favorites").trigger("click");
+    await vi.waitFor(() => expect(wrapper!.find(".favorites-panel").exists()).toBe(true));
+    await wrapper.get(".favorite-open").trigger("click");
+    await vi.waitFor(() => expect(wrapper!.find(".reading-panel").exists()).toBe(true));
+    vi.setSystemTime(new Date(2026, 9, 15, 0, 1));
+    await wrapper.get(".reading-panel .back-button").trigger("click");
+    await vi.waitFor(() => expect(wrapper!.find(".favorites-panel").exists()).toBe(true));
+    await wrapper.get(".favorites-panel .back-button").trigger("click");
+    await vi.waitFor(async () => {
+      expect(wrapper!.get(".context-strip strong").text()).toBe("10月15日");
+      const saved = await (await createRepository()).load();
+      expect(saved.dailyState?.localDate).toBe("2026-10-15");
+      expect(saved.favorites).toHaveLength(1);
+      expect(saved.history.map((item) => item.localDate)).toEqual([
+        "2026-10-15", "2026-10-14", "2026-10-13",
+      ]);
+    });
+  });
+
   it("allows only one replacement while its recommendation reason is pending", async () => {
     localStorage.setItem("weatherpoem.local.v1", JSON.stringify({
       settings: { configured: true, cityId: "beijing" },

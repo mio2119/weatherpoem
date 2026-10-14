@@ -1,0 +1,80 @@
+{
+  "schemaVersion": "1.0",
+  "browser": "Chrome/155.0.8059.40",
+  "isolatedProfile": true,
+  "nativeWebView2": false,
+  "weather": "offline-blocked",
+  "clock": "page-local-controlled-Asia/Shanghai",
+  "midnightFlow": [
+    {
+      "stage": "card-13",
+      "view": "card",
+      "displayDate": "10月13日",
+      "cardTitle": "黄鹤楼",
+      "dailyDate": "2026-10-13",
+      "historyDates": [
+        "2026-10-13"
+      ],
+      "favorites": [
+        "wang-an-shi-yuan-ri"
+      ],
+      "focusPanel": "poem-view",
+      "documentScrollWidth": 392,
+      "viewportWidth": 392
+    },
+    {
+      "stage": "card-14-after-reading",
+      "view": "card",
+      "displayDate": "10月14日",
+      "cardTitle": "夜雨寄北",
+      "dailyDate": "2026-10-14",
+      "historyDates": [
+        "2026-10-14",
+        "2026-10-13"
+      ],
+      "favorites": [
+        "wang-an-shi-yuan-ri"
+      ],
+      "focusPanel": "poem-view",
+      "documentScrollWidth": 392,
+      "viewportWidth": 392
+    },
+    {
+      "stage": "favorites-15",
+      "view": "favorites",
+      "displayDate": null,
+      "cardTitle": null,
+      "dailyDate": "2026-10-14",
+      "historyDates": [
+        "2026-10-14",
+        "2026-10-13"
+      ],
+      "favorites": [
+        "li-shang-yin-ye-yu-ji-bei",
+        "wang-an-shi-yuan-ri"
+      ],
+      "focusPanel": "favorites-panel",
+      "documentScrollWidth": 392,
+      "viewportWidth": 392
+    },
+    {
+      "stage": "card-15-after-favorites",
+      "view": "card",
+      "displayDate": "10月15日",
+      "cardTitle": "旅夜书怀",
+      "dailyDate": "2026-10-15",
+      "historyDates": [
+        "2026-10-15",
+        "2026-10-14",
+        "2026-10-13"
+      ],
+      "favorites": [
+        "li-shang-yin-ye-yu-ji-bei",
+        "wang-an-shi-yuan-ri"
+      ],
+      "focusPanel": "poem-view",
+      "documentScrollWidth": 392,
+      "viewportWidth": 392
+    }
+  ]
+}
