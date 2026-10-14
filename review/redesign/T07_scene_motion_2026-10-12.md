@@ -1,6 +1,6 @@
 # T07 诗境背景、轻动效与单一组件自验收
 
-状态：**部分通过**。规则映射、CSS 静态画面与动效开关已实现；隔离小雨场景的同机偏好开/关资源对照、当前媒体偏好、原生 CSS 动画状态及隔离 WebView2 强制减少动态后的计算样式已有证据。六类场景的原生视觉矩阵、真实 Windows 系统设置切换后的原生检查、可归档短录屏和真人视觉检查尚未完成，不能签 A7 全通过。
+状态：**部分通过**。规则映射、CSS 静态画面与动效开关已实现；隔离小雨场景的同机偏好开/关资源对照、当前媒体偏好、原生 CSS 动画状态及隔离 WebView2 强制减少动态后的计算样式已有证据。2026-10-14 补齐了 14 组隔离浏览器天气/诗境静态矩阵。六类场景的原生视觉矩阵、真实 Windows 系统设置切换后的原生检查、可归档短录屏和真人视觉检查尚未完成，不能签 A7 全通过。
 
 实施：`src/core/poem-scene.ts` 只使用当前日历、已发布诗词的标签和当前天气状态决定画面。诗作确实标注对应节日时，节日意象优先；雨、雪、晴、晴夜仅在天气为 fresh **且诗作有同类天气标签**时启用。天气真实但诗作未匹配时，信息栏仍如实显示天气，装饰则退回节气或抽象季节纹样，不把天气画面强加给按其他原因选出的诗。缓存、离线、未知及未覆盖天气也不用实时天气画面，组件说明明确“不代表当地实时天气”。安全提醒由 App 的独立视图优先显示，选择器也不会给安全状态套用普通天气诗境。页面最多出现一个小印记。
 
@@ -46,3 +46,13 @@
 同一内部 EXE 另以隔离资料启动了专门的 WebView2 媒体偏好检查，报告为 `review/redesign/evidence/T07_SYSTEM_REDUCED_MOTION_motion-probe-20261013.json`，可运行 `npm.cmd run performance:motion:system-reduced:check` 独立核验 EXE 哈希、就绪标记和计算样式。测试只给该子进程设置 `WEBVIEW2_ADDITIONAL_BROWSER_ARGUMENTS=--force-prefers-reduced-motion`，应用内“减少动态”保持关闭；原生 WebView 报告 `systemReduced=true`，雨景装饰层的 `scene-drift` 动画时长缩至 `1e-05s`、仅运行 1 次，而正常媒体偏好下为 16 秒无限循环。测试未改变 Windows 全局显示设置或真实用户资料；隔离临时资料已清理。此项证明当前实现对 WebView2 的减少动态媒体查询有响应，**不证明**用户在系统设置中切换后的整机端到端行为。WebView2 启动参数机制参见 [Microsoft 文档](https://learn.microsoft.com/en-us/microsoft-edge/webview2/concepts/webview-features-flags)，强制减少动态开关定义参见 [Chromium 源码](https://chromium.googlesource.com/chromium/src/+/137.0.7151.119/ui/gfx/switches.cc)。
 
 一次隔离窗口帧采集未能持续锁定 WeatherPoem，后续帧来源不符。该次采集判为**无效**，10 张临时帧与专用隔离资料均已删除，未归档成片。后续短录屏应在每帧核对目标窗口身份和画面内容；目前 `visibleMotionRecordingCaptured` 仍为 `false`。
+
+## 2026-10-14 隔离浏览器天气与离线静态矩阵
+
+新增 `scripts/test-redesign-browser-scene-safety.mjs --weather-matrix`，沿用独立浏览器资料与已发布诗词，注入明确标注的隔离天气及受控本地时钟；不连接真实当地天气、不触碰用户资料、不启动可见 WeatherPoem EXE。浅/深色各核对 7 种情况：新鲜小雨配《春夜喜雨》、新鲜雪配《江雪》、新鲜晴配《秋词》、晴夜配《枫桥夜泊》、缓存雪、离线未知，以及真实小雨与《秋词》标签不匹配。对每组核对作品节选、情境栏、规则理由、`scene`、可访问诗境说明、减少动态计算样式、392×720 视口及 320×260 低视口的横向溢出和操作可达性。
+
+初测发现推荐理由使用“当地正有晴／雪”；这不是诗境映射错误，而是用户可见的中文文案缺陷。T02 先建立 4 个失败反例，再把新鲜天气理由改为按天气类型表述，当前规则为 `1.2.3`，并补全部 12 种可用天气类型的短语测试。重新执行矩阵后 **14/14 通过**：雨、雪、晴、晴夜使用与诗作相符的场景；缓存雪、离线和诗作不匹配的小雨回退抽象季节纹样，其中前两种和不匹配场景的诗境说明均注明不代表当地实时天气。隔离降动效下装饰不无限循环，所测视口无横向溢出，低视口滚到底后操作可见。逐张查看 14 张静帧，未见装饰遮住诗文或按钮；这只是本次逻辑尺寸的视觉观察，不是数值对比度、真实 DPI 或真人审美结论。
+
+原始逐组报告：[T07_BROWSER_WEATHER_SCENES_20261014.json](./evidence/T07_BROWSER_WEATHER_SCENES_20261014.json)。14 张画面位于 `review/redesign/evidence/T07_BROWSER_*_ISOLATED_20261014.png`，画面下方均明示“隔离天气演练 · 非当地实况”；例图：[小雨浅色](./evidence/T07_BROWSER_FRESH_RAIN_LIGHT_ISOLATED_20261014.png)、[雪深色](./evidence/T07_BROWSER_FRESH_SNOW_DARK_ISOLATED_20261014.png)、[缓存雪浅色](./evidence/T07_BROWSER_CACHED_SNOW_LIGHT_ISOLATED_20261014.png)、[不匹配小雨深色](./evidence/T07_BROWSER_MISMATCH_RAIN_DARK_ISOLATED_20261014.png)。脚本无参数的原 T05 节日／安全矩阵仍为 **10/10 通过**，没有被新模式破坏。完成后 `lint`、`typecheck`、全量测试（26 文件、195 项）、`build`、`reason:check`、`requirements:check` 通过。
+
+未测仍是 A7 的必需子项：新当前源码的原生 WebView2 浅深色场景、真实 Windows 减少动态设置切换、隐藏后的渲染停机、可归档短录屏、实际系统缩放/对比度与真人视觉判断。隔离浏览器静帧不能证明这些，也不能以旧内部 EXE 哈希对应的资源报告证明当前源码；A7 继续为**部分通过**。

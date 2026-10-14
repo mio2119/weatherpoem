@@ -77,6 +77,81 @@ describe("recommendPoem", () => {
     expect(result.reason).not.toContain("当地正有");
   });
 
+  it.each([
+    ["du-fu-chun-ye-xi-yu", "light-rain", "小雨", "spring", "night", "当地有小雨"],
+    ["liu-zong-yuan-jiang-xue", "snow", "雪", "winter", "day", "当地正在下雪"],
+    ["liu-yu-xi-qiu-ci", "clear", "晴", "autumn", "day", "当地天气晴朗"],
+    ["zhang-ji-feng-qiao-ye-bo", "clear", "晴", "autumn", "night", "当地天气晴朗"],
+  ] as const)("新鲜天气理由用自然中文表达：%s", (
+    workId,
+    kind,
+    label,
+    season,
+    timePeriod,
+    expectedContext,
+  ) => {
+    const poem = POEMS.find((item) => item.id === workId)!;
+    const result = recommendPoem({
+      poems: [poem],
+      calendar: {
+        ...calendar,
+        festival: undefined,
+        solarTerm: undefined,
+        season,
+        timePeriod,
+      },
+      weather: { ...rainyWeather, kind, label },
+      history: [],
+      feedback: [],
+    });
+    expect(result.reason).toMatch(new RegExp(`^${expectedContext}，`));
+    expect(result.reason).not.toContain("当地正有");
+  });
+
+  it.each([
+    ["clear", "晴", "当地天气晴朗"],
+    ["cloudy", "多云", "当地天气多云"],
+    ["overcast", "阴", "当地是阴天"],
+    ["light-rain", "小雨", "当地有小雨"],
+    ["rain", "雨", "当地有雨"],
+    ["heavy-rain", "大雨", "当地有大雨"],
+    ["snow", "雪", "当地正在下雪"],
+    ["fog", "雾", "当地起雾"],
+    ["wind", "风", "当地有风"],
+    ["thunderstorm", "雷暴", "当地有雷暴"],
+    ["hot", "炎热", "当地天气炎热"],
+    ["cold", "严寒", "当地天气严寒"],
+  ] as const)("所有新鲜天气类型都有可读理由：%s", (
+    kind,
+    label,
+    expectedContext,
+  ) => {
+    const base = POEMS[0]!;
+    const poem = {
+      ...base,
+      oneLineSummary: "今天适合读这首诗。",
+      tags: {
+        ...base.tags,
+        festivals: [],
+        solarTerms: [],
+        weather: [kind],
+      },
+    };
+    const result = recommendPoem({
+      poems: [poem],
+      calendar: {
+        ...calendar,
+        festival: undefined,
+        solarTerm: undefined,
+        season: base.tags.seasons[0] ?? calendar.season,
+      },
+      weather: { ...rainyWeather, kind, label },
+      history: [],
+      feedback: [],
+    });
+    expect(result.reason).toBe(`${expectedContext}，今天适合读这首诗。`);
+  });
+
   it("天气不可用时仍能依据节气推荐", () => {
     const result = recommend({
       calendar: {

@@ -13,10 +13,13 @@ const browserPath = [
   "C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe",
 ].find(existsSync);
 if (!browserPath) throw new Error("Chrome or Edge is required for the browser scene audit");
+const weatherMatrixAudit = process.argv.includes("--weather-matrix");
 const reportName = process.argv.find((arg) => arg.startsWith("--report="))
   ?.slice("--report=".length);
-if (reportName && !/^T05_[A-Za-z0-9_-]+\.json$/.test(reportName)) {
-  throw new Error("--report must be a T05_*.json filename");
+if (reportName && !(weatherMatrixAudit
+  ? /^T07_[A-Za-z0-9_-]+\.json$/.test(reportName)
+  : /^T05_[A-Za-z0-9_-]+\.json$/.test(reportName))) {
+  throw new Error("--report must use the T05_ or T07_ prefix for its selected audit");
 }
 const capture = process.argv.includes("--capture");
 const fixedTime = Date.parse("2026-06-19T09:00:00+08:00");
@@ -153,6 +156,44 @@ async function measure(expectedView, width, height, scrollToEnd = false) {
   })()`);
 }
 
+async function measurePoem(width, height, scrollToEnd = false) {
+  await viewport(width, height);
+  return evaluate(`(() => {
+    const view = document.querySelector(".poem-view");
+    const paper = document.querySelector(".poem-paper");
+    if (${scrollToEnd}) view.scrollTop = view.scrollHeight;
+    const box = (element) => {
+      const rect = element?.getBoundingClientRect();
+      return rect ? {
+        top: Math.round(rect.top), bottom: Math.round(rect.bottom),
+        left: Math.round(rect.left), right: Math.round(rect.right),
+      } : null;
+    };
+    const decoration = paper ? getComputedStyle(paper, "::before") : null;
+    return {
+      theme: document.documentElement.dataset.theme,
+      motion: document.documentElement.dataset.motion,
+      scene: paper?.dataset.scene,
+      sceneDescription: document.querySelector(".scene-mark")?.getAttribute("aria-label"),
+      context: document.querySelector(".context-strip")?.textContent,
+      reason: document.querySelector(".reason-block")?.textContent,
+      title: document.querySelector("#daily-poem-title")?.textContent,
+      poemText: [...document.querySelectorAll(".poem-lines p")]
+        .map((line) => line.textContent).join(""),
+      decorationAnimation: decoration?.animationName,
+      decorationDuration: decoration?.animationDuration,
+      decorationIterations: decoration?.animationIterationCount,
+      documentOverflow: document.documentElement.scrollWidth > innerWidth,
+      viewScrollHeight: view?.scrollHeight,
+      viewClientHeight: view?.clientHeight,
+      poemBox: box(document.querySelector(".poem-lines")),
+      paperBox: box(paper),
+      actionsBox: box(document.querySelector(".card-actions")),
+      viewport: { width: innerWidth, height: innerHeight },
+    };
+  })()`);
+}
+
 async function closeBrowser() {
   if (!browser || browser.exitCode !== null) return;
   browser.kill();
@@ -163,7 +204,7 @@ async function closeBrowser() {
 }
 
 try {
-  const { CONTENT_VERSION } = await loadBundledModule(
+  const { CONTENT_VERSION, RULE_VERSION } = await loadBundledModule(
     process.cwd(), "src/core/recommendation.ts",
   );
   await build({ logLevel: "error" });
@@ -218,7 +259,7 @@ try {
   await send("Page.addScriptToEvaluateOnNewDocument", {
     source: `(() => {
       const RealDate = Date;
-      const fixedTime = ${fixedTime};
+      const fixedTime = Number(localStorage.getItem("weatherpoem.audit.clock")) || ${fixedTime};
       function FixedDate(...args) {
         if (new.target) return new RealDate(...(args.length ? args : [fixedTime]));
         return new RealDate(fixedTime).toString();
@@ -227,6 +268,26 @@ try {
       Object.setPrototypeOf(FixedDate, RealDate);
       FixedDate.now = () => fixedTime;
       window.Date = FixedDate;
+      const originalFetch = window.fetch.bind(window);
+      window.fetch = (input, init) => {
+        const target = typeof input === "string" ? input : input?.url;
+        if (target?.startsWith("https://api.open-meteo.com/v1/forecast")) {
+          const fixture = JSON.parse(localStorage.getItem("weatherpoem.audit.forecast") || "null");
+          if (fixture?.mode === "fresh") {
+            return Promise.resolve(new Response(JSON.stringify({ current: {
+              time: new RealDate(fixedTime).toISOString(),
+              weather_code: fixture.code,
+              temperature_2m: fixture.temperature ?? 15,
+              precipitation: fixture.precipitation ?? 0,
+              wind_speed_10m: 0,
+            } }), { status: 200, headers: { "Content-Type": "application/json" } }));
+          }
+          if (fixture?.mode === "offline") {
+            return Promise.reject(new TypeError("Isolated browser weather is offline"));
+          }
+        }
+        return originalFetch(input, init);
+      };
     })();`,
   });
   await send("Page.navigate", { url });
@@ -238,7 +299,7 @@ try {
 
   const longWarningDescription =
     "隔离演练：这里是为了检查长安全说明在较小窗口中的完整呈现，不是真实天气预警。".repeat(12);
-  const scenarios = [
+  const scenarios = weatherMatrixAudit ? [] : [
     { name: "festival", expectedView: "poem-view" },
     { name: "official-warning", expectedView: "warning-view" },
     { name: "proxy-warning", expectedView: "warning-view" },
@@ -254,7 +315,7 @@ try {
         history: [], favorites: [], feedback: [],
         dailyState: {
           localDate, state: "shown", workId,
-          contentVersion: CONTENT_VERSION, ruleVersion: "1.2.2",
+          contentVersion: CONTENT_VERSION, ruleVersion: RULE_VERSION,
         },
       };
       const official = scenario.name === "official-warning";
@@ -352,6 +413,114 @@ try {
       await send("Emulation.clearDeviceMetricsOverride");
     }
   }
+  const weatherMeasurements = [];
+  if (weatherMatrixAudit) {
+    const { POEMS } = await loadBundledModule(process.cwd(), "src/data/poems.ts");
+    const weatherCases = [
+      { name: "fresh-rain", date: "2026-04-12", hour: 9,
+        workId: "du-fu-chun-ye-xi-yu", code: 51, expectedScene: "rain",
+        context: "小雨", reasonPrefix: "当地有小雨，" },
+      { name: "fresh-snow", date: "2026-12-12", hour: 9,
+        workId: "liu-zong-yuan-jiang-xue", code: 71, expectedScene: "snow",
+        context: "雪", reasonPrefix: "当地正在下雪，" },
+      { name: "fresh-sun", date: "2026-10-14", hour: 9,
+        workId: "liu-yu-xi-qiu-ci", code: 0, expectedScene: "sun",
+        context: "晴", reasonPrefix: "当地天气晴朗，" },
+      { name: "fresh-night", date: "2026-10-14", hour: 21,
+        workId: "zhang-ji-feng-qiao-ye-bo", code: 0, expectedScene: "night",
+        context: "晴", reasonPrefix: "当地天气晴朗，" },
+      { name: "cached-snow", date: "2026-12-12", hour: 9,
+        workId: "liu-zong-yuan-jiang-xue", expectedScene: "season",
+        context: "缓存天气：雪", reasonPrefix: "最近的天气记录显示雪，" },
+      { name: "offline", date: "2026-10-14", hour: 9,
+        workId: "liu-yu-xi-qiu-ci", expectedScene: "season",
+        context: "天气未更新", reasonPrefix: "秋日，" },
+      { name: "mismatch-rain", date: "2026-10-14", hour: 9,
+        workId: "liu-yu-xi-qiu-ci", code: 51, expectedScene: "season",
+        context: "小雨", reasonPrefix: "秋日，" },
+    ];
+    for (const theme of ["light", "dark"]) {
+      for (const weatherCase of weatherCases) {
+        const poem = POEMS.find((item) => item.id === weatherCase.workId);
+        if (!poem) throw new Error(`Unknown weather matrix poem: ${weatherCase.workId}`);
+        const caseTime = Date.parse(
+          `${weatherCase.date}T${String(weatherCase.hour).padStart(2, "0")}:00:00+08:00`,
+        );
+        const profile = {
+          settings: { configured: true, cityId: "beijing", theme, reduceMotion: true },
+          history: [], favorites: [], feedback: [],
+          dailyState: {
+            localDate: weatherCase.date, state: "shown", workId: weatherCase.workId,
+            contentVersion: CONTENT_VERSION, ruleVersion: RULE_VERSION,
+          },
+        };
+        const fresh = weatherCase.code !== undefined;
+        const forecast = fresh
+          ? { mode: "fresh", code: weatherCase.code }
+          : { mode: "offline" };
+        const weatherCache = weatherCase.name === "cached-snow"
+          ? {
+              cityId: "beijing", cachedAt: caseTime,
+              weather: {
+                kind: "snow", label: "雪", freshness: "fresh", source: "open-meteo",
+                warnings: [], shouldSuppressPoem: false,
+              },
+            }
+          : undefined;
+        await evaluate(`(() => {
+          localStorage.setItem("weatherpoem.audit.clock", ${JSON.stringify(String(caseTime))});
+          localStorage.setItem("weatherpoem.audit.forecast", ${JSON.stringify(JSON.stringify(forecast))});
+          localStorage.setItem("weatherpoem.local.v1", ${JSON.stringify(JSON.stringify(profile))});
+          localStorage.removeItem("weatherpoem.content-withdrawals.v1");
+          ${weatherCache
+            ? `localStorage.setItem("weatherpoem.weather-cache.v1", ${JSON.stringify(JSON.stringify(weatherCache))});`
+            : 'localStorage.removeItem("weatherpoem.weather-cache.v1");'}
+        })()`);
+        await send("Page.reload", { ignoreCache: true });
+        await waitFor(() => evaluate("Boolean(document.querySelector('.poem-view'))"),
+          `${theme}/${weatherCase.name} poem view`);
+        const roomy = await measurePoem(392, 720);
+        await evaluate(`(() => {
+          const note = document.createElement("p");
+          note.id = "isolated-weather-label";
+          note.textContent = "隔离天气演练 · 非当地实况";
+          note.style.cssText = "position:fixed;bottom:5px;right:6px;z-index:50;margin:0;padding:3px 6px;background:var(--surface);color:var(--accent);font-size:11px;border:1px solid var(--line-strong)";
+          document.body.append(note);
+        })()`);
+        await screenshot(`${weatherCase.name}-${theme}-isolated.png`);
+        await evaluate("document.querySelector('#isolated-weather-label')?.remove()");
+        const compact = await measurePoem(320, 260, true);
+        const row = {
+          theme, scenario: weatherCase.name, date: weatherCase.date,
+          hour: weatherCase.hour, workId: weatherCase.workId,
+          tags: { weather: poem.tags.weather, seasons: poem.tags.seasons },
+          fixture: forecast,
+          expectedScene: weatherCase.expectedScene,
+          roomy, compact,
+        };
+        weatherMeasurements.push(row);
+        if (
+          roomy.theme !== theme || roomy.motion !== "reduced" ||
+          roomy.title !== poem.title || roomy.poemText !== poem.excerpt.join("") ||
+          roomy.scene !== weatherCase.expectedScene ||
+          !roomy.context?.includes(weatherCase.context) ||
+          !roomy.reason?.startsWith(weatherCase.reasonPrefix) ||
+          !roomy.sceneDescription ||
+          (fresh && weatherCase.expectedScene !== "season" &&
+            !roomy.sceneDescription.includes("当地")) ||
+          ((!fresh || weatherCase.name === "mismatch-rain") &&
+            !roomy.sceneDescription.includes("不代表当地实时天气")) ||
+          roomy.decorationIterations === "infinite" ||
+          roomy.documentOverflow || compact.documentOverflow ||
+          !roomy.paperBox || !roomy.poemBox ||
+          roomy.poemBox.left < roomy.paperBox.left - 1 ||
+          roomy.poemBox.right > roomy.paperBox.right + 1 ||
+          !compact.actionsBox || compact.actionsBox.bottom > 260
+        ) failures.push(row);
+        await send("Emulation.clearDeviceMetricsOverride");
+      }
+    }
+  }
   if (failures.length > 0) {
     throw new Error(`Scene/safety browser audit failed: ${JSON.stringify(failures)}`);
   }
@@ -363,13 +532,19 @@ try {
       browser: browserVersion.Browser ?? basename(browserPath),
       nativeWebView2: false,
       isolatedProfile: true,
-      syntheticWeatherAndWithdrawal: true,
-      localDate, workId,
-      measurements,
+      ...(weatherMatrixAudit ? {
+        syntheticWeather: true,
+        weatherMeasurements,
+      } : {
+        syntheticWeatherAndWithdrawal: true,
+        localDate, workId, measurements,
+      }),
     }, null, 2)}\n`);
   }
   console.log(JSON.stringify({
-    result: "passed", cases: measurements.length,
+    result: "passed", cases: weatherMatrixAudit
+      ? weatherMeasurements.length : measurements.length,
+    ...(weatherMatrixAudit ? { weatherMeasurements } : {}),
     browser: browserVersion.Browser ?? basename(browserPath),
     capturedScreenshots,
   }));

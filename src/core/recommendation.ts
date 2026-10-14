@@ -6,11 +6,12 @@ import type {
   RecommendationHistoryItem,
   ScoreBreakdown,
   WeatherContext,
+  WeatherKind,
 } from "../types";
 import { feedbackLocalDate } from "./daily-behavior";
 import { buildCalendarContext } from "./date-context";
 
-export const RULE_VERSION = "1.2.2";
+export const RULE_VERSION = "1.2.3";
 export const CONTENT_VERSION = "2026.07.1";
 export const RETAINED_CONTEXT = "今日已选";
 
@@ -215,6 +216,25 @@ const SEASON_LABELS = {
   winter: "冬日",
 } as const;
 
+const FRESH_WEATHER_CONTEXT: Record<
+  WeatherKind,
+  { full: string; compact: string }
+> = {
+  clear: { full: "当地天气晴朗", compact: "当地晴朗" },
+  cloudy: { full: "当地天气多云", compact: "当地多云" },
+  overcast: { full: "当地是阴天", compact: "当地阴天" },
+  "light-rain": { full: "当地有小雨", compact: "当地小雨" },
+  rain: { full: "当地有雨", compact: "当地有雨" },
+  "heavy-rain": { full: "当地有大雨", compact: "当地大雨" },
+  snow: { full: "当地正在下雪", compact: "当地有雪" },
+  fog: { full: "当地起雾", compact: "当地有雾" },
+  wind: { full: "当地有风", compact: "当地有风" },
+  thunderstorm: { full: "当地有雷暴", compact: "当地雷暴" },
+  hot: { full: "当地天气炎热", compact: "当地炎热" },
+  cold: { full: "当地天气严寒", compact: "当地严寒" },
+  unknown: { full: "当地天气待确认", compact: "天气待确认" },
+};
+
 function buildReason(
   poem: Poem,
   calendar: CalendarContext,
@@ -244,13 +264,13 @@ function buildReason(
         weather.source === "synthetic"
           ? `隔离场景模拟${weather.label}`
           : weather.freshness === "fresh"
-            ? `当地正有${weather.label}`
+            ? FRESH_WEATHER_CONTEXT[weather.kind].full
             : `最近的天气记录显示${weather.label}`,
         poem.oneLineSummary,
         weather.source === "synthetic"
           ? `演练天气：${rehearsalLabel}`
           : weather.freshness === "fresh"
-            ? `当地天气为${weather.label}`
+            ? FRESH_WEATHER_CONTEXT[weather.kind].compact
             : `天气记录为${weather.label}`,
       ),
     };
