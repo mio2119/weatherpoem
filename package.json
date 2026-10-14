@@ -21,6 +21,7 @@
     "content:review:validate": "node scripts/validate-content-review.mjs",
     "content:withdrawal:drill": "node scripts/content-withdrawal-drill.mjs",
     "content:withdrawal:check": "node scripts/content-withdrawal-drill.mjs --check && node --test scripts/content-withdrawal-contract.test.mjs",
+    "content:withdrawal:redesign:check": "node scripts/content-withdrawal-drill.mjs --check --report=T08_CONTENT_WITHDRAWAL_DRILL_20261015.json && node --test scripts/content-withdrawal-contract.test.mjs",
     "device:matrix:check": "node --test scripts/device-matrix-contract.test.mjs",
     "desktop:capability:check": "node --test scripts/desktop-capability-contract.test.mjs",
     "performance:smoke": "powershell.exe -NoLogo -NoProfile -NonInteractive -ExecutionPolicy Bypass -File scripts/test-performance-smoke.ps1",
@@ -99,7 +100,7 @@
     "release:test:autostart-reboot": "powershell.exe -NoLogo -NoProfile -NonInteractive -ExecutionPolicy Bypass -File scripts/test-autostart-reboot.ps1",
     "release:test:single-instance": "powershell.exe -NoLogo -NoProfile -NonInteractive -ExecutionPolicy Bypass -File scripts/test-single-instance.ps1",
     "release:test:window-position": "powershell.exe -NoLogo -NoProfile -NonInteractive -ExecutionPolicy Bypass -File scripts/test-window-position.ps1",
-    "check": "npm run lint && npm run typecheck && npm run test && npm run content:review:check && npm run content:withdrawal:check && npm run device:matrix:check && npm run desktop:capability:check && npm run performance:check && npm run accessibility:check && npm run pilot:check && npm run pilot:four-week:check && npm run scope:freeze:check && npm run uat:plan:check && npm run signing:plan:check && npm run updater:plan:check && npm run distribution:plan:check && npm run licenses:check && npm run reason:check && npm run security:audit:check && npm run requirements:check && npm run build",
+    "check": "npm run lint && npm run typecheck && npm run test && npm run content:review:check && npm run content:withdrawal:redesign:check && npm run device:matrix:check && npm run desktop:capability:check && npm run performance:check && npm run accessibility:check && npm run pilot:check && npm run pilot:four-week:check && npm run scope:freeze:check && npm run uat:plan:check && npm run signing:plan:check && npm run updater:plan:check && npm run distribution:plan:check && npm run licenses:check && npm run reason:check && npm run security:audit:check && npm run requirements:check && npm run build",
     "tauri": "tauri",
     "tauri:dev": "tauri dev",
     "tauri:build": "tauri build"
