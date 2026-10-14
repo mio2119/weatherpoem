@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.0",
-  "baselineVersion": "2026.07-accessibility-v1",
+  "baselineVersion": "2026.10-accessibility-v2",
   "status": "automatic-baseline-ready-awaiting-manual-system-test",
   "target": {
     "platform": "Windows 11",
@@ -33,10 +33,16 @@
     "contrast": {
       "status": "passed",
       "minimumRatio": 4.5,
+      "sceneOverlay": {
+        "status": "passed",
+        "method": "CSS --scene-ink 最大不透明度与 --surface 合成；静态样式计算，不代表原生逐像素或真人验收",
+        "themes": ["light", "dark"],
+        "foregroundTokens": ["ink", "muted", "faint", "accent"]
+      },
       "pairs": [
         {
           "name": "light-muted-on-paper",
-          "foreground": "#726b60",
+          "foreground": "#665f54",
           "background": "#f4f0e7"
         },
         {
@@ -46,7 +52,7 @@
         },
         {
           "name": "dark-faint-on-surface",
-          "foreground": "#9e9689",
+          "foreground": "#ada598",
           "background": "#28251f"
         },
         {

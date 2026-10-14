@@ -52,10 +52,12 @@ async function waitFor(check, description, timeoutMs = 20_000) {
 function send(method, params = {}) {
   const id = ++requestId;
   return new Promise((resolve, reject) => {
+    const timeoutMs = method === "Page.navigate" || method === "Page.reload"
+      ? 30_000 : 10_000;
     const timeout = setTimeout(() => {
       pending.delete(id);
       reject(new Error(`CDP timeout: ${method}`));
-    }, 10_000);
+    }, timeoutMs);
     pending.set(id, { resolve, reject, timeout });
     socket.send(JSON.stringify({ id, method, params }));
   });
@@ -565,5 +567,7 @@ try {
     !profile.toLowerCase().startsWith(`${tempRoot}${sep}`) ||
     !basename(profile).startsWith("weatherpoem-scene-browser-")
   ) throw new Error("Refusing to remove an unexpected browser profile");
-  rmSync(profile, { recursive: true, force: true, maxRetries: 10, retryDelay: 100 });
+  // Chrome's child processes can release the Windows profile lock after the
+  // main process exits; keep this cleanup bounded but allow that short delay.
+  rmSync(profile, { recursive: true, force: true, maxRetries: 50, retryDelay: 200 });
 }

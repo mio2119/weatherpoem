@@ -56,3 +56,9 @@
 原始逐组报告：[T07_BROWSER_WEATHER_SCENES_20261014.json](./evidence/T07_BROWSER_WEATHER_SCENES_20261014.json)。14 张画面位于 `review/redesign/evidence/T07_BROWSER_*_ISOLATED_20261014.png`，画面下方均明示“隔离天气演练 · 非当地实况”；例图：[小雨浅色](./evidence/T07_BROWSER_FRESH_RAIN_LIGHT_ISOLATED_20261014.png)、[雪深色](./evidence/T07_BROWSER_FRESH_SNOW_DARK_ISOLATED_20261014.png)、[缓存雪浅色](./evidence/T07_BROWSER_CACHED_SNOW_LIGHT_ISOLATED_20261014.png)、[不匹配小雨深色](./evidence/T07_BROWSER_MISMATCH_RAIN_DARK_ISOLATED_20261014.png)。脚本无参数的原 T05 节日／安全矩阵仍为 **10/10 通过**，没有被新模式破坏。完成后 `lint`、`typecheck`、全量测试（26 文件、195 项）、`build`、`reason:check`、`requirements:check` 通过。
 
 未测仍是 A7 的必需子项：新当前源码的原生 WebView2 浅深色场景、真实 Windows 减少动态设置切换、隐藏后的渲染停机、可归档短录屏、实际系统缩放/对比度与真人视觉判断。隔离浏览器静帧不能证明这些，也不能以旧内部 EXE 哈希对应的资源报告证明当前源码；A7 继续为**部分通过**。
+
+## 2026-10-14 诗境叠色最不利对比度复核
+
+后续对当前 CSS 纸面底色、装饰层最大不透明度和文字色做静态合成计算，发现原浅色次要字在最强纹样下约 **4.17:1**、原深色淡字约 **4.03:1**，低于本项目普通文本 **4.5:1** 的自动门槛。先把这一组合加入 `scripts/accessibility-check.mjs`，检查按预期失败；再把浅色 `--muted`/`--faint` 调为 `#665f54`、深色 `--faint` 调为 `#ada598`，深色装饰浓度从 15% 降至 13%。复验最不利组合浅色次要字/淡字均 **5.00:1**、深色淡字 **5.03:1**、深色强调字 **4.73:1**；其余所测诗境文字也在 4.5:1 以上。无障碍自动基线版本同步到 `2026.10-accessibility-v2`，人工读屏、真实系统对比度主题及 200% 缩放依然是待验项。
+
+颜色变化后重新运行同一 14 组隔离浏览器天气矩阵并通过，当前源码对应的原始报告为 [T07_BROWSER_WEATHER_SCENES_CONTRAST_20261014.json](./evidence/T07_BROWSER_WEATHER_SCENES_CONTRAST_20261014.json)，当前静帧为 `review/redesign/evidence/T07_BROWSER_*_ISOLATED_CONTRAST_20261014.png`。修订前的无 `CONTRAST` 报告和画面保留为发现问题时的证据，不能再代表当前颜色。人工复看新小雨浅色、雪深色、离线深色及不匹配小雨浅色代表帧，诗文和操作未见明显遮挡；静态颜色计算和截图不能证明 WebView2 实际绘制、系统辅助技术或长期视觉疲劳。原 T05 节日／安全浏览器矩阵初次重跑时画面 10/10 报告通过，但 Windows 临时资料目录锁定导致清理失败，故该次不算脚本通过；放宽受控浏览器关闭后的清理重试并延长导航超时后，再运行得到完整退出码 0、10/10 通过。A7 仍为**部分通过**。
