@@ -319,6 +319,26 @@ class SqliteRepository implements AppRepository {
     if (!feedbackColumns.some((column) => column.name === "local_date")) {
       await this.db.execute("ALTER TABLE feedback ADD COLUMN local_date TEXT");
     }
+    await this.db.execute(
+      `CREATE TABLE IF NOT EXISTS user_data_reset (
+        id INTEGER PRIMARY KEY CHECK (id = 1)
+      )`,
+    );
+    // The SQL plugin executes each call through a pool. A trigger keeps all
+    // deletions inside one SQLite statement, so a failed delete rolls back all.
+    await this.db.execute(
+      `CREATE TRIGGER IF NOT EXISTS weatherpoem_clear_user_data_v1
+       AFTER INSERT ON user_data_reset
+       BEGIN
+         DELETE FROM app_kv;
+         DELETE FROM daily_state;
+         DELETE FROM recommendation_history;
+         DELETE FROM recommendation_display_events;
+         DELETE FROM favorites;
+         DELETE FROM feedback;
+         DELETE FROM user_data_reset;
+       END`,
+    );
   }
 
   async load(): Promise<AppBootstrap> {
@@ -501,12 +521,7 @@ class SqliteRepository implements AppRepository {
   }
 
   async clearUserData(): Promise<void> {
-    await this.db.execute("DELETE FROM app_kv");
-    await this.db.execute("DELETE FROM daily_state");
-    await this.db.execute("DELETE FROM recommendation_history");
-    await this.db.execute("DELETE FROM recommendation_display_events");
-    await this.db.execute("DELETE FROM favorites");
-    await this.db.execute("DELETE FROM feedback");
+    await this.db.execute("INSERT INTO user_data_reset (id) VALUES (1)");
   }
 }
 

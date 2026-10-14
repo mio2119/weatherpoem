@@ -149,4 +149,45 @@ describe("SQLite feedback migration and undo", () => {
     expect(localStorage.getItem("weatherpoem.local.v1"))
       .toBe("browser-data-untouched");
   });
+
+  it("rolls back every user table when a deletion fails midway, then clears all on retry", async () => {
+    const database = sqlite.database!;
+    const repository = await createRepository();
+    database.exec(`
+      INSERT INTO app_kv (key, value) VALUES ('settings', '{"configured":true}');
+      INSERT INTO daily_state
+        (local_date, state, work_id, shown_at, content_version, rule_version)
+        VALUES ('2026-10-13', 'shown', 'legacy-poem', NULL, 'test', 'test');
+      INSERT INTO recommendation_history
+        (local_date, work_id, author, primary_context)
+        VALUES ('2026-10-13', 'legacy-poem', 'author', 'calendar');
+      INSERT INTO recommendation_display_events
+        (local_date, work_id, author, primary_context, displayed_at)
+        VALUES ('2026-10-13', 'legacy-poem', 'author', 'calendar', NULL);
+      CREATE TRIGGER fail_reset BEFORE DELETE ON favorites
+      BEGIN SELECT RAISE(ABORT, 'simulated deletion failure'); END;
+    `);
+    const tables = [
+      "app_kv", "daily_state", "recommendation_history",
+      "recommendation_display_events", "favorites", "feedback",
+    ] as const;
+    const counts = () => tables.map((table) =>
+      (database.prepare(`SELECT COUNT(*) AS count FROM ${table}`).get() as { count: number }).count,
+    );
+    const before = counts();
+    expect(before.every((count) => count > 0)).toBe(true);
+
+    await expect(repository.clearUserData())
+      .rejects.toThrow("simulated deletion failure");
+    expect(counts()).toEqual(before);
+
+    database.exec("DROP TRIGGER fail_reset");
+    await repository.clearUserData();
+    expect(counts()).toEqual(tables.map(() => 0));
+    expect((database.prepare("SELECT COUNT(*) AS count FROM user_data_reset").get() as { count: number }).count)
+      .toBe(0);
+    const reopened = await createRepository();
+    await reopened.clearUserData();
+    expect(counts()).toEqual(tables.map(() => 0));
+  });
 });
