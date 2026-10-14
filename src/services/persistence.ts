@@ -22,7 +22,7 @@ export const DEFAULT_SETTINGS: AppSettings = {
 
 export class DesktopStorageUnavailableError extends Error {
   constructor(cause: unknown) {
-    super("本地资料暂时无法读取。为保护收藏和设置，已停止载入；请重试。");
+    super("本地资料暂时无法读取。为保护收藏和设置，已停止载入；请勿清除资料。稍后重试，若持续失败请联系维护者。");
     this.name = "DesktopStorageUnavailableError";
     this.cause = cause;
   }
@@ -96,7 +96,7 @@ function isOptionalString(record: Record<string, unknown>, key: string): boolean
   return !(key in record) || typeof record[key] === "string";
 }
 
-function isBrowserSettings(value: unknown): value is Partial<AppSettings> {
+function isStoredSettings(value: unknown): value is Partial<AppSettings> {
   if (!isRecord(value) || typeof value.configured !== "boolean" ||
       !isNonEmptyString(value.cityId)) return false;
   for (const key of ["autostart", "anonymousMetrics", "reduceMotion"]) {
@@ -141,6 +141,14 @@ function isBrowserFeedbackItem(value: unknown): value is FeedbackItem {
     isNonEmptyString(value.createdAt) && isOptionalString(value, "localDate");
 }
 
+function parseStoredSettings(raw: string): AppSettings {
+  const candidate: unknown = JSON.parse(raw);
+  if (!isStoredSettings(candidate)) {
+    throw new Error("Stored settings are invalid");
+  }
+  return normalizeSettings(candidate);
+}
+
 function parseBrowserData(raw: string | null): BrowserData {
   if (raw === null) return emptyData();
   const parsed: unknown = JSON.parse(raw);
@@ -148,7 +156,7 @@ function parseBrowserData(raw: string | null): BrowserData {
     throw new Error("Browser data root is invalid");
   }
   const data = parsed as Record<string, unknown>;
-  if (!isBrowserSettings(data.settings) ||
+  if (!isStoredSettings(data.settings) ||
       ("dailyState" in data && !isBrowserDailyState(data.dailyState)) ||
       ("history" in data && (!Array.isArray(data.history) ||
         !data.history.every(isBrowserHistoryItem))) ||
@@ -447,13 +455,13 @@ class SqliteRepository implements AppRepository {
     );
 
     let settings = { ...DEFAULT_SETTINGS };
-    if (settingsRows[0]?.value) {
+    if (settingsRows.length > 0) {
       try {
-        settings = normalizeSettings(
-          JSON.parse(settingsRows[0].value) as Partial<AppSettings>,
-        );
-      } catch {
-        // 保留安全默认值；损坏的设置不会阻止应用启动。
+        const rawSettings = settingsRows[0]?.value;
+        if (typeof rawSettings !== "string") throw new Error("Stored settings are missing");
+        settings = parseStoredSettings(rawSettings);
+      } catch (error) {
+        throw new DesktopStorageUnavailableError(error);
       }
     }
     let pilotState: PilotState | undefined;
@@ -503,6 +511,19 @@ class SqliteRepository implements AppRepository {
   }
 
   async saveSettings(settings: AppSettings): Promise<void> {
+    const existing = await this.db.select<ValueRow[]>(
+      "SELECT value FROM app_kv WHERE key = $1 LIMIT 1",
+      ["settings"],
+    );
+    if (existing.length > 0) {
+      try {
+        const rawSettings = existing[0]?.value;
+        if (typeof rawSettings !== "string") throw new Error("Stored settings are missing");
+        parseStoredSettings(rawSettings);
+      } catch (error) {
+        throw new DesktopStorageUnavailableError(error);
+      }
+    }
     await this.db.execute(
       `INSERT INTO app_kv (key, value) VALUES ($1, $2)
        ON CONFLICT(key) DO UPDATE SET value = excluded.value`,

@@ -3,7 +3,7 @@ import { tmpdir } from "node:os";
 import { basename, join, sep } from "node:path";
 import { DatabaseSync } from "node:sqlite";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
-import { createRepository, DesktopStorageUnavailableError } from "./persistence";
+import { createRepository, DEFAULT_SETTINGS, DesktopStorageUnavailableError } from "./persistence";
 
 const sqlite = vi.hoisted(() => ({
   database: null as DatabaseSync | null,
@@ -181,6 +181,95 @@ describe("SQLite feedback migration and undo", () => {
     expect(recovered.feedback[0]?.workId).toBe("legacy-poem");
     expect(localStorage.getItem("weatherpoem.local.v1"))
       .toBe("browser-data-untouched");
+  });
+
+  it.each([
+    '{"configured":true,"cityId":',
+    '{"configured":true}',
+    '{"configured":true,"cityId":null}',
+  ])("keeps a damaged SQLite settings row intact on load and save: %s", async (raw) => {
+    const database = sqlite.database!;
+    const repository = await createRepository();
+    database.prepare("INSERT INTO app_kv (key, value) VALUES ('settings', ?)").run(raw);
+    const readRaw = () => (database.prepare(
+      "SELECT value FROM app_kv WHERE key = 'settings'",
+    ).get() as { value: string }).value;
+
+    await expect(repository.load()).rejects.toBeInstanceOf(DesktopStorageUnavailableError);
+    await expect(repository.saveSettings({
+      ...DEFAULT_SETTINGS, configured: true, cityId: "beijing",
+    })).rejects.toBeInstanceOf(DesktopStorageUnavailableError);
+    expect(readRaw()).toBe(raw);
+    await expect((await createRepository()).load())
+      .rejects.toBeInstanceOf(DesktopStorageUnavailableError);
+    expect(readRaw()).toBe(raw);
+    expect((database.prepare("SELECT work_id FROM favorites").all() as Array<{ work_id: string }>))
+      .toEqual([{ work_id: "legacy-poem" }]);
+  });
+
+  it("loads old SQLite settings missing only newer preferences and keeps the chosen city", async () => {
+    const database = sqlite.database!;
+    const repository = await createRepository();
+    database.prepare("INSERT INTO app_kv (key, value) VALUES ('settings', ?)")
+      .run(JSON.stringify({
+        configured: true, cityId: "hangzhou", autostart: false,
+        anonymousMetrics: false, theme: "dark", reduceMotion: true,
+      }));
+    const loaded = await repository.load();
+    expect(loaded.settings).toMatchObject({
+      configured: true, cityId: "hangzhou", autostart: false,
+      theme: "dark", reduceMotion: true,
+      poemLayout: "horizontal", poemFontSize: "medium",
+    });
+    expect(loaded.favorites).toEqual(["legacy-poem"]);
+    await repository.saveSettings({ ...loaded.settings, poemLayout: "vertical" });
+    const reloaded = await (await createRepository()).load();
+    expect(reloaded.settings.cityId).toBe("hangzhou");
+    expect(reloaded.settings.poemLayout).toBe("vertical");
+    expect(reloaded.favorites).toEqual(["legacy-poem"]);
+  });
+
+  it("preserves a damaged settings row across a file close and reopen until repaired", async () => {
+    const temporaryDirectory = mkdtempSync(join(tmpdir(), "weatherpoem-sqlite-settings-"));
+    const databasePath = join(temporaryDirectory, "settings.db");
+    const damaged = '{"configured":true,"cityId":';
+    try {
+      sqlite.database?.close();
+      sqlite.database = new DatabaseSync(databasePath);
+      seedLegacyDatabase(sqlite.database);
+      const repository = await createRepository();
+      sqlite.database.prepare("INSERT INTO app_kv (key, value) VALUES ('settings', ?)").run(damaged);
+      await expect(repository.load()).rejects.toBeInstanceOf(DesktopStorageUnavailableError);
+      await expect(repository.saveSettings({ ...DEFAULT_SETTINGS, configured: true }))
+        .rejects.toBeInstanceOf(DesktopStorageUnavailableError);
+
+      sqlite.database.close();
+      sqlite.database = new DatabaseSync(databasePath);
+      const readRaw = () => (sqlite.database!.prepare(
+        "SELECT value FROM app_kv WHERE key = 'settings'",
+      ).get() as { value: string }).value;
+      expect(readRaw()).toBe(damaged);
+      expect((sqlite.database.prepare("SELECT work_id FROM favorites").all() as Array<{ work_id: string }>))
+        .toEqual([{ work_id: "legacy-poem" }]);
+
+      sqlite.database.prepare("UPDATE app_kv SET value = ? WHERE key = 'settings'")
+        .run(JSON.stringify({ configured: true, cityId: "hangzhou" }));
+      const recovered = await (await createRepository()).load();
+      expect(recovered.settings.cityId).toBe("hangzhou");
+      expect(recovered.favorites).toEqual(["legacy-poem"]);
+    } finally {
+      sqlite.database?.close();
+      sqlite.database = null;
+      const resolvedTempBase = realpathSync(tmpdir()).toLowerCase();
+      const resolvedDirectory = realpathSync(temporaryDirectory);
+      if (
+        !resolvedDirectory.toLowerCase().startsWith(`${resolvedTempBase}${sep}`) ||
+        !basename(resolvedDirectory).startsWith("weatherpoem-sqlite-settings-")
+      ) {
+        throw new Error("Refusing to remove an unexpected SQLite test directory");
+      }
+      rmSync(resolvedDirectory, { recursive: true });
+    }
   });
 
   it("rolls back every user table when a deletion fails midway, then clears all on retry", async () => {
