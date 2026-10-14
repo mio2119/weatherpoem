@@ -1,0 +1,1020 @@
+{
+  "schemaVersion": "1.0",
+  "browser": "Chrome/155.0.8059.40",
+  "localDate": "2026-10-14",
+  "poemId": "du-fu-wen-guan-jun",
+  "isolatedProfile": true,
+  "nativeWebView2": false,
+  "readingMeasurements": [
+    {
+      "theme": "light",
+      "layout": "horizontal",
+      "fontSize": "small",
+      "fullTextMatches": true,
+      "roomy": {
+        "theme": "light",
+        "fontSize": "small",
+        "vertical": false,
+        "title": "闻官军收河南河北",
+        "poemText": "剑外忽传收蓟北，初闻涕泪满衣裳。却看妻子愁何在，漫卷诗书喜欲狂。白日放歌须纵酒，青春作伴好还乡。即从巴峡穿巫峡，便下襄阳向洛阳。",
+        "poemLineCount": 4,
+        "documentScrollWidth": 560,
+        "panelClientHeight": 660,
+        "panelScrollHeight": 690,
+        "panelScrollTop": 0,
+        "frameClientWidth": 483,
+        "frameScrollWidth": 483,
+        "frameInitialScroll": 0,
+        "frameEndScroll": 0,
+        "back": {
+          "top": 67,
+          "bottom": 97,
+          "left": 21,
+          "right": 87
+        },
+        "layoutAction": {
+          "top": 237,
+          "bottom": 269,
+          "left": 462,
+          "right": 518
+        },
+        "edition": {
+          "top": 690,
+          "bottom": 701,
+          "left": 35,
+          "right": 518
+        },
+        "viewport": {
+          "width": 560,
+          "height": 720
+        }
+      },
+      "compact": {
+        "theme": "light",
+        "fontSize": "small",
+        "vertical": false,
+        "title": "闻官军收河南河北",
+        "poemText": "剑外忽传收蓟北，初闻涕泪满衣裳。却看妻子愁何在，漫卷诗书喜欲狂。白日放歌须纵酒，青春作伴好还乡。即从巴峡穿巫峡，便下襄阳向洛阳。",
+        "poemLineCount": 4,
+        "documentScrollWidth": 320,
+        "panelClientHeight": 200,
+        "panelScrollHeight": 844,
+        "panelScrollTop": 644,
+        "frameClientWidth": 243,
+        "frameScrollWidth": 243,
+        "frameInitialScroll": 0,
+        "frameEndScroll": 0,
+        "back": {
+          "top": 67,
+          "bottom": 97,
+          "left": 21,
+          "right": 87
+        },
+        "layoutAction": {
+          "top": -369,
+          "bottom": -337,
+          "left": 222,
+          "right": 278
+        },
+        "edition": {
+          "top": 200,
+          "bottom": 211,
+          "left": 35,
+          "right": 278
+        },
+        "viewport": {
+          "width": 320,
+          "height": 260
+        }
+      }
+    },
+    {
+      "theme": "light",
+      "layout": "horizontal",
+      "fontSize": "medium",
+      "fullTextMatches": true,
+      "roomy": {
+        "theme": "light",
+        "fontSize": "medium",
+        "vertical": false,
+        "title": "闻官军收河南河北",
+        "poemText": "剑外忽传收蓟北，初闻涕泪满衣裳。却看妻子愁何在，漫卷诗书喜欲狂。白日放歌须纵酒，青春作伴好还乡。即从巴峡穿巫峡，便下襄阳向洛阳。",
+        "poemLineCount": 4,
+        "documentScrollWidth": 560,
+        "panelClientHeight": 660,
+        "panelScrollHeight": 703,
+        "panelScrollTop": 0,
+        "frameClientWidth": 483,
+        "frameScrollWidth": 483,
+        "frameInitialScroll": 0,
+        "frameEndScroll": 0,
+        "back": {
+          "top": 67,
+          "bottom": 97,
+          "left": 21,
+          "right": 87
+        },
+        "layoutAction": {
+          "top": 237,
+          "bottom": 269,
+          "left": 462,
+          "right": 518
+        },
+        "edition": {
+          "top": 703,
+          "bottom": 714,
+          "left": 35,
+          "right": 518
+        },
+        "viewport": {
+          "width": 560,
+          "height": 720
+        }
+      },
+      "compact": {
+        "theme": "light",
+        "fontSize": "medium",
+        "vertical": false,
+        "title": "闻官军收河南河北",
+        "poemText": "剑外忽传收蓟北，初闻涕泪满衣裳。却看妻子愁何在，漫卷诗书喜欲狂。白日放歌须纵酒，青春作伴好还乡。即从巴峡穿巫峡，便下襄阳向洛阳。",
+        "poemLineCount": 4,
+        "documentScrollWidth": 320,
+        "panelClientHeight": 200,
+        "panelScrollHeight": 869,
+        "panelScrollTop": 669,
+        "frameClientWidth": 243,
+        "frameScrollWidth": 243,
+        "frameInitialScroll": 0,
+        "frameEndScroll": 0,
+        "back": {
+          "top": 67,
+          "bottom": 97,
+          "left": 21,
+          "right": 87
+        },
+        "layoutAction": {
+          "top": -394,
+          "bottom": -362,
+          "left": 222,
+          "right": 278
+        },
+        "edition": {
+          "top": 200,
+          "bottom": 211,
+          "left": 35,
+          "right": 278
+        },
+        "viewport": {
+          "width": 320,
+          "height": 260
+        }
+      }
+    },
+    {
+      "theme": "light",
+      "layout": "horizontal",
+      "fontSize": "large",
+      "fullTextMatches": true,
+      "roomy": {
+        "theme": "light",
+        "fontSize": "large",
+        "vertical": false,
+        "title": "闻官军收河南河北",
+        "poemText": "剑外忽传收蓟北，初闻涕泪满衣裳。却看妻子愁何在，漫卷诗书喜欲狂。白日放歌须纵酒，青春作伴好还乡。即从巴峡穿巫峡，便下襄阳向洛阳。",
+        "poemLineCount": 4,
+        "documentScrollWidth": 560,
+        "panelClientHeight": 660,
+        "panelScrollHeight": 724,
+        "panelScrollTop": 0,
+        "frameClientWidth": 483,
+        "frameScrollWidth": 483,
+        "frameInitialScroll": 0,
+        "frameEndScroll": 0,
+        "back": {
+          "top": 67,
+          "bottom": 97,
+          "left": 21,
+          "right": 87
+        },
+        "layoutAction": {
+          "top": 237,
+          "bottom": 269,
+          "left": 462,
+          "right": 518
+        },
+        "edition": {
+          "top": 724,
+          "bottom": 735,
+          "left": 35,
+          "right": 518
+        },
+        "viewport": {
+          "width": 560,
+          "height": 720
+        }
+      },
+      "compact": {
+        "theme": "light",
+        "fontSize": "large",
+        "vertical": false,
+        "title": "闻官军收河南河北",
+        "poemText": "剑外忽传收蓟北，初闻涕泪满衣裳。却看妻子愁何在，漫卷诗书喜欲狂。白日放歌须纵酒，青春作伴好还乡。即从巴峡穿巫峡，便下襄阳向洛阳。",
+        "poemLineCount": 4,
+        "documentScrollWidth": 320,
+        "panelClientHeight": 200,
+        "panelScrollHeight": 910,
+        "panelScrollTop": 710,
+        "frameClientWidth": 243,
+        "frameScrollWidth": 243,
+        "frameInitialScroll": 0,
+        "frameEndScroll": 0,
+        "back": {
+          "top": 67,
+          "bottom": 97,
+          "left": 21,
+          "right": 87
+        },
+        "layoutAction": {
+          "top": -435,
+          "bottom": -403,
+          "left": 222,
+          "right": 278
+        },
+        "edition": {
+          "top": 200,
+          "bottom": 211,
+          "left": 35,
+          "right": 278
+        },
+        "viewport": {
+          "width": 320,
+          "height": 260
+        }
+      }
+    },
+    {
+      "theme": "light",
+      "layout": "vertical",
+      "fontSize": "small",
+      "fullTextMatches": true,
+      "roomy": {
+        "theme": "light",
+        "fontSize": "small",
+        "vertical": true,
+        "title": "闻官军收河南河北",
+        "poemText": "剑外忽传收蓟北，初闻涕泪满衣裳。却看妻子愁何在，漫卷诗书喜欲狂。白日放歌须纵酒，青春作伴好还乡。即从巴峡穿巫峡，便下襄阳向洛阳。",
+        "poemLineCount": 8,
+        "documentScrollWidth": 560,
+        "panelClientHeight": 660,
+        "panelScrollHeight": 732,
+        "panelScrollTop": 0,
+        "frameClientWidth": 483,
+        "frameScrollWidth": 483,
+        "frameInitialScroll": 0,
+        "frameEndScroll": 0,
+        "back": {
+          "top": 67,
+          "bottom": 97,
+          "left": 21,
+          "right": 87
+        },
+        "layoutAction": {
+          "top": 237,
+          "bottom": 269,
+          "left": 462,
+          "right": 518
+        },
+        "edition": {
+          "top": 732,
+          "bottom": 743,
+          "left": 35,
+          "right": 518
+        },
+        "viewport": {
+          "width": 560,
+          "height": 720
+        }
+      },
+      "compact": {
+        "theme": "light",
+        "fontSize": "small",
+        "vertical": true,
+        "title": "闻官军收河南河北",
+        "poemText": "剑外忽传收蓟北，初闻涕泪满衣裳。却看妻子愁何在，漫卷诗书喜欲狂。白日放歌须纵酒，青春作伴好还乡。即从巴峡穿巫峡，便下襄阳向洛阳。",
+        "poemLineCount": 8,
+        "documentScrollWidth": 320,
+        "panelClientHeight": 200,
+        "panelScrollHeight": 785,
+        "panelScrollTop": 585,
+        "frameClientWidth": 243,
+        "frameScrollWidth": 265,
+        "frameInitialScroll": 0,
+        "frameEndScroll": -21,
+        "back": {
+          "top": 67,
+          "bottom": 97,
+          "left": 21,
+          "right": 87
+        },
+        "layoutAction": {
+          "top": -310,
+          "bottom": -278,
+          "left": 222,
+          "right": 278
+        },
+        "edition": {
+          "top": 200,
+          "bottom": 211,
+          "left": 35,
+          "right": 278
+        },
+        "viewport": {
+          "width": 320,
+          "height": 260
+        }
+      }
+    },
+    {
+      "theme": "light",
+      "layout": "vertical",
+      "fontSize": "medium",
+      "fullTextMatches": true,
+      "roomy": {
+        "theme": "light",
+        "fontSize": "medium",
+        "vertical": true,
+        "title": "闻官军收河南河北",
+        "poemText": "剑外忽传收蓟北，初闻涕泪满衣裳。却看妻子愁何在，漫卷诗书喜欲狂。白日放歌须纵酒，青春作伴好还乡。即从巴峡穿巫峡，便下襄阳向洛阳。",
+        "poemLineCount": 8,
+        "documentScrollWidth": 560,
+        "panelClientHeight": 660,
+        "panelScrollHeight": 749,
+        "panelScrollTop": 0,
+        "frameClientWidth": 483,
+        "frameScrollWidth": 483,
+        "frameInitialScroll": 0,
+        "frameEndScroll": 0,
+        "back": {
+          "top": 67,
+          "bottom": 97,
+          "left": 21,
+          "right": 87
+        },
+        "layoutAction": {
+          "top": 237,
+          "bottom": 269,
+          "left": 462,
+          "right": 518
+        },
+        "edition": {
+          "top": 749,
+          "bottom": 760,
+          "left": 35,
+          "right": 518
+        },
+        "viewport": {
+          "width": 560,
+          "height": 720
+        }
+      },
+      "compact": {
+        "theme": "light",
+        "fontSize": "medium",
+        "vertical": true,
+        "title": "闻官军收河南河北",
+        "poemText": "剑外忽传收蓟北，初闻涕泪满衣裳。却看妻子愁何在，漫卷诗书喜欲狂。白日放歌须纵酒，青春作伴好还乡。即从巴峡穿巫峡，便下襄阳向洛阳。",
+        "poemLineCount": 8,
+        "documentScrollWidth": 320,
+        "panelClientHeight": 200,
+        "panelScrollHeight": 802,
+        "panelScrollTop": 602,
+        "frameClientWidth": 243,
+        "frameScrollWidth": 289,
+        "frameInitialScroll": 0,
+        "frameEndScroll": -46,
+        "back": {
+          "top": 67,
+          "bottom": 97,
+          "left": 21,
+          "right": 87
+        },
+        "layoutAction": {
+          "top": -327,
+          "bottom": -295,
+          "left": 222,
+          "right": 278
+        },
+        "edition": {
+          "top": 200,
+          "bottom": 211,
+          "left": 35,
+          "right": 278
+        },
+        "viewport": {
+          "width": 320,
+          "height": 260
+        }
+      }
+    },
+    {
+      "theme": "light",
+      "layout": "vertical",
+      "fontSize": "large",
+      "fullTextMatches": true,
+      "roomy": {
+        "theme": "light",
+        "fontSize": "large",
+        "vertical": true,
+        "title": "闻官军收河南河北",
+        "poemText": "剑外忽传收蓟北，初闻涕泪满衣裳。却看妻子愁何在，漫卷诗书喜欲狂。白日放歌须纵酒，青春作伴好还乡。即从巴峡穿巫峡，便下襄阳向洛阳。",
+        "poemLineCount": 8,
+        "documentScrollWidth": 560,
+        "panelClientHeight": 660,
+        "panelScrollHeight": 777,
+        "panelScrollTop": 0,
+        "frameClientWidth": 483,
+        "frameScrollWidth": 483,
+        "frameInitialScroll": 0,
+        "frameEndScroll": 0,
+        "back": {
+          "top": 67,
+          "bottom": 97,
+          "left": 21,
+          "right": 87
+        },
+        "layoutAction": {
+          "top": 237,
+          "bottom": 269,
+          "left": 462,
+          "right": 518
+        },
+        "edition": {
+          "top": 777,
+          "bottom": 788,
+          "left": 35,
+          "right": 518
+        },
+        "viewport": {
+          "width": 560,
+          "height": 720
+        }
+      },
+      "compact": {
+        "theme": "light",
+        "fontSize": "large",
+        "vertical": true,
+        "title": "闻官军收河南河北",
+        "poemText": "剑外忽传收蓟北，初闻涕泪满衣裳。却看妻子愁何在，漫卷诗书喜欲狂。白日放歌须纵酒，青春作伴好还乡。即从巴峡穿巫峡，便下襄阳向洛阳。",
+        "poemLineCount": 8,
+        "documentScrollWidth": 320,
+        "panelClientHeight": 200,
+        "panelScrollHeight": 830,
+        "panelScrollTop": 630,
+        "frameClientWidth": 243,
+        "frameScrollWidth": 328,
+        "frameInitialScroll": 0,
+        "frameEndScroll": -85,
+        "back": {
+          "top": 67,
+          "bottom": 97,
+          "left": 21,
+          "right": 87
+        },
+        "layoutAction": {
+          "top": -355,
+          "bottom": -323,
+          "left": 222,
+          "right": 278
+        },
+        "edition": {
+          "top": 200,
+          "bottom": 211,
+          "left": 35,
+          "right": 278
+        },
+        "viewport": {
+          "width": 320,
+          "height": 260
+        }
+      }
+    },
+    {
+      "theme": "dark",
+      "layout": "horizontal",
+      "fontSize": "small",
+      "fullTextMatches": true,
+      "roomy": {
+        "theme": "dark",
+        "fontSize": "small",
+        "vertical": false,
+        "title": "闻官军收河南河北",
+        "poemText": "剑外忽传收蓟北，初闻涕泪满衣裳。却看妻子愁何在，漫卷诗书喜欲狂。白日放歌须纵酒，青春作伴好还乡。即从巴峡穿巫峡，便下襄阳向洛阳。",
+        "poemLineCount": 4,
+        "documentScrollWidth": 560,
+        "panelClientHeight": 660,
+        "panelScrollHeight": 690,
+        "panelScrollTop": 0,
+        "frameClientWidth": 483,
+        "frameScrollWidth": 483,
+        "frameInitialScroll": 0,
+        "frameEndScroll": 0,
+        "back": {
+          "top": 67,
+          "bottom": 97,
+          "left": 21,
+          "right": 87
+        },
+        "layoutAction": {
+          "top": 237,
+          "bottom": 269,
+          "left": 462,
+          "right": 518
+        },
+        "edition": {
+          "top": 690,
+          "bottom": 701,
+          "left": 35,
+          "right": 518
+        },
+        "viewport": {
+          "width": 560,
+          "height": 720
+        }
+      },
+      "compact": {
+        "theme": "dark",
+        "fontSize": "small",
+        "vertical": false,
+        "title": "闻官军收河南河北",
+        "poemText": "剑外忽传收蓟北，初闻涕泪满衣裳。却看妻子愁何在，漫卷诗书喜欲狂。白日放歌须纵酒，青春作伴好还乡。即从巴峡穿巫峡，便下襄阳向洛阳。",
+        "poemLineCount": 4,
+        "documentScrollWidth": 320,
+        "panelClientHeight": 200,
+        "panelScrollHeight": 844,
+        "panelScrollTop": 644,
+        "frameClientWidth": 243,
+        "frameScrollWidth": 243,
+        "frameInitialScroll": 0,
+        "frameEndScroll": 0,
+        "back": {
+          "top": 67,
+          "bottom": 97,
+          "left": 21,
+          "right": 87
+        },
+        "layoutAction": {
+          "top": -369,
+          "bottom": -337,
+          "left": 222,
+          "right": 278
+        },
+        "edition": {
+          "top": 200,
+          "bottom": 211,
+          "left": 35,
+          "right": 278
+        },
+        "viewport": {
+          "width": 320,
+          "height": 260
+        }
+      }
+    },
+    {
+      "theme": "dark",
+      "layout": "horizontal",
+      "fontSize": "medium",
+      "fullTextMatches": true,
+      "roomy": {
+        "theme": "dark",
+        "fontSize": "medium",
+        "vertical": false,
+        "title": "闻官军收河南河北",
+        "poemText": "剑外忽传收蓟北，初闻涕泪满衣裳。却看妻子愁何在，漫卷诗书喜欲狂。白日放歌须纵酒，青春作伴好还乡。即从巴峡穿巫峡，便下襄阳向洛阳。",
+        "poemLineCount": 4,
+        "documentScrollWidth": 560,
+        "panelClientHeight": 660,
+        "panelScrollHeight": 703,
+        "panelScrollTop": 0,
+        "frameClientWidth": 483,
+        "frameScrollWidth": 483,
+        "frameInitialScroll": 0,
+        "frameEndScroll": 0,
+        "back": {
+          "top": 67,
+          "bottom": 97,
+          "left": 21,
+          "right": 87
+        },
+        "layoutAction": {
+          "top": 237,
+          "bottom": 269,
+          "left": 462,
+          "right": 518
+        },
+        "edition": {
+          "top": 703,
+          "bottom": 714,
+          "left": 35,
+          "right": 518
+        },
+        "viewport": {
+          "width": 560,
+          "height": 720
+        }
+      },
+      "compact": {
+        "theme": "dark",
+        "fontSize": "medium",
+        "vertical": false,
+        "title": "闻官军收河南河北",
+        "poemText": "剑外忽传收蓟北，初闻涕泪满衣裳。却看妻子愁何在，漫卷诗书喜欲狂。白日放歌须纵酒，青春作伴好还乡。即从巴峡穿巫峡，便下襄阳向洛阳。",
+        "poemLineCount": 4,
+        "documentScrollWidth": 320,
+        "panelClientHeight": 200,
+        "panelScrollHeight": 869,
+        "panelScrollTop": 669,
+        "frameClientWidth": 243,
+        "frameScrollWidth": 243,
+        "frameInitialScroll": 0,
+        "frameEndScroll": 0,
+        "back": {
+          "top": 67,
+          "bottom": 97,
+          "left": 21,
+          "right": 87
+        },
+        "layoutAction": {
+          "top": -394,
+          "bottom": -362,
+          "left": 222,
+          "right": 278
+        },
+        "edition": {
+          "top": 200,
+          "bottom": 211,
+          "left": 35,
+          "right": 278
+        },
+        "viewport": {
+          "width": 320,
+          "height": 260
+        }
+      }
+    },
+    {
+      "theme": "dark",
+      "layout": "horizontal",
+      "fontSize": "large",
+      "fullTextMatches": true,
+      "roomy": {
+        "theme": "dark",
+        "fontSize": "large",
+        "vertical": false,
+        "title": "闻官军收河南河北",
+        "poemText": "剑外忽传收蓟北，初闻涕泪满衣裳。却看妻子愁何在，漫卷诗书喜欲狂。白日放歌须纵酒，青春作伴好还乡。即从巴峡穿巫峡，便下襄阳向洛阳。",
+        "poemLineCount": 4,
+        "documentScrollWidth": 560,
+        "panelClientHeight": 660,
+        "panelScrollHeight": 724,
+        "panelScrollTop": 0,
+        "frameClientWidth": 483,
+        "frameScrollWidth": 483,
+        "frameInitialScroll": 0,
+        "frameEndScroll": 0,
+        "back": {
+          "top": 67,
+          "bottom": 97,
+          "left": 21,
+          "right": 87
+        },
+        "layoutAction": {
+          "top": 237,
+          "bottom": 269,
+          "left": 462,
+          "right": 518
+        },
+        "edition": {
+          "top": 724,
+          "bottom": 735,
+          "left": 35,
+          "right": 518
+        },
+        "viewport": {
+          "width": 560,
+          "height": 720
+        }
+      },
+      "compact": {
+        "theme": "dark",
+        "fontSize": "large",
+        "vertical": false,
+        "title": "闻官军收河南河北",
+        "poemText": "剑外忽传收蓟北，初闻涕泪满衣裳。却看妻子愁何在，漫卷诗书喜欲狂。白日放歌须纵酒，青春作伴好还乡。即从巴峡穿巫峡，便下襄阳向洛阳。",
+        "poemLineCount": 4,
+        "documentScrollWidth": 320,
+        "panelClientHeight": 200,
+        "panelScrollHeight": 910,
+        "panelScrollTop": 710,
+        "frameClientWidth": 243,
+        "frameScrollWidth": 243,
+        "frameInitialScroll": 0,
+        "frameEndScroll": 0,
+        "back": {
+          "top": 67,
+          "bottom": 97,
+          "left": 21,
+          "right": 87
+        },
+        "layoutAction": {
+          "top": -435,
+          "bottom": -403,
+          "left": 222,
+          "right": 278
+        },
+        "edition": {
+          "top": 200,
+          "bottom": 211,
+          "left": 35,
+          "right": 278
+        },
+        "viewport": {
+          "width": 320,
+          "height": 260
+        }
+      }
+    },
+    {
+      "theme": "dark",
+      "layout": "vertical",
+      "fontSize": "small",
+      "fullTextMatches": true,
+      "roomy": {
+        "theme": "dark",
+        "fontSize": "small",
+        "vertical": true,
+        "title": "闻官军收河南河北",
+        "poemText": "剑外忽传收蓟北，初闻涕泪满衣裳。却看妻子愁何在，漫卷诗书喜欲狂。白日放歌须纵酒，青春作伴好还乡。即从巴峡穿巫峡，便下襄阳向洛阳。",
+        "poemLineCount": 8,
+        "documentScrollWidth": 560,
+        "panelClientHeight": 660,
+        "panelScrollHeight": 732,
+        "panelScrollTop": 0,
+        "frameClientWidth": 483,
+        "frameScrollWidth": 483,
+        "frameInitialScroll": 0,
+        "frameEndScroll": 0,
+        "back": {
+          "top": 67,
+          "bottom": 97,
+          "left": 21,
+          "right": 87
+        },
+        "layoutAction": {
+          "top": 237,
+          "bottom": 269,
+          "left": 462,
+          "right": 518
+        },
+        "edition": {
+          "top": 732,
+          "bottom": 743,
+          "left": 35,
+          "right": 518
+        },
+        "viewport": {
+          "width": 560,
+          "height": 720
+        }
+      },
+      "compact": {
+        "theme": "dark",
+        "fontSize": "small",
+        "vertical": true,
+        "title": "闻官军收河南河北",
+        "poemText": "剑外忽传收蓟北，初闻涕泪满衣裳。却看妻子愁何在，漫卷诗书喜欲狂。白日放歌须纵酒，青春作伴好还乡。即从巴峡穿巫峡，便下襄阳向洛阳。",
+        "poemLineCount": 8,
+        "documentScrollWidth": 320,
+        "panelClientHeight": 200,
+        "panelScrollHeight": 785,
+        "panelScrollTop": 585,
+        "frameClientWidth": 243,
+        "frameScrollWidth": 265,
+        "frameInitialScroll": 0,
+        "frameEndScroll": -21,
+        "back": {
+          "top": 67,
+          "bottom": 97,
+          "left": 21,
+          "right": 87
+        },
+        "layoutAction": {
+          "top": -310,
+          "bottom": -278,
+          "left": 222,
+          "right": 278
+        },
+        "edition": {
+          "top": 200,
+          "bottom": 211,
+          "left": 35,
+          "right": 278
+        },
+        "viewport": {
+          "width": 320,
+          "height": 260
+        }
+      }
+    },
+    {
+      "theme": "dark",
+      "layout": "vertical",
+      "fontSize": "medium",
+      "fullTextMatches": true,
+      "roomy": {
+        "theme": "dark",
+        "fontSize": "medium",
+        "vertical": true,
+        "title": "闻官军收河南河北",
+        "poemText": "剑外忽传收蓟北，初闻涕泪满衣裳。却看妻子愁何在，漫卷诗书喜欲狂。白日放歌须纵酒，青春作伴好还乡。即从巴峡穿巫峡，便下襄阳向洛阳。",
+        "poemLineCount": 8,
+        "documentScrollWidth": 560,
+        "panelClientHeight": 660,
+        "panelScrollHeight": 749,
+        "panelScrollTop": 0,
+        "frameClientWidth": 483,
+        "frameScrollWidth": 483,
+        "frameInitialScroll": 0,
+        "frameEndScroll": 0,
+        "back": {
+          "top": 67,
+          "bottom": 97,
+          "left": 21,
+          "right": 87
+        },
+        "layoutAction": {
+          "top": 237,
+          "bottom": 269,
+          "left": 462,
+          "right": 518
+        },
+        "edition": {
+          "top": 749,
+          "bottom": 760,
+          "left": 35,
+          "right": 518
+        },
+        "viewport": {
+          "width": 560,
+          "height": 720
+        }
+      },
+      "compact": {
+        "theme": "dark",
+        "fontSize": "medium",
+        "vertical": true,
+        "title": "闻官军收河南河北",
+        "poemText": "剑外忽传收蓟北，初闻涕泪满衣裳。却看妻子愁何在，漫卷诗书喜欲狂。白日放歌须纵酒，青春作伴好还乡。即从巴峡穿巫峡，便下襄阳向洛阳。",
+        "poemLineCount": 8,
+        "documentScrollWidth": 320,
+        "panelClientHeight": 200,
+        "panelScrollHeight": 802,
+        "panelScrollTop": 602,
+        "frameClientWidth": 243,
+        "frameScrollWidth": 289,
+        "frameInitialScroll": 0,
+        "frameEndScroll": -46,
+        "back": {
+          "top": 67,
+          "bottom": 97,
+          "left": 21,
+          "right": 87
+        },
+        "layoutAction": {
+          "top": -327,
+          "bottom": -295,
+          "left": 222,
+          "right": 278
+        },
+        "edition": {
+          "top": 200,
+          "bottom": 211,
+          "left": 35,
+          "right": 278
+        },
+        "viewport": {
+          "width": 320,
+          "height": 260
+        }
+      }
+    },
+    {
+      "theme": "dark",
+      "layout": "vertical",
+      "fontSize": "large",
+      "fullTextMatches": true,
+      "roomy": {
+        "theme": "dark",
+        "fontSize": "large",
+        "vertical": true,
+        "title": "闻官军收河南河北",
+        "poemText": "剑外忽传收蓟北，初闻涕泪满衣裳。却看妻子愁何在，漫卷诗书喜欲狂。白日放歌须纵酒，青春作伴好还乡。即从巴峡穿巫峡，便下襄阳向洛阳。",
+        "poemLineCount": 8,
+        "documentScrollWidth": 560,
+        "panelClientHeight": 660,
+        "panelScrollHeight": 777,
+        "panelScrollTop": 0,
+        "frameClientWidth": 483,
+        "frameScrollWidth": 483,
+        "frameInitialScroll": 0,
+        "frameEndScroll": 0,
+        "back": {
+          "top": 67,
+          "bottom": 97,
+          "left": 21,
+          "right": 87
+        },
+        "layoutAction": {
+          "top": 237,
+          "bottom": 269,
+          "left": 462,
+          "right": 518
+        },
+        "edition": {
+          "top": 777,
+          "bottom": 788,
+          "left": 35,
+          "right": 518
+        },
+        "viewport": {
+          "width": 560,
+          "height": 720
+        }
+      },
+      "compact": {
+        "theme": "dark",
+        "fontSize": "large",
+        "vertical": true,
+        "title": "闻官军收河南河北",
+        "poemText": "剑外忽传收蓟北，初闻涕泪满衣裳。却看妻子愁何在，漫卷诗书喜欲狂。白日放歌须纵酒，青春作伴好还乡。即从巴峡穿巫峡，便下襄阳向洛阳。",
+        "poemLineCount": 8,
+        "documentScrollWidth": 320,
+        "panelClientHeight": 200,
+        "panelScrollHeight": 830,
+        "panelScrollTop": 630,
+        "frameClientWidth": 243,
+        "frameScrollWidth": 328,
+        "frameInitialScroll": 0,
+        "frameEndScroll": -85,
+        "back": {
+          "top": 67,
+          "bottom": 97,
+          "left": 21,
+          "right": 87
+        },
+        "layoutAction": {
+          "top": -355,
+          "bottom": -323,
+          "left": 222,
+          "right": 278
+        },
+        "edition": {
+          "top": 200,
+          "bottom": 211,
+          "left": 35,
+          "right": 278
+        },
+        "viewport": {
+          "width": 320,
+          "height": 260
+        }
+      }
+    }
+  ],
+  "syntheticPunctuation": {
+    "layoutOnly": true,
+    "publishedPoem": false,
+    "sourceLines": [
+      "《九月九日》：“2026年，登高？”",
+      "长江东去，星河未尽。"
+    ],
+    "modes": [
+      {
+        "layout": "horizontal",
+        "label": "隔离排版样本，非作品原文",
+        "text": "《九月九日》：“2026年，登高？”长江东去，星河未尽。",
+        "lineCount": 2,
+        "writingMode": "horizontal-tb",
+        "documentOverflow": false
+      },
+      {
+        "layout": "vertical",
+        "label": "隔离排版样本，非作品原文",
+        "text": "《九月九日》：“2026年，登高？”长江东去，星河未尽。",
+        "lineCount": 6,
+        "writingMode": "vertical-rl",
+        "documentOverflow": false
+      }
+    ]
+  }
+}

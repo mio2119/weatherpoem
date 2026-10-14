@@ -22,3 +22,9 @@
 因此 A6 保持**部分通过**，进入 T07 前可使用源码继续开发，但发布门禁不得把 A6 标为完整通过。
 
 2026-10-14 补充同一长题名的浏览器竖排对照：切换并保存大字号竖排后，以受控本地日期和隔离资料重新载入《四时田园杂兴·梅子金黄杏子肥》。392px 宽下完整诗句、理由与操作需约 571px 高；在 392×580 逻辑视口中均可见且无横向溢出，320×260 时可滚动找到操作。静态帧为 `evidence/T06_BROWSER_LONG_TITLE_VERTICAL_LARGE_20261014.png`。本样本的竖排比中字号横排更高，进一步说明竖排是阅读偏好而非保证省空间；真实 WebView2、读屏、实际 Windows 缩放及其他体裁仍待验，A6 继续为**部分通过**。
+
+同日补充展开阅读的真实体裁边界：当前 120 首发布原文中最长全文为苏轼《水调歌头·明月几时有》，8 行 114 字；另选 48 字节选词《浣溪沙·游蕲水清泉寺》、杜甫七言律诗《闻官军收河南河北》及五言律诗《月夜忆舍弟》。`scripts/test-redesign-browser-storage.mjs --reading-audit` 对每首分别检查浅/深色 × 横/竖排 × 小/中/大字号，合计 **48 组真实作品组合**。每组在 560×720 阅读窗及 320×260 低视口确认全文逐字与发布目录一致、阅读窗本身无横向溢出、固定返回按钮可见、滚到底可到来源说明；竖排内容超出横向框时能从右侧滚至左侧。四份 [长词报告](./evidence/T06_BROWSER_READING_LONG_CI_20261014.json)、[长节选词报告](./evidence/T06_BROWSER_READING_LONG_EXCERPT_CI_20261014.json)、[七言报告](./evidence/T06_BROWSER_READING_SEVEN_CHAR_20261014.json)、[五言报告](./evidence/T06_BROWSER_READING_FIVE_CHAR_20261014.json)各有 12 组通过，均标明隔离 Chrome 155 而非原生 WebView2。
+
+逐张观察 [长词浅色横排](./evidence/T06_BROWSER_LONG_CI_LIGHT_HORIZONTAL_20261014.png)、[长词深色竖排](./evidence/T06_BROWSER_LONG_CI_DARK_VERTICAL_20261014.png)、[长节选词浅色竖排](./evidence/T06_BROWSER_LONG_EXCERPT_CI_LIGHT_VERTICAL_20261014.png)、[七言深色竖排](./evidence/T06_BROWSER_SEVEN_CHAR_DARK_VERTICAL_20261014.png)、[五言浅色横排](./evidence/T06_BROWSER_FIVE_CHAR_LIGHT_HORIZONTAL_20261014.png)与[五言深色竖排](./evidence/T06_BROWSER_FIVE_CHAR_DARK_VERTICAL_20261014.png)，诗文与返回/展开入口没有重叠或裁切；其余代表帧同目录保留。长词大字号竖排确需横向滚动，报告中 483px 可见宽对应 716px 内容宽，向左滚动实际发生，不能把首帧误说成全诗同时可见。
+
+发布目录的 120 首**原文**没有书名号、中文引号或阿拉伯数字样本；因此只用不进入作品库的 `《九月九日》：“2026年，登高？”` 等**隔离排版文本**核验 DOM 字符顺序和 CSS 横/竖排。该探针在画面中有“非作品原文”标记，见[横排帧](./evidence/T06_BROWSER_SYNTHETIC_PUNCTUATION_HORIZONTAL_20261014.png)与[竖排帧](./evidence/T06_BROWSER_SYNTHETIC_PUNCTUATION_VERTICAL_20261014.png)。浏览器竖帧中四位数字与部分引号采用浏览器默认混排方向，能读但是否符合最终传统竖排审美仍需项目方和原生 WebView2 看实际样本决定；DOM-only 探针不能证明未来真实作品进入 App 后的完整状态链路，更不是文化内容点校。A6 仍为**部分通过**：实际 125/150/200% Windows 缩放、原生键盘水平滚动/读屏、重启后的 SQLite 偏好和真人排版判断仍未完成。

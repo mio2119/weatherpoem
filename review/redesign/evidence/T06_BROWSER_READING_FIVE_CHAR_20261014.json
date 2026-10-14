@@ -1,0 +1,1020 @@
+{
+  "schemaVersion": "1.0",
+  "browser": "Chrome/155.0.8059.40",
+  "localDate": "2026-10-14",
+  "poemId": "du-fu-yue-ye-yi-she-di",
+  "isolatedProfile": true,
+  "nativeWebView2": false,
+  "readingMeasurements": [
+    {
+      "theme": "light",
+      "layout": "horizontal",
+      "fontSize": "small",
+      "fullTextMatches": true,
+      "roomy": {
+        "theme": "light",
+        "fontSize": "small",
+        "vertical": false,
+        "title": "月夜忆舍弟",
+        "poemText": "戍鼓断人行，边秋一雁声。露从今夜白，月是故乡明。有弟皆分散，无家问死生。寄书长不达，况乃未休兵。",
+        "poemLineCount": 4,
+        "documentScrollWidth": 560,
+        "panelClientHeight": 660,
+        "panelScrollHeight": 690,
+        "panelScrollTop": 0,
+        "frameClientWidth": 483,
+        "frameScrollWidth": 483,
+        "frameInitialScroll": 0,
+        "frameEndScroll": 0,
+        "back": {
+          "top": 67,
+          "bottom": 97,
+          "left": 21,
+          "right": 87
+        },
+        "layoutAction": {
+          "top": 237,
+          "bottom": 269,
+          "left": 462,
+          "right": 518
+        },
+        "edition": {
+          "top": 690,
+          "bottom": 701,
+          "left": 35,
+          "right": 518
+        },
+        "viewport": {
+          "width": 560,
+          "height": 720
+        }
+      },
+      "compact": {
+        "theme": "light",
+        "fontSize": "small",
+        "vertical": false,
+        "title": "月夜忆舍弟",
+        "poemText": "戍鼓断人行，边秋一雁声。露从今夜白，月是故乡明。有弟皆分散，无家问死生。寄书长不达，况乃未休兵。",
+        "poemLineCount": 4,
+        "documentScrollWidth": 320,
+        "panelClientHeight": 200,
+        "panelScrollHeight": 690,
+        "panelScrollTop": 490,
+        "frameClientWidth": 243,
+        "frameScrollWidth": 243,
+        "frameInitialScroll": 0,
+        "frameEndScroll": 0,
+        "back": {
+          "top": 67,
+          "bottom": 97,
+          "left": 21,
+          "right": 87
+        },
+        "layoutAction": {
+          "top": -253,
+          "bottom": -221,
+          "left": 222,
+          "right": 278
+        },
+        "edition": {
+          "top": 200,
+          "bottom": 211,
+          "left": 35,
+          "right": 278
+        },
+        "viewport": {
+          "width": 320,
+          "height": 260
+        }
+      }
+    },
+    {
+      "theme": "light",
+      "layout": "horizontal",
+      "fontSize": "medium",
+      "fullTextMatches": true,
+      "roomy": {
+        "theme": "light",
+        "fontSize": "medium",
+        "vertical": false,
+        "title": "月夜忆舍弟",
+        "poemText": "戍鼓断人行，边秋一雁声。露从今夜白，月是故乡明。有弟皆分散，无家问死生。寄书长不达，况乃未休兵。",
+        "poemLineCount": 4,
+        "documentScrollWidth": 560,
+        "panelClientHeight": 660,
+        "panelScrollHeight": 703,
+        "panelScrollTop": 0,
+        "frameClientWidth": 483,
+        "frameScrollWidth": 483,
+        "frameInitialScroll": 0,
+        "frameEndScroll": 0,
+        "back": {
+          "top": 67,
+          "bottom": 97,
+          "left": 21,
+          "right": 87
+        },
+        "layoutAction": {
+          "top": 237,
+          "bottom": 269,
+          "left": 462,
+          "right": 518
+        },
+        "edition": {
+          "top": 703,
+          "bottom": 714,
+          "left": 35,
+          "right": 518
+        },
+        "viewport": {
+          "width": 560,
+          "height": 720
+        }
+      },
+      "compact": {
+        "theme": "light",
+        "fontSize": "medium",
+        "vertical": false,
+        "title": "月夜忆舍弟",
+        "poemText": "戍鼓断人行，边秋一雁声。露从今夜白，月是故乡明。有弟皆分散，无家问死生。寄书长不达，况乃未休兵。",
+        "poemLineCount": 4,
+        "documentScrollWidth": 320,
+        "panelClientHeight": 200,
+        "panelScrollHeight": 703,
+        "panelScrollTop": 503,
+        "frameClientWidth": 243,
+        "frameScrollWidth": 243,
+        "frameInitialScroll": 0,
+        "frameEndScroll": 0,
+        "back": {
+          "top": 67,
+          "bottom": 97,
+          "left": 21,
+          "right": 87
+        },
+        "layoutAction": {
+          "top": -266,
+          "bottom": -234,
+          "left": 222,
+          "right": 278
+        },
+        "edition": {
+          "top": 200,
+          "bottom": 211,
+          "left": 35,
+          "right": 278
+        },
+        "viewport": {
+          "width": 320,
+          "height": 260
+        }
+      }
+    },
+    {
+      "theme": "light",
+      "layout": "horizontal",
+      "fontSize": "large",
+      "fullTextMatches": true,
+      "roomy": {
+        "theme": "light",
+        "fontSize": "large",
+        "vertical": false,
+        "title": "月夜忆舍弟",
+        "poemText": "戍鼓断人行，边秋一雁声。露从今夜白，月是故乡明。有弟皆分散，无家问死生。寄书长不达，况乃未休兵。",
+        "poemLineCount": 4,
+        "documentScrollWidth": 560,
+        "panelClientHeight": 660,
+        "panelScrollHeight": 724,
+        "panelScrollTop": 0,
+        "frameClientWidth": 483,
+        "frameScrollWidth": 483,
+        "frameInitialScroll": 0,
+        "frameEndScroll": 0,
+        "back": {
+          "top": 67,
+          "bottom": 97,
+          "left": 21,
+          "right": 87
+        },
+        "layoutAction": {
+          "top": 237,
+          "bottom": 269,
+          "left": 462,
+          "right": 518
+        },
+        "edition": {
+          "top": 724,
+          "bottom": 735,
+          "left": 35,
+          "right": 518
+        },
+        "viewport": {
+          "width": 560,
+          "height": 720
+        }
+      },
+      "compact": {
+        "theme": "light",
+        "fontSize": "large",
+        "vertical": false,
+        "title": "月夜忆舍弟",
+        "poemText": "戍鼓断人行，边秋一雁声。露从今夜白，月是故乡明。有弟皆分散，无家问死生。寄书长不达，况乃未休兵。",
+        "poemLineCount": 4,
+        "documentScrollWidth": 320,
+        "panelClientHeight": 200,
+        "panelScrollHeight": 724,
+        "panelScrollTop": 524,
+        "frameClientWidth": 243,
+        "frameScrollWidth": 243,
+        "frameInitialScroll": 0,
+        "frameEndScroll": 0,
+        "back": {
+          "top": 67,
+          "bottom": 97,
+          "left": 21,
+          "right": 87
+        },
+        "layoutAction": {
+          "top": -287,
+          "bottom": -255,
+          "left": 222,
+          "right": 278
+        },
+        "edition": {
+          "top": 200,
+          "bottom": 211,
+          "left": 35,
+          "right": 278
+        },
+        "viewport": {
+          "width": 320,
+          "height": 260
+        }
+      }
+    },
+    {
+      "theme": "light",
+      "layout": "vertical",
+      "fontSize": "small",
+      "fullTextMatches": true,
+      "roomy": {
+        "theme": "light",
+        "fontSize": "small",
+        "vertical": true,
+        "title": "月夜忆舍弟",
+        "poemText": "戍鼓断人行，边秋一雁声。露从今夜白，月是故乡明。有弟皆分散，无家问死生。寄书长不达，况乃未休兵。",
+        "poemLineCount": 8,
+        "documentScrollWidth": 560,
+        "panelClientHeight": 660,
+        "panelScrollHeight": 693,
+        "panelScrollTop": 0,
+        "frameClientWidth": 483,
+        "frameScrollWidth": 483,
+        "frameInitialScroll": 0,
+        "frameEndScroll": 0,
+        "back": {
+          "top": 67,
+          "bottom": 97,
+          "left": 21,
+          "right": 87
+        },
+        "layoutAction": {
+          "top": 237,
+          "bottom": 269,
+          "left": 462,
+          "right": 518
+        },
+        "edition": {
+          "top": 693,
+          "bottom": 704,
+          "left": 35,
+          "right": 518
+        },
+        "viewport": {
+          "width": 560,
+          "height": 720
+        }
+      },
+      "compact": {
+        "theme": "light",
+        "fontSize": "small",
+        "vertical": true,
+        "title": "月夜忆舍弟",
+        "poemText": "戍鼓断人行，边秋一雁声。露从今夜白，月是故乡明。有弟皆分散，无家问死生。寄书长不达，况乃未休兵。",
+        "poemLineCount": 8,
+        "documentScrollWidth": 320,
+        "panelClientHeight": 200,
+        "panelScrollHeight": 708,
+        "panelScrollTop": 508,
+        "frameClientWidth": 243,
+        "frameScrollWidth": 265,
+        "frameInitialScroll": 0,
+        "frameEndScroll": -21,
+        "back": {
+          "top": 67,
+          "bottom": 97,
+          "left": 21,
+          "right": 87
+        },
+        "layoutAction": {
+          "top": -271,
+          "bottom": -239,
+          "left": 222,
+          "right": 278
+        },
+        "edition": {
+          "top": 200,
+          "bottom": 211,
+          "left": 35,
+          "right": 278
+        },
+        "viewport": {
+          "width": 320,
+          "height": 260
+        }
+      }
+    },
+    {
+      "theme": "light",
+      "layout": "vertical",
+      "fontSize": "medium",
+      "fullTextMatches": true,
+      "roomy": {
+        "theme": "light",
+        "fontSize": "medium",
+        "vertical": true,
+        "title": "月夜忆舍弟",
+        "poemText": "戍鼓断人行，边秋一雁声。露从今夜白，月是故乡明。有弟皆分散，无家问死生。寄书长不达，况乃未休兵。",
+        "poemLineCount": 8,
+        "documentScrollWidth": 560,
+        "panelClientHeight": 660,
+        "panelScrollHeight": 706,
+        "panelScrollTop": 0,
+        "frameClientWidth": 483,
+        "frameScrollWidth": 483,
+        "frameInitialScroll": 0,
+        "frameEndScroll": 0,
+        "back": {
+          "top": 67,
+          "bottom": 97,
+          "left": 21,
+          "right": 87
+        },
+        "layoutAction": {
+          "top": 237,
+          "bottom": 269,
+          "left": 462,
+          "right": 518
+        },
+        "edition": {
+          "top": 706,
+          "bottom": 717,
+          "left": 35,
+          "right": 518
+        },
+        "viewport": {
+          "width": 560,
+          "height": 720
+        }
+      },
+      "compact": {
+        "theme": "light",
+        "fontSize": "medium",
+        "vertical": true,
+        "title": "月夜忆舍弟",
+        "poemText": "戍鼓断人行，边秋一雁声。露从今夜白，月是故乡明。有弟皆分散，无家问死生。寄书长不达，况乃未休兵。",
+        "poemLineCount": 8,
+        "documentScrollWidth": 320,
+        "panelClientHeight": 200,
+        "panelScrollHeight": 721,
+        "panelScrollTop": 521,
+        "frameClientWidth": 243,
+        "frameScrollWidth": 289,
+        "frameInitialScroll": 0,
+        "frameEndScroll": -46,
+        "back": {
+          "top": 67,
+          "bottom": 97,
+          "left": 21,
+          "right": 87
+        },
+        "layoutAction": {
+          "top": -284,
+          "bottom": -252,
+          "left": 222,
+          "right": 278
+        },
+        "edition": {
+          "top": 200,
+          "bottom": 211,
+          "left": 35,
+          "right": 278
+        },
+        "viewport": {
+          "width": 320,
+          "height": 260
+        }
+      }
+    },
+    {
+      "theme": "light",
+      "layout": "vertical",
+      "fontSize": "large",
+      "fullTextMatches": true,
+      "roomy": {
+        "theme": "light",
+        "fontSize": "large",
+        "vertical": true,
+        "title": "月夜忆舍弟",
+        "poemText": "戍鼓断人行，边秋一雁声。露从今夜白，月是故乡明。有弟皆分散，无家问死生。寄书长不达，况乃未休兵。",
+        "poemLineCount": 8,
+        "documentScrollWidth": 560,
+        "panelClientHeight": 660,
+        "panelScrollHeight": 727,
+        "panelScrollTop": 0,
+        "frameClientWidth": 483,
+        "frameScrollWidth": 483,
+        "frameInitialScroll": 0,
+        "frameEndScroll": 0,
+        "back": {
+          "top": 67,
+          "bottom": 97,
+          "left": 21,
+          "right": 87
+        },
+        "layoutAction": {
+          "top": 237,
+          "bottom": 269,
+          "left": 462,
+          "right": 518
+        },
+        "edition": {
+          "top": 727,
+          "bottom": 738,
+          "left": 35,
+          "right": 518
+        },
+        "viewport": {
+          "width": 560,
+          "height": 720
+        }
+      },
+      "compact": {
+        "theme": "light",
+        "fontSize": "large",
+        "vertical": true,
+        "title": "月夜忆舍弟",
+        "poemText": "戍鼓断人行，边秋一雁声。露从今夜白，月是故乡明。有弟皆分散，无家问死生。寄书长不达，况乃未休兵。",
+        "poemLineCount": 8,
+        "documentScrollWidth": 320,
+        "panelClientHeight": 200,
+        "panelScrollHeight": 742,
+        "panelScrollTop": 542,
+        "frameClientWidth": 243,
+        "frameScrollWidth": 328,
+        "frameInitialScroll": 0,
+        "frameEndScroll": -85,
+        "back": {
+          "top": 67,
+          "bottom": 97,
+          "left": 21,
+          "right": 87
+        },
+        "layoutAction": {
+          "top": -305,
+          "bottom": -273,
+          "left": 222,
+          "right": 278
+        },
+        "edition": {
+          "top": 200,
+          "bottom": 211,
+          "left": 35,
+          "right": 278
+        },
+        "viewport": {
+          "width": 320,
+          "height": 260
+        }
+      }
+    },
+    {
+      "theme": "dark",
+      "layout": "horizontal",
+      "fontSize": "small",
+      "fullTextMatches": true,
+      "roomy": {
+        "theme": "dark",
+        "fontSize": "small",
+        "vertical": false,
+        "title": "月夜忆舍弟",
+        "poemText": "戍鼓断人行，边秋一雁声。露从今夜白，月是故乡明。有弟皆分散，无家问死生。寄书长不达，况乃未休兵。",
+        "poemLineCount": 4,
+        "documentScrollWidth": 560,
+        "panelClientHeight": 660,
+        "panelScrollHeight": 690,
+        "panelScrollTop": 0,
+        "frameClientWidth": 483,
+        "frameScrollWidth": 483,
+        "frameInitialScroll": 0,
+        "frameEndScroll": 0,
+        "back": {
+          "top": 67,
+          "bottom": 97,
+          "left": 21,
+          "right": 87
+        },
+        "layoutAction": {
+          "top": 237,
+          "bottom": 269,
+          "left": 462,
+          "right": 518
+        },
+        "edition": {
+          "top": 690,
+          "bottom": 701,
+          "left": 35,
+          "right": 518
+        },
+        "viewport": {
+          "width": 560,
+          "height": 720
+        }
+      },
+      "compact": {
+        "theme": "dark",
+        "fontSize": "small",
+        "vertical": false,
+        "title": "月夜忆舍弟",
+        "poemText": "戍鼓断人行，边秋一雁声。露从今夜白，月是故乡明。有弟皆分散，无家问死生。寄书长不达，况乃未休兵。",
+        "poemLineCount": 4,
+        "documentScrollWidth": 320,
+        "panelClientHeight": 200,
+        "panelScrollHeight": 690,
+        "panelScrollTop": 490,
+        "frameClientWidth": 243,
+        "frameScrollWidth": 243,
+        "frameInitialScroll": 0,
+        "frameEndScroll": 0,
+        "back": {
+          "top": 67,
+          "bottom": 97,
+          "left": 21,
+          "right": 87
+        },
+        "layoutAction": {
+          "top": -253,
+          "bottom": -221,
+          "left": 222,
+          "right": 278
+        },
+        "edition": {
+          "top": 200,
+          "bottom": 211,
+          "left": 35,
+          "right": 278
+        },
+        "viewport": {
+          "width": 320,
+          "height": 260
+        }
+      }
+    },
+    {
+      "theme": "dark",
+      "layout": "horizontal",
+      "fontSize": "medium",
+      "fullTextMatches": true,
+      "roomy": {
+        "theme": "dark",
+        "fontSize": "medium",
+        "vertical": false,
+        "title": "月夜忆舍弟",
+        "poemText": "戍鼓断人行，边秋一雁声。露从今夜白，月是故乡明。有弟皆分散，无家问死生。寄书长不达，况乃未休兵。",
+        "poemLineCount": 4,
+        "documentScrollWidth": 560,
+        "panelClientHeight": 660,
+        "panelScrollHeight": 703,
+        "panelScrollTop": 0,
+        "frameClientWidth": 483,
+        "frameScrollWidth": 483,
+        "frameInitialScroll": 0,
+        "frameEndScroll": 0,
+        "back": {
+          "top": 67,
+          "bottom": 97,
+          "left": 21,
+          "right": 87
+        },
+        "layoutAction": {
+          "top": 237,
+          "bottom": 269,
+          "left": 462,
+          "right": 518
+        },
+        "edition": {
+          "top": 703,
+          "bottom": 714,
+          "left": 35,
+          "right": 518
+        },
+        "viewport": {
+          "width": 560,
+          "height": 720
+        }
+      },
+      "compact": {
+        "theme": "dark",
+        "fontSize": "medium",
+        "vertical": false,
+        "title": "月夜忆舍弟",
+        "poemText": "戍鼓断人行，边秋一雁声。露从今夜白，月是故乡明。有弟皆分散，无家问死生。寄书长不达，况乃未休兵。",
+        "poemLineCount": 4,
+        "documentScrollWidth": 320,
+        "panelClientHeight": 200,
+        "panelScrollHeight": 703,
+        "panelScrollTop": 503,
+        "frameClientWidth": 243,
+        "frameScrollWidth": 243,
+        "frameInitialScroll": 0,
+        "frameEndScroll": 0,
+        "back": {
+          "top": 67,
+          "bottom": 97,
+          "left": 21,
+          "right": 87
+        },
+        "layoutAction": {
+          "top": -266,
+          "bottom": -234,
+          "left": 222,
+          "right": 278
+        },
+        "edition": {
+          "top": 200,
+          "bottom": 211,
+          "left": 35,
+          "right": 278
+        },
+        "viewport": {
+          "width": 320,
+          "height": 260
+        }
+      }
+    },
+    {
+      "theme": "dark",
+      "layout": "horizontal",
+      "fontSize": "large",
+      "fullTextMatches": true,
+      "roomy": {
+        "theme": "dark",
+        "fontSize": "large",
+        "vertical": false,
+        "title": "月夜忆舍弟",
+        "poemText": "戍鼓断人行，边秋一雁声。露从今夜白，月是故乡明。有弟皆分散，无家问死生。寄书长不达，况乃未休兵。",
+        "poemLineCount": 4,
+        "documentScrollWidth": 560,
+        "panelClientHeight": 660,
+        "panelScrollHeight": 724,
+        "panelScrollTop": 0,
+        "frameClientWidth": 483,
+        "frameScrollWidth": 483,
+        "frameInitialScroll": 0,
+        "frameEndScroll": 0,
+        "back": {
+          "top": 67,
+          "bottom": 97,
+          "left": 21,
+          "right": 87
+        },
+        "layoutAction": {
+          "top": 237,
+          "bottom": 269,
+          "left": 462,
+          "right": 518
+        },
+        "edition": {
+          "top": 724,
+          "bottom": 735,
+          "left": 35,
+          "right": 518
+        },
+        "viewport": {
+          "width": 560,
+          "height": 720
+        }
+      },
+      "compact": {
+        "theme": "dark",
+        "fontSize": "large",
+        "vertical": false,
+        "title": "月夜忆舍弟",
+        "poemText": "戍鼓断人行，边秋一雁声。露从今夜白，月是故乡明。有弟皆分散，无家问死生。寄书长不达，况乃未休兵。",
+        "poemLineCount": 4,
+        "documentScrollWidth": 320,
+        "panelClientHeight": 200,
+        "panelScrollHeight": 724,
+        "panelScrollTop": 524,
+        "frameClientWidth": 243,
+        "frameScrollWidth": 243,
+        "frameInitialScroll": 0,
+        "frameEndScroll": 0,
+        "back": {
+          "top": 67,
+          "bottom": 97,
+          "left": 21,
+          "right": 87
+        },
+        "layoutAction": {
+          "top": -287,
+          "bottom": -255,
+          "left": 222,
+          "right": 278
+        },
+        "edition": {
+          "top": 200,
+          "bottom": 211,
+          "left": 35,
+          "right": 278
+        },
+        "viewport": {
+          "width": 320,
+          "height": 260
+        }
+      }
+    },
+    {
+      "theme": "dark",
+      "layout": "vertical",
+      "fontSize": "small",
+      "fullTextMatches": true,
+      "roomy": {
+        "theme": "dark",
+        "fontSize": "small",
+        "vertical": true,
+        "title": "月夜忆舍弟",
+        "poemText": "戍鼓断人行，边秋一雁声。露从今夜白，月是故乡明。有弟皆分散，无家问死生。寄书长不达，况乃未休兵。",
+        "poemLineCount": 8,
+        "documentScrollWidth": 560,
+        "panelClientHeight": 660,
+        "panelScrollHeight": 693,
+        "panelScrollTop": 0,
+        "frameClientWidth": 483,
+        "frameScrollWidth": 483,
+        "frameInitialScroll": 0,
+        "frameEndScroll": 0,
+        "back": {
+          "top": 67,
+          "bottom": 97,
+          "left": 21,
+          "right": 87
+        },
+        "layoutAction": {
+          "top": 237,
+          "bottom": 269,
+          "left": 462,
+          "right": 518
+        },
+        "edition": {
+          "top": 693,
+          "bottom": 704,
+          "left": 35,
+          "right": 518
+        },
+        "viewport": {
+          "width": 560,
+          "height": 720
+        }
+      },
+      "compact": {
+        "theme": "dark",
+        "fontSize": "small",
+        "vertical": true,
+        "title": "月夜忆舍弟",
+        "poemText": "戍鼓断人行，边秋一雁声。露从今夜白，月是故乡明。有弟皆分散，无家问死生。寄书长不达，况乃未休兵。",
+        "poemLineCount": 8,
+        "documentScrollWidth": 320,
+        "panelClientHeight": 200,
+        "panelScrollHeight": 708,
+        "panelScrollTop": 508,
+        "frameClientWidth": 243,
+        "frameScrollWidth": 265,
+        "frameInitialScroll": 0,
+        "frameEndScroll": -21,
+        "back": {
+          "top": 67,
+          "bottom": 97,
+          "left": 21,
+          "right": 87
+        },
+        "layoutAction": {
+          "top": -271,
+          "bottom": -239,
+          "left": 222,
+          "right": 278
+        },
+        "edition": {
+          "top": 200,
+          "bottom": 211,
+          "left": 35,
+          "right": 278
+        },
+        "viewport": {
+          "width": 320,
+          "height": 260
+        }
+      }
+    },
+    {
+      "theme": "dark",
+      "layout": "vertical",
+      "fontSize": "medium",
+      "fullTextMatches": true,
+      "roomy": {
+        "theme": "dark",
+        "fontSize": "medium",
+        "vertical": true,
+        "title": "月夜忆舍弟",
+        "poemText": "戍鼓断人行，边秋一雁声。露从今夜白，月是故乡明。有弟皆分散，无家问死生。寄书长不达，况乃未休兵。",
+        "poemLineCount": 8,
+        "documentScrollWidth": 560,
+        "panelClientHeight": 660,
+        "panelScrollHeight": 706,
+        "panelScrollTop": 0,
+        "frameClientWidth": 483,
+        "frameScrollWidth": 483,
+        "frameInitialScroll": 0,
+        "frameEndScroll": 0,
+        "back": {
+          "top": 67,
+          "bottom": 97,
+          "left": 21,
+          "right": 87
+        },
+        "layoutAction": {
+          "top": 237,
+          "bottom": 269,
+          "left": 462,
+          "right": 518
+        },
+        "edition": {
+          "top": 706,
+          "bottom": 717,
+          "left": 35,
+          "right": 518
+        },
+        "viewport": {
+          "width": 560,
+          "height": 720
+        }
+      },
+      "compact": {
+        "theme": "dark",
+        "fontSize": "medium",
+        "vertical": true,
+        "title": "月夜忆舍弟",
+        "poemText": "戍鼓断人行，边秋一雁声。露从今夜白，月是故乡明。有弟皆分散，无家问死生。寄书长不达，况乃未休兵。",
+        "poemLineCount": 8,
+        "documentScrollWidth": 320,
+        "panelClientHeight": 200,
+        "panelScrollHeight": 721,
+        "panelScrollTop": 521,
+        "frameClientWidth": 243,
+        "frameScrollWidth": 289,
+        "frameInitialScroll": 0,
+        "frameEndScroll": -46,
+        "back": {
+          "top": 67,
+          "bottom": 97,
+          "left": 21,
+          "right": 87
+        },
+        "layoutAction": {
+          "top": -284,
+          "bottom": -252,
+          "left": 222,
+          "right": 278
+        },
+        "edition": {
+          "top": 200,
+          "bottom": 211,
+          "left": 35,
+          "right": 278
+        },
+        "viewport": {
+          "width": 320,
+          "height": 260
+        }
+      }
+    },
+    {
+      "theme": "dark",
+      "layout": "vertical",
+      "fontSize": "large",
+      "fullTextMatches": true,
+      "roomy": {
+        "theme": "dark",
+        "fontSize": "large",
+        "vertical": true,
+        "title": "月夜忆舍弟",
+        "poemText": "戍鼓断人行，边秋一雁声。露从今夜白，月是故乡明。有弟皆分散，无家问死生。寄书长不达，况乃未休兵。",
+        "poemLineCount": 8,
+        "documentScrollWidth": 560,
+        "panelClientHeight": 660,
+        "panelScrollHeight": 727,
+        "panelScrollTop": 0,
+        "frameClientWidth": 483,
+        "frameScrollWidth": 483,
+        "frameInitialScroll": 0,
+        "frameEndScroll": 0,
+        "back": {
+          "top": 67,
+          "bottom": 97,
+          "left": 21,
+          "right": 87
+        },
+        "layoutAction": {
+          "top": 237,
+          "bottom": 269,
+          "left": 462,
+          "right": 518
+        },
+        "edition": {
+          "top": 727,
+          "bottom": 738,
+          "left": 35,
+          "right": 518
+        },
+        "viewport": {
+          "width": 560,
+          "height": 720
+        }
+      },
+      "compact": {
+        "theme": "dark",
+        "fontSize": "large",
+        "vertical": true,
+        "title": "月夜忆舍弟",
+        "poemText": "戍鼓断人行，边秋一雁声。露从今夜白，月是故乡明。有弟皆分散，无家问死生。寄书长不达，况乃未休兵。",
+        "poemLineCount": 8,
+        "documentScrollWidth": 320,
+        "panelClientHeight": 200,
+        "panelScrollHeight": 742,
+        "panelScrollTop": 542,
+        "frameClientWidth": 243,
+        "frameScrollWidth": 328,
+        "frameInitialScroll": 0,
+        "frameEndScroll": -85,
+        "back": {
+          "top": 67,
+          "bottom": 97,
+          "left": 21,
+          "right": 87
+        },
+        "layoutAction": {
+          "top": -305,
+          "bottom": -273,
+          "left": 222,
+          "right": 278
+        },
+        "edition": {
+          "top": 200,
+          "bottom": 211,
+          "left": 35,
+          "right": 278
+        },
+        "viewport": {
+          "width": 320,
+          "height": 260
+        }
+      }
+    }
+  ],
+  "syntheticPunctuation": {
+    "layoutOnly": true,
+    "publishedPoem": false,
+    "sourceLines": [
+      "《九月九日》：“2026年，登高？”",
+      "长江东去，星河未尽。"
+    ],
+    "modes": [
+      {
+        "layout": "horizontal",
+        "label": "隔离排版样本，非作品原文",
+        "text": "《九月九日》：“2026年，登高？”长江东去，星河未尽。",
+        "lineCount": 2,
+        "writingMode": "horizontal-tb",
+        "documentOverflow": false
+      },
+      {
+        "layout": "vertical",
+        "label": "隔离排版样本，非作品原文",
+        "text": "《九月九日》：“2026年，登高？”长江东去，星河未尽。",
+        "lineCount": 6,
+        "writingMode": "vertical-rl",
+        "documentOverflow": false
+      }
+    ]
+  }
+}

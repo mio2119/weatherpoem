@@ -8,6 +8,7 @@ import { loadBundledModule } from "./load-reason-sources.mjs";
 
 // --layout-audit inspects browser-preview geometry, not native WebView2.
 // --matrix-audit additionally checks theme, layout, and font-size combinations.
+// --reading-audit checks the full reading panel and a labeled synthetic punctuation probe.
 // --capture leaves screenshots in a separately named temporary directory.
 const chromeCandidates = [
   "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
@@ -16,8 +17,9 @@ const chromeCandidates = [
 const chromePath = chromeCandidates.find(existsSync);
 if (!chromePath) throw new Error("Chrome or Edge is required for the isolated browser storage check");
 const matrixAudit = process.argv.includes("--matrix-audit");
+const readingAudit = process.argv.includes("--reading-audit");
 const reasonBoundaryAudit = process.argv.includes("--reason-boundary");
-const layoutAudit = process.argv.includes("--layout-audit") || matrixAudit;
+const layoutAudit = process.argv.includes("--layout-audit") || matrixAudit || readingAudit;
 const captureLayout = layoutAudit && process.argv.includes("--capture");
 const boundaryReason = "这是隔离排版样本，仅用于核对四十字理由完整显示，不能视为真实诗词推荐或天气说明。";
 if (reasonBoundaryAudit && (!matrixAudit || Array.from(boundaryReason).length !== 40)) {
@@ -27,6 +29,11 @@ const matrixReportName = process.argv.find((arg) => arg.startsWith("--report="))
   ?.slice("--report=".length);
 if (matrixReportName && (!matrixAudit || !/^T05_[A-Za-z0-9_-]+\.json$/.test(matrixReportName))) {
   throw new Error("--report requires --matrix-audit and a T05_*.json filename");
+}
+const readingReportName = process.argv.find((arg) => arg.startsWith("--reading-report="))
+  ?.slice("--reading-report=".length);
+if (readingReportName && (!readingAudit || !/^T06_[A-Za-z0-9_-]+\.json$/.test(readingReportName))) {
+  throw new Error("--reading-report requires --reading-audit and a T06_*.json filename");
 }
 const layoutPoemId = process.argv.find((arg) => arg.startsWith("--poem-id="))
   ?.slice("--poem-id=".length) ?? "cui-hao-huang-he-lou";
@@ -156,6 +163,50 @@ async function measureGlance(width, height) {
           ".card-actions button:nth-child(" + ([...button.parentElement.children].indexOf(button) + 1) + ")",
         ) })),
       secondaryActions: box(".secondary-actions"),
+    };
+  })()`);
+}
+
+async function measureReading(width, height, scrollToEnd = false) {
+  await send("Emulation.setDeviceMetricsOverride", {
+    width, height, deviceScaleFactor: 1, mobile: false,
+  });
+  await delay(200);
+  return evaluate(`(() => {
+    const panel = document.querySelector(".reading-panel");
+    const frame = document.querySelector(".reading-poem-frame");
+    if (${scrollToEnd}) panel.scrollTop = panel.scrollHeight;
+    const box = (element) => {
+      const rect = element?.getBoundingClientRect();
+      return rect ? {
+        top: Math.round(rect.top), bottom: Math.round(rect.bottom),
+        left: Math.round(rect.left), right: Math.round(rect.right),
+      } : null;
+    };
+    const initialFrameScroll = frame?.scrollLeft ?? 0;
+    if (frame?.classList.contains("is-vertical")) {
+      frame.scrollLeft = -frame.scrollWidth;
+    }
+    return {
+      theme: document.documentElement.dataset.theme,
+      fontSize: panel?.dataset.poemFontSize,
+      vertical: Boolean(frame?.classList.contains("is-vertical")),
+      title: document.querySelector("#reading-title")?.textContent,
+      poemText: [...document.querySelectorAll(".full-poem p")]
+        .map((line) => line.textContent).join(""),
+      poemLineCount: document.querySelectorAll(".full-poem p").length,
+      documentScrollWidth: document.documentElement.scrollWidth,
+      panelClientHeight: panel?.clientHeight,
+      panelScrollHeight: panel?.scrollHeight,
+      panelScrollTop: panel?.scrollTop,
+      frameClientWidth: frame?.clientWidth,
+      frameScrollWidth: frame?.scrollWidth,
+      frameInitialScroll: initialFrameScroll,
+      frameEndScroll: frame?.scrollLeft,
+      back: box(document.querySelector(".reading-panel .back-button")),
+      layoutAction: box(document.querySelector(".reading-layout-action button")),
+      edition: box(document.querySelector(".edition-note")),
+      viewport: { width: innerWidth, height: innerHeight },
     };
   })()`);
 }
@@ -472,6 +523,125 @@ try {
       throw new Error(`Glance matrix failed: ${JSON.stringify(failures)}`);
     }
   }
+  const readingMeasurements = [];
+  let syntheticPunctuation;
+  if (readingAudit) {
+    const { POEMS } = await loadBundledModule(process.cwd(), "src/data/poems.ts");
+    const expectedPoem = POEMS.find((poem) => poem.id === layoutPoemId);
+    if (!expectedPoem) throw new Error(`Unknown reading poem: ${layoutPoemId}`);
+    const expectedText = expectedPoem.fullText.join("");
+    const failures = [];
+    for (const theme of ["light", "dark"]) {
+      for (const layout of ["horizontal", "vertical"]) {
+        for (const fontSize of ["small", "medium", "large"]) {
+          await evaluate(`(() => {
+            const data = JSON.parse(localStorage.getItem("weatherpoem.local.v1"));
+            data.settings.theme = ${JSON.stringify(theme)};
+            data.settings.poemLayout = ${JSON.stringify(layout)};
+            data.settings.poemFontSize = ${JSON.stringify(fontSize)};
+            data.dailyState.workId = ${JSON.stringify(layoutPoemId)};
+            localStorage.setItem("weatherpoem.local.v1", JSON.stringify(data));
+          })()`);
+          await send("Page.reload", { ignoreCache: true });
+          await waitFor(() => evaluate("Boolean(document.querySelector('.poem-view'))"),
+            `${theme}/${layout}/${fontSize} glance view`);
+          await click(".read-button");
+          await waitFor(() => evaluate("Boolean(document.querySelector('.reading-panel'))"),
+            `${theme}/${layout}/${fontSize} reading view`);
+          const roomy = await measureReading(560, 720);
+          const captureThis =
+            (theme === "light" && layout === "horizontal" && fontSize === "medium") ||
+            (theme === "dark" && layout === "vertical" && fontSize === "large") ||
+            (theme === "light" && layout === "vertical" && fontSize === "small") ||
+            (theme === "dark" && layout === "horizontal" && fontSize === "large");
+          if (captureThis) {
+            await evaluate("document.querySelector('.reading-poem-frame').scrollLeft = 0");
+            await captureScreenshot(`${layoutPoemId}-reading-${theme}-${layout}-${fontSize}.png`);
+          }
+          const compact = await measureReading(320, 260, true);
+          const row = {
+            theme, layout, fontSize,
+            fullTextMatches: roomy.poemText === expectedText &&
+              compact.poemText === expectedText,
+            roomy, compact,
+          };
+          readingMeasurements.push(row);
+          if (
+            roomy.theme !== theme || roomy.fontSize !== fontSize ||
+            roomy.vertical !== (layout === "vertical") ||
+            roomy.title !== expectedPoem.title || !row.fullTextMatches ||
+            roomy.documentScrollWidth > 560 || compact.documentScrollWidth > 320 ||
+            !roomy.back || roomy.back.bottom > 720 ||
+            !compact.back || compact.back.bottom > 260 ||
+            !compact.edition || compact.edition.bottom > 260 ||
+            compact.panelScrollHeight <= compact.panelClientHeight ||
+            (layout === "vertical" &&
+              roomy.frameScrollWidth > roomy.frameClientWidth &&
+              roomy.frameEndScroll === roomy.frameInitialScroll)
+          ) failures.push(row);
+          await send("Emulation.clearDeviceMetricsOverride");
+        }
+      }
+    }
+    if (failures.length > 0) {
+      throw new Error(`Reading layout matrix failed: ${JSON.stringify(failures)}`);
+    }
+    const { displayedPoemLines } = await loadBundledModule(
+      process.cwd(), "src/core/poem-layout.ts",
+    );
+    const syntheticLines = [
+      "《九月九日》：“2026年，登高？”",
+      "长江东去，星河未尽。",
+    ];
+    const syntheticText = syntheticLines.join("");
+    await send("Emulation.setDeviceMetricsOverride", {
+      width: 560, height: 720, deviceScaleFactor: 1, mobile: false,
+    });
+    const syntheticModes = [];
+    for (const layout of ["horizontal", "vertical"]) {
+      const lines = displayedPoemLines(syntheticLines, layout);
+      const observed = await evaluate(`(() => {
+        const frame = document.querySelector(".reading-poem-frame");
+        const poem = document.querySelector(".full-poem");
+        let note = document.querySelector("#synthetic-layout-note");
+        if (!note) {
+          note = document.createElement("p");
+          note.id = "synthetic-layout-note";
+          note.textContent = "隔离排版样本，非作品原文";
+          note.style.color = "var(--accent)";
+          frame.before(note);
+        }
+        frame.classList.toggle("is-vertical", ${layout === "vertical"});
+        poem.classList.toggle("is-vertical", ${layout === "vertical"});
+        poem.replaceChildren(...${JSON.stringify(lines)}.map((line) => {
+          const p = document.createElement("p");
+          p.textContent = line;
+          return p;
+        }));
+        return {
+          label: note.textContent,
+          text: [...poem.querySelectorAll("p")].map((p) => p.textContent).join(""),
+          lineCount: poem.querySelectorAll("p").length,
+          writingMode: getComputedStyle(poem).writingMode,
+          documentOverflow: document.documentElement.scrollWidth > innerWidth,
+        };
+      })()`);
+      syntheticModes.push({ layout, ...observed });
+      await captureScreenshot(`synthetic-punctuation-${layout}.png`);
+    }
+    if (syntheticModes.some((row) =>
+      row.text !== syntheticText || row.documentOverflow ||
+      !row.label.includes("非作品原文") ||
+      row.writingMode !== (row.layout === "vertical" ? "vertical-rl" : "horizontal-tb")
+    )) throw new Error(`Synthetic punctuation layout failed: ${JSON.stringify(syntheticModes)}`);
+    syntheticPunctuation = {
+      layoutOnly: true,
+      publishedPoem: false,
+      sourceLines: syntheticLines,
+      modes: syntheticModes,
+    };
+    await send("Emulation.clearDeviceMetricsOverride");
+  }
   const browserName = browserVersion.Browser ?? basename(chromePath);
   if (matrixReportName) {
     const reportPath = join(process.cwd(), "review", "redesign", "evidence", matrixReportName);
@@ -487,6 +657,20 @@ try {
       matrixMeasurements,
     }, null, 2)}\n`);
   }
+  if (readingReportName) {
+    const reportPath = join(process.cwd(), "review", "redesign", "evidence", readingReportName);
+    if (existsSync(reportPath)) throw new Error(`Refusing to overwrite: ${reportPath}`);
+    writeFileSync(reportPath, `${JSON.stringify({
+      schemaVersion: "1.0",
+      browser: browserName,
+      localDate: layoutDate,
+      poemId: layoutPoemId,
+      isolatedProfile: true,
+      nativeWebView2: false,
+      readingMeasurements,
+      syntheticPunctuation,
+    }, null, 2)}\n`);
+  }
   console.log(JSON.stringify({
     result: "passed",
     browser: browserName,
@@ -500,6 +684,7 @@ try {
       lowWorkAreaActionsReachable,
     } : {}),
     ...(matrixAudit ? { matrixMeasurements, reasonBoundaryAudit } : {}),
+    ...(readingAudit ? { readingMeasurements, syntheticPunctuation } : {}),
     ...(captureLayout ? { capturedScreenshots } : {}),
   }));
 } finally {
