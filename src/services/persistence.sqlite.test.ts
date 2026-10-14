@@ -1,3 +1,6 @@
+import { mkdtempSync, realpathSync, rmSync } from "node:fs";
+import { tmpdir } from "node:os";
+import { basename, join, sep } from "node:path";
 import { DatabaseSync } from "node:sqlite";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { createRepository, DesktopStorageUnavailableError } from "./persistence";
@@ -10,6 +13,52 @@ const sqlite = vi.hoisted(() => ({
 
 function indexedBindings(values: Array<string | number | null>): Record<string, string | number | null> {
   return Object.fromEntries(values.map((value, index) => [String(index + 1), value]));
+}
+
+const USER_DATA_TABLES = [
+  "app_kv", "daily_state", "recommendation_history",
+  "recommendation_display_events", "favorites", "feedback",
+] as const;
+
+function userRowCounts(database: DatabaseSync): number[] {
+  return USER_DATA_TABLES.map((table) =>
+    (database.prepare(`SELECT COUNT(*) AS count FROM ${table}`).get() as { count: number }).count,
+  );
+}
+
+function seedLegacyDatabase(database: DatabaseSync): void {
+  database.exec(`
+    CREATE TABLE feedback (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      work_id TEXT NOT NULL,
+      type TEXT NOT NULL,
+      context_tags TEXT NOT NULL,
+      created_at TEXT NOT NULL
+    );
+    CREATE TABLE favorites (
+      work_id TEXT PRIMARY KEY NOT NULL,
+      created_at TEXT NOT NULL
+    );
+    INSERT INTO feedback (work_id, type, context_tags, created_at)
+    VALUES ('legacy-poem', 'disliked', '["winter"]', '2025-01-01T00:00:00Z');
+    INSERT INTO favorites (work_id, created_at)
+    VALUES ('legacy-poem', '2025-01-01T00:00:00Z');
+  `);
+}
+
+function seedResetRows(database: DatabaseSync): void {
+  database.exec(`
+    INSERT INTO app_kv (key, value) VALUES ('settings', '{"configured":true}');
+    INSERT INTO daily_state
+      (local_date, state, work_id, shown_at, content_version, rule_version)
+      VALUES ('2026-10-13', 'shown', 'legacy-poem', NULL, 'test', 'test');
+    INSERT INTO recommendation_history
+      (local_date, work_id, author, primary_context)
+      VALUES ('2026-10-13', 'legacy-poem', 'author', 'calendar');
+    INSERT INTO recommendation_display_events
+      (local_date, work_id, author, primary_context, displayed_at)
+      VALUES ('2026-10-13', 'legacy-poem', 'author', 'calendar', NULL);
+  `);
 }
 
 vi.mock("@tauri-apps/plugin-sql", () => ({
@@ -53,23 +102,7 @@ describe("SQLite feedback migration and undo", () => {
     sqlite.database = new DatabaseSync(":memory:");
     sqlite.loads = 0;
     sqlite.failLoad = false;
-    sqlite.database.exec(`
-      CREATE TABLE feedback (
-        id INTEGER PRIMARY KEY AUTOINCREMENT,
-        work_id TEXT NOT NULL,
-        type TEXT NOT NULL,
-        context_tags TEXT NOT NULL,
-        created_at TEXT NOT NULL
-      );
-      CREATE TABLE favorites (
-        work_id TEXT PRIMARY KEY NOT NULL,
-        created_at TEXT NOT NULL
-      );
-      INSERT INTO feedback (work_id, type, context_tags, created_at)
-      VALUES ('legacy-poem', 'disliked', '["winter"]', '2025-01-01T00:00:00Z');
-      INSERT INTO favorites (work_id, created_at)
-      VALUES ('legacy-poem', '2025-01-01T00:00:00Z');
-    `);
+    seedLegacyDatabase(sqlite.database);
   });
 
   afterEach(() => {
@@ -153,41 +186,65 @@ describe("SQLite feedback migration and undo", () => {
   it("rolls back every user table when a deletion fails midway, then clears all on retry", async () => {
     const database = sqlite.database!;
     const repository = await createRepository();
-    database.exec(`
-      INSERT INTO app_kv (key, value) VALUES ('settings', '{"configured":true}');
-      INSERT INTO daily_state
-        (local_date, state, work_id, shown_at, content_version, rule_version)
-        VALUES ('2026-10-13', 'shown', 'legacy-poem', NULL, 'test', 'test');
-      INSERT INTO recommendation_history
-        (local_date, work_id, author, primary_context)
-        VALUES ('2026-10-13', 'legacy-poem', 'author', 'calendar');
-      INSERT INTO recommendation_display_events
-        (local_date, work_id, author, primary_context, displayed_at)
-        VALUES ('2026-10-13', 'legacy-poem', 'author', 'calendar', NULL);
-      CREATE TRIGGER fail_reset BEFORE DELETE ON favorites
-      BEGIN SELECT RAISE(ABORT, 'simulated deletion failure'); END;
-    `);
-    const tables = [
-      "app_kv", "daily_state", "recommendation_history",
-      "recommendation_display_events", "favorites", "feedback",
-    ] as const;
-    const counts = () => tables.map((table) =>
-      (database.prepare(`SELECT COUNT(*) AS count FROM ${table}`).get() as { count: number }).count,
-    );
-    const before = counts();
+    seedResetRows(database);
+    database.exec(`CREATE TRIGGER fail_reset BEFORE DELETE ON favorites
+      BEGIN SELECT RAISE(ABORT, 'simulated deletion failure'); END`);
+    const before = userRowCounts(database);
     expect(before.every((count) => count > 0)).toBe(true);
 
     await expect(repository.clearUserData())
       .rejects.toThrow("simulated deletion failure");
-    expect(counts()).toEqual(before);
+    expect(userRowCounts(database)).toEqual(before);
 
     database.exec("DROP TRIGGER fail_reset");
     await repository.clearUserData();
-    expect(counts()).toEqual(tables.map(() => 0));
+    expect(userRowCounts(database)).toEqual(USER_DATA_TABLES.map(() => 0));
     expect((database.prepare("SELECT COUNT(*) AS count FROM user_data_reset").get() as { count: number }).count)
       .toBe(0);
     const reopened = await createRepository();
     await reopened.clearUserData();
-    expect(counts()).toEqual(tables.map(() => 0));
+    expect(userRowCounts(database)).toEqual(USER_DATA_TABLES.map(() => 0));
+  });
+
+  it("keeps a failed reset intact on disk across a close and reopen", async () => {
+    const temporaryDirectory = mkdtempSync(join(tmpdir(), "weatherpoem-sqlite-reset-"));
+    const databasePath = join(temporaryDirectory, "reset.db");
+    try {
+      sqlite.database?.close();
+      sqlite.database = new DatabaseSync(databasePath);
+      seedLegacyDatabase(sqlite.database);
+      const repository = await createRepository();
+      seedResetRows(sqlite.database);
+      sqlite.database.exec(`CREATE TRIGGER fail_reset BEFORE DELETE ON favorites
+        BEGIN SELECT RAISE(ABORT, 'simulated deletion failure'); END`);
+      const before = userRowCounts(sqlite.database);
+
+      await expect(repository.clearUserData())
+        .rejects.toThrow("simulated deletion failure");
+      sqlite.database.close();
+      sqlite.database = new DatabaseSync(databasePath);
+      expect(userRowCounts(sqlite.database)).toEqual(before);
+
+      sqlite.database.exec("DROP TRIGGER fail_reset");
+      const reopened = await createRepository();
+      await reopened.clearUserData();
+      sqlite.database.close();
+      sqlite.database = new DatabaseSync(databasePath);
+      expect(userRowCounts(sqlite.database)).toEqual(USER_DATA_TABLES.map(() => 0));
+      expect((sqlite.database.prepare("SELECT COUNT(*) AS count FROM user_data_reset").get() as { count: number }).count)
+        .toBe(0);
+    } finally {
+      sqlite.database?.close();
+      sqlite.database = null;
+      const resolvedTempBase = realpathSync(tmpdir()).toLowerCase();
+      const resolvedDirectory = realpathSync(temporaryDirectory);
+      if (
+        !resolvedDirectory.toLowerCase().startsWith(`${resolvedTempBase}${sep}`) ||
+        !basename(resolvedDirectory).startsWith("weatherpoem-sqlite-reset-")
+      ) {
+        throw new Error("Refusing to remove an unexpected SQLite test directory");
+      }
+      rmSync(resolvedDirectory, { recursive: true });
+    }
   });
 });
