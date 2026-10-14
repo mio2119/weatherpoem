@@ -4,8 +4,10 @@ import { tmpdir } from "node:os";
 import { basename, join, sep } from "node:path";
 import { setTimeout as delay } from "node:timers/promises";
 import { build, preview } from "vite";
+import { loadBundledModule } from "./load-reason-sources.mjs";
 
 // --layout-audit inspects browser-preview geometry, not native WebView2.
+// --matrix-audit additionally checks theme, layout, and font-size combinations.
 // --capture leaves screenshots in a separately named temporary directory.
 const chromeCandidates = [
   "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
@@ -13,8 +15,19 @@ const chromeCandidates = [
 ];
 const chromePath = chromeCandidates.find(existsSync);
 if (!chromePath) throw new Error("Chrome or Edge is required for the isolated browser storage check");
-const layoutAudit = process.argv.includes("--layout-audit");
+const matrixAudit = process.argv.includes("--matrix-audit");
+const reasonBoundaryAudit = process.argv.includes("--reason-boundary");
+const layoutAudit = process.argv.includes("--layout-audit") || matrixAudit;
 const captureLayout = layoutAudit && process.argv.includes("--capture");
+const boundaryReason = "这是隔离排版样本，仅用于核对四十字理由完整显示，不能视为真实诗词推荐或天气说明。";
+if (reasonBoundaryAudit && (!matrixAudit || Array.from(boundaryReason).length !== 40)) {
+  throw new Error("--reason-boundary requires --matrix-audit and a 40-character sample");
+}
+const matrixReportName = process.argv.find((arg) => arg.startsWith("--report="))
+  ?.slice("--report=".length);
+if (matrixReportName && (!matrixAudit || !/^T05_[A-Za-z0-9_-]+\.json$/.test(matrixReportName))) {
+  throw new Error("--report requires --matrix-audit and a T05_*.json filename");
+}
 const layoutPoemId = process.argv.find((arg) => arg.startsWith("--poem-id="))
   ?.slice("--poem-id=".length) ?? "cui-hao-huang-he-lou";
 const layoutDate = process.argv.find((arg) => arg.startsWith("--date="))
@@ -119,9 +132,13 @@ async function measureGlance(width, height) {
     const content = document.querySelector(".glance-content");
     return {
       viewport: { width: innerWidth, height: innerHeight },
+      theme: document.documentElement.dataset.theme,
       title: document.querySelector("#daily-poem-title")?.textContent,
       fontSize: view?.dataset.poemFontSize,
       vertical: Boolean(document.querySelector(".poem-lines.is-vertical")),
+      poemText: [...document.querySelectorAll(".poem-lines p")]
+        .map((line) => line.textContent).join(""),
+      reasonText: document.querySelector(".reason-block")?.textContent,
       viewClientHeight: view?.clientHeight,
       viewScrollHeight: view?.scrollHeight,
       requestedWindowHeight: content ? Math.ceil(content.scrollHeight + 82) : null,
@@ -130,9 +147,14 @@ async function measureGlance(width, height) {
       context: box(".context-strip"),
       titleBox: box(".poem-heading h1"),
       authorBox: box(".poem-heading p"),
+      paper: box(".poem-paper"),
       poem: box(".poem-lines"),
       reason: box(".reason-block"),
       actions: box(".card-actions"),
+      actionButtons: [...document.querySelectorAll(".card-actions button")]
+        .map((button) => ({ text: button.textContent.trim(), rect: box(
+          ".card-actions button:nth-child(" + ([...button.parentElement.children].indexOf(button) + 1) + ")",
+        ) })),
       secondaryActions: box(".secondary-actions"),
     };
   })()`);
@@ -368,9 +390,106 @@ try {
       throw new Error("Glance card layout failed the long-title viewport checks");
     }
   }
+  const matrixMeasurements = [];
+  if (matrixAudit) {
+    const { POEMS } = await loadBundledModule(process.cwd(), "src/data/poems.ts");
+    const expectedPoem = POEMS.find((poem) => poem.id === layoutPoemId);
+    if (!expectedPoem) throw new Error(`Unknown matrix poem: ${layoutPoemId}`);
+    const expectedText = expectedPoem.excerpt.join("");
+    const failures = [];
+    for (const theme of ["light", "dark"]) {
+      for (const layout of ["horizontal", "vertical"]) {
+        for (const fontSize of ["small", "medium", "large"]) {
+          await evaluate(`(() => {
+            const data = JSON.parse(localStorage.getItem("weatherpoem.local.v1"));
+            data.settings.theme = ${JSON.stringify(theme)};
+            data.settings.poemLayout = ${JSON.stringify(layout)};
+            data.settings.poemFontSize = ${JSON.stringify(fontSize)};
+            data.dailyState.workId = ${JSON.stringify(layoutPoemId)};
+            localStorage.setItem("weatherpoem.local.v1", JSON.stringify(data));
+          })()`);
+          await send("Page.reload", { ignoreCache: true });
+          await waitFor(() => evaluate("Boolean(document.querySelector('.poem-view'))"),
+            `${theme}/${layout}/${fontSize} poem view`);
+          if (reasonBoundaryAudit) {
+            await evaluate(`document.querySelector(".reason-block").textContent = ${JSON.stringify(boundaryReason)}`);
+          }
+          const roomy = await measureGlance(392, 720);
+          const fittedHeight = Math.max(320, Math.min(720,
+            (roomy.requestedWindowHeight ?? 720) + 2));
+          const fitted = await measureGlance(392, fittedHeight);
+          const captureThis =
+            (theme === "light" && layout === "horizontal" && fontSize === "medium") ||
+            (theme === "dark" && layout === "horizontal" && fontSize === "large") ||
+            (theme === "light" && layout === "vertical" && fontSize === "large") ||
+            (theme === "dark" && layout === "vertical" && fontSize === "small");
+          if (captureThis) {
+            await captureScreenshot(`${layoutPoemId}-${theme}-${layout}-${fontSize}.png`);
+          }
+          const compact = await measureGlance(320, 260);
+          const compactActionsReachable = await evaluate(`(() => {
+            const view = document.querySelector(".poem-view");
+            const actions = document.querySelector(".card-actions");
+            view.scrollTop = view.scrollHeight;
+            const rect = actions.getBoundingClientRect();
+            return rect.top >= 59 && rect.bottom <= innerHeight;
+          })()`);
+          const measured = {
+            theme, layout, fontSize,
+            requestedWindowHeight: roomy.requestedWindowHeight,
+            fittedHeight,
+            actualVertical: fitted.vertical,
+            actualPoemFontSize: fitted.fontSize,
+            poemTextMatches: fitted.poemText === expectedText,
+            reasonLength: Array.from(fitted.reasonText ?? "").length,
+            fittedDocumentOverflow: fitted.documentScrollWidth > 392,
+            fittedActionsVisible: Boolean(fitted.actions &&
+              fitted.actions.bottom < fittedHeight),
+            fittedPoemInsidePaper: Boolean(fitted.paper && fitted.poem &&
+              fitted.poem.left >= fitted.paper.left - 1 &&
+              fitted.poem.right <= fitted.paper.right + 1),
+            actionButtonCount: fitted.actionButtons.length,
+            compactDocumentOverflow: compact.documentScrollWidth > 320,
+            compactActionsReachable,
+          };
+          matrixMeasurements.push(measured);
+          if (
+            fitted.theme !== theme || fitted.fontSize !== fontSize ||
+            fitted.vertical !== (layout === "vertical") ||
+            !measured.poemTextMatches ||
+            measured.reasonLength < 6 || measured.reasonLength > 40 ||
+            (reasonBoundaryAudit && measured.reasonLength !== 40) ||
+            !roomy.requestedWindowHeight || roomy.requestedWindowHeight > 720 ||
+            measured.fittedDocumentOverflow || !measured.fittedActionsVisible ||
+            !measured.fittedPoemInsidePaper || measured.actionButtonCount !== 4 ||
+            measured.compactDocumentOverflow || !compactActionsReachable
+          ) failures.push(measured);
+        }
+      }
+    }
+    await send("Emulation.clearDeviceMetricsOverride");
+    if (failures.length > 0) {
+      throw new Error(`Glance matrix failed: ${JSON.stringify(failures)}`);
+    }
+  }
+  const browserName = browserVersion.Browser ?? basename(chromePath);
+  if (matrixReportName) {
+    const reportPath = join(process.cwd(), "review", "redesign", "evidence", matrixReportName);
+    if (existsSync(reportPath)) throw new Error(`Refusing to overwrite: ${reportPath}`);
+    writeFileSync(reportPath, `${JSON.stringify({
+      schemaVersion: "1.0",
+      browser: browserName,
+      localDate: layoutDate,
+      poemId: layoutPoemId,
+      isolatedProfile: true,
+      nativeWebView2: false,
+      reasonSource: reasonBoundaryAudit ? "synthetic-layout-only" : "application-rule",
+      matrixMeasurements,
+    }, null, 2)}\n`);
+  }
   console.log(JSON.stringify({
     result: "passed",
-    browser: browserVersion.Browser ?? basename(chromePath),
+    browser: browserName,
     draft,
     reloaded,
     legacyFavoritePreserved: true,
@@ -380,6 +499,7 @@ try {
       layoutMeasurements, moreMeasurement, largeVerticalMeasurements,
       lowWorkAreaActionsReachable,
     } : {}),
+    ...(matrixAudit ? { matrixMeasurements, reasonBoundaryAudit } : {}),
     ...(captureLayout ? { capturedScreenshots } : {}),
   }));
 } finally {

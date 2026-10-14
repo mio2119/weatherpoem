@@ -19,3 +19,13 @@
 旧 0.2.0 发布 EXE 和清单未重建、未替换。本记录是新分支源码的自验收，不是旧候选的发布证明。
 
 2026-10-14 补充长题名的真实浏览器排版检查：为 `scripts/test-redesign-browser-storage.mjs` 增加可选 `--layout-audit --date=2026-06-01 --poem-id=fan-cheng-da-si-shi-tian-yuan-mei-zi` 模式，以隔离无界面 Chrome 154 和当前源码构建检查《四时田园杂兴·梅子金黄杏子肥》。先把题名与作者分成稳定的两行，将推荐理由从 12px 提至 13px，主要操作及次级操作的字从 11–12px 提至 12–13px；未改变主诗句、推荐或窗口状态逻辑。392×430 横排中内容要求 429px，主操作底部在 404px；展开“更多”要求 466px，在 392×470 中两项操作可见。320×260 低工作区没有横向溢出，主操作可滚动到达。浏览器静态帧为 `evidence/T05_BROWSER_LONG_TITLE_HORIZONTAL_20261014.png`。这只覆盖一个长题名和浏览器逻辑视口，不等于最长理由、全部节日/安全状态或原生 WebView2 多缩放通过；A5 仍为**部分通过**。
+
+2026-10-14 增补真实诗库边界矩阵：从当前 120 首统计得最长题名 14 字，最长节选是苏轼《浣溪沙·游蕲水清泉寺》48 字；无实时天气的已测情境中，范成大《四时田园杂兴·昼出耘田夜绩麻》同时覆盖 14 字题名、32 字节选和 34 字完整理由。另取五言律诗《月夜忆舍弟》检查短行分列。`scripts/test-redesign-browser-storage.mjs --matrix-audit` 在隔离无界面 Chrome 155 中逐首检查浅/深色 × 横/竖排 × 小/中/大字号共 12 组，三首合计 36 组；每组均对照原节选逐字一致、理由 6–40 字、诗文在纸面内、392px 宽无横向溢出、按内容建议高度可见四项主操作，以及 320×260 低工作区滚动后主操作可达。三次命令均返回 passed；原始测量报告显示建议窗口高度范围分别为 416–571、416–571、356–502 逻辑像素：
+
+- [最长节选测量](./evidence/T05_BROWSER_MATRIX_MAX_EXCERPT_20261014.json)；代表静帧：[浅色横排](./evidence/T05_BROWSER_MAX_EXCERPT_LIGHT_HORIZONTAL_20261014.png)、[深色竖排](./evidence/T05_BROWSER_MAX_EXCERPT_DARK_VERTICAL_20261014.png)。
+- [长题名与长理由测量](./evidence/T05_BROWSER_MATRIX_LONG_TITLE_REASON_20261014.json)；代表静帧：[浅色竖排](./evidence/T05_BROWSER_LONG_TITLE_MAX_REASON_LIGHT_VERTICAL_20261014.png)、[深色横排](./evidence/T05_BROWSER_LONG_TITLE_MAX_REASON_DARK_HORIZONTAL_20261014.png)。
+- [五言样本测量](./evidence/T05_BROWSER_MATRIX_FIVE_CHAR_20261014.json)；代表静帧：[浅色横排](./evidence/T05_BROWSER_FIVE_CHAR_LIGHT_HORIZONTAL_20261014.png)、[深色竖排](./evidence/T05_BROWSER_FIVE_CHAR_DARK_VERTICAL_20261014.png)。
+
+逐张观察这些静帧，题名、作者、诗句、理由和底部操作没有重叠或裁切；竖排样本确实更高，不应以“更省空间”宣传。脚本使用独立临时浏览器资料，未启动可见 WeatherPoem EXE、修改系统缩放或接触真实用户资料。本批只证明这三首及所列浏览器组合；节日/安全情境、所有内容与真实 WebView2、读屏、多 DPI 仍未覆盖，A5 保持**部分通过**。原生系统矩阵须在获准的隔离环境中另行验收。
+
+对规则/远端服务允许的 40 字理由上限，另在同一长题名作品上注入**仅用于排版的隔离文本**，绝不冒充真实推荐文案。浅/深色 × 横/竖排 × 三档字号再跑 12 组，[原始测量](./evidence/T05_BROWSER_MATRIX_40_REASON_20261014.json)均为完整 40 字、无横向溢出、建议高度下四项主操作可见，低工作区可滚动到达。逐张检查 [浅色竖排](./evidence/T05_BROWSER_SYNTHETIC_40_REASON_LIGHT_VERTICAL_20261014.png) 与 [深色横排](./evidence/T05_BROWSER_SYNTHETIC_40_REASON_DARK_HORIZONTAL_20261014.png)，理由两行完整、与按钮之间有清楚分隔。至此本批浏览器布局检查共 48 组（36 组真实规则理由 + 12 组隔离字数边界）；这只说明容纳能力，不证明任何 AI 理由内容质量，也不改变 A5 的部分通过状态。
