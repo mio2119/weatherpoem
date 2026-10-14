@@ -84,27 +84,87 @@ function normalizeSettings(candidate: Partial<AppSettings> | undefined): AppSett
   return settings;
 }
 
+function isRecord(value: unknown): value is Record<string, unknown> {
+  return value !== null && typeof value === "object" && !Array.isArray(value);
+}
+
+function isNonEmptyString(value: unknown): value is string {
+  return typeof value === "string" && value.trim().length > 0;
+}
+
+function isOptionalString(record: Record<string, unknown>, key: string): boolean {
+  return !(key in record) || typeof record[key] === "string";
+}
+
+function isBrowserSettings(value: unknown): value is Partial<AppSettings> {
+  if (!isRecord(value) || typeof value.configured !== "boolean" ||
+      !isNonEmptyString(value.cityId)) return false;
+  for (const key of ["autostart", "anonymousMetrics", "reduceMotion"]) {
+    if (key in value && typeof value[key] !== "boolean") return false;
+  }
+  if ("theme" in value && !["system", "light", "dark"].includes(value.theme as string)) {
+    return false;
+  }
+  // Unknown strings for the newer layout preferences still use the documented fallback.
+  if (!isOptionalString(value, "poemLayout") || !isOptionalString(value, "poemFontSize")) {
+    return false;
+  }
+  if ("readingWindowSize" in value) {
+    const size = value.readingWindowSize;
+    if (!isRecord(size) || typeof size.width !== "number" ||
+        !Number.isFinite(size.width) || size.width <= 0 ||
+        typeof size.height !== "number" || !Number.isFinite(size.height) ||
+        size.height <= 0) return false;
+  }
+  return true;
+}
+
+function isBrowserDailyState(value: unknown): value is DailyState {
+  return isRecord(value) && isNonEmptyString(value.localDate) &&
+    typeof value.state === "string" &&
+    ["idle", "shown", "retained", "alert-suppressed", "content-withdrawn"].includes(value.state) &&
+    isNonEmptyString(value.contentVersion) && isNonEmptyString(value.ruleVersion) &&
+    isOptionalString(value, "workId") && isOptionalString(value, "shownAt");
+}
+
+function isBrowserHistoryItem(value: unknown): value is RecommendationHistoryItem {
+  return isRecord(value) && isNonEmptyString(value.localDate) &&
+    isNonEmptyString(value.workId) && typeof value.author === "string" &&
+    typeof value.primaryContext === "string" && isOptionalString(value, "displayedAt");
+}
+
+function isBrowserFeedbackItem(value: unknown): value is FeedbackItem {
+  return isRecord(value) && isNonEmptyString(value.workId) &&
+    (value.type === "disliked" || value.type === "replaced") &&
+    Array.isArray(value.contextTags) &&
+    value.contextTags.every((tag: unknown) => typeof tag === "string") &&
+    isNonEmptyString(value.createdAt) && isOptionalString(value, "localDate");
+}
+
 function parseBrowserData(raw: string | null): BrowserData {
   if (raw === null) return emptyData();
   const parsed: unknown = JSON.parse(raw);
   if (!parsed || typeof parsed !== "object" || Array.isArray(parsed)) {
     throw new Error("Browser data root is invalid");
   }
-  const data = parsed as Partial<BrowserData>;
-  if (("settings" in data && (!data.settings || typeof data.settings !== "object" || Array.isArray(data.settings))) ||
-      ("dailyState" in data && (!data.dailyState || typeof data.dailyState !== "object" || Array.isArray(data.dailyState))) ||
-      ("history" in data && !Array.isArray(data.history)) ||
+  const data = parsed as Record<string, unknown>;
+  if (!isBrowserSettings(data.settings) ||
+      ("dailyState" in data && !isBrowserDailyState(data.dailyState)) ||
+      ("history" in data && (!Array.isArray(data.history) ||
+        !data.history.every(isBrowserHistoryItem))) ||
       ("favorites" in data && (!Array.isArray(data.favorites) ||
-        !data.favorites.every((item) => typeof item === "string"))) ||
-      ("feedback" in data && !Array.isArray(data.feedback))) {
+        !data.favorites.every(isNonEmptyString))) ||
+      ("feedback" in data && (!Array.isArray(data.feedback) ||
+        !data.feedback.every(isBrowserFeedbackItem)))) {
     throw new Error("Browser data fields are invalid");
   }
+  const validData = data as unknown as Partial<BrowserData>;
   return {
-    settings: normalizeSettings(data.settings),
-    dailyState: data.dailyState,
-    history: data.history ?? [],
-    favorites: data.favorites ?? [],
-    feedback: data.feedback ?? [],
+    settings: normalizeSettings(validData.settings),
+    dailyState: validData.dailyState,
+    history: validData.history ?? [],
+    favorites: validData.favorites ?? [],
+    feedback: validData.feedback ?? [],
   };
 }
 

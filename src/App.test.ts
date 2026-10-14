@@ -70,6 +70,19 @@ describe("browser preview user flow", () => {
     expect(loaded.favorites).toEqual(["wang-an-shi-yuan-ri"]);
   });
 
+  it("does not use Beijing when an old configured browser profile has lost its city", async () => {
+    const damaged = JSON.stringify({
+      settings: { configured: true },
+      history: [], favorites: ["wang-an-shi-yuan-ri"], feedback: [],
+    });
+    localStorage.setItem("weatherpoem.local.v1", damaged);
+    wrapper = mount(App, { attachTo: document.body });
+    await vi.waitFor(() => expect(wrapper!.find(".error-view").exists()).toBe(true));
+    expect(wrapper.find(".onboarding-view").exists()).toBe(false);
+    expect(wrapper.find(".poem-view").exists()).toBe(false);
+    expect(localStorage.getItem("weatherpoem.local.v1")).toBe(damaged);
+  });
+
   it("keeps first-use city and consent after a failed save, then retries", async () => {
     wrapper = mount(App, { attachTo: document.body });
     await vi.waitFor(() => expect(wrapper!.find(".onboarding-view").exists()).toBe(true));

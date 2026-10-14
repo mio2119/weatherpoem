@@ -50,6 +50,102 @@ describe("browser persistence", () => {
     expect(localStorage.getItem("weatherpoem.local.v1")).toBe("");
   });
 
+  it("migrates a 0.2.0 browser profile with old history and missing new preferences", async () => {
+    const legacy = {
+      settings: {
+        configured: true, cityId: "hangzhou", autostart: false,
+        anonymousMetrics: false, theme: "dark", reduceMotion: true,
+      },
+      dailyState: {
+        localDate: "2026-07-23", state: "shown", workId: "legacy-poem",
+        shownAt: "2026-07-23T08:00:00+08:00",
+        contentVersion: "2026.07.1", ruleVersion: "1.0.0",
+      },
+      history: [{
+        localDate: "2026-07-23", workId: "legacy-poem",
+        author: "甲", primaryContext: "weather",
+      }],
+      favorites: ["legacy-poem"],
+      feedback: [{
+        workId: "legacy-poem", type: "replaced", contextTags: ["rain"],
+        createdAt: "2026-07-23T08:01:00+08:00",
+      }],
+    };
+    localStorage.setItem("weatherpoem.local.v1", JSON.stringify(legacy));
+    const repository = await createRepository();
+    const loaded = await repository.load();
+    expect(loaded.settings).toMatchObject({
+      cityId: "hangzhou", autostart: false, theme: "dark", reduceMotion: true,
+      poemLayout: "horizontal", poemFontSize: "medium",
+    });
+    expect(loaded.dailyState?.workId).toBe("legacy-poem");
+    expect(loaded.history).toEqual(legacy.history);
+    expect(loaded.favorites).toEqual(legacy.favorites);
+    expect(loaded.feedback).toEqual(legacy.feedback);
+
+    await repository.saveSettings({ ...loaded.settings, poemLayout: "vertical" });
+    const saved = await (await createRepository()).load();
+    expect(saved.settings.cityId).toBe("hangzhou");
+    expect(saved.settings.poemLayout).toBe("vertical");
+    expect(saved.dailyState).toEqual(legacy.dailyState);
+    expect(saved.history).toEqual(legacy.history);
+    expect(saved.favorites).toEqual(legacy.favorites);
+    expect(saved.feedback).toEqual(legacy.feedback);
+  });
+
+  it("fills absent old collections without replacing an existing city", async () => {
+    localStorage.setItem("weatherpoem.local.v1", JSON.stringify({
+      settings: { configured: true, cityId: "hangzhou" },
+    }));
+    const repository = await createRepository();
+    const loaded = await repository.load();
+    expect(loaded.settings.cityId).toBe("hangzhou");
+    expect(loaded.history).toEqual([]);
+    expect(loaded.favorites).toEqual([]);
+    expect(loaded.feedback).toEqual([]);
+    await repository.toggleFavorite("new-poem", true);
+    const saved = await repository.load();
+    expect(saved.settings.cityId).toBe("hangzhou");
+    expect(saved.favorites).toEqual(["new-poem"]);
+  });
+
+  it.each([
+    undefined,
+    { configured: true, cityId: null },
+    { configured: true, cityId: 12 },
+    { configured: true },
+    { configured: "true", cityId: "hangzhou" },
+  ])("stops on damaged old city settings without writing them back: %j", async (settings) => {
+    const damaged = JSON.stringify({
+      settings, history: [], favorites: ["legacy-poem"], feedback: [],
+    });
+    localStorage.setItem("weatherpoem.local.v1", damaged);
+    const repository = await createRepository();
+    await expect(repository.load()).rejects.toThrow(/浏览器本地资料/);
+    await expect(repository.toggleFavorite("new-poem", true))
+      .rejects.toThrow(/浏览器本地资料/);
+    expect(localStorage.getItem("weatherpoem.local.v1")).toBe(damaged);
+  });
+
+  it.each([
+    { history: ["legacy-poem"] },
+    { history: [{ localDate: "2026-07-23", workId: 12, author: "甲", primaryContext: "weather" }] },
+    { feedback: [{ workId: "legacy-poem", type: "replaced", contextTags: "rain", createdAt: "2026-07-23" }] },
+    { dailyState: { localDate: "2026-07-23", state: "shown", workId: 12,
+      contentVersion: "2026.07.1", ruleVersion: "1.0.0" } },
+  ])("stops on damaged old activity fields without overwriting them: %j", async (patch) => {
+    const damaged = JSON.stringify({
+      settings: { configured: true, cityId: "hangzhou" },
+      history: [], favorites: ["legacy-poem"], feedback: [], ...patch,
+    });
+    localStorage.setItem("weatherpoem.local.v1", damaged);
+    const repository = await createRepository();
+    await expect(repository.load()).rejects.toThrow(/浏览器本地资料/);
+    await expect(repository.saveSettings({ ...DEFAULT_SETTINGS, configured: true, cityId: "beijing" }))
+      .rejects.toThrow(/浏览器本地资料/);
+    expect(localStorage.getItem("weatherpoem.local.v1")).toBe(damaged);
+  });
+
   it("keeps a newly saved poem first in favorites after a reload", async () => {
     localStorage.setItem("weatherpoem.local.v1", JSON.stringify({
       settings: DEFAULT_SETTINGS,

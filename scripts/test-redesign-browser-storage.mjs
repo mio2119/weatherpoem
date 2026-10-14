@@ -12,6 +12,7 @@ import { loadBundledModule } from "./load-reason-sources.mjs";
 // --favorites-audit follows a card-to-favorites round trip in an isolated browser.
 // --midnight-audit advances a page-local clock while returning from reading/favorites.
 // --corrupt-storage-audit checks that damaged browser records are not reset.
+// --legacy-matrix-audit separates migratable old fields from damaged existing fields.
 // --capture leaves screenshots in a separately named temporary directory.
 const chromeCandidates = [
   "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
@@ -24,13 +25,15 @@ const readingAudit = process.argv.includes("--reading-audit");
 const favoritesAudit = process.argv.includes("--favorites-audit");
 const midnightAudit = process.argv.includes("--midnight-audit");
 const corruptStorageAudit = process.argv.includes("--corrupt-storage-audit");
+const legacyMatrixAudit = process.argv.includes("--legacy-matrix-audit");
 const reasonBoundaryAudit = process.argv.includes("--reason-boundary");
 const layoutAudit = process.argv.includes("--layout-audit") || matrixAudit || readingAudit;
 const seededPoemAudit = layoutAudit || favoritesAudit || midnightAudit;
-const captureLayout = (seededPoemAudit || corruptStorageAudit) && process.argv.includes("--capture");
+const captureLayout = (seededPoemAudit || corruptStorageAudit || legacyMatrixAudit) && process.argv.includes("--capture");
 if ((favoritesAudit && (matrixAudit || readingAudit || midnightAudit)) ||
     (midnightAudit && (matrixAudit || readingAudit)) ||
-    (corruptStorageAudit && seededPoemAudit)) {
+    (corruptStorageAudit && (seededPoemAudit || legacyMatrixAudit)) ||
+    (legacyMatrixAudit && seededPoemAudit)) {
   throw new Error("Specialized browser audits must run separately");
 }
 const boundaryReason = "这是隔离排版样本，仅用于核对四十字理由完整显示，不能视为真实诗词推荐或天气说明。";
@@ -61,6 +64,11 @@ const corruptReportName = process.argv.find((arg) => arg.startsWith("--corrupt-r
   ?.slice("--corrupt-report=".length);
 if (corruptReportName && (!corruptStorageAudit || !/^T03_[A-Za-z0-9_-]+\.json$/.test(corruptReportName))) {
   throw new Error("--corrupt-report requires --corrupt-storage-audit and a T03_*.json filename");
+}
+const legacyReportName = process.argv.find((arg) => arg.startsWith("--legacy-report="))
+  ?.slice("--legacy-report=".length);
+if (legacyReportName && (!legacyMatrixAudit || !/^T03_[A-Za-z0-9_-]+\.json$/.test(legacyReportName))) {
+  throw new Error("--legacy-report requires --legacy-matrix-audit and a T03_*.json filename");
 }
 const layoutPoemId = process.argv.find((arg) => arg.startsWith("--poem-id="))
   ?.slice("--poem-id=".length) ?? "cui-hao-huang-he-lou";
@@ -213,6 +221,44 @@ async function damagedStorageSnapshot(stage, damaged) {
     };
   })()`);
   return { stage, ...state };
+}
+
+async function legacyMatrixSnapshot(name, expectedRaw) {
+  const state = await evaluate(`(() => {
+    const raw = localStorage.getItem("weatherpoem.local.v1");
+    let saved = null;
+    try { saved = JSON.parse(raw); } catch { /* A failed parse is also a valid test fixture. */ }
+    const poemText = document.querySelector(".poem-lines p");
+    const paper = document.querySelector(".poem-paper");
+    const luminance = (color) => {
+      const values = color.match(/[0-9.]+/g)?.slice(0, 3).map(Number) ?? [];
+      if (values.length !== 3) return null;
+      return values.map((value) => {
+        const channel = value / 255;
+        return channel <= 0.04045 ? channel / 12.92 : ((channel + 0.055) / 1.055) ** 2.4;
+      }).reduce((sum, value, index) => sum + value * [0.2126, 0.7152, 0.0722][index], 0);
+    };
+    const textLight = poemText ? luminance(getComputedStyle(poemText).color) : null;
+    const paperLight = paper ? luminance(getComputedStyle(paper).backgroundColor) : null;
+    return {
+      errorVisible: Boolean(document.querySelector(".error-view")),
+      onboardingVisible: Boolean(document.querySelector(".onboarding-view")),
+      poemVisible: Boolean(document.querySelector(".poem-view")),
+      cityHeadingVisible: document.body.innerText.includes("杭州"),
+      poemText: poemText?.textContent?.trim() ?? null,
+      poemTextColor: poemText ? getComputedStyle(poemText).color : null,
+      paperColor: paper ? getComputedStyle(paper).backgroundColor : null,
+      poemContrast: textLight === null || paperLight === null ? null
+        : (Math.max(textLight, paperLight) + 0.05) / (Math.min(textLight, paperLight) + 0.05),
+      rawUnchanged: raw === ${JSON.stringify(expectedRaw)},
+      savedCity: saved?.settings?.cityId ?? null,
+      savedFavorites: Array.isArray(saved?.favorites) ? saved.favorites : null,
+      historyWorkIds: Array.isArray(saved?.history)
+        ? saved.history.map((item) => item?.workId ?? null) : null,
+      documentOverflow: document.documentElement.scrollWidth > innerWidth,
+    };
+  })()`);
+  return { name, ...state };
 }
 
 async function measureGlance(width, height) {
@@ -419,7 +465,84 @@ try {
   await send("Network.enable");
   await send("Network.setBlockedURLs", { urls: ["*://api.open-meteo.com/*"] });
   const corruptFlow = [];
-  if (corruptStorageAudit) {
+  const legacyMatrixFlow = [];
+  if (legacyMatrixAudit) {
+    const oldHistory = {
+      localDate: "2026-07-23", workId: "wang-an-shi-yuan-ri",
+      author: "王安石", primaryContext: "festival",
+    };
+    const cases = [
+      { name: "0.2.0-old-preferences-and-history", valid: true, profile: {
+        settings: { configured: true, cityId: "hangzhou", autostart: false,
+          anonymousMetrics: false, theme: "dark", reduceMotion: true },
+        history: [oldHistory], favorites: ["wang-an-shi-yuan-ri"], feedback: [],
+      } },
+      { name: "old-profile-missing-optional-collections", valid: true, profile: {
+        settings: { configured: true, cityId: "hangzhou" },
+        history: [oldHistory], favorites: ["wang-an-shi-yuan-ri"],
+      } },
+      { name: "configured-city-missing", valid: false, profile: {
+        settings: { configured: true },
+        history: [oldHistory], favorites: ["wang-an-shi-yuan-ri"], feedback: [],
+      } },
+      { name: "configured-city-wrong-type", valid: false, profile: {
+        settings: { configured: true, cityId: 12 },
+        history: [oldHistory], favorites: ["wang-an-shi-yuan-ri"], feedback: [],
+      } },
+      { name: "history-item-wrong-type", valid: false, profile: {
+        settings: { configured: true, cityId: "hangzhou" },
+        history: ["wang-an-shi-yuan-ri"], favorites: ["wang-an-shi-yuan-ri"], feedback: [],
+      } },
+      { name: "feedback-tags-wrong-type", valid: false, profile: {
+        settings: { configured: true, cityId: "hangzhou" },
+        history: [oldHistory], favorites: ["wang-an-shi-yuan-ri"],
+        feedback: [{ workId: "wang-an-shi-yuan-ri", type: "replaced",
+          contextTags: "festival", createdAt: "2026-07-23T08:01:00+08:00" }],
+      } },
+    ];
+    await send("Emulation.setDeviceMetricsOverride", {
+      width: 392, height: 430, deviceScaleFactor: 1, mobile: false,
+    });
+    for (const entry of cases) {
+      const raw = JSON.stringify(entry.profile);
+      await evaluate(`localStorage.setItem("weatherpoem.local.v1", ${JSON.stringify(raw)})`);
+      await send("Page.reload", { ignoreCache: true });
+      const selector = entry.valid ? ".poem-view" : ".error-view";
+      await waitFor(() => evaluate(`Boolean(document.querySelector(${JSON.stringify(selector)}))`), entry.name);
+      const themeReadyStartedAt = Date.now();
+      if (entry.valid) {
+        await waitFor(async () => {
+          const visible = await legacyMatrixSnapshot(entry.name, raw);
+          return visible.poemContrast !== null && visible.poemContrast >= 4.5;
+        }, `${entry.name} legible poem ink`, 5_000);
+      }
+      const result = await legacyMatrixSnapshot(entry.name, raw);
+      result.poemReadableAfterMs = entry.valid ? Date.now() - themeReadyStartedAt : null;
+      legacyMatrixFlow.push(result);
+      if (entry.valid) {
+        if (!result.poemVisible || result.errorVisible || result.onboardingVisible ||
+            !result.cityHeadingVisible || result.savedCity !== "hangzhou" ||
+            !result.savedFavorites?.includes("wang-an-shi-yuan-ri") ||
+            !result.historyWorkIds?.includes("wang-an-shi-yuan-ri") ||
+            result.poemContrast === null || result.poemContrast < 4.5 ||
+            result.documentOverflow) {
+          throw new Error(`Old browser profile did not migrate: ${JSON.stringify(result)}`);
+        }
+      } else if (!result.errorVisible || result.poemVisible || result.onboardingVisible ||
+          !result.rawUnchanged || result.documentOverflow) {
+        throw new Error(`Damaged browser profile was not protected: ${JSON.stringify(result)}`);
+      }
+      if (entry.name === "0.2.0-old-preferences-and-history" ||
+          entry.name === "configured-city-wrong-type") {
+        await delay(400);
+        await captureScreenshot(`T03_${entry.name}.png`);
+      }
+    }
+    await evaluate(`localStorage.setItem("weatherpoem.local.v1", ${JSON.stringify(JSON.stringify(legacyProfile))})`);
+    await send("Page.reload", { ignoreCache: true });
+    await waitFor(() => evaluate("Boolean(document.querySelector('.poem-view'))"), "restored legacy profile");
+    await send("Emulation.clearDeviceMetricsOverride");
+  } else if (corruptStorageAudit) {
     const damaged = '{"settings":{"configured":true},';
     await evaluate(`localStorage.setItem("weatherpoem.local.v1", ${JSON.stringify(damaged)})`);
     await send("Emulation.setDeviceMetricsOverride", {
@@ -1047,6 +1170,18 @@ try {
       corruptFlow,
     }, null, 2)}\n`);
   }
+  if (legacyReportName) {
+    const reportPath = join(process.cwd(), "review", "redesign", "evidence", legacyReportName);
+    if (existsSync(reportPath)) throw new Error(`Refusing to overwrite: ${reportPath}`);
+    writeFileSync(reportPath, `${JSON.stringify({
+      schemaVersion: "1.0",
+      browser: browserName,
+      isolatedProfile: true,
+      nativeWebView2: false,
+      weather: "offline-blocked",
+      legacyMatrixFlow,
+    }, null, 2)}\n`);
+  }
   console.log(JSON.stringify({
     result: "passed",
     browser: browserName,
@@ -1064,6 +1199,7 @@ try {
     ...(favoritesAudit ? { favoriteFlow, favoriteCompactReading } : {}),
     ...(midnightAudit ? { midnightFlow } : {}),
     ...(corruptStorageAudit ? { corruptFlow } : {}),
+    ...(legacyMatrixAudit ? { legacyMatrixFlow } : {}),
     ...(captureLayout ? { capturedScreenshots } : {}),
   }));
 } finally {
