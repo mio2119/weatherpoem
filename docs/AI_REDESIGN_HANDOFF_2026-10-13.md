@@ -1,6 +1,6 @@
 # WeatherPoem 改版任务书：AI 执行、自验收与签收条件
 
-版本：1.9（2026-10-14）。本文件是可直接分批交给执行 AI 的入口；详细问题依据见 [产品体验审查](./PRODUCT_EXPERIENCE_AUDIT_2026-10-12.md)，逐任务技术边界见 [T00–T11 执行方案](./PRODUCT_REDESIGN_EXECUTION_PLAN_2026-10-12.md)，真实进度以 `review/redesign/` 中对应任务记录及当前 Git 状态为准。三者冲突时，不得自动挑选对“通过”最有利的说法，应先查证并记录差异。
+版本：1.9（2026-10-14）。本文件保留此前的批次交接记录；新版单一执行导航见 [完整修改方案：AI 任务、自验收节点与签收条件](./AI_MODIFICATION_BLUEPRINT_2026-10-14.md)。详细问题依据见 [产品体验审查](./PRODUCT_EXPERIENCE_AUDIT_2026-10-12.md)，逐任务技术边界见 [T00–T11 执行方案](./PRODUCT_REDESIGN_EXECUTION_PLAN_2026-10-12.md)，真实进度以 `review/redesign/` 中对应任务记录及当前 Git 状态为准。资料冲突时，不得自动挑选对“通过”最有利的说法，应先查证并记录差异。
 
 ## 0. 本轮交接状态与第一任务
 
