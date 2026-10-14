@@ -57,6 +57,7 @@ import {
 } from "./services/desktop";
 import {
   createRepository,
+  BrowserStorageUnavailableError,
   DEFAULT_SETTINGS,
   DesktopStorageUnavailableError,
   type AppRepository,
@@ -269,7 +270,8 @@ function showToast(message: string): void {
 }
 
 function dailyLoadErrorMessage(error: unknown): string {
-  if (error instanceof DesktopStorageUnavailableError) {
+  if (error instanceof DesktopStorageUnavailableError ||
+      error instanceof BrowserStorageUnavailableError) {
     return error.message;
   }
   return error instanceof Error &&
@@ -1255,8 +1257,8 @@ onBeforeUnmount(() => {
     </div>
 
     <div v-else-if="errorMessage" class="error-view" role="alert">
-      <p class="eyebrow">暂时未能打开</p>
-      <h1>{{ errorMessage }}</h1>
+      <h1>暂时未能打开</h1>
+      <p class="error-view__detail">{{ errorMessage }}</p>
       <button class="primary-button" type="button" @click="initialize">
         再试一次
       </button>

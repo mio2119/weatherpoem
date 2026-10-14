@@ -28,6 +28,14 @@ export class DesktopStorageUnavailableError extends Error {
   }
 }
 
+export class BrowserStorageUnavailableError extends Error {
+  constructor(cause: unknown) {
+    super("浏览器本地资料暂时无法读取。为保护收藏和设置，已停止载入；原始资料未被覆盖。请勿清除站点数据，联系维护者修复后再试一次。");
+    this.name = "BrowserStorageUnavailableError";
+    this.cause = cause;
+  }
+}
+
 export interface AppRepository {
   load(): Promise<AppBootstrap>;
   saveSettings(settings: AppSettings): Promise<void>;
@@ -77,25 +85,37 @@ function normalizeSettings(candidate: Partial<AppSettings> | undefined): AppSett
 }
 
 function parseBrowserData(raw: string | null): BrowserData {
-  if (!raw) return emptyData();
-  try {
-    const parsed = JSON.parse(raw) as Partial<BrowserData>;
-    return {
-      settings: normalizeSettings(parsed.settings),
-      dailyState: parsed.dailyState,
-      history: Array.isArray(parsed.history) ? parsed.history : [],
-      favorites: Array.isArray(parsed.favorites) ? parsed.favorites : [],
-      feedback: Array.isArray(parsed.feedback) ? parsed.feedback : [],
-    };
-  } catch {
-    return emptyData();
+  if (raw === null) return emptyData();
+  const parsed: unknown = JSON.parse(raw);
+  if (!parsed || typeof parsed !== "object" || Array.isArray(parsed)) {
+    throw new Error("Browser data root is invalid");
   }
+  const data = parsed as Partial<BrowserData>;
+  if (("settings" in data && (!data.settings || typeof data.settings !== "object" || Array.isArray(data.settings))) ||
+      ("dailyState" in data && (!data.dailyState || typeof data.dailyState !== "object" || Array.isArray(data.dailyState))) ||
+      ("history" in data && !Array.isArray(data.history)) ||
+      ("favorites" in data && (!Array.isArray(data.favorites) ||
+        !data.favorites.every((item) => typeof item === "string"))) ||
+      ("feedback" in data && !Array.isArray(data.feedback))) {
+    throw new Error("Browser data fields are invalid");
+  }
+  return {
+    settings: normalizeSettings(data.settings),
+    dailyState: data.dailyState,
+    history: data.history ?? [],
+    favorites: data.favorites ?? [],
+    feedback: data.feedback ?? [],
+  };
 }
 
 class BrowserRepository implements AppRepository {
   private read(): BrowserData {
     if (typeof localStorage === "undefined") return emptyData();
-    return parseBrowserData(localStorage.getItem(STORAGE_KEY));
+    try {
+      return parseBrowserData(localStorage.getItem(STORAGE_KEY));
+    } catch (error) {
+      throw new BrowserStorageUnavailableError(error);
+    }
   }
 
   private write(data: BrowserData): void {

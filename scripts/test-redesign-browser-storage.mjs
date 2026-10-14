@@ -11,6 +11,7 @@ import { loadBundledModule } from "./load-reason-sources.mjs";
 // --reading-audit checks the full reading panel and a labeled synthetic punctuation probe.
 // --favorites-audit follows a card-to-favorites round trip in an isolated browser.
 // --midnight-audit advances a page-local clock while returning from reading/favorites.
+// --corrupt-storage-audit checks that damaged browser records are not reset.
 // --capture leaves screenshots in a separately named temporary directory.
 const chromeCandidates = [
   "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
@@ -22,13 +23,15 @@ const matrixAudit = process.argv.includes("--matrix-audit");
 const readingAudit = process.argv.includes("--reading-audit");
 const favoritesAudit = process.argv.includes("--favorites-audit");
 const midnightAudit = process.argv.includes("--midnight-audit");
+const corruptStorageAudit = process.argv.includes("--corrupt-storage-audit");
 const reasonBoundaryAudit = process.argv.includes("--reason-boundary");
 const layoutAudit = process.argv.includes("--layout-audit") || matrixAudit || readingAudit;
 const seededPoemAudit = layoutAudit || favoritesAudit || midnightAudit;
-const captureLayout = seededPoemAudit && process.argv.includes("--capture");
+const captureLayout = (seededPoemAudit || corruptStorageAudit) && process.argv.includes("--capture");
 if ((favoritesAudit && (matrixAudit || readingAudit || midnightAudit)) ||
-    (midnightAudit && (matrixAudit || readingAudit))) {
-  throw new Error("--favorites-audit and --midnight-audit must run separately from other audits");
+    (midnightAudit && (matrixAudit || readingAudit)) ||
+    (corruptStorageAudit && seededPoemAudit)) {
+  throw new Error("Specialized browser audits must run separately");
 }
 const boundaryReason = "这是隔离排版样本，仅用于核对四十字理由完整显示，不能视为真实诗词推荐或天气说明。";
 if (reasonBoundaryAudit && (!matrixAudit || Array.from(boundaryReason).length !== 40)) {
@@ -53,6 +56,11 @@ const midnightReportName = process.argv.find((arg) => arg.startsWith("--midnight
   ?.slice("--midnight-report=".length);
 if (midnightReportName && (!midnightAudit || !/^T01_[A-Za-z0-9_-]+\.json$/.test(midnightReportName))) {
   throw new Error("--midnight-report requires --midnight-audit and a T01_*.json filename");
+}
+const corruptReportName = process.argv.find((arg) => arg.startsWith("--corrupt-report="))
+  ?.slice("--corrupt-report=".length);
+if (corruptReportName && (!corruptStorageAudit || !/^T03_[A-Za-z0-9_-]+\.json$/.test(corruptReportName))) {
+  throw new Error("--corrupt-report requires --corrupt-storage-audit and a T03_*.json filename");
 }
 const layoutPoemId = process.argv.find((arg) => arg.startsWith("--poem-id="))
   ?.slice("--poem-id=".length) ?? "cui-hao-huang-he-lou";
@@ -186,6 +194,22 @@ async function midnightSnapshot(stage) {
       focusPanel: document.activeElement?.closest(".reading-panel, .favorites-panel, .poem-view")?.className ?? null,
       documentScrollWidth: document.documentElement.scrollWidth,
       viewportWidth: innerWidth,
+    };
+  })()`);
+  return { stage, ...state };
+}
+
+async function damagedStorageSnapshot(stage, damaged) {
+  const state = await evaluate(`(() => {
+    const raw = localStorage.getItem("weatherpoem.local.v1");
+    return {
+      error: document.querySelector(".error-view")?.textContent?.trim() ?? null,
+      onboardingVisible: Boolean(document.querySelector(".onboarding-view")),
+      poemVisible: Boolean(document.querySelector(".poem-view")),
+      damagedBytesUnchanged: raw === ${JSON.stringify(damaged)},
+      savedCity: raw && raw !== ${JSON.stringify(damaged)} ? JSON.parse(raw).settings?.cityId : null,
+      savedFavorites: raw && raw !== ${JSON.stringify(damaged)} ? JSON.parse(raw).favorites : null,
+      documentOverflow: document.documentElement.scrollWidth > innerWidth,
     };
   })()`);
   return { stage, ...state };
@@ -394,12 +418,47 @@ try {
   await evaluate(`localStorage.setItem("weatherpoem.local.v1", ${JSON.stringify(JSON.stringify(legacyProfile))})`);
   await send("Network.enable");
   await send("Network.setBlockedURLs", { urls: ["*://api.open-meteo.com/*"] });
-  await send("Page.reload", { ignoreCache: true });
-  try {
-    await waitFor(() => evaluate("Boolean(document.querySelector('.poem-view'))"), "legacy profile poem view");
-  } catch (error) {
-    const visibleText = await evaluate("document.body.innerText.slice(0, 500)").catch(() => "unavailable");
-    throw new Error(`${error.message}; visible page: ${visibleText}`);
+  const corruptFlow = [];
+  if (corruptStorageAudit) {
+    const damaged = '{"settings":{"configured":true},';
+    await evaluate(`localStorage.setItem("weatherpoem.local.v1", ${JSON.stringify(damaged)})`);
+    await send("Emulation.setDeviceMetricsOverride", {
+      width: 392, height: 430, deviceScaleFactor: 1, mobile: false,
+    });
+    await send("Page.reload", { ignoreCache: true });
+    await waitFor(() => evaluate("Boolean(document.querySelector('.error-view'))"), "damaged-data error view");
+    corruptFlow.push(await damagedStorageSnapshot("damaged-load", damaged));
+    if (!corruptFlow.at(-1).error.includes("原始资料未被覆盖") ||
+        corruptFlow.at(-1).onboardingVisible || !corruptFlow.at(-1).damagedBytesUnchanged) {
+      throw new Error(`Damaged data was silently replaced: ${JSON.stringify(corruptFlow.at(-1))}`);
+    }
+    await captureScreenshot("T03_damaged_storage_error.png");
+    await click(".error-view button");
+    await delay(400);
+    corruptFlow.push(await damagedStorageSnapshot("retry-still-damaged", damaged));
+    if (!corruptFlow.at(-1).error || corruptFlow.at(-1).onboardingVisible ||
+        !corruptFlow.at(-1).damagedBytesUnchanged) {
+      throw new Error(`Retry overwrote damaged data: ${JSON.stringify(corruptFlow.at(-1))}`);
+    }
+    await evaluate(`localStorage.setItem("weatherpoem.local.v1", ${JSON.stringify(JSON.stringify(legacyProfile))})`);
+    await click(".error-view button");
+    await waitFor(() => evaluate("Boolean(document.querySelector('.poem-view'))"), "recovered legacy poem view");
+    corruptFlow.push(await damagedStorageSnapshot("repaired-load", damaged));
+    if (corruptFlow.at(-1).savedCity !== "beijing" ||
+        !corruptFlow.at(-1).savedFavorites.includes("wang-an-shi-yuan-ri") ||
+        corruptFlow.at(-1).documentOverflow) {
+      throw new Error(`Repaired legacy data did not recover: ${JSON.stringify(corruptFlow.at(-1))}`);
+    }
+    await captureScreenshot("T03_repaired_storage_poem.png");
+    await send("Emulation.clearDeviceMetricsOverride");
+  } else {
+    await send("Page.reload", { ignoreCache: true });
+    try {
+      await waitFor(() => evaluate("Boolean(document.querySelector('.poem-view'))"), "legacy profile poem view");
+    } catch (error) {
+      const visibleText = await evaluate("document.body.innerText.slice(0, 500)").catch(() => "unavailable");
+      throw new Error(`${error.message}; visible page: ${visibleText}`);
+    }
   }
   const layoutMeasurements = [];
   let moreMeasurement;
@@ -976,6 +1035,18 @@ try {
       midnightFlow,
     }, null, 2)}\n`);
   }
+  if (corruptReportName) {
+    const reportPath = join(process.cwd(), "review", "redesign", "evidence", corruptReportName);
+    if (existsSync(reportPath)) throw new Error(`Refusing to overwrite: ${reportPath}`);
+    writeFileSync(reportPath, `${JSON.stringify({
+      schemaVersion: "1.0",
+      browser: browserName,
+      isolatedProfile: true,
+      nativeWebView2: false,
+      originalFixture: "legacy-browser-profile-with-existing-favorite",
+      corruptFlow,
+    }, null, 2)}\n`);
+  }
   console.log(JSON.stringify({
     result: "passed",
     browser: browserName,
@@ -992,6 +1063,7 @@ try {
     ...(readingAudit ? { readingMeasurements, syntheticPunctuation } : {}),
     ...(favoritesAudit ? { favoriteFlow, favoriteCompactReading } : {}),
     ...(midnightAudit ? { midnightFlow } : {}),
+    ...(corruptStorageAudit ? { corruptFlow } : {}),
     ...(captureLayout ? { capturedScreenshots } : {}),
   }));
 } finally {

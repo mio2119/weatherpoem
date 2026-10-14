@@ -1,0 +1,41 @@
+{
+  "schemaVersion": "1.0",
+  "browser": "Chrome/155.0.8059.40",
+  "isolatedProfile": true,
+  "nativeWebView2": false,
+  "originalFixture": "legacy-browser-profile-with-existing-favorite",
+  "corruptFlow": [
+    {
+      "stage": "damaged-load",
+      "error": "暂时未能打开浏览器本地资料暂时无法读取。为保护收藏和设置，已停止载入；原始资料未被覆盖。请勿清除站点数据，联系维护者修复后再试一次。 再试一次",
+      "onboardingVisible": false,
+      "poemVisible": false,
+      "damagedBytesUnchanged": true,
+      "savedCity": null,
+      "savedFavorites": null,
+      "documentOverflow": false
+    },
+    {
+      "stage": "retry-still-damaged",
+      "error": "暂时未能打开浏览器本地资料暂时无法读取。为保护收藏和设置，已停止载入；原始资料未被覆盖。请勿清除站点数据，联系维护者修复后再试一次。 再试一次",
+      "onboardingVisible": false,
+      "poemVisible": false,
+      "damagedBytesUnchanged": true,
+      "savedCity": null,
+      "savedFavorites": null,
+      "documentOverflow": false
+    },
+    {
+      "stage": "repaired-load",
+      "error": null,
+      "onboardingVisible": false,
+      "poemVisible": true,
+      "damagedBytesUnchanged": false,
+      "savedCity": "beijing",
+      "savedFavorites": [
+        "wang-an-shi-yuan-ri"
+      ],
+      "documentOverflow": false
+    }
+  ]
+}

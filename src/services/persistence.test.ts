@@ -12,6 +12,44 @@ describe("browser persistence", () => {
     delete window.__TAURI_INTERNALS__;
   });
 
+  it("stops on damaged browser data without overwriting the original bytes", async () => {
+    const damaged = '{"settings":{"configured":true},';
+    localStorage.setItem("weatherpoem.local.v1", damaged);
+    const repository = await createRepository();
+    await expect(repository.load()).rejects.toThrow(/浏览器本地资料/);
+    await expect(repository.toggleFavorite("another-poem", true))
+      .rejects.toThrow(/浏览器本地资料/);
+    expect(localStorage.getItem("weatherpoem.local.v1")).toBe(damaged);
+
+    const repaired = JSON.stringify({
+      settings: { configured: true, cityId: "hangzhou" },
+      history: [], favorites: ["old-favorite"], feedback: [],
+    });
+    localStorage.setItem("weatherpoem.local.v1", repaired);
+    const loaded = await repository.load();
+    expect(loaded.settings.cityId).toBe("hangzhou");
+    expect(loaded.favorites).toEqual(["old-favorite"]);
+  });
+
+  it("does not treat a malformed favorite field as an empty collection", async () => {
+    const damaged = JSON.stringify({
+      settings: { configured: true, cityId: "beijing" },
+      history: [], favorites: "old-favorite", feedback: [],
+    });
+    localStorage.setItem("weatherpoem.local.v1", damaged);
+    await expect((await createRepository()).load())
+      .rejects.toThrow(/浏览器本地资料/);
+    expect(localStorage.getItem("weatherpoem.local.v1")).toBe(damaged);
+  });
+
+  it("distinguishes an absent browser record from an empty damaged record", async () => {
+    const repository = await createRepository();
+    expect((await repository.load()).favorites).toEqual([]);
+    localStorage.setItem("weatherpoem.local.v1", "");
+    await expect(repository.load()).rejects.toThrow(/浏览器本地资料/);
+    expect(localStorage.getItem("weatherpoem.local.v1")).toBe("");
+  });
+
   it("keeps a newly saved poem first in favorites after a reload", async () => {
     localStorage.setItem("weatherpoem.local.v1", JSON.stringify({
       settings: DEFAULT_SETTINGS,

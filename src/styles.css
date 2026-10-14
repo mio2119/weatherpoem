@@ -267,11 +267,20 @@ button:disabled {
 
 .error-view h1 {
   max-width: 300px;
-  margin: 0 0 24px;
+  margin: 0 0 12px;
   font-family: "Songti SC", "STSong", serif;
   font-size: 24px;
   font-weight: 500;
   line-height: 1.5;
+}
+
+.error-view__detail {
+  max-width: 300px;
+  margin: 0 0 24px;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.7;
+  text-align: left;
 }
 
 .content-correction-view {

@@ -44,6 +44,32 @@ afterEach(() => {
 });
 
 describe("browser preview user flow", () => {
+  it("shows a recoverable data error instead of blank onboarding for damaged browser data", async () => {
+    const damaged = '{"settings":{"configured":true},';
+    localStorage.setItem("weatherpoem.local.v1", damaged);
+    wrapper = mount(App, { attachTo: document.body });
+    await vi.waitFor(() => expect(wrapper!.find(".error-view").exists()).toBe(true));
+    expect(wrapper.find(".onboarding-view").exists()).toBe(false);
+    expect(wrapper.get(".error-view h1").text()).toBe("暂时未能打开");
+    expect(wrapper.get(".error-view__detail").text()).toContain("原始资料未被覆盖");
+    expect(wrapper.get(".error-view").text()).toContain("原始资料未被覆盖");
+    expect(localStorage.getItem("weatherpoem.local.v1")).toBe(damaged);
+
+    await wrapper.get(".error-view button").trigger("click");
+    await vi.waitFor(() => expect(wrapper!.find(".error-view").exists()).toBe(true));
+    expect(localStorage.getItem("weatherpoem.local.v1")).toBe(damaged);
+
+    localStorage.setItem("weatherpoem.local.v1", JSON.stringify({
+      settings: { configured: true, cityId: "hangzhou" },
+      history: [], favorites: ["wang-an-shi-yuan-ri"], feedback: [],
+    }));
+    await wrapper.get(".error-view button").trigger("click");
+    await vi.waitFor(() => expect(wrapper!.find(".poem-view").exists()).toBe(true));
+    const loaded = await (await createRepository()).load();
+    expect(loaded.settings.cityId).toBe("hangzhou");
+    expect(loaded.favorites).toEqual(["wang-an-shi-yuan-ri"]);
+  });
+
   it("keeps first-use city and consent after a failed save, then retries", async () => {
     wrapper = mount(App, { attachTo: document.body });
     await vi.waitFor(() => expect(wrapper!.find(".onboarding-view").exists()).toBe(true));
