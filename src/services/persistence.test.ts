@@ -12,6 +12,25 @@ describe("browser persistence", () => {
     delete window.__TAURI_INTERNALS__;
   });
 
+  it("keeps a newly saved poem first in favorites after a reload", async () => {
+    localStorage.setItem("weatherpoem.local.v1", JSON.stringify({
+      settings: DEFAULT_SETTINGS,
+      history: [],
+      favorites: ["older-poem"],
+      feedback: [],
+    }));
+    const repository = await createRepository();
+    await repository.toggleFavorite("newer-poem", true);
+    expect((await repository.load()).favorites).toEqual(["newer-poem", "older-poem"]);
+    expect((await (await createRepository()).load()).favorites).toEqual([
+      "newer-poem", "older-poem",
+    ]);
+    await repository.toggleFavorite("newer-poem", true);
+    expect((await repository.load()).favorites).toEqual(["newer-poem", "older-poem"]);
+    await repository.toggleFavorite("newer-poem", false);
+    expect((await repository.load()).favorites).toEqual(["older-poem"]);
+  });
+
   it("清除设置、每日状态、历史、收藏和反馈，但不删除无关本地键", async () => {
     const repository = await createRepository();
     const settings = {

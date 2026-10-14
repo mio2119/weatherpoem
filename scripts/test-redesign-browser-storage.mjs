@@ -9,6 +9,7 @@ import { loadBundledModule } from "./load-reason-sources.mjs";
 // --layout-audit inspects browser-preview geometry, not native WebView2.
 // --matrix-audit additionally checks theme, layout, and font-size combinations.
 // --reading-audit checks the full reading panel and a labeled synthetic punctuation probe.
+// --favorites-audit follows a card-to-favorites round trip in an isolated browser.
 // --capture leaves screenshots in a separately named temporary directory.
 const chromeCandidates = [
   "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
@@ -18,9 +19,14 @@ const chromePath = chromeCandidates.find(existsSync);
 if (!chromePath) throw new Error("Chrome or Edge is required for the isolated browser storage check");
 const matrixAudit = process.argv.includes("--matrix-audit");
 const readingAudit = process.argv.includes("--reading-audit");
+const favoritesAudit = process.argv.includes("--favorites-audit");
 const reasonBoundaryAudit = process.argv.includes("--reason-boundary");
 const layoutAudit = process.argv.includes("--layout-audit") || matrixAudit || readingAudit;
-const captureLayout = layoutAudit && process.argv.includes("--capture");
+const seededPoemAudit = layoutAudit || favoritesAudit;
+const captureLayout = seededPoemAudit && process.argv.includes("--capture");
+if (favoritesAudit && (matrixAudit || readingAudit)) {
+  throw new Error("--favorites-audit must run separately from layout matrices");
+}
 const boundaryReason = "这是隔离排版样本，仅用于核对四十字理由完整显示，不能视为真实诗词推荐或天气说明。";
 if (reasonBoundaryAudit && (!matrixAudit || Array.from(boundaryReason).length !== 40)) {
   throw new Error("--reason-boundary requires --matrix-audit and a 40-character sample");
@@ -34,6 +40,11 @@ const readingReportName = process.argv.find((arg) => arg.startsWith("--reading-r
   ?.slice("--reading-report=".length);
 if (readingReportName && (!readingAudit || !/^T06_[A-Za-z0-9_-]+\.json$/.test(readingReportName))) {
   throw new Error("--reading-report requires --reading-audit and a T06_*.json filename");
+}
+const favoritesReportName = process.argv.find((arg) => arg.startsWith("--favorites-report="))
+  ?.slice("--favorites-report=".length);
+if (favoritesReportName && (!favoritesAudit || !/^T08_[A-Za-z0-9_-]+\.json$/.test(favoritesReportName))) {
+  throw new Error("--favorites-report requires --favorites-audit and a T08_*.json filename");
 }
 const layoutPoemId = process.argv.find((arg) => arg.startsWith("--poem-id="))
   ?.slice("--poem-id=".length) ?? "cui-hao-huang-he-lou";
@@ -119,6 +130,34 @@ async function currentSettings() {
     poemLayout: document.querySelector('select[name="poem-layout"]')?.value,
     poemFontSize: document.querySelector('select[name="poem-font-size"]')?.value,
   }))()`);
+}
+
+async function favoriteFlowSnapshot(stage) {
+  const state = await evaluate(`(() => {
+    const saved = JSON.parse(localStorage.getItem("weatherpoem.local.v1") ?? "null");
+    const active = document.activeElement;
+    return {
+      panel: document.querySelector(".reading-panel") ? "reading" :
+        document.querySelector(".favorites-panel") ? "favorites" :
+        document.querySelector(".poem-view") ? "card" : "other",
+      focusPanel: active?.closest(".reading-panel, .favorites-panel, .poem-view")?.className ?? null,
+      activeIsPanel: Boolean(active?.matches(".reading-panel, .favorites-panel, .poem-view")),
+      cardTitle: document.querySelector("#daily-poem-title")?.textContent ?? null,
+      readingTitle: document.querySelector("#reading-title")?.textContent ?? null,
+      backLabel: document.querySelector(".reading-panel .back-button, .favorites-panel .back-button")?.textContent?.trim() ?? null,
+      cardFavorite: document.querySelector(".poem-view .card-actions button[aria-pressed]")?.getAttribute("aria-pressed") ?? null,
+      readingFavorite: document.querySelector(".reading-panel .icon-button[aria-pressed]")?.getAttribute("aria-pressed") ?? null,
+      poemFontSize: document.querySelector(".poem-view, .reading-panel")?.getAttribute("data-poem-font-size") ?? null,
+      poemVertical: Boolean(document.querySelector(".poem-lines.is-vertical, .reading-poem-frame.is-vertical")),
+      favoriteTitles: [...document.querySelectorAll(".favorite-open strong")].map((item) => item.textContent),
+      favoriteCount: document.querySelector(".context-favorites")?.textContent?.trim() ?? null,
+      storageFavorites: saved?.favorites ?? null,
+      documentScrollWidth: document.documentElement.scrollWidth,
+      viewportWidth: innerWidth,
+      viewportHeight: innerHeight,
+    };
+  })()`);
+  return { stage, ...state };
 }
 
 async function measureGlance(width, height) {
@@ -278,7 +317,7 @@ try {
   });
   await send("Page.enable");
   await send("Runtime.enable");
-  if (layoutAudit && layoutDate) {
+  if (seededPoemAudit && layoutDate) {
     const fixedTime = Date.parse(`${layoutDate}T09:00:00+08:00`);
     if (!Number.isFinite(fixedTime)) throw new Error("Invalid layout audit date");
     await send("Emulation.setTimezoneOverride", { timezoneId: "Asia/Shanghai" });
@@ -305,7 +344,7 @@ try {
     favorites: ["wang-an-shi-yuan-ri"],
     feedback: [],
   };
-  if (layoutAudit) {
+  if (seededPoemAudit) {
     const today = new Date();
     const localDate = layoutDate ?? [
       today.getFullYear(),
@@ -390,6 +429,141 @@ try {
   const favoritePreserved = await evaluate(`JSON.parse(localStorage.getItem("weatherpoem.local.v1"))
     .favorites.includes("wang-an-shi-yuan-ri")`);
   if (!favoritePreserved) throw new Error("Legacy favorite was lost");
+  const favoriteFlow = [];
+  let favoriteCompactReading;
+  if (favoritesAudit) {
+    const { POEMS } = await loadBundledModule(process.cwd(), "src/data/poems.ts");
+    const expectedPoem = POEMS.find((poem) => poem.id === layoutPoemId);
+    if (!expectedPoem || layoutPoemId === "wang-an-shi-yuan-ri") {
+      throw new Error(`Choose an available, initially uncollected poem: ${layoutPoemId}`);
+    }
+    await evaluate(`(() => {
+      const data = JSON.parse(localStorage.getItem("weatherpoem.local.v1"));
+      data.dailyState.workId = ${JSON.stringify(layoutPoemId)};
+      data.settings.poemLayout = "horizontal";
+      data.settings.poemFontSize = "medium";
+      localStorage.setItem("weatherpoem.local.v1", JSON.stringify(data));
+    })()`);
+    await send("Page.reload", { ignoreCache: true });
+    await waitFor(() => evaluate("Boolean(document.querySelector('.poem-view'))"), "seeded card after settings");
+    await send("Emulation.setDeviceMetricsOverride", {
+      width: 392, height: 430, deviceScaleFactor: 1, mobile: false,
+    });
+    await waitFor(() => evaluate("document.activeElement?.classList.contains('poem-view')"), "card focus");
+    favoriteFlow.push(await favoriteFlowSnapshot("card-before"));
+    if (favoriteFlow.at(-1).cardTitle !== expectedPoem.title ||
+        favoriteFlow.at(-1).cardFavorite !== "false") {
+      throw new Error(`Unexpected initial poem/favorite state: ${JSON.stringify(favoriteFlow.at(-1))}`);
+    }
+    await captureScreenshot("T08_card_before.png");
+
+    await click(".read-button");
+    await waitFor(() => evaluate("document.activeElement?.classList.contains('reading-panel')"), "reading focus from card");
+    await send("Emulation.setDeviceMetricsOverride", {
+      width: 560, height: 720, deviceScaleFactor: 1, mobile: false,
+    });
+    favoriteFlow.push(await favoriteFlowSnapshot("reading-from-card"));
+    if (favoriteFlow.at(-1).readingTitle !== expectedPoem.title ||
+        !favoriteFlow.at(-1).backLabel.includes("今日诗笺")) {
+      throw new Error(`Reading did not retain its card origin: ${JSON.stringify(favoriteFlow.at(-1))}`);
+    }
+    await click(".reading-panel .icon-button[aria-pressed]");
+    await waitFor(() => evaluate(`(() => {
+      const data = JSON.parse(localStorage.getItem("weatherpoem.local.v1"));
+      return data.favorites.includes(${JSON.stringify(layoutPoemId)}) &&
+        document.querySelector(".reading-panel .icon-button[aria-pressed]")?.getAttribute("aria-pressed") === "true";
+    })()`), "favorite persisted from reading");
+    favoriteFlow.push(await favoriteFlowSnapshot("reading-collected"));
+    await waitFor(() => evaluate("!document.querySelector('.toast-message')"), "collection confirmation to clear");
+    await captureScreenshot("T08_reading_collected.png");
+
+    await click(".reading-panel .back-button");
+    await send("Emulation.setDeviceMetricsOverride", {
+      width: 392, height: 430, deviceScaleFactor: 1, mobile: false,
+    });
+    await waitFor(() => evaluate("document.activeElement?.classList.contains('poem-view')"), "card focus after reading");
+    favoriteFlow.push(await favoriteFlowSnapshot("card-collected"));
+    if (favoriteFlow.at(-1).cardFavorite !== "true" ||
+        favoriteFlow.at(-1).documentScrollWidth > 392) {
+      throw new Error(`Card did not reflect saved favorite: ${JSON.stringify(favoriteFlow.at(-1))}`);
+    }
+    await send("Page.reload", { ignoreCache: true });
+    await waitFor(() => evaluate("document.activeElement?.classList.contains('poem-view')"), "card focus after reload");
+    favoriteFlow.push(await favoriteFlowSnapshot("card-after-reload"));
+    if (favoriteFlow.at(-1).cardTitle !== expectedPoem.title ||
+        favoriteFlow.at(-1).cardFavorite !== "true" ||
+        !favoriteFlow.at(-1).storageFavorites.includes(layoutPoemId)) {
+      throw new Error(`Favorite did not survive page reload: ${JSON.stringify(favoriteFlow.at(-1))}`);
+    }
+    await click(".context-favorites");
+    await waitFor(() => evaluate("document.activeElement?.classList.contains('favorites-panel')"), "favorites focus from card");
+    favoriteFlow.push(await favoriteFlowSnapshot("favorites-list"));
+    if (favoriteFlow.at(-1).favoriteTitles[0] !== expectedPoem.title ||
+        !favoriteFlow.at(-1).backLabel.includes("今日诗笺")) {
+      throw new Error(`Saved poem is not findable in favorites: ${JSON.stringify(favoriteFlow.at(-1))}`);
+    }
+    await captureScreenshot("T08_favorites_list.png");
+
+    const opened = await evaluate(`(() => {
+      const button = [...document.querySelectorAll(".favorite-open")]
+        .find((item) => item.querySelector("strong")?.textContent === ${JSON.stringify(expectedPoem.title)});
+      button?.click();
+      return Boolean(button);
+    })()`);
+    if (!opened) throw new Error("Saved poem cannot be opened from favorites");
+    await send("Emulation.setDeviceMetricsOverride", {
+      width: 560, height: 720, deviceScaleFactor: 1, mobile: false,
+    });
+    await waitFor(() => evaluate("document.activeElement?.classList.contains('reading-panel')"), "reading focus from favorites");
+    favoriteFlow.push(await favoriteFlowSnapshot("reading-from-favorites"));
+    const fullText = await evaluate(`[...document.querySelectorAll(".full-poem p")]
+      .map((line) => line.textContent).join("")`);
+    if (favoriteFlow.at(-1).readingTitle !== expectedPoem.title ||
+        !favoriteFlow.at(-1).backLabel.includes("我的收藏") ||
+        fullText !== expectedPoem.fullText.join("")) {
+      throw new Error(`Reopened reading content/origin mismatch: ${JSON.stringify(favoriteFlow.at(-1))}`);
+    }
+    favoriteCompactReading = await measureReading(320, 260, true);
+    if (!favoriteCompactReading.back || favoriteCompactReading.back.bottom > 260 ||
+        favoriteCompactReading.documentScrollWidth > 320 ||
+        !favoriteCompactReading.edition || favoriteCompactReading.edition.bottom > 260) {
+      throw new Error(`Compact reading lost back/source access: ${JSON.stringify(favoriteCompactReading)}`);
+    }
+    await captureScreenshot("T08_reading_compact_bottom.png");
+    await send("Emulation.setDeviceMetricsOverride", {
+      width: 560, height: 720, deviceScaleFactor: 1, mobile: false,
+    });
+    await click(".reading-panel .icon-button[aria-pressed]");
+    await waitFor(() => evaluate(`(() => {
+      const data = JSON.parse(localStorage.getItem("weatherpoem.local.v1"));
+      return !data.favorites.includes(${JSON.stringify(layoutPoemId)}) &&
+        document.querySelector(".reading-panel .icon-button[aria-pressed]")?.getAttribute("aria-pressed") === "false";
+    })()`), "unfavorite persisted from reopened reading");
+    favoriteFlow.push(await favoriteFlowSnapshot("reading-uncollected"));
+
+    await click(".reading-panel .back-button");
+    await send("Emulation.setDeviceMetricsOverride", {
+      width: 392, height: 430, deviceScaleFactor: 1, mobile: false,
+    });
+    await waitFor(() => evaluate("document.activeElement?.classList.contains('favorites-panel')"), "favorites focus after reading");
+    favoriteFlow.push(await favoriteFlowSnapshot("favorites-after-remove"));
+    if (favoriteFlow.at(-1).favoriteTitles.includes(expectedPoem.title) ||
+        !favoriteFlow.at(-1).favoriteTitles.includes("元日")) {
+      throw new Error(`Favorite removal did not synchronize list: ${JSON.stringify(favoriteFlow.at(-1))}`);
+    }
+    await waitFor(() => evaluate("!document.querySelector('.toast-message')"), "removal confirmation to clear");
+    await captureScreenshot("T08_favorites_after_remove.png");
+    await click(".favorites-panel .back-button");
+    await waitFor(() => evaluate("document.activeElement?.classList.contains('poem-view')"), "card focus after favorites");
+    favoriteFlow.push(await favoriteFlowSnapshot("card-after-remove"));
+    if (favoriteFlow.at(-1).cardFavorite !== "false" ||
+        favoriteFlow.at(-1).storageFavorites.includes(layoutPoemId) ||
+        favoriteFlow.at(-1).documentScrollWidth > 392) {
+      throw new Error(`Card/storage did not reflect removal: ${JSON.stringify(favoriteFlow.at(-1))}`);
+    }
+    await captureScreenshot("T08_card_after_remove.png");
+    await send("Emulation.clearDeviceMetricsOverride");
+  }
   const largeVerticalMeasurements = [];
   let lowWorkAreaActionsReachable = false;
   if (layoutAudit) {
@@ -671,6 +845,20 @@ try {
       syntheticPunctuation,
     }, null, 2)}\n`);
   }
+  if (favoritesReportName) {
+    const reportPath = join(process.cwd(), "review", "redesign", "evidence", favoritesReportName);
+    if (existsSync(reportPath)) throw new Error(`Refusing to overwrite: ${reportPath}`);
+    writeFileSync(reportPath, `${JSON.stringify({
+      schemaVersion: "1.0",
+      browser: browserName,
+      localDate: layoutDate,
+      poemId: layoutPoemId,
+      isolatedProfile: true,
+      nativeWebView2: false,
+      favoriteFlow,
+      favoriteCompactReading,
+    }, null, 2)}\n`);
+  }
   console.log(JSON.stringify({
     result: "passed",
     browser: browserName,
@@ -685,6 +873,7 @@ try {
     } : {}),
     ...(matrixAudit ? { matrixMeasurements, reasonBoundaryAudit } : {}),
     ...(readingAudit ? { readingMeasurements, syntheticPunctuation } : {}),
+    ...(favoritesAudit ? { favoriteFlow, favoriteCompactReading } : {}),
     ...(captureLayout ? { capturedScreenshots } : {}),
   }));
 } finally {

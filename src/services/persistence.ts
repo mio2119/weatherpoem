@@ -144,10 +144,13 @@ class BrowserRepository implements AppRepository {
 
   async toggleFavorite(workId: string, active: boolean): Promise<void> {
     const data = this.read();
-    const favorites = new Set(data.favorites);
-    if (active) favorites.add(workId);
-    else favorites.delete(workId);
-    data.favorites = [...favorites];
+    if (active) {
+      if (!data.favorites.includes(workId)) {
+        data.favorites = [workId, ...data.favorites];
+      }
+    } else {
+      data.favorites = data.favorites.filter((item) => item !== workId);
+    }
     this.write(data);
   }
 

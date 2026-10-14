@@ -19,3 +19,18 @@
 - 长篇、无注释作品、键盘与读屏在原生 WebView2 下的焦点回退路径待 T09 测试。
 
 A8 因上述条件仍为**部分通过**，不把 T08 记录当作发布签收。
+
+## 2026-10-14 隔离浏览器收藏找回与排序回归
+
+本批只补 T08 的“诗笺→全文→收藏→返回诗笺→重新载入→从收藏找回→再读→取消收藏→返回收藏→返回诗笺”连续路径。使用 `scripts/test-redesign-browser-storage.mjs --favorites-audit --date=2026-06-01 --poem-id=cui-hao-huang-he-lou --favorites-report=T08_BROWSER_FAVORITES_FLOW_VERIFIED_20261014.json --capture`，以独立临时浏览器资料、Chrome 155、受控上海本地日期和隔离离线天气运行；已有《元日》旧收藏作保留对照。模拟/隔离输入不代表真实当地天气，也没有启动可见 WeatherPoem EXE、修改真实系统启动项或用户资料。
+
+首次加上“重新载入后仍应排在收藏首位”的反例时，发现浏览器存储在新增《黄鹤楼》后留下 `[旧诗, 新诗]`，而应用当下显示 `[新诗, 旧诗]`；刷新后收藏列表顺序突变。`src/services/persistence.test.ts` 新测试先红：预期 `[newer-poem, older-poem]`，实际 `[older-poem, newer-poem]`。随后仅调整浏览器存储新增收藏的插入位置，已有收藏重复写入不重排、取消收藏仍删除；定向 6/6 转绿，未改 SQLite 结构、作品内容或收藏视图样式。
+
+修复后同一隔离浏览器会话的 10 个阶段均通过：新收藏在阅读页、诗笺和持久化数据一致；页面重新载入后仍是收藏列表第一项；从收藏重开《黄鹤楼》时全文逐字匹配、返回标签为“我的收藏”；取消后列表只保留旧《元日》，诗笺收藏数由 2 回到 1。每次面板转换后的焦点均落在新面板主区域。320×260 低视口滚到阅读页末尾时，固定返回按钮与文本来源都在可视区域，页面无横向溢出。原始逐阶段状态与尺寸见 [T08 浏览器报告](./evidence/T08_BROWSER_FAVORITES_FLOW_VERIFIED_20261014.json)。
+
+已逐张复看六张无遮挡静帧：
+
+- [收藏前小诗笺](./evidence/T08_BROWSER_FLOW_card_before_20261014.png)、[阅读页已收藏](./evidence/T08_BROWSER_FLOW_reading_collected_20261014.png)、[刷新后收藏列表](./evidence/T08_BROWSER_FLOW_favorites_list_20261014.png)；
+- [低视口全文末尾](./evidence/T08_BROWSER_FLOW_reading_compact_bottom_20261014.png)、[取消后收藏列表](./evidence/T08_BROWSER_FLOW_favorites_after_remove_20261014.png)、[取消后小诗笺](./evidence/T08_BROWSER_FLOW_card_after_remove_20261014.png)。
+
+本批 `npm.cmd run lint`、`typecheck`、全量 `test`（26 文件、198 项）、`build` 与原浏览器存储路径均通过。浏览器检查只证明这首律诗、该逻辑视口和本地存储路径，不证明原生 WebView2/SQLite 的返回焦点、读屏、真实撤回清单或 Windows 系统缩放；18 首内容的原文与解释仍须具名人员复核。因此 **A8 继续部分通过**，下一项应在获准的隔离原生候选上验收藏阅读遇真实撤回的数据库同步与焦点，再由 H1 进行内容审核。
