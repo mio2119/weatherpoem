@@ -20,6 +20,7 @@ OpenAI API 密钥只存在于该服务的部署环境中，不得进入 Vite 环
 - 对拒绝、不完整输出、错作品、链接、换行、模型自称和 6—40 字限制再次校验；
 - 默认每个来源每分钟 20 次，完全相同的标准化请求缓存 24 小时；
 - 日志只记录随机请求 ID 和结果代码，不记录请求正文、理由或 API 密钥。
+- 当前 `1.1` 契约未传递天气新鲜度与来源：客户端只在天气为 Open-Meteo 新鲜且已知的结果时请求远端理由；缓存、离线、未知天气和隔离演练保留本地规则理由，避免远端把旧数据或演练误写成当地实况。
 
 上述 Responses API 与严格结构化输出方式依据 OpenAI 官方
 [Structured Outputs 指南](https://developers.openai.com/api/docs/guides/structured-outputs)。

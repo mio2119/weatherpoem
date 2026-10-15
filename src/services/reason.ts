@@ -146,7 +146,9 @@ export async function enrichRecommendationReason(
     !isAllowedReasonServiceUrl(endpoint) ||
     recommendation.primaryContext === RETAINED_CONTEXT ||
     weather.shouldSuppressPoem ||
-    weather.freshness === "unavailable"
+    weather.kind === "unknown" ||
+    weather.freshness !== "fresh" ||
+    weather.source !== "open-meteo"
   ) {
     return recommendation;
   }

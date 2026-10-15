@@ -168,6 +168,30 @@ describe("AI reason adapter", () => {
     expect(fetcher).not.toHaveBeenCalled();
   });
 
+  it.each([
+    ["缓存天气", { ...weather, freshness: "stale" as const, source: "cache" as const }],
+    ["隔离演练", { ...weather, label: "阴（隔离演练）", source: "synthetic" as const }],
+    ["离线故障场景", { ...weather, source: "offline" as const }],
+    ["未知天气", { ...weather, kind: "unknown" as const, label: "天气待确认" }],
+  ])("%s 不交给无法确认天气情境的远端理由服务", async (_label, context) => {
+    const fetcher = vi.fn<typeof fetch>();
+    const localRecommendation = recommendPoem({
+      poems: [recommendation.poem],
+      calendar,
+      weather: context,
+      history: [],
+      feedback: [],
+    });
+    const result = await enrichRecommendationReason(
+      localRecommendation,
+      calendar,
+      context,
+      { endpoint: "http://127.0.0.1:8787/reason", fetcher },
+    );
+    expect(result).toEqual(localRecommendation);
+    expect(fetcher).not.toHaveBeenCalled();
+  });
+
   it("当天保留的跨季旧诗不交给远端重写成当前天气理由", async () => {
     const poem = POEMS.find((item) => item.id === "fan-cheng-da-si-shi-tian-yuan-mei-zi")!;
     const autumn = {
