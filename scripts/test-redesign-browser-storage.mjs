@@ -499,6 +499,24 @@ try {
         feedback: [{ workId: "wang-an-shi-yuan-ri", type: "replaced",
           contextTags: "festival", createdAt: "2026-07-23T08:01:00+08:00" }],
       } },
+      { name: "daily-impossible-date", valid: false, profile: {
+        settings: { configured: true, cityId: "hangzhou" },
+        dailyState: { localDate: "2026-02-30", state: "shown",
+          workId: "wang-an-shi-yuan-ri", contentVersion: "legacy", ruleVersion: "legacy" },
+        history: [oldHistory], favorites: ["wang-an-shi-yuan-ri"], feedback: [],
+      } },
+      { name: "history-noncanonical-date", valid: false, profile: {
+        settings: { configured: true, cityId: "hangzhou" },
+        history: [{ ...oldHistory, localDate: "2026-2-3" }],
+        favorites: ["wang-an-shi-yuan-ri"], feedback: [],
+      } },
+      { name: "feedback-impossible-date", valid: false, profile: {
+        settings: { configured: true, cityId: "hangzhou" },
+        history: [oldHistory], favorites: ["wang-an-shi-yuan-ri"],
+        feedback: [{ workId: "wang-an-shi-yuan-ri", type: "replaced",
+          contextTags: ["festival"], createdAt: "2026-07-23T08:01:00+08:00",
+          localDate: "2026-02-30" }],
+      } },
     ];
     await send("Emulation.setDeviceMetricsOverride", {
       width: 392, height: 430, deviceScaleFactor: 1, mobile: false,
