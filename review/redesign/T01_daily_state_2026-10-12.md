@@ -39,3 +39,7 @@
 红测转绿后，App 级测试继续从当天诗笺收藏作品，在收藏阅读页跨到 10-15 00:01；先返回收藏，再返回诗笺，立即显示 15 日。最终历史恰好为 13、14、15 日各一条，收藏仍保留。新增 `--midnight-audit` 隔离 Chrome 155 路径，在页面内注入可推进时钟、使用独立临时浏览器资料和阻断的天气 API，实际点击阅读与收藏的返回按钮。原始四阶段状态见 [T01 浏览器跨日报告](./evidence/T01_BROWSER_READING_RETURN_FINAL_20261015.json)：13 日《黄鹤楼》→14 日《夜雨寄北》→收藏页→15 日《旅夜书怀》；浏览器存储的日期/历史与画面一致，无横向溢出。三张已逐张查看的静帧为 [13 日](./evidence/T01_BROWSER_card_oct13_20261015.png)、[从阅读返回后的 14 日](./evidence/T01_BROWSER_card_oct14_after_reading_20261015.png)、[从收藏返回后的 15 日](./evidence/T01_BROWSER_card_oct15_after_favorites_20261015.png)。
 
 本批 `lint`、`typecheck`、全量 `test`（26 文件、199 项）、`build` 通过；原浏览器存储和 T08 收藏找回模式均重跑通过。浏览器里的日期是**页面局部受控时钟**，不是改了 Windows 系统时间；天气为离线替身，没有启动可见 WeatherPoem EXE。该证据只补浏览器实际点击路径，不能代替新候选在原生 WebView2、托盘隐藏／重新打开、系统休眠／恢复及 SQLite 中跨日的端到端实测。A1 仍为**部分通过**。
+
+## 2026-10-15 SQLite 每日状态与展示历史损坏反例
+
+继续审查桌面启动资料时，内存 SQLite 的两条红测证明：`daily_state.state` 写成未知值、展示事件的 `work_id` 为空时，原 `load()` 仍将其作为正常状态交给上层。这可能影响当天保留诗及近期避重判断。现在桌面行先映射成业务对象，再复用浏览器资料的字段验证规则；异常时抛 `DesktopStorageUnavailableError`，不在读取时改写原始行。测试确认失败后原始值仍在，隔离修复为合法值后可重新载入；同批的空收藏 ID 也按同一规则拒绝，记录于 T03。三项定向反例先为 3 失败/13 通过，修复后 16/16；完整 `lint`、`typecheck`、`test`（26 文件、227 项）、`build`、`accessibility:check` 和 `requirements:check` 通过。这里只验证 Node SQLite 与插件替身，不证明当前源码的原生 EXE、用户数据库或跨日/休眠路径；A1 仍**部分通过**。

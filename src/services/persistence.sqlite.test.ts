@@ -342,6 +342,58 @@ describe("SQLite feedback migration and undo", () => {
     }
   });
 
+  it("does not accept an unknown SQLite daily state", async () => {
+    const database = sqlite.database!;
+    const repository = await createRepository();
+    database.prepare(
+      `INSERT INTO daily_state
+       (local_date, state, work_id, shown_at, content_version, rule_version)
+       VALUES ('2026-10-15', 'surprise', 'legacy-poem', NULL, 'test', 'test')`,
+    ).run();
+    const readState = () => (database.prepare(
+      "SELECT state FROM daily_state WHERE local_date = '2026-10-15'",
+    ).get() as { state: string }).state;
+
+    await expect(repository.load()).rejects.toBeInstanceOf(DesktopStorageUnavailableError);
+    expect(readState()).toBe("surprise");
+    database.prepare("UPDATE daily_state SET state = 'shown' WHERE local_date = '2026-10-15'").run();
+    expect((await repository.load()).dailyState?.state).toBe("shown");
+  });
+
+  it("does not accept an empty SQLite display-history work ID", async () => {
+    const database = sqlite.database!;
+    const repository = await createRepository();
+    database.prepare(
+      `INSERT INTO recommendation_display_events
+       (local_date, work_id, author, primary_context, displayed_at)
+       VALUES ('2026-10-15', '', 'author', 'calendar', NULL)`,
+    ).run();
+    const readWorkId = () => (database.prepare(
+      "SELECT work_id FROM recommendation_display_events WHERE local_date = '2026-10-15'",
+    ).get() as { work_id: string }).work_id;
+
+    await expect(repository.load()).rejects.toBeInstanceOf(DesktopStorageUnavailableError);
+    expect(readWorkId()).toBe("");
+    database.prepare(
+      "UPDATE recommendation_display_events SET work_id = 'legacy-poem' WHERE local_date = '2026-10-15'",
+    ).run();
+    expect((await repository.load()).history[0]?.workId).toBe("legacy-poem");
+  });
+
+  it("does not accept an empty SQLite favorite work ID", async () => {
+    const database = sqlite.database!;
+    const repository = await createRepository();
+    database.prepare("UPDATE favorites SET work_id = '' WHERE work_id = 'legacy-poem'").run();
+    const readWorkId = () => (database.prepare(
+      "SELECT work_id FROM favorites LIMIT 1",
+    ).get() as { work_id: string }).work_id;
+
+    await expect(repository.load()).rejects.toBeInstanceOf(DesktopStorageUnavailableError);
+    expect(readWorkId()).toBe("");
+    database.prepare("UPDATE favorites SET work_id = 'legacy-poem' WHERE work_id = ''").run();
+    expect((await repository.load()).favorites).toEqual(["legacy-poem"]);
+  });
+
   it("rolls back every user table when a deletion fails midway, then clears all on retry", async () => {
     const database = sqlite.database!;
     const repository = await createRepository();

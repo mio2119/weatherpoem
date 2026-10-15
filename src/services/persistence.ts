@@ -93,7 +93,8 @@ function isNonEmptyString(value: unknown): value is string {
 }
 
 function isOptionalString(record: Record<string, unknown>, key: string): boolean {
-  return !(key in record) || typeof record[key] === "string";
+  return !(key in record) || record[key] === undefined ||
+    typeof record[key] === "string";
 }
 
 function isStoredSettings(value: unknown): value is Partial<AppSettings> {
@@ -119,7 +120,7 @@ function isStoredSettings(value: unknown): value is Partial<AppSettings> {
   return true;
 }
 
-function isBrowserDailyState(value: unknown): value is DailyState {
+function isStoredDailyState(value: unknown): value is DailyState {
   return isRecord(value) && isNonEmptyString(value.localDate) &&
     typeof value.state === "string" &&
     ["idle", "shown", "retained", "alert-suppressed", "content-withdrawn"].includes(value.state) &&
@@ -127,7 +128,7 @@ function isBrowserDailyState(value: unknown): value is DailyState {
     isOptionalString(value, "workId") && isOptionalString(value, "shownAt");
 }
 
-function isBrowserHistoryItem(value: unknown): value is RecommendationHistoryItem {
+function isStoredHistoryItem(value: unknown): value is RecommendationHistoryItem {
   return isRecord(value) && isNonEmptyString(value.localDate) &&
     isNonEmptyString(value.workId) && typeof value.author === "string" &&
     typeof value.primaryContext === "string" && isOptionalString(value, "displayedAt");
@@ -157,9 +158,9 @@ function parseBrowserData(raw: string | null): BrowserData {
   }
   const data = parsed as Record<string, unknown>;
   if (!isStoredSettings(data.settings) ||
-      ("dailyState" in data && !isBrowserDailyState(data.dailyState)) ||
+      ("dailyState" in data && !isStoredDailyState(data.dailyState)) ||
       ("history" in data && (!Array.isArray(data.history) ||
-        !data.history.every(isBrowserHistoryItem))) ||
+        !data.history.every(isStoredHistoryItem))) ||
       ("favorites" in data && (!Array.isArray(data.favorites) ||
         !data.favorites.every(isNonEmptyString))) ||
       ("feedback" in data && (!Array.isArray(data.feedback) ||
@@ -485,9 +486,38 @@ class SqliteRepository implements AppRepository {
         throw new DesktopStorageUnavailableError(error);
       }
     }
-    let feedback: FeedbackItem[];
+    let storedData: Pick<AppBootstrap, "dailyState" | "history" | "favorites" | "feedback">;
     try {
-      feedback = feedbackRows.map(parseFeedbackRow);
+      const daily = dailyRows[0];
+      const dailyState = daily
+        ? {
+            localDate: daily.local_date,
+            state: daily.state,
+            workId: daily.work_id ?? undefined,
+            shownAt: daily.shown_at ?? undefined,
+            contentVersion: daily.content_version,
+            ruleVersion: daily.rule_version,
+          }
+        : undefined;
+      const history = historyRows.map((row) => ({
+        localDate: row.local_date,
+        workId: row.work_id,
+        author: row.author,
+        primaryContext: row.primary_context,
+        displayedAt: row.displayed_at ?? undefined,
+      }));
+      const favorites = favoriteRows.map((row) => row.work_id);
+      if ((dailyState && !isStoredDailyState(dailyState)) ||
+          !history.every(isStoredHistoryItem) ||
+          !favorites.every(isNonEmptyString)) {
+        throw new Error("Stored daily state, history or favorites are invalid");
+      }
+      storedData = {
+        dailyState,
+        history,
+        favorites,
+        feedback: feedbackRows.map(parseFeedbackRow),
+      };
     } catch (error) {
       throw new DesktopStorageUnavailableError(error);
     }
@@ -505,28 +535,9 @@ class SqliteRepository implements AppRepository {
         await this.clearPilotState();
       }
     }
-    const daily = dailyRows[0];
     return {
       settings,
-      dailyState: daily
-        ? {
-            localDate: daily.local_date,
-            state: daily.state,
-            workId: daily.work_id ?? undefined,
-            shownAt: daily.shown_at ?? undefined,
-            contentVersion: daily.content_version,
-            ruleVersion: daily.rule_version,
-          }
-        : undefined,
-      history: historyRows.map((row) => ({
-        localDate: row.local_date,
-        workId: row.work_id,
-        author: row.author,
-        primaryContext: row.primary_context,
-        displayedAt: row.displayed_at ?? undefined,
-      })),
-      favorites: favoriteRows.map((row) => row.work_id),
-      feedback,
+      ...storedData,
       pilotState,
     };
   }
