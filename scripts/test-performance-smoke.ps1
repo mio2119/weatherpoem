@@ -59,6 +59,7 @@ else {
 $exePath = [System.IO.Path]::GetFullPath((Join-Path $projectRoot $artifactPath))
 $reportPath = [System.IO.Path]::GetFullPath((Join-Path $projectRoot $reportRelativePath))
 $seedScript = [System.IO.Path]::GetFullPath((Join-Path $projectRoot "scripts\seed-performance-profile.mjs"))
+. (Join-Path $PSScriptRoot "performance-smoke-failure.ps1")
 
 if (-not (Test-Path -LiteralPath $exePath -PathType Leaf)) {
     throw "Release EXE not found. Run npm run tauri:build first: $exePath"
@@ -157,12 +158,37 @@ function Start-IsolatedProbe {
     while (-not (Test-Path -LiteralPath $markerPath -PathType Leaf)) {
         if ($process.HasExited) {
             $exitCode = $process.ExitCode
+            $failurePath = $null
+            try {
+                $failurePath = Write-PerformanceSmokeProbeFailure `
+                    -ReportPath $reportPath -ArtifactPath $artifactPath -ExePath $exePath `
+                    -SampleLabel $SampleLabel -RunId $RunId -FailureKind 'exit-before-ready' `
+                    -ElapsedMs $stopwatch.Elapsed.TotalMilliseconds -ProcessId $process.Id `
+                    -ProcessAlive $false -ExitCode $exitCode `
+                    -MarkerExists (Test-Path -LiteralPath $markerPath -PathType Leaf)
+            }
+            catch {
+                Write-Warning "Could not preserve the failed probe diagnostic: $_"
+            }
             Stop-LaunchedProcess -Process $process
-            throw "WeatherPoem exited before the ready marker (exit code $exitCode)."
+            throw "WeatherPoem exited before the ready marker (exit code $exitCode; sample $SampleLabel; diagnostic $failurePath)."
         }
         if ([DateTime]::UtcNow -ge $deadline) {
+            if (Test-Path -LiteralPath $markerPath -PathType Leaf) { break }
+            $failurePath = $null
+            try {
+                $failurePath = Write-PerformanceSmokeProbeFailure `
+                    -ReportPath $reportPath -ArtifactPath $artifactPath -ExePath $exePath `
+                    -SampleLabel $SampleLabel -RunId $RunId -FailureKind 'ready-timeout' `
+                    -ElapsedMs $stopwatch.Elapsed.TotalMilliseconds -ProcessId $process.Id `
+                    -ProcessAlive (-not $process.HasExited) `
+                    -MarkerExists (Test-Path -LiteralPath $markerPath -PathType Leaf)
+            }
+            catch {
+                Write-Warning "Could not preserve the failed probe diagnostic: $_"
+            }
             Stop-LaunchedProcess -Process $process
-            throw "WeatherPoem did not emit the ready marker within 15 seconds ($SampleLabel)."
+            throw "WeatherPoem did not emit the ready marker within 15 seconds ($SampleLabel; diagnostic $failurePath)."
         }
         Start-Sleep -Milliseconds 20
     }
