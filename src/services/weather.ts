@@ -20,6 +20,20 @@ interface OpenMeteoResponse {
 
 const WEATHER_CACHE_KEY = "weatherpoem.weather-cache.v1";
 const CACHE_MAX_AGE_MS = 6 * 60 * 60 * 1000;
+const CACHE_WEATHER_LABELS = new Map<WeatherKind, string>([
+  ["clear", "晴"],
+  ["cloudy", "多云"],
+  ["overcast", "阴"],
+  ["light-rain", "小雨"],
+  ["rain", "雨"],
+  ["heavy-rain", "大雨"],
+  ["snow", "雪"],
+  ["fog", "雾"],
+  ["wind", "风"],
+  ["thunderstorm", "雷暴"],
+  ["hot", "炎热"],
+  ["cold", "严寒"],
+]);
 export const DEFAULT_WEATHER_TIMEOUT_MS = 1100;
 const MIN_WEATHER_TIMEOUT_MS = 250;
 const MAX_WEATHER_TIMEOUT_MS = 5000;
@@ -218,21 +232,67 @@ function cacheWeather(cityId: string, weather: WeatherContext): void {
   }
 }
 
+function isRecord(value: unknown): value is Record<string, unknown> {
+  return typeof value === "object" && value !== null && !Array.isArray(value);
+}
+
+function isNonemptyText(value: unknown): value is string {
+  return typeof value === "string" && value.trim().length > 0;
+}
+
+function isCachedWarning(value: unknown): value is WeatherWarning {
+  if (!isRecord(value)) return false;
+  if (
+    !isNonemptyText(value.id) ||
+    !isNonemptyText(value.title) ||
+    !isNonemptyText(value.description) ||
+    !isNonemptyText(value.source) ||
+    typeof value.level !== "string" ||
+    !["advisory", "warning", "severe"].includes(value.level) ||
+    typeof value.origin !== "string" ||
+    !["official", "weather-proxy"].includes(value.origin)
+  ) {
+    return false;
+  }
+  if (value.origin !== "official") return true;
+  return isNonemptyText(value.area) &&
+    isNonemptyText(value.publishedAt) &&
+    isNonemptyText(value.expiresAt) &&
+    Number.isFinite(Date.parse(value.publishedAt)) &&
+    Number.isFinite(Date.parse(value.expiresAt));
+}
+
+function isCachedWeather(value: unknown): value is WeatherContext {
+  if (!isRecord(value)) return false;
+  const expectedLabel = typeof value.kind === "string"
+    ? CACHE_WEATHER_LABELS.get(value.kind as WeatherKind)
+    : undefined;
+  return expectedLabel !== undefined &&
+    value.label === expectedLabel &&
+    value.source === "open-meteo" &&
+    value.freshness === "fresh" &&
+    typeof value.shouldSuppressPoem === "boolean" &&
+    Array.isArray(value.warnings) &&
+    value.warnings.length <= 23 &&
+    value.warnings.every(isCachedWarning);
+}
+
 function loadCachedWeather(cityId: string): WeatherContext | undefined {
   try {
     const raw = localStorage.getItem(WEATHER_CACHE_KEY);
     if (!raw) return undefined;
-    const cached = JSON.parse(raw) as {
-      cityId: string;
-      cachedAt: number;
-      weather: WeatherContext;
-    };
+    const cached: unknown = JSON.parse(raw);
+    if (!isRecord(cached)) return undefined;
     if (
       cached.cityId !== cityId ||
-      Date.now() - cached.cachedAt > CACHE_MAX_AGE_MS
+      typeof cached.cachedAt !== "number" ||
+      !Number.isFinite(cached.cachedAt) ||
+      !isCachedWeather(cached.weather)
     ) {
       return undefined;
     }
+    const age = Date.now() - cached.cachedAt;
+    if (age < 0 || age > CACHE_MAX_AGE_MS) return undefined;
     const warnings = activeCachedWarnings(cached.weather.warnings);
     return {
       ...cached.weather,

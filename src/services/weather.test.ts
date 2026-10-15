@@ -1,4 +1,5 @@
 import {
+  afterEach,
   beforeEach,
   describe,
   expect,
@@ -25,9 +26,36 @@ const testCity: City = {
   note: "受控测试城市",
 };
 
+const WEATHER_CACHE_KEY = "weatherpoem.weather-cache.v1";
+
+function cachedSnow(cachedAt = Date.now() - 1_000) {
+  return {
+    cityId: testCity.id,
+    cachedAt,
+    weather: {
+      kind: "snow",
+      label: "雪",
+      freshness: "fresh",
+      source: "open-meteo",
+      warnings: [],
+      shouldSuppressPoem: false,
+    },
+  };
+}
+
+async function fetchWithOfflineCache(record: unknown) {
+  localStorage.setItem(WEATHER_CACHE_KEY, JSON.stringify(record));
+  vi.stubGlobal("fetch", vi.fn().mockRejectedValue(new Error("offline")));
+  return fetchWeather(testCity);
+}
+
 describe("weather mapping", () => {
   beforeEach(() => {
     localStorage.clear();
+  });
+
+  afterEach(() => {
+    vi.unstubAllGlobals();
   });
 
   it("清除天气缓存但不触碰其他站点内本地键", () => {
@@ -121,6 +149,62 @@ describe("weather mapping", () => {
       source: "synthetic",
       warnings: [],
       shouldSuppressPoem: false,
+    });
+  });
+
+  it("联网失败时只把完整且未过期的真实天气缓存标为历史记录", async () => {
+    const result = await fetchWithOfflineCache(cachedSnow());
+    expect(result).toMatchObject({
+      kind: "snow",
+      label: "雪",
+      freshness: "stale",
+      source: "cache",
+    });
+  });
+
+  it("有效的缓存官方预警仍优先暂停诗笺，过期预警不再展示", async () => {
+    const now = Date.now();
+    const warning = {
+      id: "official-test",
+      title: "大雪预警",
+      level: "warning",
+      description: "请查看当地官方预警。",
+      source: "测试气象台",
+      origin: "official",
+      area: "北京市",
+      publishedAt: new Date(now - 60_000).toISOString(),
+      expiresAt: new Date(now + 60_000).toISOString(),
+    };
+    const active = await fetchWithOfflineCache({
+      ...cachedSnow(),
+      weather: { ...cachedSnow().weather, warnings: [warning] },
+    });
+    expect(active.shouldSuppressPoem).toBe(true);
+    expect(active.warnings).toHaveLength(1);
+
+    const expired = await fetchWithOfflineCache({
+      ...cachedSnow(),
+      weather: {
+        ...cachedSnow().weather,
+        warnings: [{ ...warning, expiresAt: new Date(now - 1).toISOString() }],
+      },
+    });
+    expect(expired).toMatchObject({ source: "cache", warnings: [], shouldSuppressPoem: false });
+  });
+
+  it.each([
+    ["未来缓存时间", cachedSnow(Date.now() + 60_000)],
+    ["过期缓存时间", cachedSnow(Date.now() - 6 * 60 * 60 * 1000 - 1)],
+    ["种类与标签相矛盾", { ...cachedSnow(), weather: { ...cachedSnow().weather, label: "晴" } }],
+    ["演练来源伪装为缓存", { ...cachedSnow(), weather: { ...cachedSnow().weather, source: "synthetic" } }],
+    ["损坏的预警列表", { ...cachedSnow(), weather: { ...cachedSnow().weather, warnings: [{ level: "severe" }] } }],
+  ])("%s 不被当作当地缓存天气", async (_label, record) => {
+    const result = await fetchWithOfflineCache(record);
+    expect(result).toMatchObject({
+      kind: "unknown",
+      freshness: "unavailable",
+      source: "offline",
+      warnings: [],
     });
   });
 
