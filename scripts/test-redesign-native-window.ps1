@@ -1,0 +1,511 @@
+param(
+    [string]$CandidatePath = "E:\weatherpoem\.work\redesign-native-20261015\release\weatherpoem.exe",
+    [string]$ReportPath = "E:\weatherpoem\review\redesign\evidence\T04_NATIVE_WINDOW_20261015.json"
+)
+
+Set-StrictMode -Version Latest
+$ErrorActionPreference = "Stop"
+Add-Type -AssemblyName System.Windows.Forms
+Add-Type -AssemblyName System.Drawing
+Add-Type -AssemblyName UIAutomationClient
+Add-Type -AssemblyName UIAutomationTypes
+Add-Type -TypeDefinition @"
+using System;
+using System.Runtime.InteropServices;
+using System.Text;
+
+public static class WeatherPoemNativeWindowProbe {
+    private delegate bool EnumWindowsProc(IntPtr window, IntPtr state);
+    [StructLayout(LayoutKind.Sequential)]
+    public struct RECT { public int Left, Top, Right, Bottom; }
+    [DllImport("user32.dll")] private static extern bool EnumWindows(EnumWindowsProc callback, IntPtr state);
+    [DllImport("user32.dll")] private static extern bool IsWindowVisible(IntPtr window);
+    [DllImport("user32.dll")] private static extern uint GetWindowThreadProcessId(IntPtr window, out uint processId);
+    [DllImport("user32.dll")] private static extern int GetWindowTextLengthW(IntPtr window);
+    [DllImport("user32.dll", CharSet = CharSet.Unicode)] private static extern int GetWindowTextW(IntPtr window, StringBuilder text, int length);
+    [DllImport("user32.dll")] public static extern IntPtr GetForegroundWindow();
+    [DllImport("user32.dll")] public static extern bool SetForegroundWindow(IntPtr window);
+    [DllImport("user32.dll")] public static extern bool GetWindowRect(IntPtr window, out RECT rect);
+    [DllImport("user32.dll")] public static extern bool IsWindow(IntPtr window);
+    [DllImport("user32.dll")] public static extern uint GetDpiForWindow(IntPtr window);
+    [DllImport("user32.dll")] public static extern bool MoveWindow(IntPtr window, int x, int y, int width, int height, bool repaint);
+    [DllImport("user32.dll")] public static extern void mouse_event(uint flags, uint x, uint y, uint data, UIntPtr extraInfo);
+
+    public static IntPtr FindProductWindow(int wantedPid) {
+        IntPtr found = IntPtr.Zero;
+        EnumWindows((window, state) => {
+            uint pid;
+            GetWindowThreadProcessId(window, out pid);
+            if (pid != wantedPid || !IsWindowVisible(window)) return true;
+            var length = GetWindowTextLengthW(window);
+            var text = new StringBuilder(length + 1);
+            GetWindowTextW(window, text, text.Capacity);
+            if (!text.ToString().StartsWith("WeatherPoem", StringComparison.Ordinal)) return true;
+            found = window;
+            return false;
+        }, IntPtr.Zero);
+        return found;
+    }
+    public static int OwnerPid(IntPtr window) {
+        uint pid;
+        GetWindowThreadProcessId(window, out pid);
+        return (int)pid;
+    }
+}
+"@
+
+function Wait-For {
+    param([scriptblock]$Condition, [string]$Description, [int]$Seconds = 15)
+    $deadline = [DateTime]::UtcNow.AddSeconds($Seconds)
+    while ([DateTime]::UtcNow -lt $deadline) {
+        [System.Windows.Forms.Application]::DoEvents()
+        $value = & $Condition
+        if ($value -is [IntPtr]) {
+            if ($value -ne [IntPtr]::Zero) { return $value }
+        } elseif ($value) { return $value }
+        Start-Sleep -Milliseconds 100
+    }
+    throw "Timed out waiting for $Description"
+}
+
+function Get-WindowObservation {
+    param([IntPtr]$Handle)
+    $rect = New-Object WeatherPoemNativeWindowProbe+RECT
+    if (-not [WeatherPoemNativeWindowProbe]::GetWindowRect($Handle, [ref]$rect)) {
+        throw "Cannot read product window bounds: handle=$Handle valid=$([WeatherPoemNativeWindowProbe]::IsWindow($Handle))"
+    }
+    $screen = [System.Windows.Forms.Screen]::FromHandle($Handle)
+    return [ordered]@{
+        left = $rect.Left; top = $rect.Top
+        right = $rect.Right; bottom = $rect.Bottom
+        width = $rect.Right - $rect.Left
+        height = $rect.Bottom - $rect.Top
+        dpi = [WeatherPoemNativeWindowProbe]::GetDpiForWindow($Handle)
+        workingArea = [ordered]@{
+            left = $screen.WorkingArea.Left; top = $screen.WorkingArea.Top
+            right = $screen.WorkingArea.Right; bottom = $screen.WorkingArea.Bottom
+        }
+    }
+}
+
+function Find-Button {
+    param([IntPtr]$Handle, [string]$Name)
+    $root = [System.Windows.Automation.AutomationElement]::FromHandle($Handle)
+    $all = $root.FindAll(
+        [System.Windows.Automation.TreeScope]::Descendants,
+        [System.Windows.Automation.Condition]::TrueCondition
+    )
+    foreach ($element in $all) {
+        if ($element.Current.ControlType -eq [System.Windows.Automation.ControlType]::Button -and
+            $element.Current.Name.Contains($Name)) { return $element }
+    }
+    throw "Accessible button not found: $Name"
+}
+
+function Get-AccessibleElements {
+    param([IntPtr]$Handle)
+    $root = [System.Windows.Automation.AutomationElement]::FromHandle($Handle)
+    $all = $root.FindAll(
+        [System.Windows.Automation.TreeScope]::Descendants,
+        [System.Windows.Automation.Condition]::TrueCondition
+    )
+    $items = @()
+    foreach ($element in $all) {
+        $name = $element.Current.Name
+        if (-not [string]::IsNullOrWhiteSpace($name)) {
+            $items += [ordered]@{
+                name = $name
+                controlType = $element.Current.ControlType.ProgrammaticName
+            }
+        }
+        if ($items.Count -ge 80) { break }
+    }
+    return $items
+}
+
+function Invoke-Button {
+    param([IntPtr]$Handle, [string]$Name)
+    $button = Find-Button -Handle $Handle -Name $Name
+    $pattern = $button.GetCurrentPattern([System.Windows.Automation.InvokePattern]::Pattern)
+    $pattern.Invoke()
+}
+
+function Find-TrayElement {
+    $root = [System.Windows.Automation.AutomationElement]::RootElement
+    $script:trayDiagnostic = @()
+    $overflow = $null
+    $direct = $null
+    $all = $root.FindAll(
+        [System.Windows.Automation.TreeScope]::Descendants,
+        [System.Windows.Automation.Condition]::TrueCondition
+    )
+    foreach ($element in $all) {
+        $name = $element.Current.Name
+        if ($name -in @("WeatherPoem 今日诗笺", "显示隐藏的图标", "Show hidden icons")) {
+            $script:trayDiagnostic += [ordered]@{
+                name = $name
+                controlType = $element.Current.ControlType.ProgrammaticName
+                className = $element.Current.ClassName
+            }
+        }
+        if ($name -in @("显示隐藏的图标", "Show hidden icons") -and
+            $element.Current.ControlType -eq [System.Windows.Automation.ControlType]::Button) {
+            $overflow = $element
+        }
+        if ($name -eq "WeatherPoem 今日诗笺" -and
+            $element.Current.ControlType -eq [System.Windows.Automation.ControlType]::Button -and
+            $element.Current.ClassName -eq "SystemTray.NormalButton") {
+            $direct = $element
+        }
+    }
+    if ($overflow) {
+        $overflow.GetCurrentPattern([System.Windows.Automation.InvokePattern]::Pattern).Invoke()
+        Start-Sleep -Milliseconds 400
+        $expanded = $root.FindAll(
+            [System.Windows.Automation.TreeScope]::Descendants,
+            [System.Windows.Automation.Condition]::TrueCondition
+        )
+        foreach ($element in $expanded) {
+            $name = $element.Current.Name
+            if ($name -eq "WeatherPoem 今日诗笺") {
+                $script:trayDiagnostic += [ordered]@{
+                    name = $name
+                    controlType = $element.Current.ControlType.ProgrammaticName
+                    className = $element.Current.ClassName
+                }
+                if ($element.Current.ControlType -eq [System.Windows.Automation.ControlType]::Button -and
+                    $element.Current.ClassName -eq "SystemTray.NormalButton" -and
+                    -not $element.Current.IsOffscreen) { return $element }
+            }
+        }
+        $overflow.GetCurrentPattern([System.Windows.Automation.InvokePattern]::Pattern).Invoke()
+    }
+    if ($direct -and -not $direct.Current.IsOffscreen) { return $direct }
+    return $null
+}
+
+function Click-TrayElement {
+    param([System.Windows.Automation.AutomationElement]$Element)
+    if ($Element.Current.Name -ne "WeatherPoem 今日诗笺" -or
+        $Element.Current.ControlType -ne [System.Windows.Automation.ControlType]::Button -or
+        $Element.Current.ClassName -ne "SystemTray.NormalButton") {
+        throw "Refusing to click an unexpected tray element"
+    }
+    $bounds = $Element.Current.BoundingRectangle
+    if ($bounds.Width -lt 12 -or $bounds.Width -gt 100 -or
+        $bounds.Height -lt 12 -or $bounds.Height -gt 100) {
+        throw "Tray icon bounds are not credible"
+    }
+    $screen = [System.Windows.Forms.Screen]::FromPoint([System.Drawing.Point]::new(
+        [int]($bounds.Left + $bounds.Width / 2),
+        [int]($bounds.Top + $bounds.Height / 2)
+    ))
+    if (-not $screen.Bounds.Contains([System.Drawing.Point]::new(
+        [int]($bounds.Left + $bounds.Width / 2),
+        [int]($bounds.Top + $bounds.Height / 2)
+    ))) { throw "Tray icon bounds are outside the display" }
+    $originalCursor = [System.Windows.Forms.Cursor]::Position
+    try {
+        [System.Windows.Forms.Cursor]::Position = [System.Drawing.Point]::new(
+            [int]($bounds.Left + $bounds.Width / 2),
+            [int]($bounds.Top + $bounds.Height / 2)
+        )
+        Start-Sleep -Milliseconds 75
+        [WeatherPoemNativeWindowProbe]::mouse_event(0x0002, 0, 0, 0, [UIntPtr]::Zero)
+        [WeatherPoemNativeWindowProbe]::mouse_event(0x0004, 0, 0, 0, [UIntPtr]::Zero)
+        Start-Sleep -Milliseconds 250
+    } finally {
+        [System.Windows.Forms.Cursor]::Position = $originalCursor
+    }
+}
+
+function Save-WindowImage {
+    param([IntPtr]$Handle, [string]$Path)
+    $bounds = Get-WindowObservation -Handle $Handle
+    $bitmap = [System.Drawing.Bitmap]::new($bounds.width, $bounds.height)
+    try {
+        $graphics = [System.Drawing.Graphics]::FromImage($bitmap)
+        try {
+            $graphics.CopyFromScreen($bounds.left, $bounds.top, 0, 0, $bitmap.Size)
+        } finally { $graphics.Dispose() }
+        $bitmap.Save($Path, [System.Drawing.Imaging.ImageFormat]::Png)
+    } finally { $bitmap.Dispose() }
+}
+
+$projectRoot = [IO.Path]::GetFullPath((Split-Path -Parent $PSScriptRoot))
+$candidate = [IO.Path]::GetFullPath($CandidatePath)
+$expectedCandidateRoot = [IO.Path]::GetFullPath((Join-Path $projectRoot ".work")) + [IO.Path]::DirectorySeparatorChar
+if (-not $candidate.StartsWith($expectedCandidateRoot, [StringComparison]::OrdinalIgnoreCase) -or
+    -not (Test-Path -LiteralPath $candidate -PathType Leaf)) {
+    throw "Candidate must be an existing EXE under this project's .work directory"
+}
+if (@(Get-Process -Name weatherpoem -ErrorAction SilentlyContinue).Count -gt 0) {
+    throw "A WeatherPoem process is already running; isolated window test stopped"
+}
+$report = [ordered]@{
+    schemaVersion = "1.0"
+    testKind = "isolated-native-window"
+    generatedAt = [DateTime]::UtcNow.ToString("o")
+    sourceCommit = (& git -C $projectRoot rev-parse HEAD).Trim()
+    candidate = [ordered]@{
+        path = $candidate
+        sha256 = (Get-FileHash -LiteralPath $candidate -Algorithm SHA256).Hash
+    }
+    profileIsolation = $true
+    realUserDataTouched = $false
+    systemAutostartChanged = $false
+    systemDisplaySettingsChanged = $false
+    observations = [ordered]@{}
+    limitations = @()
+    result = "in-progress"
+}
+
+$tempRoot = [IO.Path]::GetFullPath([IO.Path]::GetTempPath()).TrimEnd('\')
+$profile = Join-Path $tempRoot ("WeatherPoem.Performance.Window." + [Guid]::NewGuid().ToString("N"))
+$profile = [IO.Path]::GetFullPath($profile)
+if (-not $profile.StartsWith($tempRoot + '\', [StringComparison]::OrdinalIgnoreCase) -or
+    -not (Split-Path -Leaf $profile).StartsWith("WeatherPoem.Performance.Window.")) {
+    throw "Unsafe isolated profile path"
+}
+$process = $null
+try {
+    foreach ($part in @("appdata", "localappdata", "temp\probe")) {
+        [IO.Directory]::CreateDirectory((Join-Path $profile $part)) | Out-Null
+    }
+    & node (Join-Path $projectRoot "scripts\seed-performance-profile.mjs") $profile | Out-Null
+    if ($LASTEXITCODE -ne 0) { throw "Could not seed isolated profile" }
+
+    $foregroundBefore = [WeatherPoemNativeWindowProbe]::GetForegroundWindow()
+    if ($foregroundBefore -eq [IntPtr]::Zero) {
+        throw "Windows did not expose a foreground window before launch"
+    }
+    $report.observations.foregroundBeforePid = [WeatherPoemNativeWindowProbe]::OwnerPid($foregroundBefore)
+    $script:productTookFocus = $false
+
+    $markerPath = Join-Path $profile "temp\probe\weatherpoem-performance-ready.json"
+    $start = [System.Diagnostics.ProcessStartInfo]::new()
+    $start.FileName = $candidate
+    $start.WorkingDirectory = Split-Path -Parent $candidate
+    $start.UseShellExecute = $false
+    $start.Arguments = "--autostart"
+    $start.EnvironmentVariables["APPDATA"] = Join-Path $profile "appdata"
+    $start.EnvironmentVariables["LOCALAPPDATA"] = Join-Path $profile "localappdata"
+    $start.EnvironmentVariables["WEATHERPOEM_PERFORMANCE_PROFILE"] = $profile
+    $start.EnvironmentVariables["WEATHERPOEM_PERFORMANCE_PROBE"] = $markerPath
+    $start.EnvironmentVariables["WEATHERPOEM_PERFORMANCE_RUN_ID"] = [Guid]::NewGuid().ToString("N")
+    $start.EnvironmentVariables["WEATHERPOEM_PERFORMANCE_SCENARIO"] = "weather-offline"
+    $process = [System.Diagnostics.Process]::Start($start)
+    if (-not $process) { throw "Could not launch isolated candidate" }
+    $window = Wait-For {
+        if ($process.HasExited) { throw "Candidate exited before showing a window" }
+        if ([WeatherPoemNativeWindowProbe]::OwnerPid([WeatherPoemNativeWindowProbe]::GetForegroundWindow()) -eq $process.Id) {
+            $script:productTookFocus = $true
+        }
+        [WeatherPoemNativeWindowProbe]::FindProductWindow($process.Id)
+    } "product window" 20
+    $marker = Wait-For {
+        if ([WeatherPoemNativeWindowProbe]::OwnerPid([WeatherPoemNativeWindowProbe]::GetForegroundWindow()) -eq $process.Id) {
+            $script:productTookFocus = $true
+        }
+        if (Test-Path -LiteralPath $markerPath -PathType Leaf) {
+            Get-Content -LiteralPath $markerPath -Raw -Encoding utf8 | ConvertFrom-Json
+        }
+    } "frontend ready marker" 20
+    $window = Wait-For {
+        $current = [WeatherPoemNativeWindowProbe]::FindProductWindow($process.Id)
+        if ($current -ne [IntPtr]::Zero -and [WeatherPoemNativeWindowProbe]::IsWindow($current)) {
+            $candidateRect = [WeatherPoemNativeWindowProbe+RECT]::new()
+            if ([WeatherPoemNativeWindowProbe]::GetWindowRect($current, [ref]$candidateRect)) {
+                $current
+            }
+        }
+    } "stable product window bounds" 10
+    $report.observations.readyView = $marker.readyView
+    $report.observations.readyMode = $marker.readyMode
+    $report.observations.processId = $process.Id
+    $report.observations.windowHandle = [string]$window
+    $report.observations.windowHandleType = $window.GetType().FullName
+    $report.observations.foregroundAfterPid = [WeatherPoemNativeWindowProbe]::OwnerPid(
+        [WeatherPoemNativeWindowProbe]::GetForegroundWindow()
+    )
+    $report.observations.productTookFocus = $script:productTookFocus -or
+        $report.observations.foregroundAfterPid -eq $process.Id
+    $report.observations.foregroundUnchanged = [WeatherPoemNativeWindowProbe]::GetForegroundWindow() -eq $foregroundBefore
+    $report.observations.glance = Get-WindowObservation -Handle $window
+    if ($report.observations.productTookFocus) { throw "Autostart took foreground focus" }
+    if ($marker.readyView -ne "poem") { throw "Expected isolated poem view, got $($marker.readyView)" }
+
+    $readButton = Wait-For {
+        try { Find-Button -Handle $window -Name "继续读" } catch { $null }
+    } "accessible read button" 10
+    $report.observations.accessibleElements = @(Get-AccessibleElements -Handle $window)
+    $readButton.SetFocus()
+    Start-Sleep -Milliseconds 250
+    $report.observations.manualForegroundOwnerPid = [WeatherPoemNativeWindowProbe]::OwnerPid(
+        [WeatherPoemNativeWindowProbe]::GetForegroundWindow()
+    )
+    if ($report.observations.manualForegroundOwnerPid -eq $process.Id) {
+        $report.observations.glanceScreenshot = "T04_NATIVE_GLANCE_20261015.png"
+        $glance = $report.observations.glance
+        [WeatherPoemNativeWindowProbe]::MoveWindow($window, 350, 180, $glance.width, $glance.height, $true) | Out-Null
+        Start-Sleep -Milliseconds 300
+        Save-WindowImage -Handle $window -Path (Join-Path (Split-Path -Parent $ReportPath) $report.observations.glanceScreenshot)
+    } else {
+        $report.limitations += "Glance screenshot omitted because Windows did not foreground the test app."
+    }
+    $readButton.GetCurrentPattern([System.Windows.Automation.InvokePattern]::Pattern).Invoke()
+    $reading = Wait-For {
+        $state = Get-WindowObservation -Handle $window
+        if ($state.width -ge 540 -and $state.height -ge 600) { $state }
+    } "expanded reading window" 10
+    $report.observations.reading = $reading
+    $report.observations.readingScreenshot = "T04_NATIVE_READING_20261015.png"
+    [WeatherPoemNativeWindowProbe]::MoveWindow($window, 350, 140, $reading.width, $reading.height, $true) | Out-Null
+    Start-Sleep -Milliseconds 300
+    Save-WindowImage -Handle $window -Path (Join-Path (Split-Path -Parent $ReportPath) $report.observations.readingScreenshot)
+
+    if (-not [WeatherPoemNativeWindowProbe]::MoveWindow($window, 350, 160, 640, 640, $true)) {
+        throw "Windows did not accept reading window resize"
+    }
+    $report.observations.resizedReading = Wait-For {
+        $state = Get-WindowObservation -Handle $window
+        if ([Math]::Abs($state.width - 640) -le 8 -and [Math]::Abs($state.height - 640) -le 8) { $state }
+    } "resized reading window" 10
+    Start-Sleep -Milliseconds 650
+    Invoke-Button -Handle $window -Name "今日诗笺"
+    $report.observations.returnedGlance = Wait-For {
+        $state = Get-WindowObservation -Handle $window
+        if ($state.width -le 440 -and $state.height -le 600) { $state }
+    } "return to glance" 10
+    Invoke-Button -Handle $window -Name "继续读"
+    $report.observations.reopenedReading = Wait-For {
+        $state = Get-WindowObservation -Handle $window
+        if ([Math]::Abs($state.width - 640) -le 16 -and [Math]::Abs($state.height - 640) -le 16) { $state }
+    } "remembered reading size" 10
+
+    Invoke-Button -Handle $window -Name "今日诗笺"
+    Wait-For { (Get-WindowObservation -Handle $window).width -le 440 } "glance before hiding" 10 | Out-Null
+    Invoke-Button -Handle $window -Name "收起"
+    Wait-For {
+        [WeatherPoemNativeWindowProbe]::FindProductWindow($process.Id) -eq [IntPtr]::Zero
+    } "hidden tray window" 10 | Out-Null
+    $report.observations.hiddenProcessAlive = -not $process.HasExited
+    if (-not $report.observations.hiddenProcessAlive) { throw "Hiding exited the app" }
+    $trayElement = Find-TrayElement
+    $report.observations.trayDiagnostic = $script:trayDiagnostic
+    if ($trayElement) {
+        $report.observations.trayControlType = $trayElement.Current.ControlType.ProgrammaticName
+        $report.observations.trayBounds = [ordered]@{
+            left = $trayElement.Current.BoundingRectangle.Left
+            top = $trayElement.Current.BoundingRectangle.Top
+            width = $trayElement.Current.BoundingRectangle.Width
+            height = $trayElement.Current.BoundingRectangle.Height
+            offscreen = $trayElement.Current.IsOffscreen
+        }
+        try {
+            Click-TrayElement -Element $trayElement
+            $report.observations.trayInteraction = "bounded physical left click"
+            $reopenedFromTray = Wait-For {
+                [WeatherPoemNativeWindowProbe]::FindProductWindow($process.Id)
+            } "tray recovery" 10
+            $report.observations.trayWindowHandle = [string]$reopenedFromTray
+            $report.observations.trayRecovered = [WeatherPoemNativeWindowProbe]::FindProductWindow($process.Id) -ne [IntPtr]::Zero
+            $focusedFromTray = $false
+            try {
+                Wait-For {
+                    [WeatherPoemNativeWindowProbe]::OwnerPid(
+                        [WeatherPoemNativeWindowProbe]::GetForegroundWindow()
+                    ) -eq $process.Id
+                } "tray-opened app focus" 3 | Out-Null
+                $focusedFromTray = $true
+            } catch {
+                $report.limitations += "Physical tray click restored the window but focus was not observed within three seconds."
+            }
+            $report.observations.trayForegroundOwnerPid = [WeatherPoemNativeWindowProbe]::OwnerPid(
+                [WeatherPoemNativeWindowProbe]::GetForegroundWindow()
+            )
+            $report.observations.trayOpenedWithFocus = $focusedFromTray
+        } catch {
+            $report.observations.trayRecovered = $false
+            $report.limitations += "Tray element was visible but bounded physical click did not recover the window: $_"
+        }
+    } else {
+        $report.observations.trayRecovered = $null
+        $report.limitations += "Tray icon was not exposed as a visible UI Automation button."
+    }
+    $process.Kill()
+    if (-not $process.WaitForExit(10000)) { throw "First isolated process did not exit" }
+    $process.Dispose()
+    $process = $null
+    Start-Sleep -Milliseconds 800
+    $inspect = & node (Join-Path $projectRoot "scripts\seed-performance-profile.mjs") --inspect $profile |
+        ConvertFrom-Json
+    if ($LASTEXITCODE -ne 0) { throw "Could not inspect isolated settings" }
+    $report.observations.persistedReadingSize = $inspect.settings.readingWindowSize
+
+    # The native probe intentionally accepts only this fixed basename. Remove the
+    # first process's marker before restarting with the same isolated profile.
+    $restartMarkerPath = $markerPath
+    Remove-Item -LiteralPath $restartMarkerPath -ErrorAction Stop
+    $start.Arguments = ""
+    $start.EnvironmentVariables["WEATHERPOEM_PERFORMANCE_PROBE"] = $restartMarkerPath
+    $start.EnvironmentVariables["WEATHERPOEM_PERFORMANCE_RUN_ID"] = [Guid]::NewGuid().ToString("N")
+    $process = [System.Diagnostics.Process]::Start($start)
+    if (-not $process) { throw "Could not restart isolated candidate" }
+    $restartWindow = Wait-For {
+        if ($process.HasExited) { throw "Candidate exited during restart" }
+        [WeatherPoemNativeWindowProbe]::FindProductWindow($process.Id)
+    } "restarted product window" 20
+    $restartMarker = Wait-For {
+        if (Test-Path -LiteralPath $restartMarkerPath -PathType Leaf) {
+            Get-Content -LiteralPath $restartMarkerPath -Raw -Encoding utf8 | ConvertFrom-Json
+        }
+    } "restart ready marker" 20
+    if ($restartMarker.readyView -ne "poem") { throw "Restart did not return to the poem" }
+    $restartReadButton = Wait-For {
+        try { Find-Button -Handle $restartWindow -Name "继续读" } catch { $null }
+    } "restart read button" 10
+    $restartReadButton.GetCurrentPattern([System.Windows.Automation.InvokePattern]::Pattern).Invoke()
+    $report.observations.restartProcessId = $process.Id
+    $report.observations.restartReading = Wait-For {
+        $state = Get-WindowObservation -Handle $restartWindow
+        if ([Math]::Abs($state.width - 640) -le 16 -and [Math]::Abs($state.height - 640) -le 16) { $state }
+    } "reading size after restart" 10
+    $report.limitations += "Resize was generated by Win32 MoveWindow, not a physical drag."
+    if (-not $report.observations.trayRecovered -or -not $report.observations.trayOpenedWithFocus) {
+        throw "Tray recovery or manual focus did not pass; cross-restart size check completed"
+    }
+    $report.result = "focus-resize-tray-and-restart-passed"
+} catch {
+    $report.result = "failed"
+    $report.error = [string]$_
+    throw
+} finally {
+    if ($process) {
+        try {
+            if (-not $process.HasExited) {
+                $process.Kill()
+                $process.WaitForExit(10000) | Out-Null
+            }
+        } finally { $process.Dispose() }
+    }
+    if (Test-Path -LiteralPath $profile -PathType Container) {
+        $resolvedProfile = [IO.Path]::GetFullPath((Resolve-Path -LiteralPath $profile).Path)
+        if ($resolvedProfile.StartsWith($tempRoot + '\', [StringComparison]::OrdinalIgnoreCase) -and
+            (Split-Path -Leaf $resolvedProfile).StartsWith("WeatherPoem.Performance.Window.")) {
+            for ($attempt = 0; $attempt -lt 20; $attempt++) {
+                try {
+                    Remove-Item -LiteralPath $resolvedProfile -Recurse -Force -ErrorAction Stop
+                    break
+                } catch {
+                    if ($attempt -eq 19) {
+                        $report.limitations += "Could not remove isolated test profile: $resolvedProfile"
+                    } else { Start-Sleep -Milliseconds 500 }
+                }
+            }
+        } else { throw "Refusing to remove unexpected profile path" }
+    }
+    $report | ConvertTo-Json -Depth 12 | Set-Content -LiteralPath $ReportPath -Encoding utf8
+}
+
+Write-Output "Isolated native window report: $ReportPath ($($report.result))"
