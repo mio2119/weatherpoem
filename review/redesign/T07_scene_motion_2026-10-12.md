@@ -68,3 +68,13 @@
 后续对当前 CSS 纸面底色、装饰层最大不透明度和文字色做静态合成计算，发现原浅色次要字在最强纹样下约 **4.17:1**、原深色淡字约 **4.03:1**，低于本项目普通文本 **4.5:1** 的自动门槛。先把这一组合加入 `scripts/accessibility-check.mjs`，检查按预期失败；再把浅色 `--muted`/`--faint` 调为 `#665f54`、深色 `--faint` 调为 `#ada598`，深色装饰浓度从 15% 降至 13%。复验最不利组合浅色次要字/淡字均 **5.00:1**、深色淡字 **5.03:1**、深色强调字 **4.73:1**；其余所测诗境文字也在 4.5:1 以上。无障碍自动基线版本同步到 `2026.10-accessibility-v2`，人工读屏、真实系统对比度主题及 200% 缩放依然是待验项。
 
 颜色变化后重新运行同一 14 组隔离浏览器天气矩阵并通过，当前源码对应的原始报告为 [T07_BROWSER_WEATHER_SCENES_CONTRAST_20261014.json](./evidence/T07_BROWSER_WEATHER_SCENES_CONTRAST_20261014.json)，当前静帧为 `review/redesign/evidence/T07_BROWSER_*_ISOLATED_CONTRAST_20261014.png`。修订前的无 `CONTRAST` 报告和画面保留为发现问题时的证据，不能再代表当前颜色。人工复看新小雨浅色、雪深色、离线深色及不匹配小雨浅色代表帧，诗文和操作未见明显遮挡；静态颜色计算和截图不能证明 WebView2 实际绘制、系统辅助技术或长期视觉疲劳。原 T05 节日／安全浏览器矩阵初次重跑时画面 10/10 报告通过，但 Windows 临时资料目录锁定导致清理失败，故该次不算脚本通过；放宽受控浏览器关闭后的清理重试并延长导航超时后，再运行得到完整退出码 0、10/10 通过。A7 仍为**部分通过**。
+
+## 2026-10-15 原生隐藏／最小化动效停机与当前候选资源对照
+
+上一批防旧诗闪现的遮挡使 WebView2 隐藏时不再保留诗境，但在旧内部 EXE `C69C991F182DE286623F9DBA379C92FA8DA7B597ACB28886D8FFF609F525A015` 上建立原生反例发现：雨景 `scene-drift` 已消失，加载遮挡的 `loading-slide` 却仍以无限循环运行；WebView2 此时的 `document.visibilityState` 仍为 `visible`。修复只针对非活动窗口禁用加载细线动画，并加上桌面能力契约；没有放宽雨景的正常动效和系统减少动态规则。
+
+新隔离内部 EXE `.work/redesign-motion-stop-20261015/release/weatherpoem.exe` 的 SHA-256 为 `0C6D96DF719366F9068D435D0277C2E7BC0ED72B23634143F88396BF695DF76B`，未替换旧发布文件、未安装。用专用临时资料和明确标注“小雨（隔离演练）”的天气，分别以[隐藏到托盘](./evidence/T07_NATIVE_HIDDEN_MOTION_STEADY_20261015.json)和[最小化](./evidence/T07_NATIVE_MINIMIZED_MOTION_STEADY_20261015.json)测试：显示时计算样式为 `scene-drift` 且运行中；隐藏／最小化后诗境节点移除、加载细线动画为 `none`、运行中动画数为 0，3 秒后复查仍为 0；第二次启动唤醒原生窗口后雨景动效恢复。首次[隐藏](./evidence/T07_NATIVE_HIDDEN_MOTION_20261015.json)及[最小化](./evidence/T07_NATIVE_MINIMIZED_MOTION_20261015.json)记录保留为同哈希的短时观察。两张[隐藏前](./evidence/T07_NATIVE_HIDDEN_MOTION_20261015_before.png)、[找回后](./evidence/T07_NATIVE_HIDDEN_MOTION_20261015_after.png)原生静帧已查看：细雨装饰未遮住诗句、理由或主要操作。
+
+[6 秒原生雨景动图](./evidence/T07_NATIVE_RAIN_CLIP_20261015_motion.gif)由隔离 WebView2 同一页面连续抓取 24 帧形成，原始[取帧报告](./evidence/T07_NATIVE_RAIN_CLIP_20261015.json)记录 23/23 组相邻画面变化、候选哈希、诗题与场景身份检查；它仅证明这一次低幅度动效确实发生，不代表其他节日／天气场景或真人对节奏的评价。[系统减少动态复测](./evidence/T07_SYSTEM_REDUCED_MOTION_motion-stop-20261015.json)在该子进程强制媒体偏好后，雨景动画仍有名称，但时长约 `0.01 ms` 且只迭代一次；没有改变 Windows 全局显示设置。
+
+同一候选的[60 样本静／动资源报告](./evidence/T07_MOTION_RESOURCE_motion-stop-20261015.json)已由独立命令按原始样本重算：平均 CPU 静态 `0.0499%`、动态 `1.6029%`，增量 `1.553` 个百分点（目标 ≤2）；合并进程工作集 P95 静态 `378.59 MiB`、动态 `382.40 MiB`，增量 `3.81 MiB`（目标 ≤20）。报告生成时短录屏尚未归档，因此其 `visibleMotionRecordingCaptured=false` 是当时状态，不能改写原报告；动图是随后独立取得的证据。以上是当前机器、单一隔离雨景和单次顺序试验，不能代替真实系统减少动态切换、长期托盘空闲、全场景或具名视觉评审；A7 整体仍**部分通过**。

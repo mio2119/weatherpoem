@@ -256,6 +256,10 @@ button:disabled {
   animation: loading-slide 1.4s ease-in-out infinite;
 }
 
+:root[data-scene-active="false"] .loading-line::after {
+  animation: none;
+}
+
 @keyframes loading-slide {
   from {
     transform: translateX(-24px);

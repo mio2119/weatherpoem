@@ -26,3 +26,5 @@
 本任务只有未发布的调试 EXE，没有新发行候选；不能使用 T00 旧哈希证明窗口新形态。下一步仍须对 T05 的真实长短文本、T09 的设备与焦点矩阵形成可复现证据。
 
 2026-10-15 对隐藏旧诗的修复又构建了内部候选 `.work/redesign-reveal-20261015/release/weatherpoem.exe`，SHA-256 `C69C991F182DE286623F9DBA379C92FA8DA7B597ACB28886D8FFF609F525A015`。同一候选用临时资料重跑[原生窗口报告](./evidence/T04_NATIVE_WINDOW_REVEAL_20261015.json)：自动出现未夺取前台焦点，程序化 UI Automation 精确调用托盘图标后窗口可找回且取得焦点；诗笺外框 408×372、阅读 576×729，调整至 640×640 后重启仍可恢复该阅读尺寸。该脚本使用 Win32 `MoveWindow`，不是手拖；托盘用 InvokePattern，不是人手点击。窗口隐藏→隔离跨日无旧诗闪现的补充见 T01；没有把 100% 单屏与一次托盘调用外推为 Windows 10、多 DPI、真实演示全屏或长期稳定性，A4 仍**部分通过**。
+
+后续动效停机 CSS 修复改了候选哈希；当前 `0C6D96DF719366F9068D435D0277C2E7BC0ED72B23634143F88396BF695DF76B` 又以独立资料完成[原生焦点／托盘／尺寸报告](./evidence/T04_NATIVE_WINDOW_MOTION_STOP_20261015.json)，结果为 `focus-resize-tray-invoke-and-restart-passed`。这一次仍是 100% 单屏、程序化托盘调用和 API 调整尺寸，不把旧哈希或新一次成功扩写为全设备矩阵；A4 维持**部分通过**。

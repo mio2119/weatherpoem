@@ -59,3 +59,5 @@
 同一哈希另留[含界面图的复测报告](./evidence/T01_NATIVE_HIDDEN_REVEAL_CAPTURED_20261015.json)，逐张检查[15 日诗笺](./evidence/T01_NATIVE_HIDDEN_REVEAL_CAPTURED_20261015_before.png)与[16 日诗笺](./evidence/T01_NATIVE_HIDDEN_REVEAL_CAPTURED_20261015_after.png)：日期、题名、作者、诗句、理由及操作在小窗均可读，无横向溢出。这是页面局部时钟演练的两张静帧，不能证明真实当天气象或中间动画的每一帧。
 
 本批完整前端测试 26 文件、266/266，通过 `lint`、`typecheck`、`build`、可访问性自动基线、理由目录及需求一致性检查；Rust release 单元测试 5/5。全项目 `npm.cmd run check` 继续在“四周试点执行计划时间无效或已过期”处停止；没有为了绿色结果伪造或刷新试点批准日期。上述自动与隔离结果不能让 A1 整体从“部分通过”改为“通过”。
+
+同日后续 CSS 停机修复生成新内部 EXE `0C6D96DF719366F9068D435D0277C2E7BC0ED72B23634143F88396BF695DF76B`，旧 `C69C…` 证据继续归档，不移作新候选结论。当前哈希重新完成[按钮隐藏→第二实例唤醒的隔离跨日](./evidence/T01_NATIVE_HIDDEN_REVEAL_MOTION_STOP_20261015.json)及[原生关闭消息→第二实例唤醒的隔离跨日](./evidence/T01_NATIVE_CLOSE_REVEAL_MOTION_STOP_20261015.json)；同哈希的[15 日](./evidence/T01_NATIVE_HIDDEN_REVEAL_MOTION_STOP_20261015_before.png)和[16 日](./evidence/T01_NATIVE_HIDDEN_REVEAL_MOTION_STOP_20261015_after.png)画面已复看。两次均只修改隔离 WebView 的页面局部时钟、未修改 Windows 时间，找回期间未观测到旧诗卡。真实系统跨午夜、休眠／唤醒及不同缩放依然未验，A1 保持**部分通过**。

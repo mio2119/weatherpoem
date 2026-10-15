@@ -46,3 +46,5 @@ A8 因上述条件仍为**部分通过**，不把 T08 记录当作发布签收�
 2026-10-15 补一条获准的隔离原生“隐藏后内容撤回”反例：Windows 11 WebView2 运行内部 EXE `C69C991F182DE286623F9DBA379C92FA8DA7B597ACB28886D8FFF609F525A015`，先显示一首诗，隐藏窗口后在**临时测试资料**中写入该作品的同版本撤回缓存，再恢复窗口。修复后的界面先显示校验遮挡，随后只显示“今日内容正在校正”；DOM 变化中没有重新露出已撤回诗卡，校正页也不含原诗题，隔离 SQLite 的每日状态已写成 `content-withdrawn` 且作品 ID 一致。原始记录见[具数据库核对的原生报告](./evidence/T08_NATIVE_WITHDRAWAL_REVEAL_VERIFIED_20261015.json)，使用受控离线天气和本地模拟缓存，不代表生产签名清单、真实网关或具名人员操作。A8 继续**部分通过**。
 
 同哈希的[可视复测报告](./evidence/T08_NATIVE_WITHDRAWAL_CAPTURED_20261015.json)留存[撤回前诗笺](./evidence/T08_NATIVE_WITHDRAWAL_CAPTURED_20261015_before.png)与[撤回后校正页](./evidence/T08_NATIVE_WITHDRAWAL_CAPTURED_20261015_after.png)。已逐张检查：校正页不显示原诗题、诗句或伪装成正常推荐的理由，“换一首已核验内容”可见；静帧不能代替真人阅读与生产网关的端到端签收。
+
+动效停机修复后，当前内部 EXE 哈希改为 `0C6D96DF719366F9068D435D0277C2E7BC0ED72B23634143F88396BF695DF76B`。再次以专用临时资料执行[隐藏后模拟撤回→第二实例唤醒报告](./evidence/T08_NATIVE_WITHDRAWAL_MOTION_STOP_20261015.json)，DOM 变化中没有已撤回诗卡，校正页未泄露原诗题，SQLite 每日状态为 `content-withdrawn` 且 ID 对应；[当前哈希校正页](./evidence/T08_NATIVE_WITHDRAWAL_MOTION_STOP_20261015_after.png)已查看。它仍是本地模拟缓存，不是生产签名清单或具名撤回演练；A8 保持**部分通过**。

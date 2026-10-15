@@ -37,6 +37,10 @@ const appShell = await readFile(
   path.join(projectRoot, "src", "App.vue"),
   "utf8",
 );
+const styles = await readFile(
+  path.join(projectRoot, "src", "styles.css"),
+  "utf8",
+);
 
 test("SQLite 只开放应用持久化必需的加载、读取和写入能力", () => {
   assert.deepEqual(capability.windows, ["main"]);
@@ -89,6 +93,11 @@ test("隐藏启动的主窗口不会在 WebView 初始化时抢占焦点", () =>
   assert.ok(mainWindow);
   assert.equal(mainWindow.visible, false);
   assert.equal(mainWindow.focus, false);
+});
+
+test("原生隐藏遮挡不保留循环的加载条动效", () => {
+  assert.match(appShell, /window\.addEventListener\("weatherpoem:conceal", handleConcealRequest\)/);
+  assert.match(styles, /:root\[data-scene-active="false"\]\s+\.loading-line::after\s*\{\s*animation:\s*none;/);
 });
 
 test("诗笺与阅读窗的原生尺寸切换只使用列明的窗口能力", () => {

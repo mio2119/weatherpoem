@@ -1,0 +1,60 @@
+{
+  "schemaVersion": "1.0",
+  "testKind": "isolated-native-hidden-content-withdrawal",
+  "generatedAt": "2026-10-15T13:26:20.735Z",
+  "candidate": {
+    "path": ".work/redesign-motion-stop-20261015/release/weatherpoem.exe",
+    "sha256": "0C6D96DF719366F9068D435D0277C2E7BC0ED72B23634143F88396BF695DF76B"
+  },
+  "isolation": {
+    "temporaryProfile": true,
+    "systemClockChanged": false,
+    "installedOrUninstalled": false,
+    "realUserDataTouched": false
+  },
+  "scenario": "weather-offline",
+  "concealAction": "tray-hide-button",
+  "activationPath": "native-single-instance",
+  "readyView": "poem",
+  "original": {
+    "date": "10月15日",
+    "title": "旅夜书怀",
+    "visible": "visible",
+    "poem": true
+  },
+  "hidden": {
+    "visibility": "visible",
+    "poem": false,
+    "loading": true
+  },
+  "withdrawnWorkId": "du-fu-lv-ye-shu-huai",
+  "correctedDailyState": {
+    "state": "content-withdrawn",
+    "work_id": "du-fu-lv-ye-shu-huai"
+  },
+  "screenshots": [
+    "review/redesign/evidence/T08_NATIVE_WITHDRAWAL_MOTION_STOP_20261015_before.png",
+    "review/redesign/evidence/T08_NATIVE_WITHDRAWAL_MOTION_STOP_20261015_after.png"
+  ],
+  "observed": [
+    {
+      "visible": "visible",
+      "poem": false,
+      "loading": true,
+      "correction": false
+    },
+    {
+      "visible": "visible",
+      "poem": false,
+      "loading": true,
+      "correction": false
+    },
+    {
+      "visible": "visible",
+      "poem": false,
+      "loading": false,
+      "correction": true
+    }
+  ],
+  "result": "passed"
+}

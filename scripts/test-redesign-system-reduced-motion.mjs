@@ -8,7 +8,9 @@ import { fileURLToPath } from "node:url";
 import { seedPerformanceProfile } from "./seed-performance-profile.mjs";
 
 const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
-const candidateName = "motion-probe-20261013";
+const candidateOption = process.argv.find((argument) => argument.startsWith("--candidate="));
+const candidateName = candidateOption?.slice("--candidate=".length) ?? "motion-probe-20261013";
+assert.match(candidateName, /^[a-z0-9][a-z0-9-]{0,39}$/, "Invalid isolated candidate name");
 const artifactRelativePath = `.work/redesign-${candidateName}/release/weatherpoem.exe`;
 const exePath = path.join(projectRoot, artifactRelativePath);
 const reportPath = path.join(projectRoot, `review/redesign/evidence/T07_SYSTEM_REDUCED_MOTION_${candidateName}.json`);
@@ -96,6 +98,7 @@ async function cleanupIsolatedRoot(root) {
 
 async function runProbe() {
   ensureNoProductRunning();
+  assert.ok(!existsSync(reportPath), "Refusing to overwrite reduced-motion evidence");
   const exeBytes = readFileSync(exePath);
   const root = mkdtempSync(path.join(os.tmpdir(), "WeatherPoem.Performance.ReducedMotion."));
   let child;
@@ -155,13 +158,15 @@ async function runProbe() {
 }
 
 if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
-  if (process.argv[2] === "--check") {
+  const options = process.argv.slice(2);
+  if (options.some((option) => option !== "--check" && option !== candidateOption)) {
+    throw new Error("Unknown reduced-motion probe option");
+  }
+  if (options.includes("--check")) {
     const report = JSON.parse(readFileSync(reportPath, "utf8"));
     validateReducedMotionReport(report, readFileSync(exePath));
     console.log(`Reduced-motion WebView evidence verified: ${reportPath}`);
-  } else if (process.argv[2] === undefined) {
-    await runProbe();
   } else {
-    throw new Error("Unknown reduced-motion probe option");
+    await runProbe();
   }
 }

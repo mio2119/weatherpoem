@@ -1,0 +1,39 @@
+{
+  "schemaVersion": "1.0",
+  "testKind": "isolated-webview-reduced-motion",
+  "generatedAt": "2026-10-15T13:38:02.322Z",
+  "artifact": {
+    "path": ".work/redesign-motion-stop-20261015/release/weatherpoem.exe",
+    "sha256": "0C6D96DF719366F9068D435D0277C2E7BC0ED72B23634143F88396BF695DF76B"
+  },
+  "scenario": "scene-rain",
+  "webViewArguments": "--force-prefers-reduced-motion",
+  "realUserDataTouched": false,
+  "systemSettingChanged": false,
+  "runId": "097ab9c8-27b5-4635-a275-b7dd58cc0c7e",
+  "processId": 45268,
+  "readyMarker": {
+    "schemaVersion": "1.2",
+    "runId": "097ab9c8-27b5-4635-a275-b7dd58cc0c7e",
+    "appVersion": "0.2.0",
+    "processId": 45268,
+    "nativeReadyMs": 841.2578,
+    "frontendReadyMs": 460.59999999403954,
+    "readyView": "poem",
+    "readyMode": "offline-rules",
+    "viewRenderMs": 216.5,
+    "performanceScenario": "scene-rain",
+    "sceneMotion": {
+      "sceneKind": "rain",
+      "appReduced": false,
+      "systemReduced": true,
+      "sceneActive": true,
+      "visibilityState": "visible",
+      "animationName": "scene-drift",
+      "animationDuration": "1e-05s",
+      "animationIterationCount": "1"
+    },
+    "recordedAtUnixMs": 1792071482258
+  },
+  "result": "reduced-motion-passed"
+}

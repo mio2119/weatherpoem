@@ -15,7 +15,14 @@ const candidate = path.resolve(process.argv[2] ?? "");
 const reportPath = path.resolve(process.argv[3] ?? "");
 const nativeClose = process.argv.includes("--native-close");
 const withdrawal = process.argv.includes("--withdrawal");
+const motion = process.argv.includes("--motion");
+const minimize = process.argv.includes("--minimize");
+const secondInstance = process.argv.includes("--second-instance");
 const capture = process.argv.includes("--capture");
+const record = process.argv.includes("--record");
+assert.ok(!(motion && withdrawal), "Choose motion or withdrawal evidence");
+assert.ok(!minimize || secondInstance, "Minimized recovery must use the native second-instance path");
+assert.ok(!record || motion, "Motion recording requires the native rain scene");
 const internalRoot = path.join(root, ".work") + path.sep;
 const evidenceRoot = path.join(root, "review", "redesign", "evidence") + path.sep;
 assert.ok(candidate.toLowerCase().startsWith(internalRoot.toLowerCase()) && candidate.endsWith("weatherpoem.exe"), "Use an isolated internal candidate");
@@ -51,6 +58,7 @@ async function stopExactChild(child) {
 
 const profile = mkdtempSync(path.join(tmpdir(), "WeatherPoem.Performance.Reveal."));
 let child;
+let secondary;
 let socket;
 let nextId = 0;
 const pending = new Map();
@@ -61,20 +69,21 @@ try {
   seedPerformanceProfile(profile);
   const markerPath = path.join(profile, "temp", "probe", "weatherpoem-performance-ready.json");
   const port = await freePort();
-  child = spawn(candidate, [], {
-    cwd: path.dirname(candidate),
-    windowsHide: false,
-    stdio: "ignore",
-    env: {
+  const launchEnv = {
       ...process.env,
       APPDATA: path.join(profile, "appdata"),
       LOCALAPPDATA: path.join(profile, "localappdata"),
       WEATHERPOEM_PERFORMANCE_PROFILE: profile,
       WEATHERPOEM_PERFORMANCE_PROBE: markerPath,
       WEATHERPOEM_PERFORMANCE_RUN_ID: randomUUID().replaceAll("-", ""),
-      WEATHERPOEM_PERFORMANCE_SCENARIO: "weather-offline",
+      WEATHERPOEM_PERFORMANCE_SCENARIO: motion ? "scene-rain" : "weather-offline",
       WEBVIEW2_ADDITIONAL_BROWSER_ARGUMENTS: `--remote-debugging-port=${port}`,
-    },
+  };
+  child = spawn(candidate, [], {
+    cwd: path.dirname(candidate),
+    windowsHide: false,
+    stdio: "ignore",
+    env: launchEnv,
   });
   await waitFor(() => {
     if (child.exitCode !== null) throw new Error(`Isolated candidate exited: ${child.exitCode}`);
@@ -128,26 +137,94 @@ try {
     writeFileSync(imagePath, Buffer.from(image.data, "base64"));
     return path.relative(root, imagePath).replaceAll(path.sep, "/");
   }
+  async function sceneMotion() {
+    return evaluate(`(() => {
+      const paper = document.querySelector('.poem-paper');
+      const line = document.querySelector('.loading-line');
+      return {
+        sceneActive: document.documentElement.dataset.sceneActive,
+        sceneKind: paper?.getAttribute('data-scene'),
+        sceneAnimation: paper ? getComputedStyle(paper, '::before').animationName : null,
+        loaderAnimation: line ? getComputedStyle(line, '::after').animationName : null,
+        runningAnimations: document.getAnimations().filter((item) => item.playState === 'running').map((item) => item.animationName ?? 'unknown'),
+      };
+    })()`);
+  }
   const original = await evaluate("({ date: document.querySelector('.context-strip strong')?.textContent, title: document.querySelector('.poem-view h1')?.textContent, visible: document.visibilityState, poem: Boolean(document.querySelector('.poem-view')) })");
   assert.equal(original.visible, "visible");
   assert.equal(original.poem, true);
+  const initialMotion = motion ? await sceneMotion() : undefined;
+  if (motion) {
+    assert.equal(initialMotion.sceneKind, "rain");
+    assert.equal(initialMotion.sceneAnimation, "scene-drift");
+  }
   const firstScreenshot = await screenshot("before");
+  let motionRecording;
+  if (record) {
+    const frameDirectory = path.join(profile, "temp", "probe", "frames");
+    mkdirSync(frameDirectory);
+    const count = 24;
+    const intervalMs = 250;
+    const startedAt = Date.now();
+    for (let index = 0; index < count; index += 1) {
+      const remaining = startedAt + index * intervalMs - Date.now();
+      if (remaining > 0) await delay(remaining);
+      const state = await evaluate("({ title: document.title, poemTitle: document.querySelector('.poem-view h1')?.textContent, scene: document.querySelector('.poem-paper')?.getAttribute('data-scene'), active: document.documentElement.dataset.sceneActive, visible: document.visibilityState })");
+      assert.equal(state.poemTitle, original.title, "Poem changed during motion capture");
+      assert.equal(state.scene, "rain", "Scene changed during motion capture");
+      assert.equal(state.active, "true", "Scene was inactive during motion capture");
+      assert.equal(state.visible, "visible", "WebView2 page was not visible during capture");
+      assert.ok(state.title.includes("WeatherPoem"), "Frame source is not WeatherPoem");
+      const frame = await send("Page.captureScreenshot", { format: "png", captureBeyondViewport: false });
+      writeFileSync(path.join(frameDirectory, `frame-${String(index).padStart(3, "0")}.png`), Buffer.from(frame.data, "base64"));
+    }
+    const gifPath = reportPath.replace(/\.json$/, "_motion.gif");
+    assert.ok(!existsSync(gifPath), "Refusing to overwrite native motion recording");
+    const python = process.env.WEATHERPOEM_PYTHON ?? "python";
+    const encoded = execFileSync(python, [
+      path.join(root, "scripts", "encode-isolated-motion-gif.py"), frameDirectory, gifPath, String(intervalMs),
+    ], { encoding: "utf8" });
+    motionRecording = {
+      path: path.relative(root, gifPath).replaceAll(path.sep, "/"),
+      ...JSON.parse(encoded),
+      captureWallMs: Date.now() - startedAt,
+      source: "isolated WebView2 CDP page",
+    };
+  }
   if (nativeClose) {
     execFileSync("powershell.exe", [
       "-NoProfile", "-NonInteractive", "-ExecutionPolicy", "Bypass",
       "-File", path.join(root, "scripts", "request-exact-window-close.ps1"),
       "-TargetProcessId", String(child.pid), "-ExpectedExePath", candidate,
     ], { encoding: "utf8" });
+  } else if (minimize) {
+    await evaluate("document.querySelector('button[aria-label=\"最小化\"]').click()");
   } else {
     await evaluate("document.querySelector('button[aria-label=\"隐藏到托盘\"]').click()");
   }
   try {
-    await waitFor(async () => (await evaluate("(async () => !(await window.__TAURI_INTERNALS__.invoke('plugin:window|is_visible', { label: 'main' })) && Boolean(document.querySelector('.loading-view')))()")) === true, "native hidden loading mask");
+    const nativeHidden = minimize
+      ? "await window.__TAURI_INTERNALS__.invoke('plugin:window|is_minimized', { label: 'main' })"
+      : "!(await window.__TAURI_INTERNALS__.invoke('plugin:window|is_visible', { label: 'main' }))";
+    await waitFor(async () => (await evaluate(`(async () => ${nativeHidden} && Boolean(document.querySelector('.loading-view')))()`)) === true, "native hidden loading mask");
   } catch (error) {
     const diagnostic = await evaluate("(async () => ({ visibility: document.visibilityState, loading: Boolean(document.querySelector('.loading-view')), poem: Boolean(document.querySelector('.poem-view')), sceneActive: document.documentElement.dataset.sceneActive, nativeVisible: await window.__TAURI_INTERNALS__.invoke('plugin:window|is_visible', { label: 'main' }) }))()");
     throw new Error(`${error.message}; native diagnostic: ${JSON.stringify(diagnostic)}`);
   }
   const hidden = await evaluate("({ visibility: document.visibilityState, poem: Boolean(document.querySelector('.poem-view')), loading: Boolean(document.querySelector('.loading-view')) })");
+  const hiddenMotion = motion ? await sceneMotion() : undefined;
+  let steadyHiddenMotion;
+  if (motion) {
+    assert.equal(hiddenMotion.sceneActive, "false");
+    assert.equal(hiddenMotion.sceneAnimation, null);
+    assert.equal(hiddenMotion.loaderAnimation, "none", `Hidden loading line must stop: ${JSON.stringify(hiddenMotion)}`);
+    assert.equal(hiddenMotion.runningAnimations.length, 0, `Hidden window still has running animations: ${JSON.stringify(hiddenMotion)}`);
+    await delay(3000);
+    steadyHiddenMotion = await sceneMotion();
+    assert.equal(steadyHiddenMotion.sceneActive, "false");
+    assert.equal(steadyHiddenMotion.loaderAnimation, "none");
+    assert.equal(steadyHiddenMotion.runningAnimations.length, 0, `Hidden animation resumed: ${JSON.stringify(steadyHiddenMotion)}`);
+  }
   let expectedDate;
   let withdrawnWorkId;
   if (withdrawal) {
@@ -168,7 +245,7 @@ try {
     } finally {
       database.close();
     }
-  } else {
+  } else if (!motion) {
     expectedDate = await evaluate(`(() => {
       const RealDate = Date;
       const tomorrow = new RealDate(RealDate.now() + 86400000);
@@ -180,6 +257,8 @@ try {
       };
       return String(tomorrow.getMonth() + 1) + '月' + tomorrow.getDate() + '日';
     })()`);
+  } else {
+    expectedDate = original.date;
   }
   await evaluate(`(() => {
     window.__revealObserved = [];
@@ -194,15 +273,29 @@ try {
     document.addEventListener('visibilitychange', sample);
     sample();
   })()`);
-  await evaluate("window.__TAURI_INTERNALS__.invoke('plugin:window|show', { label: 'main' })");
-  await evaluate("window.__TAURI_INTERNALS__.invoke('plugin:window|set_focus', { label: 'main' })");
+  if (secondInstance) {
+    secondary = spawn(candidate, [], {
+      cwd: path.dirname(candidate), windowsHide: true, stdio: "ignore", env: launchEnv,
+    });
+    await waitFor(() => secondary.exitCode !== null, "second-instance activation", 10000);
+  } else {
+    await evaluate("window.__TAURI_INTERNALS__.invoke('plugin:window|show', { label: 'main' })");
+    await evaluate("window.__TAURI_INTERNALS__.invoke('plugin:window|set_focus', { label: 'main' })");
+  }
   if (withdrawal) {
     await waitFor(async () => (await evaluate("Boolean(document.querySelector('.content-correction-view')) && !document.querySelector('.poem-view')")) === true, "native content correction", 25000);
   } else {
     await waitFor(async () => (await evaluate(`document.querySelector('.context-strip strong')?.textContent === ${JSON.stringify(expectedDate)} && Boolean(document.querySelector('.poem-view'))`)) === true, "new local-day native poem", 25000);
   }
   const observed = await evaluate("window.__revealObserved");
-  assert.equal(observed.some((frame) => frame.poem && (withdrawal || frame.date === original.date)), false, "Old poem was visible during reveal");
+  if (!motion) {
+    assert.equal(observed.some((frame) => frame.poem && (withdrawal || frame.date === original.date)), false, "Old poem was visible during reveal");
+  }
+  const restoredMotion = motion ? await sceneMotion() : undefined;
+  if (motion) {
+    assert.equal(restoredMotion.sceneActive, "true");
+    assert.equal(restoredMotion.sceneAnimation, "scene-drift");
+  }
   let correctedDailyState;
   if (withdrawal) {
     const correctionText = await evaluate("document.querySelector('.content-correction-view')?.textContent");
@@ -219,16 +312,21 @@ try {
   const finalScreenshot = await screenshot("after");
   const report = {
     schemaVersion: "1.0",
-    testKind: withdrawal ? "isolated-native-hidden-content-withdrawal" : nativeClose ? "isolated-native-close-day-reveal" : "isolated-native-hidden-day-reveal",
+    testKind: motion ? minimize ? "isolated-native-minimized-motion" : "isolated-native-hidden-motion" : withdrawal ? "isolated-native-hidden-content-withdrawal" : nativeClose ? "isolated-native-close-day-reveal" : "isolated-native-hidden-day-reveal",
     generatedAt: new Date().toISOString(),
     candidate: { path: path.relative(root, candidate).replaceAll(path.sep, "/"), sha256: createHash("sha256").update(readFileSync(candidate)).digest("hex").toUpperCase() },
     isolation: { temporaryProfile: true, systemClockChanged: false, installedOrUninstalled: false, realUserDataTouched: false },
+    scenario: motion ? "scene-rain" : "weather-offline",
+    concealAction: nativeClose ? "native-close" : minimize ? "minimize-button" : "tray-hide-button",
+    activationPath: secondInstance ? "native-single-instance" : "isolated-window-commands",
     readyView: marker.readyView,
     original,
     hidden,
     expectedDate,
     withdrawnWorkId,
     correctedDailyState,
+    motion: motion ? { initial: initialMotion, hidden: hiddenMotion, steadyHiddenAfter3s: steadyHiddenMotion, restored: restoredMotion } : undefined,
+    motionRecording,
     screenshots: [firstScreenshot, finalScreenshot].filter(Boolean),
     observed,
     result: "passed",
@@ -237,6 +335,7 @@ try {
   process.stdout.write(`${JSON.stringify({ result: report.result, sha256: report.candidate.sha256, reportPath, observations: observed.length })}\n`);
 } finally {
   socket?.close();
+  await stopExactChild(secondary);
   await stopExactChild(child);
   const tempRoot = realpathSync(tmpdir()) + path.sep;
   const exact = realpathSync(profile);
