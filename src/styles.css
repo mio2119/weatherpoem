@@ -916,6 +916,18 @@ button:disabled {
   mask: var(--chu-river-mask) center / 100% 100% no-repeat;
 }
 
+/* Su Shi's shared moon is a literary image, not a claim about local skies. */
+.poem-paper[data-motif="shared-moon"]::before {
+  --shared-moon-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 220 240'%3E%3Cg fill='none' stroke='white' stroke-width='3'%3E%3Ccircle cx='153' cy='70' r='33'/%3E%3Cpath d='M22 174 C49 161 75 161 104 174 M126 174 C154 161 182 161 211 174'/%3E%3C/g%3E%3C/svg%3E");
+  top: 8%;
+  right: -2%;
+  bottom: 8%;
+  width: 35%;
+  background: var(--scene-ink);
+  -webkit-mask: var(--shared-moon-mask) center / 100% 100% no-repeat;
+  mask: var(--shared-moon-mask) center / 100% 100% no-repeat;
+}
+
 .poem-paper[data-scene="rain"]::before {
   background: repeating-linear-gradient(
     107deg, transparent 0 23px, var(--scene-ink) 24px 25px,

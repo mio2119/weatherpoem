@@ -6,7 +6,7 @@ export interface PoemScene {
   kind: PoemSceneKind;
   glyph: string;
   description: string;
-  motif?: "chu-river";
+  motif?: "chu-river" | "shared-moon";
 }
 
 /** Visual context is grounded in the same published poem and environment as the reason. */
@@ -38,6 +38,14 @@ export function selectPoemScene(input: {
         motif: "chu-river",
         glyph: "江",
         description: "作品意象：楚江；端午节关联作品，不代表当地天气",
+      };
+    }
+    if (calendar.festival === "中秋节" && poem.id === "su-shi-shui-diao-ge-tou") {
+      return {
+        kind: "festival",
+        motif: "shared-moon",
+        glyph: "月",
+        description: "作品意象：共望明月；中秋节关联作品，不代表当地天气",
       };
     }
     return {

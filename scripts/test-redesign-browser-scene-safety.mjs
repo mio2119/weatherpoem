@@ -14,17 +14,23 @@ const browserPath = [
 ].find(existsSync);
 if (!browserPath) throw new Error("Chrome or Edge is required for the browser scene audit");
 const weatherMatrixAudit = process.argv.includes("--weather-matrix");
+const midAutumnAudit = process.argv.includes("--mid-autumn");
+if (weatherMatrixAudit && midAutumnAudit) {
+  throw new Error("Choose one scene audit mode");
+}
 const reportName = process.argv.find((arg) => arg.startsWith("--report="))
   ?.slice("--report=".length);
-if (reportName && !(weatherMatrixAudit
+if (reportName && !(weatherMatrixAudit || midAutumnAudit
   ? /^T07_[A-Za-z0-9_-]+\.json$/.test(reportName)
   : /^T05_[A-Za-z0-9_-]+\.json$/.test(reportName))) {
   throw new Error("--report must use the T05_ or T07_ prefix for its selected audit");
 }
 const capture = process.argv.includes("--capture");
-const fixedTime = Date.parse("2026-06-19T09:00:00+08:00");
-const localDate = "2026-06-19";
-const workId = "wen-xiu-duan-wu";
+const fixedTime = Date.parse(midAutumnAudit
+  ? "2026-09-25T21:00:00+08:00"
+  : "2026-06-19T09:00:00+08:00");
+const localDate = midAutumnAudit ? "2026-09-25" : "2026-06-19";
+const workId = midAutumnAudit ? "su-shi-shui-diao-ge-tou" : "wen-xiu-duan-wu";
 const profileDirectory = mkdtempSync(join(tmpdir(), "weatherpoem-scene-browser-"));
 const captureDirectory = capture
   ? mkdtempSync(join(tmpdir(), "weatherpoem-scene-capture-"))
@@ -135,14 +141,21 @@ async function measure(expectedView, width, height, scrollToEnd = false) {
       scrollTop: main?.scrollTop,
       scene: document.querySelector(".poem-paper")?.dataset.scene,
       motif: document.querySelector(".poem-paper")?.dataset.motif,
+      poemTitle: document.querySelector("#daily-poem-title")?.textContent,
+      poemText: [...document.querySelectorAll(".poem-lines p")]
+        .map((line) => line.textContent).join(""),
       sceneGlyph: document.querySelector(".scene-mark")?.textContent,
       sceneDescription: document.querySelector(".scene-mark")?.getAttribute("aria-label"),
       decorationMask: document.querySelector(".poem-paper")
         ? getComputedStyle(document.querySelector(".poem-paper"), "::before").maskImage
         : null,
+      decorationAnimation: document.querySelector(".poem-paper")
+        ? getComputedStyle(document.querySelector(".poem-paper"), "::before").animationName
+        : null,
       context: document.querySelector(".context-strip")?.textContent,
       reason: document.querySelector(".reason-block")?.textContent,
       poemVisible: Boolean(document.querySelector(".poem-paper")),
+      actionsBox: box(document.querySelector(".card-actions")),
       warningTitle: document.querySelector(".warning-item h2")?.textContent,
       warningDescription: document.querySelector(".warning-item p")?.textContent,
       warningSource: document.querySelector(".warning-item small")?.textContent,
@@ -306,13 +319,15 @@ try {
 
   const longWarningDescription =
     "隔离演练：这里是为了检查长安全说明在较小窗口中的完整呈现，不是真实天气预警。".repeat(12);
-  const scenarios = weatherMatrixAudit ? [] : [
-    { name: "festival", expectedView: "poem-view" },
-    { name: "official-warning", expectedView: "warning-view" },
-    { name: "proxy-warning", expectedView: "warning-view" },
-    { name: "withdrawn", expectedView: "content-correction-view" },
-    { name: "suspended", expectedView: "content-correction-view" },
-  ];
+  const scenarios = weatherMatrixAudit ? [] : midAutumnAudit
+    ? [{ name: "mid-autumn", expectedView: "poem-view" }]
+    : [
+        { name: "festival", expectedView: "poem-view" },
+        { name: "official-warning", expectedView: "warning-view" },
+        { name: "proxy-warning", expectedView: "warning-view" },
+        { name: "withdrawn", expectedView: "content-correction-view" },
+        { name: "suspended", expectedView: "content-correction-view" },
+      ];
   const measurements = [];
   const failures = [];
   for (const theme of ["light", "dark"]) {
@@ -373,8 +388,35 @@ try {
         `document.activeElement === document.querySelector(${JSON.stringify(`.${scenario.expectedView}`)})`,
       ), `${theme}/${scenario.name} initial focus`);
       const roomy = await measure(scenario.expectedView, 392, 720);
+      if (midAutumnAudit) {
+        await evaluate(`(() => {
+          const note = document.createElement("p");
+          note.id = "isolated-festival-label";
+          note.textContent = "隔离日期演练 · 非当前日期或当地天气";
+          note.style.cssText = "position:fixed;bottom:5px;right:6px;z-index:50;margin:0;padding:3px 6px;background:var(--surface);color:var(--accent);font-size:11px;border:1px solid var(--line-strong)";
+          document.body.append(note);
+        })()`);
+      }
       await screenshot(`${scenario.name}-${theme}-top.png`);
+      if (midAutumnAudit) await evaluate("document.querySelector('#isolated-festival-label')?.remove()");
       const compact = await measure(scenario.expectedView, 320, 260, true);
+      if (midAutumnAudit) {
+        await viewport(392, 720);
+        await evaluate(`(() => {
+          document.querySelector(".poem-paper")?.removeAttribute("data-motif");
+          const mark = document.querySelector(".scene-mark");
+          if (mark) {
+            mark.textContent = "节";
+            mark.setAttribute("aria-label", "节日意象：中秋节");
+          }
+          const note = document.createElement("p");
+          note.id = "isolated-generic-label";
+          note.textContent = "对照：模拟原通用节日纹样，非当前产品状态";
+          note.style.cssText = "position:fixed;bottom:5px;right:6px;z-index:50;margin:0;padding:3px 6px;background:var(--surface);color:var(--accent);font-size:11px;border:1px solid var(--line-strong)";
+          document.body.append(note);
+        })()`);
+        await screenshot(`${scenario.name}-${theme}-generic-baseline.png`);
+      }
       if (scenario.name === "official-warning") {
         await screenshot(`${scenario.name}-${theme}-compact-bottom.png`);
       }
@@ -400,6 +442,22 @@ try {
           !roomy.sceneDescription?.includes("端午节") ||
           !roomy.reason?.includes("端午") ||
           !roomy.context?.includes("端午节")
+        ) ||
+        scenario.name === "mid-autumn" && (
+          roomy.scene !== "festival" ||
+          roomy.motif !== "shared-moon" ||
+          roomy.sceneGlyph !== "月" ||
+          roomy.poemTitle !== "水调歌头·明月几时有" ||
+          roomy.poemText !== "但愿人长久千里共婵娟" ||
+          !roomy.decorationMask?.includes("data:image/svg+xml") ||
+          roomy.decorationAnimation !== "none" ||
+          !roomy.sceneDescription?.includes("共望明月") ||
+          !roomy.sceneDescription?.includes("不代表当地天气") ||
+          !roomy.reason?.includes("中秋") ||
+          !roomy.context?.includes("中秋节") ||
+          !roomy.actionsBox ||
+          !compact.actionsBox ||
+          compact.actionsBox.bottom > compact.viewport.height
         ) ||
         isWarning && (
           roomy.warningDescription !== longWarningDescription ||
@@ -551,6 +609,11 @@ try {
       ...(weatherMatrixAudit ? {
         syntheticWeather: true,
         weatherMeasurements,
+      } : midAutumnAudit ? {
+        auditMode: "mid-autumn-static",
+        controlledDateNotToday: true,
+        simulatedGenericVisualComparator: true,
+        localDate, workId, measurements,
       } : {
         syntheticWeatherAndWithdrawal: true,
         localDate, workId, measurements,

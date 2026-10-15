@@ -148,6 +148,19 @@ describe("glance poem card", () => {
       .toContain("不代表当地天气");
   });
 
+  it("labels Su Shi's Mid-Autumn moon as a literary image", () => {
+    const poem = POEMS.find((item) => item.id === "su-shi-shui-diao-ge-tou")!;
+    const wrapper = render({
+      recommendation: { ...recommendation, poem },
+      calendar: { ...calendar, festival: "中秋节", season: "autumn" },
+    });
+    expect(wrapper.get(".poem-paper").attributes("data-scene")).toBe("festival");
+    expect(wrapper.get(".poem-paper").attributes("data-motif")).toBe("shared-moon");
+    expect(wrapper.get(".scene-mark").text()).toBe("月");
+    expect(wrapper.get(".scene-mark").attributes("aria-label"))
+      .toContain("不代表当地天气");
+  });
+
   it("switches to vertical columns without changing the poem text", async () => {
     const wrapper = render();
     const initialHeightReports = wrapper.emitted("heightNeeded")?.length ?? 0;

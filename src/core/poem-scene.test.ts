@@ -48,6 +48,23 @@ describe("poem scene grounding", () => {
     }).motif).toBeUndefined();
   });
 
+  it("uses a shared moon only for Su Shi's Mid-Autumn poem", () => {
+    const poem = POEMS.find((item) => item.id === "su-shi-shui-diao-ge-tou")!;
+    const midAutumn = { ...baseCalendar, festival: "中秋节", season: "autumn" as const };
+    expect(selectPoemScene({ poem, calendar: midAutumn, weather: baseWeather }))
+      .toMatchObject({
+        kind: "festival", motif: "shared-moon", glyph: "月",
+        description: expect.stringContaining("共望明月"),
+      });
+    expect(selectPoemScene({
+      poem, calendar: { ...midAutumn, festival: undefined }, weather: baseWeather,
+    }).motif).toBeUndefined();
+    const otherMoonPoem = POEMS.find((item) => item.id === "li-bai-jing-ye-si")!;
+    expect(selectPoemScene({
+      poem: otherMoonPoem, calendar: midAutumn, weather: baseWeather,
+    }).motif).toBeUndefined();
+  });
+
   it("uses weather art only for fresh, known conditions", () => {
     const scene = (
       weather: WeatherContext,
