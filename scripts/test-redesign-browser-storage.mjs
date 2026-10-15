@@ -13,6 +13,7 @@ import { loadBundledModule } from "./load-reason-sources.mjs";
 // --midnight-audit advances a page-local clock while returning from reading/favorites.
 // --corrupt-storage-audit checks that damaged browser records are not reset.
 // --legacy-matrix-audit separates migratable old fields from damaged existing fields.
+// --settings-audit checks settings disclosures and controls at regular/compact viewports.
 // --capture leaves screenshots in a separately named temporary directory.
 const chromeCandidates = [
   "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
@@ -26,14 +27,16 @@ const favoritesAudit = process.argv.includes("--favorites-audit");
 const midnightAudit = process.argv.includes("--midnight-audit");
 const corruptStorageAudit = process.argv.includes("--corrupt-storage-audit");
 const legacyMatrixAudit = process.argv.includes("--legacy-matrix-audit");
+const settingsAudit = process.argv.includes("--settings-audit");
 const reasonBoundaryAudit = process.argv.includes("--reason-boundary");
 const layoutAudit = process.argv.includes("--layout-audit") || matrixAudit || readingAudit;
 const seededPoemAudit = layoutAudit || favoritesAudit || midnightAudit;
-const captureLayout = (seededPoemAudit || corruptStorageAudit || legacyMatrixAudit) && process.argv.includes("--capture");
+const captureLayout = (seededPoemAudit || corruptStorageAudit || legacyMatrixAudit || settingsAudit) && process.argv.includes("--capture");
 if ((favoritesAudit && (matrixAudit || readingAudit || midnightAudit)) ||
     (midnightAudit && (matrixAudit || readingAudit)) ||
     (corruptStorageAudit && (seededPoemAudit || legacyMatrixAudit)) ||
-    (legacyMatrixAudit && seededPoemAudit)) {
+    (legacyMatrixAudit && seededPoemAudit) ||
+    (settingsAudit && (seededPoemAudit || corruptStorageAudit || legacyMatrixAudit))) {
   throw new Error("Specialized browser audits must run separately");
 }
 const boundaryReason = "这是隔离排版样本，仅用于核对四十字理由完整显示，不能视为真实诗词推荐或天气说明。";
@@ -69,6 +72,11 @@ const legacyReportName = process.argv.find((arg) => arg.startsWith("--legacy-rep
   ?.slice("--legacy-report=".length);
 if (legacyReportName && (!legacyMatrixAudit || !/^T03_[A-Za-z0-9_-]+\.json$/.test(legacyReportName))) {
   throw new Error("--legacy-report requires --legacy-matrix-audit and a T03_*.json filename");
+}
+const settingsReportName = process.argv.find((arg) => arg.startsWith("--settings-report="))
+  ?.slice("--settings-report=".length);
+if (settingsReportName && (!settingsAudit || !/^T03_[A-Za-z0-9_-]+\.json$/.test(settingsReportName))) {
+  throw new Error("--settings-report requires --settings-audit and a T03_*.json filename");
 }
 const layoutPoemId = process.argv.find((arg) => arg.startsWith("--poem-id="))
   ?.slice("--poem-id=".length) ?? "cui-hao-huang-he-lou";
@@ -621,6 +629,61 @@ try {
 
   await click('button[aria-label="设置"]');
   await waitFor(() => evaluate("Boolean(document.querySelector('.settings-panel'))"), "settings panel");
+  const settingsMeasurements = [];
+  if (settingsAudit) {
+    for (const theme of ["light", "dark"]) {
+      await evaluate(`document.documentElement.dataset.theme = ${JSON.stringify(theme)}`);
+      for (const [width, height] of [[430, 680], [320, 260]]) {
+        await send("Emulation.setDeviceMetricsOverride", {
+          width, height, deviceScaleFactor: 1, mobile: false,
+        });
+        await evaluate("document.querySelector('.settings-panel').scrollTop = 0");
+        await captureScreenshot(`T03_settings_${theme}_${width}x${height}_top.png`);
+        const measurement = await evaluate(`(() => {
+          const panel = document.querySelector('.settings-panel');
+          const font = (selector) => parseFloat(getComputedStyle(document.querySelector(selector)).fontSize);
+          const sizes = {
+            groupHeading: font('.settings-group h2'),
+            switchDescription: font('.switch-row small'),
+            settingsNote: font('.settings-note'),
+            releaseDescription: font('.release-row small'),
+            trustHeading: font('.trust-disclosure > strong'),
+            trustBody: font('.trust-disclosure p'),
+            trustFootnote: font('.trust-disclosure small'),
+            trustAction: font('.trust-actions button'),
+            navigationDescription: font('.settings-navigation small'),
+            clearDataAction: font('.danger-link'),
+          };
+          panel.scrollTop = panel.scrollHeight;
+          const save = panel.querySelector('button[type="submit"]').getBoundingClientRect();
+          return {
+            theme: ${JSON.stringify(theme)}, width: ${width}, height: ${height}, sizes,
+            horizontalOverflow: document.documentElement.scrollWidth > innerWidth + 1,
+            panelScrollHeight: panel.scrollHeight,
+            panelClientHeight: panel.clientHeight,
+            saveReachable: save.top >= 0 && save.bottom <= innerHeight,
+          };
+        })()`);
+        settingsMeasurements.push(measurement);
+        await captureScreenshot(`T03_settings_${theme}_${width}x${height}_bottom.png`);
+        if (
+          measurement.horizontalOverflow || !measurement.saveReachable ||
+          measurement.sizes.groupHeading < 13 ||
+          measurement.sizes.switchDescription < 12 ||
+          measurement.sizes.settingsNote < 12 ||
+          measurement.sizes.releaseDescription < 12 ||
+          measurement.sizes.trustHeading < 13 ||
+          measurement.sizes.trustBody < 12 ||
+          measurement.sizes.trustFootnote < 12 ||
+          measurement.sizes.trustAction < 12 ||
+          measurement.sizes.navigationDescription < 12 ||
+          measurement.sizes.clearDataAction < 12
+        ) throw new Error(`Settings readability audit failed: ${JSON.stringify(measurement)}`);
+      }
+      await send("Emulation.clearDeviceMetricsOverride");
+    }
+    await evaluate("document.documentElement.dataset.theme = 'light'");
+  }
   await changeSelect(".settings-form select", "hangzhou");
   await changeSelect('select[name="poem-layout"]', "vertical");
   await changeSelect('select[name="poem-font-size"]', "large");
@@ -1200,6 +1263,17 @@ try {
       legacyMatrixFlow,
     }, null, 2)}\n`);
   }
+  if (settingsReportName) {
+    const reportPath = join(process.cwd(), "review", "redesign", "evidence", settingsReportName);
+    if (existsSync(reportPath)) throw new Error(`Refusing to overwrite: ${reportPath}`);
+    writeFileSync(reportPath, `${JSON.stringify({
+      schemaVersion: "1.0",
+      browser: browserName,
+      isolatedProfile: true,
+      nativeWebView2: false,
+      settingsMeasurements,
+    }, null, 2)}\n`);
+  }
   console.log(JSON.stringify({
     result: "passed",
     browser: browserName,
@@ -1218,6 +1292,7 @@ try {
     ...(midnightAudit ? { midnightFlow } : {}),
     ...(corruptStorageAudit ? { corruptFlow } : {}),
     ...(legacyMatrixAudit ? { legacyMatrixFlow } : {}),
+    ...(settingsAudit ? { settingsMeasurements } : {}),
     ...(captureLayout ? { capturedScreenshots } : {}),
   }));
 } finally {

@@ -1,0 +1,92 @@
+{
+  "schemaVersion": "1.0",
+  "browser": "Chrome/155.0.8059.40",
+  "isolatedProfile": true,
+  "nativeWebView2": false,
+  "settingsMeasurements": [
+    {
+      "theme": "light",
+      "width": 430,
+      "height": 680,
+      "sizes": {
+        "groupHeading": 13,
+        "switchDescription": 12,
+        "settingsNote": 12,
+        "releaseDescription": 12,
+        "trustHeading": 13,
+        "trustBody": 12,
+        "trustFootnote": 12,
+        "trustAction": 12,
+        "navigationDescription": 12,
+        "clearDataAction": 12
+      },
+      "horizontalOverflow": false,
+      "panelScrollHeight": 1352,
+      "panelClientHeight": 620,
+      "saveReachable": true
+    },
+    {
+      "theme": "light",
+      "width": 320,
+      "height": 260,
+      "sizes": {
+        "groupHeading": 13,
+        "switchDescription": 12,
+        "settingsNote": 12,
+        "releaseDescription": 12,
+        "trustHeading": 13,
+        "trustBody": 12,
+        "trustFootnote": 12,
+        "trustAction": 12,
+        "navigationDescription": 12,
+        "clearDataAction": 12
+      },
+      "horizontalOverflow": false,
+      "panelScrollHeight": 1448,
+      "panelClientHeight": 200,
+      "saveReachable": true
+    },
+    {
+      "theme": "dark",
+      "width": 430,
+      "height": 680,
+      "sizes": {
+        "groupHeading": 13,
+        "switchDescription": 12,
+        "settingsNote": 12,
+        "releaseDescription": 12,
+        "trustHeading": 13,
+        "trustBody": 12,
+        "trustFootnote": 12,
+        "trustAction": 12,
+        "navigationDescription": 12,
+        "clearDataAction": 12
+      },
+      "horizontalOverflow": false,
+      "panelScrollHeight": 1352,
+      "panelClientHeight": 620,
+      "saveReachable": true
+    },
+    {
+      "theme": "dark",
+      "width": 320,
+      "height": 260,
+      "sizes": {
+        "groupHeading": 13,
+        "switchDescription": 12,
+        "settingsNote": 12,
+        "releaseDescription": 12,
+        "trustHeading": 13,
+        "trustBody": 12,
+        "trustFootnote": 12,
+        "trustAction": 12,
+        "navigationDescription": 12,
+        "clearDataAction": 12
+      },
+      "horizontalOverflow": false,
+      "panelScrollHeight": 1448,
+      "panelClientHeight": 200,
+      "saveReachable": true
+    }
+  ]
+}

@@ -2,6 +2,8 @@
 
 状态：**部分通过**。除源码和组件级验证外，2026-10-13 已用两个哈希不同的内部 EXE 实看城市反例、键盘选城，并在加入隔离保护后完成首次设置与再次启动；未在真实 Windows 启动项与旧用户资料上做破坏性试验。
 
+2026-10-15 设置页可读性增量：审查当前样式时发现开机显示说明 10px、未签名试用说明 9px、天气来源与许可正文 9px、相关入口 10px。它们承担真实状态与隐私告知，不适合按装饰标签处理。新增隔离 Chrome `--settings-audit`，先在 430×680 浅色设置页得到预期失败：上述字号为 9–11px，保存按钮虽可达但说明难读。随后仅调整现有 CSS：设置分组标题和天气来源标题 13px，开关/导航/版本/信任正文与许可入口至少 12px，重要版本说明由淡字改为普通次级字；不增加信息项、不改设置保存模型。浅/深色 × 430×680/320×260 共四组重测通过，未出现横向溢出，长页滚到底“保存设置”仍可见；实际保存/重载旧收藏的原浏览器流程也通过。[测量报告](./evidence/T03_BROWSER_SETTINGS_READABILITY_20261015.json)及代表静帧：[浅色首屏](./evidence/T03_BROWSER_SETTINGS_LIGHT_TOP_20261015.png)、[深色首屏](./evidence/T03_BROWSER_SETTINGS_DARK_TOP_20261015.png)、[浅色底部](./evidence/T03_BROWSER_SETTINGS_LIGHT_BOTTOM_20261015.png)、[深色低视口底部](./evidence/T03_BROWSER_SETTINGS_DARK_COMPACT_BOTTOM_20261015.png)。人工逐张查看，信息顺序、按钮和文本未重叠；这仍只是 Chrome 155 隔离浏览器的几何与可读性观察，不证明 Windows 原生 WebView2、系统缩放、读屏或真实自启动状态。`lint`、`typecheck`、259 项测试、`build` 和 `accessibility:check` 通过；A3 继续**部分通过**。
+
 目标行为与问题：E08、E10、E13、E14。未支持城市不得暗中使用北京；用户在开始前看到实际选择；设置草稿导航后保留，放弃前明确提示；系统自启动失败不得报“全部保存成功”。
 
 实际修改：`src/components/OnboardingView.vue`、`src/components/SettingsPanel.vue`、`src/App.vue`、`src/services/desktop.ts`、`src/services/data-reset.ts`、`src/styles.css` 和对应测试。未改变城市数据范围，没有加入定位或假离线天气。

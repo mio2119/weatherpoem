@@ -481,7 +481,8 @@ button:disabled {
 .switch-row small {
   margin-top: 3px;
   color: var(--muted);
-  font-size: 10px;
+  font-size: 12px;
+  line-height: 1.45;
 }
 
 .switch-row input[role="switch"] {
@@ -526,8 +527,8 @@ button:disabled {
 
 .settings-note {
   margin: 7px 0 0;
-  color: var(--faint);
-  font-size: 9px;
+  color: var(--muted);
+  font-size: 12px;
   line-height: 1.55;
 }
 
@@ -539,7 +540,7 @@ button:disabled {
 }
 
 .trust-disclosure > strong {
-  font-size: 11px;
+  font-size: 13px;
   font-weight: 700;
 }
 
@@ -548,7 +549,7 @@ button:disabled {
   display: block;
   margin: 5px 0 0;
   color: var(--muted);
-  font-size: 9px;
+  font-size: 12px;
   line-height: 1.65;
 }
 
@@ -560,12 +561,13 @@ button:disabled {
 }
 
 .trust-actions button {
-  padding: 0;
+  min-height: 30px;
+  padding: 2px 0;
   border: 0;
   color: var(--accent);
   background: transparent;
   font: inherit;
-  font-size: 10px;
+  font-size: 12px;
   font-weight: 650;
   text-decoration: underline;
   text-underline-offset: 3px;
@@ -1480,7 +1482,7 @@ button:disabled {
 .settings-group h2 {
   margin: 0 0 12px;
   color: var(--accent);
-  font-size: 11px;
+  font-size: 13px;
   font-weight: 700;
   letter-spacing: 0.12em;
 }
@@ -1493,7 +1495,7 @@ button:disabled {
 .danger-link {
   padding: 13px 0 0;
   color: var(--danger);
-  font-size: 11px;
+  font-size: 12px;
 }
 
 .settings-navigation {
@@ -1526,7 +1528,7 @@ button:disabled {
 .settings-navigation small {
   margin-top: 3px;
   color: var(--muted);
-  font-size: 10px;
+  font-size: 12px;
 }
 
 .settings-navigation .icon-symbol {
@@ -1675,7 +1677,7 @@ button:disabled {
 .release-row small {
   margin-top: 3px;
   color: var(--muted);
-  font-size: 10px;
+  font-size: 12px;
 }
 
 .warning-view {
