@@ -9,7 +9,7 @@ import { fetchOfficialWarnings } from "./warning-gateway";
 
 interface OpenMeteoResponse {
   current?: {
-    time?: string;
+    time?: number;
     temperature_2m?: number;
     apparent_temperature?: number;
     precipitation?: number;
@@ -20,6 +20,8 @@ interface OpenMeteoResponse {
 
 const WEATHER_CACHE_KEY = "weatherpoem.weather-cache.v1";
 const CACHE_MAX_AGE_MS = 6 * 60 * 60 * 1000;
+const CURRENT_MAX_AGE_MS = 2 * 60 * 60 * 1000;
+const CURRENT_MAX_FUTURE_MS = 15 * 60 * 1000;
 const CACHE_WEATHER_LABELS = new Map<WeatherKind, string>([
   ["clear", "晴"],
   ["cloudy", "多云"],
@@ -291,8 +293,21 @@ function loadCachedWeather(cityId: string): WeatherContext | undefined {
     ) {
       return undefined;
     }
-    const age = Date.now() - cached.cachedAt;
-    if (age < 0 || age > CACHE_MAX_AGE_MS) return undefined;
+    const observedAt = cached.weather.observedAt;
+    if (
+      typeof observedAt !== "string" ||
+      !/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}\.\d{3}Z$/.test(observedAt)
+    ) return undefined;
+    const now = Date.now();
+    const age = now - cached.cachedAt;
+    const observationAge = now - Date.parse(observedAt);
+    if (
+      age < 0 ||
+      age > CACHE_MAX_AGE_MS ||
+      !Number.isFinite(observationAge) ||
+      observationAge < -CURRENT_MAX_FUTURE_MS ||
+      observationAge > CACHE_MAX_AGE_MS
+    ) return undefined;
     const warnings = activeCachedWarnings(cached.weather.warnings);
     return {
       ...cached.weather,
@@ -327,6 +342,7 @@ export async function fetchWeather(
     current:
       "temperature_2m,apparent_temperature,precipitation,weather_code,wind_speed_10m",
     timezone: "auto",
+    timeformat: "unixtime",
   });
   const officialWarningsPromise = fetchOfficialWarnings(city);
 
@@ -340,12 +356,38 @@ export async function fetchWeather(
     }
     const payload = (await response.json()) as OpenMeteoResponse;
     const current = payload.current;
-    if (!current || typeof current.weather_code !== "number") {
-      throw new Error("天气数据缺少必要字段");
+    const observedAtSeconds = current?.time;
+    // Open-Meteo Unix time is UTC; city-local ISO text must not be parsed in the host timezone.
+    const observedAtMs = typeof observedAtSeconds === "number"
+      ? observedAtSeconds * 1000
+      : NaN;
+    const ageMs = Date.now() - observedAtMs;
+    if (
+      !current ||
+      typeof current.weather_code !== "number" ||
+      !Number.isInteger(current.weather_code) ||
+      typeof observedAtSeconds !== "number" ||
+      !Number.isInteger(observedAtSeconds) ||
+      !Number.isFinite(observedAtMs) ||
+      ageMs < -CURRENT_MAX_FUTURE_MS ||
+      ageMs > CURRENT_MAX_AGE_MS ||
+      typeof current.temperature_2m !== "number" ||
+      !Number.isFinite(current.temperature_2m) ||
+      typeof current.wind_speed_10m !== "number" ||
+      !Number.isFinite(current.wind_speed_10m) ||
+      current.wind_speed_10m < 0 ||
+      typeof current.precipitation !== "number" ||
+      !Number.isFinite(current.precipitation) ||
+      current.precipitation < 0 ||
+      (current.apparent_temperature !== undefined &&
+        (typeof current.apparent_temperature !== "number" ||
+          !Number.isFinite(current.apparent_temperature)))
+    ) {
+      throw new Error("天气数据缺少必要字段或不够新鲜");
     }
     const temperature = current.temperature_2m;
-    const windSpeed = current.wind_speed_10m ?? 0;
-    const precipitation = current.precipitation ?? 0;
+    const windSpeed = current.wind_speed_10m;
+    const precipitation = current.precipitation;
     const mapped = mapWeatherCode(current.weather_code);
     let kind = mapped.kind;
     let label = mapped.label;
@@ -373,7 +415,7 @@ export async function fetchWeather(
       apparentTemperature: current.apparent_temperature,
       windSpeed,
       precipitation,
-      observedAt: current.time,
+      observedAt: new Date(observedAtMs).toISOString(),
       freshness: "fresh",
       source: "open-meteo",
       warnings,

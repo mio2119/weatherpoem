@@ -277,7 +277,7 @@ try {
           const fixture = JSON.parse(localStorage.getItem("weatherpoem.audit.forecast") || "null");
           if (fixture?.mode === "fresh") {
             return Promise.resolve(new Response(JSON.stringify({ current: {
-              time: new RealDate(fixedTime).toISOString(),
+              time: Math.floor(fixedTime / 1000),
               weather_code: fixture.code,
               temperature_2m: fixture.temperature ?? 15,
               precipitation: fixture.precipitation ?? 0,
@@ -464,7 +464,9 @@ try {
           ? {
               cityId: "beijing", cachedAt: caseTime,
               weather: {
-                kind: "snow", label: "雪", freshness: "fresh", source: "open-meteo",
+                kind: "snow", label: "雪",
+                observedAt: new Date(caseTime - 15 * 60_000).toISOString(),
+                freshness: "fresh", source: "open-meteo",
                 warnings: [], shouldSuppressPoem: false,
               },
             }

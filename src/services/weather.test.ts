@@ -35,6 +35,7 @@ function cachedSnow(cachedAt = Date.now() - 1_000) {
     weather: {
       kind: "snow",
       label: "雪",
+      observedAt: new Date(cachedAt - 15 * 60 * 1000).toISOString(),
       freshness: "fresh",
       source: "open-meteo",
       warnings: [],
@@ -49,6 +50,27 @@ async function fetchWithOfflineCache(record: unknown) {
   return fetchWeather(testCity);
 }
 
+function onlineCurrent(overrides: Record<string, unknown> = {}) {
+  return {
+    time: Math.floor(Date.now() / 1000),
+    weather_code: 61,
+    temperature_2m: 15,
+    apparent_temperature: 14,
+    precipitation: 0.3,
+    wind_speed_10m: 8,
+    ...overrides,
+  };
+}
+
+async function fetchWithOnlineCurrent(current: Record<string, unknown>) {
+  const request = vi.fn().mockResolvedValue(new Response(
+    JSON.stringify({ current }),
+    { status: 200, headers: { "Content-Type": "application/json" } },
+  ));
+  vi.stubGlobal("fetch", request);
+  return { weather: await fetchWeather(testCity), request };
+}
+
 describe("weather mapping", () => {
   beforeEach(() => {
     localStorage.clear();
@@ -56,6 +78,7 @@ describe("weather mapping", () => {
 
   afterEach(() => {
     vi.unstubAllGlobals();
+    vi.unstubAllEnvs();
   });
 
   it("清除天气缓存但不触碰其他站点内本地键", () => {
@@ -162,6 +185,90 @@ describe("weather mapping", () => {
     });
   });
 
+  it("只把带有效观测时间和数值的在线响应标为新鲜天气", async () => {
+    const { weather, request } = await fetchWithOnlineCurrent(onlineCurrent());
+    const url = new URL(String(request.mock.calls.at(0)?.at(0)));
+    expect(url.searchParams.get("timeformat")).toBe("unixtime");
+    expect(weather).toMatchObject({
+      kind: "light-rain",
+      label: "小雨",
+      freshness: "fresh",
+      source: "open-meteo",
+      temperature: 15,
+      precipitation: 0.3,
+      windSpeed: 8,
+    });
+    expect(weather.observedAt).toBe(new Date(onlineCurrent().time * 1000).toISOString());
+  });
+
+  it.each([
+    ["缺少观测时间", { time: undefined }],
+    ["过期观测时间", { time: Math.floor((Date.now() - 3 * 60 * 60 * 1000) / 1000) }],
+    ["未来观测时间", { time: Math.floor((Date.now() + 30 * 60 * 1000) / 1000) }],
+    ["缺少降水", { precipitation: undefined }],
+    ["负降水", { precipitation: -1 }],
+    ["缺少风速", { wind_speed_10m: undefined }],
+    ["负风速", { wind_speed_10m: -1 }],
+    ["非法气温", { temperature_2m: "warm" }],
+  ])("%s 的在线响应不能冒充当前真实天气", async (_label, overrides) => {
+    const { weather } = await fetchWithOnlineCurrent(onlineCurrent(overrides));
+    expect(weather).toMatchObject({
+      kind: "unknown",
+      freshness: "unavailable",
+      source: "offline",
+    });
+    expect(localStorage.getItem(WEATHER_CACHE_KEY)).toBeNull();
+  });
+
+  it("在线观测过期时退回有效缓存，而不是把旧在线数据标为新鲜", async () => {
+    localStorage.setItem(WEATHER_CACHE_KEY, JSON.stringify(cachedSnow()));
+    const { weather } = await fetchWithOnlineCurrent(onlineCurrent({
+      time: Math.floor((Date.now() - 3 * 60 * 60 * 1000) / 1000),
+    }));
+    expect(weather).toMatchObject({
+      kind: "snow",
+      freshness: "stale",
+      source: "cache",
+    });
+  });
+
+  it("在线观测损坏时仍保留有效官方预警的安全优先级", async () => {
+    vi.stubEnv("VITE_WARNING_API_URL", "https://warning.example.test/alerts");
+    const now = Date.now();
+    vi.stubGlobal("fetch", vi.fn(async (input: string | URL | Request) => {
+      const target = String(input);
+      if (target.startsWith("https://warning.example.test/alerts")) {
+        return new Response(JSON.stringify({
+          cityId: testCity.id,
+          warnings: [{
+            id: "heavy-rain",
+            title: "暴雨预警",
+            level: "warning",
+            description: "请留意当地气象部门的信息。",
+            source: "测试气象台",
+            area: "北京市",
+            publishedAt: new Date(now - 60_000).toISOString(),
+            expiresAt: new Date(now + 60_000).toISOString(),
+          }],
+        }), { status: 200 });
+      }
+      return new Response(JSON.stringify({
+        current: onlineCurrent({ precipitation: -1 }),
+      }), { status: 200 });
+    }));
+
+    const weather = await fetchWeather(testCity);
+    expect(weather).toMatchObject({
+      kind: "unknown",
+      source: "offline",
+      shouldSuppressPoem: true,
+    });
+    expect(weather.warnings[0]).toMatchObject({
+      origin: "official",
+      title: "暴雨预警",
+    });
+  });
+
   it("有效的缓存官方预警仍优先暂停诗笺，过期预警不再展示", async () => {
     const now = Date.now();
     const warning = {
@@ -197,6 +304,9 @@ describe("weather mapping", () => {
     ["过期缓存时间", cachedSnow(Date.now() - 6 * 60 * 60 * 1000 - 1)],
     ["种类与标签相矛盾", { ...cachedSnow(), weather: { ...cachedSnow().weather, label: "晴" } }],
     ["演练来源伪装为缓存", { ...cachedSnow(), weather: { ...cachedSnow().weather, source: "synthetic" } }],
+    ["旧缓存缺少观测时间", { ...cachedSnow(), weather: { ...cachedSnow().weather, observedAt: undefined } }],
+    ["旧缓存的无时区观测时间", { ...cachedSnow(), weather: { ...cachedSnow().weather, observedAt: "2026-10-15T12:00" } }],
+    ["缓存观测时间已过期", { ...cachedSnow(), weather: { ...cachedSnow().weather, observedAt: new Date(Date.now() - 7 * 60 * 60 * 1000).toISOString() } }],
     ["损坏的预警列表", { ...cachedSnow(), weather: { ...cachedSnow().weather, warnings: [{ level: "severe" }] } }],
   ])("%s 不被当作当地缓存天气", async (_label, record) => {
     const result = await fetchWithOfflineCache(record);
