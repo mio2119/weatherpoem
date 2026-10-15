@@ -430,6 +430,7 @@ pub fn run() {
         .on_window_event(|window, event| {
             if let WindowEvent::CloseRequested { api, .. } = event {
                 api.prevent_close();
+                let _ = window.emit("weatherpoem://conceal-main", ());
                 let _ = window.hide();
             }
         })

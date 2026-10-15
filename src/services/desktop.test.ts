@@ -101,6 +101,8 @@ describe("desktop reveal focus policy", () => {
   });
 
   it("stops scene motion when hidden or minimized", async () => {
+    const conceal = vi.fn();
+    window.addEventListener("weatherpoem:conceal", conceal);
     await showWindow(false);
     expect(document.documentElement.dataset.sceneActive).toBe("true");
     await hideWindow();
@@ -108,6 +110,8 @@ describe("desktop reveal focus policy", () => {
     await showWindow(false);
     await minimizeWindow();
     expect(document.documentElement.dataset.sceneActive).toBe("false");
+    expect(conceal).toHaveBeenCalledTimes(2);
+    window.removeEventListener("weatherpoem:conceal", conceal);
   });
 
   it("records computed scene animation and reduced-motion states", () => {

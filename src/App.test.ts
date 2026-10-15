@@ -426,6 +426,101 @@ describe("browser preview user flow", () => {
     expect(sameDay.history).toHaveLength(3);
   });
 
+  it("does not reveal yesterday's card while a hidden window validates a new local day", async () => {
+    vi.useFakeTimers({ toFake: ["Date"] });
+    vi.setSystemTime(new Date(2026, 9, 13, 23, 59));
+    const visibility = vi.spyOn(document, "visibilityState", "get")
+      .mockReturnValue("visible");
+    localStorage.setItem("weatherpoem.local.v1", JSON.stringify({
+      settings: { configured: true, cityId: "beijing" },
+      history: [], favorites: [], feedback: [],
+    }));
+    wrapper = mount(App, { attachTo: document.body });
+    await vi.waitFor(() => expect(wrapper!.find(".poem-view").exists()).toBe(true));
+    expect(wrapper.get(".context-strip strong").text()).toBe("10月13日");
+
+    visibility.mockReturnValue("hidden");
+    document.dispatchEvent(new Event("visibilitychange"));
+    await flushPromises();
+    expect(wrapper.find(".poem-view").exists()).toBe(false);
+
+    vi.setSystemTime(new Date(2026, 9, 14, 0, 1));
+    visibility.mockReturnValue("visible");
+    document.dispatchEvent(new Event("visibilitychange"));
+    expect(wrapper.find(".poem-view").exists()).toBe(false);
+    await vi.waitFor(() => {
+      expect(wrapper!.get(".context-strip strong").text()).toBe("10月14日");
+    });
+    expect((await (await createRepository()).load()).history).toHaveLength(2);
+  });
+
+  it("masks a native tray hide even if WebView2 still reports the page visible", async () => {
+    vi.useFakeTimers({ toFake: ["Date"] });
+    vi.setSystemTime(new Date(2026, 9, 13, 23, 59));
+    vi.spyOn(document, "visibilityState", "get").mockReturnValue("visible");
+    localStorage.setItem("weatherpoem.local.v1", JSON.stringify({
+      settings: { configured: true, cityId: "beijing" },
+      history: [], favorites: [], feedback: [],
+    }));
+    wrapper = mount(App, { attachTo: document.body });
+    await vi.waitFor(() => expect(wrapper!.find(".poem-view").exists()).toBe(true));
+    expect(wrapper.get(".context-strip strong").text()).toBe("10月13日");
+
+    window.dispatchEvent(new Event("weatherpoem:conceal"));
+    await flushPromises();
+    expect(document.visibilityState).toBe("visible");
+    expect(wrapper.find(".poem-view").exists()).toBe(false);
+    expect(document.documentElement.dataset.sceneActive).toBe("false");
+
+    vi.setSystemTime(new Date(2026, 9, 14, 0, 1));
+    window.dispatchEvent(new Event("focus"));
+    expect(wrapper.find(".poem-view").exists()).toBe(false);
+    await vi.waitFor(() => {
+      expect(wrapper!.get(".context-strip strong").text()).toBe("10月14日");
+      expect(document.documentElement.dataset.sceneActive).toBe("true");
+    });
+    expect((await (await createRepository()).load()).history).toHaveLength(2);
+  });
+
+  it("holds a hidden same-day card until a new content withdrawal is applied", async () => {
+    vi.useFakeTimers({ toFake: ["Date"] });
+    vi.setSystemTime(new Date(2026, 9, 14, 9));
+    const visibility = vi.spyOn(document, "visibilityState", "get")
+      .mockReturnValue("visible");
+    localStorage.setItem("weatherpoem.local.v1", JSON.stringify({
+      settings: { configured: true, cityId: "beijing" },
+      history: [], favorites: [], feedback: [],
+    }));
+    wrapper = mount(App, { attachTo: document.body });
+    await vi.waitFor(() => expect(wrapper!.find(".poem-view").exists()).toBe(true));
+    const originalTitle = wrapper.get(".poem-view h1").text();
+    const originalId = (await (await createRepository()).load()).dailyState?.workId;
+    expect(originalId).toBeDefined();
+
+    visibility.mockReturnValue("hidden");
+    document.dispatchEvent(new Event("visibilitychange"));
+    await flushPromises();
+    localStorage.setItem(CONTENT_WITHDRAWAL_CACHE_KEY, JSON.stringify({
+      schemaVersion: "1.0",
+      contentVersion: CONTENT_VERSION,
+      revision: 1,
+      issuedAt: new Date().toISOString(),
+      suspendRecommendations: false,
+      withdrawnWorkIds: [originalId],
+    }));
+    visibility.mockReturnValue("visible");
+    document.dispatchEvent(new Event("visibilitychange"));
+    expect(wrapper.find(".poem-view").exists()).toBe(false);
+    await vi.waitFor(() => {
+      expect(wrapper!.get(".content-correction-view").text())
+        .toContain("今日内容正在校正");
+    });
+    expect(wrapper.get(".content-correction-view").text())
+      .not.toContain(originalTitle);
+    expect((await (await createRepository()).load()).dailyState)
+      .toMatchObject({ state: "content-withdrawn", workId: originalId });
+  });
+
   it("refreshes the local day immediately when returning from reading or favorites", async () => {
     vi.useFakeTimers({ toFake: ["Date"] });
     vi.setSystemTime(new Date(2026, 9, 13, 23, 59));

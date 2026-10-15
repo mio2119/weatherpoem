@@ -43,6 +43,7 @@ import {
   getPerformanceWeatherScenario,
   isTauri,
   fitGlanceWindowHeight,
+  listenForConcealMain,
   listenForOpenMain,
   listenForExitRequest,
   listenForReadingResize,
@@ -99,6 +100,7 @@ const replacementInProgress = ref(false);
 const dislikeInProgress = ref(false);
 const panel = ref<Panel>("card");
 const loading = ref(true);
+const revealPending = ref(false);
 const errorMessage = ref("");
 const onboardingSaving = ref(false);
 const onboardingError = ref("");
@@ -116,9 +118,11 @@ let toastTimer: number | undefined;
 let contentControlTimer: number | undefined;
 let dateCheckTimer: number | undefined;
 let dateRefreshPromise: Promise<boolean> | undefined;
+let revealValidationPromise: Promise<void> | undefined;
 let readingResizeTimer: number | undefined;
 let stopSettingsListener: (() => void) | undefined;
 let stopOpenMainListener: (() => void) | undefined;
+let stopConcealMainListener: (() => void) | undefined;
 let stopExitRequestListener: (() => void) | undefined;
 let stopResizeListener: (() => void) | undefined;
 let pilotSessionOpened = false;
@@ -611,11 +615,23 @@ async function refreshDateIfChanged(): Promise<boolean> {
 function checkVisibleDate(): void {
   if (
     !loading.value &&
+    !revealPending.value &&
     settings.value.configured &&
     panel.value === "card" &&
     document.visibilityState === "visible"
   ) {
     void refreshDateIfChanged();
+  }
+}
+
+function handleWindowFocus(): void {
+  if (revealPending.value) {
+    void validateRevealedContent().then(() => {
+      document.documentElement.dataset.sceneActive = "true";
+    });
+  } else {
+    checkVisibleDate();
+    document.documentElement.dataset.sceneActive = "true";
   }
 }
 
@@ -932,8 +948,42 @@ function handleSystemThemeChange(): void {
 }
 
 function handleSceneVisibilityChange(): void {
-  document.documentElement.dataset.sceneActive =
-    document.visibilityState === "visible" ? "true" : "false";
+  const visible = document.visibilityState === "visible";
+  document.documentElement.dataset.sceneActive = visible ? "true" : "false";
+  if (!visible) {
+    handleConcealRequest();
+  } else if (revealPending.value) {
+    void validateRevealedContent();
+  }
+}
+
+function handleConcealRequest(): void {
+  // WebView2 can keep document.visibilityState as "visible" after a native hide.
+  document.documentElement.dataset.sceneActive = "false";
+  revealPending.value = true;
+}
+
+function validateRevealedContent(): Promise<void> {
+  if (revealValidationPromise) return revealValidationPromise;
+  revealPending.value = true;
+  revealValidationPromise = (async () => {
+    if (!settings.value.configured || !repository.value) return;
+    if (!(await refreshDateIfChanged())) {
+      const correction = await refreshContentControl();
+      if (!correction && !recommendation.value) {
+        await loadToday(false, true);
+      }
+    }
+  })()
+    .catch((error: unknown) => {
+      console.error(error);
+      errorMessage.value = dailyLoadErrorMessage(error);
+    })
+    .finally(() => {
+      revealPending.value = false;
+      revealValidationPromise = undefined;
+    });
+  return revealValidationPromise;
 }
 
 async function startPilot(): Promise<void> {
@@ -1042,31 +1092,16 @@ async function resetData(): Promise<void> {
 }
 
 async function openMainFromShell(): Promise<void> {
-  if (settings.value.configured) {
-    loading.value = true;
-    try {
-      const dateChanged = await refreshDateIfChanged();
-      if (!dateChanged) {
-        const correction = await refreshContentControl();
-        if (!correction && !recommendation.value) {
-          await loadToday(false, true);
-        }
-      }
-    } catch (error) {
-      console.error(error);
-      errorMessage.value = dailyLoadErrorMessage(error);
-    } finally {
-      loading.value = false;
-    }
-  }
+  await validateRevealedContent();
   panel.value = "card";
+  document.documentElement.dataset.sceneActive = "true";
 }
 
 async function openSettingsFromShell(): Promise<void> {
-  if (!settings.value.configured) return;
-  if (panel.value === "settings") return;
   loading.value = true;
   try {
+    if (revealPending.value) await validateRevealedContent();
+    if (!settings.value.configured || panel.value === "settings") return;
     await ensurePoemCatalog();
     panel.value = "settings";
   } catch (error) {
@@ -1074,6 +1109,7 @@ async function openSettingsFromShell(): Promise<void> {
     errorMessage.value = "设置暂时未能打开，请稍后再试。";
   } finally {
     loading.value = false;
+    document.documentElement.dataset.sceneActive = "true";
   }
 }
 
@@ -1174,6 +1210,7 @@ async function initialize(): Promise<void> {
     stopOpenMainListener = await listenForOpenMain(() => {
       void openMainFromShell();
     });
+    stopConcealMainListener = await listenForConcealMain(handleConcealRequest);
     stopResizeListener = await listenForReadingResize(handleReadingResize);
     contentControlTimer = window.setInterval(() => {
       if (buildCalendarContext().localDate !== calendar.value.localDate) {
@@ -1183,7 +1220,7 @@ async function initialize(): Promise<void> {
       }
     }, 30 * 60 * 1000);
     dateCheckTimer = window.setInterval(checkVisibleDate, 60 * 1000);
-    window.addEventListener("focus", checkVisibleDate);
+    window.addEventListener("focus", handleWindowFocus);
     document.addEventListener("visibilitychange", checkVisibleDate);
 
     if (settings.value.configured && revealAfterInitialization) {
@@ -1221,6 +1258,7 @@ async function initialize(): Promise<void> {
 
 onMounted(() => {
   document.documentElement.dataset.sceneActive = isTauri() ? "false" : "true";
+  window.addEventListener("weatherpoem:conceal", handleConcealRequest);
   document.addEventListener("visibilitychange", handleSceneVisibilityChange);
   window.matchMedia("(prefers-color-scheme: dark)")
     .addEventListener("change", handleSystemThemeChange);
@@ -1228,6 +1266,7 @@ onMounted(() => {
 });
 onBeforeUnmount(() => {
   document.documentElement.dataset.sceneActive = "false";
+  window.removeEventListener("weatherpoem:conceal", handleConcealRequest);
   document.removeEventListener("visibilitychange", handleSceneVisibilityChange);
   window.matchMedia("(prefers-color-scheme: dark)")
     .removeEventListener("change", handleSystemThemeChange);
@@ -1235,10 +1274,11 @@ onBeforeUnmount(() => {
   if (contentControlTimer) window.clearInterval(contentControlTimer);
   if (dateCheckTimer) window.clearInterval(dateCheckTimer);
   if (readingResizeTimer) window.clearTimeout(readingResizeTimer);
-  window.removeEventListener("focus", checkVisibleDate);
+  window.removeEventListener("focus", handleWindowFocus);
   document.removeEventListener("visibilitychange", checkVisibleDate);
   stopSettingsListener?.();
   stopOpenMainListener?.();
+  stopConcealMainListener?.();
   stopExitRequestListener?.();
   stopResizeListener?.();
 });
@@ -1251,7 +1291,7 @@ onBeforeUnmount(() => {
       @settings="openSettingsFromShell"
     />
 
-    <div v-if="loading" class="loading-view" aria-live="polite">
+    <div v-if="loading || revealPending" class="loading-view" aria-live="polite">
       <span class="loading-line" />
       <p>正在择取今日诗句</p>
     </div>

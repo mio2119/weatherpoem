@@ -312,6 +312,7 @@ export async function listenForReadingResize(
 
 export async function hideWindow(): Promise<void> {
   if (!isTauri()) return;
+  window.dispatchEvent(new Event("weatherpoem:conceal"));
   document.documentElement.dataset.sceneActive = "false";
   const { getCurrentWindow } = await import("@tauri-apps/api/window");
   await getCurrentWindow().hide();
@@ -319,6 +320,7 @@ export async function hideWindow(): Promise<void> {
 
 export async function minimizeWindow(): Promise<void> {
   if (!isTauri()) return;
+  window.dispatchEvent(new Event("weatherpoem:conceal"));
   document.documentElement.dataset.sceneActive = "false";
   const { getCurrentWindow } = await import("@tauri-apps/api/window");
   await getCurrentWindow().minimize();
@@ -397,6 +399,14 @@ export async function listenForOpenMain(
   if (!isTauri()) return () => undefined;
   const { listen } = await import("@tauri-apps/api/event");
   return listen("weatherpoem://open-main", callback);
+}
+
+export async function listenForConcealMain(
+  callback: () => void,
+): Promise<() => void> {
+  if (!isTauri()) return () => undefined;
+  const { listen } = await import("@tauri-apps/api/event");
+  return listen("weatherpoem://conceal-main", callback);
 }
 
 export async function listenForExitRequest(

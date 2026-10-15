@@ -42,3 +42,7 @@ A8 因上述条件仍为**部分通过**，不把 T08 记录当作发布签收�
 全项目 `npm.cmd run check` 原先在旧 `output/WeatherPoem_0.2.0_CONTENT_WITHDRAWAL_DRILL.json` 的 30 天时效门槛处停止。该旧报告的 SHA-256 `10570C1FA4AB038E82F77ABA14E8E26CBEB373029DA691BE8E5E3EAA0096513E` 在本批前后完全一致，未改时间戳、未覆盖旧候选证据。为当前改版另生成 [T08 独立自动演练报告](./evidence/T08_CONTENT_WITHDRAWAL_DRILL_20261015.json)；报告绑定当前内容目录、撤回服务和模式文件哈希，验证远端模拟清单接受、只请求版本参数、缓存写入、离线保留、低版本及同版本冲突拒绝、候选排除和当前阅读校正。生成只用本地 Vite SSR、内存存储与模拟 `fetch`，不连接生产网关、不打开可见 EXE；同名新报告拒绝覆盖。旧报告仍可由原命令单独核查，但它目前因过期而失败；当前分支的 `npm.cmd run check` 改为校验这份新报告。
 
 `npm.cmd run content:withdrawal:redesign:check` 已通过，缺报告时先红、真实新报告后转绿。全项目 `npm.cmd run check` 因此越过撤回演练阶段，但随后在“四周试点执行计划已过期”处停止，不能称整体验证通过。报告自身明确 `signedManifestVerified`、`productionGatewayTested`、`liveClientDrill`、`namedOperatorSignoff` 均为 `false`；A8 的新原生候选和真实撤回端到端、A10/H1 人工门禁仍保持未验。
+
+2026-10-15 补一条获准的隔离原生“隐藏后内容撤回”反例：Windows 11 WebView2 运行内部 EXE `C69C991F182DE286623F9DBA379C92FA8DA7B597ACB28886D8FFF609F525A015`，先显示一首诗，隐藏窗口后在**临时测试资料**中写入该作品的同版本撤回缓存，再恢复窗口。修复后的界面先显示校验遮挡，随后只显示“今日内容正在校正”；DOM 变化中没有重新露出已撤回诗卡，校正页也不含原诗题，隔离 SQLite 的每日状态已写成 `content-withdrawn` 且作品 ID 一致。原始记录见[具数据库核对的原生报告](./evidence/T08_NATIVE_WITHDRAWAL_REVEAL_VERIFIED_20261015.json)，使用受控离线天气和本地模拟缓存，不代表生产签名清单、真实网关或具名人员操作。A8 继续**部分通过**。
+
+同哈希的[可视复测报告](./evidence/T08_NATIVE_WITHDRAWAL_CAPTURED_20261015.json)留存[撤回前诗笺](./evidence/T08_NATIVE_WITHDRAWAL_CAPTURED_20261015_before.png)与[撤回后校正页](./evidence/T08_NATIVE_WITHDRAWAL_CAPTURED_20261015_after.png)。已逐张检查：校正页不显示原诗题、诗句或伪装成正常推荐的理由，“换一首已核验内容”可见；静帧不能代替真人阅读与生产网关的端到端签收。
