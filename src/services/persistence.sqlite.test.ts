@@ -272,6 +272,76 @@ describe("SQLite feedback migration and undo", () => {
     }
   });
 
+  it.each([
+    { contextTags: "not-json", type: "disliked" },
+    { contextTags: '["winter", 7]', type: "disliked" },
+    { contextTags: '["winter"]', type: "other" },
+  ])("stops on damaged SQLite feedback without losing the raw row: %j", async (fixture) => {
+    const database = sqlite.database!;
+    const repository = await createRepository();
+    database.prepare(
+      "UPDATE feedback SET context_tags = ?, type = ? WHERE work_id = 'legacy-poem'",
+    ).run(fixture.contextTags, fixture.type);
+    const rawRow = () => database.prepare(
+      "SELECT context_tags, type FROM feedback WHERE work_id = 'legacy-poem'",
+    ).get() as { context_tags: string; type: string };
+
+    await expect(repository.load()).rejects.toBeInstanceOf(DesktopStorageUnavailableError);
+    expect(rawRow()).toEqual({ context_tags: fixture.contextTags, type: fixture.type });
+
+    database.prepare(
+      "UPDATE feedback SET context_tags = ?, type = ? WHERE work_id = 'legacy-poem'",
+    ).run('["winter"]', "disliked");
+    const recovered = await repository.load();
+    expect(recovered.feedback[0]?.contextTags).toEqual(["winter"]);
+    expect(recovered.favorites).toEqual(["legacy-poem"]);
+  });
+
+  it("keeps damaged feedback on disk across a failed load and restart", async () => {
+    const temporaryDirectory = mkdtempSync(join(tmpdir(), "weatherpoem-sqlite-feedback-"));
+    const databasePath = join(temporaryDirectory, "feedback.db");
+    try {
+      sqlite.database?.close();
+      sqlite.database = new DatabaseSync(databasePath);
+      seedLegacyDatabase(sqlite.database);
+      const repository = await createRepository();
+      const damaged = '["winter", 7]';
+      sqlite.database.prepare("UPDATE feedback SET context_tags = ? WHERE work_id = 'legacy-poem'")
+        .run(damaged);
+      await expect(repository.load()).rejects.toBeInstanceOf(DesktopStorageUnavailableError);
+
+      sqlite.database.close();
+      sqlite.database = new DatabaseSync(databasePath);
+      const readRaw = () => (sqlite.database!.prepare(
+        "SELECT context_tags FROM feedback WHERE work_id = 'legacy-poem'",
+      ).get() as { context_tags: string }).context_tags;
+      expect(readRaw()).toBe(damaged);
+      expect((sqlite.database.prepare("SELECT work_id FROM favorites").all() as Array<{ work_id: string }>))
+        .toEqual([{ work_id: "legacy-poem" }]);
+
+      const reopened = await createRepository();
+      await expect(reopened.load()).rejects.toBeInstanceOf(DesktopStorageUnavailableError);
+      expect(readRaw()).toBe(damaged);
+      sqlite.database.prepare("UPDATE feedback SET context_tags = ? WHERE work_id = 'legacy-poem'")
+        .run('["winter"]');
+      const recovered = await reopened.load();
+      expect(recovered.feedback[0]?.contextTags).toEqual(["winter"]);
+      expect(recovered.favorites).toEqual(["legacy-poem"]);
+    } finally {
+      sqlite.database?.close();
+      sqlite.database = null;
+      const resolvedTempBase = realpathSync(tmpdir()).toLowerCase();
+      const resolvedDirectory = realpathSync(temporaryDirectory);
+      if (
+        !resolvedDirectory.toLowerCase().startsWith(`${resolvedTempBase}${sep}`) ||
+        !basename(resolvedDirectory).startsWith("weatherpoem-sqlite-feedback-")
+      ) {
+        throw new Error("Refusing to remove an unexpected SQLite test directory");
+      }
+      rmSync(resolvedDirectory, { recursive: true });
+    }
+  });
+
   it("rolls back every user table when a deletion fails midway, then clears all on retry", async () => {
     const database = sqlite.database!;
     const repository = await createRepository();

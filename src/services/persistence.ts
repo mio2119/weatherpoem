@@ -325,6 +325,27 @@ interface FeedbackRow {
   local_date: string | null;
 }
 
+function parseFeedbackRow(row: FeedbackRow): FeedbackItem {
+  if (!isNonEmptyString(row.work_id) ||
+      (row.type !== "disliked" && row.type !== "replaced") ||
+      !isNonEmptyString(row.created_at) ||
+      (row.local_date !== null && typeof row.local_date !== "string")) {
+    throw new Error("Stored feedback fields are invalid");
+  }
+  const contextTags: unknown = JSON.parse(row.context_tags);
+  if (!Array.isArray(contextTags) ||
+      !contextTags.every((tag: unknown) => typeof tag === "string")) {
+    throw new Error("Stored feedback tags are invalid");
+  }
+  return {
+    workId: row.work_id,
+    type: row.type,
+    contextTags,
+    createdAt: row.created_at,
+    localDate: row.local_date ?? undefined,
+  };
+}
+
 class SqliteRepository implements AppRepository {
   private constructor(private readonly db: SqlDatabase) {}
 
@@ -464,6 +485,12 @@ class SqliteRepository implements AppRepository {
         throw new DesktopStorageUnavailableError(error);
       }
     }
+    let feedback: FeedbackItem[];
+    try {
+      feedback = feedbackRows.map(parseFeedbackRow);
+    } catch (error) {
+      throw new DesktopStorageUnavailableError(error);
+    }
     let pilotState: PilotState | undefined;
     if (pilotRows[0]?.value) {
       try {
@@ -499,13 +526,7 @@ class SqliteRepository implements AppRepository {
         displayedAt: row.displayed_at ?? undefined,
       })),
       favorites: favoriteRows.map((row) => row.work_id),
-      feedback: feedbackRows.map((row) => ({
-        workId: row.work_id,
-        type: row.type,
-        contextTags: safeStringArray(row.context_tags),
-        createdAt: row.created_at,
-        localDate: row.local_date ?? undefined,
-      })),
+      feedback,
       pilotState,
     };
   }
@@ -626,17 +647,6 @@ class SqliteRepository implements AppRepository {
 
   async clearUserData(): Promise<void> {
     await this.db.execute("INSERT INTO user_data_reset (id) VALUES (1)");
-  }
-}
-
-function safeStringArray(value: string): string[] {
-  try {
-    const parsed = JSON.parse(value) as unknown;
-    return Array.isArray(parsed)
-      ? parsed.filter((item): item is string => typeof item === "string")
-      : [];
-  } catch {
-    return [];
   }
 }
 
