@@ -123,6 +123,7 @@ onBeforeUnmount(() => resizeObserver?.disconnect());
       <article
         class="poem-paper"
         :data-scene="scene.kind"
+        :data-motif="scene.motif"
         aria-labelledby="daily-poem-title"
       >
         <div class="poem-heading">

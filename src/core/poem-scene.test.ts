@@ -34,6 +34,20 @@ describe("poem scene grounding", () => {
     }).kind).toBe("season");
   });
 
+  it("uses the published poem's Chu River image only for Wen Xiu on Dragon Boat Festival", () => {
+    const poem = POEMS.find((item) => item.id === "wen-xiu-duan-wu")!;
+    const festivalCalendar = { ...baseCalendar, festival: "端午节" };
+    expect(selectPoemScene({
+      poem, calendar: festivalCalendar, weather: baseWeather,
+    })).toMatchObject({
+      kind: "festival", motif: "chu-river", glyph: "江",
+      description: expect.stringContaining("楚江"),
+    });
+    expect(selectPoemScene({
+      poem, calendar: { ...festivalCalendar, festival: undefined }, weather: baseWeather,
+    }).motif).toBeUndefined();
+  });
+
   it("uses weather art only for fresh, known conditions", () => {
     const scene = (
       weather: WeatherContext,

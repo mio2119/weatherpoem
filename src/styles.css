@@ -905,6 +905,17 @@ button:disabled {
   );
 }
 
+/* Wen Xiu's poem names the Chu River; this is a literary image, not live weather. */
+.poem-paper[data-motif="chu-river"]::before {
+  --chu-river-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 220 240'%3E%3Cg fill='none' stroke='white' stroke-width='2'%3E%3Cpath d='M-15 55 C20 33 45 73 80 52 S140 25 180 48 S220 66 240 48'/%3E%3Cpath d='M-15 105 C20 83 45 123 80 102 S140 75 180 98 S220 116 240 98'/%3E%3Cpath d='M-15 155 C20 133 45 173 80 152 S140 125 180 148 S220 166 240 148'/%3E%3Cpath d='M-15 205 C20 183 45 223 80 202 S140 175 180 198 S220 216 240 198'/%3E%3C/g%3E%3C/svg%3E");
+  top: 14%;
+  right: -4%;
+  width: 34%;
+  background: var(--scene-ink);
+  -webkit-mask: var(--chu-river-mask) center / 100% 100% no-repeat;
+  mask: var(--chu-river-mask) center / 100% 100% no-repeat;
+}
+
 .poem-paper[data-scene="rain"]::before {
   background: repeating-linear-gradient(
     107deg, transparent 0 23px, var(--scene-ink) 24px 25px,

@@ -134,7 +134,12 @@ async function measure(expectedView, width, height, scrollToEnd = false) {
       clientHeight: main?.clientHeight,
       scrollTop: main?.scrollTop,
       scene: document.querySelector(".poem-paper")?.dataset.scene,
+      motif: document.querySelector(".poem-paper")?.dataset.motif,
+      sceneGlyph: document.querySelector(".scene-mark")?.textContent,
       sceneDescription: document.querySelector(".scene-mark")?.getAttribute("aria-label"),
+      decorationMask: document.querySelector(".poem-paper")
+        ? getComputedStyle(document.querySelector(".poem-paper"), "::before").maskImage
+        : null,
       context: document.querySelector(".context-strip")?.textContent,
       reason: document.querySelector(".reason-block")?.textContent,
       poemVisible: Boolean(document.querySelector(".poem-paper")),
@@ -336,8 +341,11 @@ try {
       const weatherCache = warning ? {
         cityId: "beijing", cachedAt: fixedTime,
         weather: {
-          kind: "heavy-rain", label: "隔离演练天气", freshness: "fresh",
-          source: "synthetic", warnings: [warning], shouldSuppressPoem: true,
+          // A valid cache-shaped fixture keeps the safety route reachable after
+          // cache provenance validation; every warning is labeled as a drill.
+          kind: "heavy-rain", label: "大雨", freshness: "fresh",
+          source: "open-meteo", observedAt: new Date(fixedTime).toISOString(),
+          warnings: [warning], shouldSuppressPoem: true,
         },
       } : undefined;
       const withdrawal = scenario.name === "withdrawn" || scenario.name === "suspended"
@@ -385,6 +393,10 @@ try {
         safety && (roomy.poemVisible || compact.poemVisible) ||
         scenario.name === "festival" && (
           roomy.scene !== "festival" ||
+          roomy.motif !== "chu-river" ||
+          roomy.sceneGlyph !== "江" ||
+          !roomy.decorationMask?.includes("data:image/svg+xml") ||
+          !roomy.sceneDescription?.includes("楚江") ||
           !roomy.sceneDescription?.includes("端午节") ||
           !roomy.reason?.includes("端午") ||
           !roomy.context?.includes("端午节")

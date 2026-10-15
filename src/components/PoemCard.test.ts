@@ -135,6 +135,19 @@ describe("glance poem card", () => {
       .toContain("不代表当地实时天气");
   });
 
+  it("marks Wen Xiu's Chu River as a poem image, not local weather", () => {
+    const poem = POEMS.find((item) => item.id === "wen-xiu-duan-wu")!;
+    const wrapper = render({
+      recommendation: { ...recommendation, poem },
+      calendar: { ...calendar, festival: "端午节" },
+    });
+    expect(wrapper.get(".poem-paper").attributes("data-scene")).toBe("festival");
+    expect(wrapper.get(".poem-paper").attributes("data-motif")).toBe("chu-river");
+    expect(wrapper.get(".scene-mark").text()).toBe("江");
+    expect(wrapper.get(".scene-mark").attributes("aria-label"))
+      .toContain("不代表当地天气");
+  });
+
   it("switches to vertical columns without changing the poem text", async () => {
     const wrapper = render();
     const initialHeightReports = wrapper.emitted("heightNeeded")?.length ?? 0;
