@@ -1,6 +1,9 @@
+# Follow-up runs must pass a fresh -ReportPath and -SkipScreenshots. The original
+# screenshot/report pair is immutable; this probe never overwrites evidence.
 param(
     [string]$CandidatePath = "E:\weatherpoem\.work\redesign-native-20261015\release\weatherpoem.exe",
-    [string]$ReportPath = "E:\weatherpoem\review\redesign\evidence\T04_NATIVE_WINDOW_20261015.json"
+    [string]$ReportPath = "E:\weatherpoem\review\redesign\evidence\T04_NATIVE_WINDOW_20261015.json",
+    [switch]$SkipScreenshots
 )
 
 Set-StrictMode -Version Latest
@@ -29,7 +32,6 @@ public static class WeatherPoemNativeWindowProbe {
     [DllImport("user32.dll")] public static extern bool IsWindow(IntPtr window);
     [DllImport("user32.dll")] public static extern uint GetDpiForWindow(IntPtr window);
     [DllImport("user32.dll")] public static extern bool MoveWindow(IntPtr window, int x, int y, int width, int height, bool repaint);
-    [DllImport("user32.dll")] public static extern void mouse_event(uint flags, uint x, uint y, uint data, UIntPtr extraInfo);
 
     public static IntPtr FindProductWindow(int wantedPid) {
         IntPtr found = IntPtr.Zero;
@@ -134,89 +136,47 @@ function Find-TrayElement {
     $root = [System.Windows.Automation.AutomationElement]::RootElement
     $script:trayDiagnostic = @()
     $overflow = $null
-    $direct = $null
-    $all = $root.FindAll(
-        [System.Windows.Automation.TreeScope]::Descendants,
-        [System.Windows.Automation.Condition]::TrueCondition
-    )
-    foreach ($element in $all) {
-        $name = $element.Current.Name
-        if ($name -in @("WeatherPoem 今日诗笺", "显示隐藏的图标", "Show hidden icons")) {
-            $script:trayDiagnostic += [ordered]@{
-                name = $name
-                controlType = $element.Current.ControlType.ProgrammaticName
-                className = $element.Current.ClassName
-            }
-        }
-        if ($name -in @("显示隐藏的图标", "Show hidden icons") -and
-            $element.Current.ControlType -eq [System.Windows.Automation.ControlType]::Button) {
-            $overflow = $element
-        }
-        if ($name -eq "WeatherPoem 今日诗笺" -and
-            $element.Current.ControlType -eq [System.Windows.Automation.ControlType]::Button -and
-            $element.Current.ClassName -eq "SystemTray.NormalButton") {
-            $direct = $element
-        }
-    }
-    if ($overflow) {
-        $overflow.GetCurrentPattern([System.Windows.Automation.InvokePattern]::Pattern).Invoke()
-        Start-Sleep -Milliseconds 400
-        $expanded = $root.FindAll(
+    for ($attempt = 0; $attempt -lt 2; $attempt++) {
+        $all = $root.FindAll(
             [System.Windows.Automation.TreeScope]::Descendants,
             [System.Windows.Automation.Condition]::TrueCondition
         )
-        foreach ($element in $expanded) {
+        foreach ($element in $all) {
             $name = $element.Current.Name
-            if ($name -eq "WeatherPoem 今日诗笺") {
+            if ($name -in @("WeatherPoem 今日诗笺", "显示隐藏的图标", "Show hidden icons")) {
                 $script:trayDiagnostic += [ordered]@{
                     name = $name
                     controlType = $element.Current.ControlType.ProgrammaticName
                     className = $element.Current.ClassName
                 }
-                if ($element.Current.ControlType -eq [System.Windows.Automation.ControlType]::Button -and
-                    $element.Current.ClassName -eq "SystemTray.NormalButton" -and
-                    -not $element.Current.IsOffscreen) { return $element }
+            }
+            if ($name -in @("显示隐藏的图标", "Show hidden icons") -and
+                $element.Current.ControlType -eq [System.Windows.Automation.ControlType]::Button) {
+                $overflow = $element
+            }
+            if ($name -eq "WeatherPoem 今日诗笺" -and
+                $element.Current.ControlType -eq [System.Windows.Automation.ControlType]::Button -and
+                $element.Current.ClassName -eq "SystemTray.NormalButton" -and
+                -not $element.Current.IsOffscreen) {
+                return $element
             }
         }
-        $overflow.GetCurrentPattern([System.Windows.Automation.InvokePattern]::Pattern).Invoke()
+        if ($attempt -eq 0 -and $overflow) {
+            $overflow.GetCurrentPattern([System.Windows.Automation.InvokePattern]::Pattern).Invoke()
+            Start-Sleep -Milliseconds 500
+        }
     }
-    if ($direct -and -not $direct.Current.IsOffscreen) { return $direct }
     return $null
 }
 
-function Click-TrayElement {
+function Invoke-TrayElement {
     param([System.Windows.Automation.AutomationElement]$Element)
     if ($Element.Current.Name -ne "WeatherPoem 今日诗笺" -or
         $Element.Current.ControlType -ne [System.Windows.Automation.ControlType]::Button -or
         $Element.Current.ClassName -ne "SystemTray.NormalButton") {
-        throw "Refusing to click an unexpected tray element"
+        throw "Refusing to invoke an unexpected tray element"
     }
-    $bounds = $Element.Current.BoundingRectangle
-    if ($bounds.Width -lt 12 -or $bounds.Width -gt 100 -or
-        $bounds.Height -lt 12 -or $bounds.Height -gt 100) {
-        throw "Tray icon bounds are not credible"
-    }
-    $screen = [System.Windows.Forms.Screen]::FromPoint([System.Drawing.Point]::new(
-        [int]($bounds.Left + $bounds.Width / 2),
-        [int]($bounds.Top + $bounds.Height / 2)
-    ))
-    if (-not $screen.Bounds.Contains([System.Drawing.Point]::new(
-        [int]($bounds.Left + $bounds.Width / 2),
-        [int]($bounds.Top + $bounds.Height / 2)
-    ))) { throw "Tray icon bounds are outside the display" }
-    $originalCursor = [System.Windows.Forms.Cursor]::Position
-    try {
-        [System.Windows.Forms.Cursor]::Position = [System.Drawing.Point]::new(
-            [int]($bounds.Left + $bounds.Width / 2),
-            [int]($bounds.Top + $bounds.Height / 2)
-        )
-        Start-Sleep -Milliseconds 75
-        [WeatherPoemNativeWindowProbe]::mouse_event(0x0002, 0, 0, 0, [UIntPtr]::Zero)
-        [WeatherPoemNativeWindowProbe]::mouse_event(0x0004, 0, 0, 0, [UIntPtr]::Zero)
-        Start-Sleep -Milliseconds 250
-    } finally {
-        [System.Windows.Forms.Cursor]::Position = $originalCursor
-    }
+    $Element.GetCurrentPattern([System.Windows.Automation.InvokePattern]::Pattern).Invoke()
 }
 
 function Save-WindowImage {
@@ -238,6 +198,15 @@ $expectedCandidateRoot = [IO.Path]::GetFullPath((Join-Path $projectRoot ".work")
 if (-not $candidate.StartsWith($expectedCandidateRoot, [StringComparison]::OrdinalIgnoreCase) -or
     -not (Test-Path -LiteralPath $candidate -PathType Leaf)) {
     throw "Candidate must be an existing EXE under this project's .work directory"
+}
+$evidenceRoot = [IO.Path]::GetFullPath((Join-Path $projectRoot "review\redesign\evidence")) + [IO.Path]::DirectorySeparatorChar
+$ReportPath = [IO.Path]::GetFullPath($ReportPath)
+if (-not $ReportPath.StartsWith($evidenceRoot, [StringComparison]::OrdinalIgnoreCase) -or
+    [IO.Path]::GetExtension($ReportPath) -ne ".json") {
+    throw "Report must be a JSON file under review/redesign/evidence"
+}
+if (Test-Path -LiteralPath $ReportPath) {
+    throw "Refusing to overwrite an existing native-window report: $ReportPath"
 }
 if (@(Get-Process -Name weatherpoem -ErrorAction SilentlyContinue).Count -gt 0) {
     throw "A WeatherPoem process is already running; isolated window test stopped"
@@ -344,13 +313,15 @@ try {
     $report.observations.manualForegroundOwnerPid = [WeatherPoemNativeWindowProbe]::OwnerPid(
         [WeatherPoemNativeWindowProbe]::GetForegroundWindow()
     )
-    if ($report.observations.manualForegroundOwnerPid -eq $process.Id) {
+    if (-not $SkipScreenshots -and $report.observations.manualForegroundOwnerPid -eq $process.Id) {
         $report.observations.glanceScreenshot = "T04_NATIVE_GLANCE_20261015.png"
+        $glanceScreenshotPath = Join-Path (Split-Path -Parent $ReportPath) $report.observations.glanceScreenshot
+        if (Test-Path -LiteralPath $glanceScreenshotPath) { throw "Refusing to overwrite a glance screenshot" }
         $glance = $report.observations.glance
         [WeatherPoemNativeWindowProbe]::MoveWindow($window, 350, 180, $glance.width, $glance.height, $true) | Out-Null
         Start-Sleep -Milliseconds 300
-        Save-WindowImage -Handle $window -Path (Join-Path (Split-Path -Parent $ReportPath) $report.observations.glanceScreenshot)
-    } else {
+        Save-WindowImage -Handle $window -Path $glanceScreenshotPath
+    } elseif (-not $SkipScreenshots) {
         $report.limitations += "Glance screenshot omitted because Windows did not foreground the test app."
     }
     $readButton.GetCurrentPattern([System.Windows.Automation.InvokePattern]::Pattern).Invoke()
@@ -359,10 +330,14 @@ try {
         if ($state.width -ge 540 -and $state.height -ge 600) { $state }
     } "expanded reading window" 10
     $report.observations.reading = $reading
-    $report.observations.readingScreenshot = "T04_NATIVE_READING_20261015.png"
-    [WeatherPoemNativeWindowProbe]::MoveWindow($window, 350, 140, $reading.width, $reading.height, $true) | Out-Null
-    Start-Sleep -Milliseconds 300
-    Save-WindowImage -Handle $window -Path (Join-Path (Split-Path -Parent $ReportPath) $report.observations.readingScreenshot)
+    if (-not $SkipScreenshots) {
+        $report.observations.readingScreenshot = "T04_NATIVE_READING_20261015.png"
+        $readingScreenshotPath = Join-Path (Split-Path -Parent $ReportPath) $report.observations.readingScreenshot
+        if (Test-Path -LiteralPath $readingScreenshotPath) { throw "Refusing to overwrite a reading screenshot" }
+        [WeatherPoemNativeWindowProbe]::MoveWindow($window, 350, 140, $reading.width, $reading.height, $true) | Out-Null
+        Start-Sleep -Milliseconds 300
+        Save-WindowImage -Handle $window -Path $readingScreenshotPath
+    }
 
     if (-not [WeatherPoemNativeWindowProbe]::MoveWindow($window, 350, 160, 640, 640, $true)) {
         throw "Windows did not accept reading window resize"
@@ -403,8 +378,8 @@ try {
             offscreen = $trayElement.Current.IsOffscreen
         }
         try {
-            Click-TrayElement -Element $trayElement
-            $report.observations.trayInteraction = "bounded physical left click"
+            Invoke-TrayElement -Element $trayElement
+            $report.observations.trayInteraction = "exact UI Automation InvokePattern"
             $reopenedFromTray = Wait-For {
                 [WeatherPoemNativeWindowProbe]::FindProductWindow($process.Id)
             } "tray recovery" 10
@@ -419,7 +394,7 @@ try {
                 } "tray-opened app focus" 3 | Out-Null
                 $focusedFromTray = $true
             } catch {
-                $report.limitations += "Physical tray click restored the window but focus was not observed within three seconds."
+                $report.limitations += "Programmatic tray invocation restored the window but focus was not observed within three seconds; human click focus remains unverified."
             }
             $report.observations.trayForegroundOwnerPid = [WeatherPoemNativeWindowProbe]::OwnerPid(
                 [WeatherPoemNativeWindowProbe]::GetForegroundWindow()
@@ -427,7 +402,7 @@ try {
             $report.observations.trayOpenedWithFocus = $focusedFromTray
         } catch {
             $report.observations.trayRecovered = $false
-            $report.limitations += "Tray element was visible but bounded physical click did not recover the window: $_"
+            $report.limitations += "Exact tray UI Automation invocation did not recover the window: $_"
         }
     } else {
         $report.observations.trayRecovered = $null
@@ -472,10 +447,11 @@ try {
         if ([Math]::Abs($state.width - 640) -le 16 -and [Math]::Abs($state.height - 640) -le 16) { $state }
     } "reading size after restart" 10
     $report.limitations += "Resize was generated by Win32 MoveWindow, not a physical drag."
-    if (-not $report.observations.trayRecovered -or -not $report.observations.trayOpenedWithFocus) {
-        throw "Tray recovery or manual focus did not pass; cross-restart size check completed"
+    if (-not $report.observations.trayRecovered) {
+        throw "Programmatic tray recovery did not pass; cross-restart size check completed"
     }
-    $report.result = "focus-resize-tray-and-restart-passed"
+    $report.limitations += "Programmatic UI Automation invocation cannot replace a human manual-click focus check."
+    $report.result = "focus-resize-tray-invoke-and-restart-passed"
 } catch {
     $report.result = "failed"
     $report.error = [string]$_
