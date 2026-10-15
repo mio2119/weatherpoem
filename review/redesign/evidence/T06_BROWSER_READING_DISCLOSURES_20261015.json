@@ -1,0 +1,1233 @@
+{
+  "schemaVersion": "1.0",
+  "browser": "Chrome/155.0.8059.40",
+  "localDate": "2026-06-01",
+  "poemId": "cui-hao-huang-he-lou",
+  "isolatedProfile": true,
+  "nativeWebView2": false,
+  "readingMeasurements": [
+    {
+      "theme": "light",
+      "layout": "horizontal",
+      "fontSize": "small",
+      "fullTextMatches": true,
+      "roomy": {
+        "theme": "light",
+        "fontSize": "small",
+        "vertical": false,
+        "title": "黄鹤楼",
+        "poemText": "昔人已乘黄鹤去，此地空余黄鹤楼。黄鹤一去不复返，白云千载空悠悠。晴川历历汉阳树，芳草萋萋鹦鹉洲。日暮乡关何处是？烟波江上使人愁。",
+        "poemLineCount": 4,
+        "documentScrollWidth": 560,
+        "panelClientHeight": 660,
+        "panelScrollHeight": 697,
+        "panelScrollTop": 0,
+        "frameClientWidth": 483,
+        "frameScrollWidth": 483,
+        "frameInitialScroll": 0,
+        "frameEndScroll": 0,
+        "back": {
+          "top": 67,
+          "bottom": 97,
+          "left": 21,
+          "right": 87
+        },
+        "layoutAction": {
+          "top": 237,
+          "bottom": 269,
+          "left": 462,
+          "right": 518
+        },
+        "edition": {
+          "top": 690,
+          "bottom": 708,
+          "left": 35,
+          "right": 518
+        },
+        "editionText": " 文本来源：《全唐诗》",
+        "typography": {
+          "sectionBody": 14,
+          "annotationTerm": 13,
+          "annotationExplanation": 13,
+          "edition": 12
+        },
+        "viewport": {
+          "width": 560,
+          "height": 720
+        }
+      },
+      "compact": {
+        "theme": "light",
+        "fontSize": "small",
+        "vertical": false,
+        "title": "黄鹤楼",
+        "poemText": "昔人已乘黄鹤去，此地空余黄鹤楼。黄鹤一去不复返，白云千载空悠悠。晴川历历汉阳树，芳草萋萋鹦鹉洲。日暮乡关何处是？烟波江上使人愁。",
+        "poemLineCount": 4,
+        "documentScrollWidth": 320,
+        "panelClientHeight": 200,
+        "panelScrollHeight": 813,
+        "panelScrollTop": 613,
+        "frameClientWidth": 243,
+        "frameScrollWidth": 243,
+        "frameInitialScroll": 0,
+        "frameEndScroll": 0,
+        "back": {
+          "top": 67,
+          "bottom": 97,
+          "left": 21,
+          "right": 87
+        },
+        "layoutAction": {
+          "top": -376,
+          "bottom": -344,
+          "left": 222,
+          "right": 278
+        },
+        "edition": {
+          "top": 193,
+          "bottom": 211,
+          "left": 35,
+          "right": 278
+        },
+        "editionText": " 文本来源：《全唐诗》",
+        "typography": {
+          "sectionBody": 14,
+          "annotationTerm": 13,
+          "annotationExplanation": 13,
+          "edition": 12
+        },
+        "viewport": {
+          "width": 320,
+          "height": 260
+        }
+      }
+    },
+    {
+      "theme": "light",
+      "layout": "horizontal",
+      "fontSize": "medium",
+      "fullTextMatches": true,
+      "roomy": {
+        "theme": "light",
+        "fontSize": "medium",
+        "vertical": false,
+        "title": "黄鹤楼",
+        "poemText": "昔人已乘黄鹤去，此地空余黄鹤楼。黄鹤一去不复返，白云千载空悠悠。晴川历历汉阳树，芳草萋萋鹦鹉洲。日暮乡关何处是？烟波江上使人愁。",
+        "poemLineCount": 4,
+        "documentScrollWidth": 560,
+        "panelClientHeight": 660,
+        "panelScrollHeight": 710,
+        "panelScrollTop": 0,
+        "frameClientWidth": 483,
+        "frameScrollWidth": 483,
+        "frameInitialScroll": 0,
+        "frameEndScroll": 0,
+        "back": {
+          "top": 67,
+          "bottom": 97,
+          "left": 21,
+          "right": 87
+        },
+        "layoutAction": {
+          "top": 237,
+          "bottom": 269,
+          "left": 462,
+          "right": 518
+        },
+        "edition": {
+          "top": 703,
+          "bottom": 721,
+          "left": 35,
+          "right": 518
+        },
+        "editionText": " 文本来源：《全唐诗》",
+        "typography": {
+          "sectionBody": 14,
+          "annotationTerm": 13,
+          "annotationExplanation": 13,
+          "edition": 12
+        },
+        "viewport": {
+          "width": 560,
+          "height": 720
+        }
+      },
+      "compact": {
+        "theme": "light",
+        "fontSize": "medium",
+        "vertical": false,
+        "title": "黄鹤楼",
+        "poemText": "昔人已乘黄鹤去，此地空余黄鹤楼。黄鹤一去不复返，白云千载空悠悠。晴川历历汉阳树，芳草萋萋鹦鹉洲。日暮乡关何处是？烟波江上使人愁。",
+        "poemLineCount": 4,
+        "documentScrollWidth": 320,
+        "panelClientHeight": 200,
+        "panelScrollHeight": 838,
+        "panelScrollTop": 638,
+        "frameClientWidth": 243,
+        "frameScrollWidth": 243,
+        "frameInitialScroll": 0,
+        "frameEndScroll": 0,
+        "back": {
+          "top": 67,
+          "bottom": 97,
+          "left": 21,
+          "right": 87
+        },
+        "layoutAction": {
+          "top": -401,
+          "bottom": -369,
+          "left": 222,
+          "right": 278
+        },
+        "edition": {
+          "top": 193,
+          "bottom": 211,
+          "left": 35,
+          "right": 278
+        },
+        "editionText": " 文本来源：《全唐诗》",
+        "typography": {
+          "sectionBody": 14,
+          "annotationTerm": 13,
+          "annotationExplanation": 13,
+          "edition": 12
+        },
+        "viewport": {
+          "width": 320,
+          "height": 260
+        }
+      }
+    },
+    {
+      "theme": "light",
+      "layout": "horizontal",
+      "fontSize": "large",
+      "fullTextMatches": true,
+      "roomy": {
+        "theme": "light",
+        "fontSize": "large",
+        "vertical": false,
+        "title": "黄鹤楼",
+        "poemText": "昔人已乘黄鹤去，此地空余黄鹤楼。黄鹤一去不复返，白云千载空悠悠。晴川历历汉阳树，芳草萋萋鹦鹉洲。日暮乡关何处是？烟波江上使人愁。",
+        "poemLineCount": 4,
+        "documentScrollWidth": 560,
+        "panelClientHeight": 660,
+        "panelScrollHeight": 731,
+        "panelScrollTop": 0,
+        "frameClientWidth": 483,
+        "frameScrollWidth": 483,
+        "frameInitialScroll": 0,
+        "frameEndScroll": 0,
+        "back": {
+          "top": 67,
+          "bottom": 97,
+          "left": 21,
+          "right": 87
+        },
+        "layoutAction": {
+          "top": 237,
+          "bottom": 269,
+          "left": 462,
+          "right": 518
+        },
+        "edition": {
+          "top": 724,
+          "bottom": 742,
+          "left": 35,
+          "right": 518
+        },
+        "editionText": " 文本来源：《全唐诗》",
+        "typography": {
+          "sectionBody": 14,
+          "annotationTerm": 13,
+          "annotationExplanation": 13,
+          "edition": 12
+        },
+        "viewport": {
+          "width": 560,
+          "height": 720
+        }
+      },
+      "compact": {
+        "theme": "light",
+        "fontSize": "large",
+        "vertical": false,
+        "title": "黄鹤楼",
+        "poemText": "昔人已乘黄鹤去，此地空余黄鹤楼。黄鹤一去不复返，白云千载空悠悠。晴川历历汉阳树，芳草萋萋鹦鹉洲。日暮乡关何处是？烟波江上使人愁。",
+        "poemLineCount": 4,
+        "documentScrollWidth": 320,
+        "panelClientHeight": 200,
+        "panelScrollHeight": 879,
+        "panelScrollTop": 679,
+        "frameClientWidth": 243,
+        "frameScrollWidth": 243,
+        "frameInitialScroll": 0,
+        "frameEndScroll": 0,
+        "back": {
+          "top": 67,
+          "bottom": 97,
+          "left": 21,
+          "right": 87
+        },
+        "layoutAction": {
+          "top": -442,
+          "bottom": -410,
+          "left": 222,
+          "right": 278
+        },
+        "edition": {
+          "top": 193,
+          "bottom": 211,
+          "left": 35,
+          "right": 278
+        },
+        "editionText": " 文本来源：《全唐诗》",
+        "typography": {
+          "sectionBody": 14,
+          "annotationTerm": 13,
+          "annotationExplanation": 13,
+          "edition": 12
+        },
+        "viewport": {
+          "width": 320,
+          "height": 260
+        }
+      }
+    },
+    {
+      "theme": "light",
+      "layout": "vertical",
+      "fontSize": "small",
+      "fullTextMatches": true,
+      "roomy": {
+        "theme": "light",
+        "fontSize": "small",
+        "vertical": true,
+        "title": "黄鹤楼",
+        "poemText": "昔人已乘黄鹤去，此地空余黄鹤楼。黄鹤一去不复返，白云千载空悠悠。晴川历历汉阳树，芳草萋萋鹦鹉洲。日暮乡关何处是？烟波江上使人愁。",
+        "poemLineCount": 8,
+        "documentScrollWidth": 560,
+        "panelClientHeight": 660,
+        "panelScrollHeight": 739,
+        "panelScrollTop": 0,
+        "frameClientWidth": 483,
+        "frameScrollWidth": 483,
+        "frameInitialScroll": 0,
+        "frameEndScroll": 0,
+        "back": {
+          "top": 67,
+          "bottom": 97,
+          "left": 21,
+          "right": 87
+        },
+        "layoutAction": {
+          "top": 237,
+          "bottom": 269,
+          "left": 462,
+          "right": 518
+        },
+        "edition": {
+          "top": 732,
+          "bottom": 750,
+          "left": 35,
+          "right": 518
+        },
+        "editionText": " 文本来源：《全唐诗》",
+        "typography": {
+          "sectionBody": 14,
+          "annotationTerm": 13,
+          "annotationExplanation": 13,
+          "edition": 12
+        },
+        "viewport": {
+          "width": 560,
+          "height": 720
+        }
+      },
+      "compact": {
+        "theme": "light",
+        "fontSize": "small",
+        "vertical": true,
+        "title": "黄鹤楼",
+        "poemText": "昔人已乘黄鹤去，此地空余黄鹤楼。黄鹤一去不复返，白云千载空悠悠。晴川历历汉阳树，芳草萋萋鹦鹉洲。日暮乡关何处是？烟波江上使人愁。",
+        "poemLineCount": 8,
+        "documentScrollWidth": 320,
+        "panelClientHeight": 200,
+        "panelScrollHeight": 754,
+        "panelScrollTop": 554,
+        "frameClientWidth": 243,
+        "frameScrollWidth": 265,
+        "frameInitialScroll": 0,
+        "frameEndScroll": -21,
+        "back": {
+          "top": 67,
+          "bottom": 97,
+          "left": 21,
+          "right": 87
+        },
+        "layoutAction": {
+          "top": -317,
+          "bottom": -285,
+          "left": 222,
+          "right": 278
+        },
+        "edition": {
+          "top": 193,
+          "bottom": 211,
+          "left": 35,
+          "right": 278
+        },
+        "editionText": " 文本来源：《全唐诗》",
+        "typography": {
+          "sectionBody": 14,
+          "annotationTerm": 13,
+          "annotationExplanation": 13,
+          "edition": 12
+        },
+        "viewport": {
+          "width": 320,
+          "height": 260
+        }
+      }
+    },
+    {
+      "theme": "light",
+      "layout": "vertical",
+      "fontSize": "medium",
+      "fullTextMatches": true,
+      "roomy": {
+        "theme": "light",
+        "fontSize": "medium",
+        "vertical": true,
+        "title": "黄鹤楼",
+        "poemText": "昔人已乘黄鹤去，此地空余黄鹤楼。黄鹤一去不复返，白云千载空悠悠。晴川历历汉阳树，芳草萋萋鹦鹉洲。日暮乡关何处是？烟波江上使人愁。",
+        "poemLineCount": 8,
+        "documentScrollWidth": 560,
+        "panelClientHeight": 660,
+        "panelScrollHeight": 756,
+        "panelScrollTop": 0,
+        "frameClientWidth": 483,
+        "frameScrollWidth": 483,
+        "frameInitialScroll": 0,
+        "frameEndScroll": 0,
+        "back": {
+          "top": 67,
+          "bottom": 97,
+          "left": 21,
+          "right": 87
+        },
+        "layoutAction": {
+          "top": 237,
+          "bottom": 269,
+          "left": 462,
+          "right": 518
+        },
+        "edition": {
+          "top": 749,
+          "bottom": 767,
+          "left": 35,
+          "right": 518
+        },
+        "editionText": " 文本来源：《全唐诗》",
+        "typography": {
+          "sectionBody": 14,
+          "annotationTerm": 13,
+          "annotationExplanation": 13,
+          "edition": 12
+        },
+        "viewport": {
+          "width": 560,
+          "height": 720
+        }
+      },
+      "compact": {
+        "theme": "light",
+        "fontSize": "medium",
+        "vertical": true,
+        "title": "黄鹤楼",
+        "poemText": "昔人已乘黄鹤去，此地空余黄鹤楼。黄鹤一去不复返，白云千载空悠悠。晴川历历汉阳树，芳草萋萋鹦鹉洲。日暮乡关何处是？烟波江上使人愁。",
+        "poemLineCount": 8,
+        "documentScrollWidth": 320,
+        "panelClientHeight": 200,
+        "panelScrollHeight": 771,
+        "panelScrollTop": 571,
+        "frameClientWidth": 243,
+        "frameScrollWidth": 289,
+        "frameInitialScroll": 0,
+        "frameEndScroll": -46,
+        "back": {
+          "top": 67,
+          "bottom": 97,
+          "left": 21,
+          "right": 87
+        },
+        "layoutAction": {
+          "top": -334,
+          "bottom": -302,
+          "left": 222,
+          "right": 278
+        },
+        "edition": {
+          "top": 193,
+          "bottom": 211,
+          "left": 35,
+          "right": 278
+        },
+        "editionText": " 文本来源：《全唐诗》",
+        "typography": {
+          "sectionBody": 14,
+          "annotationTerm": 13,
+          "annotationExplanation": 13,
+          "edition": 12
+        },
+        "viewport": {
+          "width": 320,
+          "height": 260
+        }
+      }
+    },
+    {
+      "theme": "light",
+      "layout": "vertical",
+      "fontSize": "large",
+      "fullTextMatches": true,
+      "roomy": {
+        "theme": "light",
+        "fontSize": "large",
+        "vertical": true,
+        "title": "黄鹤楼",
+        "poemText": "昔人已乘黄鹤去，此地空余黄鹤楼。黄鹤一去不复返，白云千载空悠悠。晴川历历汉阳树，芳草萋萋鹦鹉洲。日暮乡关何处是？烟波江上使人愁。",
+        "poemLineCount": 8,
+        "documentScrollWidth": 560,
+        "panelClientHeight": 660,
+        "panelScrollHeight": 784,
+        "panelScrollTop": 0,
+        "frameClientWidth": 483,
+        "frameScrollWidth": 483,
+        "frameInitialScroll": 0,
+        "frameEndScroll": 0,
+        "back": {
+          "top": 67,
+          "bottom": 97,
+          "left": 21,
+          "right": 87
+        },
+        "layoutAction": {
+          "top": 237,
+          "bottom": 269,
+          "left": 462,
+          "right": 518
+        },
+        "edition": {
+          "top": 777,
+          "bottom": 795,
+          "left": 35,
+          "right": 518
+        },
+        "editionText": " 文本来源：《全唐诗》",
+        "typography": {
+          "sectionBody": 14,
+          "annotationTerm": 13,
+          "annotationExplanation": 13,
+          "edition": 12
+        },
+        "viewport": {
+          "width": 560,
+          "height": 720
+        }
+      },
+      "compact": {
+        "theme": "light",
+        "fontSize": "large",
+        "vertical": true,
+        "title": "黄鹤楼",
+        "poemText": "昔人已乘黄鹤去，此地空余黄鹤楼。黄鹤一去不复返，白云千载空悠悠。晴川历历汉阳树，芳草萋萋鹦鹉洲。日暮乡关何处是？烟波江上使人愁。",
+        "poemLineCount": 8,
+        "documentScrollWidth": 320,
+        "panelClientHeight": 200,
+        "panelScrollHeight": 799,
+        "panelScrollTop": 599,
+        "frameClientWidth": 243,
+        "frameScrollWidth": 328,
+        "frameInitialScroll": 0,
+        "frameEndScroll": -85,
+        "back": {
+          "top": 67,
+          "bottom": 97,
+          "left": 21,
+          "right": 87
+        },
+        "layoutAction": {
+          "top": -362,
+          "bottom": -330,
+          "left": 222,
+          "right": 278
+        },
+        "edition": {
+          "top": 193,
+          "bottom": 211,
+          "left": 35,
+          "right": 278
+        },
+        "editionText": " 文本来源：《全唐诗》",
+        "typography": {
+          "sectionBody": 14,
+          "annotationTerm": 13,
+          "annotationExplanation": 13,
+          "edition": 12
+        },
+        "viewport": {
+          "width": 320,
+          "height": 260
+        }
+      }
+    },
+    {
+      "theme": "dark",
+      "layout": "horizontal",
+      "fontSize": "small",
+      "fullTextMatches": true,
+      "roomy": {
+        "theme": "dark",
+        "fontSize": "small",
+        "vertical": false,
+        "title": "黄鹤楼",
+        "poemText": "昔人已乘黄鹤去，此地空余黄鹤楼。黄鹤一去不复返，白云千载空悠悠。晴川历历汉阳树，芳草萋萋鹦鹉洲。日暮乡关何处是？烟波江上使人愁。",
+        "poemLineCount": 4,
+        "documentScrollWidth": 560,
+        "panelClientHeight": 660,
+        "panelScrollHeight": 697,
+        "panelScrollTop": 0,
+        "frameClientWidth": 483,
+        "frameScrollWidth": 483,
+        "frameInitialScroll": 0,
+        "frameEndScroll": 0,
+        "back": {
+          "top": 67,
+          "bottom": 97,
+          "left": 21,
+          "right": 87
+        },
+        "layoutAction": {
+          "top": 237,
+          "bottom": 269,
+          "left": 462,
+          "right": 518
+        },
+        "edition": {
+          "top": 690,
+          "bottom": 708,
+          "left": 35,
+          "right": 518
+        },
+        "editionText": " 文本来源：《全唐诗》",
+        "typography": {
+          "sectionBody": 14,
+          "annotationTerm": 13,
+          "annotationExplanation": 13,
+          "edition": 12
+        },
+        "viewport": {
+          "width": 560,
+          "height": 720
+        }
+      },
+      "compact": {
+        "theme": "dark",
+        "fontSize": "small",
+        "vertical": false,
+        "title": "黄鹤楼",
+        "poemText": "昔人已乘黄鹤去，此地空余黄鹤楼。黄鹤一去不复返，白云千载空悠悠。晴川历历汉阳树，芳草萋萋鹦鹉洲。日暮乡关何处是？烟波江上使人愁。",
+        "poemLineCount": 4,
+        "documentScrollWidth": 320,
+        "panelClientHeight": 200,
+        "panelScrollHeight": 813,
+        "panelScrollTop": 613,
+        "frameClientWidth": 243,
+        "frameScrollWidth": 243,
+        "frameInitialScroll": 0,
+        "frameEndScroll": 0,
+        "back": {
+          "top": 67,
+          "bottom": 97,
+          "left": 21,
+          "right": 87
+        },
+        "layoutAction": {
+          "top": -376,
+          "bottom": -344,
+          "left": 222,
+          "right": 278
+        },
+        "edition": {
+          "top": 193,
+          "bottom": 211,
+          "left": 35,
+          "right": 278
+        },
+        "editionText": " 文本来源：《全唐诗》",
+        "typography": {
+          "sectionBody": 14,
+          "annotationTerm": 13,
+          "annotationExplanation": 13,
+          "edition": 12
+        },
+        "viewport": {
+          "width": 320,
+          "height": 260
+        }
+      }
+    },
+    {
+      "theme": "dark",
+      "layout": "horizontal",
+      "fontSize": "medium",
+      "fullTextMatches": true,
+      "roomy": {
+        "theme": "dark",
+        "fontSize": "medium",
+        "vertical": false,
+        "title": "黄鹤楼",
+        "poemText": "昔人已乘黄鹤去，此地空余黄鹤楼。黄鹤一去不复返，白云千载空悠悠。晴川历历汉阳树，芳草萋萋鹦鹉洲。日暮乡关何处是？烟波江上使人愁。",
+        "poemLineCount": 4,
+        "documentScrollWidth": 560,
+        "panelClientHeight": 660,
+        "panelScrollHeight": 710,
+        "panelScrollTop": 0,
+        "frameClientWidth": 483,
+        "frameScrollWidth": 483,
+        "frameInitialScroll": 0,
+        "frameEndScroll": 0,
+        "back": {
+          "top": 67,
+          "bottom": 97,
+          "left": 21,
+          "right": 87
+        },
+        "layoutAction": {
+          "top": 237,
+          "bottom": 269,
+          "left": 462,
+          "right": 518
+        },
+        "edition": {
+          "top": 703,
+          "bottom": 721,
+          "left": 35,
+          "right": 518
+        },
+        "editionText": " 文本来源：《全唐诗》",
+        "typography": {
+          "sectionBody": 14,
+          "annotationTerm": 13,
+          "annotationExplanation": 13,
+          "edition": 12
+        },
+        "viewport": {
+          "width": 560,
+          "height": 720
+        }
+      },
+      "compact": {
+        "theme": "dark",
+        "fontSize": "medium",
+        "vertical": false,
+        "title": "黄鹤楼",
+        "poemText": "昔人已乘黄鹤去，此地空余黄鹤楼。黄鹤一去不复返，白云千载空悠悠。晴川历历汉阳树，芳草萋萋鹦鹉洲。日暮乡关何处是？烟波江上使人愁。",
+        "poemLineCount": 4,
+        "documentScrollWidth": 320,
+        "panelClientHeight": 200,
+        "panelScrollHeight": 838,
+        "panelScrollTop": 638,
+        "frameClientWidth": 243,
+        "frameScrollWidth": 243,
+        "frameInitialScroll": 0,
+        "frameEndScroll": 0,
+        "back": {
+          "top": 67,
+          "bottom": 97,
+          "left": 21,
+          "right": 87
+        },
+        "layoutAction": {
+          "top": -401,
+          "bottom": -369,
+          "left": 222,
+          "right": 278
+        },
+        "edition": {
+          "top": 193,
+          "bottom": 211,
+          "left": 35,
+          "right": 278
+        },
+        "editionText": " 文本来源：《全唐诗》",
+        "typography": {
+          "sectionBody": 14,
+          "annotationTerm": 13,
+          "annotationExplanation": 13,
+          "edition": 12
+        },
+        "viewport": {
+          "width": 320,
+          "height": 260
+        }
+      }
+    },
+    {
+      "theme": "dark",
+      "layout": "horizontal",
+      "fontSize": "large",
+      "fullTextMatches": true,
+      "roomy": {
+        "theme": "dark",
+        "fontSize": "large",
+        "vertical": false,
+        "title": "黄鹤楼",
+        "poemText": "昔人已乘黄鹤去，此地空余黄鹤楼。黄鹤一去不复返，白云千载空悠悠。晴川历历汉阳树，芳草萋萋鹦鹉洲。日暮乡关何处是？烟波江上使人愁。",
+        "poemLineCount": 4,
+        "documentScrollWidth": 560,
+        "panelClientHeight": 660,
+        "panelScrollHeight": 731,
+        "panelScrollTop": 0,
+        "frameClientWidth": 483,
+        "frameScrollWidth": 483,
+        "frameInitialScroll": 0,
+        "frameEndScroll": 0,
+        "back": {
+          "top": 67,
+          "bottom": 97,
+          "left": 21,
+          "right": 87
+        },
+        "layoutAction": {
+          "top": 237,
+          "bottom": 269,
+          "left": 462,
+          "right": 518
+        },
+        "edition": {
+          "top": 724,
+          "bottom": 742,
+          "left": 35,
+          "right": 518
+        },
+        "editionText": " 文本来源：《全唐诗》",
+        "typography": {
+          "sectionBody": 14,
+          "annotationTerm": 13,
+          "annotationExplanation": 13,
+          "edition": 12
+        },
+        "viewport": {
+          "width": 560,
+          "height": 720
+        }
+      },
+      "compact": {
+        "theme": "dark",
+        "fontSize": "large",
+        "vertical": false,
+        "title": "黄鹤楼",
+        "poemText": "昔人已乘黄鹤去，此地空余黄鹤楼。黄鹤一去不复返，白云千载空悠悠。晴川历历汉阳树，芳草萋萋鹦鹉洲。日暮乡关何处是？烟波江上使人愁。",
+        "poemLineCount": 4,
+        "documentScrollWidth": 320,
+        "panelClientHeight": 200,
+        "panelScrollHeight": 879,
+        "panelScrollTop": 679,
+        "frameClientWidth": 243,
+        "frameScrollWidth": 243,
+        "frameInitialScroll": 0,
+        "frameEndScroll": 0,
+        "back": {
+          "top": 67,
+          "bottom": 97,
+          "left": 21,
+          "right": 87
+        },
+        "layoutAction": {
+          "top": -442,
+          "bottom": -410,
+          "left": 222,
+          "right": 278
+        },
+        "edition": {
+          "top": 193,
+          "bottom": 211,
+          "left": 35,
+          "right": 278
+        },
+        "editionText": " 文本来源：《全唐诗》",
+        "typography": {
+          "sectionBody": 14,
+          "annotationTerm": 13,
+          "annotationExplanation": 13,
+          "edition": 12
+        },
+        "viewport": {
+          "width": 320,
+          "height": 260
+        }
+      }
+    },
+    {
+      "theme": "dark",
+      "layout": "vertical",
+      "fontSize": "small",
+      "fullTextMatches": true,
+      "roomy": {
+        "theme": "dark",
+        "fontSize": "small",
+        "vertical": true,
+        "title": "黄鹤楼",
+        "poemText": "昔人已乘黄鹤去，此地空余黄鹤楼。黄鹤一去不复返，白云千载空悠悠。晴川历历汉阳树，芳草萋萋鹦鹉洲。日暮乡关何处是？烟波江上使人愁。",
+        "poemLineCount": 8,
+        "documentScrollWidth": 560,
+        "panelClientHeight": 660,
+        "panelScrollHeight": 739,
+        "panelScrollTop": 0,
+        "frameClientWidth": 483,
+        "frameScrollWidth": 483,
+        "frameInitialScroll": 0,
+        "frameEndScroll": 0,
+        "back": {
+          "top": 67,
+          "bottom": 97,
+          "left": 21,
+          "right": 87
+        },
+        "layoutAction": {
+          "top": 237,
+          "bottom": 269,
+          "left": 462,
+          "right": 518
+        },
+        "edition": {
+          "top": 732,
+          "bottom": 750,
+          "left": 35,
+          "right": 518
+        },
+        "editionText": " 文本来源：《全唐诗》",
+        "typography": {
+          "sectionBody": 14,
+          "annotationTerm": 13,
+          "annotationExplanation": 13,
+          "edition": 12
+        },
+        "viewport": {
+          "width": 560,
+          "height": 720
+        }
+      },
+      "compact": {
+        "theme": "dark",
+        "fontSize": "small",
+        "vertical": true,
+        "title": "黄鹤楼",
+        "poemText": "昔人已乘黄鹤去，此地空余黄鹤楼。黄鹤一去不复返，白云千载空悠悠。晴川历历汉阳树，芳草萋萋鹦鹉洲。日暮乡关何处是？烟波江上使人愁。",
+        "poemLineCount": 8,
+        "documentScrollWidth": 320,
+        "panelClientHeight": 200,
+        "panelScrollHeight": 754,
+        "panelScrollTop": 554,
+        "frameClientWidth": 243,
+        "frameScrollWidth": 265,
+        "frameInitialScroll": 0,
+        "frameEndScroll": -21,
+        "back": {
+          "top": 67,
+          "bottom": 97,
+          "left": 21,
+          "right": 87
+        },
+        "layoutAction": {
+          "top": -317,
+          "bottom": -285,
+          "left": 222,
+          "right": 278
+        },
+        "edition": {
+          "top": 193,
+          "bottom": 211,
+          "left": 35,
+          "right": 278
+        },
+        "editionText": " 文本来源：《全唐诗》",
+        "typography": {
+          "sectionBody": 14,
+          "annotationTerm": 13,
+          "annotationExplanation": 13,
+          "edition": 12
+        },
+        "viewport": {
+          "width": 320,
+          "height": 260
+        }
+      }
+    },
+    {
+      "theme": "dark",
+      "layout": "vertical",
+      "fontSize": "medium",
+      "fullTextMatches": true,
+      "roomy": {
+        "theme": "dark",
+        "fontSize": "medium",
+        "vertical": true,
+        "title": "黄鹤楼",
+        "poemText": "昔人已乘黄鹤去，此地空余黄鹤楼。黄鹤一去不复返，白云千载空悠悠。晴川历历汉阳树，芳草萋萋鹦鹉洲。日暮乡关何处是？烟波江上使人愁。",
+        "poemLineCount": 8,
+        "documentScrollWidth": 560,
+        "panelClientHeight": 660,
+        "panelScrollHeight": 756,
+        "panelScrollTop": 0,
+        "frameClientWidth": 483,
+        "frameScrollWidth": 483,
+        "frameInitialScroll": 0,
+        "frameEndScroll": 0,
+        "back": {
+          "top": 67,
+          "bottom": 97,
+          "left": 21,
+          "right": 87
+        },
+        "layoutAction": {
+          "top": 237,
+          "bottom": 269,
+          "left": 462,
+          "right": 518
+        },
+        "edition": {
+          "top": 749,
+          "bottom": 767,
+          "left": 35,
+          "right": 518
+        },
+        "editionText": " 文本来源：《全唐诗》",
+        "typography": {
+          "sectionBody": 14,
+          "annotationTerm": 13,
+          "annotationExplanation": 13,
+          "edition": 12
+        },
+        "viewport": {
+          "width": 560,
+          "height": 720
+        }
+      },
+      "compact": {
+        "theme": "dark",
+        "fontSize": "medium",
+        "vertical": true,
+        "title": "黄鹤楼",
+        "poemText": "昔人已乘黄鹤去，此地空余黄鹤楼。黄鹤一去不复返，白云千载空悠悠。晴川历历汉阳树，芳草萋萋鹦鹉洲。日暮乡关何处是？烟波江上使人愁。",
+        "poemLineCount": 8,
+        "documentScrollWidth": 320,
+        "panelClientHeight": 200,
+        "panelScrollHeight": 771,
+        "panelScrollTop": 571,
+        "frameClientWidth": 243,
+        "frameScrollWidth": 289,
+        "frameInitialScroll": 0,
+        "frameEndScroll": -46,
+        "back": {
+          "top": 67,
+          "bottom": 97,
+          "left": 21,
+          "right": 87
+        },
+        "layoutAction": {
+          "top": -334,
+          "bottom": -302,
+          "left": 222,
+          "right": 278
+        },
+        "edition": {
+          "top": 193,
+          "bottom": 211,
+          "left": 35,
+          "right": 278
+        },
+        "editionText": " 文本来源：《全唐诗》",
+        "typography": {
+          "sectionBody": 14,
+          "annotationTerm": 13,
+          "annotationExplanation": 13,
+          "edition": 12
+        },
+        "viewport": {
+          "width": 320,
+          "height": 260
+        }
+      }
+    },
+    {
+      "theme": "dark",
+      "layout": "vertical",
+      "fontSize": "large",
+      "fullTextMatches": true,
+      "roomy": {
+        "theme": "dark",
+        "fontSize": "large",
+        "vertical": true,
+        "title": "黄鹤楼",
+        "poemText": "昔人已乘黄鹤去，此地空余黄鹤楼。黄鹤一去不复返，白云千载空悠悠。晴川历历汉阳树，芳草萋萋鹦鹉洲。日暮乡关何处是？烟波江上使人愁。",
+        "poemLineCount": 8,
+        "documentScrollWidth": 560,
+        "panelClientHeight": 660,
+        "panelScrollHeight": 784,
+        "panelScrollTop": 0,
+        "frameClientWidth": 483,
+        "frameScrollWidth": 483,
+        "frameInitialScroll": 0,
+        "frameEndScroll": 0,
+        "back": {
+          "top": 67,
+          "bottom": 97,
+          "left": 21,
+          "right": 87
+        },
+        "layoutAction": {
+          "top": 237,
+          "bottom": 269,
+          "left": 462,
+          "right": 518
+        },
+        "edition": {
+          "top": 777,
+          "bottom": 795,
+          "left": 35,
+          "right": 518
+        },
+        "editionText": " 文本来源：《全唐诗》",
+        "typography": {
+          "sectionBody": 14,
+          "annotationTerm": 13,
+          "annotationExplanation": 13,
+          "edition": 12
+        },
+        "viewport": {
+          "width": 560,
+          "height": 720
+        }
+      },
+      "compact": {
+        "theme": "dark",
+        "fontSize": "large",
+        "vertical": true,
+        "title": "黄鹤楼",
+        "poemText": "昔人已乘黄鹤去，此地空余黄鹤楼。黄鹤一去不复返，白云千载空悠悠。晴川历历汉阳树，芳草萋萋鹦鹉洲。日暮乡关何处是？烟波江上使人愁。",
+        "poemLineCount": 8,
+        "documentScrollWidth": 320,
+        "panelClientHeight": 200,
+        "panelScrollHeight": 799,
+        "panelScrollTop": 599,
+        "frameClientWidth": 243,
+        "frameScrollWidth": 328,
+        "frameInitialScroll": 0,
+        "frameEndScroll": -85,
+        "back": {
+          "top": 67,
+          "bottom": 97,
+          "left": 21,
+          "right": 87
+        },
+        "layoutAction": {
+          "top": -362,
+          "bottom": -330,
+          "left": 222,
+          "right": 278
+        },
+        "edition": {
+          "top": 193,
+          "bottom": 211,
+          "left": 35,
+          "right": 278
+        },
+        "editionText": " 文本来源：《全唐诗》",
+        "typography": {
+          "sectionBody": 14,
+          "annotationTerm": 13,
+          "annotationExplanation": 13,
+          "edition": 12
+        },
+        "viewport": {
+          "width": 320,
+          "height": 260
+        }
+      }
+    }
+  ],
+  "expandedDetailsMeasurement": {
+    "theme": "dark",
+    "fontSize": "large",
+    "vertical": true,
+    "title": "黄鹤楼",
+    "poemText": "昔人已乘黄鹤去，此地空余黄鹤楼。黄鹤一去不复返，白云千载空悠悠。晴川历历汉阳树，芳草萋萋鹦鹉洲。日暮乡关何处是？烟波江上使人愁。",
+    "poemLineCount": 8,
+    "documentScrollWidth": 320,
+    "panelClientHeight": 200,
+    "panelScrollHeight": 1105,
+    "panelScrollTop": 905,
+    "frameClientWidth": 243,
+    "frameScrollWidth": 328,
+    "frameInitialScroll": 0,
+    "frameEndScroll": -85,
+    "back": {
+      "top": 67,
+      "bottom": 97,
+      "left": 21,
+      "right": 87
+    },
+    "layoutAction": {
+      "top": -668,
+      "bottom": -636,
+      "left": 222,
+      "right": 278
+    },
+    "edition": {
+      "top": 193,
+      "bottom": 211,
+      "left": 35,
+      "right": 278
+    },
+    "editionText": " 文本来源：《全唐诗》",
+    "typography": {
+      "sectionBody": 14,
+      "annotationTerm": 13,
+      "annotationExplanation": 13,
+      "edition": 12
+    },
+    "viewport": {
+      "width": 320,
+      "height": 260
+    }
+  },
+  "syntheticPunctuation": {
+    "layoutOnly": true,
+    "publishedPoem": false,
+    "sourceLines": [
+      "《九月九日》：“2026年，登高？”",
+      "长江东去，星河未尽。"
+    ],
+    "modes": [
+      {
+        "layout": "horizontal",
+        "label": "隔离排版样本，非作品原文",
+        "text": "《九月九日》：“2026年，登高？”长江东去，星河未尽。",
+        "lineCount": 2,
+        "writingMode": "horizontal-tb",
+        "documentOverflow": false
+      },
+      {
+        "layout": "vertical",
+        "label": "隔离排版样本，非作品原文",
+        "text": "《九月九日》：“2026年，登高？”长江东去，星河未尽。",
+        "lineCount": 6,
+        "writingMode": "vertical-rl",
+        "documentOverflow": false
+      }
+    ]
+  }
+}

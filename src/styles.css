@@ -1396,8 +1396,8 @@ button:disabled {
   margin: 0 0 18px;
   color: var(--muted);
   font-family: "Songti SC", "STSong", serif;
-  font-size: 13px;
-  line-height: 1.9;
+  font-size: 14px;
+  line-height: 1.8;
 }
 
 .annotation-list {
@@ -1412,21 +1412,22 @@ button:disabled {
 .annotation-list dt {
   color: var(--accent);
   font-family: "Songti SC", "STSong", serif;
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 650;
 }
 
 .annotation-list dd {
   margin: 4px 0 0;
   color: var(--muted);
-  font-size: 11px;
+  font-size: 13px;
   line-height: 1.7;
 }
 
 .edition-note {
   margin: 34px 0 0;
-  color: var(--faint);
-  font-size: 9px;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.5;
 }
 
 .settings-form {

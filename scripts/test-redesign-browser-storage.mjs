@@ -331,6 +331,10 @@ async function measureReading(width, height, scrollToEnd = false) {
         left: Math.round(rect.left), right: Math.round(rect.right),
       } : null;
     };
+    const font = (selector) => {
+      const element = document.querySelector(selector);
+      return element ? parseFloat(getComputedStyle(element).fontSize) : null;
+    };
     const initialFrameScroll = frame?.scrollLeft ?? 0;
     if (frame?.classList.contains("is-vertical")) {
       frame.scrollLeft = -frame.scrollWidth;
@@ -354,6 +358,13 @@ async function measureReading(width, height, scrollToEnd = false) {
       back: box(document.querySelector(".reading-panel .back-button")),
       layoutAction: box(document.querySelector(".reading-layout-action button")),
       edition: box(document.querySelector(".edition-note")),
+      editionText: document.querySelector(".edition-note")?.textContent,
+      typography: {
+        sectionBody: font(".reading-section > p"),
+        annotationTerm: font(".annotation-list dt"),
+        annotationExplanation: font(".annotation-list dd"),
+        edition: font(".edition-note"),
+      },
       viewport: { width: innerWidth, height: innerHeight },
     };
   })()`);
@@ -1066,6 +1077,7 @@ try {
   }
   const readingMeasurements = [];
   let syntheticPunctuation;
+  let expandedDetailsMeasurement;
   if (readingAudit) {
     const { POEMS } = await loadBundledModule(process.cwd(), "src/data/poems.ts");
     const expectedPoem = POEMS.find((poem) => poem.id === layoutPoemId);
@@ -1115,6 +1127,12 @@ try {
             !roomy.back || roomy.back.bottom > 720 ||
             !compact.back || compact.back.bottom > 260 ||
             !compact.edition || compact.edition.bottom > 260 ||
+            roomy.typography.sectionBody < 14 ||
+            roomy.typography.edition < 12 ||
+            (expectedPoem.annotations.length > 0 && (
+              roomy.typography.annotationTerm < 13 ||
+              roomy.typography.annotationExplanation < 13
+            )) ||
             compact.panelScrollHeight <= compact.panelClientHeight ||
             (layout === "vertical" &&
               roomy.frameScrollWidth > roomy.frameClientWidth &&
@@ -1127,6 +1145,24 @@ try {
     if (failures.length > 0) {
       throw new Error(`Reading layout matrix failed: ${JSON.stringify(failures)}`);
     }
+    await evaluate(`document.querySelectorAll('.reading-section').forEach((section) => { section.open = true; })`);
+    await send("Emulation.setDeviceMetricsOverride", {
+      width: 560, height: 720, deviceScaleFactor: 1, mobile: false,
+    });
+    await evaluate(`(() => {
+      const panel = document.querySelector('.reading-panel');
+      const notes = document.querySelector('.annotation-list');
+      if (notes) panel.scrollTop = notes.offsetTop - 300;
+    })()`);
+    await captureScreenshot(`${layoutPoemId}-reading-expanded-notes.png`);
+    expandedDetailsMeasurement = await measureReading(320, 260, true);
+    await captureScreenshot(`${layoutPoemId}-reading-expanded-details-bottom.png`);
+    if (
+      expandedDetailsMeasurement.documentScrollWidth > 320 ||
+      !expandedDetailsMeasurement.edition ||
+      expandedDetailsMeasurement.edition.bottom > 260 ||
+      !expandedDetailsMeasurement.editionText.includes(expectedPoem.sourceName)
+    ) throw new Error(`Expanded reading details lost the source: ${JSON.stringify(expandedDetailsMeasurement)}`);
     const { displayedPoemLines } = await loadBundledModule(
       process.cwd(), "src/core/poem-layout.ts",
     );
@@ -1209,6 +1245,7 @@ try {
       isolatedProfile: true,
       nativeWebView2: false,
       readingMeasurements,
+      expandedDetailsMeasurement,
       syntheticPunctuation,
     }, null, 2)}\n`);
   }
@@ -1287,7 +1324,7 @@ try {
       lowWorkAreaActionsReachable,
     } : {}),
     ...(matrixAudit ? { matrixMeasurements, reasonBoundaryAudit } : {}),
-    ...(readingAudit ? { readingMeasurements, syntheticPunctuation } : {}),
+    ...(readingAudit ? { readingMeasurements, expandedDetailsMeasurement, syntheticPunctuation } : {}),
     ...(favoritesAudit ? { favoriteFlow, favoriteCompactReading } : {}),
     ...(midnightAudit ? { midnightFlow } : {}),
     ...(corruptStorageAudit ? { corruptFlow } : {}),

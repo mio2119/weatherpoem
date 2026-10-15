@@ -1,0 +1,1233 @@
+{
+  "schemaVersion": "1.0",
+  "browser": "Chrome/155.0.8059.40",
+  "localDate": "2026-09-25",
+  "poemId": "su-shi-shui-diao-ge-tou",
+  "isolatedProfile": true,
+  "nativeWebView2": false,
+  "readingMeasurements": [
+    {
+      "theme": "light",
+      "layout": "horizontal",
+      "fontSize": "small",
+      "fullTextMatches": true,
+      "roomy": {
+        "theme": "light",
+        "fontSize": "small",
+        "vertical": false,
+        "title": "水调歌头·明月几时有",
+        "poemText": "明月几时有？把酒问青天。不知天上宫阙，今夕是何年。我欲乘风归去，又恐琼楼玉宇，高处不胜寒。起舞弄清影，何似在人间。转朱阁，低绮户，照无眠。不应有恨，何事长向别时圆？人有悲欢离合，月有阴晴圆缺，此事古难全。但愿人长久，千里共婵娟。",
+        "poemLineCount": 8,
+        "documentScrollWidth": 560,
+        "panelClientHeight": 660,
+        "panelScrollHeight": 813,
+        "panelScrollTop": 0,
+        "frameClientWidth": 483,
+        "frameScrollWidth": 483,
+        "frameInitialScroll": 0,
+        "frameEndScroll": 0,
+        "back": {
+          "top": 67,
+          "bottom": 97,
+          "left": 21,
+          "right": 87
+        },
+        "layoutAction": {
+          "top": 237,
+          "bottom": 269,
+          "left": 462,
+          "right": 518
+        },
+        "edition": {
+          "top": 806,
+          "bottom": 824,
+          "left": 35,
+          "right": 518
+        },
+        "editionText": " 文本来源：《东坡乐府》",
+        "typography": {
+          "sectionBody": 14,
+          "annotationTerm": 13,
+          "annotationExplanation": 13,
+          "edition": 12
+        },
+        "viewport": {
+          "width": 560,
+          "height": 720
+        }
+      },
+      "compact": {
+        "theme": "light",
+        "fontSize": "small",
+        "vertical": false,
+        "title": "水调歌头·明月几时有",
+        "poemText": "明月几时有？把酒问青天。不知天上宫阙，今夕是何年。我欲乘风归去，又恐琼楼玉宇，高处不胜寒。起舞弄清影，何似在人间。转朱阁，低绮户，照无眠。不应有恨，何事长向别时圆？人有悲欢离合，月有阴晴圆缺，此事古难全。但愿人长久，千里共婵娟。",
+        "poemLineCount": 8,
+        "documentScrollWidth": 320,
+        "panelClientHeight": 200,
+        "panelScrollHeight": 908,
+        "panelScrollTop": 708,
+        "frameClientWidth": 243,
+        "frameScrollWidth": 243,
+        "frameInitialScroll": 0,
+        "frameEndScroll": 0,
+        "back": {
+          "top": 67,
+          "bottom": 97,
+          "left": 21,
+          "right": 87
+        },
+        "layoutAction": {
+          "top": -433,
+          "bottom": -401,
+          "left": 222,
+          "right": 278
+        },
+        "edition": {
+          "top": 193,
+          "bottom": 211,
+          "left": 35,
+          "right": 278
+        },
+        "editionText": " 文本来源：《东坡乐府》",
+        "typography": {
+          "sectionBody": 14,
+          "annotationTerm": 13,
+          "annotationExplanation": 13,
+          "edition": 12
+        },
+        "viewport": {
+          "width": 320,
+          "height": 260
+        }
+      }
+    },
+    {
+      "theme": "light",
+      "layout": "horizontal",
+      "fontSize": "medium",
+      "fullTextMatches": true,
+      "roomy": {
+        "theme": "light",
+        "fontSize": "medium",
+        "vertical": false,
+        "title": "水调歌头·明月几时有",
+        "poemText": "明月几时有？把酒问青天。不知天上宫阙，今夕是何年。我欲乘风归去，又恐琼楼玉宇，高处不胜寒。起舞弄清影，何似在人间。转朱阁，低绮户，照无眠。不应有恨，何事长向别时圆？人有悲欢离合，月有阴晴圆缺，此事古难全。但愿人长久，千里共婵娟。",
+        "poemLineCount": 8,
+        "documentScrollWidth": 560,
+        "panelClientHeight": 660,
+        "panelScrollHeight": 838,
+        "panelScrollTop": 0,
+        "frameClientWidth": 483,
+        "frameScrollWidth": 483,
+        "frameInitialScroll": 0,
+        "frameEndScroll": 0,
+        "back": {
+          "top": 67,
+          "bottom": 97,
+          "left": 21,
+          "right": 87
+        },
+        "layoutAction": {
+          "top": 237,
+          "bottom": 269,
+          "left": 462,
+          "right": 518
+        },
+        "edition": {
+          "top": 831,
+          "bottom": 849,
+          "left": 35,
+          "right": 518
+        },
+        "editionText": " 文本来源：《东坡乐府》",
+        "typography": {
+          "sectionBody": 14,
+          "annotationTerm": 13,
+          "annotationExplanation": 13,
+          "edition": 12
+        },
+        "viewport": {
+          "width": 560,
+          "height": 720
+        }
+      },
+      "compact": {
+        "theme": "light",
+        "fontSize": "medium",
+        "vertical": false,
+        "title": "水调歌头·明月几时有",
+        "poemText": "明月几时有？把酒问青天。不知天上宫阙，今夕是何年。我欲乘风归去，又恐琼楼玉宇，高处不胜寒。起舞弄清影，何似在人间。转朱阁，低绮户，照无眠。不应有恨，何事长向别时圆？人有悲欢离合，月有阴晴圆缺，此事古难全。但愿人长久，千里共婵娟。",
+        "poemLineCount": 8,
+        "documentScrollWidth": 320,
+        "panelClientHeight": 200,
+        "panelScrollHeight": 940,
+        "panelScrollTop": 740,
+        "frameClientWidth": 243,
+        "frameScrollWidth": 243,
+        "frameInitialScroll": 0,
+        "frameEndScroll": 0,
+        "back": {
+          "top": 67,
+          "bottom": 97,
+          "left": 21,
+          "right": 87
+        },
+        "layoutAction": {
+          "top": -465,
+          "bottom": -433,
+          "left": 222,
+          "right": 278
+        },
+        "edition": {
+          "top": 193,
+          "bottom": 211,
+          "left": 35,
+          "right": 278
+        },
+        "editionText": " 文本来源：《东坡乐府》",
+        "typography": {
+          "sectionBody": 14,
+          "annotationTerm": 13,
+          "annotationExplanation": 13,
+          "edition": 12
+        },
+        "viewport": {
+          "width": 320,
+          "height": 260
+        }
+      }
+    },
+    {
+      "theme": "light",
+      "layout": "horizontal",
+      "fontSize": "large",
+      "fullTextMatches": true,
+      "roomy": {
+        "theme": "light",
+        "fontSize": "large",
+        "vertical": false,
+        "title": "水调歌头·明月几时有",
+        "poemText": "明月几时有？把酒问青天。不知天上宫阙，今夕是何年。我欲乘风归去，又恐琼楼玉宇，高处不胜寒。起舞弄清影，何似在人间。转朱阁，低绮户，照无眠。不应有恨，何事长向别时圆？人有悲欢离合，月有阴晴圆缺，此事古难全。但愿人长久，千里共婵娟。",
+        "poemLineCount": 8,
+        "documentScrollWidth": 560,
+        "panelClientHeight": 660,
+        "panelScrollHeight": 879,
+        "panelScrollTop": 0,
+        "frameClientWidth": 483,
+        "frameScrollWidth": 483,
+        "frameInitialScroll": 0,
+        "frameEndScroll": 0,
+        "back": {
+          "top": 67,
+          "bottom": 97,
+          "left": 21,
+          "right": 87
+        },
+        "layoutAction": {
+          "top": 237,
+          "bottom": 269,
+          "left": 462,
+          "right": 518
+        },
+        "edition": {
+          "top": 872,
+          "bottom": 890,
+          "left": 35,
+          "right": 518
+        },
+        "editionText": " 文本来源：《东坡乐府》",
+        "typography": {
+          "sectionBody": 14,
+          "annotationTerm": 13,
+          "annotationExplanation": 13,
+          "edition": 12
+        },
+        "viewport": {
+          "width": 560,
+          "height": 720
+        }
+      },
+      "compact": {
+        "theme": "light",
+        "fontSize": "large",
+        "vertical": false,
+        "title": "水调歌头·明月几时有",
+        "poemText": "明月几时有？把酒问青天。不知天上宫阙，今夕是何年。我欲乘风归去，又恐琼楼玉宇，高处不胜寒。起舞弄清影，何似在人间。转朱阁，低绮户，照无眠。不应有恨，何事长向别时圆？人有悲欢离合，月有阴晴圆缺，此事古难全。但愿人长久，千里共婵娟。",
+        "poemLineCount": 8,
+        "documentScrollWidth": 320,
+        "panelClientHeight": 200,
+        "panelScrollHeight": 1066,
+        "panelScrollTop": 866,
+        "frameClientWidth": 243,
+        "frameScrollWidth": 243,
+        "frameInitialScroll": 0,
+        "frameEndScroll": 0,
+        "back": {
+          "top": 67,
+          "bottom": 97,
+          "left": 21,
+          "right": 87
+        },
+        "layoutAction": {
+          "top": -591,
+          "bottom": -559,
+          "left": 222,
+          "right": 278
+        },
+        "edition": {
+          "top": 193,
+          "bottom": 211,
+          "left": 35,
+          "right": 278
+        },
+        "editionText": " 文本来源：《东坡乐府》",
+        "typography": {
+          "sectionBody": 14,
+          "annotationTerm": 13,
+          "annotationExplanation": 13,
+          "edition": 12
+        },
+        "viewport": {
+          "width": 320,
+          "height": 260
+        }
+      }
+    },
+    {
+      "theme": "light",
+      "layout": "vertical",
+      "fontSize": "small",
+      "fullTextMatches": true,
+      "roomy": {
+        "theme": "light",
+        "fontSize": "small",
+        "vertical": true,
+        "title": "水调歌头·明月几时有",
+        "poemText": "明月几时有？把酒问青天。不知天上宫阙，今夕是何年。我欲乘风归去，又恐琼楼玉宇，高处不胜寒。起舞弄清影，何似在人间。转朱阁，低绮户，照无眠。不应有恨，何事长向别时圆？人有悲欢离合，月有阴晴圆缺，此事古难全。但愿人长久，千里共婵娟。",
+        "poemLineCount": 19,
+        "documentScrollWidth": 560,
+        "panelClientHeight": 660,
+        "panelScrollHeight": 754,
+        "panelScrollTop": 0,
+        "frameClientWidth": 483,
+        "frameScrollWidth": 566,
+        "frameInitialScroll": 0,
+        "frameEndScroll": -82,
+        "back": {
+          "top": 67,
+          "bottom": 97,
+          "left": 21,
+          "right": 87
+        },
+        "layoutAction": {
+          "top": 237,
+          "bottom": 269,
+          "left": 462,
+          "right": 518
+        },
+        "edition": {
+          "top": 747,
+          "bottom": 765,
+          "left": 35,
+          "right": 518
+        },
+        "editionText": " 文本来源：《东坡乐府》",
+        "typography": {
+          "sectionBody": 14,
+          "annotationTerm": 13,
+          "annotationExplanation": 13,
+          "edition": 12
+        },
+        "viewport": {
+          "width": 560,
+          "height": 720
+        }
+      },
+      "compact": {
+        "theme": "light",
+        "fontSize": "small",
+        "vertical": true,
+        "title": "水调歌头·明月几时有",
+        "poemText": "明月几时有？把酒问青天。不知天上宫阙，今夕是何年。我欲乘风归去，又恐琼楼玉宇，高处不胜寒。起舞弄清影，何似在人间。转朱阁，低绮户，照无眠。不应有恨，何事长向别时圆？人有悲欢离合，月有阴晴圆缺，此事古难全。但愿人长久，千里共婵娟。",
+        "poemLineCount": 19,
+        "documentScrollWidth": 320,
+        "panelClientHeight": 200,
+        "panelScrollHeight": 792,
+        "panelScrollTop": 592,
+        "frameClientWidth": 243,
+        "frameScrollWidth": 566,
+        "frameInitialScroll": 0,
+        "frameEndScroll": -322,
+        "back": {
+          "top": 67,
+          "bottom": 97,
+          "left": 21,
+          "right": 87
+        },
+        "layoutAction": {
+          "top": -317,
+          "bottom": -285,
+          "left": 222,
+          "right": 278
+        },
+        "edition": {
+          "top": 193,
+          "bottom": 211,
+          "left": 35,
+          "right": 278
+        },
+        "editionText": " 文本来源：《东坡乐府》",
+        "typography": {
+          "sectionBody": 14,
+          "annotationTerm": 13,
+          "annotationExplanation": 13,
+          "edition": 12
+        },
+        "viewport": {
+          "width": 320,
+          "height": 260
+        }
+      }
+    },
+    {
+      "theme": "light",
+      "layout": "vertical",
+      "fontSize": "medium",
+      "fullTextMatches": true,
+      "roomy": {
+        "theme": "light",
+        "fontSize": "medium",
+        "vertical": true,
+        "title": "水调歌头·明月几时有",
+        "poemText": "明月几时有？把酒问青天。不知天上宫阙，今夕是何年。我欲乘风归去，又恐琼楼玉宇，高处不胜寒。起舞弄清影，何似在人间。转朱阁，低绮户，照无眠。不应有恨，何事长向别时圆？人有悲欢离合，月有阴晴圆缺，此事古难全。但愿人长久，千里共婵娟。",
+        "poemLineCount": 19,
+        "documentScrollWidth": 560,
+        "panelClientHeight": 660,
+        "panelScrollHeight": 771,
+        "panelScrollTop": 0,
+        "frameClientWidth": 483,
+        "frameScrollWidth": 623,
+        "frameInitialScroll": 0,
+        "frameEndScroll": -140,
+        "back": {
+          "top": 67,
+          "bottom": 97,
+          "left": 21,
+          "right": 87
+        },
+        "layoutAction": {
+          "top": 237,
+          "bottom": 269,
+          "left": 462,
+          "right": 518
+        },
+        "edition": {
+          "top": 764,
+          "bottom": 782,
+          "left": 35,
+          "right": 518
+        },
+        "editionText": " 文本来源：《东坡乐府》",
+        "typography": {
+          "sectionBody": 14,
+          "annotationTerm": 13,
+          "annotationExplanation": 13,
+          "edition": 12
+        },
+        "viewport": {
+          "width": 560,
+          "height": 720
+        }
+      },
+      "compact": {
+        "theme": "light",
+        "fontSize": "medium",
+        "vertical": true,
+        "title": "水调歌头·明月几时有",
+        "poemText": "明月几时有？把酒问青天。不知天上宫阙，今夕是何年。我欲乘风归去，又恐琼楼玉宇，高处不胜寒。起舞弄清影，何似在人间。转朱阁，低绮户，照无眠。不应有恨，何事长向别时圆？人有悲欢离合，月有阴晴圆缺，此事古难全。但愿人长久，千里共婵娟。",
+        "poemLineCount": 19,
+        "documentScrollWidth": 320,
+        "panelClientHeight": 200,
+        "panelScrollHeight": 809,
+        "panelScrollTop": 609,
+        "frameClientWidth": 243,
+        "frameScrollWidth": 623,
+        "frameInitialScroll": -140,
+        "frameEndScroll": -380,
+        "back": {
+          "top": 67,
+          "bottom": 97,
+          "left": 21,
+          "right": 87
+        },
+        "layoutAction": {
+          "top": -334,
+          "bottom": -302,
+          "left": 222,
+          "right": 278
+        },
+        "edition": {
+          "top": 193,
+          "bottom": 211,
+          "left": 35,
+          "right": 278
+        },
+        "editionText": " 文本来源：《东坡乐府》",
+        "typography": {
+          "sectionBody": 14,
+          "annotationTerm": 13,
+          "annotationExplanation": 13,
+          "edition": 12
+        },
+        "viewport": {
+          "width": 320,
+          "height": 260
+        }
+      }
+    },
+    {
+      "theme": "light",
+      "layout": "vertical",
+      "fontSize": "large",
+      "fullTextMatches": true,
+      "roomy": {
+        "theme": "light",
+        "fontSize": "large",
+        "vertical": true,
+        "title": "水调歌头·明月几时有",
+        "poemText": "明月几时有？把酒问青天。不知天上宫阙，今夕是何年。我欲乘风归去，又恐琼楼玉宇，高处不胜寒。起舞弄清影，何似在人间。转朱阁，低绮户，照无眠。不应有恨，何事长向别时圆？人有悲欢离合，月有阴晴圆缺，此事古难全。但愿人长久，千里共婵娟。",
+        "poemLineCount": 19,
+        "documentScrollWidth": 560,
+        "panelClientHeight": 660,
+        "panelScrollHeight": 799,
+        "panelScrollTop": 0,
+        "frameClientWidth": 483,
+        "frameScrollWidth": 716,
+        "frameInitialScroll": 0,
+        "frameEndScroll": -233,
+        "back": {
+          "top": 67,
+          "bottom": 97,
+          "left": 21,
+          "right": 87
+        },
+        "layoutAction": {
+          "top": 237,
+          "bottom": 269,
+          "left": 462,
+          "right": 518
+        },
+        "edition": {
+          "top": 792,
+          "bottom": 810,
+          "left": 35,
+          "right": 518
+        },
+        "editionText": " 文本来源：《东坡乐府》",
+        "typography": {
+          "sectionBody": 14,
+          "annotationTerm": 13,
+          "annotationExplanation": 13,
+          "edition": 12
+        },
+        "viewport": {
+          "width": 560,
+          "height": 720
+        }
+      },
+      "compact": {
+        "theme": "light",
+        "fontSize": "large",
+        "vertical": true,
+        "title": "水调歌头·明月几时有",
+        "poemText": "明月几时有？把酒问青天。不知天上宫阙，今夕是何年。我欲乘风归去，又恐琼楼玉宇，高处不胜寒。起舞弄清影，何似在人间。转朱阁，低绮户，照无眠。不应有恨，何事长向别时圆？人有悲欢离合，月有阴晴圆缺，此事古难全。但愿人长久，千里共婵娟。",
+        "poemLineCount": 19,
+        "documentScrollWidth": 320,
+        "panelClientHeight": 200,
+        "panelScrollHeight": 837,
+        "panelScrollTop": 637,
+        "frameClientWidth": 243,
+        "frameScrollWidth": 716,
+        "frameInitialScroll": -233,
+        "frameEndScroll": -473,
+        "back": {
+          "top": 67,
+          "bottom": 97,
+          "left": 21,
+          "right": 87
+        },
+        "layoutAction": {
+          "top": -362,
+          "bottom": -330,
+          "left": 222,
+          "right": 278
+        },
+        "edition": {
+          "top": 193,
+          "bottom": 211,
+          "left": 35,
+          "right": 278
+        },
+        "editionText": " 文本来源：《东坡乐府》",
+        "typography": {
+          "sectionBody": 14,
+          "annotationTerm": 13,
+          "annotationExplanation": 13,
+          "edition": 12
+        },
+        "viewport": {
+          "width": 320,
+          "height": 260
+        }
+      }
+    },
+    {
+      "theme": "dark",
+      "layout": "horizontal",
+      "fontSize": "small",
+      "fullTextMatches": true,
+      "roomy": {
+        "theme": "dark",
+        "fontSize": "small",
+        "vertical": false,
+        "title": "水调歌头·明月几时有",
+        "poemText": "明月几时有？把酒问青天。不知天上宫阙，今夕是何年。我欲乘风归去，又恐琼楼玉宇，高处不胜寒。起舞弄清影，何似在人间。转朱阁，低绮户，照无眠。不应有恨，何事长向别时圆？人有悲欢离合，月有阴晴圆缺，此事古难全。但愿人长久，千里共婵娟。",
+        "poemLineCount": 8,
+        "documentScrollWidth": 560,
+        "panelClientHeight": 660,
+        "panelScrollHeight": 813,
+        "panelScrollTop": 0,
+        "frameClientWidth": 483,
+        "frameScrollWidth": 483,
+        "frameInitialScroll": 0,
+        "frameEndScroll": 0,
+        "back": {
+          "top": 67,
+          "bottom": 97,
+          "left": 21,
+          "right": 87
+        },
+        "layoutAction": {
+          "top": 237,
+          "bottom": 269,
+          "left": 462,
+          "right": 518
+        },
+        "edition": {
+          "top": 806,
+          "bottom": 824,
+          "left": 35,
+          "right": 518
+        },
+        "editionText": " 文本来源：《东坡乐府》",
+        "typography": {
+          "sectionBody": 14,
+          "annotationTerm": 13,
+          "annotationExplanation": 13,
+          "edition": 12
+        },
+        "viewport": {
+          "width": 560,
+          "height": 720
+        }
+      },
+      "compact": {
+        "theme": "dark",
+        "fontSize": "small",
+        "vertical": false,
+        "title": "水调歌头·明月几时有",
+        "poemText": "明月几时有？把酒问青天。不知天上宫阙，今夕是何年。我欲乘风归去，又恐琼楼玉宇，高处不胜寒。起舞弄清影，何似在人间。转朱阁，低绮户，照无眠。不应有恨，何事长向别时圆？人有悲欢离合，月有阴晴圆缺，此事古难全。但愿人长久，千里共婵娟。",
+        "poemLineCount": 8,
+        "documentScrollWidth": 320,
+        "panelClientHeight": 200,
+        "panelScrollHeight": 908,
+        "panelScrollTop": 708,
+        "frameClientWidth": 243,
+        "frameScrollWidth": 243,
+        "frameInitialScroll": 0,
+        "frameEndScroll": 0,
+        "back": {
+          "top": 67,
+          "bottom": 97,
+          "left": 21,
+          "right": 87
+        },
+        "layoutAction": {
+          "top": -433,
+          "bottom": -401,
+          "left": 222,
+          "right": 278
+        },
+        "edition": {
+          "top": 193,
+          "bottom": 211,
+          "left": 35,
+          "right": 278
+        },
+        "editionText": " 文本来源：《东坡乐府》",
+        "typography": {
+          "sectionBody": 14,
+          "annotationTerm": 13,
+          "annotationExplanation": 13,
+          "edition": 12
+        },
+        "viewport": {
+          "width": 320,
+          "height": 260
+        }
+      }
+    },
+    {
+      "theme": "dark",
+      "layout": "horizontal",
+      "fontSize": "medium",
+      "fullTextMatches": true,
+      "roomy": {
+        "theme": "dark",
+        "fontSize": "medium",
+        "vertical": false,
+        "title": "水调歌头·明月几时有",
+        "poemText": "明月几时有？把酒问青天。不知天上宫阙，今夕是何年。我欲乘风归去，又恐琼楼玉宇，高处不胜寒。起舞弄清影，何似在人间。转朱阁，低绮户，照无眠。不应有恨，何事长向别时圆？人有悲欢离合，月有阴晴圆缺，此事古难全。但愿人长久，千里共婵娟。",
+        "poemLineCount": 8,
+        "documentScrollWidth": 560,
+        "panelClientHeight": 660,
+        "panelScrollHeight": 838,
+        "panelScrollTop": 0,
+        "frameClientWidth": 483,
+        "frameScrollWidth": 483,
+        "frameInitialScroll": 0,
+        "frameEndScroll": 0,
+        "back": {
+          "top": 67,
+          "bottom": 97,
+          "left": 21,
+          "right": 87
+        },
+        "layoutAction": {
+          "top": 237,
+          "bottom": 269,
+          "left": 462,
+          "right": 518
+        },
+        "edition": {
+          "top": 831,
+          "bottom": 849,
+          "left": 35,
+          "right": 518
+        },
+        "editionText": " 文本来源：《东坡乐府》",
+        "typography": {
+          "sectionBody": 14,
+          "annotationTerm": 13,
+          "annotationExplanation": 13,
+          "edition": 12
+        },
+        "viewport": {
+          "width": 560,
+          "height": 720
+        }
+      },
+      "compact": {
+        "theme": "dark",
+        "fontSize": "medium",
+        "vertical": false,
+        "title": "水调歌头·明月几时有",
+        "poemText": "明月几时有？把酒问青天。不知天上宫阙，今夕是何年。我欲乘风归去，又恐琼楼玉宇，高处不胜寒。起舞弄清影，何似在人间。转朱阁，低绮户，照无眠。不应有恨，何事长向别时圆？人有悲欢离合，月有阴晴圆缺，此事古难全。但愿人长久，千里共婵娟。",
+        "poemLineCount": 8,
+        "documentScrollWidth": 320,
+        "panelClientHeight": 200,
+        "panelScrollHeight": 940,
+        "panelScrollTop": 740,
+        "frameClientWidth": 243,
+        "frameScrollWidth": 243,
+        "frameInitialScroll": 0,
+        "frameEndScroll": 0,
+        "back": {
+          "top": 67,
+          "bottom": 97,
+          "left": 21,
+          "right": 87
+        },
+        "layoutAction": {
+          "top": -465,
+          "bottom": -433,
+          "left": 222,
+          "right": 278
+        },
+        "edition": {
+          "top": 193,
+          "bottom": 211,
+          "left": 35,
+          "right": 278
+        },
+        "editionText": " 文本来源：《东坡乐府》",
+        "typography": {
+          "sectionBody": 14,
+          "annotationTerm": 13,
+          "annotationExplanation": 13,
+          "edition": 12
+        },
+        "viewport": {
+          "width": 320,
+          "height": 260
+        }
+      }
+    },
+    {
+      "theme": "dark",
+      "layout": "horizontal",
+      "fontSize": "large",
+      "fullTextMatches": true,
+      "roomy": {
+        "theme": "dark",
+        "fontSize": "large",
+        "vertical": false,
+        "title": "水调歌头·明月几时有",
+        "poemText": "明月几时有？把酒问青天。不知天上宫阙，今夕是何年。我欲乘风归去，又恐琼楼玉宇，高处不胜寒。起舞弄清影，何似在人间。转朱阁，低绮户，照无眠。不应有恨，何事长向别时圆？人有悲欢离合，月有阴晴圆缺，此事古难全。但愿人长久，千里共婵娟。",
+        "poemLineCount": 8,
+        "documentScrollWidth": 560,
+        "panelClientHeight": 660,
+        "panelScrollHeight": 879,
+        "panelScrollTop": 0,
+        "frameClientWidth": 483,
+        "frameScrollWidth": 483,
+        "frameInitialScroll": 0,
+        "frameEndScroll": 0,
+        "back": {
+          "top": 67,
+          "bottom": 97,
+          "left": 21,
+          "right": 87
+        },
+        "layoutAction": {
+          "top": 237,
+          "bottom": 269,
+          "left": 462,
+          "right": 518
+        },
+        "edition": {
+          "top": 872,
+          "bottom": 890,
+          "left": 35,
+          "right": 518
+        },
+        "editionText": " 文本来源：《东坡乐府》",
+        "typography": {
+          "sectionBody": 14,
+          "annotationTerm": 13,
+          "annotationExplanation": 13,
+          "edition": 12
+        },
+        "viewport": {
+          "width": 560,
+          "height": 720
+        }
+      },
+      "compact": {
+        "theme": "dark",
+        "fontSize": "large",
+        "vertical": false,
+        "title": "水调歌头·明月几时有",
+        "poemText": "明月几时有？把酒问青天。不知天上宫阙，今夕是何年。我欲乘风归去，又恐琼楼玉宇，高处不胜寒。起舞弄清影，何似在人间。转朱阁，低绮户，照无眠。不应有恨，何事长向别时圆？人有悲欢离合，月有阴晴圆缺，此事古难全。但愿人长久，千里共婵娟。",
+        "poemLineCount": 8,
+        "documentScrollWidth": 320,
+        "panelClientHeight": 200,
+        "panelScrollHeight": 1066,
+        "panelScrollTop": 866,
+        "frameClientWidth": 243,
+        "frameScrollWidth": 243,
+        "frameInitialScroll": 0,
+        "frameEndScroll": 0,
+        "back": {
+          "top": 67,
+          "bottom": 97,
+          "left": 21,
+          "right": 87
+        },
+        "layoutAction": {
+          "top": -591,
+          "bottom": -559,
+          "left": 222,
+          "right": 278
+        },
+        "edition": {
+          "top": 193,
+          "bottom": 211,
+          "left": 35,
+          "right": 278
+        },
+        "editionText": " 文本来源：《东坡乐府》",
+        "typography": {
+          "sectionBody": 14,
+          "annotationTerm": 13,
+          "annotationExplanation": 13,
+          "edition": 12
+        },
+        "viewport": {
+          "width": 320,
+          "height": 260
+        }
+      }
+    },
+    {
+      "theme": "dark",
+      "layout": "vertical",
+      "fontSize": "small",
+      "fullTextMatches": true,
+      "roomy": {
+        "theme": "dark",
+        "fontSize": "small",
+        "vertical": true,
+        "title": "水调歌头·明月几时有",
+        "poemText": "明月几时有？把酒问青天。不知天上宫阙，今夕是何年。我欲乘风归去，又恐琼楼玉宇，高处不胜寒。起舞弄清影，何似在人间。转朱阁，低绮户，照无眠。不应有恨，何事长向别时圆？人有悲欢离合，月有阴晴圆缺，此事古难全。但愿人长久，千里共婵娟。",
+        "poemLineCount": 19,
+        "documentScrollWidth": 560,
+        "panelClientHeight": 660,
+        "panelScrollHeight": 754,
+        "panelScrollTop": 0,
+        "frameClientWidth": 483,
+        "frameScrollWidth": 566,
+        "frameInitialScroll": 0,
+        "frameEndScroll": -82,
+        "back": {
+          "top": 67,
+          "bottom": 97,
+          "left": 21,
+          "right": 87
+        },
+        "layoutAction": {
+          "top": 237,
+          "bottom": 269,
+          "left": 462,
+          "right": 518
+        },
+        "edition": {
+          "top": 747,
+          "bottom": 765,
+          "left": 35,
+          "right": 518
+        },
+        "editionText": " 文本来源：《东坡乐府》",
+        "typography": {
+          "sectionBody": 14,
+          "annotationTerm": 13,
+          "annotationExplanation": 13,
+          "edition": 12
+        },
+        "viewport": {
+          "width": 560,
+          "height": 720
+        }
+      },
+      "compact": {
+        "theme": "dark",
+        "fontSize": "small",
+        "vertical": true,
+        "title": "水调歌头·明月几时有",
+        "poemText": "明月几时有？把酒问青天。不知天上宫阙，今夕是何年。我欲乘风归去，又恐琼楼玉宇，高处不胜寒。起舞弄清影，何似在人间。转朱阁，低绮户，照无眠。不应有恨，何事长向别时圆？人有悲欢离合，月有阴晴圆缺，此事古难全。但愿人长久，千里共婵娟。",
+        "poemLineCount": 19,
+        "documentScrollWidth": 320,
+        "panelClientHeight": 200,
+        "panelScrollHeight": 792,
+        "panelScrollTop": 592,
+        "frameClientWidth": 243,
+        "frameScrollWidth": 566,
+        "frameInitialScroll": -82,
+        "frameEndScroll": -322,
+        "back": {
+          "top": 67,
+          "bottom": 97,
+          "left": 21,
+          "right": 87
+        },
+        "layoutAction": {
+          "top": -317,
+          "bottom": -285,
+          "left": 222,
+          "right": 278
+        },
+        "edition": {
+          "top": 193,
+          "bottom": 211,
+          "left": 35,
+          "right": 278
+        },
+        "editionText": " 文本来源：《东坡乐府》",
+        "typography": {
+          "sectionBody": 14,
+          "annotationTerm": 13,
+          "annotationExplanation": 13,
+          "edition": 12
+        },
+        "viewport": {
+          "width": 320,
+          "height": 260
+        }
+      }
+    },
+    {
+      "theme": "dark",
+      "layout": "vertical",
+      "fontSize": "medium",
+      "fullTextMatches": true,
+      "roomy": {
+        "theme": "dark",
+        "fontSize": "medium",
+        "vertical": true,
+        "title": "水调歌头·明月几时有",
+        "poemText": "明月几时有？把酒问青天。不知天上宫阙，今夕是何年。我欲乘风归去，又恐琼楼玉宇，高处不胜寒。起舞弄清影，何似在人间。转朱阁，低绮户，照无眠。不应有恨，何事长向别时圆？人有悲欢离合，月有阴晴圆缺，此事古难全。但愿人长久，千里共婵娟。",
+        "poemLineCount": 19,
+        "documentScrollWidth": 560,
+        "panelClientHeight": 660,
+        "panelScrollHeight": 771,
+        "panelScrollTop": 0,
+        "frameClientWidth": 483,
+        "frameScrollWidth": 623,
+        "frameInitialScroll": 0,
+        "frameEndScroll": -140,
+        "back": {
+          "top": 67,
+          "bottom": 97,
+          "left": 21,
+          "right": 87
+        },
+        "layoutAction": {
+          "top": 237,
+          "bottom": 269,
+          "left": 462,
+          "right": 518
+        },
+        "edition": {
+          "top": 764,
+          "bottom": 782,
+          "left": 35,
+          "right": 518
+        },
+        "editionText": " 文本来源：《东坡乐府》",
+        "typography": {
+          "sectionBody": 14,
+          "annotationTerm": 13,
+          "annotationExplanation": 13,
+          "edition": 12
+        },
+        "viewport": {
+          "width": 560,
+          "height": 720
+        }
+      },
+      "compact": {
+        "theme": "dark",
+        "fontSize": "medium",
+        "vertical": true,
+        "title": "水调歌头·明月几时有",
+        "poemText": "明月几时有？把酒问青天。不知天上宫阙，今夕是何年。我欲乘风归去，又恐琼楼玉宇，高处不胜寒。起舞弄清影，何似在人间。转朱阁，低绮户，照无眠。不应有恨，何事长向别时圆？人有悲欢离合，月有阴晴圆缺，此事古难全。但愿人长久，千里共婵娟。",
+        "poemLineCount": 19,
+        "documentScrollWidth": 320,
+        "panelClientHeight": 200,
+        "panelScrollHeight": 809,
+        "panelScrollTop": 609,
+        "frameClientWidth": 243,
+        "frameScrollWidth": 623,
+        "frameInitialScroll": -140,
+        "frameEndScroll": -380,
+        "back": {
+          "top": 67,
+          "bottom": 97,
+          "left": 21,
+          "right": 87
+        },
+        "layoutAction": {
+          "top": -334,
+          "bottom": -302,
+          "left": 222,
+          "right": 278
+        },
+        "edition": {
+          "top": 193,
+          "bottom": 211,
+          "left": 35,
+          "right": 278
+        },
+        "editionText": " 文本来源：《东坡乐府》",
+        "typography": {
+          "sectionBody": 14,
+          "annotationTerm": 13,
+          "annotationExplanation": 13,
+          "edition": 12
+        },
+        "viewport": {
+          "width": 320,
+          "height": 260
+        }
+      }
+    },
+    {
+      "theme": "dark",
+      "layout": "vertical",
+      "fontSize": "large",
+      "fullTextMatches": true,
+      "roomy": {
+        "theme": "dark",
+        "fontSize": "large",
+        "vertical": true,
+        "title": "水调歌头·明月几时有",
+        "poemText": "明月几时有？把酒问青天。不知天上宫阙，今夕是何年。我欲乘风归去，又恐琼楼玉宇，高处不胜寒。起舞弄清影，何似在人间。转朱阁，低绮户，照无眠。不应有恨，何事长向别时圆？人有悲欢离合，月有阴晴圆缺，此事古难全。但愿人长久，千里共婵娟。",
+        "poemLineCount": 19,
+        "documentScrollWidth": 560,
+        "panelClientHeight": 660,
+        "panelScrollHeight": 799,
+        "panelScrollTop": 0,
+        "frameClientWidth": 483,
+        "frameScrollWidth": 716,
+        "frameInitialScroll": 0,
+        "frameEndScroll": -233,
+        "back": {
+          "top": 67,
+          "bottom": 97,
+          "left": 21,
+          "right": 87
+        },
+        "layoutAction": {
+          "top": 237,
+          "bottom": 269,
+          "left": 462,
+          "right": 518
+        },
+        "edition": {
+          "top": 792,
+          "bottom": 810,
+          "left": 35,
+          "right": 518
+        },
+        "editionText": " 文本来源：《东坡乐府》",
+        "typography": {
+          "sectionBody": 14,
+          "annotationTerm": 13,
+          "annotationExplanation": 13,
+          "edition": 12
+        },
+        "viewport": {
+          "width": 560,
+          "height": 720
+        }
+      },
+      "compact": {
+        "theme": "dark",
+        "fontSize": "large",
+        "vertical": true,
+        "title": "水调歌头·明月几时有",
+        "poemText": "明月几时有？把酒问青天。不知天上宫阙，今夕是何年。我欲乘风归去，又恐琼楼玉宇，高处不胜寒。起舞弄清影，何似在人间。转朱阁，低绮户，照无眠。不应有恨，何事长向别时圆？人有悲欢离合，月有阴晴圆缺，此事古难全。但愿人长久，千里共婵娟。",
+        "poemLineCount": 19,
+        "documentScrollWidth": 320,
+        "panelClientHeight": 200,
+        "panelScrollHeight": 837,
+        "panelScrollTop": 637,
+        "frameClientWidth": 243,
+        "frameScrollWidth": 716,
+        "frameInitialScroll": 0,
+        "frameEndScroll": -473,
+        "back": {
+          "top": 67,
+          "bottom": 97,
+          "left": 21,
+          "right": 87
+        },
+        "layoutAction": {
+          "top": -362,
+          "bottom": -330,
+          "left": 222,
+          "right": 278
+        },
+        "edition": {
+          "top": 193,
+          "bottom": 211,
+          "left": 35,
+          "right": 278
+        },
+        "editionText": " 文本来源：《东坡乐府》",
+        "typography": {
+          "sectionBody": 14,
+          "annotationTerm": 13,
+          "annotationExplanation": 13,
+          "edition": 12
+        },
+        "viewport": {
+          "width": 320,
+          "height": 260
+        }
+      }
+    }
+  ],
+  "expandedDetailsMeasurement": {
+    "theme": "dark",
+    "fontSize": "large",
+    "vertical": true,
+    "title": "水调歌头·明月几时有",
+    "poemText": "明月几时有？把酒问青天。不知天上宫阙，今夕是何年。我欲乘风归去，又恐琼楼玉宇，高处不胜寒。起舞弄清影，何似在人间。转朱阁，低绮户，照无眠。不应有恨，何事长向别时圆？人有悲欢离合，月有阴晴圆缺，此事古难全。但愿人长久，千里共婵娟。",
+    "poemLineCount": 19,
+    "documentScrollWidth": 320,
+    "panelClientHeight": 200,
+    "panelScrollHeight": 1118,
+    "panelScrollTop": 918,
+    "frameClientWidth": 243,
+    "frameScrollWidth": 716,
+    "frameInitialScroll": -29,
+    "frameEndScroll": -473,
+    "back": {
+      "top": 67,
+      "bottom": 97,
+      "left": 21,
+      "right": 87
+    },
+    "layoutAction": {
+      "top": -643,
+      "bottom": -611,
+      "left": 222,
+      "right": 278
+    },
+    "edition": {
+      "top": 193,
+      "bottom": 211,
+      "left": 35,
+      "right": 278
+    },
+    "editionText": " 文本来源：《东坡乐府》",
+    "typography": {
+      "sectionBody": 14,
+      "annotationTerm": 13,
+      "annotationExplanation": 13,
+      "edition": 12
+    },
+    "viewport": {
+      "width": 320,
+      "height": 260
+    }
+  },
+  "syntheticPunctuation": {
+    "layoutOnly": true,
+    "publishedPoem": false,
+    "sourceLines": [
+      "《九月九日》：“2026年，登高？”",
+      "长江东去，星河未尽。"
+    ],
+    "modes": [
+      {
+        "layout": "horizontal",
+        "label": "隔离排版样本，非作品原文",
+        "text": "《九月九日》：“2026年，登高？”长江东去，星河未尽。",
+        "lineCount": 2,
+        "writingMode": "horizontal-tb",
+        "documentOverflow": false
+      },
+      {
+        "layout": "vertical",
+        "label": "隔离排版样本，非作品原文",
+        "text": "《九月九日》：“2026年，登高？”长江东去，星河未尽。",
+        "lineCount": 6,
+        "writingMode": "vertical-rl",
+        "documentOverflow": false
+      }
+    ]
+  }
+}
