@@ -17,6 +17,7 @@ Thumbs.db
 # Local control, rendering and test workspaces
 .codex-workbench/
 .work/
+review/redesign/h1-private/
 tmp/
 outputs/
 __pycache__/

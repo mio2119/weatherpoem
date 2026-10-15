@@ -19,6 +19,7 @@
     "content:review:export": "node scripts/export-content-review.mjs",
     "content:review:check": "node scripts/export-content-review.mjs --check && node --test scripts/content-review-contract.test.mjs",
     "content:review:validate": "node scripts/validate-content-review.mjs",
+    "redesign:h1:preflight": "node --test scripts/redesign-h1-preflight.test.mjs",
     "content:withdrawal:drill": "node scripts/content-withdrawal-drill.mjs",
     "content:withdrawal:check": "node scripts/content-withdrawal-drill.mjs --check && node --test scripts/content-withdrawal-contract.test.mjs",
     "content:withdrawal:redesign:check": "node scripts/content-withdrawal-drill.mjs --check --report=T08_CONTENT_WITHDRAWAL_DRILL_20261015.json && node --test scripts/content-withdrawal-contract.test.mjs",
