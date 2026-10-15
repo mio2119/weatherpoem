@@ -130,8 +130,13 @@ describe("browser persistence", () => {
   it.each([
     { history: ["legacy-poem"] },
     { history: [{ localDate: "2026-07-23", workId: 12, author: "甲", primaryContext: "weather" }] },
+    { history: [{ localDate: "2026-2-3", workId: "legacy-poem", author: "甲", primaryContext: "weather" }] },
     { feedback: [{ workId: "legacy-poem", type: "replaced", contextTags: "rain", createdAt: "2026-07-23" }] },
+    { feedback: [{ workId: "legacy-poem", type: "replaced", contextTags: ["rain"],
+      createdAt: "2026-07-23", localDate: "2026-02-30" }] },
     { dailyState: { localDate: "2026-07-23", state: "shown", workId: 12,
+      contentVersion: "2026.07.1", ruleVersion: "1.0.0" } },
+    { dailyState: { localDate: "2026-02-30", state: "shown", workId: "legacy-poem",
       contentVersion: "2026.07.1", ruleVersion: "1.0.0" } },
   ])("stops on damaged old activity fields without overwriting them: %j", async (patch) => {
     const damaged = JSON.stringify({
@@ -144,6 +149,23 @@ describe("browser persistence", () => {
     await expect(repository.saveSettings({ ...DEFAULT_SETTINGS, configured: true, cityId: "beijing" }))
       .rejects.toThrow(/浏览器本地资料/);
     expect(localStorage.getItem("weatherpoem.local.v1")).toBe(damaged);
+  });
+
+  it("accepts a real leap-day key in old browser activity", async () => {
+    localStorage.setItem("weatherpoem.local.v1", JSON.stringify({
+      settings: { configured: true, cityId: "hangzhou" },
+      dailyState: { localDate: "2024-02-29", state: "shown", workId: "legacy-poem",
+        contentVersion: "2026.07.1", ruleVersion: "1.0.0" },
+      history: [{ localDate: "2024-02-29", workId: "legacy-poem",
+        author: "甲", primaryContext: "calendar" }],
+      favorites: ["legacy-poem"],
+      feedback: [{ workId: "legacy-poem", type: "replaced", contextTags: [],
+        createdAt: "2024-02-29T08:00:00Z", localDate: "2024-02-29" }],
+    }));
+    const loaded = await (await createRepository()).load();
+    expect(loaded.dailyState?.localDate).toBe("2024-02-29");
+    expect(loaded.history[0]?.localDate).toBe("2024-02-29");
+    expect(loaded.feedback[0]?.localDate).toBe("2024-02-29");
   });
 
   it("keeps a newly saved poem first in favorites after a reload", async () => {

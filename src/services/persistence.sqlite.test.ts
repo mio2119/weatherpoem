@@ -394,6 +394,52 @@ describe("SQLite feedback migration and undo", () => {
     expect((await repository.load()).favorites).toEqual(["legacy-poem"]);
   });
 
+  it("does not accept an impossible SQLite daily date", async () => {
+    const database = sqlite.database!;
+    const repository = await createRepository();
+    database.prepare(
+      `INSERT INTO daily_state
+       (local_date, state, work_id, shown_at, content_version, rule_version)
+       VALUES ('2026-02-30', 'shown', 'legacy-poem', NULL, 'test', 'test')`,
+    ).run();
+    await expect(repository.load()).rejects.toBeInstanceOf(DesktopStorageUnavailableError);
+    expect((database.prepare("SELECT local_date FROM daily_state").get() as { local_date: string }).local_date)
+      .toBe("2026-02-30");
+    database.prepare("UPDATE daily_state SET local_date = '2024-02-29'").run();
+    expect((await repository.load()).dailyState?.localDate).toBe("2024-02-29");
+  });
+
+  it("does not accept a noncanonical SQLite history date", async () => {
+    const database = sqlite.database!;
+    const repository = await createRepository();
+    database.prepare(
+      `INSERT INTO recommendation_display_events
+       (local_date, work_id, author, primary_context, displayed_at)
+       VALUES ('2026-2-3', 'legacy-poem', 'author', 'calendar', NULL)`,
+    ).run();
+    await expect(repository.load()).rejects.toBeInstanceOf(DesktopStorageUnavailableError);
+    expect((database.prepare(
+      "SELECT local_date FROM recommendation_display_events",
+    ).get() as { local_date: string }).local_date).toBe("2026-2-3");
+    database.prepare(
+      "UPDATE recommendation_display_events SET local_date = '2026-02-03'",
+    ).run();
+    expect((await repository.load()).history[0]?.localDate).toBe("2026-02-03");
+  });
+
+  it("does not accept an impossible SQLite feedback date", async () => {
+    const database = sqlite.database!;
+    const repository = await createRepository();
+    database.prepare(
+      "UPDATE feedback SET local_date = '2026-02-30' WHERE work_id = 'legacy-poem'",
+    ).run();
+    await expect(repository.load()).rejects.toBeInstanceOf(DesktopStorageUnavailableError);
+    expect((database.prepare("SELECT local_date FROM feedback").get() as { local_date: string }).local_date)
+      .toBe("2026-02-30");
+    database.prepare("UPDATE feedback SET local_date = '2024-02-29'").run();
+    expect((await repository.load()).feedback[0]?.localDate).toBe("2024-02-29");
+  });
+
   it("rolls back every user table when a deletion fails midway, then clears all on retry", async () => {
     const database = sqlite.database!;
     const repository = await createRepository();

@@ -92,9 +92,23 @@ function isNonEmptyString(value: unknown): value is string {
   return typeof value === "string" && value.trim().length > 0;
 }
 
+function isLocalDateKey(value: unknown): value is string {
+  if (typeof value !== "string" || !/^\d{4}-\d{2}-\d{2}$/.test(value)) {
+    return false;
+  }
+  const date = new Date(`${value}T00:00:00.000Z`);
+  return Number.isFinite(date.getTime()) &&
+    date.toISOString().slice(0, 10) === value;
+}
+
 function isOptionalString(record: Record<string, unknown>, key: string): boolean {
   return !(key in record) || record[key] === undefined ||
     typeof record[key] === "string";
+}
+
+function isOptionalLocalDateKey(record: Record<string, unknown>, key: string): boolean {
+  return !(key in record) || record[key] === undefined ||
+    isLocalDateKey(record[key]);
 }
 
 function isStoredSettings(value: unknown): value is Partial<AppSettings> {
@@ -121,7 +135,7 @@ function isStoredSettings(value: unknown): value is Partial<AppSettings> {
 }
 
 function isStoredDailyState(value: unknown): value is DailyState {
-  return isRecord(value) && isNonEmptyString(value.localDate) &&
+  return isRecord(value) && isLocalDateKey(value.localDate) &&
     typeof value.state === "string" &&
     ["idle", "shown", "retained", "alert-suppressed", "content-withdrawn"].includes(value.state) &&
     isNonEmptyString(value.contentVersion) && isNonEmptyString(value.ruleVersion) &&
@@ -129,7 +143,7 @@ function isStoredDailyState(value: unknown): value is DailyState {
 }
 
 function isStoredHistoryItem(value: unknown): value is RecommendationHistoryItem {
-  return isRecord(value) && isNonEmptyString(value.localDate) &&
+  return isRecord(value) && isLocalDateKey(value.localDate) &&
     isNonEmptyString(value.workId) && typeof value.author === "string" &&
     typeof value.primaryContext === "string" && isOptionalString(value, "displayedAt");
 }
@@ -139,7 +153,7 @@ function isBrowserFeedbackItem(value: unknown): value is FeedbackItem {
     (value.type === "disliked" || value.type === "replaced") &&
     Array.isArray(value.contextTags) &&
     value.contextTags.every((tag: unknown) => typeof tag === "string") &&
-    isNonEmptyString(value.createdAt) && isOptionalString(value, "localDate");
+    isNonEmptyString(value.createdAt) && isOptionalLocalDateKey(value, "localDate");
 }
 
 function parseStoredSettings(raw: string): AppSettings {
@@ -330,7 +344,7 @@ function parseFeedbackRow(row: FeedbackRow): FeedbackItem {
   if (!isNonEmptyString(row.work_id) ||
       (row.type !== "disliked" && row.type !== "replaced") ||
       !isNonEmptyString(row.created_at) ||
-      (row.local_date !== null && typeof row.local_date !== "string")) {
+      (row.local_date !== null && !isLocalDateKey(row.local_date))) {
     throw new Error("Stored feedback fields are invalid");
   }
   const contextTags: unknown = JSON.parse(row.context_tags);
