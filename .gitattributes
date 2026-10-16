@@ -1,0 +1,2 @@
+# Third-party license evidence is byte-hashed; never rewrite line endings.
+third_party/license-texts/** -text

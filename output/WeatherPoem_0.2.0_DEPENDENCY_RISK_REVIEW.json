@@ -1,64 +1,37 @@
 {
-  "schemaVersion": "1.1",
+  "schemaVersion": "2.0",
   "product": "WeatherPoem",
   "appVersion": "0.2.0",
-  "generatedAt": "2026-10-16T00:54:53.209Z",
-  "status": "review-ready-not-approved",
+  "generatedAt": "2026-10-16T03:18:37.668Z",
+  "status": "upgrade-applied-review-pending",
   "inputs": {
     "cargoAuditReport": "output/WeatherPoem_0.2.0_CARGO_AUDIT.json",
-    "cargoAuditSha256": "C1E78590C7F6B28BB98F1197AAE70BFEC40719ED8A692771A3D81A04791234A3",
+    "cargoAuditSha256": "E1DF3E82E7BBE8721AC402B6F5EB9C9A56153C0EEED1E6D0F3D559015893DBDC",
     "cargoLock": "src-tauri/Cargo.lock",
-    "cargoLockSha256": "BD2F5BA58AA78F874B903188A891A830E3C28AD12EEF18A05D0C37496767FDCF",
+    "cargoLockSha256": "F51B47AEC215D3CAF2408F880B7A8B764C4608EF2852DCBD443F07871A4760C2",
     "targetTriple": "x86_64-pc-windows-msvc"
   },
   "currentTarget": {
     "vulnerabilityCount": 0,
     "blockingWarningCount": 0,
-    "unmaintainedWarningCount": 5,
-    "unmaintainedWarnings": [
-      {
-        "advisoryId": "RUSTSEC-2025-0081",
-        "package": "unic-char-property",
-        "version": "0.9.0"
-      },
-      {
-        "advisoryId": "RUSTSEC-2025-0075",
-        "package": "unic-char-range",
-        "version": "0.9.0"
-      },
-      {
-        "advisoryId": "RUSTSEC-2025-0080",
-        "package": "unic-common",
-        "version": "0.9.0"
-      },
-      {
-        "advisoryId": "RUSTSEC-2025-0100",
-        "package": "unic-ucd-ident",
-        "version": "0.9.0"
-      },
-      {
-        "advisoryId": "RUSTSEC-2025-0098",
-        "package": "unic-ucd-version",
-        "version": "0.9.0"
-      }
-    ]
+    "unmaintainedWarningCount": 0,
+    "unmaintainedWarnings": []
   },
   "dependencyCluster": {
-    "independentRiskCount": 1,
-    "clusteredWarningCount": 5,
-    "frameworkPackage": "tauri-utils@2.9.3",
-    "rootPackage": "urlpattern@0.3.0",
-    "leafPackage": "unic-ucd-ident@0.9.0",
+    "independentRiskCount": 0,
+    "clusteredWarningCount": 0,
+    "frameworkPackage": "tauri-utils@2.10.2",
+    "rootPackage": "urlpattern@0.6.0",
+    "leafPackage": null,
     "path": [
       "weatherpoem@0.2.0",
-      "tauri@2.11.5",
-      "tauri-utils@2.9.3",
-      "urlpattern@0.3.0",
-      "unic-ucd-ident@0.9.0"
+      "tauri@2.12.4",
+      "tauri-utils@2.10.2",
+      "urlpattern@0.6.0"
     ]
   },
   "upstream": {
-    "checkedAt": "2026-10-16T00:54:53.209Z",
+    "checkedAt": "2026-10-16T03:18:37.668Z",
     "tauriLatestStable": "2.12.4",
     "tauriUtilsLatestStable": "2.10.2",
     "urlpatternLatestStable": "0.6.0",
@@ -80,10 +53,10 @@
     }
   },
   "proposedDisposition": {
-    "action": "upgrade-released-stable-tauri-before-release",
-    "reason": "urlpattern-fix-now-available-in-stable",
+    "action": "verify-applied-stable-upgrade-before-release",
+    "reason": "old-unic-chain-removed-from-windows-target",
     "temporaryControl": "block-vulnerabilities-unsound-yanked-and-review-each-candidate",
-    "upgradeTrigger": "released-tauri-utils-resolves-urlpattern-0.6",
+    "upgradeTrigger": "locked-windows-tree-resolves-urlpattern-0.6",
     "releaseGate": "before-next-release-candidate",
     "targetDate": "2026-11-14"
   },
@@ -95,10 +68,10 @@
   },
   "limitations": {
     "upstreamFixReleased": true,
-    "upgradeNotYetApplied": true,
-    "runtimeWarningStillPresent": true,
+    "upgradeNotYetApplied": false,
+    "runtimeWarningStillPresent": false,
     "namedSecurityReviewCompleted": false
   },
   "gateSatisfied": false,
-  "result": "automated-disposition-draft-ready"
+  "result": "automated-upgrade-verified-review-pending"
 }

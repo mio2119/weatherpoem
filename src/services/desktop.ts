@@ -12,6 +12,18 @@ export function isTauri(): boolean {
   return typeof window !== "undefined" && "__TAURI_INTERNALS__" in window;
 }
 
+export async function isWindowPresented(): Promise<boolean> {
+  if (document.visibilityState !== "visible") return false;
+  if (!isTauri()) return true;
+  try {
+    const { getCurrentWindow } = await import("@tauri-apps/api/window");
+    const appWindow = getCurrentWindow();
+    return (await appWindow.isVisible()) && !(await appWindow.isMinimized());
+  } catch {
+    return false;
+  }
+}
+
 export interface LaunchContext {
   isAutostart: boolean;
   foregroundPresentation: "clear" | "full-screen" | "unknown";

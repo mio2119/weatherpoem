@@ -2,17 +2,17 @@
   "schemaVersion": "1.0",
   "product": "WeatherPoem",
   "version": "0.2.0",
-  "scannedAt": "2026-10-15T14:19:26.713Z",
+  "scannedAt": "2026-10-16T03:15:14.677Z",
   "locks": {
     "npm": {
       "name": "package-lock.json",
       "bytes": 135120,
-      "sha256": "3598C80AA39780AF3027B47AE907201EA4187B9CDA291F4E9E608221EFA96AEC"
+      "sha256": "2CFEF94CB24F03E04D42006599CE35B1A87E0B6C12F1820BD728E8CC3F8137F1"
     },
     "cargo": {
       "name": "src-tauri/Cargo.lock",
-      "bytes": 146526,
-      "sha256": "BD2F5BA58AA78F874B903188A891A830E3C28AD12EEF18A05D0C37496767FDCF"
+      "bytes": 146192,
+      "sha256": "F51B47AEC215D3CAF2408F880B7A8B764C4608EF2852DCBD443F07871A4760C2"
     }
   },
   "scanners": {
@@ -38,56 +38,10 @@
         "build"
       ],
       "packageCount": 285,
-      "findingCount": 5,
+      "findingCount": 0,
       "vulnerabilityCount": 0,
-      "informationalCount": 5,
-      "findings": [
-        {
-          "id": "RUSTSEC-2025-0075",
-          "modified": "2025-10-22T14:41:04Z",
-          "package": "unic-char-range",
-          "version": "0.9.0",
-          "summary": "`unic-char-range` is unmaintained",
-          "informational": "unmaintained",
-          "severity": []
-        },
-        {
-          "id": "RUSTSEC-2025-0080",
-          "modified": "2025-10-21T11:12:59Z",
-          "package": "unic-common",
-          "version": "0.9.0",
-          "summary": "`unic-common` is unmaintained",
-          "informational": "unmaintained",
-          "severity": []
-        },
-        {
-          "id": "RUSTSEC-2025-0081",
-          "modified": "2025-10-21T11:12:59Z",
-          "package": "unic-char-property",
-          "version": "0.9.0",
-          "summary": "`unic-char-property` is unmaintained",
-          "informational": "unmaintained",
-          "severity": []
-        },
-        {
-          "id": "RUSTSEC-2025-0098",
-          "modified": "2025-10-21T11:12:59Z",
-          "package": "unic-ucd-version",
-          "version": "0.9.0",
-          "summary": "`unic-ucd-version` is unmaintained",
-          "informational": "unmaintained",
-          "severity": []
-        },
-        {
-          "id": "RUSTSEC-2025-0100",
-          "modified": "2025-10-21T11:12:59Z",
-          "package": "unic-ucd-ident",
-          "version": "0.9.0",
-          "summary": "`unic-ucd-ident` is unmaintained",
-          "informational": "unmaintained",
-          "severity": []
-        }
-      ]
+      "informationalCount": 0,
+      "findings": []
     }
   },
   "limitations": {

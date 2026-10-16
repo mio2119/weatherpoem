@@ -48,3 +48,5 @@ A8 因上述条件仍为**部分通过**，不把 T08 记录当作发布签收�
 同哈希的[可视复测报告](./evidence/T08_NATIVE_WITHDRAWAL_CAPTURED_20261015.json)留存[撤回前诗笺](./evidence/T08_NATIVE_WITHDRAWAL_CAPTURED_20261015_before.png)与[撤回后校正页](./evidence/T08_NATIVE_WITHDRAWAL_CAPTURED_20261015_after.png)。已逐张检查：校正页不显示原诗题、诗句或伪装成正常推荐的理由，“换一首已核验内容”可见；静帧不能代替真人阅读与生产网关的端到端签收。
 
 动效停机修复后，当前内部 EXE 哈希改为 `0C6D96DF719366F9068D435D0277C2E7BC0ED72B23634143F88396BF695DF76B`。再次以专用临时资料执行[隐藏后模拟撤回→第二实例唤醒报告](./evidence/T08_NATIVE_WITHDRAWAL_MOTION_STOP_20261015.json)，DOM 变化中没有已撤回诗卡，校正页未泄露原诗题，SQLite 每日状态为 `content-withdrawn` 且 ID 对应；[当前哈希校正页](./evidence/T08_NATIVE_WITHDRAWAL_MOTION_STOP_20261015_after.png)已查看。它仍是本地模拟缓存，不是生产签名清单或具名撤回演练；A8 保持**部分通过**。
+
+2026-10-16 升级依赖及修复最小化动效后的新内部候选 `DB56F155495900B11E73CCFABCC4D99BFFC24F233AEBD0127772639811DD391D`，用临时资料再次完成[隐藏后模拟撤回→第二实例唤醒](./evidence/T08_NATIVE_WITHDRAWAL_TAURI212_FIX_20261016.json)：校正页不泄露已撤回诗题，SQLite 每日状态与撤回作品 ID 对应，DOM 采样未见旧诗卡复现。升级初版 `4EA661A128AB011C63495A563DBDEB0598D463B9247C14CF52D3EA1CD67E4E00` 的[校正页静帧](./evidence/T08_NATIVE_WITHDRAWAL_TAURI212_20261016_after.png)已人工查看，文字与主要按钮可读；该画面不代表新候选的逐页视觉签收，也不证明生产撤回网关、签名或具名内容审核。A8 继续**部分通过**。

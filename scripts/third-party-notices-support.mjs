@@ -584,7 +584,10 @@ export function mergeCanonicalLicenseGroups(groups) {
     );
 }
 
-export async function collectThirdPartyNoticeInputs(projectRoot) {
+export async function collectThirdPartyNoticeInputs(
+  projectRoot,
+  { skipCanonicalCargo = false } = {},
+) {
   const readJson = async (relativePath) =>
     JSON.parse(
       await readFile(path.join(projectRoot, relativePath), "utf8"),
@@ -721,13 +724,15 @@ export async function collectThirdPartyNoticeInputs(projectRoot) {
       cargoLicenseSupplements,
       projectRoot,
     );
-  const canonicalCargo = await applyCanonicalLicenseSources(
-    vendoredCargo.packages,
-    "cargo",
-    canonicalLicensePolicy,
-    canonicalLicenseSupplements,
-    projectRoot,
-  );
+  const canonicalCargo = skipCanonicalCargo
+    ? { packages: vendoredCargo.packages, bindings: [], groups: [] }
+    : await applyCanonicalLicenseSources(
+      vendoredCargo.packages,
+      "cargo",
+      canonicalLicensePolicy,
+      canonicalLicenseSupplements,
+      projectRoot,
+    );
 
   const inputFiles = {
     packageJson: "package.json",
@@ -1121,9 +1126,9 @@ function buildMarkdown(report, textArtifacts) {
     lines.push(
       `### ${artifact.textId}`,
       "",
-      `SHA-256：\`${artifact.sha256}\`  `,
-      `字节数：${artifact.bytes}  `,
-      `文件名：${artifact.fileNames.map((item) => `\`${item}\``).join("、")}  `,
+      `SHA-256：\`${artifact.sha256}\`<br>`,
+      `字节数：${artifact.bytes}<br>`,
+      `文件名：${artifact.fileNames.map((item) => `\`${item}\``).join("、")}<br>`,
       `引用包：${artifact.packageIds.map((item) => `\`${item}\``).join("、")}`,
       "",
       "````text",

@@ -12,6 +12,7 @@ import {
   completeAppExit,
   fitGlanceWindowHeight,
   hideWindow,
+  isWindowPresented,
   listenForExitRequest,
   minimizeWindow,
   OPEN_METEO_LICENSE_URL,
@@ -40,6 +41,8 @@ const windowMocks = vi.hoisted(() => ({
   show: vi.fn<() => Promise<void>>(),
   hide: vi.fn<() => Promise<void>>(),
   minimize: vi.fn<() => Promise<void>>(),
+  isVisible: vi.fn<() => Promise<boolean>>(),
+  isMinimized: vi.fn<() => Promise<boolean>>(),
   setFocus: vi.fn<() => Promise<void>>(),
   setMinSize: vi.fn<() => Promise<void>>(),
   setSize: vi.fn<() => Promise<void>>(),
@@ -80,6 +83,8 @@ describe("desktop reveal focus policy", () => {
     windowMocks.show.mockResolvedValue();
     windowMocks.hide.mockResolvedValue();
     windowMocks.minimize.mockResolvedValue();
+    windowMocks.isVisible.mockResolvedValue(true);
+    windowMocks.isMinimized.mockResolvedValue(false);
     windowMocks.setFocus.mockResolvedValue();
   });
 
@@ -112,6 +117,16 @@ describe("desktop reveal focus policy", () => {
     expect(document.documentElement.dataset.sceneActive).toBe("false");
     expect(conceal).toHaveBeenCalledTimes(2);
     window.removeEventListener("weatherpoem:conceal", conceal);
+  });
+
+  it("does not treat a minimized native window as presented when WebView2 still reports visible", async () => {
+    windowMocks.isMinimized.mockResolvedValue(true);
+    expect(await isWindowPresented()).toBe(false);
+    windowMocks.isMinimized.mockResolvedValue(false);
+    windowMocks.isVisible.mockResolvedValue(false);
+    expect(await isWindowPresented()).toBe(false);
+    windowMocks.isVisible.mockResolvedValue(true);
+    expect(await isWindowPresented()).toBe(true);
   });
 
   it("records computed scene animation and reduced-motion states", () => {

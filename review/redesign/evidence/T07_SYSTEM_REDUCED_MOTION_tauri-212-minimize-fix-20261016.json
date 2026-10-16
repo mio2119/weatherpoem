@@ -1,0 +1,39 @@
+{
+  "schemaVersion": "1.0",
+  "testKind": "isolated-webview-reduced-motion",
+  "generatedAt": "2026-10-16T03:33:03.826Z",
+  "artifact": {
+    "path": ".work/redesign-tauri-212-minimize-fix-20261016/release/weatherpoem.exe",
+    "sha256": "DB56F155495900B11E73CCFABCC4D99BFFC24F233AEBD0127772639811DD391D"
+  },
+  "scenario": "scene-rain",
+  "webViewArguments": "--force-prefers-reduced-motion",
+  "realUserDataTouched": false,
+  "systemSettingChanged": false,
+  "runId": "550c31e9-fa36-4fd3-a282-de1f3f633587",
+  "processId": 90664,
+  "readyMarker": {
+    "schemaVersion": "1.2",
+    "runId": "550c31e9-fa36-4fd3-a282-de1f3f633587",
+    "appVersion": "0.2.0",
+    "processId": 90664,
+    "nativeReadyMs": 611.7964999999999,
+    "frontendReadyMs": 311,
+    "readyView": "poem",
+    "readyMode": "offline-rules",
+    "viewRenderMs": 137.5,
+    "performanceScenario": "scene-rain",
+    "sceneMotion": {
+      "sceneKind": "rain",
+      "appReduced": false,
+      "systemReduced": true,
+      "sceneActive": true,
+      "visibilityState": "visible",
+      "animationName": "scene-drift",
+      "animationDuration": "1e-05s",
+      "animationIterationCount": "1"
+    },
+    "recordedAtUnixMs": 1792121583816
+  },
+  "result": "reduced-motion-passed"
+}

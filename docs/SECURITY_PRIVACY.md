@@ -105,7 +105,7 @@ npm run security:dependency-review:check
 两份扫描报告都绑定 `src-tauri/Cargo.lock` 的 SHA-256；npm/OSV 报告同时绑定
 `package-lock.json`。风险处置草案另绑定原生审计报告与 Rust 锁文件。
 
-2026-07-24 当前结果：
+2026-07-24 当时结果（以下旧链和公告不代表当前锁文件）：
 
 - npm：268 个依赖，`info/low/moderate/high/critical` 均为 0；
 - Rust Windows 目标：只扫描
@@ -128,22 +128,22 @@ unic-ucd-ident 0.9.0`。`unic-ucd-ident` 再带入另外四个 `unic-*` 包，�
 当时尚未进入稳定 Tauri。旧草案的 2026-08-31 复核日已经过去，不能继续当作
 当前计划；不为消除信息性公告而把核心框架钉到未发布 Git 提交。
 
-2026-10-15 重新取得官方 RustSec 快照并核验当前锁文件：Windows 目标 285 个
+2026-10-15 重新取得官方 RustSec 快照并核验当时锁文件：Windows 目标 285 个
 依赖、0 个已知漏洞、5 项 `unic-*` 停止维护公告；另外 2 个非 Windows 目标
 原始发现保留在报告中。当前 crates.io 稳定版 `tauri 2.12.4` 的普通依赖为
 `tauri-utils ~2.10.2`，`tauri-utils 2.10.2` 的普通依赖为 `urlpattern ^0.6`；
-已发布的稳定版因此具备移除旧链的升级路径。项目本身仍锁定
+已发布的稳定版因此具备移除旧链的升级路径。当时项目仍锁定
 `tauri 2.11.5 → tauri-utils 2.9.3 → urlpattern 0.3.0`，尚未执行升级。
 新处置草案提出在下一发行候选前升级已发布稳定版，并在 30 天内复核；这是
 机器草案，不是具名安全批准。npm/OSV 组合扫描初次遭遇网络连接重置，重试后
 发现旧 npm 锁文件含 5 项漏洞记录（1 中危、4 高危）；在现有版本范围内更新
 Vue 与相关间接依赖后重新扫描，当前 npm 268 个依赖与 Windows 目标 Rust 285
 个 crates.io 包的已知安全漏洞均为 0。报告已绑定新 `package-lock.json` 和
-当前 `Cargo.lock`；既有内部 EXE 仍由旧 npm 锁文件构建，不能把新扫描结果当成
+当时的 `Cargo.lock`；既有内部 EXE 仍由旧 npm 锁文件构建，不能把新扫描结果当成
 该 EXE 的发行验收。
 
 旧 npm 锁文件 SHA-256 为 `B25F08E34940D57B7A4DCB37CBDE24A0D9EE18DBFB450BDECC88BB5FB1BB7934`，
-新锁文件为 `3598C80AA39780AF3027B47AE907201EA4187B9CDA291F4E9E608221EFA96AEC`。
+当次新锁文件为 `3598C80AA39780AF3027B47AE907201EA4187B9CDA291F4E9E608221EFA96AEC`。
 本次在允许的版本范围内将 Vue 从 `3.5.40` 更新至 `3.5.44`，并更新
 `brace-expansion`、`postcss-selector-parser`、`source-map-js` 等间接包；
 旧锁文件的发现对应
@@ -151,8 +151,19 @@ Vue 与相关间接依赖后重新扫描，当前 npm 268 个依赖与 Windows �
 [brace-expansion 公告](https://github.com/advisories/GHSA-q2hr-2g5m-vwhr)、
 [PostCSS 选择器公告](https://github.com/advisories/GHSA-rj75-hqrm-r3gf)和
 [source-map-js 公告](https://github.com/advisories/GHSA-68fv-2mgg-jv7q)。
-这些是锁文件扫描发现，不等同于已证明可通过本桌面应用触发；修复后的当前锁文件
+这些是锁文件扫描发现，不等同于已证明可通过本桌面应用触发；修复后的当次锁文件
 由 `security:audit:check` 复算通过。
+
+2026-10-16 已在开发分支应用稳定版 `tauri 2.12.4`、`tauri-utils 2.10.2`、
+`urlpattern 0.6.0`，以及配套的 Tauri 前端 API/CLI；当前 Windows 目标依赖树
+285 个包，不再包含五个旧 `unic-*` 包及其停止维护公告。当前 npm 锁文件
+SHA-256 为 `2CFEF94CB24F03E04D42006599CE35B1A87E0B6C12F1820BD728E8CC3F8137F1`，
+Rust 锁文件为 `F51B47AEC215D3CAF2408F880B7A8B764C4608EF2852DCBD443F07871A4760C2`。
+联网扫描与离线检查均显示当前 npm、Windows 目标 Rust 已知安全漏洞为 0；
+原始 Cargo 审计保留两项非 Windows 目标漏洞发现和对应的信息性发现，不能删除。
+隔离内部 EXE 已完成部分原生回归，但这不是签名或安装包验收。具名安全评审、
+最终目标复核和发布授权仍未完成；风险报告状态是
+`upgrade-applied-review-pending`，不是“安全已批准”。
 
 OSV 批量查询依据官方 `v1/querybatch` 契约。扫描器会拒绝分页截断、目标依赖树
 解析失败、锁文件变化、报告过期和任何非信息性 Rust 发现。
@@ -169,9 +180,8 @@ normal,build`，只在发现确实属于当前构建树时才计入 Windows 目�
 
 ## 5. 仍未关闭的风险
 
-- 5 项停止维护的 `unic-*` 已归并为一个 Tauri/urlpattern 上游升级事项，修复已
-  在稳定版发布，但项目尚未升级；机器草案提出在下一发行候选前升级，仍需安全
-  负责人批准或修改。
+- 旧 `unic-*` 链已通过稳定 Tauri 升级退出当前 Windows 目标；升级结果已自动
+  核验，但兼容性及整体安全结论仍需具名负责人复核，不能把依赖升级写成批准。
 - 原生 Cargo.lock 原始报告包含非 Windows 目标发现；自动目标过滤已有依赖树契约，
   但安全负责人仍需复核未启用路径与最终发布目标一致。
 - 锁文件扫描只能发现已公开且能映射到版本的漏洞，不能替代源代码、权限、日志、

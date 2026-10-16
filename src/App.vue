@@ -42,6 +42,7 @@ import {
   getLaunchContext,
   getPerformanceWeatherScenario,
   isTauri,
+  isWindowPresented,
   fitGlanceWindowHeight,
   listenForConcealMain,
   listenForOpenMain,
@@ -624,15 +625,15 @@ function checkVisibleDate(): void {
   }
 }
 
-function handleWindowFocus(): void {
+async function handleWindowFocus(): Promise<void> {
+  if (!(await isWindowPresented())) return;
   if (revealPending.value) {
-    void validateRevealedContent().then(() => {
-      document.documentElement.dataset.sceneActive = "true";
-    });
+    await validateRevealedContent();
   } else {
     checkVisibleDate();
-    document.documentElement.dataset.sceneActive = "true";
   }
+  document.documentElement.dataset.sceneActive =
+    (await isWindowPresented()) ? "true" : "false";
 }
 
 async function completeOnboarding(next: AppSettings): Promise<void> {
@@ -947,14 +948,16 @@ function handleSystemThemeChange(): void {
   if (settings.value.theme === "system") applyTheme("system");
 }
 
-function handleSceneVisibilityChange(): void {
+async function handleSceneVisibilityChange(): Promise<void> {
   const visible = document.visibilityState === "visible";
-  document.documentElement.dataset.sceneActive = visible ? "true" : "false";
   if (!visible) {
     handleConcealRequest();
-  } else if (revealPending.value) {
-    void validateRevealedContent();
+    return;
   }
+  if (!(await isWindowPresented())) return;
+  if (revealPending.value) await validateRevealedContent();
+  document.documentElement.dataset.sceneActive =
+    (await isWindowPresented()) ? "true" : "false";
 }
 
 function handleConcealRequest(): void {

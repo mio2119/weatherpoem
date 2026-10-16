@@ -3,34 +3,14 @@ import { readFile } from "node:fs/promises";
 
 export const DEPENDENCY_RISK_REVIEW_REPORT =
   "output/WeatherPoem_0.2.0_DEPENDENCY_RISK_REVIEW.json";
-export const DEPENDENCY_RISK_REVIEW_SCHEMA = "1.1";
+export const DEPENDENCY_RISK_REVIEW_SCHEMA = "2.0";
 
-export const EXPECTED_UNIC_WARNINGS = [
-  {
-    advisoryId: "RUSTSEC-2025-0081",
-    package: "unic-char-property",
-    version: "0.9.0",
-  },
-  {
-    advisoryId: "RUSTSEC-2025-0075",
-    package: "unic-char-range",
-    version: "0.9.0",
-  },
-  {
-    advisoryId: "RUSTSEC-2025-0080",
-    package: "unic-common",
-    version: "0.9.0",
-  },
-  {
-    advisoryId: "RUSTSEC-2025-0100",
-    package: "unic-ucd-ident",
-    version: "0.9.0",
-  },
-  {
-    advisoryId: "RUSTSEC-2025-0098",
-    package: "unic-ucd-version",
-    version: "0.9.0",
-  },
+export const REMOVED_UNIC_PACKAGES = [
+  "unic-char-property",
+  "unic-char-range",
+  "unic-common",
+  "unic-ucd-ident",
+  "unic-ucd-version",
 ];
 
 function assert(condition, message) {
@@ -47,18 +27,6 @@ function exactKeys(value, keys, label) {
       JSON.stringify([...keys].sort()),
     `${label} 字段不符合契约`,
   );
-}
-
-function sortedWarnings(warnings) {
-  return warnings
-    .map(({ advisoryId, package: packageName, version }) => ({
-      advisoryId,
-      package: packageName,
-      version,
-    }))
-    .sort((left, right) =>
-      left.advisoryId.localeCompare(right.advisoryId),
-    );
 }
 
 function isSha256(value) {
@@ -108,7 +76,7 @@ export function validateDependencyRiskReview(report, expected) {
     report.schemaVersion === DEPENDENCY_RISK_REVIEW_SCHEMA &&
       report.product === "WeatherPoem" &&
       report.appVersion === expected.appVersion &&
-      report.status === "review-ready-not-approved",
+      report.status === "upgrade-applied-review-pending",
     "依赖风险处置草案身份无效",
   );
   const generatedAt = Date.parse(report.generatedAt);
@@ -153,18 +121,19 @@ export function validateDependencyRiskReview(report, expected) {
     ],
     "当前 Windows 目标",
   );
-  const expectedWarnings = sortedWarnings(
-    expected.targetUnmaintainedWarnings,
-  );
+  const targetPackages = expected.targetPackages;
+  assert(Array.isArray(targetPackages), "缺少当前 Windows 目标依赖树");
+  const targetVersion = (name) =>
+    targetPackages.find((item) => item.name === name)?.version;
   assert(
     report.currentTarget.vulnerabilityCount === 0 &&
       report.currentTarget.blockingWarningCount === 0 &&
-      report.currentTarget.unmaintainedWarningCount === 5 &&
-      JSON.stringify(
-        sortedWarnings(report.currentTarget.unmaintainedWarnings),
-      ) === JSON.stringify(expectedWarnings) &&
-      JSON.stringify(expectedWarnings) ===
-        JSON.stringify(sortedWarnings(EXPECTED_UNIC_WARNINGS)),
+      report.currentTarget.unmaintainedWarningCount === 0 &&
+      Array.isArray(report.currentTarget.unmaintainedWarnings) &&
+      report.currentTarget.unmaintainedWarnings.length === 0 &&
+      Array.isArray(expected.targetUnmaintainedWarnings) &&
+      expected.targetUnmaintainedWarnings.length === 0 &&
+      REMOVED_UNIC_PACKAGES.every((name) => !targetVersion(name)),
     "处置草案中的 Windows 目标风险与 cargo-audit 不一致",
   );
 
@@ -178,25 +147,27 @@ export function validateDependencyRiskReview(report, expected) {
       "leafPackage",
       "path",
     ],
-    "停止维护依赖簇",
+    "升级后的依赖链",
   );
   assert(
-    report.dependencyCluster.independentRiskCount === 1 &&
-      report.dependencyCluster.clusteredWarningCount === 5 &&
+    report.dependencyCluster.independentRiskCount === 0 &&
+      report.dependencyCluster.clusteredWarningCount === 0 &&
+      stableVersionAtLeastMinor(targetVersion("tauri"), 12) &&
+      stableVersionAtLeastMinor(targetVersion("tauri-utils"), 10) &&
+      targetVersion("urlpattern") === "0.6.0" &&
       report.dependencyCluster.frameworkPackage ===
-        "tauri-utils@2.9.3" &&
-      report.dependencyCluster.rootPackage === "urlpattern@0.3.0" &&
-      report.dependencyCluster.leafPackage ===
-        "unic-ucd-ident@0.9.0" &&
+        `tauri-utils@${targetVersion("tauri-utils")}` &&
+      report.dependencyCluster.rootPackage ===
+        `urlpattern@${targetVersion("urlpattern")}` &&
+      report.dependencyCluster.leafPackage === null &&
       JSON.stringify(report.dependencyCluster.path) ===
         JSON.stringify([
-          "weatherpoem@0.2.0",
-          "tauri@2.11.5",
-          "tauri-utils@2.9.3",
-          "urlpattern@0.3.0",
-          "unic-ucd-ident@0.9.0",
+          `weatherpoem@${expected.appVersion}`,
+          `tauri@${targetVersion("tauri")}`,
+          `tauri-utils@${targetVersion("tauri-utils")}`,
+          `urlpattern@${targetVersion("urlpattern")}`,
         ]),
-    "5 项停止维护公告没有准确归并到同一依赖链",
+    "升级后的 Tauri/urlpattern 依赖链未准确证明旧 unic 包已移除",
   );
 
   exactKeys(
@@ -278,19 +249,19 @@ export function validateDependencyRiskReview(report, expected) {
   );
   assert(
     report.proposedDisposition.action ===
-      "upgrade-released-stable-tauri-before-release" &&
+      "verify-applied-stable-upgrade-before-release" &&
       report.proposedDisposition.reason ===
-        "urlpattern-fix-now-available-in-stable" &&
+        "old-unic-chain-removed-from-windows-target" &&
       report.proposedDisposition.temporaryControl ===
         "block-vulnerabilities-unsound-yanked-and-review-each-candidate" &&
       report.proposedDisposition.upgradeTrigger ===
-        "released-tauri-utils-resolves-urlpattern-0.6" &&
+        "locked-windows-tree-resolves-urlpattern-0.6" &&
       report.proposedDisposition.releaseGate ===
         "before-next-release-candidate" &&
       Number.isFinite(targetDate) &&
       targetDate >= generatedAt &&
       targetDate <= generatedAt + 30 * 24 * 60 * 60 * 1000,
-    "拟议处置缺少已发布稳定版升级条件、发布门禁或限期",
+    "拟议处置缺少已应用升级的复核条件、发布门禁或限期",
   );
 
   exactKeys(
@@ -318,11 +289,11 @@ export function validateDependencyRiskReview(report, expected) {
   );
   assert(
     report.limitations.upstreamFixReleased === true &&
-      report.limitations.upgradeNotYetApplied === true &&
-      report.limitations.runtimeWarningStillPresent === true &&
+      report.limitations.upgradeNotYetApplied === false &&
+      report.limitations.runtimeWarningStillPresent === false &&
       report.limitations.namedSecurityReviewCompleted === false &&
       report.gateSatisfied === false &&
-      report.result === "automated-disposition-draft-ready",
-    "处置草案掩盖了尚未升级或未批准状态",
+      report.result === "automated-upgrade-verified-review-pending",
+    "处置草案掩盖了升级后依赖状态或未批准状态",
   );
 }

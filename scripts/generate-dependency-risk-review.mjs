@@ -4,7 +4,7 @@ import { fileURLToPath } from "node:url";
 import {
   DEPENDENCY_RISK_REVIEW_REPORT,
   DEPENDENCY_RISK_REVIEW_SCHEMA,
-  EXPECTED_UNIC_WARNINGS,
+  REMOVED_UNIC_PACKAGES,
   sha256File,
   validateDependencyRiskReview,
 } from "./dependency-risk-review-support.mjs";
@@ -152,19 +152,15 @@ const targetWarnings =
     }),
   );
 if (
-  JSON.stringify(
-    [...targetWarnings].sort((a, b) =>
-      a.advisoryId.localeCompare(b.advisoryId),
-    ),
-  ) !==
-  JSON.stringify(
-    [...EXPECTED_UNIC_WARNINGS].sort((a, b) =>
-      a.advisoryId.localeCompare(b.advisoryId),
-    ),
+  targetWarnings.length !== 0 ||
+  cargoAudit.targetResolution.vulnerabilities.length !== 0 ||
+  cargoAudit.targetResolution.blockingWarningCount !== 0 ||
+  REMOVED_UNIC_PACKAGES.some((name) =>
+    cargoAudit.targetResolution.packages.some((item) => item.name === name)
   )
 ) {
   throw new Error(
-    "Windows target unmaintained warnings changed; reassess instead of reusing this disposition.",
+    "The upgraded Windows target still contains the old unic chain or a blocking security finding.",
   );
 }
 
@@ -207,7 +203,7 @@ const report = {
   product: "WeatherPoem",
   appVersion: packageJson.version,
   generatedAt,
-  status: "review-ready-not-approved",
+  status: "upgrade-applied-review-pending",
   inputs: {
     cargoAuditReport:
       "output/WeatherPoem_0.2.0_CARGO_AUDIT.json",
@@ -225,17 +221,16 @@ const report = {
     unmaintainedWarnings: targetWarnings,
   },
   dependencyCluster: {
-    independentRiskCount: 1,
-    clusteredWarningCount: 5,
+    independentRiskCount: 0,
+    clusteredWarningCount: 0,
     frameworkPackage: `tauri-utils@${targetVersion("tauri-utils")}`,
     rootPackage: `urlpattern@${targetVersion("urlpattern")}`,
-    leafPackage: `unic-ucd-ident@${targetVersion("unic-ucd-ident")}`,
+    leafPackage: null,
     path: [
       `weatherpoem@${packageJson.version}`,
       `tauri@${targetVersion("tauri")}`,
       `tauri-utils@${targetVersion("tauri-utils")}`,
       `urlpattern@${targetVersion("urlpattern")}`,
-      `unic-ucd-ident@${targetVersion("unic-ucd-ident")}`,
     ],
   },
   upstream: {
@@ -267,11 +262,11 @@ const report = {
     },
   },
   proposedDisposition: {
-    action: "upgrade-released-stable-tauri-before-release",
-    reason: "urlpattern-fix-now-available-in-stable",
+    action: "verify-applied-stable-upgrade-before-release",
+    reason: "old-unic-chain-removed-from-windows-target",
     temporaryControl:
       "block-vulnerabilities-unsound-yanked-and-review-each-candidate",
-    upgradeTrigger: "released-tauri-utils-resolves-urlpattern-0.6",
+    upgradeTrigger: "locked-windows-tree-resolves-urlpattern-0.6",
     releaseGate: "before-next-release-candidate",
     targetDate,
   },
@@ -284,12 +279,12 @@ const report = {
   },
   limitations: {
     upstreamFixReleased: true,
-    upgradeNotYetApplied: true,
-    runtimeWarningStillPresent: true,
+    upgradeNotYetApplied: false,
+    runtimeWarningStillPresent: false,
     namedSecurityReviewCompleted: false,
   },
   gateSatisfied: false,
-  result: "automated-disposition-draft-ready",
+  result: "automated-upgrade-verified-review-pending",
 };
 
 validateDependencyRiskReview(report, {
@@ -298,6 +293,7 @@ validateDependencyRiskReview(report, {
   cargoLockSha256: report.inputs.cargoLockSha256,
   targetUnmaintainedWarnings:
     cargoAudit.targetResolution.warnings.unmaintained,
+  targetPackages: cargoAudit.targetResolution.packages,
 });
 
 const outputPath = path.join(

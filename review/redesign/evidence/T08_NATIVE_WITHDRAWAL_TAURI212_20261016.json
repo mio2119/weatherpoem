@@ -1,0 +1,60 @@
+{
+  "schemaVersion": "1.0",
+  "testKind": "isolated-native-hidden-content-withdrawal",
+  "generatedAt": "2026-10-16T03:27:35.920Z",
+  "candidate": {
+    "path": ".work/redesign-tauri-212-20261016/release/weatherpoem.exe",
+    "sha256": "4EA661A128AB011C63495A563DBDEB0598D463B9247C14CF52D3EA1CD67E4E00"
+  },
+  "isolation": {
+    "temporaryProfile": true,
+    "systemClockChanged": false,
+    "installedOrUninstalled": false,
+    "realUserDataTouched": false
+  },
+  "scenario": "weather-offline",
+  "concealAction": "tray-hide-button",
+  "activationPath": "native-single-instance",
+  "readyView": "poem",
+  "original": {
+    "date": "10月16日",
+    "title": "秋词",
+    "visible": "visible",
+    "poem": true
+  },
+  "hidden": {
+    "visibility": "visible",
+    "poem": false,
+    "loading": true
+  },
+  "withdrawnWorkId": "liu-yu-xi-qiu-ci",
+  "correctedDailyState": {
+    "state": "content-withdrawn",
+    "work_id": "liu-yu-xi-qiu-ci"
+  },
+  "screenshots": [
+    "review/redesign/evidence/T08_NATIVE_WITHDRAWAL_TAURI212_20261016_before.png",
+    "review/redesign/evidence/T08_NATIVE_WITHDRAWAL_TAURI212_20261016_after.png"
+  ],
+  "observed": [
+    {
+      "visible": "visible",
+      "poem": false,
+      "loading": true,
+      "correction": false
+    },
+    {
+      "visible": "visible",
+      "poem": false,
+      "loading": true,
+      "correction": false
+    },
+    {
+      "visible": "visible",
+      "poem": false,
+      "loading": false,
+      "correction": true
+    }
+  ],
+  "result": "passed"
+}
