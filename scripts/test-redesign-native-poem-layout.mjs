@@ -17,6 +17,8 @@ const reportPath = path.resolve(process.argv[3] ?? "");
 const poemId = process.argv[4] ?? "";
 const requireOverflow = process.argv.includes("--require-overflow");
 const verifyRestart = process.argv.includes("--verify-restart");
+const exerciseFontSetting = process.argv.includes("--exercise-font-setting");
+const fontSettingLayout = process.argv.find((argument) => argument.startsWith("--font-setting-layout="))?.slice("--font-setting-layout=".length) ?? "vertical";
 const fontSize = process.argv.find((argument) => argument.startsWith("--font-size="))?.slice("--font-size=".length) ?? "large";
 const candidateRoot = path.join(root, ".work") + path.sep;
 const evidenceRoot = path.join(root, "review", "redesign", "evidence") + path.sep;
@@ -26,6 +28,8 @@ assert.ok(reportPath.toLowerCase().startsWith(evidenceRoot.toLowerCase()) && rep
 assert.ok(!existsSync(reportPath), "Refusing to overwrite layout evidence");
 assert.ok(/^[a-z0-9-]+$/.test(poemId), "Specify one catalog poem ID");
 assert.ok(["small", "medium", "large"].includes(fontSize), "Use a supported poem font size");
+assert.ok(!exerciseFontSetting || verifyRestart, "The settings journey must include a same-profile restart");
+assert.ok(["horizontal", "vertical"].includes(fontSettingLayout), "Use a supported font-setting layout");
 const running = execFileSync("powershell.exe", ["-NoProfile", "-NonInteractive", "-Command", "Get-CimInstance Win32_Process -Filter \"name = 'weatherpoem.exe'\" | Select-Object -ExpandProperty ProcessId"], { encoding: "utf8" }).trim();
 assert.equal(running, "", "WeatherPoem is already running; refusing to disturb it");
 
@@ -45,7 +49,7 @@ const report = {
   candidate: { path: path.relative(root, candidate).replaceAll(path.sep, "/"), sha256: createHash("sha256").update(readFileSync(candidate)).digest("hex").toUpperCase() },
   isolation: { temporaryProfile: true, realUserDataTouched: false, systemClockChanged: false, systemDisplaySettingsChanged: false, installedOrUninstalled: false },
   catalog: { poemId, title: poem.title, localDate, contentVersion: CONTENT_VERSION, ruleVersion: RULE_VERSION },
-  setup: { layout: "vertical", fontSize, theme: "light", weather: "offline-rules" },
+  setup: { layout: "vertical", fontSize, theme: "light", weather: "offline-rules", exerciseFontSetting, fontSettingLayout: exerciseFontSetting ? fontSettingLayout : null },
   observations: {},
   limitations: ["WebView2 page and the current single-monitor native window only; CDP keys are not a human screen-reader or mixed-DPI test.", "The catalog poem is preselected only in the temporary SQLite profile, not by the live recommendation algorithm."],
   result: "in-progress",
@@ -250,6 +254,63 @@ try {
   report.observations.returnedGlance = await evaluate("({ title: document.querySelector('.poem-view #daily-poem-title')?.textContent, vertical: document.querySelector('.poem-view .poem-lines')?.classList.contains('is-vertical') })");
   assert.equal(report.observations.returnedGlance.title, poem.title);
   assert.equal(report.observations.returnedGlance.vertical, false);
+  if (exerciseFontSetting) {
+    report.observations.fontSettingJourney = [];
+    for (const selectedSize of ["small", "medium", "large"]) {
+      await evaluate("document.querySelector('button[aria-label=\"设置\"]').click()");
+      await waitFor(() => evaluate("Boolean(document.querySelector('.settings-panel'))"), "native settings panel");
+      const previous = await evaluate("document.querySelector('select[name=\"poem-font-size\"]')?.value");
+      await evaluate(`(() => {
+        const select = document.querySelector('select[name="poem-font-size"]');
+        select.value = ${JSON.stringify(selectedSize)};
+        select.dispatchEvent(new Event('input', { bubbles: true }));
+        select.dispatchEvent(new Event('change', { bubbles: true }));
+        const layout = document.querySelector('select[name="poem-layout"]');
+        layout.value = ${JSON.stringify(fontSettingLayout)};
+        layout.dispatchEvent(new Event('input', { bubbles: true }));
+        layout.dispatchEvent(new Event('change', { bubbles: true }));
+        document.querySelector('.settings-form').requestSubmit();
+      })()`);
+      await waitFor(() => {
+        const database = new DatabaseSync(resolvePerformanceDatabasePath(profile), { readOnly: true });
+        try { return JSON.parse(database.prepare("SELECT value FROM app_kv WHERE key = 'settings'").get().value).poemFontSize === selectedSize; }
+        finally { database.close(); }
+      }, `SQLite font preference ${selectedSize}`);
+      const settingsAfterSave = await evaluate("({ panel: Boolean(document.querySelector('.settings-panel')), selected: document.querySelector('select[name=\"poem-font-size\"]')?.value ?? null, layout: document.querySelector('select[name=\"poem-layout\"]')?.value ?? null, notice: document.querySelector('[role=\"status\"]')?.textContent ?? null })");
+      if (settingsAfterSave.panel) await evaluate("document.querySelector('.settings-panel .back-button').click()");
+      await waitFor(() => evaluate("Boolean(document.querySelector('.poem-view'))"), "poem card after setting save");
+      await waitFor(() => evaluate(`document.querySelector('.poem-view')?.dataset.poemFontSize === ${JSON.stringify(selectedSize)}`), `rendered font ${selectedSize}`);
+      const glanceAfterSave = await evaluate(`(() => {
+        const view = document.querySelector('.poem-view');
+        return {
+          title: view.querySelector('#daily-poem-title')?.textContent,
+          text: [...view.querySelectorAll('.poem-lines p')].map(item => item.textContent).join(''),
+          fontSize: view.dataset.poemFontSize,
+          computedPoemFontSize: getComputedStyle(view.querySelector('.poem-lines p')).fontSize,
+          vertical: view.querySelector('.poem-lines').classList.contains('is-vertical'),
+          documentOverflow: document.documentElement.scrollWidth > innerWidth,
+        };
+      })()`);
+      assert.equal(glanceAfterSave.title, poem.title);
+      assert.equal(glanceAfterSave.text, expectedExcerpt);
+      assert.equal(glanceAfterSave.fontSize, selectedSize);
+      assert.equal(glanceAfterSave.vertical, fontSettingLayout === "vertical");
+      assert.equal(glanceAfterSave.documentOverflow, false);
+      await waitFor(() => evaluate("!document.querySelector('.toast-message')"), "save notification to settle");
+      const evidence = { selectedSize, previous, settingsAfterSave, glanceAfterSave, screenshot: await screenshot(`settings_font_${selectedSize}`) };
+      report.observations.fontSettingJourney.push(evidence);
+    }
+    const pixels = report.observations.fontSettingJourney.map((entry) => Number.parseFloat(entry.glanceAfterSave.computedPoemFontSize));
+    assert.ok(pixels[0] < pixels[1] && pixels[1] < pixels[2], "Native poem font pixels did not increase across small/medium/large");
+    await evaluate("document.querySelector('.read-button').click()");
+    await waitFor(async () => (await readingState())?.fontSize === "large", "reading panel after UI font save");
+    report.observations.readingAfterFontSave = await readingState();
+    assert.equal(report.observations.readingAfterFontSave.text, expectedFullText);
+    assert.equal(report.observations.readingAfterFontSave.vertical, fontSettingLayout === "vertical");
+    report.observations.readingAfterFontSaveScreenshot = await screenshot("reading_after_font_save");
+    await evaluate("document.querySelector('.reading-panel .back-button').click()");
+    await waitFor(() => evaluate("Boolean(document.querySelector('.poem-view'))"), "card before restart after font save");
+  }
   if (verifyRestart) {
     socket.close();
     socket = undefined;
@@ -279,13 +340,15 @@ try {
     report.observations.restartGlance = await evaluate("({ title: document.querySelector('.poem-view #daily-poem-title')?.textContent, text: [...document.querySelectorAll('.poem-view .poem-lines p')].map(item => item.textContent).join(''), vertical: document.querySelector('.poem-view .poem-lines')?.classList.contains('is-vertical'), fontSize: document.querySelector('.poem-view')?.dataset.poemFontSize })");
     assert.equal(report.observations.restartGlance.title, poem.title);
     assert.equal(report.observations.restartGlance.text, expectedExcerpt);
-    assert.equal(report.observations.restartGlance.vertical, false);
-    assert.equal(report.observations.restartGlance.fontSize, fontSize);
+    assert.equal(report.observations.restartGlance.vertical, exerciseFontSetting && fontSettingLayout === "vertical");
+    assert.equal(report.observations.restartGlance.fontSize, exerciseFontSetting ? "large" : fontSize);
     report.observations.restartScreenshot = await screenshot("restart_horizontal");
   }
-  report.result = verifyRestart
-    ? "native-layout-reading-scroll-and-restart-passed"
-    : "native-layout-reading-scroll-and-sqlite-save-passed";
+  report.result = exerciseFontSetting
+    ? "native-font-setting-layout-reading-and-restart-passed"
+    : verifyRestart
+      ? "native-layout-reading-scroll-and-restart-passed"
+      : "native-layout-reading-scroll-and-sqlite-save-passed";
 } catch (error) {
   failure = error;
   report.result = "failed";
