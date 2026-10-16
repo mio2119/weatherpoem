@@ -202,7 +202,12 @@ export async function showWindow(takeFocus = true): Promise<void> {
   if (!isTauri()) return;
   const { getCurrentWindow } = await import("@tauri-apps/api/window");
   const appWindow = getCurrentWindow();
-  await appWindow.show();
+  if (!takeFocus) await appWindow.setFocusable(false);
+  try {
+    await appWindow.show();
+  } finally {
+    if (!takeFocus) await appWindow.setFocusable(true);
+  }
   document.documentElement.dataset.sceneActive = "true";
   if (takeFocus) await appWindow.setFocus();
 }

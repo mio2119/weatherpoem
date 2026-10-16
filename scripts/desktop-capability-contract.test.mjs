@@ -37,6 +37,10 @@ const appShell = await readFile(
   path.join(projectRoot, "src", "App.vue"),
   "utf8",
 );
+const desktopService = await readFile(
+  path.join(projectRoot, "src", "services", "desktop.ts"),
+  "utf8",
+);
 const styles = await readFile(
   path.join(projectRoot, "src", "styles.css"),
   "utf8",
@@ -93,6 +97,9 @@ test("隐藏启动的主窗口不会在 WebView 初始化时抢占焦点", () =>
   assert.ok(mainWindow);
   assert.equal(mainWindow.visible, false);
   assert.equal(mainWindow.focus, false);
+  assert.ok(capability.permissions.includes("core:window:allow-set-focusable"));
+  assert.match(desktopService, /if \(!takeFocus\) await appWindow\.setFocusable\(false\)/);
+  assert.match(desktopService, /if \(!takeFocus\) await appWindow\.setFocusable\(true\)/);
 });
 
 test("原生隐藏遮挡不保留循环的加载条动效", () => {

@@ -1,0 +1,43 @@
+{
+  "schemaVersion": "1.0",
+  "testKind": "isolated-native-autostart-focus",
+  "generatedAt": "2026-10-16T05:09:04.4351029Z",
+  "sourceCommit": "e5b42a1f772ada7a41464382132b36177e7ffd13",
+  "candidate": {
+    "path": "E:\\weatherpoem\\.work\\redesign-tauri-212-minimize-fix-20261016\\release\\weatherpoem.exe",
+    "sha256": "DB56F155495900B11E73CCFABCC4D99BFFC24F233AEBD0127772639811DD391D"
+  },
+  "profileIsolation": true,
+  "realUserDataTouched": false,
+  "systemAutostartChanged": false,
+  "systemDisplaySettingsChanged": false,
+  "observations": {
+    "foregroundBeforePid": 71208,
+    "readyView": "poem",
+    "readyMode": "offline-rules",
+    "processId": 94564,
+    "windowHandle": "658800",
+    "windowHandleType": "System.IntPtr",
+    "foregroundAfterPid": 71208,
+    "productTookFocus": false,
+    "foregroundUnchanged": true,
+    "glance": {
+      "left": 1500,
+      "top": 658,
+      "right": 1898,
+      "bottom": 1010,
+      "width": 398,
+      "height": 352,
+      "dpi": 96,
+      "workingArea": {
+        "left": 0,
+        "top": 0,
+        "right": 1920,
+        "bottom": 1032
+      }
+    },
+    "foregroundAfterOneSecondPid": 71208
+  },
+  "limitations": [],
+  "result": "autostart-preserved-focus"
+}

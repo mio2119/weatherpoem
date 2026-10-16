@@ -1,0 +1,18 @@
+{
+  "schemaVersion": "1.0",
+  "testKind": "isolated-native-autostart-focus",
+  "generatedAt": "2026-10-16T05:10:34.9771272Z",
+  "sourceCommit": "e5b42a1f772ada7a41464382132b36177e7ffd13",
+  "candidate": {
+    "path": "E:\\weatherpoem\\.work\\redesign-tauri-212-minimize-fix-20261016\\release\\weatherpoem.exe",
+    "sha256": "DB56F155495900B11E73CCFABCC4D99BFFC24F233AEBD0127772639811DD391D"
+  },
+  "profileIsolation": true,
+  "realUserDataTouched": false,
+  "systemAutostartChanged": false,
+  "systemDisplaySettingsChanged": false,
+  "observations": {},
+  "limitations": [],
+  "result": "failed",
+  "error": "Timed out waiting for isolated text input foreground"
+}

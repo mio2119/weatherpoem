@@ -44,6 +44,7 @@ const windowMocks = vi.hoisted(() => ({
   isVisible: vi.fn<() => Promise<boolean>>(),
   isMinimized: vi.fn<() => Promise<boolean>>(),
   setFocus: vi.fn<() => Promise<void>>(),
+  setFocusable: vi.fn<(focusable: boolean) => Promise<void>>(),
   setMinSize: vi.fn<() => Promise<void>>(),
   setSize: vi.fn<() => Promise<void>>(),
   setResizable: vi.fn<() => Promise<void>>(),
@@ -86,6 +87,7 @@ describe("desktop reveal focus policy", () => {
     windowMocks.isVisible.mockResolvedValue(true);
     windowMocks.isMinimized.mockResolvedValue(false);
     windowMocks.setFocus.mockResolvedValue();
+    windowMocks.setFocusable.mockResolvedValue();
   });
 
   afterEach(() => {
@@ -97,12 +99,29 @@ describe("desktop reveal focus policy", () => {
     await showWindow(false);
     expect(windowMocks.show).toHaveBeenCalledOnce();
     expect(windowMocks.setFocus).not.toHaveBeenCalled();
+    expect(windowMocks.setFocusable).toHaveBeenNthCalledWith(1, false);
+    expect(windowMocks.setFocusable).toHaveBeenNthCalledWith(2, true);
+    expect(windowMocks.setFocusable.mock.invocationCallOrder[0]).toBeLessThan(
+      windowMocks.show.mock.invocationCallOrder[0]!,
+    );
+    expect(windowMocks.show.mock.invocationCallOrder[0]).toBeLessThan(
+      windowMocks.setFocusable.mock.invocationCallOrder[1]!,
+    );
+  });
+
+  it("restores focusability if automatic reveal cannot show the window", async () => {
+    windowMocks.show.mockRejectedValueOnce(new Error("show rejected"));
+    await expect(showWindow(false)).rejects.toThrow("show rejected");
+    expect(windowMocks.setFocusable).toHaveBeenNthCalledWith(1, false);
+    expect(windowMocks.setFocusable).toHaveBeenNthCalledWith(2, true);
+    expect(windowMocks.setFocus).not.toHaveBeenCalled();
   });
 
   it("manual reveal can take focus for keyboard operation", async () => {
     await showWindow(true);
     expect(windowMocks.show).toHaveBeenCalledOnce();
     expect(windowMocks.setFocus).toHaveBeenCalledOnce();
+    expect(windowMocks.setFocusable).not.toHaveBeenCalled();
   });
 
   it("stops scene motion when hidden or minimized", async () => {

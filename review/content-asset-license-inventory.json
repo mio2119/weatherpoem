@@ -3,7 +3,7 @@
   "product": "WeatherPoem",
   "appVersion": "0.2.0",
   "contentVersion": "2026.07.1",
-  "generatedAt": "2026-10-16T03:33:37.202Z",
+  "generatedAt": "2026-10-16T17:34:12.266Z",
   "status": "inventory-ready-awaiting-legal-review",
   "scope": {
     "target": "x86_64-pc-windows-msvc",
@@ -58,7 +58,7 @@
     },
     "desktopService": {
       "path": "src/services/desktop.ts",
-      "sha256": "5B67A8F0BDB7BA15ABF4D931C777F851AB3E1F7A240DACFCD7D72CBB5122F594"
+      "sha256": "8014A5708A563E3CD925296FE327766E9C5944FCB752895EF31380883383AC2C"
     },
     "tauriConfig": {
       "path": "src-tauri/tauri.conf.json",
@@ -66,7 +66,7 @@
     },
     "capability": {
       "path": "src-tauri/capabilities/default.json",
-      "sha256": "7218FAEDACD56195EAFBA52A4199C30A4C63B56D019D8993DABFBDDA8452F666"
+      "sha256": "7FC576DA833EB54E31BB1114C67822F3F2EC0CFC17933E4799EE319BB5D1E603"
     },
     "rustShell": {
       "path": "src-tauri/src/lib.rs",

@@ -3,8 +3,15 @@
 param(
     [string]$CandidatePath = "E:\weatherpoem\.work\redesign-native-20261015\release\weatherpoem.exe",
     [string]$ReportPath = "E:\weatherpoem\review\redesign\evidence\T04_NATIVE_WINDOW_20261015.json",
-    [switch]$SkipScreenshots
+    [switch]$SkipScreenshots,
+    [switch]$FocusOnly,
+    [switch]$ControlledInput,
+    [switch]$AllowOffscreenTrayInvoke
 )
+
+if ($ControlledInput -and -not $FocusOnly) {
+    throw "ControlledInput requires FocusOnly"
+}
 
 Set-StrictMode -Version Latest
 $ErrorActionPreference = "Stop"
@@ -24,6 +31,8 @@ public static class WeatherPoemNativeWindowProbe {
     [DllImport("user32.dll")] private static extern bool EnumWindows(EnumWindowsProc callback, IntPtr state);
     [DllImport("user32.dll")] private static extern bool IsWindowVisible(IntPtr window);
     [DllImport("user32.dll")] private static extern uint GetWindowThreadProcessId(IntPtr window, out uint processId);
+    [DllImport("kernel32.dll")] private static extern uint GetCurrentThreadId();
+    [DllImport("user32.dll")] private static extern bool AttachThreadInput(uint currentThreadId, uint foregroundThreadId, bool attach);
     [DllImport("user32.dll")] private static extern int GetWindowTextLengthW(IntPtr window);
     [DllImport("user32.dll", CharSet = CharSet.Unicode)] private static extern int GetWindowTextW(IntPtr window, StringBuilder text, int length);
     [DllImport("user32.dll")] public static extern IntPtr GetForegroundWindow();
@@ -52,6 +61,17 @@ public static class WeatherPoemNativeWindowProbe {
         uint pid;
         GetWindowThreadProcessId(window, out pid);
         return (int)pid;
+    }
+    public static bool FocusExactTestWindow(IntPtr window) {
+        var foreground = GetForegroundWindow();
+        if (foreground == IntPtr.Zero || window == IntPtr.Zero) return false;
+        uint pid;
+        var foregroundThread = GetWindowThreadProcessId(foreground, out pid);
+        var currentThread = GetCurrentThreadId();
+        if (foregroundThread == currentThread) return SetForegroundWindow(window);
+        if (!AttachThreadInput(currentThread, foregroundThread, true)) return false;
+        try { return SetForegroundWindow(window); }
+        finally { AttachThreadInput(currentThread, foregroundThread, false); }
     }
 }
 "@
@@ -136,6 +156,7 @@ function Find-TrayElement {
     $root = [System.Windows.Automation.AutomationElement]::RootElement
     $script:trayDiagnostic = @()
     $overflow = $null
+    $offscreenExact = $null
     for ($attempt = 0; $attempt -lt 2; $attempt++) {
         $all = $root.FindAll(
             [System.Windows.Automation.TreeScope]::Descendants,
@@ -156,9 +177,9 @@ function Find-TrayElement {
             }
             if ($name -eq "WeatherPoem 今日诗笺" -and
                 $element.Current.ControlType -eq [System.Windows.Automation.ControlType]::Button -and
-                $element.Current.ClassName -eq "SystemTray.NormalButton" -and
-                -not $element.Current.IsOffscreen) {
-                return $element
+                $element.Current.ClassName -eq "SystemTray.NormalButton") {
+                if (-not $element.Current.IsOffscreen) { return $element }
+                $offscreenExact = $element
             }
         }
         if ($attempt -eq 0 -and $overflow) {
@@ -166,6 +187,7 @@ function Find-TrayElement {
             Start-Sleep -Milliseconds 500
         }
     }
+    if ($AllowOffscreenTrayInvoke) { return $offscreenExact }
     return $null
 }
 
@@ -213,7 +235,7 @@ if (@(Get-Process -Name weatherpoem -ErrorAction SilentlyContinue).Count -gt 0) 
 }
 $report = [ordered]@{
     schemaVersion = "1.0"
-    testKind = "isolated-native-window"
+    testKind = if ($FocusOnly) { "isolated-native-autostart-focus" } else { "isolated-native-window" }
     generatedAt = [DateTime]::UtcNow.ToString("o")
     sourceCommit = (& git -C $projectRoot rev-parse HEAD).Trim()
     candidate = [ordered]@{
@@ -237,12 +259,47 @@ if (-not $profile.StartsWith($tempRoot + '\', [StringComparison]::OrdinalIgnoreC
     throw "Unsafe isolated profile path"
 }
 $process = $null
+$focusForm = $null
 try {
     foreach ($part in @("appdata", "localappdata", "temp\probe")) {
         [IO.Directory]::CreateDirectory((Join-Path $profile $part)) | Out-Null
     }
     & node (Join-Path $projectRoot "scripts\seed-performance-profile.mjs") $profile | Out-Null
     if ($LASTEXITCODE -ne 0) { throw "Could not seed isolated profile" }
+
+    if ($ControlledInput) {
+        $focusForm = [System.Windows.Forms.Form]::new()
+        $focusForm.Text = "WeatherPoem 隔离焦点测试"
+        $focusForm.Width = 380
+        $focusForm.Height = 120
+        $focusForm.StartPosition = [System.Windows.Forms.FormStartPosition]::CenterScreen
+        $focusInput = [System.Windows.Forms.TextBox]::new()
+        $focusInput.Dock = [System.Windows.Forms.DockStyle]::Fill
+        $focusInput.Text = "焦点测试，不保存输入"
+        $focusForm.Controls.Add($focusInput)
+        $focusForm.Show()
+        $focusReady = $false
+        for ($focusAttempt = 1; $focusAttempt -le 5; $focusAttempt++) {
+            $focusForm.Activate()
+            $focusInput.Focus() | Out-Null
+            $accepted = [WeatherPoemNativeWindowProbe]::FocusExactTestWindow($focusForm.Handle)
+            [System.Windows.Forms.Application]::DoEvents()
+            if ([WeatherPoemNativeWindowProbe]::GetForegroundWindow() -eq $focusForm.Handle -and
+                $focusInput.Focused) {
+                $focusReady = $true
+                break
+            }
+            Start-Sleep -Milliseconds 200
+        }
+        $report.observations.foregroundProbeAttempts = $focusAttempt
+        $report.observations.foregroundProbeActivationAccepted = $accepted
+        $report.observations.foregroundProbeOwnerPid = [WeatherPoemNativeWindowProbe]::OwnerPid(
+            [WeatherPoemNativeWindowProbe]::GetForegroundWindow()
+        )
+        $report.observations.foregroundProbeInputFocused = $focusInput.Focused
+        if (-not $focusReady) { throw "Could not foreground isolated text input" }
+        $report.observations.foregroundProbeKind = "temporary-winforms-text-input"
+    }
 
     $foregroundBefore = [WeatherPoemNativeWindowProbe]::GetForegroundWindow()
     if ($foregroundBefore -eq [IntPtr]::Zero) {
@@ -301,6 +358,20 @@ try {
         $report.observations.foregroundAfterPid -eq $process.Id
     $report.observations.foregroundUnchanged = [WeatherPoemNativeWindowProbe]::GetForegroundWindow() -eq $foregroundBefore
     $report.observations.glance = Get-WindowObservation -Handle $window
+    if ($FocusOnly) {
+        Start-Sleep -Milliseconds 1000
+        $report.observations.foregroundAfterOneSecondPid = [WeatherPoemNativeWindowProbe]::OwnerPid(
+            [WeatherPoemNativeWindowProbe]::GetForegroundWindow()
+        )
+        $report.observations.productTookFocus = $report.observations.productTookFocus -or
+            $report.observations.foregroundAfterOneSecondPid -eq $process.Id
+        $report.result = if ($report.observations.productTookFocus) {
+            "autostart-took-focus"
+        } else {
+            "autostart-preserved-focus"
+        }
+        return
+    }
     if ($report.observations.productTookFocus) { throw "Autostart took foreground focus" }
     if ($marker.readyView -ne "poem") { throw "Expected isolated poem view, got $($marker.readyView)" }
 
@@ -314,7 +385,7 @@ try {
         [WeatherPoemNativeWindowProbe]::GetForegroundWindow()
     )
     if (-not $SkipScreenshots -and $report.observations.manualForegroundOwnerPid -eq $process.Id) {
-        $report.observations.glanceScreenshot = "T04_NATIVE_GLANCE_20261015.png"
+        $report.observations.glanceScreenshot = [IO.Path]::GetFileNameWithoutExtension($ReportPath) + "_glance.png"
         $glanceScreenshotPath = Join-Path (Split-Path -Parent $ReportPath) $report.observations.glanceScreenshot
         if (Test-Path -LiteralPath $glanceScreenshotPath) { throw "Refusing to overwrite a glance screenshot" }
         $glance = $report.observations.glance
@@ -331,7 +402,7 @@ try {
     } "expanded reading window" 10
     $report.observations.reading = $reading
     if (-not $SkipScreenshots) {
-        $report.observations.readingScreenshot = "T04_NATIVE_READING_20261015.png"
+        $report.observations.readingScreenshot = [IO.Path]::GetFileNameWithoutExtension($ReportPath) + "_reading.png"
         $readingScreenshotPath = Join-Path (Split-Path -Parent $ReportPath) $report.observations.readingScreenshot
         if (Test-Path -LiteralPath $readingScreenshotPath) { throw "Refusing to overwrite a reading screenshot" }
         [WeatherPoemNativeWindowProbe]::MoveWindow($window, 350, 140, $reading.width, $reading.height, $true) | Out-Null
@@ -379,7 +450,11 @@ try {
         }
         try {
             Invoke-TrayElement -Element $trayElement
-            $report.observations.trayInteraction = "exact UI Automation InvokePattern"
+            $report.observations.trayInteraction = if ($trayElement.Current.IsOffscreen) {
+                "exact UI Automation InvokePattern on offscreen element"
+            } else {
+                "exact UI Automation InvokePattern"
+            }
             $reopenedFromTray = Wait-For {
                 [WeatherPoemNativeWindowProbe]::FindProductWindow($process.Id)
             } "tray recovery" 10
@@ -451,12 +526,21 @@ try {
         throw "Programmatic tray recovery did not pass; cross-restart size check completed"
     }
     $report.limitations += "Programmatic UI Automation invocation cannot replace a human manual-click focus check."
-    $report.result = "focus-resize-tray-invoke-and-restart-passed"
+    if ($report.observations.trayBounds.offscreen) {
+        $report.limitations += "Offscreen tray invocation proves the app route only, not user-visible icon reachability."
+        $report.result = "offscreen-tray-invoke-diagnostic-only"
+    } else {
+        $report.result = "focus-resize-tray-invoke-and-restart-passed"
+    }
 } catch {
     $report.result = "failed"
     $report.error = [string]$_
     throw
 } finally {
+    if ($focusForm) {
+        $focusForm.Close()
+        $focusForm.Dispose()
+    }
     if ($process) {
         try {
             if (-not $process.HasExited) {
