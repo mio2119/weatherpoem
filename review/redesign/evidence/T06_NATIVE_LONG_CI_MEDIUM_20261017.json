@@ -1,0 +1,137 @@
+{
+  "schemaVersion": "1.0",
+  "testKind": "isolated-native-webview2-poem-layout",
+  "generatedAt": "2026-10-16T17:57:01.034Z",
+  "candidate": {
+    "path": ".work/redesign-tauri-noactivate-experiment-20261017/release/weatherpoem.exe",
+    "sha256": "0921010061A8D66C551DEAC609B74063433C88B07D836B321F4EAECAF401D4AD"
+  },
+  "isolation": {
+    "temporaryProfile": true,
+    "realUserDataTouched": false,
+    "systemClockChanged": false,
+    "systemDisplaySettingsChanged": false,
+    "installedOrUninstalled": false
+  },
+  "catalog": {
+    "poemId": "su-shi-shui-diao-ge-tou",
+    "title": "水调歌头·明月几时有",
+    "localDate": "2026-10-17",
+    "contentVersion": "2026.07.1",
+    "ruleVersion": "1.2.3"
+  },
+  "setup": {
+    "layout": "vertical",
+    "fontSize": "medium",
+    "theme": "light",
+    "weather": "offline-rules"
+  },
+  "observations": {
+    "readyMarker": {
+      "schemaVersion": "1.2",
+      "runId": "b6606fb662ae46c396a6e02108672404",
+      "appVersion": "0.2.0",
+      "processId": 100496,
+      "nativeReadyMs": 671.3978000000001,
+      "frontendReadyMs": 362.5,
+      "readyView": "poem",
+      "readyMode": "offline-rules",
+      "viewRenderMs": 155.09999999403954,
+      "performanceScenario": "weather-offline",
+      "sceneMotion": {
+        "sceneKind": "season",
+        "appReduced": false,
+        "systemReduced": false,
+        "sceneActive": true,
+        "visibilityState": "visible",
+        "animationName": "none",
+        "animationDuration": "0s",
+        "animationIterationCount": "1"
+      },
+      "recordedAtUnixMs": 1792173421781
+    },
+    "glance": {
+      "title": "水调歌头·明月几时有",
+      "text": "但愿人长久千里共婵娟",
+      "vertical": true,
+      "fontSize": "medium",
+      "fallbackNote": null,
+      "documentOverflow": false,
+      "actionsInScrollRegion": true,
+      "paperWidth": 352,
+      "viewport": {
+        "width": 382,
+        "height": 424
+      }
+    },
+    "glanceScreenshot": "review/redesign/evidence/T06_NATIVE_LONG_CI_MEDIUM_20261017_glance.png",
+    "readingInitial": {
+      "title": "水调歌头·明月几时有",
+      "text": "明月几时有？把酒问青天。不知天上宫阙，今夕是何年。我欲乘风归去，又恐琼楼玉宇，高处不胜寒。起舞弄清影，何似在人间。转朱阁，低绮户，照无眠。不应有恨，何事长向别时圆？人有悲欢离合，月有阴晴圆缺，此事古难全。但愿人长久，千里共婵娟。",
+      "vertical": true,
+      "writingMode": "vertical-rl",
+      "fontSize": "medium",
+      "frameClientWidth": 483,
+      "frameScrollWidth": 623,
+      "frameScrollLeft": 0,
+      "frameTabIndex": 0,
+      "panelScrollWidth": 551,
+      "panelClientWidth": 551,
+      "backVisible": true,
+      "sourcePresent": true,
+      "viewport": {
+        "width": 560,
+        "height": 720
+      }
+    },
+    "readingScreenshot": "review/redesign/evidence/T06_NATIVE_LONG_CI_MEDIUM_20261017_reading_vertical.png",
+    "readingAfterKeyboard": {
+      "title": "水调歌头·明月几时有",
+      "text": "明月几时有？把酒问青天。不知天上宫阙，今夕是何年。我欲乘风归去，又恐琼楼玉宇，高处不胜寒。起舞弄清影，何似在人间。转朱阁，低绮户，照无眠。不应有恨，何事长向别时圆？人有悲欢离合，月有阴晴圆缺，此事古难全。但愿人长久，千里共婵娟。",
+      "vertical": true,
+      "writingMode": "vertical-rl",
+      "fontSize": "medium",
+      "frameClientWidth": 483,
+      "frameScrollWidth": 623,
+      "frameScrollLeft": -140,
+      "frameTabIndex": 0,
+      "panelScrollWidth": 551,
+      "panelClientWidth": 551,
+      "backVisible": true,
+      "sourcePresent": true,
+      "viewport": {
+        "width": 560,
+        "height": 720
+      }
+    },
+    "readingHorizontal": {
+      "title": "水调歌头·明月几时有",
+      "text": "明月几时有？把酒问青天。不知天上宫阙，今夕是何年。我欲乘风归去，又恐琼楼玉宇，高处不胜寒。起舞弄清影，何似在人间。转朱阁，低绮户，照无眠。不应有恨，何事长向别时圆？人有悲欢离合，月有阴晴圆缺，此事古难全。但愿人长久，千里共婵娟。",
+      "vertical": false,
+      "writingMode": "horizontal-tb",
+      "fontSize": "medium",
+      "frameClientWidth": 483,
+      "frameScrollWidth": 483,
+      "frameScrollLeft": 0,
+      "frameTabIndex": -1,
+      "panelScrollWidth": 551,
+      "panelClientWidth": 551,
+      "backVisible": true,
+      "sourcePresent": true,
+      "viewport": {
+        "width": 560,
+        "height": 720
+      }
+    },
+    "sqliteLayoutAfterSwitch": "horizontal",
+    "returnedGlance": {
+      "title": "水调歌头·明月几时有",
+      "vertical": false
+    }
+  },
+  "limitations": [
+    "WebView2 page and the current single-monitor native window only; CDP keys are not a human screen-reader or mixed-DPI test.",
+    "The catalog poem is preselected only in the temporary SQLite profile, not by the live recommendation algorithm."
+  ],
+  "result": "native-layout-reading-scroll-and-sqlite-save-passed"
+}
