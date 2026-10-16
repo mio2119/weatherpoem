@@ -1,14 +1,14 @@
 {
-  "schemaVersion": "1.0",
+  "schemaVersion": "1.1",
   "product": "WeatherPoem",
   "appVersion": "0.2.0",
-  "generatedAt": "2026-09-09T18:51:47.614Z",
+  "generatedAt": "2026-10-16T00:54:53.209Z",
   "status": "review-ready-not-approved",
   "inputs": {
     "cargoAuditReport": "output/WeatherPoem_0.2.0_CARGO_AUDIT.json",
-    "cargoAuditSha256": "D4303DF89B580DF72E0DE7602D9E9456289B471043A3D273260941DEFC868D74",
+    "cargoAuditSha256": "C1E78590C7F6B28BB98F1197AAE70BFEC40719ED8A692771A3D81A04791234A3",
     "cargoLock": "src-tauri/Cargo.lock",
-    "cargoLockSha256": "D8E86E63299DCEC3E5FF9DC66D6D796159F51BBAF9085D4F0B3D5D4C7A82302A",
+    "cargoLockSha256": "BD2F5BA58AA78F874B903188A891A830E3C28AD12EEF18A05D0C37496767FDCF",
     "targetTriple": "x86_64-pc-windows-msvc"
   },
   "currentTarget": {
@@ -58,11 +58,13 @@
     ]
   },
   "upstream": {
-    "checkedAt": "2026-09-09T18:51:47.614Z",
-    "tauriLatestStable": "2.11.5",
-    "tauriUtilsLatestStable": "2.9.3",
+    "checkedAt": "2026-10-16T00:54:53.209Z",
+    "tauriLatestStable": "2.12.4",
+    "tauriUtilsLatestStable": "2.10.2",
     "urlpatternLatestStable": "0.6.0",
     "urlpattern060RemovesUnicUcdIdent": true,
+    "releasedTauriUtilsRequirement": "~2.10.2",
+    "releasedUrlpatternRequirement": "^0.6",
     "tauriPullRequest": "https://github.com/tauri-apps/tauri/pull/15660",
     "mergeCommitSha": "dd725f4b13c30a86b398ccc59eb498f151f461c5",
     "mergedAt": "2026-07-06T16:50:43Z",
@@ -72,15 +74,18 @@
       "tauriUtilsCrate": "https://crates.io/crates/tauri-utils",
       "urlpatternCrate": "https://crates.io/crates/urlpattern",
       "pullRequest": "https://github.com/tauri-apps/tauri/pull/15660",
-      "tauriDevCargoToml": "https://github.com/tauri-apps/tauri/blob/dev/crates/tauri-utils/Cargo.toml"
+      "tauriDevCargoToml": "https://github.com/tauri-apps/tauri/blob/dev/crates/tauri-utils/Cargo.toml",
+      "tauriStableDependencies": "https://crates.io/api/v1/crates/tauri/2.12.4/dependencies",
+      "tauriUtilsStableDependencies": "https://crates.io/api/v1/crates/tauri-utils/2.10.2/dependencies"
     }
   },
   "proposedDisposition": {
-    "action": "upgrade-next-stable-tauri-release",
-    "reason": "avoid-unreleased-core-framework-git-patch",
+    "action": "upgrade-released-stable-tauri-before-release",
+    "reason": "urlpattern-fix-now-available-in-stable",
     "temporaryControl": "block-vulnerabilities-unsound-yanked-and-review-each-candidate",
-    "upgradeTrigger": "stable-tauri-release-containing-pr-15660",
-    "targetDate": "2026-12-07"
+    "upgradeTrigger": "released-tauri-utils-resolves-urlpattern-0.6",
+    "releaseGate": "before-next-release-candidate",
+    "targetDate": "2026-11-14"
   },
   "approval": {
     "securityOwner": null,
@@ -89,7 +94,8 @@
     "evidencePath": "review/evidence/RQT-15-security-privacy-review.json"
   },
   "limitations": {
-    "upstreamFixMergedNotReleased": true,
+    "upstreamFixReleased": true,
+    "upgradeNotYetApplied": true,
     "runtimeWarningStillPresent": true,
     "namedSecurityReviewCompleted": false
   },

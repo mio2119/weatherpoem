@@ -2,24 +2,24 @@
     "schemaVersion":  "1.0",
     "product":  "WeatherPoem",
     "appVersion":  "0.2.0",
-    "generatedAt":  "2026-09-09T18:40:32.8972108Z",
+    "generatedAt":  "2026-10-15T14:11:11.5626648Z",
     "tool":  {
                  "name":  "cargo-audit",
                  "version":  "cargo-audit 0.22.2"
              },
     "lockfile":  {
                      "path":  "src-tauri/Cargo.lock",
-                     "sha256":  "D8E86E63299DCEC3E5FF9DC66D6D796159F51BBAF9085D4F0B3D5D4C7A82302A"
+                     "sha256":  "BD2F5BA58AA78F874B903188A891A830E3C28AD12EEF18A05D0C37496767FDCF"
                  },
     "database":  {
                      "source":  "https://github.com/RustSec/advisory-db",
                      "apiUrl":  "https://api.github.com/repos/RustSec/advisory-db/commits/main",
-                     "archiveUrl":  "https://codeload.github.com/RustSec/advisory-db/zip/b50980aad8b8f14f77e25a97b32dd94bf008b0af",
+                     "archiveUrl":  "https://codeload.github.com/RustSec/advisory-db/zip/edb58f5974b83eb8302332821cb6d389777aa351",
                      "ref":  "main",
-                     "commitSha":  "b50980aad8b8f14f77e25a97b32dd94bf008b0af",
-                     "commitDate":  "2026-09-09T10:49:52Z",
-                     "archiveSha256":  "243A44FDF4340CB4EE089BAADFB145B69A86A5EDF9C922137A966B848FFA68C9",
-                     "fetchedAt":  "2026-09-09T18:40:32.8972108Z",
+                     "commitSha":  "edb58f5974b83eb8302332821cb6d389777aa351",
+                     "commitDate":  "2026-10-14T20:18:32Z",
+                     "archiveSha256":  "EEAE31C5B8ED8688DEF668E608E1F07C5F55EFD5CF755EF10FE6FE02A60D3A97",
+                     "fetchedAt":  "2026-10-15T14:11:11.5626648Z",
                      "transport":  "official-github-api-and-codeload-https"
                  },
     "command":  {
@@ -32,7 +32,7 @@
     "stderr":  "",
     "audit":  {
                   "database":  {
-                                   "advisory-count":  1243,
+                                   "advisory-count":  1329,
                                    "last-commit":  null,
                                    "last-updated":  null
                                },
@@ -167,7 +167,7 @@
                                                                             "id":  "RUSTSEC-2023-0071",
                                                                             "package":  "rsa",
                                                                             "title":  "Marvin Attack: potential key recovery through timing sidechannels",
-                                                                            "description":  "### Impact\nDue to a non-constant-time implementation, information about the private key is leaked through timing information which is observable over the network. An attacker may be able to use that information to recover the key.\n\n### Patches\nNo patch is yet available, however work is underway to migrate to a fully constant-time implementation.\n\n### Workarounds\nThe only currently available workaround is to avoid using the `rsa` crate in settings where attackers are able to observe timing information, e.g. local use on a non-compromised computer is fine.\n\n### References\nThis vulnerability was discovered as part of the \"[Marvin Attack]\", which revealed several implementations of RSA including OpenSSL had not properly mitigated timing sidechannel attacks.\n\n[Marvin Attack]: https://people.redhat.com/~hkario/marvin/",
+                                                                            "description":  "### Impact\nDue to a non-constant-time implementation, information about the private key is leaked through timing information which is observable over the network. An attacker may be able to use that information to recover the key.\n\n### Patches\nNo patch is yet available. The crypto-bigint migration ([RustCrypto/RSA#394](https://github.com/RustCrypto/RSA/pull/394)) did not close this. Tracking is [RustCrypto/RSA#626](https://github.com/RustCrypto/RSA/issues/626) (padding still not constant-time). Implicit rejection work is in [RustCrypto/RSA#680](https://github.com/RustCrypto/RSA/pull/680); default-path blinding is in [RustCrypto/RSA#702](https://github.com/RustCrypto/RSA/pull/702).\n\nStill affected as of 2026-09-12: rsa 0.9.10 (latest stable) and rsa 0.10.0-rc.18 (latest). `patched = []` is intentional.\n\n### Workarounds\nAvoid using the `rsa` crate in settings where attackers can observe timing, for example over the network. Local use on a non-compromised computer is fine.\n\n### References\nThis vulnerability was discovered as part of the \"[Marvin Attack]\", which revealed several implementations of RSA including OpenSSL had not properly mitigated timing sidechannel attacks.\n\n[Marvin Attack]: https://people.redhat.com/~hkario/marvin/",
                                                                             "date":  "2023-11-22",
                                                                             "aliases":  [
                                                                                             "CVE-2023-49092",
@@ -188,7 +188,10 @@
                                                                             "informational":  null,
                                                                             "references":  [
                                                                                                "https://github.com/RustCrypto/RSA/issues/19#issuecomment-1822995643",
-                                                                                               "https://people.redhat.com/~hkario/marvin/"
+                                                                                               "https://people.redhat.com/~hkario/marvin/",
+                                                                                               "https://github.com/RustCrypto/RSA/pull/394",
+                                                                                               "https://github.com/RustCrypto/RSA/pull/680",
+                                                                                               "https://github.com/RustCrypto/RSA/pull/702"
                                                                                            ],
                                                                             "source":  null,
                                                                             "url":  "https://github.com/RustCrypto/RSA/issues/626",

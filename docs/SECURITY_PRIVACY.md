@@ -102,8 +102,8 @@ npm run security:dependency-review:check
 - `output/WeatherPoem_0.2.0_DEPENDENCY_RISK_REVIEW.json`：停止维护依赖链、
   上游稳定版、已合并修复和拟议升级期限。
 
-两份报告都绑定 `src-tauri/Cargo.lock` 的 SHA-256；第一份同时绑定
-`package-lock.json`。
+两份扫描报告都绑定 `src-tauri/Cargo.lock` 的 SHA-256；npm/OSV 报告同时绑定
+`package-lock.json`。风险处置草案另绑定原生审计报告与 Rust 锁文件。
 
 2026-07-24 当前结果：
 
@@ -124,26 +124,53 @@ unic-ucd-ident 0.9.0`。`unic-ucd-ident` 再带入另外四个 `unic-*` 包，�
 `tauri-utils` 为 `2.9.3`；Tauri
 [PR #15660](https://github.com/tauri-apps/tauri/pull/15660) 已在
 `dd725f4b13c30a86b398ccc59eb498f151f461c5` 中把 `urlpattern` 升为 `0.6`。
-`urlpattern 0.6` 已使用 `icu_properties`，不再依赖 `unic-ucd-ident`，但该
-变化尚未进入稳定 Tauri。处置草案建议在包含该 PR 的下一稳定版发布后升级，
-最迟复核日为 2026-08-31；不为消除信息性公告而把核心框架钉到未发布 Git
-提交。这个期限和策略仍需具名安全负责人批准。
+`urlpattern 0.6` 已使用 `icu_properties`，不再依赖 `unic-ucd-ident`，但在
+当时尚未进入稳定 Tauri。旧草案的 2026-08-31 复核日已经过去，不能继续当作
+当前计划；不为消除信息性公告而把核心框架钉到未发布 Git 提交。
+
+2026-10-15 重新取得官方 RustSec 快照并核验当前锁文件：Windows 目标 285 个
+依赖、0 个已知漏洞、5 项 `unic-*` 停止维护公告；另外 2 个非 Windows 目标
+原始发现保留在报告中。当前 crates.io 稳定版 `tauri 2.12.4` 的普通依赖为
+`tauri-utils ~2.10.2`，`tauri-utils 2.10.2` 的普通依赖为 `urlpattern ^0.6`；
+已发布的稳定版因此具备移除旧链的升级路径。项目本身仍锁定
+`tauri 2.11.5 → tauri-utils 2.9.3 → urlpattern 0.3.0`，尚未执行升级。
+新处置草案提出在下一发行候选前升级已发布稳定版，并在 30 天内复核；这是
+机器草案，不是具名安全批准。npm/OSV 组合扫描初次遭遇网络连接重置，重试后
+发现旧 npm 锁文件含 5 项漏洞记录（1 中危、4 高危）；在现有版本范围内更新
+Vue 与相关间接依赖后重新扫描，当前 npm 268 个依赖与 Windows 目标 Rust 285
+个 crates.io 包的已知安全漏洞均为 0。报告已绑定新 `package-lock.json` 和
+当前 `Cargo.lock`；既有内部 EXE 仍由旧 npm 锁文件构建，不能把新扫描结果当成
+该 EXE 的发行验收。
+
+旧 npm 锁文件 SHA-256 为 `B25F08E34940D57B7A4DCB37CBDE24A0D9EE18DBFB450BDECC88BB5FB1BB7934`，
+新锁文件为 `3598C80AA39780AF3027B47AE907201EA4187B9CDA291F4E9E608221EFA96AEC`。
+本次在允许的版本范围内将 Vue 从 `3.5.40` 更新至 `3.5.44`，并更新
+`brace-expansion`、`postcss-selector-parser`、`source-map-js` 等间接包；
+旧锁文件的发现对应
+[Vue SSR 属性名公告](https://github.com/advisories/GHSA-g2v6-rqmx-r4w6)、
+[brace-expansion 公告](https://github.com/advisories/GHSA-q2hr-2g5m-vwhr)、
+[PostCSS 选择器公告](https://github.com/advisories/GHSA-rj75-hqrm-r3gf)和
+[source-map-js 公告](https://github.com/advisories/GHSA-68fv-2mgg-jv7q)。
+这些是锁文件扫描发现，不等同于已证明可通过本桌面应用触发；修复后的当前锁文件
+由 `security:audit:check` 复算通过。
 
 OSV 批量查询依据官方 `v1/querybatch` 契约。扫描器会拒绝分页截断、目标依赖树
 解析失败、锁文件变化、报告过期和任何非信息性 Rust 发现。
 
 原生扫描通过 GitHub API 取得 RustSec `main` 的精确提交 SHA，再从官方 codeload
 HTTPS 地址下载该提交归档并记录归档 SHA-256。`cargo-audit` 的原始 Cargo.lock
-结果完整保留：它报告的 `rsa 0.9.10 / RUSTSEC-2023-0071` 来自未启用的
-`sqlx-mysql` 路径；GTK3/GLib 的 11 项停止维护和 1 项 unsound 警告也不在 Windows
-目标。校验器重新运行 `cargo tree --target x86_64-pc-windows-msvc --edges
+结果完整保留：当前有 [rsa 0.9.10 / RUSTSEC-2023-0071](https://rustsec.org/advisories/RUSTSEC-2023-0071.html)
+和 [rkyv 0.7.46 / RUSTSEC-2026-0235](https://rustsec.org/advisories/RUSTSEC-2026-0235.html)
+两项不属于 Windows 目标依赖树的漏洞发现；另有非目标的
+`proc-macro-error` 停止维护和 `glib` unsound 公告。校验器重新运行
+`cargo tree --target x86_64-pc-windows-msvc --edges
 normal,build`，只在发现确实属于当前构建树时才计入 Windows 目标结论。非目标发现
 只能保留，不能删除或伪装成目标内通过。
 
 ## 5. 仍未关闭的风险
 
 - 5 项停止维护的 `unic-*` 已归并为一个 Tauri/urlpattern 上游升级事项，修复已
-  合并但未发布；机器草案提出下一稳定版升级和 2026-08-31 复核期限，仍需安全
+  在稳定版发布，但项目尚未升级；机器草案提出在下一发行候选前升级，仍需安全
   负责人批准或修改。
 - 原生 Cargo.lock 原始报告包含非 Windows 目标发现；自动目标过滤已有依赖树契约，
   但安全负责人仍需复核未启用路径与最终发布目标一致。

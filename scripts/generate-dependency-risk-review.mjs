@@ -3,8 +3,10 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 import {
   DEPENDENCY_RISK_REVIEW_REPORT,
+  DEPENDENCY_RISK_REVIEW_SCHEMA,
   EXPECTED_UNIC_WARNINGS,
   sha256File,
+  validateDependencyRiskReview,
 } from "./dependency-risk-review-support.mjs";
 
 const projectRoot = path.resolve(
@@ -113,6 +115,33 @@ if (!tauriDevCargoResponse.ok) {
   );
 }
 const tauriDevCargo = await tauriDevCargoResponse.text();
+const tauriStableVersion = tauriCrate.crate.max_stable_version;
+const tauriUtilsStableVersion = tauriUtilsCrate.crate.max_stable_version;
+const tauriStableDependenciesUrl =
+  `https://crates.io/api/v1/crates/tauri/${tauriStableVersion}/dependencies`;
+const tauriUtilsStableDependenciesUrl =
+  `https://crates.io/api/v1/crates/tauri-utils/${tauriUtilsStableVersion}/dependencies`;
+const [tauriStableDependencies, tauriUtilsStableDependencies] =
+  await Promise.all([
+    fetchJson(tauriStableDependenciesUrl),
+    fetchJson(tauriUtilsStableDependenciesUrl),
+  ]);
+const releasedTauriUtilsRequirement =
+  tauriStableDependencies.dependencies.find(
+    (value) => value.crate_id === "tauri-utils" && value.kind === "normal",
+  )?.req;
+const releasedUrlpatternRequirement =
+  tauriUtilsStableDependencies.dependencies.find(
+    (value) => value.crate_id === "urlpattern" && value.kind === "normal",
+  )?.req;
+if (
+  !/^~2\.\d+\.\d+$/.test(releasedTauriUtilsRequirement ?? "") ||
+  !/^\^0\.6(?:\.\d+)?$/.test(releasedUrlpatternRequirement ?? "")
+) {
+  throw new Error(
+    "Latest stable Tauri dependency path does not verify the released urlpattern fix",
+  );
+}
 
 const targetWarnings =
   cargoAudit.targetResolution.warnings.unmaintained.map(
@@ -169,12 +198,12 @@ if (
 
 const generatedAt = new Date().toISOString();
 const targetDate = new Date(
-  Date.parse(generatedAt) + 89 * 24 * 60 * 60 * 1000,
+  Date.parse(generatedAt) + 29 * 24 * 60 * 60 * 1000,
 )
   .toISOString()
   .slice(0, 10);
 const report = {
-  schemaVersion: "1.0",
+  schemaVersion: DEPENDENCY_RISK_REVIEW_SCHEMA,
   product: "WeatherPoem",
   appVersion: packageJson.version,
   generatedAt,
@@ -211,12 +240,13 @@ const report = {
   },
   upstream: {
     checkedAt: generatedAt,
-    tauriLatestStable: tauriCrate.crate.max_stable_version,
-    tauriUtilsLatestStable:
-      tauriUtilsCrate.crate.max_stable_version,
+    tauriLatestStable: tauriStableVersion,
+    tauriUtilsLatestStable: tauriUtilsStableVersion,
     urlpatternLatestStable:
       urlpatternCrate.crate.max_stable_version,
     urlpattern060RemovesUnicUcdIdent: true,
+    releasedTauriUtilsRequirement,
+    releasedUrlpatternRequirement,
     tauriPullRequest:
       "https://github.com/tauri-apps/tauri/pull/15660",
     mergeCommitSha: pullRequest.merge_commit_sha,
@@ -232,14 +262,17 @@ const report = {
         "https://github.com/tauri-apps/tauri/pull/15660",
       tauriDevCargoToml:
         "https://github.com/tauri-apps/tauri/blob/dev/crates/tauri-utils/Cargo.toml",
+      tauriStableDependencies: tauriStableDependenciesUrl,
+      tauriUtilsStableDependencies: tauriUtilsStableDependenciesUrl,
     },
   },
   proposedDisposition: {
-    action: "upgrade-next-stable-tauri-release",
-    reason: "avoid-unreleased-core-framework-git-patch",
+    action: "upgrade-released-stable-tauri-before-release",
+    reason: "urlpattern-fix-now-available-in-stable",
     temporaryControl:
       "block-vulnerabilities-unsound-yanked-and-review-each-candidate",
-    upgradeTrigger: "stable-tauri-release-containing-pr-15660",
+    upgradeTrigger: "released-tauri-utils-resolves-urlpattern-0.6",
+    releaseGate: "before-next-release-candidate",
     targetDate,
   },
   approval: {
@@ -250,13 +283,22 @@ const report = {
       "review/evidence/RQT-15-security-privacy-review.json",
   },
   limitations: {
-    upstreamFixMergedNotReleased: true,
+    upstreamFixReleased: true,
+    upgradeNotYetApplied: true,
     runtimeWarningStillPresent: true,
     namedSecurityReviewCompleted: false,
   },
   gateSatisfied: false,
   result: "automated-disposition-draft-ready",
 };
+
+validateDependencyRiskReview(report, {
+  appVersion: packageJson.version,
+  cargoAuditSha256: report.inputs.cargoAuditSha256,
+  cargoLockSha256: report.inputs.cargoLockSha256,
+  targetUnmaintainedWarnings:
+    cargoAudit.targetResolution.warnings.unmaintained,
+});
 
 const outputPath = path.join(
   projectRoot,

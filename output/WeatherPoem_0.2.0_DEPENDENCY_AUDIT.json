@@ -2,17 +2,17 @@
   "schemaVersion": "1.0",
   "product": "WeatherPoem",
   "version": "0.2.0",
-  "scannedAt": "2026-09-09T18:49:32.101Z",
+  "scannedAt": "2026-10-15T14:19:26.713Z",
   "locks": {
     "npm": {
       "name": "package-lock.json",
-      "bytes": 135118,
-      "sha256": "B25F08E34940D57B7A4DCB37CBDE24A0D9EE18DBFB450BDECC88BB5FB1BB7934"
+      "bytes": 135120,
+      "sha256": "3598C80AA39780AF3027B47AE907201EA4187B9CDA291F4E9E608221EFA96AEC"
     },
     "cargo": {
       "name": "src-tauri/Cargo.lock",
-      "bytes": 146503,
-      "sha256": "D8E86E63299DCEC3E5FF9DC66D6D796159F51BBAF9085D4F0B3D5D4C7A82302A"
+      "bytes": 146526,
+      "sha256": "BD2F5BA58AA78F874B903188A891A830E3C28AD12EEF18A05D0C37496767FDCF"
     }
   },
   "scanners": {

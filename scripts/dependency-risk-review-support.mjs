@@ -3,7 +3,7 @@ import { readFile } from "node:fs/promises";
 
 export const DEPENDENCY_RISK_REVIEW_REPORT =
   "output/WeatherPoem_0.2.0_DEPENDENCY_RISK_REVIEW.json";
-export const DEPENDENCY_RISK_REVIEW_SCHEMA = "1.0";
+export const DEPENDENCY_RISK_REVIEW_SCHEMA = "1.1";
 
 export const EXPECTED_UNIC_WARNINGS = [
   {
@@ -67,6 +67,13 @@ function isSha256(value) {
 
 function isCommitSha(value) {
   return typeof value === "string" && /^[a-f0-9]{40}$/.test(value);
+}
+
+function stableVersionAtLeastMinor(value, minor) {
+  const match = typeof value === "string"
+    ? value.match(/^2\.(\d+)\.\d+$/)
+    : null;
+  return Boolean(match && Number(match[1]) >= minor);
 }
 
 export async function sha256File(path) {
@@ -200,6 +207,8 @@ export function validateDependencyRiskReview(report, expected) {
       "tauriUtilsLatestStable",
       "urlpatternLatestStable",
       "urlpattern060RemovesUnicUcdIdent",
+      "releasedTauriUtilsRequirement",
+      "releasedUrlpatternRequirement",
       "tauriPullRequest",
       "mergeCommitSha",
       "mergedAt",
@@ -211,10 +220,12 @@ export function validateDependencyRiskReview(report, expected) {
   assert(
     Math.abs(Date.parse(report.upstream.checkedAt) - generatedAt) <=
       1000 &&
-      report.upstream.tauriLatestStable === "2.11.5" &&
-      report.upstream.tauriUtilsLatestStable === "2.9.3" &&
-      report.upstream.urlpatternLatestStable === "0.6.0" &&
+      stableVersionAtLeastMinor(report.upstream.tauriLatestStable, 12) &&
+      stableVersionAtLeastMinor(report.upstream.tauriUtilsLatestStable, 10) &&
+      /^0\.(?:[6-9]|\d{2,})\.\d+$/.test(report.upstream.urlpatternLatestStable) &&
       report.upstream.urlpattern060RemovesUnicUcdIdent === true &&
+      /^~2\.(?:1\d|[2-9]\d)\.\d+$/.test(report.upstream.releasedTauriUtilsRequirement) &&
+      /^\^0\.6(?:\.\d+)?$/.test(report.upstream.releasedUrlpatternRequirement) &&
       report.upstream.tauriPullRequest ===
         "https://github.com/tauri-apps/tauri/pull/15660" &&
       report.upstream.mergeCommitSha ===
@@ -222,7 +233,7 @@ export function validateDependencyRiskReview(report, expected) {
       isCommitSha(report.upstream.mergeCommitSha) &&
       report.upstream.mergedAt === "2026-07-06T16:50:43Z" &&
       report.upstream.tauriDevDependency === "urlpattern@0.6",
-    "上游已合并但未发布的修复状态不准确",
+    "上游稳定版的修复依赖链不准确",
   );
   exactKeys(
     report.upstream.sources,
@@ -232,6 +243,8 @@ export function validateDependencyRiskReview(report, expected) {
       "urlpatternCrate",
       "pullRequest",
       "tauriDevCargoToml",
+      "tauriStableDependencies",
+      "tauriUtilsStableDependencies",
     ],
     "上游来源",
   );
@@ -240,7 +253,11 @@ export function validateDependencyRiskReview(report, expected) {
       (value) =>
         typeof value === "string" &&
         value.startsWith("https://"),
-    ),
+    ) &&
+      report.upstream.sources.tauriStableDependencies ===
+        `https://crates.io/api/v1/crates/tauri/${report.upstream.tauriLatestStable}/dependencies` &&
+      report.upstream.sources.tauriUtilsStableDependencies ===
+        `https://crates.io/api/v1/crates/tauri-utils/${report.upstream.tauriUtilsLatestStable}/dependencies`,
     "上游来源必须是无凭据 HTTPS 地址",
   );
 
@@ -251,6 +268,7 @@ export function validateDependencyRiskReview(report, expected) {
       "reason",
       "temporaryControl",
       "upgradeTrigger",
+      "releaseGate",
       "targetDate",
     ],
     "拟议处置",
@@ -260,17 +278,19 @@ export function validateDependencyRiskReview(report, expected) {
   );
   assert(
     report.proposedDisposition.action ===
-      "upgrade-next-stable-tauri-release" &&
+      "upgrade-released-stable-tauri-before-release" &&
       report.proposedDisposition.reason ===
-        "avoid-unreleased-core-framework-git-patch" &&
+        "urlpattern-fix-now-available-in-stable" &&
       report.proposedDisposition.temporaryControl ===
         "block-vulnerabilities-unsound-yanked-and-review-each-candidate" &&
       report.proposedDisposition.upgradeTrigger ===
-        "stable-tauri-release-containing-pr-15660" &&
+        "released-tauri-utils-resolves-urlpattern-0.6" &&
+      report.proposedDisposition.releaseGate ===
+        "before-next-release-candidate" &&
       Number.isFinite(targetDate) &&
       targetDate >= generatedAt &&
-      targetDate <= generatedAt + 90 * 24 * 60 * 60 * 1000,
-    "拟议处置缺少稳定版升级触发条件或限期",
+      targetDate <= generatedAt + 30 * 24 * 60 * 60 * 1000,
+    "拟议处置缺少已发布稳定版升级条件、发布门禁或限期",
   );
 
   exactKeys(
@@ -289,18 +309,20 @@ export function validateDependencyRiskReview(report, expected) {
   exactKeys(
     report.limitations,
     [
-      "upstreamFixMergedNotReleased",
+      "upstreamFixReleased",
+      "upgradeNotYetApplied",
       "runtimeWarningStillPresent",
       "namedSecurityReviewCompleted",
     ],
     "处置限制",
   );
   assert(
-    report.limitations.upstreamFixMergedNotReleased === true &&
+    report.limitations.upstreamFixReleased === true &&
+      report.limitations.upgradeNotYetApplied === true &&
       report.limitations.runtimeWarningStillPresent === true &&
       report.limitations.namedSecurityReviewCompleted === false &&
       report.gateSatisfied === false &&
       report.result === "automated-disposition-draft-ready",
-    "处置草案掩盖了未发布修复或未批准状态",
+    "处置草案掩盖了尚未升级或未批准状态",
   );
 }

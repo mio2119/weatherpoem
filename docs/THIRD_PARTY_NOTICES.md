@@ -1,8 +1,8 @@
 # WeatherPoem 第三方许可与 NOTICE 草案
 
-生成时间：2026-09-09T18:40:38.000Z  
-适用版本：WeatherPoem 0.2.0  
-Windows 目标：x86_64-pc-windows-msvc
+- 生成时间：2026-10-16T00:53:21.260Z
+- 适用版本：WeatherPoem 0.2.0
+- Windows 目标：x86_64-pc-windows-msvc
 
 > 这是从当前锁文件与本机已安装依赖自动生成的审阅草案，不构成法律意见，
 > 也不代表已满足每个许可证的分发、源代码提供或署名义务。
@@ -20,13 +20,13 @@ Tauri 已配置在下一次构建时把本文件放入安装包的 licenses 目�
 
 输入锁定：
 
-- `package.json`：`2E9DDA60A4664924B4A84EA71DDE11A2FC6E14548C911785B3DF5E63E75D5D5F`
-- `package-lock.json`：`B25F08E34940D57B7A4DCB37CBDE24A0D9EE18DBFB450BDECC88BB5FB1BB7934`
-- `src-tauri/Cargo.lock`：`D8E86E63299DCEC3E5FF9DC66D6D796159F51BBAF9085D4F0B3D5D4C7A82302A`
-- `output/WeatherPoem_0.2.0_CARGO_AUDIT.json`：`D4303DF89B580DF72E0DE7602D9E9456289B471043A3D273260941DEFC868D74`
-- `src-tauri/tauri.conf.json`：`7CD31C25618D68E2683538DB617C60BBF2C85B391B7D18CF6B77A082D89CF855`
+- `package.json`：`2AEB7FD91E51EB45E3966F9A8502117980A6639E07A0105A95C94F4BAB051E6F`
+- `package-lock.json`：`3598C80AA39780AF3027B47AE907201EA4187B9CDA291F4E9E608221EFA96AEC`
+- `src-tauri/Cargo.lock`：`BD2F5BA58AA78F874B903188A891A830E3C28AD12EEF18A05D0C37496767FDCF`
+- `output/WeatherPoem_0.2.0_CARGO_AUDIT.json`：`C1E78590C7F6B28BB98F1197AAE70BFEC40719ED8A692771A3D81A04791234A3`
+- `src-tauri/tauri.conf.json`：`7A4551240D193730E933EBF1BC5E7DE7B35ED32B45043688338F28E64E09B993`
 - `review/third-party-license-source-map.json`：`5BCECE7FD7EA8371341FBA8662D4EFCBA289DBBD38C6A06EB06103F9D5DF7BCB`
-- `review/npm-license-text-supplements.json`：`38E65204674239A85F06880D65BF7C92E6A32C30DED0D2528E7210AD5E9A556D`
+- `review/npm-license-text-supplements.json`：`2A3C538136C8B0D376E4CD3879C7BEF33D6F36E695B2439ACE9BCD9EDF2B3B6B`
 - `review/cargo-license-text-supplements.json`：`943A9BFF10E100552A35DAC933A340643E2BC9182B11E394D37234F20AE4DC48`
 - `review/canonical-license-text-policy.json`：`9B18DEED4F9E8580DB8EDBACA30F4A00B296D62EC05F5BE23CAE993F078C5D99`
 - `review/canonical-license-text-supplements.json`：`10D5FD6EFE963EC09576EA89E81A787C209FCD1422AA4DDE22DC1D15BB6A2E16`
@@ -54,7 +54,7 @@ Tauri 已配置在下一次构建时把本文件放入安装包的 licenses 目�
 | npm:node_modules/@emnapi/core | npm 原始发行包 | https://registry.npmjs.org/@emnapi/core/-/core-1.11.1.tgz | 整包 SHA-512 `452BDB4261F374ACCDB0B61AFF01EB6DCDCA378B182CA01D3D9C6A88CD87013AAFFD2064DBF10D487A6F5C668B38C72C032CF4A68106AA49A62981B739688911` | package/LICENSE | `2088F55C6731498410B20C95EBD345ED4A4A800BF74C0FBA4D282FD2A021DAAA` |
 | npm:node_modules/@emnapi/runtime | npm 原始发行包 | https://registry.npmjs.org/@emnapi/runtime/-/runtime-1.11.1.tgz | 整包 SHA-512 `BE08FB477CB75A0C76E0841A18F03F47A6055CB1D530E674B951322103DA5ACFAB7750337C43179400B6D856303B55E4291E8D3ECABB9946A7747F2821175917` | package/LICENSE | `2088F55C6731498410B20C95EBD345ED4A4A800BF74C0FBA4D282FD2A021DAAA` |
 | npm:node_modules/@emnapi/wasi-threads | npm 原始发行包 | https://registry.npmjs.org/@emnapi/wasi-threads/-/wasi-threads-1.2.2.tgz | 整包 SHA-512 `73DE6A39790777274D2A1B1C05379BA840B5095019A72A8E7D57C1CD0D6A833CA5DE07DE95D5232208036C86600CAB072E09EC33E8A01FB4C9FDE01AB1A56E30` | package/LICENSE | `2088F55C6731498410B20C95EBD345ED4A4A800BF74C0FBA4D282FD2A021DAAA` |
-| npm:node_modules/@napi-rs/wasm-runtime | npm gitHead 对应仓库 | https://github.com/napi-rs/napi-rs | gitHead `b77119e711704cc453949e056b45a4996ea0386c`；版本元数据 SHA-256 `090C44446F8D8920BB3A80122757062F2D2F0DA27FCEF0066F8C5B6DE45923A2` | LICENSE | `3F1CE66533302DF3A32EDBFDFC0B78F0DD34659E4C1F5817162E5EA3C2297215` |
+| npm:node_modules/@napi-rs/wasm-runtime | npm gitHead 对应仓库 | https://github.com/napi-rs/napi-rs | gitHead `b77119e711704cc453949e056b45a4996ea0386c`；版本元数据 SHA-256 `B7052ABA13DF612E5CE2A8F3DC6C413FABEBA58C0BFD551CB0A7647F816DA9B0` | LICENSE | `3F1CE66533302DF3A32EDBFDFC0B78F0DD34659E4C1F5817162E5EA3C2297215` |
 | npm:node_modules/fsevents | npm 原始发行包 | https://registry.npmjs.org/fsevents/-/fsevents-2.3.3.tgz | 整包 SHA-512 `E71A037D7F9F2FB7DA0139DA82658FA5B16DC21FD1EFB5A630CAAA1C64BAE42DEFBC1D181EB805F81D58999DF8E35B4C8F99FADE4D36D765CDA09C339617DF43` | package/LICENSE | `2A8A5D6197BB97A018B8A190DD3ED853D750CA87C8E80C17AAD41D6C6FF448E1` |
 | npm:node_modules/tslib | npm 原始发行包 | https://registry.npmjs.org/tslib/-/tslib-2.8.1.tgz | 整包 SHA-512 `A0916EF781D06FE29576E49440BEF09E99AA9DF98BB0E03F9C087A6FA107D30084A0AD3F98F79753A737C0A0D5F373243AE1CF447B525CA294F7D2016B34BFDB` | package/LICENSE.txt | `210B19E543130388C68654B7497E967119CE17145F66AB7D85688FBD70F08751` |
 
@@ -141,8 +141,8 @@ Tauri 已配置在下一次构建时把本文件放入安装包的 licenses 目�
 | --- | --- | --- | --- | --- |
 | @babel/helper-string-parser | 7.29.7 | MIT | TXT-024 | https://registry.npmjs.org/@babel/helper-string-parser/-/helper-string-parser-7.29.7.tgz |
 | @babel/helper-validator-identifier | 7.29.7 | MIT | TXT-024 | https://registry.npmjs.org/@babel/helper-validator-identifier/-/helper-validator-identifier-7.29.7.tgz |
-| @babel/parser | 7.29.7 | MIT | TXT-068 | https://registry.npmjs.org/@babel/parser/-/parser-7.29.7.tgz |
-| @babel/types | 7.29.7 | MIT | TXT-024 | https://registry.npmjs.org/@babel/types/-/types-7.29.7.tgz |
+| @babel/parser | 7.29.9 | MIT | TXT-068 | https://registry.npmjs.org/@babel/parser/-/parser-7.29.9.tgz |
+| @babel/types | 7.29.8 | MIT | TXT-024 | https://registry.npmjs.org/@babel/types/-/types-7.29.8.tgz |
 | @emnapi/core | 1.11.1 | MIT | TXT-038（来自完整性校验通过的 npm 原始发行包） | https://registry.npmjs.org/@emnapi/core/-/core-1.11.1.tgz |
 | @emnapi/runtime | 1.11.1 | MIT | TXT-038（来自完整性校验通过的 npm 原始发行包） | https://registry.npmjs.org/@emnapi/runtime/-/runtime-1.11.1.tgz |
 | @emnapi/wasi-threads | 1.2.2 | MIT | TXT-038（来自完整性校验通过的 npm 原始发行包） | https://registry.npmjs.org/@emnapi/wasi-threads/-/wasi-threads-1.2.2.tgz |
@@ -230,16 +230,16 @@ Tauri 已配置在下一次构建时把本文件放入安装包的 licenses 目�
 | @volar/language-core | 2.4.28 | MIT | TXT-192 | https://registry.npmjs.org/@volar/language-core/-/language-core-2.4.28.tgz |
 | @volar/source-map | 2.4.28 | MIT | TXT-192 | https://registry.npmjs.org/@volar/source-map/-/source-map-2.4.28.tgz |
 | @volar/typescript | 2.4.28 | MIT | TXT-192 | https://registry.npmjs.org/@volar/typescript/-/typescript-2.4.28.tgz |
-| @vue/compiler-core | 3.5.40 | MIT | TXT-033 | https://registry.npmjs.org/@vue/compiler-core/-/compiler-core-3.5.40.tgz |
-| @vue/compiler-dom | 3.5.40 | MIT | TXT-033 | https://registry.npmjs.org/@vue/compiler-dom/-/compiler-dom-3.5.40.tgz |
-| @vue/compiler-sfc | 3.5.40 | MIT | TXT-033 | https://registry.npmjs.org/@vue/compiler-sfc/-/compiler-sfc-3.5.40.tgz |
-| @vue/compiler-ssr | 3.5.40 | MIT | TXT-033 | https://registry.npmjs.org/@vue/compiler-ssr/-/compiler-ssr-3.5.40.tgz |
+| @vue/compiler-core | 3.5.44 | MIT | TXT-033 | https://registry.npmjs.org/@vue/compiler-core/-/compiler-core-3.5.44.tgz |
+| @vue/compiler-dom | 3.5.44 | MIT | TXT-033 | https://registry.npmjs.org/@vue/compiler-dom/-/compiler-dom-3.5.44.tgz |
+| @vue/compiler-sfc | 3.5.44 | MIT | TXT-033 | https://registry.npmjs.org/@vue/compiler-sfc/-/compiler-sfc-3.5.44.tgz |
+| @vue/compiler-ssr | 3.5.44 | MIT | TXT-033 | https://registry.npmjs.org/@vue/compiler-ssr/-/compiler-ssr-3.5.44.tgz |
 | @vue/language-core | 3.3.8 | MIT | TXT-192 | https://registry.npmjs.org/@vue/language-core/-/language-core-3.3.8.tgz |
-| @vue/reactivity | 3.5.40 | MIT | TXT-033 | https://registry.npmjs.org/@vue/reactivity/-/reactivity-3.5.40.tgz |
-| @vue/runtime-core | 3.5.40 | MIT | TXT-033 | https://registry.npmjs.org/@vue/runtime-core/-/runtime-core-3.5.40.tgz |
-| @vue/runtime-dom | 3.5.40 | MIT | TXT-033 | https://registry.npmjs.org/@vue/runtime-dom/-/runtime-dom-3.5.40.tgz |
-| @vue/server-renderer | 3.5.40 | MIT | TXT-033 | https://registry.npmjs.org/@vue/server-renderer/-/server-renderer-3.5.40.tgz |
-| @vue/shared | 3.5.40 | MIT | TXT-033 | https://registry.npmjs.org/@vue/shared/-/shared-3.5.40.tgz |
+| @vue/reactivity | 3.5.44 | MIT | TXT-033 | https://registry.npmjs.org/@vue/reactivity/-/reactivity-3.5.44.tgz |
+| @vue/runtime-core | 3.5.44 | MIT | TXT-033 | https://registry.npmjs.org/@vue/runtime-core/-/runtime-core-3.5.44.tgz |
+| @vue/runtime-dom | 3.5.44 | MIT | TXT-033 | https://registry.npmjs.org/@vue/runtime-dom/-/runtime-dom-3.5.44.tgz |
+| @vue/server-renderer | 3.5.44 | MIT | TXT-033 | https://registry.npmjs.org/@vue/server-renderer/-/server-renderer-3.5.44.tgz |
+| @vue/shared | 3.5.44 | MIT | TXT-033 | https://registry.npmjs.org/@vue/shared/-/shared-3.5.44.tgz |
 | @vue/test-utils | 2.4.11 | MIT | TXT-298 | https://registry.npmjs.org/@vue/test-utils/-/test-utils-2.4.11.tgz |
 | abbrev | 2.0.0 | ISC | TXT-183 | https://registry.npmjs.org/abbrev/-/abbrev-2.0.0.tgz |
 | acorn | 8.17.0 | MIT | TXT-145 | https://registry.npmjs.org/acorn/-/acorn-8.17.0.tgz |
@@ -251,7 +251,7 @@ Tauri 已配置在下一次构建时把本文件放入安装包的 licenses 目�
 | assertion-error | 2.0.1 | MIT | TXT-042 | https://registry.npmjs.org/assertion-error/-/assertion-error-2.0.1.tgz |
 | balanced-match | 4.0.4 | MIT | TXT-252 | https://registry.npmjs.org/balanced-match/-/balanced-match-4.0.4.tgz |
 | boolbase | 1.0.0 | ISC | TXT-282（规范文本补充：ISC） | https://registry.npmjs.org/boolbase/-/boolbase-1.0.0.tgz |
-| brace-expansion | 5.0.9 | MIT | TXT-180 | https://registry.npmjs.org/brace-expansion/-/brace-expansion-5.0.9.tgz |
+| brace-expansion | 5.0.12 | MIT | TXT-180 | https://registry.npmjs.org/brace-expansion/-/brace-expansion-5.0.12.tgz |
 | buffer-image-size | 0.6.4 | MIT | TXT-105 | https://registry.npmjs.org/buffer-image-size/-/buffer-image-size-0.6.4.tgz |
 | chai | 6.2.2 | MIT | TXT-214 | https://registry.npmjs.org/chai/-/chai-6.2.2.tgz |
 | color-convert | 2.0.1 | MIT | TXT-128 | https://registry.npmjs.org/color-convert/-/color-convert-2.0.1.tgz |
@@ -268,7 +268,7 @@ Tauri 已配置在下一次构建时把本文件放入安装包的 licenses 目�
 | eastasianwidth | 0.2.0 | MIT | TXT-210（规范文本补充：MIT） | https://registry.npmjs.org/eastasianwidth/-/eastasianwidth-0.2.0.tgz |
 | editorconfig | 1.0.7 | MIT | TXT-224 | https://registry.npmjs.org/editorconfig/-/editorconfig-1.0.7.tgz |
 | balanced-match | 1.0.2 | MIT | TXT-187 | https://registry.npmjs.org/balanced-match/-/balanced-match-1.0.2.tgz |
-| brace-expansion | 2.1.4 | MIT | TXT-127 | https://registry.npmjs.org/brace-expansion/-/brace-expansion-2.1.4.tgz |
+| brace-expansion | 2.1.7 | MIT | TXT-127 | https://registry.npmjs.org/brace-expansion/-/brace-expansion-2.1.7.tgz |
 | minimatch | 9.0.9 | ISC | TXT-249 | https://registry.npmjs.org/minimatch/-/minimatch-9.0.9.tgz |
 | emoji-regex | 9.2.2 | MIT | TXT-095 | https://registry.npmjs.org/emoji-regex/-/emoji-regex-9.2.2.tgz |
 | entities | 7.0.1 | BSD-2-Clause | TXT-242 | https://registry.npmjs.org/entities/-/entities-7.0.1.tgz |
@@ -298,7 +298,7 @@ Tauri 已配置在下一次构建时把本文件放入安装包的 licenses 目�
 | glob | 10.5.0 | ISC | TXT-243 | https://registry.npmjs.org/glob/-/glob-10.5.0.tgz |
 | glob-parent | 6.0.2 | ISC | TXT-297 | https://registry.npmjs.org/glob-parent/-/glob-parent-6.0.2.tgz |
 | balanced-match | 1.0.2 | MIT | TXT-187 | https://registry.npmjs.org/balanced-match/-/balanced-match-1.0.2.tgz |
-| brace-expansion | 2.1.4 | MIT | TXT-127 | https://registry.npmjs.org/brace-expansion/-/brace-expansion-2.1.4.tgz |
+| brace-expansion | 2.1.7 | MIT | TXT-127 | https://registry.npmjs.org/brace-expansion/-/brace-expansion-2.1.7.tgz |
 | minimatch | 9.0.9 | ISC | TXT-249 | https://registry.npmjs.org/minimatch/-/minimatch-9.0.9.tgz |
 | happy-dom | 20.11.1 | MIT | TXT-093 | https://registry.npmjs.org/happy-dom/-/happy-dom-20.11.1.tgz |
 | ignore | 5.3.2 | MIT | TXT-181 | https://registry.npmjs.org/ignore/-/ignore-5.3.2.tgz |
@@ -336,7 +336,7 @@ Tauri 已配置在下一次构建时把本文件放入安装包的 licenses 目�
 | minipass | 7.1.3 | BlueOak-1.0.0 | TXT-162 | https://registry.npmjs.org/minipass/-/minipass-7.1.3.tgz |
 | ms | 2.1.3 | MIT | TXT-030 | https://registry.npmjs.org/ms/-/ms-2.1.3.tgz |
 | muggle-string | 0.4.1 | MIT | TXT-261 | https://registry.npmjs.org/muggle-string/-/muggle-string-0.4.1.tgz |
-| nanoid | 3.3.18 | MIT | TXT-257 | https://registry.npmjs.org/nanoid/-/nanoid-3.3.18.tgz |
+| nanoid | 3.3.20 | MIT | TXT-257 | https://registry.npmjs.org/nanoid/-/nanoid-3.3.20.tgz |
 | natural-compare | 1.4.0 | MIT | TXT-210（规范文本补充：MIT） | https://registry.npmjs.org/natural-compare/-/natural-compare-1.4.0.tgz |
 | nopt | 7.2.1 | ISC | TXT-099 | https://registry.npmjs.org/nopt/-/nopt-7.2.1.tgz |
 | nth-check | 2.1.1 | BSD-2-Clause | TXT-242 | https://registry.npmjs.org/nth-check/-/nth-check-2.1.1.tgz |
@@ -352,8 +352,8 @@ Tauri 已配置在下一次构建时把本文件放入安装包的 licenses 目�
 | pathe | 2.0.3 | MIT | TXT-104 | https://registry.npmjs.org/pathe/-/pathe-2.0.3.tgz |
 | picocolors | 1.1.1 | ISC | TXT-123 | https://registry.npmjs.org/picocolors/-/picocolors-1.1.1.tgz |
 | picomatch | 4.0.5 | MIT | TXT-248 | https://registry.npmjs.org/picomatch/-/picomatch-4.0.5.tgz |
-| postcss | 8.5.28 | MIT | TXT-110 | https://registry.npmjs.org/postcss/-/postcss-8.5.28.tgz |
-| postcss-selector-parser | 7.1.4 | MIT | TXT-058 | https://registry.npmjs.org/postcss-selector-parser/-/postcss-selector-parser-7.1.4.tgz |
+| postcss | 8.5.30 | MIT | TXT-110 | https://registry.npmjs.org/postcss/-/postcss-8.5.30.tgz |
+| postcss-selector-parser | 7.1.6 | MIT | TXT-058 | https://registry.npmjs.org/postcss-selector-parser/-/postcss-selector-parser-7.1.6.tgz |
 | prelude-ls | 1.2.1 | MIT | TXT-222 | https://registry.npmjs.org/prelude-ls/-/prelude-ls-1.2.1.tgz |
 | proto-list | 1.2.4 | ISC | TXT-099 | https://registry.npmjs.org/proto-list/-/proto-list-1.2.4.tgz |
 | punycode | 2.3.1 | MIT | TXT-095 | https://registry.npmjs.org/punycode/-/punycode-2.3.1.tgz |
@@ -363,7 +363,7 @@ Tauri 已配置在下一次构建时把本文件放入安装包的 licenses 目�
 | shebang-regex | 3.0.0 | MIT | TXT-096 | https://registry.npmjs.org/shebang-regex/-/shebang-regex-3.0.0.tgz |
 | siginfo | 2.0.0 | ISC | TXT-079 | https://registry.npmjs.org/siginfo/-/siginfo-2.0.0.tgz |
 | signal-exit | 4.1.0 | ISC | TXT-213 | https://registry.npmjs.org/signal-exit/-/signal-exit-4.1.0.tgz |
-| source-map-js | 1.2.1 | BSD-3-Clause | TXT-134 | https://registry.npmjs.org/source-map-js/-/source-map-js-1.2.1.tgz |
+| source-map-js | 1.2.2 | BSD-3-Clause | TXT-134 | https://registry.npmjs.org/source-map-js/-/source-map-js-1.2.2.tgz |
 | stackback | 0.0.2 | MIT | TXT-210（规范文本补充：MIT） | https://registry.npmjs.org/stackback/-/stackback-0.0.2.tgz |
 | std-env | 4.2.0 | MIT | TXT-197 | https://registry.npmjs.org/std-env/-/std-env-4.2.0.tgz |
 | string-width | 5.1.2 | MIT | TXT-111 | https://registry.npmjs.org/string-width/-/string-width-5.1.2.tgz |
@@ -389,7 +389,7 @@ Tauri 已配置在下一次构建时把本文件放入安装包的 licenses 目�
 | vite | 8.1.5 | MIT | TXT-215 | https://registry.npmjs.org/vite/-/vite-8.1.5.tgz |
 | vitest | 4.1.11 | MIT | TXT-158 | https://registry.npmjs.org/vitest/-/vitest-4.1.11.tgz |
 | vscode-uri | 3.1.0 | MIT | TXT-234 | https://registry.npmjs.org/vscode-uri/-/vscode-uri-3.1.0.tgz |
-| vue | 3.5.40 | MIT | TXT-033 | https://registry.npmjs.org/vue/-/vue-3.5.40.tgz |
+| vue | 3.5.44 | MIT | TXT-033 | https://registry.npmjs.org/vue/-/vue-3.5.44.tgz |
 | vue-component-type-helpers | 3.3.8 | MIT | TXT-205 | https://registry.npmjs.org/vue-component-type-helpers/-/vue-component-type-helpers-3.3.8.tgz |
 | vue-eslint-parser | 10.4.1 | MIT | TXT-295 | https://registry.npmjs.org/vue-eslint-parser/-/vue-eslint-parser-10.4.1.tgz |
 | vue-tsc | 3.3.8 | MIT | TXT-192 | https://registry.npmjs.org/vue-tsc/-/vue-tsc-3.3.8.tgz |

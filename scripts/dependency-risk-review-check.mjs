@@ -46,5 +46,5 @@ validateDependencyRiskReview(report, {
 });
 
 console.log(
-  "依赖风险处置草案有效：5 项 unic-* 公告已归并到同一上游链；修复已合并但尚未进入稳定 Tauri，具名安全批准仍未完成。",
+  "依赖风险处置草案有效：5 项 unic-* 公告已归并到同一上游链；修复已进入稳定 Tauri，但当前项目尚未升级，具名安全批准仍未完成。",
 );

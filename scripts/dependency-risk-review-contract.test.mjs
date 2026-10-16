@@ -10,12 +10,12 @@ const HASH = "A".repeat(64);
 function fixture() {
   const generatedAt = new Date().toISOString();
   const targetDate = new Date(
-    Date.parse(generatedAt) + 89 * 24 * 60 * 60 * 1000,
+    Date.parse(generatedAt) + 29 * 24 * 60 * 60 * 1000,
   )
     .toISOString()
     .slice(0, 10);
   return {
-    schemaVersion: "1.0",
+    schemaVersion: "1.1",
     product: "WeatherPoem",
     appVersion: "0.2.0",
     generatedAt,
@@ -52,10 +52,12 @@ function fixture() {
     },
     upstream: {
       checkedAt: generatedAt,
-      tauriLatestStable: "2.11.5",
-      tauriUtilsLatestStable: "2.9.3",
+      tauriLatestStable: "2.12.4",
+      tauriUtilsLatestStable: "2.10.2",
       urlpatternLatestStable: "0.6.0",
       urlpattern060RemovesUnicUcdIdent: true,
+      releasedTauriUtilsRequirement: "~2.10.2",
+      releasedUrlpatternRequirement: "^0.6",
       tauriPullRequest:
         "https://github.com/tauri-apps/tauri/pull/15660",
       mergeCommitSha:
@@ -72,15 +74,20 @@ function fixture() {
           "https://github.com/tauri-apps/tauri/pull/15660",
         tauriDevCargoToml:
           "https://github.com/tauri-apps/tauri/blob/dev/crates/tauri-utils/Cargo.toml",
+        tauriStableDependencies:
+          "https://crates.io/api/v1/crates/tauri/2.12.4/dependencies",
+        tauriUtilsStableDependencies:
+          "https://crates.io/api/v1/crates/tauri-utils/2.10.2/dependencies",
       },
     },
     proposedDisposition: {
-      action: "upgrade-next-stable-tauri-release",
-      reason: "avoid-unreleased-core-framework-git-patch",
+      action: "upgrade-released-stable-tauri-before-release",
+      reason: "urlpattern-fix-now-available-in-stable",
       temporaryControl:
         "block-vulnerabilities-unsound-yanked-and-review-each-candidate",
       upgradeTrigger:
-        "stable-tauri-release-containing-pr-15660",
+        "released-tauri-utils-resolves-urlpattern-0.6",
+      releaseGate: "before-next-release-candidate",
       targetDate,
     },
     approval: {
@@ -91,7 +98,8 @@ function fixture() {
         "review/evidence/RQT-15-security-privacy-review.json",
     },
     limitations: {
-      upstreamFixMergedNotReleased: true,
+      upstreamFixReleased: true,
+      upgradeNotYetApplied: true,
       runtimeWarningStillPresent: true,
       namedSecurityReviewCompleted: false,
     },
@@ -129,12 +137,12 @@ test("stale input or changed target warnings are rejected", () => {
   );
 });
 
-test("draft cannot pretend the fix is released or approved", () => {
-  const released = fixture();
-  released.limitations.upstreamFixMergedNotReleased = false;
+test("draft cannot pretend the released fix is already applied or approved", () => {
+  const applied = fixture();
+  applied.limitations.upgradeNotYetApplied = false;
   assert.throws(
-    () => validateDependencyRiskReview(released, expected),
-    /掩盖了未发布/,
+    () => validateDependencyRiskReview(applied, expected),
+    /掩盖了尚未升级/,
   );
 
   const approved = fixture();
@@ -145,5 +153,21 @@ test("draft cannot pretend the fix is released or approved", () => {
   assert.throws(
     () => validateDependencyRiskReview(approved, expected),
     /不得伪造具名安全批准/,
+  );
+});
+
+test("draft rejects an unverified stable dependency path", () => {
+  const oldUtils = fixture();
+  oldUtils.upstream.releasedTauriUtilsRequirement = "~2.9.3";
+  assert.throws(
+    () => validateDependencyRiskReview(oldUtils, expected),
+    /修复依赖链不准确/,
+  );
+
+  const oldPattern = fixture();
+  oldPattern.upstream.releasedUrlpatternRequirement = "^0.3";
+  assert.throws(
+    () => validateDependencyRiskReview(oldPattern, expected),
+    /修复依赖链不准确/,
   );
 });
