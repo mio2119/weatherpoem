@@ -65,3 +65,7 @@
 2026-10-16 Tauri 稳定升级与最小化动效修复后，同一新内部候选 `DB56F155495900B11E73CCFABCC4D99BFFC24F233AEBD0127772639811DD391D` 再次完成[隐藏→第二实例唤醒的隔离跨日](./evidence/T01_NATIVE_HIDDEN_REVEAL_TAURI212_FIX_20261016.json)：隐藏时诗卡被遮住，仅在隔离 WebView 内推进日期，恢复后显示新日诗卡，DOM 采样未见旧日诗卡可见。升级初版 `4EA661A128AB011C63495A563DBDEB0598D463B9247C14CF52D3EA1CD67E4E00` 另有[原生关闭消息跨日报告](./evidence/T01_NATIVE_CLOSE_REVEAL_TAURI212_20261016.json)与两张画面；不能把该旧哈希的关闭路径自动移作新候选结论。系统时间、真实资料与启动项未改变，A1 仍**部分通过**。
 
 2026-10-17 自动显示焦点修正后的新内部哈希 `0921010061A8D66C551DEAC609B74063433C88B07D836B321F4EAECAF401D4AD` 又完成[隐藏→第二实例唤醒的隔离跨日](./evidence/T01_NOACTIVATE_HIDDEN_REVEAL_20261017.json)，隐藏期间不显示旧诗，恢复后使用页面局部次日并检查 DOM 观察记录。没有修改 Windows 时间，也未证明真实休眠与跨午夜；A1 继续**部分通过**。
+
+同哈希补上[带原生窗口画面的托盘跨日复核](./evidence/T01_NATIVE_TRAY_DAY_VISUAL_20261017.json)：通过隐藏按钮进入托盘后，仅把隔离 WebView 的页面时间推进一天，再用第二实例唤醒。DOM 记录按“遮挡→遮挡→新日诗笺”变化，没有重新出现旧日诗卡；[原日画面](./evidence/T01_NATIVE_TRAY_DAY_VISUAL_20261017_before.png)与[新日画面](./evidence/T01_NATIVE_TRAY_DAY_VISUAL_20261017_after.png)已逐张查看，新日显示 10 月 18 日的重阳情境和另一首诗。静帧不能证明两张画面之间原生合成器的每一帧；真实系统跨午夜、休眠／唤醒和不同缩放仍未测，A1 继续**部分通过**。
+
+演练预警文案修正后的新内部候选哈希 `4507FF5002D3C4E749C6F411D371D3331C30E0AC5F438353634D19FD371BC029` 又重跑[隔离托盘跨日 DOM 路径](./evidence/T01_WARNING_COPY_CANDIDATE_DAY_RECHECK_20261017.json)并通过；原窗口画面仍属于前述旧哈希，不能跨候选冒充新截图。A1 不因此完成真实系统跨日或休眠验收。

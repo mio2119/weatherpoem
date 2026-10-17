@@ -112,7 +112,9 @@ async function controlledPerformanceWeather(
         "这是隔离性能账户中的安全优先路径演练，不是真实气象预警。",
       source: "WeatherPoem 隔离性能演练",
       origin: "official",
-      area: `${city.province}${city.name}`,
+      area: city.province === city.name
+        ? city.name
+        : `${city.province}${city.name}`,
       publishedAt: publishedAt.toISOString(),
       expiresAt: expiresAt.toISOString(),
     },

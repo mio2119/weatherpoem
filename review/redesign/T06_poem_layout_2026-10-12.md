@@ -40,3 +40,5 @@
 竖排诗笺实际字号依次为 `19.8px / 22px / 25.52px`，全文大字号保持 `vertical-rl`，长词诗文框宽 `315px`、内容宽 `716px`，正文可横向滚动而面板本身不横向溢出；重启仍是同一首、竖排、大字号。横排同样完成三档保存与重启。已逐张查看[竖排小字号](./evidence/T06_NATIVE_VERTICAL_FONT_UI_RECHECK_20261017_settings_font_small.png)、[竖排大字号](./evidence/T06_NATIVE_VERTICAL_FONT_UI_RECHECK_20261017_settings_font_large.png)和[大字号全文](./evidence/T06_NATIVE_VERTICAL_FONT_UI_RECHECK_20261017_reading_after_font_save.png)，诗文、来源和主操作未见明显互压。隔离资料下系统开机启动不会被修改，因此保存后会出现保护性提示并暂留设置页；测试点击返回后验证新字号已生效。这是 CDP 驱动的原生 WebView2 页面操作，不是人工鼠标/读屏使用测试。
 
 此次只关闭“设置页逐档保存并重启保留”的原生子项。屏幕阅读器的实际朗读与焦点、真实 125/150/200% 系统缩放、多屏混合 DPI、真实低工作区、特殊引号／数字竖排审美和目标用户长期阅读判断仍未通过；A6 继续**部分通过**。
+
+演练预警文案修正后的新内部候选哈希 `4507FF5002D3C4E749C6F411D371D3331C30E0AC5F438353634D19FD371BC029` 又抽查[竖排设置页小／中／大字号保存、全文及同资料重启](./evidence/T06_WARNING_COPY_CANDIDATE_FONT_SPOT_20261017.json)并通过；原先四体裁 12 组矩阵及横排设置页画面仍绑定旧哈希，不能自动转记为新候选完整矩阵。A6 继续**部分通过**。

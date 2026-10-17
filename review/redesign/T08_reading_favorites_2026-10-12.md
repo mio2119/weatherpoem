@@ -52,3 +52,7 @@ A8 因上述条件仍为**部分通过**，不把 T08 记录当作发布签收�
 2026-10-16 升级依赖及修复最小化动效后的新内部候选 `DB56F155495900B11E73CCFABCC4D99BFFC24F233AEBD0127772639811DD391D`，用临时资料再次完成[隐藏后模拟撤回→第二实例唤醒](./evidence/T08_NATIVE_WITHDRAWAL_TAURI212_FIX_20261016.json)：校正页不泄露已撤回诗题，SQLite 每日状态与撤回作品 ID 对应，DOM 采样未见旧诗卡复现。升级初版 `4EA661A128AB011C63495A563DBDEB0598D463B9247C14CF52D3EA1CD67E4E00` 的[校正页静帧](./evidence/T08_NATIVE_WITHDRAWAL_TAURI212_20261016_after.png)已人工查看，文字与主要按钮可读；该画面不代表新候选的逐页视觉签收，也不证明生产撤回网关、签名或具名内容审核。A8 继续**部分通过**。
 
 2026-10-17 自动显示焦点修正后的内部哈希 `0921010061A8D66C551DEAC609B74063433C88B07D836B321F4EAECAF401D4AD` 再次通过[隐藏后模拟撤回→第二实例唤醒](./evidence/T08_NOACTIVATE_WITHDRAWAL_20261017.json)：原诗卡未复现，校正页不含撤回作品题名，隔离 SQLite 状态相符。仍是本地模拟缓存，不是生产签名清单或具名内容审核；A8 保持**部分通过**。
+
+同哈希再留[带原生窗口画面的托盘撤回复核](./evidence/T08_NATIVE_TRAY_WITHDRAWAL_VISUAL_20261017.json)：隐藏期间只向临时测试资料写入当前作品的模拟撤回缓存，再由第二实例唤醒；DOM 记录仍为“遮挡→遮挡→内容校正”，隔离 SQLite 状态为 `content-withdrawn`。已查看[撤回前诗笺](./evidence/T08_NATIVE_TRAY_WITHDRAWAL_VISUAL_20261017_before.png)与[校正后画面](./evidence/T08_NATIVE_TRAY_WITHDRAWAL_VISUAL_20261017_after.png)，后者只有校正说明和“换一首已核验内容”，没有旧诗题或诗句。这补足可视证据，不证明真实生产网关、签名清单、真人托盘操作或合成器中间每一帧；A8 继续**部分通过**。
+
+演练预警文案修正后的新内部候选哈希 `4507FF5002D3C4E749C6F411D371D3331C30E0AC5F438353634D19FD371BC029` 又重跑[隔离托盘撤回 DOM/SQLite 路径](./evidence/T08_WARNING_COPY_CANDIDATE_WITHDRAWAL_RECHECK_20261017.json)并通过；前述可视画面仍绑定旧哈希，新哈希未取得对应托盘中间帧或真人操作证据。A8 保持**部分通过**。

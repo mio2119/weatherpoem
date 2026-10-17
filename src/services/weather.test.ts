@@ -158,6 +158,7 @@ describe("weather mapping", () => {
     expect(warning.warnings[0]).toMatchObject({
       origin: "official",
       source: "WeatherPoem 隔离性能演练",
+      area: "北京",
     });
   });
 

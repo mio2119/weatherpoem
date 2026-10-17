@@ -1,6 +1,6 @@
 # T05 小诗笺信息架构与入口自验收
 
-状态：**部分通过**。信息层级、动态高度和三条主要路径已实现，并在浏览器预览及自动测试中核对；长文本矩阵、原生 WebView2 窗口及系统缩放还不能签为通过。
+状态：**部分通过**。信息层级、动态高度和三条主要路径已实现，长文本及节日/安全状态已有隔离浏览器矩阵，演练预警另有原生 WebView2 浅/深色画面；真实安全提醒动态进入、完整原生矩阵及系统缩放仍不能签为通过。
 
 实施范围：`src/components/PoemCard.vue`、`src/components/FavoritesPanel.vue`、`src/App.vue`、`src/services/desktop.ts`、`src/styles.css` 及组件测试。首屏仅保留日期/可信情境、题名作者、完整节选、一句理由和继续读/收藏/收起；换诗与不贴合在“更多”中。收藏数是复访入口，返回目标按来源为今日诗笺或设置。
 
@@ -35,3 +35,7 @@
 第一轮静帧暴露安全说明/来源及校正正文仅 9–12px，尽管几何不裁切，实际阅读吃力；先在新浏览器检查里为正文与来源设置最低字号反例，现状返回失败，再仅修改 `src/styles.css`：预警引导和校正正文 14px、预警正文 13px、预警来源及免责声明 11px、校正辅助文字 12px。相同 10 场景复验通过。逐张观察 [节日浅色](./evidence/T05_BROWSER_STATE_FESTIVAL_LIGHT_TOP_20261014.png)、[节日深色](./evidence/T05_BROWSER_STATE_FESTIVAL_DARK_TOP_20261014.png)、[长预警浅色首屏](./evidence/T05_BROWSER_STATE_OFFICIAL_WARNING_LIGHT_TOP_20261014.png)、[长预警浅色低视口底部](./evidence/T05_BROWSER_STATE_OFFICIAL_WARNING_LIGHT_COMPACT_BOTTOM_20261014.png)、[长预警深色首屏](./evidence/T05_BROWSER_STATE_OFFICIAL_WARNING_DARK_TOP_20261014.png)、[撤回浅色](./evidence/T05_BROWSER_STATE_WITHDRAWN_LIGHT_TOP_20261014.png)及[全部暂停深色](./evidence/T05_BROWSER_STATE_SUSPENDED_DARK_TOP_20261014.png)，正文比基线易辨、没有遮挡。其余五张静帧同目录保留，报告标明它们均属于模拟内容。
 
 上述验证只覆盖隔离 Chrome 155 预览及这些指定场景。没有启动可见 WeatherPoem EXE、修改系统启动项或显示设置；它不能证明真实预警网关、原生 WebView2、Windows 缩放、读屏、动态进入预警时的面板优先级或真人审美。A5 仍为**部分通过**；A7 的情境美术与停机、A9 的原生设备矩阵也不能由本批代签。
+
+2026-10-17 追加原生安全画面：同一未安装内部候选 `0921010061A8D66C551DEAC609B74063433C88B07D836B321F4EAECAF401D4AD` 用临时 SQLite 预置当天《宿建德江》，再由应用内 `official-warning` **隔离演练**场景启动。浅/深色均只显示 `role=alert` 的“今日诗笺暂缓展示”、模拟暴雨说明和来源，旧诗题不在 DOM，每日状态为 `alert-suppressed` 且保留先前作品 ID；本次 420×580 原生窗口内免责声明完整可见。[原始浅色报告](./evidence/T05_NATIVE_WARNING_LIGHT_20261017.json)与[深色报告](./evidence/T05_NATIVE_WARNING_DARK_20261017.json)以及画面原件均保留。逐张查看发现演练数据把地区写成“北京北京”，且页尾错称“授权网关转发”；这两张画面**不计入文案签收**，更不是真实气象预警。
+
+为防此类误导，先在天气数据和预警组件加入两条失败反例，再只改隔离演练地区拼接与专属说明：北京只显示一次；开头和页尾明确“隔离演练、不是真实预警、未连接真实预警网关”，正常官方预警与基础天气提示文案保持原分支。定向测试先 2 失败、修复后 33/33；同时并行执行多项检查时，首次全量测试有两条无关 SQLite 用例超过原有 5 秒门槛，未调宽门槛，独立重跑完整测试为 269/269；`lint`、`typecheck`、`build` 与可访问性自动基线通过。新建而未覆盖旧候选的内部 EXE `.work/redesign-warning-copy-20261017/release/weatherpoem.exe`，SHA-256 `4507FF5002D3C4E749C6F411D371D3331C30E0AC5F438353634D19FD371BC029`。在此哈希上[浅色报告](./evidence/T05_NATIVE_WARNING_COPY_FIXED_LIGHT_20261017.json)与[深色报告](./evidence/T05_NATIVE_WARNING_COPY_FIXED_DARK_20261017.json)均通过，已逐张查看[浅色原生画面](./evidence/T05_NATIVE_WARNING_COPY_FIXED_LIGHT_20261017_warning_top.png)和[深色原生画面](./evidence/T05_NATIVE_WARNING_COPY_FIXED_DARK_20261017_warning_top.png)：地区、演练标记、来源与免责声明清楚，没有普通诗卡或诗境动效冒出。该启动时的受控演练不证明真实授权网关、运行中预警到来或托盘隐藏期间天气预警突然变化的合成器帧、长预警低工作区、读屏及系统缩放；A5 继续**部分通过**。
