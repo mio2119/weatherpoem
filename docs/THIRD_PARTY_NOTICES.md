@@ -1,8 +1,8 @@
 # WeatherPoem 第三方许可与 NOTICE 草案
 
-生成时间：2026-09-09T18:40:38.000Z  
-适用版本：WeatherPoem 0.2.0  
-Windows 目标：x86_64-pc-windows-msvc
+- 生成时间：2026-10-16T03:37:13.356Z
+- 适用版本：WeatherPoem 0.2.0
+- Windows 目标：x86_64-pc-windows-msvc
 
 > 这是从当前锁文件与本机已安装依赖自动生成的审阅草案，不构成法律意见，
 > 也不代表已满足每个许可证的分发、源代码提供或署名义务。
@@ -14,22 +14,22 @@ Windows 目标：x86_64-pc-windows-msvc
 | npm | 268 | 268 | 259 | 9 | 96.642% | 268 | 0 | 100% | 9 |
 | Windows Rust | 285 | 285 | 283 | 2 | 99.298% | 285 | 0 | 100% | 2 |
 
-共去重得到 300 份可读许可/NOTICE 文本。
+共去重得到 307 份可读许可/NOTICE 文本。
 Tauri 已配置在下一次构建时把本文件放入安装包的 licenses 目录；当前候选是否实际包含仍须重建后验证。
 分发 NOTICE 已为全部锁定包提供可读许可文本，但仍保留上游发布物未携带可验证文本的缺口；规范补充不代表许可兼容性或法律批准。
 
 输入锁定：
 
-- `package.json`：`2E9DDA60A4664924B4A84EA71DDE11A2FC6E14548C911785B3DF5E63E75D5D5F`
-- `package-lock.json`：`B25F08E34940D57B7A4DCB37CBDE24A0D9EE18DBFB450BDECC88BB5FB1BB7934`
-- `src-tauri/Cargo.lock`：`D8E86E63299DCEC3E5FF9DC66D6D796159F51BBAF9085D4F0B3D5D4C7A82302A`
-- `output/WeatherPoem_0.2.0_CARGO_AUDIT.json`：`D4303DF89B580DF72E0DE7602D9E9456289B471043A3D273260941DEFC868D74`
-- `src-tauri/tauri.conf.json`：`7CD31C25618D68E2683538DB617C60BBF2C85B391B7D18CF6B77A082D89CF855`
-- `review/third-party-license-source-map.json`：`5BCECE7FD7EA8371341FBA8662D4EFCBA289DBBD38C6A06EB06103F9D5DF7BCB`
-- `review/npm-license-text-supplements.json`：`38E65204674239A85F06880D65BF7C92E6A32C30DED0D2528E7210AD5E9A556D`
-- `review/cargo-license-text-supplements.json`：`943A9BFF10E100552A35DAC933A340643E2BC9182B11E394D37234F20AE4DC48`
-- `review/canonical-license-text-policy.json`：`9B18DEED4F9E8580DB8EDBACA30F4A00B296D62EC05F5BE23CAE993F078C5D99`
-- `review/canonical-license-text-supplements.json`：`10D5FD6EFE963EC09576EA89E81A787C209FCD1422AA4DDE22DC1D15BB6A2E16`
+- `package.json`：`6CB652C08466EA41A62077488C11C284D91678B5914AD3882D94FBFFD73786F1`
+- `package-lock.json`：`2CFEF94CB24F03E04D42006599CE35B1A87E0B6C12F1820BD728E8CC3F8137F1`
+- `src-tauri/Cargo.lock`：`F51B47AEC215D3CAF2408F880B7A8B764C4608EF2852DCBD443F07871A4760C2`
+- `output/WeatherPoem_0.2.0_CARGO_AUDIT.json`：`E1DF3E82E7BBE8721AC402B6F5EB9C9A56153C0EEED1E6D0F3D559015893DBDC`
+- `src-tauri/tauri.conf.json`：`7A4551240D193730E933EBF1BC5E7DE7B35ED32B45043688338F28E64E09B993`
+- `review/third-party-license-source-map.json`：`1588DF7B0476925F969A8078EAF3F97133832569F36EC4B48A8E69ACAE971938`
+- `review/npm-license-text-supplements.json`：`2A3C538136C8B0D376E4CD3879C7BEF33D6F36E695B2439ACE9BCD9EDF2B3B6B`
+- `review/cargo-license-text-supplements.json`：`878A31C8DB17946A3B42AB154334F68B69400D43BF11978C178CF93077EE6031`
+- `review/canonical-license-text-policy.json`：`E5DB47E938EDA6ECECC105C7F5C671E6AE425F9B24183045608E40248CAFBD58`
+- `review/canonical-license-text-supplements.json`：`13562A31853A887B2015AA342A353C105779D90B5FF9CAD9E989992319AC8E66`
 
 ## 同版同仓库包许可映射
 
@@ -38,7 +38,6 @@ Tauri 已配置在下一次构建时把本文件放入安装包的 licenses 目�
 
 | 映射 | 关系 | 上游仓库 | 文本来源包 | 目标包数量 | 文本 SHA-256 |
 | --- | --- | --- | --- | ---: | --- |
-| cargo-tauri-plugin-workspace-package-2.6.3 | same-release-workspace-package | https://github.com/tauri-apps/tauri | cargo:tauri-build@2.6.3 | 1 | `0D542E0C8804E39AA7F37EB00DA5A762149DC682D7829451287E11B938E94594`、`9DD42EA92CFF2EDE5CD477CBFCCE051B2D0115C0AC7F368EE88CB545055DFF1D` |
 | npm-lightningcss-platform-bindings-1.33.0 | same-release-platform-package | https://github.com/parcel-bundler/lightningcss | npm:node_modules/lightningcss | 10 | `5EBA353FE5076AC3432177F8AB1CF75E3AFCD0584251E37C3BFEAD5F447D040E` |
 | npm-rolldown-platform-bindings-1.1.5 | same-release-platform-package | https://github.com/rolldown/rolldown | npm:node_modules/rolldown | 15 | `23ECFFF35A5A2E80D92142F75228912C3B1ABC4B5A8337A821FF4397E2F9F734` |
 | npm-tauri-cli-platform-binaries-2.11.4 | same-release-platform-package | https://github.com/tauri-apps/tauri | npm:node_modules/@tauri-apps/cli | 11 | `0D542E0C8804E39AA7F37EB00DA5A762149DC682D7829451287E11B938E94594`、`9DD42EA92CFF2EDE5CD477CBFCCE051B2D0115C0AC7F368EE88CB545055DFF1D` |
@@ -54,7 +53,7 @@ Tauri 已配置在下一次构建时把本文件放入安装包的 licenses 目�
 | npm:node_modules/@emnapi/core | npm 原始发行包 | https://registry.npmjs.org/@emnapi/core/-/core-1.11.1.tgz | 整包 SHA-512 `452BDB4261F374ACCDB0B61AFF01EB6DCDCA378B182CA01D3D9C6A88CD87013AAFFD2064DBF10D487A6F5C668B38C72C032CF4A68106AA49A62981B739688911` | package/LICENSE | `2088F55C6731498410B20C95EBD345ED4A4A800BF74C0FBA4D282FD2A021DAAA` |
 | npm:node_modules/@emnapi/runtime | npm 原始发行包 | https://registry.npmjs.org/@emnapi/runtime/-/runtime-1.11.1.tgz | 整包 SHA-512 `BE08FB477CB75A0C76E0841A18F03F47A6055CB1D530E674B951322103DA5ACFAB7750337C43179400B6D856303B55E4291E8D3ECABB9946A7747F2821175917` | package/LICENSE | `2088F55C6731498410B20C95EBD345ED4A4A800BF74C0FBA4D282FD2A021DAAA` |
 | npm:node_modules/@emnapi/wasi-threads | npm 原始发行包 | https://registry.npmjs.org/@emnapi/wasi-threads/-/wasi-threads-1.2.2.tgz | 整包 SHA-512 `73DE6A39790777274D2A1B1C05379BA840B5095019A72A8E7D57C1CD0D6A833CA5DE07DE95D5232208036C86600CAB072E09EC33E8A01FB4C9FDE01AB1A56E30` | package/LICENSE | `2088F55C6731498410B20C95EBD345ED4A4A800BF74C0FBA4D282FD2A021DAAA` |
-| npm:node_modules/@napi-rs/wasm-runtime | npm gitHead 对应仓库 | https://github.com/napi-rs/napi-rs | gitHead `b77119e711704cc453949e056b45a4996ea0386c`；版本元数据 SHA-256 `090C44446F8D8920BB3A80122757062F2D2F0DA27FCEF0066F8C5B6DE45923A2` | LICENSE | `3F1CE66533302DF3A32EDBFDFC0B78F0DD34659E4C1F5817162E5EA3C2297215` |
+| npm:node_modules/@napi-rs/wasm-runtime | npm gitHead 对应仓库 | https://github.com/napi-rs/napi-rs | gitHead `b77119e711704cc453949e056b45a4996ea0386c`；版本元数据 SHA-256 `B7052ABA13DF612E5CE2A8F3DC6C413FABEBA58C0BFD551CB0A7647F816DA9B0` | LICENSE | `3F1CE66533302DF3A32EDBFDFC0B78F0DD34659E4C1F5817162E5EA3C2297215` |
 | npm:node_modules/fsevents | npm 原始发行包 | https://registry.npmjs.org/fsevents/-/fsevents-2.3.3.tgz | 整包 SHA-512 `E71A037D7F9F2FB7DA0139DA82658FA5B16DC21FD1EFB5A630CAAA1C64BAE42DEFBC1D181EB805F81D58999DF8E35B4C8F99FADE4D36D765CDA09C339617DF43` | package/LICENSE | `2A8A5D6197BB97A018B8A190DD3ED853D750CA87C8E80C17AAD41D6C6FF448E1` |
 | npm:node_modules/tslib | npm 原始发行包 | https://registry.npmjs.org/tslib/-/tslib-2.8.1.tgz | 整包 SHA-512 `A0916EF781D06FE29576E49440BEF09E99AA9DF98BB0E03F9C087A6FA107D30084A0AD3F98F79753A737C0A0D5F373243AE1CF447B525CA294F7D2016B34BFDB` | package/LICENSE.txt | `210B19E543130388C68654B7497E967119CE17145F66AB7D85688FBD70F08751` |
 
@@ -65,25 +64,13 @@ Tauri 已配置在下一次构建时把本文件放入安装包的 licenses 目�
 
 | 包 | 上游仓库 | crate SHA-256 | git 提交 | `.cargo_vcs_info.json` SHA-256 | 上游文件 | 文本 SHA-256 |
 | --- | --- | --- | --- | --- | --- | --- |
-| cargo:alloc-stdlib@0.2.4 | https://github.com/dropbox/rust-alloc-no-stdlib | `0E76A019E91224D279006FF972F1E984179A6E9FEB050ADBA6CE8274AEF23195` | `ae42d22078b98549e987d2f03d12df7b984fde47` | `5D07554DB80324E6F09A3074928E6AE0E7CEA58248F4C1DB3F32D9CE0EC85EFB` | LICENSE | `C0C56F26D9C051CAC4D200C34C84E7AE9AAA853E01A982A1DF08B09931E518AE` |
-| cargo:unic-char-property@0.9.0 | https://github.com/open-i18n/rust-unic | `A8C57A407D9B6FA02B4795EB81C5B6652060A15A7903EA981F3D723E6C0BE221` | `5878605364af97a3358368a6eaef02104af2e016` | `72A0E361AAB8E7AF18AF799A6046B290A930D94B76C551BF0667E0726F9D42D1` | COPYRIGHT.md | `F5C342C49F3AC804F3E8E7BB62A8040A44C50D47BB36902B1ABD13F66A1ADF8B` |
-| cargo:unic-char-property@0.9.0 | https://github.com/open-i18n/rust-unic | `A8C57A407D9B6FA02B4795EB81C5B6652060A15A7903EA981F3D723E6C0BE221` | `5878605364af97a3358368a6eaef02104af2e016` | `72A0E361AAB8E7AF18AF799A6046B290A930D94B76C551BF0667E0726F9D42D1` | LICENSE-APACHE | `A60EEA817514531668D7E00765731449FE14D059D3249E0BC93B36DE45F759F2` |
-| cargo:unic-char-property@0.9.0 | https://github.com/open-i18n/rust-unic | `A8C57A407D9B6FA02B4795EB81C5B6652060A15A7903EA981F3D723E6C0BE221` | `5878605364af97a3358368a6eaef02104af2e016` | `72A0E361AAB8E7AF18AF799A6046B290A930D94B76C551BF0667E0726F9D42D1` | LICENSE-MIT | `23F18E03DC49DF91622FE2A76176497404E46CED8A715D9D2B67A7446571CCA3` |
-| cargo:unic-char-range@0.9.0 | https://github.com/open-i18n/rust-unic | `0398022D5F700414F6B899E10B8348231ABF9173FA93144CBC1A43B9793C1FBC` | `5878605364af97a3358368a6eaef02104af2e016` | `72A0E361AAB8E7AF18AF799A6046B290A930D94B76C551BF0667E0726F9D42D1` | COPYRIGHT.md | `F5C342C49F3AC804F3E8E7BB62A8040A44C50D47BB36902B1ABD13F66A1ADF8B` |
-| cargo:unic-char-range@0.9.0 | https://github.com/open-i18n/rust-unic | `0398022D5F700414F6B899E10B8348231ABF9173FA93144CBC1A43B9793C1FBC` | `5878605364af97a3358368a6eaef02104af2e016` | `72A0E361AAB8E7AF18AF799A6046B290A930D94B76C551BF0667E0726F9D42D1` | LICENSE-APACHE | `A60EEA817514531668D7E00765731449FE14D059D3249E0BC93B36DE45F759F2` |
-| cargo:unic-char-range@0.9.0 | https://github.com/open-i18n/rust-unic | `0398022D5F700414F6B899E10B8348231ABF9173FA93144CBC1A43B9793C1FBC` | `5878605364af97a3358368a6eaef02104af2e016` | `72A0E361AAB8E7AF18AF799A6046B290A930D94B76C551BF0667E0726F9D42D1` | LICENSE-MIT | `23F18E03DC49DF91622FE2A76176497404E46CED8A715D9D2B67A7446571CCA3` |
-| cargo:unic-common@0.9.0 | https://github.com/open-i18n/rust-unic | `80D7FF825A6A654EE85A63E80F92F054F904F21E7D12DA4E22F9834A4AAA35BC` | `5878605364af97a3358368a6eaef02104af2e016` | `72A0E361AAB8E7AF18AF799A6046B290A930D94B76C551BF0667E0726F9D42D1` | COPYRIGHT.md | `F5C342C49F3AC804F3E8E7BB62A8040A44C50D47BB36902B1ABD13F66A1ADF8B` |
-| cargo:unic-common@0.9.0 | https://github.com/open-i18n/rust-unic | `80D7FF825A6A654EE85A63E80F92F054F904F21E7D12DA4E22F9834A4AAA35BC` | `5878605364af97a3358368a6eaef02104af2e016` | `72A0E361AAB8E7AF18AF799A6046B290A930D94B76C551BF0667E0726F9D42D1` | LICENSE-APACHE | `A60EEA817514531668D7E00765731449FE14D059D3249E0BC93B36DE45F759F2` |
-| cargo:unic-common@0.9.0 | https://github.com/open-i18n/rust-unic | `80D7FF825A6A654EE85A63E80F92F054F904F21E7D12DA4E22F9834A4AAA35BC` | `5878605364af97a3358368a6eaef02104af2e016` | `72A0E361AAB8E7AF18AF799A6046B290A930D94B76C551BF0667E0726F9D42D1` | LICENSE-MIT | `23F18E03DC49DF91622FE2A76176497404E46CED8A715D9D2B67A7446571CCA3` |
-| cargo:unic-ucd-ident@0.9.0 | https://github.com/open-i18n/rust-unic | `E230A37C0381CAA9219D67CF063AA3A375FFED5BF541A452DB16E744BDAB6987` | `8a6ce83063d90b91ae2ce59eddb803edd393fca9` | `64E154B113A16828624A2BAEDC6E70E8E6EA8F5C8CF8455D2C255762C0F43A8A` | COPYRIGHT.md | `F5C342C49F3AC804F3E8E7BB62A8040A44C50D47BB36902B1ABD13F66A1ADF8B` |
-| cargo:unic-ucd-ident@0.9.0 | https://github.com/open-i18n/rust-unic | `E230A37C0381CAA9219D67CF063AA3A375FFED5BF541A452DB16E744BDAB6987` | `8a6ce83063d90b91ae2ce59eddb803edd393fca9` | `64E154B113A16828624A2BAEDC6E70E8E6EA8F5C8CF8455D2C255762C0F43A8A` | LICENSE-APACHE | `A60EEA817514531668D7E00765731449FE14D059D3249E0BC93B36DE45F759F2` |
-| cargo:unic-ucd-ident@0.9.0 | https://github.com/open-i18n/rust-unic | `E230A37C0381CAA9219D67CF063AA3A375FFED5BF541A452DB16E744BDAB6987` | `8a6ce83063d90b91ae2ce59eddb803edd393fca9` | `64E154B113A16828624A2BAEDC6E70E8E6EA8F5C8CF8455D2C255762C0F43A8A` | LICENSE-MIT | `23F18E03DC49DF91622FE2A76176497404E46CED8A715D9D2B67A7446571CCA3` |
-| cargo:unic-ucd-version@0.9.0 | https://github.com/open-i18n/rust-unic | `96BD2F2237FE450FCD0A1D2F5F4E91711124F7857BA2E964247776EBEEB7B0C4` | `5878605364af97a3358368a6eaef02104af2e016` | `72A0E361AAB8E7AF18AF799A6046B290A930D94B76C551BF0667E0726F9D42D1` | COPYRIGHT.md | `F5C342C49F3AC804F3E8E7BB62A8040A44C50D47BB36902B1ABD13F66A1ADF8B` |
-| cargo:unic-ucd-version@0.9.0 | https://github.com/open-i18n/rust-unic | `96BD2F2237FE450FCD0A1D2F5F4E91711124F7857BA2E964247776EBEEB7B0C4` | `5878605364af97a3358368a6eaef02104af2e016` | `72A0E361AAB8E7AF18AF799A6046B290A930D94B76C551BF0667E0726F9D42D1` | LICENSE-APACHE | `A60EEA817514531668D7E00765731449FE14D059D3249E0BC93B36DE45F759F2` |
-| cargo:unic-ucd-version@0.9.0 | https://github.com/open-i18n/rust-unic | `96BD2F2237FE450FCD0A1D2F5F4E91711124F7857BA2E964247776EBEEB7B0C4` | `5878605364af97a3358368a6eaef02104af2e016` | `72A0E361AAB8E7AF18AF799A6046B290A930D94B76C551BF0667E0726F9D42D1` | LICENSE-MIT | `23F18E03DC49DF91622FE2A76176497404E46CED8A715D9D2B67A7446571CCA3` |
+| cargo:alloc-stdlib@0.3.0 | https://github.com/dropbox/rust-alloc-no-stdlib | `0B5C1865780388BFA186411AB5F247819487FC4864C6E9C3106611FA347586E1` | `0a81fd6928ea3b33c8cd484aa4575d50ffb98012` | `2BFC044805E0E75273A7E4D06C9D72F4E029A6CB926E4645C382BDE160ECFD95` | LICENSE | `C0C56F26D9C051CAC4D200C34C84E7AE9AAA853E01A982A1DF08B09931E518AE` |
+| cargo:tauri-plugin@2.6.3 | https://github.com/tauri-apps/tauri | `74BE5DD4BED9AFBD145E5716B5FA2EC28CBC29C34FFA61C258C9273D896C8020` | `6f6ab1207bb3923c2721fbc67d2fdb1c8deb0c7a` | `080E80C84C44A6DE683F2DDFA9A7173BD2D5A6732F5C4A3957F832824F578F48` | LICENSE_APACHE-2.0 | `0D542E0C8804E39AA7F37EB00DA5A762149DC682D7829451287E11B938E94594` |
+| cargo:tauri-plugin@2.6.3 | https://github.com/tauri-apps/tauri | `74BE5DD4BED9AFBD145E5716B5FA2EC28CBC29C34FFA61C258C9273D896C8020` | `6f6ab1207bb3923c2721fbc67d2fdb1c8deb0c7a` | `080E80C84C44A6DE683F2DDFA9A7173BD2D5A6732F5C4A3957F832824F578F48` | LICENSE_MIT | `9DD42EA92CFF2EDE5CD477CBFCCE051B2D0115C0AC7F368EE88CB545055DFF1D` |
+| cargo:tauri-plugin@2.6.3 | https://github.com/tauri-apps/tauri | `74BE5DD4BED9AFBD145E5716B5FA2EC28CBC29C34FFA61C258C9273D896C8020` | `6f6ab1207bb3923c2721fbc67d2fdb1c8deb0c7a` | `080E80C84C44A6DE683F2DDFA9A7173BD2D5A6732F5C4A3957F832824F578F48` | LICENSE.spdx | `5E834FE9788C524210DEDA859C46A550FFA5AA0CBA9EA0572F0D81120E97C008` |
 | cargo:webview2-com-macros@0.8.1 | https://github.com/wravery/webview2-rs | `67A921C1B6914C367B2B823CD4CDE6F96BEEC77D30A939C8199BB377CF9B9B54` | `dffa41a8a46d3f5565eefbff2de57d38d399f158` | `C24C2646F52E6CB4C1F382AFC69FA99C0DC78D6D8E4316ADE7E51707B4F9AF8E` | LICENSE | `0DCF41516E608BBCB6CDC5229FEB7B86FE4A643B85E7DF251133C93408FDAC73` |
-| cargo:webview2-com-sys@0.38.2 | https://github.com/wravery/webview2-rs | `381336CFFFD772377D291702245447A5251A2FFA5BAD679C99E61BC48BACBF9C` | `b74dc5e2b394044bea5191052868ce7a106c202c` | `8AF502BD8832383DC1DD8BBD7FB00EB76A72B111688BC492E110BBAC44CB005F` | LICENSE | `0DCF41516E608BBCB6CDC5229FEB7B86FE4A643B85E7DF251133C93408FDAC73` |
-| cargo:webview2-com@0.38.2 | https://github.com/wravery/webview2-rs | `7130243A7A5B33C54A444E54842E6A9E133DE08B5AD7B5861CD8ED9A6A5BC96A` | `b74dc5e2b394044bea5191052868ce7a106c202c` | `CD98F3865CAA97F47155B4238EA574245680DE51FC689AB117B29CCAC7566221` | LICENSE | `0DCF41516E608BBCB6CDC5229FEB7B86FE4A643B85E7DF251133C93408FDAC73` |
+| cargo:webview2-com-sys@0.39.1 | https://github.com/wravery/webview2-rs | `B3A07132775117D6065853D9D1178157B8C90E228DE47129D6BCE2C7EDEBEDFB` | `edc2caf886175ccaebe86078c9cfe1ae2a187328` | `D4137410068017C3F66FE98578F2FD40F0E76D3FD628FA361C758F3B262351C7` | LICENSE | `0DCF41516E608BBCB6CDC5229FEB7B86FE4A643B85E7DF251133C93408FDAC73` |
+| cargo:webview2-com@0.39.1 | https://github.com/wravery/webview2-rs | `3F89FCA7A704CEE10DCB3654C1DBB8941D1783132F1917358AF75BEC37A7D7E6` | `edc2caf886175ccaebe86078c9cfe1ae2a187328` | `88413F4E9DE3A9360FAFB0D8C9A0FDF5A01A45D73F9DED314FA7B9FFA2108ACE` | LICENSE | `0DCF41516E608BBCB6CDC5229FEB7B86FE4A643B85E7DF251133C93408FDAC73` |
 
 ## SPDX 规范许可文本补充
 
@@ -106,7 +93,7 @@ Tauri 已配置在下一次构建时把本文件放入安装包的 licenses 目�
 - 固定提交：`c4a7237ec8f4654e867546f9f409749300f1bf4c`
 - 上游路径：`text/BSD-2-Clause.txt`
 - SHA-256：`F32FB3B417A194167CFAD068223FC975BA96C5960513A10F66A3C28720AEC1DF`
-- 文本索引：`TXT-283`
+- 文本索引：`TXT-290`
 
 ### SPDX ISC
 
@@ -115,7 +102,7 @@ Tauri 已配置在下一次构建时把本文件放入安装包的 licenses 目�
 - 固定提交：`c4a7237ec8f4654e867546f9f409749300f1bf4c`
 - 上游路径：`text/ISC.txt`
 - SHA-256：`F2EC607F67BB0DD3053B49835B02110D5CD0F8EB6DA3AAC4DC0B142A6B299BE9`
-- 文本索引：`TXT-282`
+- 文本索引：`TXT-289`
 
 ### SPDX MIT
 
@@ -124,16 +111,16 @@ Tauri 已配置在下一次构建时把本文件放入安装包的 licenses 目�
 - 固定提交：`c4a7237ec8f4654e867546f9f409749300f1bf4c`
 - 上游路径：`text/MIT.txt`
 - SHA-256：`B05785F9F18E6716BAB63424B11454513B9943A222595B70411009202FC592B5`
-- 文本索引：`TXT-210`
+- 文本索引：`TXT-214`
 
 ### SPDX MPL-2.0
 
-- 适用包：`cargo:selectors@0.36.1`
+- 适用包：`cargo:selectors@0.38.0`
 - SPDX 发布：`v3.28.0`
 - 固定提交：`c4a7237ec8f4654e867546f9f409749300f1bf4c`
 - 上游路径：`text/MPL-2.0.txt`
 - SHA-256：`66A3107D5AD6A058AAB753EAAC2047CCB2ED0E39465DD0FE5844DA3E300D5172`
-- 文本索引：`TXT-126`
+- 文本索引：`TXT-128`
 
 ## npm 包
 
@@ -141,30 +128,30 @@ Tauri 已配置在下一次构建时把本文件放入安装包的 licenses 目�
 | --- | --- | --- | --- | --- |
 | @babel/helper-string-parser | 7.29.7 | MIT | TXT-024 | https://registry.npmjs.org/@babel/helper-string-parser/-/helper-string-parser-7.29.7.tgz |
 | @babel/helper-validator-identifier | 7.29.7 | MIT | TXT-024 | https://registry.npmjs.org/@babel/helper-validator-identifier/-/helper-validator-identifier-7.29.7.tgz |
-| @babel/parser | 7.29.7 | MIT | TXT-068 | https://registry.npmjs.org/@babel/parser/-/parser-7.29.7.tgz |
-| @babel/types | 7.29.7 | MIT | TXT-024 | https://registry.npmjs.org/@babel/types/-/types-7.29.7.tgz |
+| @babel/parser | 7.29.9 | MIT | TXT-068 | https://registry.npmjs.org/@babel/parser/-/parser-7.29.9.tgz |
+| @babel/types | 7.29.8 | MIT | TXT-024 | https://registry.npmjs.org/@babel/types/-/types-7.29.8.tgz |
 | @emnapi/core | 1.11.1 | MIT | TXT-038（来自完整性校验通过的 npm 原始发行包） | https://registry.npmjs.org/@emnapi/core/-/core-1.11.1.tgz |
 | @emnapi/runtime | 1.11.1 | MIT | TXT-038（来自完整性校验通过的 npm 原始发行包） | https://registry.npmjs.org/@emnapi/runtime/-/runtime-1.11.1.tgz |
 | @emnapi/wasi-threads | 1.2.2 | MIT | TXT-038（来自完整性校验通过的 npm 原始发行包） | https://registry.npmjs.org/@emnapi/wasi-threads/-/wasi-threads-1.2.2.tgz |
-| @eslint-community/eslint-utils | 4.10.1 | MIT | TXT-299 | https://registry.npmjs.org/@eslint-community/eslint-utils/-/eslint-utils-4.10.1.tgz |
-| eslint-visitor-keys | 3.4.3 | Apache-2.0 | TXT-255 | https://registry.npmjs.org/eslint-visitor-keys/-/eslint-visitor-keys-3.4.3.tgz |
-| @eslint-community/regexpp | 4.12.2 | MIT | TXT-299 | https://registry.npmjs.org/@eslint-community/regexpp/-/regexpp-4.12.2.tgz |
-| @eslint/config-array | 0.23.5 | Apache-2.0 | TXT-235 | https://registry.npmjs.org/@eslint/config-array/-/config-array-0.23.5.tgz |
-| @eslint/config-helpers | 0.6.0 | Apache-2.0 | TXT-235 | https://registry.npmjs.org/@eslint/config-helpers/-/config-helpers-0.6.0.tgz |
-| @eslint/core | 1.2.1 | Apache-2.0 | TXT-235 | https://registry.npmjs.org/@eslint/core/-/core-1.2.1.tgz |
-| @eslint/object-schema | 3.0.5 | Apache-2.0 | TXT-235 | https://registry.npmjs.org/@eslint/object-schema/-/object-schema-3.0.5.tgz |
-| @eslint/plugin-kit | 0.7.2 | Apache-2.0 | TXT-235 | https://registry.npmjs.org/@eslint/plugin-kit/-/plugin-kit-0.7.2.tgz |
-| @humanfs/core | 0.19.2 | Apache-2.0 | TXT-235 | https://registry.npmjs.org/@humanfs/core/-/core-0.19.2.tgz |
-| @humanfs/node | 0.16.8 | Apache-2.0 | TXT-235 | https://registry.npmjs.org/@humanfs/node/-/node-0.16.8.tgz |
+| @eslint-community/eslint-utils | 4.10.1 | MIT | TXT-306 | https://registry.npmjs.org/@eslint-community/eslint-utils/-/eslint-utils-4.10.1.tgz |
+| eslint-visitor-keys | 3.4.3 | Apache-2.0 | TXT-261 | https://registry.npmjs.org/eslint-visitor-keys/-/eslint-visitor-keys-3.4.3.tgz |
+| @eslint-community/regexpp | 4.12.2 | MIT | TXT-306 | https://registry.npmjs.org/@eslint-community/regexpp/-/regexpp-4.12.2.tgz |
+| @eslint/config-array | 0.23.5 | Apache-2.0 | TXT-241 | https://registry.npmjs.org/@eslint/config-array/-/config-array-0.23.5.tgz |
+| @eslint/config-helpers | 0.6.0 | Apache-2.0 | TXT-241 | https://registry.npmjs.org/@eslint/config-helpers/-/config-helpers-0.6.0.tgz |
+| @eslint/core | 1.2.1 | Apache-2.0 | TXT-241 | https://registry.npmjs.org/@eslint/core/-/core-1.2.1.tgz |
+| @eslint/object-schema | 3.0.5 | Apache-2.0 | TXT-241 | https://registry.npmjs.org/@eslint/object-schema/-/object-schema-3.0.5.tgz |
+| @eslint/plugin-kit | 0.7.2 | Apache-2.0 | TXT-241 | https://registry.npmjs.org/@eslint/plugin-kit/-/plugin-kit-0.7.2.tgz |
+| @humanfs/core | 0.19.2 | Apache-2.0 | TXT-241 | https://registry.npmjs.org/@humanfs/core/-/core-0.19.2.tgz |
+| @humanfs/node | 0.16.8 | Apache-2.0 | TXT-241 | https://registry.npmjs.org/@humanfs/node/-/node-0.16.8.tgz |
 | @humanfs/types | 0.15.0 | Apache-2.0 | TXT-011（规范文本补充：Apache-2.0） | https://registry.npmjs.org/@humanfs/types/-/types-0.15.0.tgz |
-| @humanwhocodes/module-importer | 1.0.1 | Apache-2.0 | TXT-235 | https://registry.npmjs.org/@humanwhocodes/module-importer/-/module-importer-1.0.1.tgz |
-| @humanwhocodes/retry | 0.4.3 | Apache-2.0 | TXT-235 | https://registry.npmjs.org/@humanwhocodes/retry/-/retry-0.4.3.tgz |
+| @humanwhocodes/module-importer | 1.0.1 | Apache-2.0 | TXT-241 | https://registry.npmjs.org/@humanwhocodes/module-importer/-/module-importer-1.0.1.tgz |
+| @humanwhocodes/retry | 0.4.3 | Apache-2.0 | TXT-241 | https://registry.npmjs.org/@humanwhocodes/retry/-/retry-0.4.3.tgz |
 | @isaacs/cliui | 8.0.2 | ISC | TXT-067 | https://registry.npmjs.org/@isaacs/cliui/-/cliui-8.0.2.tgz |
-| @jridgewell/sourcemap-codec | 1.5.5 | MIT | TXT-143 | https://registry.npmjs.org/@jridgewell/sourcemap-codec/-/sourcemap-codec-1.5.5.tgz |
+| @jridgewell/sourcemap-codec | 1.5.5 | MIT | TXT-146 | https://registry.npmjs.org/@jridgewell/sourcemap-codec/-/sourcemap-codec-1.5.5.tgz |
 | @napi-rs/wasm-runtime | 1.1.6 | MIT | TXT-081（来自 npm gitHead 锁定的上游仓库许可文件） | https://registry.npmjs.org/@napi-rs/wasm-runtime/-/wasm-runtime-1.1.6.tgz |
-| @one-ini/wasm | 0.1.1 | MIT | TXT-169 | https://registry.npmjs.org/@one-ini/wasm/-/wasm-0.1.1.tgz |
-| @oxc-project/types | 0.139.0 | MIT | TXT-175 | https://registry.npmjs.org/@oxc-project/types/-/types-0.139.0.tgz |
-| @pkgjs/parseargs | 0.11.0 | MIT | TXT-235 | https://registry.npmjs.org/@pkgjs/parseargs/-/parseargs-0.11.0.tgz |
+| @one-ini/wasm | 0.1.1 | MIT | TXT-172 | https://registry.npmjs.org/@one-ini/wasm/-/wasm-0.1.1.tgz |
+| @oxc-project/types | 0.139.0 | MIT | TXT-178 | https://registry.npmjs.org/@oxc-project/types/-/types-0.139.0.tgz |
+| @pkgjs/parseargs | 0.11.0 | MIT | TXT-241 | https://registry.npmjs.org/@pkgjs/parseargs/-/parseargs-0.11.0.tgz |
 | @rolldown/binding-android-arm64 | 1.1.5 | MIT | TXT-047（同版平台包共享自 npm:node_modules/rolldown） | https://registry.npmjs.org/@rolldown/binding-android-arm64/-/binding-android-arm64-1.1.5.tgz |
 | @rolldown/binding-darwin-arm64 | 1.1.5 | MIT | TXT-047（同版平台包共享自 npm:node_modules/rolldown） | https://registry.npmjs.org/@rolldown/binding-darwin-arm64/-/binding-darwin-arm64-1.1.5.tgz |
 | @rolldown/binding-darwin-x64 | 1.1.5 | MIT | TXT-047（同版平台包共享自 npm:node_modules/rolldown） | https://registry.npmjs.org/@rolldown/binding-darwin-x64/-/binding-darwin-x64-1.1.5.tgz |
@@ -180,40 +167,40 @@ Tauri 已配置在下一次构建时把本文件放入安装包的 licenses 目�
 | @rolldown/binding-wasm32-wasi | 1.1.5 | MIT | TXT-047（同版平台包共享自 npm:node_modules/rolldown） | https://registry.npmjs.org/@rolldown/binding-wasm32-wasi/-/binding-wasm32-wasi-1.1.5.tgz |
 | @rolldown/binding-win32-arm64-msvc | 1.1.5 | MIT | TXT-047（同版平台包共享自 npm:node_modules/rolldown） | https://registry.npmjs.org/@rolldown/binding-win32-arm64-msvc/-/binding-win32-arm64-msvc-1.1.5.tgz |
 | @rolldown/binding-win32-x64-msvc | 1.1.5 | MIT | TXT-047（同版平台包共享自 npm:node_modules/rolldown） | https://registry.npmjs.org/@rolldown/binding-win32-x64-msvc/-/binding-win32-x64-msvc-1.1.5.tgz |
-| @rolldown/pluginutils | 1.0.1 | MIT | TXT-263 | https://registry.npmjs.org/@rolldown/pluginutils/-/pluginutils-1.0.1.tgz |
-| @standard-schema/spec | 1.1.0 | MIT | TXT-122 | https://registry.npmjs.org/@standard-schema/spec/-/spec-1.1.0.tgz |
-| @tauri-apps/api | 2.11.1 | Apache-2.0 OR MIT | TXT-019, TXT-182 | https://registry.npmjs.org/@tauri-apps/api/-/api-2.11.1.tgz |
-| @tauri-apps/cli | 2.11.4 | Apache-2.0 OR MIT | TXT-019, TXT-182 | https://registry.npmjs.org/@tauri-apps/cli/-/cli-2.11.4.tgz |
-| @tauri-apps/cli-darwin-arm64 | 2.11.4 | Apache-2.0 OR MIT | TXT-019, TXT-182（同版平台包共享自 npm:node_modules/@tauri-apps/cli） | https://registry.npmjs.org/@tauri-apps/cli-darwin-arm64/-/cli-darwin-arm64-2.11.4.tgz |
-| @tauri-apps/cli-darwin-x64 | 2.11.4 | Apache-2.0 OR MIT | TXT-019, TXT-182（同版平台包共享自 npm:node_modules/@tauri-apps/cli） | https://registry.npmjs.org/@tauri-apps/cli-darwin-x64/-/cli-darwin-x64-2.11.4.tgz |
-| @tauri-apps/cli-linux-arm-gnueabihf | 2.11.4 | Apache-2.0 OR MIT | TXT-019, TXT-182（同版平台包共享自 npm:node_modules/@tauri-apps/cli） | https://registry.npmjs.org/@tauri-apps/cli-linux-arm-gnueabihf/-/cli-linux-arm-gnueabihf-2.11.4.tgz |
-| @tauri-apps/cli-linux-arm64-gnu | 2.11.4 | Apache-2.0 OR MIT | TXT-019, TXT-182（同版平台包共享自 npm:node_modules/@tauri-apps/cli） | https://registry.npmjs.org/@tauri-apps/cli-linux-arm64-gnu/-/cli-linux-arm64-gnu-2.11.4.tgz |
-| @tauri-apps/cli-linux-arm64-musl | 2.11.4 | Apache-2.0 OR MIT | TXT-019, TXT-182（同版平台包共享自 npm:node_modules/@tauri-apps/cli） | https://registry.npmjs.org/@tauri-apps/cli-linux-arm64-musl/-/cli-linux-arm64-musl-2.11.4.tgz |
-| @tauri-apps/cli-linux-riscv64-gnu | 2.11.4 | Apache-2.0 OR MIT | TXT-019, TXT-182（同版平台包共享自 npm:node_modules/@tauri-apps/cli） | https://registry.npmjs.org/@tauri-apps/cli-linux-riscv64-gnu/-/cli-linux-riscv64-gnu-2.11.4.tgz |
-| @tauri-apps/cli-linux-x64-gnu | 2.11.4 | Apache-2.0 OR MIT | TXT-019, TXT-182（同版平台包共享自 npm:node_modules/@tauri-apps/cli） | https://registry.npmjs.org/@tauri-apps/cli-linux-x64-gnu/-/cli-linux-x64-gnu-2.11.4.tgz |
-| @tauri-apps/cli-linux-x64-musl | 2.11.4 | Apache-2.0 OR MIT | TXT-019, TXT-182（同版平台包共享自 npm:node_modules/@tauri-apps/cli） | https://registry.npmjs.org/@tauri-apps/cli-linux-x64-musl/-/cli-linux-x64-musl-2.11.4.tgz |
-| @tauri-apps/cli-win32-arm64-msvc | 2.11.4 | Apache-2.0 OR MIT | TXT-019, TXT-182（同版平台包共享自 npm:node_modules/@tauri-apps/cli） | https://registry.npmjs.org/@tauri-apps/cli-win32-arm64-msvc/-/cli-win32-arm64-msvc-2.11.4.tgz |
-| @tauri-apps/cli-win32-ia32-msvc | 2.11.4 | Apache-2.0 OR MIT | TXT-019, TXT-182（同版平台包共享自 npm:node_modules/@tauri-apps/cli） | https://registry.npmjs.org/@tauri-apps/cli-win32-ia32-msvc/-/cli-win32-ia32-msvc-2.11.4.tgz |
-| @tauri-apps/cli-win32-x64-msvc | 2.11.4 | Apache-2.0 OR MIT | TXT-019, TXT-182（同版平台包共享自 npm:node_modules/@tauri-apps/cli） | https://registry.npmjs.org/@tauri-apps/cli-win32-x64-msvc/-/cli-win32-x64-msvc-2.11.4.tgz |
-| @tauri-apps/plugin-autostart | 2.5.1 | MIT OR Apache-2.0 | TXT-272 | https://registry.npmjs.org/@tauri-apps/plugin-autostart/-/plugin-autostart-2.5.1.tgz |
-| @tauri-apps/plugin-opener | 2.5.4 | MIT OR Apache-2.0 | TXT-272 | https://registry.npmjs.org/@tauri-apps/plugin-opener/-/plugin-opener-2.5.4.tgz |
-| @tauri-apps/plugin-sql | 2.4.0 | MIT OR Apache-2.0 | TXT-272 | https://registry.npmjs.org/@tauri-apps/plugin-sql/-/plugin-sql-2.4.0.tgz |
-| @tybys/wasm-util | 0.10.3 | MIT | TXT-210（规范文本补充：MIT） | https://registry.npmjs.org/@tybys/wasm-util/-/wasm-util-0.10.3.tgz |
-| @types/chai | 5.2.3 | MIT | TXT-231 | https://registry.npmjs.org/@types/chai/-/chai-5.2.3.tgz |
-| @types/deep-eql | 4.0.2 | MIT | TXT-231 | https://registry.npmjs.org/@types/deep-eql/-/deep-eql-4.0.2.tgz |
-| @types/esrecurse | 4.3.1 | MIT | TXT-231 | https://registry.npmjs.org/@types/esrecurse/-/esrecurse-4.3.1.tgz |
-| @types/estree | 1.0.9 | MIT | TXT-231 | https://registry.npmjs.org/@types/estree/-/estree-1.0.9.tgz |
-| @types/json-schema | 7.0.15 | MIT | TXT-231 | https://registry.npmjs.org/@types/json-schema/-/json-schema-7.0.15.tgz |
-| @types/node | 26.1.1 | MIT | TXT-231 | https://registry.npmjs.org/@types/node/-/node-26.1.1.tgz |
-| @types/whatwg-mimetype | 3.0.2 | MIT | TXT-231 | https://registry.npmjs.org/@types/whatwg-mimetype/-/whatwg-mimetype-3.0.2.tgz |
-| @types/ws | 8.18.1 | MIT | TXT-231 | https://registry.npmjs.org/@types/ws/-/ws-8.18.1.tgz |
+| @rolldown/pluginutils | 1.0.1 | MIT | TXT-269 | https://registry.npmjs.org/@rolldown/pluginutils/-/pluginutils-1.0.1.tgz |
+| @standard-schema/spec | 1.1.0 | MIT | TXT-124 | https://registry.npmjs.org/@standard-schema/spec/-/spec-1.1.0.tgz |
+| @tauri-apps/api | 2.12.4 | Apache-2.0 OR MIT | TXT-019, TXT-185, TXT-115 | https://registry.npmjs.org/@tauri-apps/api/-/api-2.12.4.tgz |
+| @tauri-apps/cli | 2.12.3 | Apache-2.0 OR MIT | TXT-019, TXT-185 | https://registry.npmjs.org/@tauri-apps/cli/-/cli-2.12.3.tgz |
+| @tauri-apps/cli-darwin-arm64 | 2.12.3 | Apache-2.0 OR MIT | TXT-019, TXT-185（同版平台包共享自 npm:node_modules/@tauri-apps/cli） | https://registry.npmjs.org/@tauri-apps/cli-darwin-arm64/-/cli-darwin-arm64-2.12.3.tgz |
+| @tauri-apps/cli-darwin-x64 | 2.12.3 | Apache-2.0 OR MIT | TXT-019, TXT-185（同版平台包共享自 npm:node_modules/@tauri-apps/cli） | https://registry.npmjs.org/@tauri-apps/cli-darwin-x64/-/cli-darwin-x64-2.12.3.tgz |
+| @tauri-apps/cli-linux-arm-gnueabihf | 2.12.3 | Apache-2.0 OR MIT | TXT-019, TXT-185（同版平台包共享自 npm:node_modules/@tauri-apps/cli） | https://registry.npmjs.org/@tauri-apps/cli-linux-arm-gnueabihf/-/cli-linux-arm-gnueabihf-2.12.3.tgz |
+| @tauri-apps/cli-linux-arm64-gnu | 2.12.3 | Apache-2.0 OR MIT | TXT-019, TXT-185（同版平台包共享自 npm:node_modules/@tauri-apps/cli） | https://registry.npmjs.org/@tauri-apps/cli-linux-arm64-gnu/-/cli-linux-arm64-gnu-2.12.3.tgz |
+| @tauri-apps/cli-linux-arm64-musl | 2.12.3 | Apache-2.0 OR MIT | TXT-019, TXT-185（同版平台包共享自 npm:node_modules/@tauri-apps/cli） | https://registry.npmjs.org/@tauri-apps/cli-linux-arm64-musl/-/cli-linux-arm64-musl-2.12.3.tgz |
+| @tauri-apps/cli-linux-riscv64-gnu | 2.12.3 | Apache-2.0 OR MIT | TXT-019, TXT-185（同版平台包共享自 npm:node_modules/@tauri-apps/cli） | https://registry.npmjs.org/@tauri-apps/cli-linux-riscv64-gnu/-/cli-linux-riscv64-gnu-2.12.3.tgz |
+| @tauri-apps/cli-linux-x64-gnu | 2.12.3 | Apache-2.0 OR MIT | TXT-019, TXT-185（同版平台包共享自 npm:node_modules/@tauri-apps/cli） | https://registry.npmjs.org/@tauri-apps/cli-linux-x64-gnu/-/cli-linux-x64-gnu-2.12.3.tgz |
+| @tauri-apps/cli-linux-x64-musl | 2.12.3 | Apache-2.0 OR MIT | TXT-019, TXT-185（同版平台包共享自 npm:node_modules/@tauri-apps/cli） | https://registry.npmjs.org/@tauri-apps/cli-linux-x64-musl/-/cli-linux-x64-musl-2.12.3.tgz |
+| @tauri-apps/cli-win32-arm64-msvc | 2.12.3 | Apache-2.0 OR MIT | TXT-019, TXT-185（同版平台包共享自 npm:node_modules/@tauri-apps/cli） | https://registry.npmjs.org/@tauri-apps/cli-win32-arm64-msvc/-/cli-win32-arm64-msvc-2.12.3.tgz |
+| @tauri-apps/cli-win32-ia32-msvc | 2.12.3 | Apache-2.0 OR MIT | TXT-019, TXT-185（同版平台包共享自 npm:node_modules/@tauri-apps/cli） | https://registry.npmjs.org/@tauri-apps/cli-win32-ia32-msvc/-/cli-win32-ia32-msvc-2.12.3.tgz |
+| @tauri-apps/cli-win32-x64-msvc | 2.12.3 | Apache-2.0 OR MIT | TXT-019, TXT-185（同版平台包共享自 npm:node_modules/@tauri-apps/cli） | https://registry.npmjs.org/@tauri-apps/cli-win32-x64-msvc/-/cli-win32-x64-msvc-2.12.3.tgz |
+| @tauri-apps/plugin-autostart | 2.5.1 | MIT OR Apache-2.0 | TXT-279 | https://registry.npmjs.org/@tauri-apps/plugin-autostart/-/plugin-autostart-2.5.1.tgz |
+| @tauri-apps/plugin-opener | 2.5.4 | MIT OR Apache-2.0 | TXT-279 | https://registry.npmjs.org/@tauri-apps/plugin-opener/-/plugin-opener-2.5.4.tgz |
+| @tauri-apps/plugin-sql | 2.4.0 | MIT OR Apache-2.0 | TXT-279 | https://registry.npmjs.org/@tauri-apps/plugin-sql/-/plugin-sql-2.4.0.tgz |
+| @tybys/wasm-util | 0.10.3 | MIT | TXT-214（规范文本补充：MIT） | https://registry.npmjs.org/@tybys/wasm-util/-/wasm-util-0.10.3.tgz |
+| @types/chai | 5.2.3 | MIT | TXT-237 | https://registry.npmjs.org/@types/chai/-/chai-5.2.3.tgz |
+| @types/deep-eql | 4.0.2 | MIT | TXT-237 | https://registry.npmjs.org/@types/deep-eql/-/deep-eql-4.0.2.tgz |
+| @types/esrecurse | 4.3.1 | MIT | TXT-237 | https://registry.npmjs.org/@types/esrecurse/-/esrecurse-4.3.1.tgz |
+| @types/estree | 1.0.9 | MIT | TXT-237 | https://registry.npmjs.org/@types/estree/-/estree-1.0.9.tgz |
+| @types/json-schema | 7.0.15 | MIT | TXT-237 | https://registry.npmjs.org/@types/json-schema/-/json-schema-7.0.15.tgz |
+| @types/node | 26.1.1 | MIT | TXT-237 | https://registry.npmjs.org/@types/node/-/node-26.1.1.tgz |
+| @types/whatwg-mimetype | 3.0.2 | MIT | TXT-237 | https://registry.npmjs.org/@types/whatwg-mimetype/-/whatwg-mimetype-3.0.2.tgz |
+| @types/ws | 8.18.1 | MIT | TXT-237 | https://registry.npmjs.org/@types/ws/-/ws-8.18.1.tgz |
 | @typescript-eslint/eslint-plugin | 8.65.0 | MIT | TXT-069 | https://registry.npmjs.org/@typescript-eslint/eslint-plugin/-/eslint-plugin-8.65.0.tgz |
-| ignore | 7.0.6 | MIT | TXT-181 | https://registry.npmjs.org/ignore/-/ignore-7.0.6.tgz |
+| ignore | 7.0.6 | MIT | TXT-184 | https://registry.npmjs.org/ignore/-/ignore-7.0.6.tgz |
 | @typescript-eslint/parser | 8.65.0 | MIT | TXT-069 | https://registry.npmjs.org/@typescript-eslint/parser/-/parser-8.65.0.tgz |
 | @typescript-eslint/project-service | 8.65.0 | MIT | TXT-009 | https://registry.npmjs.org/@typescript-eslint/project-service/-/project-service-8.65.0.tgz |
 | @typescript-eslint/scope-manager | 8.65.0 | MIT | TXT-069 | https://registry.npmjs.org/@typescript-eslint/scope-manager/-/scope-manager-8.65.0.tgz |
 | @typescript-eslint/tsconfig-utils | 8.65.0 | MIT | TXT-009 | https://registry.npmjs.org/@typescript-eslint/tsconfig-utils/-/tsconfig-utils-8.65.0.tgz |
-| @typescript-eslint/type-utils | 8.65.0 | MIT | TXT-285 | https://registry.npmjs.org/@typescript-eslint/type-utils/-/type-utils-8.65.0.tgz |
+| @typescript-eslint/type-utils | 8.65.0 | MIT | TXT-292 | https://registry.npmjs.org/@typescript-eslint/type-utils/-/type-utils-8.65.0.tgz |
 | @typescript-eslint/types | 8.65.0 | MIT | TXT-069 | https://registry.npmjs.org/@typescript-eslint/types/-/types-8.65.0.tgz |
 | @typescript-eslint/typescript-estree | 8.65.0 | MIT | TXT-069 | https://registry.npmjs.org/@typescript-eslint/typescript-estree/-/typescript-estree-8.65.0.tgz |
 | @typescript-eslint/utils | 8.65.0 | MIT | TXT-069 | https://registry.npmjs.org/@typescript-eslint/utils/-/utils-8.65.0.tgz |
@@ -221,481 +208,481 @@ Tauri 已配置在下一次构建时把本文件放入安装包的 licenses 目�
 | @vitejs/plugin-vue | 6.0.8 | MIT | TXT-059 | https://registry.npmjs.org/@vitejs/plugin-vue/-/plugin-vue-6.0.8.tgz |
 | @vitest/expect | 4.1.11 | MIT | TXT-007 | https://registry.npmjs.org/@vitest/expect/-/expect-4.1.11.tgz |
 | @vitest/mocker | 4.1.11 | MIT | TXT-007 | https://registry.npmjs.org/@vitest/mocker/-/mocker-4.1.11.tgz |
-| estree-walker | 3.0.3 | MIT | TXT-165 | https://registry.npmjs.org/estree-walker/-/estree-walker-3.0.3.tgz |
+| estree-walker | 3.0.3 | MIT | TXT-168 | https://registry.npmjs.org/estree-walker/-/estree-walker-3.0.3.tgz |
 | @vitest/pretty-format | 4.1.11 | MIT | TXT-007 | https://registry.npmjs.org/@vitest/pretty-format/-/pretty-format-4.1.11.tgz |
 | @vitest/runner | 4.1.11 | MIT | TXT-007 | https://registry.npmjs.org/@vitest/runner/-/runner-4.1.11.tgz |
 | @vitest/snapshot | 4.1.11 | MIT | TXT-007 | https://registry.npmjs.org/@vitest/snapshot/-/snapshot-4.1.11.tgz |
 | @vitest/spy | 4.1.11 | MIT | TXT-007 | https://registry.npmjs.org/@vitest/spy/-/spy-4.1.11.tgz |
 | @vitest/utils | 4.1.11 | MIT | TXT-007 | https://registry.npmjs.org/@vitest/utils/-/utils-4.1.11.tgz |
-| @volar/language-core | 2.4.28 | MIT | TXT-192 | https://registry.npmjs.org/@volar/language-core/-/language-core-2.4.28.tgz |
-| @volar/source-map | 2.4.28 | MIT | TXT-192 | https://registry.npmjs.org/@volar/source-map/-/source-map-2.4.28.tgz |
-| @volar/typescript | 2.4.28 | MIT | TXT-192 | https://registry.npmjs.org/@volar/typescript/-/typescript-2.4.28.tgz |
-| @vue/compiler-core | 3.5.40 | MIT | TXT-033 | https://registry.npmjs.org/@vue/compiler-core/-/compiler-core-3.5.40.tgz |
-| @vue/compiler-dom | 3.5.40 | MIT | TXT-033 | https://registry.npmjs.org/@vue/compiler-dom/-/compiler-dom-3.5.40.tgz |
-| @vue/compiler-sfc | 3.5.40 | MIT | TXT-033 | https://registry.npmjs.org/@vue/compiler-sfc/-/compiler-sfc-3.5.40.tgz |
-| @vue/compiler-ssr | 3.5.40 | MIT | TXT-033 | https://registry.npmjs.org/@vue/compiler-ssr/-/compiler-ssr-3.5.40.tgz |
-| @vue/language-core | 3.3.8 | MIT | TXT-192 | https://registry.npmjs.org/@vue/language-core/-/language-core-3.3.8.tgz |
-| @vue/reactivity | 3.5.40 | MIT | TXT-033 | https://registry.npmjs.org/@vue/reactivity/-/reactivity-3.5.40.tgz |
-| @vue/runtime-core | 3.5.40 | MIT | TXT-033 | https://registry.npmjs.org/@vue/runtime-core/-/runtime-core-3.5.40.tgz |
-| @vue/runtime-dom | 3.5.40 | MIT | TXT-033 | https://registry.npmjs.org/@vue/runtime-dom/-/runtime-dom-3.5.40.tgz |
-| @vue/server-renderer | 3.5.40 | MIT | TXT-033 | https://registry.npmjs.org/@vue/server-renderer/-/server-renderer-3.5.40.tgz |
-| @vue/shared | 3.5.40 | MIT | TXT-033 | https://registry.npmjs.org/@vue/shared/-/shared-3.5.40.tgz |
-| @vue/test-utils | 2.4.11 | MIT | TXT-298 | https://registry.npmjs.org/@vue/test-utils/-/test-utils-2.4.11.tgz |
-| abbrev | 2.0.0 | ISC | TXT-183 | https://registry.npmjs.org/abbrev/-/abbrev-2.0.0.tgz |
-| acorn | 8.17.0 | MIT | TXT-145 | https://registry.npmjs.org/acorn/-/acorn-8.17.0.tgz |
-| acorn-jsx | 5.3.2 | MIT | TXT-246 | https://registry.npmjs.org/acorn-jsx/-/acorn-jsx-5.3.2.tgz |
-| ajv | 6.15.0 | MIT | TXT-268 | https://registry.npmjs.org/ajv/-/ajv-6.15.0.tgz |
-| alien-signals | 3.2.1 | MIT | TXT-142 | https://registry.npmjs.org/alien-signals/-/alien-signals-3.2.1.tgz |
-| ansi-regex | 6.2.2 | MIT | TXT-111 | https://registry.npmjs.org/ansi-regex/-/ansi-regex-6.2.2.tgz |
-| ansi-styles | 6.2.3 | MIT | TXT-111 | https://registry.npmjs.org/ansi-styles/-/ansi-styles-6.2.3.tgz |
+| @volar/language-core | 2.4.28 | MIT | TXT-195 | https://registry.npmjs.org/@volar/language-core/-/language-core-2.4.28.tgz |
+| @volar/source-map | 2.4.28 | MIT | TXT-195 | https://registry.npmjs.org/@volar/source-map/-/source-map-2.4.28.tgz |
+| @volar/typescript | 2.4.28 | MIT | TXT-195 | https://registry.npmjs.org/@volar/typescript/-/typescript-2.4.28.tgz |
+| @vue/compiler-core | 3.5.44 | MIT | TXT-033 | https://registry.npmjs.org/@vue/compiler-core/-/compiler-core-3.5.44.tgz |
+| @vue/compiler-dom | 3.5.44 | MIT | TXT-033 | https://registry.npmjs.org/@vue/compiler-dom/-/compiler-dom-3.5.44.tgz |
+| @vue/compiler-sfc | 3.5.44 | MIT | TXT-033 | https://registry.npmjs.org/@vue/compiler-sfc/-/compiler-sfc-3.5.44.tgz |
+| @vue/compiler-ssr | 3.5.44 | MIT | TXT-033 | https://registry.npmjs.org/@vue/compiler-ssr/-/compiler-ssr-3.5.44.tgz |
+| @vue/language-core | 3.3.8 | MIT | TXT-195 | https://registry.npmjs.org/@vue/language-core/-/language-core-3.3.8.tgz |
+| @vue/reactivity | 3.5.44 | MIT | TXT-033 | https://registry.npmjs.org/@vue/reactivity/-/reactivity-3.5.44.tgz |
+| @vue/runtime-core | 3.5.44 | MIT | TXT-033 | https://registry.npmjs.org/@vue/runtime-core/-/runtime-core-3.5.44.tgz |
+| @vue/runtime-dom | 3.5.44 | MIT | TXT-033 | https://registry.npmjs.org/@vue/runtime-dom/-/runtime-dom-3.5.44.tgz |
+| @vue/server-renderer | 3.5.44 | MIT | TXT-033 | https://registry.npmjs.org/@vue/server-renderer/-/server-renderer-3.5.44.tgz |
+| @vue/shared | 3.5.44 | MIT | TXT-033 | https://registry.npmjs.org/@vue/shared/-/shared-3.5.44.tgz |
+| @vue/test-utils | 2.4.11 | MIT | TXT-305 | https://registry.npmjs.org/@vue/test-utils/-/test-utils-2.4.11.tgz |
+| abbrev | 2.0.0 | ISC | TXT-186 | https://registry.npmjs.org/abbrev/-/abbrev-2.0.0.tgz |
+| acorn | 8.17.0 | MIT | TXT-148 | https://registry.npmjs.org/acorn/-/acorn-8.17.0.tgz |
+| acorn-jsx | 5.3.2 | MIT | TXT-252 | https://registry.npmjs.org/acorn-jsx/-/acorn-jsx-5.3.2.tgz |
+| ajv | 6.15.0 | MIT | TXT-275 | https://registry.npmjs.org/ajv/-/ajv-6.15.0.tgz |
+| alien-signals | 3.2.1 | MIT | TXT-145 | https://registry.npmjs.org/alien-signals/-/alien-signals-3.2.1.tgz |
+| ansi-regex | 6.2.2 | MIT | TXT-112 | https://registry.npmjs.org/ansi-regex/-/ansi-regex-6.2.2.tgz |
+| ansi-styles | 6.2.3 | MIT | TXT-112 | https://registry.npmjs.org/ansi-styles/-/ansi-styles-6.2.3.tgz |
 | assertion-error | 2.0.1 | MIT | TXT-042 | https://registry.npmjs.org/assertion-error/-/assertion-error-2.0.1.tgz |
-| balanced-match | 4.0.4 | MIT | TXT-252 | https://registry.npmjs.org/balanced-match/-/balanced-match-4.0.4.tgz |
-| boolbase | 1.0.0 | ISC | TXT-282（规范文本补充：ISC） | https://registry.npmjs.org/boolbase/-/boolbase-1.0.0.tgz |
-| brace-expansion | 5.0.9 | MIT | TXT-180 | https://registry.npmjs.org/brace-expansion/-/brace-expansion-5.0.9.tgz |
-| buffer-image-size | 0.6.4 | MIT | TXT-105 | https://registry.npmjs.org/buffer-image-size/-/buffer-image-size-0.6.4.tgz |
-| chai | 6.2.2 | MIT | TXT-214 | https://registry.npmjs.org/chai/-/chai-6.2.2.tgz |
-| color-convert | 2.0.1 | MIT | TXT-128 | https://registry.npmjs.org/color-convert/-/color-convert-2.0.1.tgz |
-| color-name | 1.1.4 | MIT | TXT-226 | https://registry.npmjs.org/color-name/-/color-name-1.1.4.tgz |
+| balanced-match | 4.0.4 | MIT | TXT-258 | https://registry.npmjs.org/balanced-match/-/balanced-match-4.0.4.tgz |
+| boolbase | 1.0.0 | ISC | TXT-289（规范文本补充：ISC） | https://registry.npmjs.org/boolbase/-/boolbase-1.0.0.tgz |
+| brace-expansion | 5.0.12 | MIT | TXT-183 | https://registry.npmjs.org/brace-expansion/-/brace-expansion-5.0.12.tgz |
+| buffer-image-size | 0.6.4 | MIT | TXT-106 | https://registry.npmjs.org/buffer-image-size/-/buffer-image-size-0.6.4.tgz |
+| chai | 6.2.2 | MIT | TXT-218 | https://registry.npmjs.org/chai/-/chai-6.2.2.tgz |
+| color-convert | 2.0.1 | MIT | TXT-130 | https://registry.npmjs.org/color-convert/-/color-convert-2.0.1.tgz |
+| color-name | 1.1.4 | MIT | TXT-231 | https://registry.npmjs.org/color-name/-/color-name-1.1.4.tgz |
 | commander | 10.0.1 | MIT | TXT-006 | https://registry.npmjs.org/commander/-/commander-10.0.1.tgz |
-| config-chain | 1.1.13 | MIT | TXT-159 | https://registry.npmjs.org/config-chain/-/config-chain-1.1.13.tgz |
+| config-chain | 1.1.13 | MIT | TXT-162 | https://registry.npmjs.org/config-chain/-/config-chain-1.1.13.tgz |
 | convert-source-map | 2.0.0 | MIT | TXT-037 | https://registry.npmjs.org/convert-source-map/-/convert-source-map-2.0.0.tgz |
-| cross-spawn | 7.0.6 | MIT | TXT-203 | https://registry.npmjs.org/cross-spawn/-/cross-spawn-7.0.6.tgz |
+| cross-spawn | 7.0.6 | MIT | TXT-206 | https://registry.npmjs.org/cross-spawn/-/cross-spawn-7.0.6.tgz |
 | cssesc | 3.0.0 | MIT | TXT-095 | https://registry.npmjs.org/cssesc/-/cssesc-3.0.0.tgz |
 | csstype | 3.2.3 | MIT | TXT-025 | https://registry.npmjs.org/csstype/-/csstype-3.2.3.tgz |
 | debug | 4.4.3 | MIT | TXT-077 | https://registry.npmjs.org/debug/-/debug-4.4.3.tgz |
-| deep-is | 0.1.4 | MIT | TXT-280 | https://registry.npmjs.org/deep-is/-/deep-is-0.1.4.tgz |
-| detect-libc | 2.1.2 | Apache-2.0 | TXT-217 | https://registry.npmjs.org/detect-libc/-/detect-libc-2.1.2.tgz |
-| eastasianwidth | 0.2.0 | MIT | TXT-210（规范文本补充：MIT） | https://registry.npmjs.org/eastasianwidth/-/eastasianwidth-0.2.0.tgz |
-| editorconfig | 1.0.7 | MIT | TXT-224 | https://registry.npmjs.org/editorconfig/-/editorconfig-1.0.7.tgz |
-| balanced-match | 1.0.2 | MIT | TXT-187 | https://registry.npmjs.org/balanced-match/-/balanced-match-1.0.2.tgz |
-| brace-expansion | 2.1.4 | MIT | TXT-127 | https://registry.npmjs.org/brace-expansion/-/brace-expansion-2.1.4.tgz |
-| minimatch | 9.0.9 | ISC | TXT-249 | https://registry.npmjs.org/minimatch/-/minimatch-9.0.9.tgz |
+| deep-is | 0.1.4 | MIT | TXT-287 | https://registry.npmjs.org/deep-is/-/deep-is-0.1.4.tgz |
+| detect-libc | 2.1.2 | Apache-2.0 | TXT-221 | https://registry.npmjs.org/detect-libc/-/detect-libc-2.1.2.tgz |
+| eastasianwidth | 0.2.0 | MIT | TXT-214（规范文本补充：MIT） | https://registry.npmjs.org/eastasianwidth/-/eastasianwidth-0.2.0.tgz |
+| editorconfig | 1.0.7 | MIT | TXT-229 | https://registry.npmjs.org/editorconfig/-/editorconfig-1.0.7.tgz |
+| balanced-match | 1.0.2 | MIT | TXT-190 | https://registry.npmjs.org/balanced-match/-/balanced-match-1.0.2.tgz |
+| brace-expansion | 2.1.7 | MIT | TXT-129 | https://registry.npmjs.org/brace-expansion/-/brace-expansion-2.1.7.tgz |
+| minimatch | 9.0.9 | ISC | TXT-255 | https://registry.npmjs.org/minimatch/-/minimatch-9.0.9.tgz |
 | emoji-regex | 9.2.2 | MIT | TXT-095 | https://registry.npmjs.org/emoji-regex/-/emoji-regex-9.2.2.tgz |
-| entities | 7.0.1 | BSD-2-Clause | TXT-242 | https://registry.npmjs.org/entities/-/entities-7.0.1.tgz |
-| es-module-lexer | 2.3.1 | MIT | TXT-164 | https://registry.npmjs.org/es-module-lexer/-/es-module-lexer-2.3.1.tgz |
-| escape-string-regexp | 4.0.0 | MIT | TXT-111 | https://registry.npmjs.org/escape-string-regexp/-/escape-string-regexp-4.0.0.tgz |
+| entities | 7.0.1 | BSD-2-Clause | TXT-248 | https://registry.npmjs.org/entities/-/entities-7.0.1.tgz |
+| es-module-lexer | 2.3.1 | MIT | TXT-167 | https://registry.npmjs.org/es-module-lexer/-/es-module-lexer-2.3.1.tgz |
+| escape-string-regexp | 4.0.0 | MIT | TXT-112 | https://registry.npmjs.org/escape-string-regexp/-/escape-string-regexp-4.0.0.tgz |
 | eslint | 10.7.0 | MIT | TXT-078 | https://registry.npmjs.org/eslint/-/eslint-10.7.0.tgz |
-| eslint-plugin-vue | 10.10.0 | MIT | TXT-259 | https://registry.npmjs.org/eslint-plugin-vue/-/eslint-plugin-vue-10.10.0.tgz |
-| eslint-scope | 9.1.2 | BSD-2-Clause | TXT-251 | https://registry.npmjs.org/eslint-scope/-/eslint-scope-9.1.2.tgz |
-| eslint-visitor-keys | 5.0.1 | Apache-2.0 | TXT-255 | https://registry.npmjs.org/eslint-visitor-keys/-/eslint-visitor-keys-5.0.1.tgz |
+| eslint-plugin-vue | 10.10.0 | MIT | TXT-265 | https://registry.npmjs.org/eslint-plugin-vue/-/eslint-plugin-vue-10.10.0.tgz |
+| eslint-scope | 9.1.2 | BSD-2-Clause | TXT-257 | https://registry.npmjs.org/eslint-scope/-/eslint-scope-9.1.2.tgz |
+| eslint-visitor-keys | 5.0.1 | Apache-2.0 | TXT-261 | https://registry.npmjs.org/eslint-visitor-keys/-/eslint-visitor-keys-5.0.1.tgz |
 | espree | 11.2.0 | BSD-2-Clause | TXT-052 | https://registry.npmjs.org/espree/-/espree-11.2.0.tgz |
-| esquery | 1.7.0 | BSD-3-Clause | TXT-206 | https://registry.npmjs.org/esquery/-/esquery-1.7.0.tgz |
-| esrecurse | 4.3.0 | BSD-2-Clause | TXT-283（规范文本补充：BSD-2-Clause） | https://registry.npmjs.org/esrecurse/-/esrecurse-4.3.0.tgz |
+| esquery | 1.7.0 | BSD-3-Clause | TXT-210 | https://registry.npmjs.org/esquery/-/esquery-1.7.0.tgz |
+| esrecurse | 4.3.0 | BSD-2-Clause | TXT-290（规范文本补充：BSD-2-Clause） | https://registry.npmjs.org/esrecurse/-/esrecurse-4.3.0.tgz |
 | estraverse | 5.3.0 | BSD-2-Clause | TXT-022 | https://registry.npmjs.org/estraverse/-/estraverse-5.3.0.tgz |
-| estree-walker | 2.0.2 | MIT | TXT-165 | https://registry.npmjs.org/estree-walker/-/estree-walker-2.0.2.tgz |
+| estree-walker | 2.0.2 | MIT | TXT-168 | https://registry.npmjs.org/estree-walker/-/estree-walker-2.0.2.tgz |
 | esutils | 2.0.3 | BSD-2-Clause | TXT-022 | https://registry.npmjs.org/esutils/-/esutils-2.0.3.tgz |
-| expect-type | 1.4.0 | Apache-2.0 | TXT-150 | https://registry.npmjs.org/expect-type/-/expect-type-1.4.0.tgz |
-| fast-deep-equal | 3.1.3 | MIT | TXT-149 | https://registry.npmjs.org/fast-deep-equal/-/fast-deep-equal-3.1.3.tgz |
-| fast-json-stable-stringify | 2.1.0 | MIT | TXT-200 | https://registry.npmjs.org/fast-json-stable-stringify/-/fast-json-stable-stringify-2.1.0.tgz |
-| fast-levenshtein | 2.0.6 | MIT | TXT-173 | https://registry.npmjs.org/fast-levenshtein/-/fast-levenshtein-2.0.6.tgz |
-| fdir | 6.5.0 | MIT | TXT-176 | https://registry.npmjs.org/fdir/-/fdir-6.5.0.tgz |
-| file-entry-cache | 8.0.0 | MIT | TXT-186 | https://registry.npmjs.org/file-entry-cache/-/file-entry-cache-8.0.0.tgz |
-| find-up | 5.0.0 | MIT | TXT-111 | https://registry.npmjs.org/find-up/-/find-up-5.0.0.tgz |
-| flat-cache | 4.0.1 | MIT | TXT-194 | https://registry.npmjs.org/flat-cache/-/flat-cache-4.0.1.tgz |
+| expect-type | 1.4.0 | Apache-2.0 | TXT-153 | https://registry.npmjs.org/expect-type/-/expect-type-1.4.0.tgz |
+| fast-deep-equal | 3.1.3 | MIT | TXT-152 | https://registry.npmjs.org/fast-deep-equal/-/fast-deep-equal-3.1.3.tgz |
+| fast-json-stable-stringify | 2.1.0 | MIT | TXT-203 | https://registry.npmjs.org/fast-json-stable-stringify/-/fast-json-stable-stringify-2.1.0.tgz |
+| fast-levenshtein | 2.0.6 | MIT | TXT-176 | https://registry.npmjs.org/fast-levenshtein/-/fast-levenshtein-2.0.6.tgz |
+| fdir | 6.5.0 | MIT | TXT-179 | https://registry.npmjs.org/fdir/-/fdir-6.5.0.tgz |
+| file-entry-cache | 8.0.0 | MIT | TXT-189 | https://registry.npmjs.org/file-entry-cache/-/file-entry-cache-8.0.0.tgz |
+| find-up | 5.0.0 | MIT | TXT-112 | https://registry.npmjs.org/find-up/-/find-up-5.0.0.tgz |
+| flat-cache | 4.0.1 | MIT | TXT-197 | https://registry.npmjs.org/flat-cache/-/flat-cache-4.0.1.tgz |
 | flatted | 3.4.3 | ISC | TXT-027 | https://registry.npmjs.org/flatted/-/flatted-3.4.3.tgz |
-| foreground-child | 3.3.1 | ISC | TXT-172 | https://registry.npmjs.org/foreground-child/-/foreground-child-3.3.1.tgz |
+| foreground-child | 3.3.1 | ISC | TXT-175 | https://registry.npmjs.org/foreground-child/-/foreground-child-3.3.1.tgz |
 | fsevents | 2.3.3 | MIT | TXT-061（来自完整性校验通过的 npm 原始发行包） | https://registry.npmjs.org/fsevents/-/fsevents-2.3.3.tgz |
-| glob | 10.5.0 | ISC | TXT-243 | https://registry.npmjs.org/glob/-/glob-10.5.0.tgz |
-| glob-parent | 6.0.2 | ISC | TXT-297 | https://registry.npmjs.org/glob-parent/-/glob-parent-6.0.2.tgz |
-| balanced-match | 1.0.2 | MIT | TXT-187 | https://registry.npmjs.org/balanced-match/-/balanced-match-1.0.2.tgz |
-| brace-expansion | 2.1.4 | MIT | TXT-127 | https://registry.npmjs.org/brace-expansion/-/brace-expansion-2.1.4.tgz |
-| minimatch | 9.0.9 | ISC | TXT-249 | https://registry.npmjs.org/minimatch/-/minimatch-9.0.9.tgz |
+| glob | 10.5.0 | ISC | TXT-249 | https://registry.npmjs.org/glob/-/glob-10.5.0.tgz |
+| glob-parent | 6.0.2 | ISC | TXT-304 | https://registry.npmjs.org/glob-parent/-/glob-parent-6.0.2.tgz |
+| balanced-match | 1.0.2 | MIT | TXT-190 | https://registry.npmjs.org/balanced-match/-/balanced-match-1.0.2.tgz |
+| brace-expansion | 2.1.7 | MIT | TXT-129 | https://registry.npmjs.org/brace-expansion/-/brace-expansion-2.1.7.tgz |
+| minimatch | 9.0.9 | ISC | TXT-255 | https://registry.npmjs.org/minimatch/-/minimatch-9.0.9.tgz |
 | happy-dom | 20.11.1 | MIT | TXT-093 | https://registry.npmjs.org/happy-dom/-/happy-dom-20.11.1.tgz |
-| ignore | 5.3.2 | MIT | TXT-181 | https://registry.npmjs.org/ignore/-/ignore-5.3.2.tgz |
-| imurmurhash | 0.1.4 | MIT | TXT-210（规范文本补充：MIT） | https://registry.npmjs.org/imurmurhash/-/imurmurhash-0.1.4.tgz |
+| ignore | 5.3.2 | MIT | TXT-184 | https://registry.npmjs.org/ignore/-/ignore-5.3.2.tgz |
+| imurmurhash | 0.1.4 | MIT | TXT-214（规范文本补充：MIT） | https://registry.npmjs.org/imurmurhash/-/imurmurhash-0.1.4.tgz |
 | ini | 1.3.8 | ISC | TXT-099 | https://registry.npmjs.org/ini/-/ini-1.3.8.tgz |
-| is-extglob | 2.1.1 | MIT | TXT-139 | https://registry.npmjs.org/is-extglob/-/is-extglob-2.1.1.tgz |
+| is-extglob | 2.1.1 | MIT | TXT-141 | https://registry.npmjs.org/is-extglob/-/is-extglob-2.1.1.tgz |
 | is-fullwidth-code-point | 3.0.0 | MIT | TXT-096 | https://registry.npmjs.org/is-fullwidth-code-point/-/is-fullwidth-code-point-3.0.0.tgz |
 | is-glob | 4.0.3 | MIT | TXT-097 | https://registry.npmjs.org/is-glob/-/is-glob-4.0.3.tgz |
 | isexe | 2.0.0 | ISC | TXT-099 | https://registry.npmjs.org/isexe/-/isexe-2.0.0.tgz |
 | jackspeak | 3.4.3 | BlueOak-1.0.0 | TXT-065 | https://registry.npmjs.org/jackspeak/-/jackspeak-3.4.3.tgz |
 | js-beautify | 1.15.4 | MIT | TXT-057 | https://registry.npmjs.org/js-beautify/-/js-beautify-1.15.4.tgz |
-| js-cookie | 3.0.8 | MIT | TXT-279 | https://registry.npmjs.org/js-cookie/-/js-cookie-3.0.8.tgz |
-| json-buffer | 3.0.1 | MIT | TXT-137 | https://registry.npmjs.org/json-buffer/-/json-buffer-3.0.1.tgz |
-| json-schema-traverse | 0.4.1 | MIT | TXT-149 | https://registry.npmjs.org/json-schema-traverse/-/json-schema-traverse-0.4.1.tgz |
+| js-cookie | 3.0.8 | MIT | TXT-286 | https://registry.npmjs.org/js-cookie/-/js-cookie-3.0.8.tgz |
+| json-buffer | 3.0.1 | MIT | TXT-139 | https://registry.npmjs.org/json-buffer/-/json-buffer-3.0.1.tgz |
+| json-schema-traverse | 0.4.1 | MIT | TXT-152 | https://registry.npmjs.org/json-schema-traverse/-/json-schema-traverse-0.4.1.tgz |
 | json-stable-stringify-without-jsonify | 1.0.1 | MIT | TXT-086 | https://registry.npmjs.org/json-stable-stringify-without-jsonify/-/json-stable-stringify-without-jsonify-1.0.1.tgz |
-| keyv | 4.5.4 | MIT | TXT-210（规范文本补充：MIT） | https://registry.npmjs.org/keyv/-/keyv-4.5.4.tgz |
-| levn | 0.4.1 | MIT | TXT-222 | https://registry.npmjs.org/levn/-/levn-0.4.1.tgz |
-| lightningcss | 1.33.0 | MPL-2.0 | TXT-114 | https://registry.npmjs.org/lightningcss/-/lightningcss-1.33.0.tgz |
-| lightningcss-android-arm64 | 1.33.0 | MPL-2.0 | TXT-114（同版平台包共享自 npm:node_modules/lightningcss） | https://registry.npmjs.org/lightningcss-android-arm64/-/lightningcss-android-arm64-1.33.0.tgz |
-| lightningcss-darwin-arm64 | 1.33.0 | MPL-2.0 | TXT-114（同版平台包共享自 npm:node_modules/lightningcss） | https://registry.npmjs.org/lightningcss-darwin-arm64/-/lightningcss-darwin-arm64-1.33.0.tgz |
-| lightningcss-darwin-x64 | 1.33.0 | MPL-2.0 | TXT-114（同版平台包共享自 npm:node_modules/lightningcss） | https://registry.npmjs.org/lightningcss-darwin-x64/-/lightningcss-darwin-x64-1.33.0.tgz |
-| lightningcss-freebsd-x64 | 1.33.0 | MPL-2.0 | TXT-114（同版平台包共享自 npm:node_modules/lightningcss） | https://registry.npmjs.org/lightningcss-freebsd-x64/-/lightningcss-freebsd-x64-1.33.0.tgz |
-| lightningcss-linux-arm-gnueabihf | 1.33.0 | MPL-2.0 | TXT-114（同版平台包共享自 npm:node_modules/lightningcss） | https://registry.npmjs.org/lightningcss-linux-arm-gnueabihf/-/lightningcss-linux-arm-gnueabihf-1.33.0.tgz |
-| lightningcss-linux-arm64-gnu | 1.33.0 | MPL-2.0 | TXT-114（同版平台包共享自 npm:node_modules/lightningcss） | https://registry.npmjs.org/lightningcss-linux-arm64-gnu/-/lightningcss-linux-arm64-gnu-1.33.0.tgz |
-| lightningcss-linux-arm64-musl | 1.33.0 | MPL-2.0 | TXT-114（同版平台包共享自 npm:node_modules/lightningcss） | https://registry.npmjs.org/lightningcss-linux-arm64-musl/-/lightningcss-linux-arm64-musl-1.33.0.tgz |
-| lightningcss-linux-x64-gnu | 1.33.0 | MPL-2.0 | TXT-114（同版平台包共享自 npm:node_modules/lightningcss） | https://registry.npmjs.org/lightningcss-linux-x64-gnu/-/lightningcss-linux-x64-gnu-1.33.0.tgz |
-| lightningcss-linux-x64-musl | 1.33.0 | MPL-2.0 | TXT-114（同版平台包共享自 npm:node_modules/lightningcss） | https://registry.npmjs.org/lightningcss-linux-x64-musl/-/lightningcss-linux-x64-musl-1.33.0.tgz |
-| lightningcss-win32-arm64-msvc | 1.33.0 | MPL-2.0 | TXT-114（同版平台包共享自 npm:node_modules/lightningcss） | https://registry.npmjs.org/lightningcss-win32-arm64-msvc/-/lightningcss-win32-arm64-msvc-1.33.0.tgz |
-| lightningcss-win32-x64-msvc | 1.33.0 | MPL-2.0 | TXT-114 | https://registry.npmjs.org/lightningcss-win32-x64-msvc/-/lightningcss-win32-x64-msvc-1.33.0.tgz |
-| locate-path | 6.0.0 | MIT | TXT-111 | https://registry.npmjs.org/locate-path/-/locate-path-6.0.0.tgz |
+| keyv | 4.5.4 | MIT | TXT-214（规范文本补充：MIT） | https://registry.npmjs.org/keyv/-/keyv-4.5.4.tgz |
+| levn | 0.4.1 | MIT | TXT-227 | https://registry.npmjs.org/levn/-/levn-0.4.1.tgz |
+| lightningcss | 1.33.0 | MPL-2.0 | TXT-116 | https://registry.npmjs.org/lightningcss/-/lightningcss-1.33.0.tgz |
+| lightningcss-android-arm64 | 1.33.0 | MPL-2.0 | TXT-116（同版平台包共享自 npm:node_modules/lightningcss） | https://registry.npmjs.org/lightningcss-android-arm64/-/lightningcss-android-arm64-1.33.0.tgz |
+| lightningcss-darwin-arm64 | 1.33.0 | MPL-2.0 | TXT-116（同版平台包共享自 npm:node_modules/lightningcss） | https://registry.npmjs.org/lightningcss-darwin-arm64/-/lightningcss-darwin-arm64-1.33.0.tgz |
+| lightningcss-darwin-x64 | 1.33.0 | MPL-2.0 | TXT-116（同版平台包共享自 npm:node_modules/lightningcss） | https://registry.npmjs.org/lightningcss-darwin-x64/-/lightningcss-darwin-x64-1.33.0.tgz |
+| lightningcss-freebsd-x64 | 1.33.0 | MPL-2.0 | TXT-116（同版平台包共享自 npm:node_modules/lightningcss） | https://registry.npmjs.org/lightningcss-freebsd-x64/-/lightningcss-freebsd-x64-1.33.0.tgz |
+| lightningcss-linux-arm-gnueabihf | 1.33.0 | MPL-2.0 | TXT-116（同版平台包共享自 npm:node_modules/lightningcss） | https://registry.npmjs.org/lightningcss-linux-arm-gnueabihf/-/lightningcss-linux-arm-gnueabihf-1.33.0.tgz |
+| lightningcss-linux-arm64-gnu | 1.33.0 | MPL-2.0 | TXT-116（同版平台包共享自 npm:node_modules/lightningcss） | https://registry.npmjs.org/lightningcss-linux-arm64-gnu/-/lightningcss-linux-arm64-gnu-1.33.0.tgz |
+| lightningcss-linux-arm64-musl | 1.33.0 | MPL-2.0 | TXT-116（同版平台包共享自 npm:node_modules/lightningcss） | https://registry.npmjs.org/lightningcss-linux-arm64-musl/-/lightningcss-linux-arm64-musl-1.33.0.tgz |
+| lightningcss-linux-x64-gnu | 1.33.0 | MPL-2.0 | TXT-116（同版平台包共享自 npm:node_modules/lightningcss） | https://registry.npmjs.org/lightningcss-linux-x64-gnu/-/lightningcss-linux-x64-gnu-1.33.0.tgz |
+| lightningcss-linux-x64-musl | 1.33.0 | MPL-2.0 | TXT-116（同版平台包共享自 npm:node_modules/lightningcss） | https://registry.npmjs.org/lightningcss-linux-x64-musl/-/lightningcss-linux-x64-musl-1.33.0.tgz |
+| lightningcss-win32-arm64-msvc | 1.33.0 | MPL-2.0 | TXT-116（同版平台包共享自 npm:node_modules/lightningcss） | https://registry.npmjs.org/lightningcss-win32-arm64-msvc/-/lightningcss-win32-arm64-msvc-1.33.0.tgz |
+| lightningcss-win32-x64-msvc | 1.33.0 | MPL-2.0 | TXT-116 | https://registry.npmjs.org/lightningcss-win32-x64-msvc/-/lightningcss-win32-x64-msvc-1.33.0.tgz |
+| locate-path | 6.0.0 | MIT | TXT-112 | https://registry.npmjs.org/locate-path/-/locate-path-6.0.0.tgz |
 | lru-cache | 10.4.3 | ISC | TXT-090 | https://registry.npmjs.org/lru-cache/-/lru-cache-10.4.3.tgz |
 | lunar-typescript | 1.8.6 | MIT | TXT-013 | https://registry.npmjs.org/lunar-typescript/-/lunar-typescript-1.8.6.tgz |
 | magic-string | 0.30.21 | MIT | TXT-034 | https://registry.npmjs.org/magic-string/-/magic-string-0.30.21.tgz |
 | minimatch | 10.2.5 | BlueOak-1.0.0 | TXT-065 | https://registry.npmjs.org/minimatch/-/minimatch-10.2.5.tgz |
-| minipass | 7.1.3 | BlueOak-1.0.0 | TXT-162 | https://registry.npmjs.org/minipass/-/minipass-7.1.3.tgz |
+| minipass | 7.1.3 | BlueOak-1.0.0 | TXT-165 | https://registry.npmjs.org/minipass/-/minipass-7.1.3.tgz |
 | ms | 2.1.3 | MIT | TXT-030 | https://registry.npmjs.org/ms/-/ms-2.1.3.tgz |
-| muggle-string | 0.4.1 | MIT | TXT-261 | https://registry.npmjs.org/muggle-string/-/muggle-string-0.4.1.tgz |
-| nanoid | 3.3.18 | MIT | TXT-257 | https://registry.npmjs.org/nanoid/-/nanoid-3.3.18.tgz |
-| natural-compare | 1.4.0 | MIT | TXT-210（规范文本补充：MIT） | https://registry.npmjs.org/natural-compare/-/natural-compare-1.4.0.tgz |
+| muggle-string | 0.4.1 | MIT | TXT-267 | https://registry.npmjs.org/muggle-string/-/muggle-string-0.4.1.tgz |
+| nanoid | 3.3.20 | MIT | TXT-263 | https://registry.npmjs.org/nanoid/-/nanoid-3.3.20.tgz |
+| natural-compare | 1.4.0 | MIT | TXT-214（规范文本补充：MIT） | https://registry.npmjs.org/natural-compare/-/natural-compare-1.4.0.tgz |
 | nopt | 7.2.1 | ISC | TXT-099 | https://registry.npmjs.org/nopt/-/nopt-7.2.1.tgz |
-| nth-check | 2.1.1 | BSD-2-Clause | TXT-242 | https://registry.npmjs.org/nth-check/-/nth-check-2.1.1.tgz |
-| obug | 2.1.4 | MIT | TXT-276 | https://registry.npmjs.org/obug/-/obug-2.1.4.tgz |
-| optionator | 0.9.4 | MIT | TXT-222 | https://registry.npmjs.org/optionator/-/optionator-0.9.4.tgz |
-| p-limit | 3.1.0 | MIT | TXT-111 | https://registry.npmjs.org/p-limit/-/p-limit-3.1.0.tgz |
-| p-locate | 5.0.0 | MIT | TXT-111 | https://registry.npmjs.org/p-locate/-/p-locate-5.0.0.tgz |
-| package-json-from-dist | 1.0.1 | BlueOak-1.0.0 | TXT-191 | https://registry.npmjs.org/package-json-from-dist/-/package-json-from-dist-1.0.1.tgz |
-| path-browserify | 1.0.1 | MIT | TXT-189 | https://registry.npmjs.org/path-browserify/-/path-browserify-1.0.1.tgz |
+| nth-check | 2.1.1 | BSD-2-Clause | TXT-248 | https://registry.npmjs.org/nth-check/-/nth-check-2.1.1.tgz |
+| obug | 2.1.4 | MIT | TXT-283 | https://registry.npmjs.org/obug/-/obug-2.1.4.tgz |
+| optionator | 0.9.4 | MIT | TXT-227 | https://registry.npmjs.org/optionator/-/optionator-0.9.4.tgz |
+| p-limit | 3.1.0 | MIT | TXT-112 | https://registry.npmjs.org/p-limit/-/p-limit-3.1.0.tgz |
+| p-locate | 5.0.0 | MIT | TXT-112 | https://registry.npmjs.org/p-locate/-/p-locate-5.0.0.tgz |
+| package-json-from-dist | 1.0.1 | BlueOak-1.0.0 | TXT-194 | https://registry.npmjs.org/package-json-from-dist/-/package-json-from-dist-1.0.1.tgz |
+| path-browserify | 1.0.1 | MIT | TXT-192 | https://registry.npmjs.org/path-browserify/-/path-browserify-1.0.1.tgz |
 | path-exists | 4.0.0 | MIT | TXT-096 | https://registry.npmjs.org/path-exists/-/path-exists-4.0.0.tgz |
 | path-key | 3.1.1 | MIT | TXT-096 | https://registry.npmjs.org/path-key/-/path-key-3.1.1.tgz |
-| path-scurry | 1.11.1 | BlueOak-1.0.0 | TXT-162 | https://registry.npmjs.org/path-scurry/-/path-scurry-1.11.1.tgz |
+| path-scurry | 1.11.1 | BlueOak-1.0.0 | TXT-165 | https://registry.npmjs.org/path-scurry/-/path-scurry-1.11.1.tgz |
 | pathe | 2.0.3 | MIT | TXT-104 | https://registry.npmjs.org/pathe/-/pathe-2.0.3.tgz |
-| picocolors | 1.1.1 | ISC | TXT-123 | https://registry.npmjs.org/picocolors/-/picocolors-1.1.1.tgz |
-| picomatch | 4.0.5 | MIT | TXT-248 | https://registry.npmjs.org/picomatch/-/picomatch-4.0.5.tgz |
-| postcss | 8.5.28 | MIT | TXT-110 | https://registry.npmjs.org/postcss/-/postcss-8.5.28.tgz |
-| postcss-selector-parser | 7.1.4 | MIT | TXT-058 | https://registry.npmjs.org/postcss-selector-parser/-/postcss-selector-parser-7.1.4.tgz |
-| prelude-ls | 1.2.1 | MIT | TXT-222 | https://registry.npmjs.org/prelude-ls/-/prelude-ls-1.2.1.tgz |
+| picocolors | 1.1.1 | ISC | TXT-125 | https://registry.npmjs.org/picocolors/-/picocolors-1.1.1.tgz |
+| picomatch | 4.0.5 | MIT | TXT-254 | https://registry.npmjs.org/picomatch/-/picomatch-4.0.5.tgz |
+| postcss | 8.5.30 | MIT | TXT-111 | https://registry.npmjs.org/postcss/-/postcss-8.5.30.tgz |
+| postcss-selector-parser | 7.1.6 | MIT | TXT-058 | https://registry.npmjs.org/postcss-selector-parser/-/postcss-selector-parser-7.1.6.tgz |
+| prelude-ls | 1.2.1 | MIT | TXT-227 | https://registry.npmjs.org/prelude-ls/-/prelude-ls-1.2.1.tgz |
 | proto-list | 1.2.4 | ISC | TXT-099 | https://registry.npmjs.org/proto-list/-/proto-list-1.2.4.tgz |
 | punycode | 2.3.1 | MIT | TXT-095 | https://registry.npmjs.org/punycode/-/punycode-2.3.1.tgz |
 | rolldown | 1.1.5 | MIT | TXT-047 | https://registry.npmjs.org/rolldown/-/rolldown-1.1.5.tgz |
 | semver | 7.8.5 | ISC | TXT-099 | https://registry.npmjs.org/semver/-/semver-7.8.5.tgz |
-| shebang-command | 2.0.0 | MIT | TXT-129 | https://registry.npmjs.org/shebang-command/-/shebang-command-2.0.0.tgz |
+| shebang-command | 2.0.0 | MIT | TXT-131 | https://registry.npmjs.org/shebang-command/-/shebang-command-2.0.0.tgz |
 | shebang-regex | 3.0.0 | MIT | TXT-096 | https://registry.npmjs.org/shebang-regex/-/shebang-regex-3.0.0.tgz |
 | siginfo | 2.0.0 | ISC | TXT-079 | https://registry.npmjs.org/siginfo/-/siginfo-2.0.0.tgz |
-| signal-exit | 4.1.0 | ISC | TXT-213 | https://registry.npmjs.org/signal-exit/-/signal-exit-4.1.0.tgz |
-| source-map-js | 1.2.1 | BSD-3-Clause | TXT-134 | https://registry.npmjs.org/source-map-js/-/source-map-js-1.2.1.tgz |
-| stackback | 0.0.2 | MIT | TXT-210（规范文本补充：MIT） | https://registry.npmjs.org/stackback/-/stackback-0.0.2.tgz |
-| std-env | 4.2.0 | MIT | TXT-197 | https://registry.npmjs.org/std-env/-/std-env-4.2.0.tgz |
-| string-width | 5.1.2 | MIT | TXT-111 | https://registry.npmjs.org/string-width/-/string-width-5.1.2.tgz |
+| signal-exit | 4.1.0 | ISC | TXT-217 | https://registry.npmjs.org/signal-exit/-/signal-exit-4.1.0.tgz |
+| source-map-js | 1.2.2 | BSD-3-Clause | TXT-136 | https://registry.npmjs.org/source-map-js/-/source-map-js-1.2.2.tgz |
+| stackback | 0.0.2 | MIT | TXT-214（规范文本补充：MIT） | https://registry.npmjs.org/stackback/-/stackback-0.0.2.tgz |
+| std-env | 4.2.0 | MIT | TXT-200 | https://registry.npmjs.org/std-env/-/std-env-4.2.0.tgz |
+| string-width | 5.1.2 | MIT | TXT-112 | https://registry.npmjs.org/string-width/-/string-width-5.1.2.tgz |
 | string-width | 4.2.3 | MIT | TXT-096 | https://registry.npmjs.org/string-width/-/string-width-4.2.3.tgz |
 | ansi-regex | 5.0.1 | MIT | TXT-096 | https://registry.npmjs.org/ansi-regex/-/ansi-regex-5.0.1.tgz |
 | emoji-regex | 8.0.0 | MIT | TXT-095 | https://registry.npmjs.org/emoji-regex/-/emoji-regex-8.0.0.tgz |
 | strip-ansi | 6.0.1 | MIT | TXT-096 | https://registry.npmjs.org/strip-ansi/-/strip-ansi-6.0.1.tgz |
-| strip-ansi | 7.2.0 | MIT | TXT-111 | https://registry.npmjs.org/strip-ansi/-/strip-ansi-7.2.0.tgz |
+| strip-ansi | 7.2.0 | MIT | TXT-112 | https://registry.npmjs.org/strip-ansi/-/strip-ansi-7.2.0.tgz |
 | strip-ansi | 6.0.1 | MIT | TXT-096 | https://registry.npmjs.org/strip-ansi/-/strip-ansi-6.0.1.tgz |
 | ansi-regex | 5.0.1 | MIT | TXT-096 | https://registry.npmjs.org/ansi-regex/-/ansi-regex-5.0.1.tgz |
-| tinybench | 2.9.0 | MIT | TXT-245 | https://registry.npmjs.org/tinybench/-/tinybench-2.9.0.tgz |
-| tinyexec | 1.2.4 | MIT | TXT-293 | https://registry.npmjs.org/tinyexec/-/tinyexec-1.2.4.tgz |
+| tinybench | 2.9.0 | MIT | TXT-251 | https://registry.npmjs.org/tinybench/-/tinybench-2.9.0.tgz |
+| tinyexec | 1.2.4 | MIT | TXT-300 | https://registry.npmjs.org/tinyexec/-/tinyexec-1.2.4.tgz |
 | tinyglobby | 0.2.17 | MIT | TXT-044 | https://registry.npmjs.org/tinyglobby/-/tinyglobby-0.2.17.tgz |
-| tinyrainbow | 3.1.1 | MIT | TXT-245 | https://registry.npmjs.org/tinyrainbow/-/tinyrainbow-3.1.1.tgz |
-| ts-api-utils | 2.5.0 | MIT | TXT-146 | https://registry.npmjs.org/ts-api-utils/-/ts-api-utils-2.5.0.tgz |
+| tinyrainbow | 3.1.1 | MIT | TXT-251 | https://registry.npmjs.org/tinyrainbow/-/tinyrainbow-3.1.1.tgz |
+| ts-api-utils | 2.5.0 | MIT | TXT-149 | https://registry.npmjs.org/ts-api-utils/-/ts-api-utils-2.5.0.tgz |
 | tslib | 2.8.1 | 0BSD | TXT-041（来自完整性校验通过的 npm 原始发行包） | https://registry.npmjs.org/tslib/-/tslib-2.8.1.tgz |
-| type-check | 0.4.0 | MIT | TXT-222 | https://registry.npmjs.org/type-check/-/type-check-0.4.0.tgz |
-| typescript | 6.0.3 | Apache-2.0 | TXT-198 | https://registry.npmjs.org/typescript/-/typescript-6.0.3.tgz |
+| type-check | 0.4.0 | MIT | TXT-227 | https://registry.npmjs.org/type-check/-/type-check-0.4.0.tgz |
+| typescript | 6.0.3 | Apache-2.0 | TXT-201 | https://registry.npmjs.org/typescript/-/typescript-6.0.3.tgz |
 | typescript-eslint | 8.65.0 | MIT | TXT-069 | https://registry.npmjs.org/typescript-eslint/-/typescript-eslint-8.65.0.tgz |
-| undici-types | 8.3.0 | MIT | TXT-196 | https://registry.npmjs.org/undici-types/-/undici-types-8.3.0.tgz |
+| undici-types | 8.3.0 | MIT | TXT-199 | https://registry.npmjs.org/undici-types/-/undici-types-8.3.0.tgz |
 | uri-js | 4.4.1 | BSD-2-Clause | TXT-016 | https://registry.npmjs.org/uri-js/-/uri-js-4.4.1.tgz |
 | util-deprecate | 1.0.2 | MIT | TXT-001 | https://registry.npmjs.org/util-deprecate/-/util-deprecate-1.0.2.tgz |
-| vite | 8.1.5 | MIT | TXT-215 | https://registry.npmjs.org/vite/-/vite-8.1.5.tgz |
-| vitest | 4.1.11 | MIT | TXT-158 | https://registry.npmjs.org/vitest/-/vitest-4.1.11.tgz |
-| vscode-uri | 3.1.0 | MIT | TXT-234 | https://registry.npmjs.org/vscode-uri/-/vscode-uri-3.1.0.tgz |
-| vue | 3.5.40 | MIT | TXT-033 | https://registry.npmjs.org/vue/-/vue-3.5.40.tgz |
-| vue-component-type-helpers | 3.3.8 | MIT | TXT-205 | https://registry.npmjs.org/vue-component-type-helpers/-/vue-component-type-helpers-3.3.8.tgz |
-| vue-eslint-parser | 10.4.1 | MIT | TXT-295 | https://registry.npmjs.org/vue-eslint-parser/-/vue-eslint-parser-10.4.1.tgz |
-| vue-tsc | 3.3.8 | MIT | TXT-192 | https://registry.npmjs.org/vue-tsc/-/vue-tsc-3.3.8.tgz |
+| vite | 8.1.5 | MIT | TXT-219 | https://registry.npmjs.org/vite/-/vite-8.1.5.tgz |
+| vitest | 4.1.11 | MIT | TXT-161 | https://registry.npmjs.org/vitest/-/vitest-4.1.11.tgz |
+| vscode-uri | 3.1.0 | MIT | TXT-240 | https://registry.npmjs.org/vscode-uri/-/vscode-uri-3.1.0.tgz |
+| vue | 3.5.44 | MIT | TXT-033 | https://registry.npmjs.org/vue/-/vue-3.5.44.tgz |
+| vue-component-type-helpers | 3.3.8 | MIT | TXT-209 | https://registry.npmjs.org/vue-component-type-helpers/-/vue-component-type-helpers-3.3.8.tgz |
+| vue-eslint-parser | 10.4.1 | MIT | TXT-302 | https://registry.npmjs.org/vue-eslint-parser/-/vue-eslint-parser-10.4.1.tgz |
+| vue-tsc | 3.3.8 | MIT | TXT-195 | https://registry.npmjs.org/vue-tsc/-/vue-tsc-3.3.8.tgz |
 | whatwg-mimetype | 3.0.0 | MIT | TXT-103 | https://registry.npmjs.org/whatwg-mimetype/-/whatwg-mimetype-3.0.0.tgz |
 | which | 2.0.2 | ISC | TXT-099 | https://registry.npmjs.org/which/-/which-2.0.2.tgz |
-| why-is-node-running | 2.3.0 | MIT | TXT-130 | https://registry.npmjs.org/why-is-node-running/-/why-is-node-running-2.3.0.tgz |
-| word-wrap | 1.2.5 | MIT | TXT-139 | https://registry.npmjs.org/word-wrap/-/word-wrap-1.2.5.tgz |
-| wrap-ansi | 8.1.0 | MIT | TXT-111 | https://registry.npmjs.org/wrap-ansi/-/wrap-ansi-8.1.0.tgz |
-| wrap-ansi | 7.0.0 | MIT | TXT-111 | https://registry.npmjs.org/wrap-ansi/-/wrap-ansi-7.0.0.tgz |
+| why-is-node-running | 2.3.0 | MIT | TXT-132 | https://registry.npmjs.org/why-is-node-running/-/why-is-node-running-2.3.0.tgz |
+| word-wrap | 1.2.5 | MIT | TXT-141 | https://registry.npmjs.org/word-wrap/-/word-wrap-1.2.5.tgz |
+| wrap-ansi | 8.1.0 | MIT | TXT-112 | https://registry.npmjs.org/wrap-ansi/-/wrap-ansi-8.1.0.tgz |
+| wrap-ansi | 7.0.0 | MIT | TXT-112 | https://registry.npmjs.org/wrap-ansi/-/wrap-ansi-7.0.0.tgz |
 | ansi-regex | 5.0.1 | MIT | TXT-096 | https://registry.npmjs.org/ansi-regex/-/ansi-regex-5.0.1.tgz |
 | ansi-styles | 4.3.0 | MIT | TXT-096 | https://registry.npmjs.org/ansi-styles/-/ansi-styles-4.3.0.tgz |
 | emoji-regex | 8.0.0 | MIT | TXT-095 | https://registry.npmjs.org/emoji-regex/-/emoji-regex-8.0.0.tgz |
 | string-width | 4.2.3 | MIT | TXT-096 | https://registry.npmjs.org/string-width/-/string-width-4.2.3.tgz |
 | strip-ansi | 6.0.1 | MIT | TXT-096 | https://registry.npmjs.org/strip-ansi/-/strip-ansi-6.0.1.tgz |
 | ws | 8.21.1 | MIT | TXT-063 | https://registry.npmjs.org/ws/-/ws-8.21.1.tgz |
-| xml-name-validator | 5.0.0 | Apache-2.0 | TXT-195 | https://registry.npmjs.org/xml-name-validator/-/xml-name-validator-5.0.0.tgz |
-| yocto-queue | 0.1.0 | MIT | TXT-111 | https://registry.npmjs.org/yocto-queue/-/yocto-queue-0.1.0.tgz |
+| xml-name-validator | 5.0.0 | Apache-2.0 | TXT-198 | https://registry.npmjs.org/xml-name-validator/-/xml-name-validator-5.0.0.tgz |
+| yocto-queue | 0.1.0 | MIT | TXT-112 | https://registry.npmjs.org/yocto-queue/-/yocto-queue-0.1.0.tgz |
 
 ## Windows Rust 包
 
 | 包 | 版本 | 许可表达式 | 可追溯许可/NOTICE 文本 | 来源 |
 | --- | --- | --- | --- | --- |
-| adler2 | 2.0.1 | 0BSD OR MIT OR Apache-2.0 | TXT-155, TXT-166, TXT-048 | https://github.com/oyvindln/adler2 |
-| aho-corasick | 1.1.4 | Unlicense OR MIT | TXT-003, TXT-023, TXT-153 | https://github.com/BurntSushi/aho-corasick |
-| alloc-no-stdlib | 2.0.4 | BSD-3-Clause | TXT-228 | https://github.com/dropbox/rust-alloc-no-stdlib |
-| alloc-stdlib | 0.2.4 | BSD-3-Clause | TXT-228（来自 crate VCS 提交锁定的上游仓库许可文件） | https://github.com/dropbox/rust-alloc-no-stdlib |
+| adler2 | 2.0.1 | 0BSD OR MIT OR Apache-2.0 | TXT-158, TXT-169, TXT-048 | https://github.com/oyvindln/adler2 |
+| aho-corasick | 1.1.4 | Unlicense OR MIT | TXT-003, TXT-023, TXT-156 | https://github.com/BurntSushi/aho-corasick |
+| alloc-no-stdlib | 3.0.0 | BSD-3-Clause | TXT-233 | https://github.com/dropbox/rust-alloc-no-stdlib |
+| alloc-stdlib | 0.3.0 | BSD-3-Clause | TXT-233（来自 crate VCS 提交锁定的上游仓库许可文件） | https://github.com/dropbox/rust-alloc-no-stdlib |
 | allocator-api2 | 0.2.21 | MIT OR Apache-2.0 | TXT-040, TXT-074 | https://github.com/zakarumych/allocator-api2 |
-| anyhow | 1.0.104 | MIT OR Apache-2.0 | TXT-120, TXT-048 | https://github.com/dtolnay/anyhow |
-| arrayvec | 0.7.8 | MIT OR Apache-2.0 | TXT-193, TXT-098 | https://github.com/bluss/arrayvec |
-| atoi | 2.0.0 | MIT | TXT-209 | https://github.com/pacman82/atoi-rs |
-| auto-launch | 0.5.0 | MIT | TXT-265 | https://github.com/zzzgydi/auto-launch.git |
-| autocfg | 1.5.1 | Apache-2.0 OR MIT | TXT-193, TXT-056 | https://github.com/cuviper/autocfg |
-| base64 | 0.22.1 | MIT OR Apache-2.0 | TXT-193, TXT-021 | https://github.com/marshallpierce/rust-base64 |
-| bit-set | 0.8.0 | Apache-2.0 OR MIT | TXT-154, TXT-286 | https://github.com/contain-rs/bit-set |
-| bit-vec | 0.8.0 | Apache-2.0 OR MIT | TXT-154, TXT-286 | https://github.com/contain-rs/bit-vec |
-| bitflags | 1.3.2 | MIT/Apache-2.0 | TXT-193, TXT-121 | https://github.com/bitflags/bitflags |
-| bitflags | 2.13.1 | MIT OR Apache-2.0 | TXT-193, TXT-121 | https://github.com/bitflags/bitflags |
-| block-buffer | 0.10.4 | MIT OR Apache-2.0 | TXT-202, TXT-253 | https://github.com/RustCrypto/utils |
-| brotli-decompressor | 5.0.3 | BSD-3-Clause/MIT | TXT-228 | https://github.com/dropbox/rust-brotli-decompressor |
-| brotli | 8.0.4 | BSD-3-Clause AND MIT | TXT-228, TXT-080 | https://github.com/dropbox/rust-brotli |
-| byteorder | 1.5.0 | Unlicense OR MIT | TXT-003, TXT-023, TXT-153 | https://github.com/BurntSushi/byteorder |
+| anyhow | 1.0.104 | MIT OR Apache-2.0 | TXT-122, TXT-048 | https://github.com/dtolnay/anyhow |
+| arrayvec | 0.7.8 | MIT OR Apache-2.0 | TXT-196, TXT-098 | https://github.com/bluss/arrayvec |
+| atoi | 2.0.0 | MIT | TXT-213 | https://github.com/pacman82/atoi-rs |
+| auto-launch | 0.5.0 | MIT | TXT-272 | https://github.com/zzzgydi/auto-launch.git |
+| autocfg | 1.5.1 | Apache-2.0 OR MIT | TXT-196, TXT-056 | https://github.com/cuviper/autocfg |
+| base64 | 0.22.1 | MIT OR Apache-2.0 | TXT-196, TXT-021 | https://github.com/marshallpierce/rust-base64 |
+| base64 | 0.23.1 | MIT OR Apache-2.0 | TXT-196, TXT-208 | https://github.com/marshallpierce/rust-base64 |
+| bit-set | 0.8.0 | Apache-2.0 OR MIT | TXT-157, TXT-294 | https://github.com/contain-rs/bit-set |
+| bit-vec | 0.8.0 | Apache-2.0 OR MIT | TXT-157, TXT-294 | https://github.com/contain-rs/bit-vec |
+| bitflags | 1.3.2 | MIT/Apache-2.0 | TXT-196, TXT-123 | https://github.com/bitflags/bitflags |
+| bitflags | 2.13.1 | MIT OR Apache-2.0 | TXT-196, TXT-123 | https://github.com/bitflags/bitflags |
+| block-buffer | 0.10.4 | MIT OR Apache-2.0 | TXT-205, TXT-259 | https://github.com/RustCrypto/utils |
+| brotli-decompressor | 6.0.1 | BSD-3-Clause/MIT | TXT-233 | https://github.com/dropbox/rust-brotli-decompressor |
+| brotli | 9.0.0 | BSD-3-Clause AND MIT | TXT-233, TXT-080 | https://github.com/dropbox/rust-brotli |
+| byteorder | 1.5.0 | Unlicense OR MIT | TXT-003, TXT-023, TXT-156 | https://github.com/BurntSushi/byteorder |
 | bytes | 1.12.1 | MIT | TXT-091 | https://github.com/tokio-rs/bytes |
-| camino | 1.2.4 | MIT OR Apache-2.0 | TXT-193, TXT-048 | https://github.com/camino-rs/camino |
+| camino | 1.2.4 | MIT OR Apache-2.0 | TXT-196, TXT-048 | https://github.com/camino-rs/camino |
 | cargo_metadata | 0.19.2 | MIT | TXT-048 | https://github.com/oli-obk/cargo_metadata |
-| cargo_toml | 0.22.3 | Apache-2.0 OR MIT | TXT-277 | https://gitlab.com/lib.rs/cargo_toml |
-| cargo-platform | 0.1.9 | MIT OR Apache-2.0 | TXT-166, TXT-048 | https://github.com/rust-lang/cargo |
-| cc | 1.3.0 | MIT OR Apache-2.0 | TXT-193, TXT-076 | https://github.com/rust-lang/cc-rs |
-| cfb | 0.7.3 | MIT | TXT-273 | https://github.com/mdsteele/rust-cfb |
-| cfg-if | 1.0.4 | MIT OR Apache-2.0 | TXT-193, TXT-076 | https://github.com/rust-lang/cfg-if |
-| cookie | 0.18.1 | MIT OR Apache-2.0 | TXT-055, TXT-281 | https://github.com/SergioBenitez/cookie-rs |
-| cpufeatures | 0.2.17 | MIT OR Apache-2.0 | TXT-202, TXT-208 | https://github.com/RustCrypto/utils |
-| crc-catalog | 2.5.0 | MIT OR Apache-2.0 | TXT-011, TXT-210（规范文本补充：Apache-2.0、MIT） | https://github.com/akhilles/crc-catalog.git |
+| cargo_toml | 1.0.1 | Apache-2.0 OR MIT | TXT-284 | https://gitlab.com/lib.rs/cargo_toml |
+| cargo-platform | 0.1.9 | MIT OR Apache-2.0 | TXT-169, TXT-048 | https://github.com/rust-lang/cargo |
+| cc | 1.3.0 | MIT OR Apache-2.0 | TXT-196, TXT-076 | https://github.com/rust-lang/cc-rs |
+| cfb | 0.14.0 | MIT | TXT-280 | https://github.com/mdsteele/rust-cfb |
+| cfg-if | 1.0.4 | MIT OR Apache-2.0 | TXT-196, TXT-076 | https://github.com/rust-lang/cfg-if |
+| cookie | 0.18.1 | MIT OR Apache-2.0 | TXT-055, TXT-288 | https://github.com/SergioBenitez/cookie-rs |
+| cpufeatures | 0.2.17 | MIT OR Apache-2.0 | TXT-205, TXT-212 | https://github.com/RustCrypto/utils |
+| crc-catalog | 2.5.0 | MIT OR Apache-2.0 | TXT-011, TXT-214（规范文本补充：Apache-2.0、MIT） | https://github.com/akhilles/crc-catalog.git |
 | crc | 3.4.0 | MIT OR Apache-2.0 | TXT-094, TXT-072 | https://github.com/mrhooray/crc-rs.git |
-| crc32fast | 1.5.0 | MIT OR Apache-2.0 | TXT-233, TXT-118 | https://github.com/srijs/rust-crc32fast |
-| crossbeam-channel | 0.5.16 | MIT OR Apache-2.0 | TXT-193, TXT-107, TXT-212 | https://github.com/crossbeam-rs/crossbeam |
-| crossbeam-queue | 0.3.13 | MIT OR Apache-2.0 | TXT-193, TXT-107 | https://github.com/crossbeam-rs/crossbeam |
-| crossbeam-utils | 0.8.22 | MIT OR Apache-2.0 | TXT-193, TXT-107 | https://github.com/crossbeam-rs/crossbeam |
-| crypto-common | 0.1.7 | MIT OR Apache-2.0 | TXT-202, TXT-073 | https://github.com/RustCrypto/traits |
-| cssparser-macros | 0.6.1 | MPL-2.0 | TXT-294 | https://github.com/servo/rust-cssparser |
-| cssparser | 0.36.0 | MPL-2.0 | TXT-294 | https://github.com/servo/rust-cssparser |
-| ctor-proc-macro | 0.0.7 | Apache-2.0 OR MIT | TXT-201, TXT-225 | https://github.com/mmastrac/rust-ctor |
-| ctor | 0.8.0 | Apache-2.0 OR MIT | TXT-201, TXT-225 | https://github.com/mmastrac/rust-ctor |
-| darling_core | 0.23.0 | MIT | TXT-171 | https://github.com/TedDriggs/darling |
-| darling_macro | 0.23.0 | MIT | TXT-171 | https://github.com/TedDriggs/darling |
-| darling | 0.23.0 | MIT | TXT-171 | https://github.com/TedDriggs/darling |
-| deranged | 0.5.8 | MIT OR Apache-2.0 | TXT-275, TXT-045 | https://github.com/jhpratt/deranged |
-| derive_more-impl | 2.1.1 | MIT | TXT-163 | https://github.com/JelteF/derive_more |
-| derive_more | 2.1.1 | MIT | TXT-163 | https://github.com/JelteF/derive_more |
-| digest | 0.10.7 | MIT OR Apache-2.0 | TXT-202, TXT-184 | https://github.com/RustCrypto/traits |
-| dirs-sys | 0.5.0 | MIT OR Apache-2.0 | TXT-250, TXT-131 | https://github.com/dirs-dev/dirs-sys-rs |
-| dirs | 6.0.0 | MIT OR Apache-2.0 | TXT-250, TXT-131 | https://github.com/soc/dirs-rs |
-| displaydoc | 0.2.6 | MIT OR Apache-2.0 | TXT-193, TXT-048 | https://github.com/yaahc/displaydoc |
-| dom_query | 0.27.0 | MIT | TXT-140 | https://github.com/niklak/dom_query |
+| crc32fast | 1.5.0 | MIT OR Apache-2.0 | TXT-239, TXT-120 | https://github.com/srijs/rust-crc32fast |
+| crossbeam-channel | 0.5.16 | MIT OR Apache-2.0 | TXT-196, TXT-108, TXT-216 | https://github.com/crossbeam-rs/crossbeam |
+| crossbeam-queue | 0.3.13 | MIT OR Apache-2.0 | TXT-196, TXT-108 | https://github.com/crossbeam-rs/crossbeam |
+| crossbeam-utils | 0.8.22 | MIT OR Apache-2.0 | TXT-196, TXT-108 | https://github.com/crossbeam-rs/crossbeam |
+| crypto-common | 0.1.7 | MIT OR Apache-2.0 | TXT-205, TXT-073 | https://github.com/RustCrypto/traits |
+| cssparser-macros | 0.7.1 | MPL-2.0 | TXT-301 | https://github.com/servo/rust-cssparser |
+| cssparser | 0.37.0 | MPL-2.0 | TXT-301 | https://github.com/servo/rust-cssparser |
+| ctor | 1.0.13 | Apache-2.0 OR MIT | TXT-204, TXT-230 | https://github.com/mmastrac/linktime |
+| darling_core | 0.23.0 | MIT | TXT-174 | https://github.com/TedDriggs/darling |
+| darling_macro | 0.23.0 | MIT | TXT-174 | https://github.com/TedDriggs/darling |
+| darling | 0.23.0 | MIT | TXT-174 | https://github.com/TedDriggs/darling |
+| deranged | 0.5.8 | MIT OR Apache-2.0 | TXT-282, TXT-045 | https://github.com/jhpratt/deranged |
+| derive_more-impl | 2.1.1 | MIT | TXT-166 | https://github.com/JelteF/derive_more |
+| derive_more | 2.1.1 | MIT | TXT-166 | https://github.com/JelteF/derive_more |
+| digest | 0.10.7 | MIT OR Apache-2.0 | TXT-205, TXT-187 | https://github.com/RustCrypto/traits |
+| dirs-sys | 0.5.0 | MIT OR Apache-2.0 | TXT-256, TXT-133 | https://github.com/dirs-dev/dirs-sys-rs |
+| dirs | 7.0.0 | MIT OR Apache-2.0 | TXT-256, TXT-133 | https://codeberg.org/dirs/dirs-rs |
+| displaydoc | 0.2.6 | MIT OR Apache-2.0 | TXT-196, TXT-048 | https://github.com/yaahc/displaydoc |
+| dom_query | 0.28.0 | MIT | TXT-143 | https://github.com/niklak/dom_query |
 | dotenvy | 0.15.7 | MIT | TXT-075 | https://github.com/allan2/dotenvy |
-| dpi | 0.1.2 | Apache-2.0 AND MIT | TXT-135, TXT-185 | https://github.com/rust-windowing/winit |
+| dpi | 0.1.2 | Apache-2.0 AND MIT | TXT-137, TXT-188 | https://github.com/rust-windowing/winit |
 | dtoa-short | 0.3.5 | MPL-2.0 | TXT-036 | https://github.com/upsuper/dtoa-short |
-| dtoa | 1.0.11 | MIT OR Apache-2.0 | TXT-120, TXT-048 | https://github.com/dtolnay/dtoa |
-| dunce | 1.0.5 | CC0-1.0 OR MIT-0 OR Apache-2.0 | TXT-188 | https://gitlab.com/kornelski/dunce |
-| dyn-clone | 1.0.20 | MIT OR Apache-2.0 | TXT-120, TXT-048 | https://github.com/dtolnay/dyn-clone |
-| either | 1.16.0 | MIT OR Apache-2.0 | TXT-193, TXT-141 | https://github.com/rayon-rs/either |
+| dtoa | 1.0.11 | MIT OR Apache-2.0 | TXT-122, TXT-048 | https://github.com/dtolnay/dtoa |
+| dunce | 1.0.5 | CC0-1.0 OR MIT-0 OR Apache-2.0 | TXT-191 | https://gitlab.com/kornelski/dunce |
+| dyn-clone | 1.0.20 | MIT OR Apache-2.0 | TXT-122, TXT-048 | https://github.com/dtolnay/dyn-clone |
+| either | 1.16.0 | MIT OR Apache-2.0 | TXT-196, TXT-144 | https://github.com/rayon-rs/either |
 | embed-resource | 3.0.11 | MIT | TXT-032 | https://github.com/nabijaczleweli/rust-embed-resource |
-| equivalent | 1.0.2 | Apache-2.0 OR MIT | TXT-193, TXT-138 | https://github.com/indexmap-rs/equivalent |
-| erased-serde | 0.4.10 | MIT OR Apache-2.0 | TXT-120, TXT-048 | https://github.com/dtolnay/erased-serde |
-| event-listener | 5.4.2 | Apache-2.0 OR MIT | TXT-193, TXT-048 | https://github.com/smol-rs/event-listener |
-| fastrand | 2.5.0 | Apache-2.0 OR MIT | TXT-193, TXT-048 | https://github.com/smol-rs/fastrand |
-| fdeflate | 0.3.7 | MIT OR Apache-2.0 | TXT-019, TXT-236 | https://github.com/image-rs/fdeflate |
-| find-msvc-tools | 0.1.9 | MIT OR Apache-2.0 | TXT-193, TXT-076 | https://github.com/rust-lang/cc-rs |
-| flate2 | 1.1.9 | MIT OR Apache-2.0 | TXT-193, TXT-004 | https://github.com/rust-lang/flate2-rs |
-| flume | 0.11.1 | Apache-2.0/MIT | TXT-254, TXT-070 | https://github.com/zesterer/flume |
-| fnv | 1.0.7 | Apache-2.0 / MIT | TXT-193, TXT-124 | https://github.com/servo/rust-fnv |
-| foldhash | 0.1.5 | Zlib | TXT-211 | https://github.com/orlp/foldhash |
-| foldhash | 0.2.0 | Zlib | TXT-211 | https://github.com/orlp/foldhash |
-| form_urlencoded | 1.2.2 | MIT OR Apache-2.0 | TXT-193, TXT-039 | https://github.com/servo/rust-url |
-| futures-channel | 0.3.33 | MIT OR Apache-2.0 | TXT-054, TXT-125 | https://github.com/rust-lang/futures-rs |
-| futures-core | 0.3.33 | MIT OR Apache-2.0 | TXT-054, TXT-125 | https://github.com/rust-lang/futures-rs |
-| futures-executor | 0.3.33 | MIT OR Apache-2.0 | TXT-054, TXT-125 | https://github.com/rust-lang/futures-rs |
+| equivalent | 1.0.2 | Apache-2.0 OR MIT | TXT-196, TXT-140 | https://github.com/indexmap-rs/equivalent |
+| erased-serde | 0.4.10 | MIT OR Apache-2.0 | TXT-122, TXT-048 | https://github.com/dtolnay/erased-serde |
+| event-listener | 5.4.2 | Apache-2.0 OR MIT | TXT-196, TXT-048 | https://github.com/smol-rs/event-listener |
+| fastrand | 2.5.0 | Apache-2.0 OR MIT | TXT-196, TXT-048 | https://github.com/smol-rs/fastrand |
+| fdeflate | 0.3.7 | MIT OR Apache-2.0 | TXT-019, TXT-242 | https://github.com/image-rs/fdeflate |
+| find-msvc-tools | 0.1.9 | MIT OR Apache-2.0 | TXT-196, TXT-076 | https://github.com/rust-lang/cc-rs |
+| flate2 | 1.1.9 | MIT OR Apache-2.0 | TXT-196, TXT-004 | https://github.com/rust-lang/flate2-rs |
+| flume | 0.11.1 | Apache-2.0/MIT | TXT-260, TXT-070 | https://github.com/zesterer/flume |
+| fnv | 1.0.7 | Apache-2.0 / MIT | TXT-196, TXT-126 | https://github.com/servo/rust-fnv |
+| foldhash | 0.1.5 | Zlib | TXT-215 | https://github.com/orlp/foldhash |
+| foldhash | 0.2.0 | Zlib | TXT-215 | https://github.com/orlp/foldhash |
+| form_urlencoded | 1.2.2 | MIT OR Apache-2.0 | TXT-196, TXT-039 | https://github.com/servo/rust-url |
+| futures-channel | 0.3.33 | MIT OR Apache-2.0 | TXT-054, TXT-127 | https://github.com/rust-lang/futures-rs |
+| futures-core | 0.3.33 | MIT OR Apache-2.0 | TXT-054, TXT-127 | https://github.com/rust-lang/futures-rs |
+| futures-executor | 0.3.33 | MIT OR Apache-2.0 | TXT-054, TXT-127 | https://github.com/rust-lang/futures-rs |
 | futures-intrusive | 0.5.0 | MIT OR Apache-2.0 | TXT-092, TXT-029 | https://github.com/Matthias247/futures-intrusive |
-| futures-io | 0.3.33 | MIT OR Apache-2.0 | TXT-054, TXT-125 | https://github.com/rust-lang/futures-rs |
-| futures-sink | 0.3.33 | MIT OR Apache-2.0 | TXT-054, TXT-125 | https://github.com/rust-lang/futures-rs |
-| futures-task | 0.3.33 | MIT OR Apache-2.0 | TXT-054, TXT-125 | https://github.com/rust-lang/futures-rs |
-| futures-util | 0.3.33 | MIT OR Apache-2.0 | TXT-054, TXT-125 | https://github.com/rust-lang/futures-rs |
-| generic-array | 0.14.7 | MIT | TXT-227 | https://github.com/fizyk20/generic-array.git |
-| getrandom | 0.3.4 | MIT OR Apache-2.0 | TXT-204, TXT-060 | https://github.com/rust-random/getrandom |
-| getrandom | 0.4.3 | MIT OR Apache-2.0 | TXT-204, TXT-102 | https://github.com/rust-random/getrandom |
-| glob | 0.3.4 | MIT OR Apache-2.0 | TXT-193, TXT-121 | https://github.com/rust-lang/glob |
-| hashbrown | 0.12.3 | MIT OR Apache-2.0 | TXT-193, TXT-300 | https://github.com/rust-lang/hashbrown |
-| hashbrown | 0.15.5 | MIT OR Apache-2.0 | TXT-193, TXT-300 | https://github.com/rust-lang/hashbrown |
-| hashbrown | 0.17.1 | MIT OR Apache-2.0 | TXT-193, TXT-300 | https://github.com/rust-lang/hashbrown |
-| hashlink | 0.10.0 | MIT OR Apache-2.0 | TXT-229, TXT-269 | https://github.com/kyren/hashlink |
-| heck | 0.5.0 | MIT OR Apache-2.0 | TXT-193, TXT-148 | https://github.com/withoutboats/heck |
-| hex | 0.4.3 | MIT OR Apache-2.0 | TXT-233, TXT-290 | https://github.com/KokaKiwi/rust-hex |
-| html5ever | 0.38.0 | MIT OR Apache-2.0 | TXT-193, TXT-156 | https://github.com/servo/html5ever |
-| http | 1.4.2 | MIT OR Apache-2.0 | TXT-168, TXT-260 | https://github.com/hyperium/http |
+| futures-io | 0.3.33 | MIT OR Apache-2.0 | TXT-054, TXT-127 | https://github.com/rust-lang/futures-rs |
+| futures-sink | 0.3.33 | MIT OR Apache-2.0 | TXT-054, TXT-127 | https://github.com/rust-lang/futures-rs |
+| futures-task | 0.3.33 | MIT OR Apache-2.0 | TXT-054, TXT-127 | https://github.com/rust-lang/futures-rs |
+| futures-util | 0.3.33 | MIT OR Apache-2.0 | TXT-054, TXT-127 | https://github.com/rust-lang/futures-rs |
+| generic-array | 0.14.7 | MIT | TXT-232 | https://github.com/fizyk20/generic-array.git |
+| getrandom | 0.3.4 | MIT OR Apache-2.0 | TXT-207, TXT-060 | https://github.com/rust-random/getrandom |
+| getrandom | 0.4.3 | MIT OR Apache-2.0 | TXT-207, TXT-102 | https://github.com/rust-random/getrandom |
+| glob | 0.3.4 | MIT OR Apache-2.0 | TXT-196, TXT-123 | https://github.com/rust-lang/glob |
+| hashbrown | 0.12.3 | MIT OR Apache-2.0 | TXT-196, TXT-307 | https://github.com/rust-lang/hashbrown |
+| hashbrown | 0.15.5 | MIT OR Apache-2.0 | TXT-196, TXT-307 | https://github.com/rust-lang/hashbrown |
+| hashbrown | 0.17.1 | MIT OR Apache-2.0 | TXT-196, TXT-307 | https://github.com/rust-lang/hashbrown |
+| hashlink | 0.10.0 | MIT OR Apache-2.0 | TXT-234, TXT-276 | https://github.com/kyren/hashlink |
+| heck | 0.5.0 | MIT OR Apache-2.0 | TXT-196, TXT-151 | https://github.com/withoutboats/heck |
+| hex | 0.4.3 | MIT OR Apache-2.0 | TXT-239, TXT-297 | https://github.com/KokaKiwi/rust-hex |
+| html5ever | 0.39.0 | MIT OR Apache-2.0 | TXT-196, TXT-159 | https://github.com/servo/html5ever |
+| http | 1.4.2 | MIT OR Apache-2.0 | TXT-171, TXT-266 | https://github.com/hyperium/http |
 | ico | 0.5.0 | MIT | TXT-084 | https://github.com/mdsteele/rust-ico |
-| icu_collections | 2.2.0 | Unicode-3.0 | TXT-284 | https://github.com/unicode-org/icu4x |
-| icu_locale_core | 2.2.0 | Unicode-3.0 | TXT-284 | https://github.com/unicode-org/icu4x |
-| icu_normalizer_data | 2.2.0 | Unicode-3.0 | TXT-284 | https://github.com/unicode-org/icu4x |
-| icu_normalizer | 2.2.0 | Unicode-3.0 | TXT-284 | https://github.com/unicode-org/icu4x |
-| icu_properties_data | 2.2.0 | Unicode-3.0 | TXT-284 | https://github.com/unicode-org/icu4x |
-| icu_properties | 2.2.0 | Unicode-3.0 | TXT-284 | https://github.com/unicode-org/icu4x |
-| icu_provider | 2.2.0 | Unicode-3.0 | TXT-284 | https://github.com/unicode-org/icu4x |
+| icu_collections | 2.2.0 | Unicode-3.0 | TXT-291 | https://github.com/unicode-org/icu4x |
+| icu_locale_core | 2.2.0 | Unicode-3.0 | TXT-291 | https://github.com/unicode-org/icu4x |
+| icu_normalizer_data | 2.2.0 | Unicode-3.0 | TXT-291 | https://github.com/unicode-org/icu4x |
+| icu_normalizer | 2.2.0 | Unicode-3.0 | TXT-291 | https://github.com/unicode-org/icu4x |
+| icu_properties_data | 2.2.0 | Unicode-3.0 | TXT-291 | https://github.com/unicode-org/icu4x |
+| icu_properties | 2.2.0 | Unicode-3.0 | TXT-291 | https://github.com/unicode-org/icu4x |
+| icu_provider | 2.2.0 | Unicode-3.0 | TXT-291 | https://github.com/unicode-org/icu4x |
 | ident_case | 1.0.1 | MIT/Apache-2.0 | TXT-100 | https://github.com/TedDriggs/ident_case |
-| idna_adapter | 1.2.2 | Apache-2.0 OR MIT | TXT-193, TXT-167 | https://github.com/hsivonen/idna_adapter |
-| idna | 1.1.0 | MIT OR Apache-2.0 | TXT-193, TXT-216 | https://github.com/servo/rust-url/ |
-| indexmap | 1.9.3 | Apache-2.0 OR MIT | TXT-193, TXT-274 | https://github.com/bluss/indexmap |
-| indexmap | 2.14.0 | Apache-2.0 OR MIT | TXT-193, TXT-274 | https://github.com/indexmap-rs/indexmap |
-| infer | 0.19.0 | MIT | TXT-053 | https://github.com/bojand/infer |
-| itoa | 1.0.18 | MIT OR Apache-2.0 | TXT-120, TXT-048 | https://github.com/dtolnay/itoa |
-| json-patch | 3.0.1 | MIT/Apache-2.0 | TXT-217, TXT-157 | https://github.com/idubrov/json-patch |
-| jsonptr | 0.6.3 | MIT OR Apache-2.0 | TXT-066, TXT-064 | https://github.com/chanced/jsonptr |
-| keyboard-types | 0.7.0 | MIT OR Apache-2.0 | TXT-144, TXT-071 | https://github.com/pyfisch/keyboard-types |
-| libc | 0.2.189 | MIT OR Apache-2.0 | TXT-120, TXT-026 | https://github.com/rust-lang/libc |
-| libsqlite3-sys | 0.30.1 | MIT | TXT-287 | https://github.com/rusqlite/rusqlite |
-| litemap | 0.8.2 | Unicode-3.0 | TXT-284 | https://github.com/unicode-org/icu4x |
-| lock_api | 0.4.14 | MIT OR Apache-2.0 | TXT-193, TXT-238 | https://github.com/Amanieu/parking_lot |
-| log | 0.4.33 | MIT OR Apache-2.0 | TXT-193, TXT-121 | https://github.com/rust-lang/log |
-| markup5ever | 0.38.0 | MIT OR Apache-2.0 | TXT-193, TXT-156 | https://github.com/servo/html5ever |
-| memchr | 2.8.3 | Unlicense OR MIT | TXT-003, TXT-023, TXT-153 | https://github.com/BurntSushi/memchr |
-| mime | 0.3.17 | MIT OR Apache-2.0 | TXT-193, TXT-262 | https://github.com/hyperium/mime |
-| miniz_oxide | 0.8.9 | MIT OR Zlib OR Apache-2.0 | TXT-083, TXT-019, TXT-147, TXT-014 | https://github.com/Frommi/miniz_oxide/tree/master/miniz_oxide |
+| idna_adapter | 1.2.2 | Apache-2.0 OR MIT | TXT-196, TXT-170 | https://github.com/hsivonen/idna_adapter |
+| idna | 1.1.0 | MIT OR Apache-2.0 | TXT-196, TXT-220 | https://github.com/servo/rust-url/ |
+| indexmap | 1.9.3 | Apache-2.0 OR MIT | TXT-196, TXT-281 | https://github.com/bluss/indexmap |
+| indexmap | 2.14.0 | Apache-2.0 OR MIT | TXT-196, TXT-281 | https://github.com/indexmap-rs/indexmap |
+| infer | 0.22.0 | MIT | TXT-053 | https://github.com/bojand/infer |
+| itoa | 1.0.18 | MIT OR Apache-2.0 | TXT-122, TXT-048 | https://github.com/dtolnay/itoa |
+| json-patch | 4.2.0 | MIT/Apache-2.0 | TXT-221, TXT-160 | https://github.com/idubrov/json-patch |
+| jsonptr | 0.7.1 | MIT OR Apache-2.0 | TXT-066, TXT-064 | https://github.com/chanced/jsonptr |
+| keyboard-types | 0.8.3 | MIT OR Apache-2.0 | TXT-147, TXT-071 | https://github.com/rust-windowing/keyboard-types |
+| libc | 0.2.189 | MIT OR Apache-2.0 | TXT-122, TXT-026 | https://github.com/rust-lang/libc |
+| libsqlite3-sys | 0.30.1 | MIT | TXT-295 | https://github.com/rusqlite/rusqlite |
+| litemap | 0.8.2 | Unicode-3.0 | TXT-291 | https://github.com/unicode-org/icu4x |
+| lock_api | 0.4.14 | MIT OR Apache-2.0 | TXT-196, TXT-244 | https://github.com/Amanieu/parking_lot |
+| log | 0.4.33 | MIT OR Apache-2.0 | TXT-196, TXT-123 | https://github.com/rust-lang/log |
+| markup5ever | 0.39.0 | MIT OR Apache-2.0 | TXT-196, TXT-159 | https://github.com/servo/html5ever |
+| memchr | 2.8.3 | Unlicense OR MIT | TXT-003, TXT-023, TXT-156 | https://github.com/BurntSushi/memchr |
+| mime | 0.3.17 | MIT OR Apache-2.0 | TXT-196, TXT-268 | https://github.com/hyperium/mime |
+| miniz_oxide | 0.8.9 | MIT OR Zlib OR Apache-2.0 | TXT-083, TXT-019, TXT-150, TXT-014 | https://github.com/Frommi/miniz_oxide/tree/master/miniz_oxide |
 | mio | 1.2.2 | MIT | TXT-012 | https://github.com/tokio-rs/mio |
-| muda | 0.19.3 | Apache-2.0 OR MIT | TXT-193, TXT-062, TXT-221 | https://github.com/tauri-apps/muda |
-| new_debug_unreachable | 1.0.6 | MIT | TXT-289 | https://github.com/mbrubeck/rust-debug-unreachable |
-| num-conv | 0.2.2 | MIT OR Apache-2.0 | TXT-019, TXT-264 | https://github.com/jhpratt/num-conv |
-| num-traits | 0.2.19 | MIT OR Apache-2.0 | TXT-193, TXT-121 | https://github.com/rust-num/num-traits |
-| once_cell | 1.21.4 | MIT OR Apache-2.0 | TXT-193, TXT-048 | https://github.com/matklad/once_cell |
-| open | 5.4.0 | MIT | TXT-267 | https://github.com/Byron/open-rs |
-| option-ext | 0.2.0 | MPL-2.0 | TXT-126 | https://github.com/soc/option-ext.git |
-| parking_lot_core | 0.9.12 | MIT OR Apache-2.0 | TXT-193, TXT-238 | https://github.com/Amanieu/parking_lot |
-| parking_lot | 0.12.5 | MIT OR Apache-2.0 | TXT-193, TXT-238 | https://github.com/Amanieu/parking_lot |
-| parking | 2.2.1 | Apache-2.0 OR MIT | TXT-193, TXT-048, TXT-177 | https://github.com/smol-rs/parking |
-| percent-encoding | 2.3.2 | MIT OR Apache-2.0 | TXT-193, TXT-216 | https://github.com/servo/rust-url/ |
+| muda | 0.20.0 | Apache-2.0 OR MIT | TXT-196, TXT-062, TXT-226 | https://github.com/tauri-apps/muda |
+| new_debug_unreachable | 1.0.6 | MIT | TXT-296 | https://github.com/mbrubeck/rust-debug-unreachable |
+| num-conv | 0.2.2 | MIT OR Apache-2.0 | TXT-019, TXT-270 | https://github.com/jhpratt/num-conv |
+| num-traits | 0.2.19 | MIT OR Apache-2.0 | TXT-196, TXT-123 | https://github.com/rust-num/num-traits |
+| once_cell | 1.21.4 | MIT OR Apache-2.0 | TXT-196, TXT-048 | https://github.com/matklad/once_cell |
+| open | 5.4.0 | MIT | TXT-274 | https://github.com/Byron/open-rs |
+| option-ext | 0.2.0 | MPL-2.0 | TXT-128 | https://github.com/soc/option-ext.git |
+| parking_lot_core | 0.9.12 | MIT OR Apache-2.0 | TXT-196, TXT-244 | https://github.com/Amanieu/parking_lot |
+| parking_lot | 0.12.5 | MIT OR Apache-2.0 | TXT-196, TXT-244 | https://github.com/Amanieu/parking_lot |
+| parking | 2.2.1 | Apache-2.0 OR MIT | TXT-196, TXT-048, TXT-180 | https://github.com/smol-rs/parking |
+| percent-encoding | 2.3.2 | MIT OR Apache-2.0 | TXT-196, TXT-220 | https://github.com/servo/rust-url/ |
 | phf_codegen | 0.13.1 | MIT | TXT-015 | https://github.com/rust-phf/rust-phf |
 | phf_generator | 0.13.1 | MIT | TXT-015 | https://github.com/rust-phf/rust-phf |
 | phf_macros | 0.13.1 | MIT | TXT-015 | https://github.com/rust-phf/rust-phf |
 | phf_shared | 0.13.1 | MIT | TXT-015 | https://github.com/rust-phf/rust-phf |
 | phf | 0.13.1 | MIT | TXT-015 | https://github.com/rust-phf/rust-phf |
 | pin-project-lite | 0.2.17 | Apache-2.0 OR MIT | TXT-019, TXT-048 | https://github.com/taiki-e/pin-project-lite |
-| pkg-config | 0.3.33 | MIT OR Apache-2.0 | TXT-193, TXT-076 | https://github.com/rust-lang/pkg-config-rs |
-| plist | 1.10.0 | MIT | TXT-108 | https://github.com/ebarnard/rust-plist/ |
-| png | 0.17.16 | MIT OR Apache-2.0 | TXT-193, TXT-271 | https://github.com/image-rs/image-png |
-| potential_utf | 0.1.5 | Unicode-3.0 | TXT-284 | https://github.com/unicode-org/icu4x |
+| pkg-config | 0.3.33 | MIT OR Apache-2.0 | TXT-196, TXT-076 | https://github.com/rust-lang/pkg-config-rs |
+| plist | 1.10.0 | MIT | TXT-109 | https://github.com/ebarnard/rust-plist/ |
+| png | 0.17.16 | MIT OR Apache-2.0 | TXT-196, TXT-278 | https://github.com/image-rs/image-png |
+| png | 0.18.1 | MIT OR Apache-2.0 | TXT-196, TXT-278 | https://github.com/image-rs/image-png |
+| potential_utf | 0.1.5 | Unicode-3.0 | TXT-291 | https://github.com/unicode-org/icu4x |
 | powerfmt | 0.2.0 | MIT OR Apache-2.0 | TXT-028, TXT-010 | https://github.com/jhpratt/powerfmt |
-| precomputed-hash | 0.1.1 | MIT | TXT-151 | https://github.com/emilio/precomputed-hash |
-| proc-macro2 | 1.0.107 | MIT OR Apache-2.0 | TXT-120, TXT-048 | https://github.com/dtolnay/proc-macro2 |
-| quick-xml | 0.41.0 | MIT | TXT-109 | https://github.com/tafia/quick-xml |
-| quote | 1.0.47 | MIT OR Apache-2.0 | TXT-120, TXT-048 | https://github.com/dtolnay/quote |
-| raw-window-handle | 0.6.2 | MIT OR Apache-2.0 OR Zlib | TXT-019, TXT-179, TXT-207 | https://github.com/rust-windowing/raw-window-handle |
-| regex-automata | 0.4.16 | MIT OR Apache-2.0 | TXT-193, TXT-121 | https://github.com/rust-lang/regex |
-| regex-syntax | 0.8.11 | MIT OR Apache-2.0 | TXT-193, TXT-121 | https://github.com/rust-lang/regex |
-| regex | 1.13.1 | MIT OR Apache-2.0 | TXT-193, TXT-121 | https://github.com/rust-lang/regex |
-| rust_decimal | 1.42.1 | MIT | TXT-292 | https://github.com/paupino/rust-decimal |
-| rustc_version | 0.4.1 | MIT OR Apache-2.0 | TXT-193, TXT-238 | https://github.com/djc/rustc-version-rs |
-| rustc-hash | 2.1.3 | Apache-2.0 OR MIT | TXT-174, TXT-070 | https://github.com/rust-lang/rustc-hash |
-| ryu | 1.0.23 | Apache-2.0 OR BSL-1.0 | TXT-120, TXT-239 | https://github.com/dtolnay/ryu |
-| same-file | 1.0.6 | Unlicense/MIT | TXT-003, TXT-240, TXT-153 | https://github.com/BurntSushi/same-file |
+| precomputed-hash | 0.1.1 | MIT | TXT-154 | https://github.com/emilio/precomputed-hash |
+| proc-macro2 | 1.0.107 | MIT OR Apache-2.0 | TXT-122, TXT-048 | https://github.com/dtolnay/proc-macro2 |
+| quick-xml | 0.41.0 | MIT | TXT-110 | https://github.com/tafia/quick-xml |
+| quote | 1.0.47 | MIT OR Apache-2.0 | TXT-122, TXT-048 | https://github.com/dtolnay/quote |
+| raw-window-handle | 0.6.2 | MIT OR Apache-2.0 OR Zlib | TXT-019, TXT-182, TXT-211 | https://github.com/rust-windowing/raw-window-handle |
+| regex-automata | 0.4.16 | MIT OR Apache-2.0 | TXT-196, TXT-123 | https://github.com/rust-lang/regex |
+| regex-syntax | 0.8.11 | MIT OR Apache-2.0 | TXT-196, TXT-123 | https://github.com/rust-lang/regex |
+| regex | 1.13.1 | MIT OR Apache-2.0 | TXT-196, TXT-123 | https://github.com/rust-lang/regex |
+| rust_decimal | 1.42.1 | MIT | TXT-299 | https://github.com/paupino/rust-decimal |
+| rustc_version | 0.4.1 | MIT OR Apache-2.0 | TXT-196, TXT-244 | https://github.com/djc/rustc-version-rs |
+| rustc-hash | 2.1.3 | Apache-2.0 OR MIT | TXT-177, TXT-070 | https://github.com/rust-lang/rustc-hash |
+| ryu | 1.0.23 | Apache-2.0 OR BSL-1.0 | TXT-122, TXT-245 | https://github.com/dtolnay/ryu |
+| same-file | 1.0.6 | Unlicense/MIT | TXT-003, TXT-246, TXT-156 | https://github.com/BurntSushi/same-file |
 | schemars_derive | 0.8.22 | MIT | TXT-031 | https://github.com/GREsau/schemars |
 | schemars | 0.8.22 | MIT | TXT-031 | https://github.com/GREsau/schemars |
-| scopeguard | 1.2.0 | MIT OR Apache-2.0 | TXT-193, TXT-296 | https://github.com/bluss/scopeguard |
-| selectors | 0.36.1 | MPL-2.0 | TXT-126（规范文本补充：MPL-2.0） | https://github.com/servo/stylo |
-| semver | 1.0.28 | MIT OR Apache-2.0 | TXT-120, TXT-048 | https://github.com/dtolnay/semver |
-| serde_core | 1.0.229 | MIT OR Apache-2.0 | TXT-120, TXT-048 | https://github.com/serde-rs/serde |
-| serde_derive_internals | 0.29.1 | MIT OR Apache-2.0 | TXT-120, TXT-048 | https://github.com/serde-rs/serde |
-| serde_derive | 1.0.229 | MIT OR Apache-2.0 | TXT-120, TXT-048 | https://github.com/serde-rs/serde |
-| serde_json | 1.0.151 | MIT OR Apache-2.0 | TXT-120, TXT-048 | https://github.com/serde-rs/json |
-| serde_repr | 0.1.21 | MIT OR Apache-2.0 | TXT-120, TXT-048 | https://github.com/dtolnay/serde-repr |
-| serde_spanned | 1.1.1 | MIT OR Apache-2.0 | TXT-233, TXT-136 | https://github.com/toml-rs/toml |
-| serde_urlencoded | 0.7.1 | MIT/Apache-2.0 | TXT-120, TXT-223 | https://github.com/nox/serde_urlencoded |
-| serde_with_macros | 3.21.0 | MIT OR Apache-2.0 | TXT-193, TXT-141 | https://github.com/jonasbb/serde_with/ |
-| serde_with | 3.21.0 | MIT OR Apache-2.0 | TXT-193, TXT-141 | https://github.com/jonasbb/serde_with/ |
-| serde-untagged | 0.1.9 | MIT OR Apache-2.0 | TXT-120, TXT-048 | https://github.com/dtolnay/serde-untagged |
-| serde | 1.0.229 | MIT OR Apache-2.0 | TXT-120, TXT-048 | https://github.com/serde-rs/serde |
-| serialize-to-javascript-impl | 0.1.2 | MIT OR Apache-2.0 | TXT-235, TXT-266 | https://github.com/chippers/serialize-to-javascript |
-| serialize-to-javascript | 0.1.2 | MIT OR Apache-2.0 | TXT-235, TXT-266 | https://github.com/chippers/serialize-to-javascript |
-| servo_arc | 0.4.3 | MIT OR Apache-2.0 | TXT-193, TXT-048 | https://github.com/servo/stylo |
-| sha2 | 0.10.9 | MIT OR Apache-2.0 | TXT-202, TXT-218 | https://github.com/RustCrypto/hashes |
-| shlex | 2.0.1 | MIT OR Apache-2.0 | TXT-106, TXT-088 | https://github.com/comex/rust-shlex |
+| scopeguard | 1.2.0 | MIT OR Apache-2.0 | TXT-196, TXT-303 | https://github.com/bluss/scopeguard |
+| selectors | 0.38.0 | MPL-2.0 | TXT-128（规范文本补充：MPL-2.0） | https://github.com/servo/stylo |
+| semver | 1.0.28 | MIT OR Apache-2.0 | TXT-122, TXT-048 | https://github.com/dtolnay/semver |
+| serde_core | 1.0.229 | MIT OR Apache-2.0 | TXT-122, TXT-048 | https://github.com/serde-rs/serde |
+| serde_derive_internals | 0.29.1 | MIT OR Apache-2.0 | TXT-122, TXT-048 | https://github.com/serde-rs/serde |
+| serde_derive | 1.0.229 | MIT OR Apache-2.0 | TXT-122, TXT-048 | https://github.com/serde-rs/serde |
+| serde_json | 1.0.151 | MIT OR Apache-2.0 | TXT-122, TXT-048 | https://github.com/serde-rs/json |
+| serde_repr | 0.1.21 | MIT OR Apache-2.0 | TXT-122, TXT-048 | https://github.com/dtolnay/serde-repr |
+| serde_spanned | 1.1.1 | MIT OR Apache-2.0 | TXT-239, TXT-138 | https://github.com/toml-rs/toml |
+| serde_urlencoded | 0.7.1 | MIT/Apache-2.0 | TXT-122, TXT-228 | https://github.com/nox/serde_urlencoded |
+| serde_with_macros | 3.21.0 | MIT OR Apache-2.0 | TXT-196, TXT-144 | https://github.com/jonasbb/serde_with/ |
+| serde_with | 3.21.0 | MIT OR Apache-2.0 | TXT-196, TXT-144 | https://github.com/jonasbb/serde_with/ |
+| serde-untagged | 0.1.9 | MIT OR Apache-2.0 | TXT-122, TXT-048 | https://github.com/dtolnay/serde-untagged |
+| serde | 1.0.229 | MIT OR Apache-2.0 | TXT-122, TXT-048 | https://github.com/serde-rs/serde |
+| serialize-to-javascript-impl | 0.1.2 | MIT OR Apache-2.0 | TXT-241, TXT-273 | https://github.com/chippers/serialize-to-javascript |
+| serialize-to-javascript | 0.1.2 | MIT OR Apache-2.0 | TXT-241, TXT-273 | https://github.com/chippers/serialize-to-javascript |
+| servo_arc | 0.4.3 | MIT OR Apache-2.0 | TXT-196, TXT-048 | https://github.com/servo/stylo |
+| sha2 | 0.10.9 | MIT OR Apache-2.0 | TXT-205, TXT-222 | https://github.com/RustCrypto/hashes |
+| shlex | 2.0.1 | MIT OR Apache-2.0 | TXT-107, TXT-088 | https://github.com/comex/rust-shlex |
 | simd-adler32 | 0.3.10 | MIT | TXT-085 | https://github.com/mcountryman/simd-adler32 |
-| siphasher | 1.0.3 | MIT/Apache-2.0 | TXT-237 | https://github.com/jedisct1/rust-siphash |
-| slab | 0.4.12 | MIT | TXT-170 | https://github.com/tokio-rs/slab |
-| smallvec | 1.15.2 | MIT OR Apache-2.0 | TXT-193, TXT-017 | https://github.com/servo/rust-smallvec |
-| socket2 | 0.6.5 | MIT OR Apache-2.0 | TXT-193, TXT-076 | https://github.com/rust-lang/socket2 |
-| softbuffer | 0.4.8 | MIT OR Apache-2.0 | TXT-190, TXT-008 | https://github.com/rust-windowing/softbuffer |
-| spin | 0.9.9 | MIT | TXT-132 | https://github.com/mvdnes/spin-rs.git |
-| sqlx-core | 0.8.6 | MIT OR Apache-2.0 | TXT-178, TXT-089 | https://github.com/launchbadge/sqlx |
-| sqlx-macros-core | 0.8.6 | MIT OR Apache-2.0 | TXT-178, TXT-089 | https://github.com/launchbadge/sqlx |
-| sqlx-macros | 0.8.6 | MIT OR Apache-2.0 | TXT-178, TXT-089 | https://github.com/launchbadge/sqlx |
-| sqlx-sqlite | 0.8.6 | MIT OR Apache-2.0 | TXT-178, TXT-089 | https://github.com/launchbadge/sqlx |
-| sqlx | 0.8.6 | MIT OR Apache-2.0 | TXT-178, TXT-089 | https://github.com/launchbadge/sqlx |
-| stable_deref_trait | 1.2.1 | MIT OR Apache-2.0 | TXT-193, TXT-113 | https://github.com/storyyeller/stable_deref_trait |
-| string_cache_codegen | 0.6.1 | MIT OR Apache-2.0 | TXT-193, TXT-119 | https://github.com/servo/string-cache |
-| string_cache | 0.9.0 | MIT OR Apache-2.0 | TXT-193, TXT-119 | https://github.com/servo/string-cache |
+| siphasher | 1.0.3 | MIT/Apache-2.0 | TXT-243 | https://github.com/jedisct1/rust-siphash |
+| slab | 0.4.12 | MIT | TXT-173 | https://github.com/tokio-rs/slab |
+| smallvec | 1.15.2 | MIT OR Apache-2.0 | TXT-196, TXT-017 | https://github.com/servo/rust-smallvec |
+| socket2 | 0.6.5 | MIT OR Apache-2.0 | TXT-196, TXT-076 | https://github.com/rust-lang/socket2 |
+| softbuffer | 0.4.8 | MIT OR Apache-2.0 | TXT-193, TXT-008 | https://github.com/rust-windowing/softbuffer |
+| spin | 0.9.9 | MIT | TXT-134 | https://github.com/mvdnes/spin-rs.git |
+| sqlx-core | 0.8.6 | MIT OR Apache-2.0 | TXT-181, TXT-089 | https://github.com/launchbadge/sqlx |
+| sqlx-macros-core | 0.8.6 | MIT OR Apache-2.0 | TXT-181, TXT-089 | https://github.com/launchbadge/sqlx |
+| sqlx-macros | 0.8.6 | MIT OR Apache-2.0 | TXT-181, TXT-089 | https://github.com/launchbadge/sqlx |
+| sqlx-sqlite | 0.8.6 | MIT OR Apache-2.0 | TXT-181, TXT-089 | https://github.com/launchbadge/sqlx |
+| sqlx | 0.8.6 | MIT OR Apache-2.0 | TXT-181, TXT-089 | https://github.com/launchbadge/sqlx |
+| stable_deref_trait | 1.2.1 | MIT OR Apache-2.0 | TXT-196, TXT-114 | https://github.com/storyyeller/stable_deref_trait |
+| static_vcruntime | 3.0.0 | MIT OR Apache-2.0 OR Zlib | TXT-225, TXT-271, TXT-142, TXT-236 | https://github.com/ChrisDenton/static_vcruntime |
+| string_cache_codegen | 0.6.1 | MIT OR Apache-2.0 | TXT-196, TXT-121 | https://github.com/servo/string-cache |
+| string_cache | 0.9.0 | MIT OR Apache-2.0 | TXT-196, TXT-121 | https://github.com/servo/string-cache |
 | strsim | 0.11.1 | MIT | TXT-035 | https://github.com/rapidfuzz/strsim-rs |
-| syn | 2.0.119 | MIT OR Apache-2.0 | TXT-120, TXT-048 | https://github.com/dtolnay/syn |
-| syn | 3.0.3 | MIT OR Apache-2.0 | TXT-120, TXT-048 | https://github.com/dtolnay/syn |
+| syn | 2.0.119 | MIT OR Apache-2.0 | TXT-122, TXT-048 | https://github.com/dtolnay/syn |
+| syn | 3.0.3 | MIT OR Apache-2.0 | TXT-122, TXT-048 | https://github.com/dtolnay/syn |
 | synstructure | 0.13.2 | MIT | TXT-043 | https://github.com/mystor/synstructure |
-| tao | 0.35.3 | Apache-2.0 | TXT-135, TXT-005 | https://github.com/tauri-apps/tao |
-| tauri-build | 2.6.3 | Apache-2.0 OR MIT | TXT-019, TXT-182 | https://github.com/tauri-apps/tauri |
-| tauri-codegen | 2.6.3 | Apache-2.0 OR MIT | TXT-019, TXT-182 | https://github.com/tauri-apps/tauri |
-| tauri-macros | 2.6.3 | Apache-2.0 OR MIT | TXT-019, TXT-182 | https://github.com/tauri-apps/tauri |
-| tauri-plugin-autostart | 2.5.1 | Apache-2.0 OR MIT | TXT-018, TXT-161, TXT-272 | https://github.com/tauri-apps/plugins-workspace |
-| tauri-plugin-opener | 2.5.4 | Apache-2.0 OR MIT | TXT-018, TXT-161, TXT-272 | https://github.com/tauri-apps/plugins-workspace |
-| tauri-plugin-single-instance | 2.4.3 | Apache-2.0 OR MIT | TXT-018, TXT-220, TXT-272 | https://github.com/tauri-apps/plugins-workspace |
-| tauri-plugin-sql | 2.4.0 | Apache-2.0 OR MIT | TXT-018, TXT-161, TXT-272 | https://github.com/tauri-apps/plugins-workspace |
-| tauri-plugin | 2.6.3 | Apache-2.0 OR MIT | TXT-019, TXT-182（同版平台包共享自 cargo:tauri-build@2.6.3） | https://github.com/tauri-apps/tauri |
-| tauri-runtime-wry | 2.11.4 | Apache-2.0 OR MIT | TXT-019, TXT-182 | https://github.com/tauri-apps/tauri |
-| tauri-runtime | 2.11.3 | Apache-2.0 OR MIT | TXT-019, TXT-182 | https://github.com/tauri-apps/tauri |
-| tauri-utils | 2.9.3 | Apache-2.0 OR MIT | TXT-019, TXT-182 | https://github.com/tauri-apps/tauri |
-| tauri-winres | 0.3.6 | MIT | TXT-256 | https://github.com/tauri-apps/winres |
-| tauri | 2.11.5 | Apache-2.0 OR MIT | TXT-019, TXT-182 | https://github.com/tauri-apps/tauri |
-| tendril | 0.5.1 | MIT OR Apache-2.0 | TXT-193, TXT-115 | https://github.com/servo/html5ever |
-| thiserror-impl | 1.0.69 | MIT OR Apache-2.0 | TXT-120, TXT-048 | https://github.com/dtolnay/thiserror |
-| thiserror-impl | 2.0.19 | MIT OR Apache-2.0 | TXT-120, TXT-048 | https://github.com/dtolnay/thiserror |
-| thiserror | 1.0.69 | MIT OR Apache-2.0 | TXT-120, TXT-048 | https://github.com/dtolnay/thiserror |
-| thiserror | 2.0.19 | MIT OR Apache-2.0 | TXT-120, TXT-048 | https://github.com/dtolnay/thiserror |
+| tao | 0.37.1 | Apache-2.0 | TXT-137, TXT-005 | https://github.com/tauri-apps/tao |
+| tauri-build | 2.7.3 | Apache-2.0 OR MIT | TXT-019, TXT-185 | https://github.com/tauri-apps/tauri |
+| tauri-codegen | 2.7.3 | Apache-2.0 OR MIT | TXT-019, TXT-185 | https://github.com/tauri-apps/tauri |
+| tauri-macros | 2.7.3 | Apache-2.0 OR MIT | TXT-019, TXT-185 | https://github.com/tauri-apps/tauri |
+| tauri-plugin-autostart | 2.5.1 | Apache-2.0 OR MIT | TXT-018, TXT-164, TXT-279 | https://github.com/tauri-apps/plugins-workspace |
+| tauri-plugin-opener | 2.5.4 | Apache-2.0 OR MIT | TXT-018, TXT-164, TXT-279 | https://github.com/tauri-apps/plugins-workspace |
+| tauri-plugin-single-instance | 2.4.3 | Apache-2.0 OR MIT | TXT-018, TXT-224, TXT-279 | https://github.com/tauri-apps/plugins-workspace |
+| tauri-plugin-sql | 2.4.0 | Apache-2.0 OR MIT | TXT-018, TXT-164, TXT-279 | https://github.com/tauri-apps/plugins-workspace |
+| tauri-plugin | 2.6.3 | Apache-2.0 OR MIT | TXT-019, TXT-185, TXT-115（来自 crate VCS 提交锁定的上游仓库许可文件） | https://github.com/tauri-apps/tauri |
+| tauri-runtime-wry | 2.12.2 | Apache-2.0 OR MIT | TXT-019, TXT-185 | https://github.com/tauri-apps/tauri |
+| tauri-runtime | 2.12.2 | Apache-2.0 OR MIT | TXT-019, TXT-185 | https://github.com/tauri-apps/tauri |
+| tauri-utils | 2.10.2 | Apache-2.0 OR MIT | TXT-019, TXT-185 | https://github.com/tauri-apps/tauri |
+| tauri-winres | 0.3.6 | MIT | TXT-262 | https://github.com/tauri-apps/winres |
+| tauri | 2.12.4 | Apache-2.0 OR MIT | TXT-019, TXT-185 | https://github.com/tauri-apps/tauri |
+| tendril | 0.5.1 | MIT OR Apache-2.0 | TXT-196, TXT-117 | https://github.com/servo/html5ever |
+| thiserror-impl | 1.0.69 | MIT OR Apache-2.0 | TXT-122, TXT-048 | https://github.com/dtolnay/thiserror |
+| thiserror-impl | 2.0.19 | MIT OR Apache-2.0 | TXT-122, TXT-048 | https://github.com/dtolnay/thiserror |
+| thiserror | 1.0.69 | MIT OR Apache-2.0 | TXT-122, TXT-048 | https://github.com/dtolnay/thiserror |
+| thiserror | 2.0.19 | MIT OR Apache-2.0 | TXT-122, TXT-048 | https://github.com/dtolnay/thiserror |
 | time-core | 0.1.9 | MIT OR Apache-2.0 | TXT-019, TXT-049 | https://github.com/time-rs/time |
 | time-macros | 0.2.32 | MIT OR Apache-2.0 | TXT-019, TXT-049 | https://github.com/time-rs/time |
 | time | 0.3.54 | MIT OR Apache-2.0 | TXT-019, TXT-049 | https://github.com/time-rs/time |
-| tinystr | 0.8.3 | Unicode-3.0 | TXT-284 | https://github.com/unicode-org/icu4x |
+| tinystr | 0.8.3 | Unicode-3.0 | TXT-291 | https://github.com/unicode-org/icu4x |
 | tokio-stream | 0.1.19 | MIT | TXT-050 | https://github.com/tokio-rs/tokio |
 | tokio | 1.53.1 | MIT | TXT-050 | https://github.com/tokio-rs/tokio |
-| toml_datetime | 0.7.5+spec-1.1.0 | MIT OR Apache-2.0 | TXT-233, TXT-136 | https://github.com/toml-rs/toml |
-| toml_datetime | 1.1.1+spec-1.1.0 | MIT OR Apache-2.0 | TXT-233, TXT-136 | https://github.com/toml-rs/toml |
-| toml_parser | 1.1.2+spec-1.1.0 | MIT OR Apache-2.0 | TXT-233, TXT-136 | https://github.com/toml-rs/toml |
-| toml_writer | 1.1.2+spec-1.1.0 | MIT OR Apache-2.0 | TXT-233, TXT-136 | https://github.com/toml-rs/toml |
-| toml | 0.9.12+spec-1.1.0 | MIT OR Apache-2.0 | TXT-233, TXT-136 | https://github.com/toml-rs/toml |
-| toml | 1.1.3+spec-1.1.0 | MIT OR Apache-2.0 | TXT-233, TXT-136 | https://github.com/toml-rs/toml |
-| tracing-attributes | 0.1.31 | MIT | TXT-160 | https://github.com/tokio-rs/tracing |
-| tracing-core | 0.1.36 | MIT | TXT-160 | https://github.com/tokio-rs/tracing |
-| tracing | 0.1.44 | MIT | TXT-160 | https://github.com/tokio-rs/tracing |
-| tray-icon | 0.24.1 | MIT OR Apache-2.0 | TXT-193, TXT-062, TXT-133 | https://github.com/tauri-apps/tray-icon |
-| typeid | 1.0.3 | MIT OR Apache-2.0 | TXT-120, TXT-048 | https://github.com/dtolnay/typeid |
-| typenum | 1.20.1 | MIT OR Apache-2.0 | TXT-258, TXT-101, TXT-199 | https://github.com/paholg/typenum |
-| unic-char-property | 0.9.0 | MIT/Apache-2.0 | TXT-288, TXT-193, TXT-048（来自 crate VCS 提交锁定的上游仓库许可文件） | https://github.com/open-i18n/rust-unic/ |
-| unic-char-range | 0.9.0 | MIT/Apache-2.0 | TXT-288, TXT-193, TXT-048（来自 crate VCS 提交锁定的上游仓库许可文件） | https://github.com/open-i18n/rust-unic/ |
-| unic-common | 0.9.0 | MIT/Apache-2.0 | TXT-288, TXT-193, TXT-048（来自 crate VCS 提交锁定的上游仓库许可文件） | https://github.com/open-i18n/rust-unic/ |
-| unic-ucd-ident | 0.9.0 | MIT/Apache-2.0 | TXT-288, TXT-193, TXT-048（来自 crate VCS 提交锁定的上游仓库许可文件） | https://github.com/open-i18n/rust-unic/ |
-| unic-ucd-version | 0.9.0 | MIT/Apache-2.0 | TXT-288, TXT-193, TXT-048（来自 crate VCS 提交锁定的上游仓库许可文件） | https://github.com/open-i18n/rust-unic/ |
-| unicode-ident | 1.0.24 | (MIT OR Apache-2.0) AND Unicode-3.0 | TXT-120, TXT-048, TXT-291 | https://github.com/dtolnay/unicode-ident |
-| unicode-segmentation | 1.13.3 | MIT OR Apache-2.0 | TXT-046, TXT-193, TXT-148 | https://github.com/unicode-rs/unicode-segmentation |
-| url | 2.5.8 | MIT OR Apache-2.0 | TXT-193, TXT-216 | https://github.com/servo/rust-url |
-| urlpattern | 0.3.0 | MIT | TXT-112 | https://github.com/denoland/rust-urlpattern |
-| utf8_iter | 1.0.4 | Apache-2.0 OR MIT | TXT-232, TXT-247, TXT-082 | https://github.com/hsivonen/utf8_iter |
-| uuid | 1.24.0 | Apache-2.0 OR MIT | TXT-193, TXT-087 | https://github.com/uuid-rs/uuid |
-| vcpkg | 0.2.15 | MIT/Apache-2.0 | TXT-116, TXT-002 | https://github.com/mcgoo/vcpkg-rs |
-| version_check | 0.9.5 | MIT/Apache-2.0 | TXT-193, TXT-219 | https://github.com/SergioBenitez/version_check |
-| walkdir | 2.5.0 | Unlicense/MIT | TXT-003, TXT-023, TXT-153 | https://github.com/BurntSushi/walkdir |
-| web_atoms | 0.2.5 | MIT OR Apache-2.0 | TXT-193, TXT-156 | https://github.com/servo/html5ever |
+| toml_datetime | 1.1.1+spec-1.1.0 | MIT OR Apache-2.0 | TXT-239, TXT-138 | https://github.com/toml-rs/toml |
+| toml_parser | 1.1.2+spec-1.1.0 | MIT OR Apache-2.0 | TXT-239, TXT-138 | https://github.com/toml-rs/toml |
+| toml_writer | 1.1.2+spec-1.1.0 | MIT OR Apache-2.0 | TXT-239, TXT-138 | https://github.com/toml-rs/toml |
+| toml | 1.1.3+spec-1.1.0 | MIT OR Apache-2.0 | TXT-239, TXT-138 | https://github.com/toml-rs/toml |
+| tracing-attributes | 0.1.31 | MIT | TXT-163 | https://github.com/tokio-rs/tracing |
+| tracing-core | 0.1.36 | MIT | TXT-163 | https://github.com/tokio-rs/tracing |
+| tracing | 0.1.44 | MIT | TXT-163 | https://github.com/tokio-rs/tracing |
+| tray-icon | 0.25.1 | MIT OR Apache-2.0 | TXT-196, TXT-062, TXT-135 | https://github.com/tauri-apps/tray-icon |
+| typeid | 1.0.3 | MIT OR Apache-2.0 | TXT-122, TXT-048 | https://github.com/dtolnay/typeid |
+| typenum | 1.20.1 | MIT OR Apache-2.0 | TXT-264, TXT-101, TXT-202 | https://github.com/paholg/typenum |
+| unicode-ident | 1.0.24 | (MIT OR Apache-2.0) AND Unicode-3.0 | TXT-122, TXT-048, TXT-298 | https://github.com/dtolnay/unicode-ident |
+| unicode-segmentation | 1.13.3 | MIT OR Apache-2.0 | TXT-046, TXT-196, TXT-151 | https://github.com/unicode-rs/unicode-segmentation |
+| url | 2.5.8 | MIT OR Apache-2.0 | TXT-196, TXT-220 | https://github.com/servo/rust-url |
+| urlpattern | 0.6.0 | MIT | TXT-113 | https://github.com/denoland/rust-urlpattern |
+| utf8_iter | 1.0.4 | Apache-2.0 OR MIT | TXT-238, TXT-253, TXT-082 | https://github.com/hsivonen/utf8_iter |
+| uuid | 1.24.0 | Apache-2.0 OR MIT | TXT-196, TXT-087 | https://github.com/uuid-rs/uuid |
+| vcpkg | 0.2.15 | MIT/Apache-2.0 | TXT-118, TXT-002 | https://github.com/mcgoo/vcpkg-rs |
+| version_check | 0.9.5 | MIT/Apache-2.0 | TXT-196, TXT-223 | https://github.com/SergioBenitez/version_check |
+| walkdir | 2.5.0 | Unlicense/MIT | TXT-003, TXT-023, TXT-156 | https://github.com/BurntSushi/walkdir |
+| web_atoms | 0.2.5 | MIT OR Apache-2.0 | TXT-196, TXT-159 | https://github.com/servo/html5ever |
+| web-time | 1.1.0 | MIT OR Apache-2.0 | TXT-105, TXT-293 | https://github.com/daxpedda/web-time |
 | webview2-com-macros | 0.8.1 | MIT | TXT-020（来自 crate VCS 提交锁定的上游仓库许可文件） | https://github.com/wravery/webview2-rs |
-| webview2-com-sys | 0.38.2 | MIT | TXT-020（来自 crate VCS 提交锁定的上游仓库许可文件） | https://github.com/wravery/webview2-rs |
-| webview2-com | 0.38.2 | MIT | TXT-020（来自 crate VCS 提交锁定的上游仓库许可文件） | https://github.com/wravery/webview2-rs |
-| winapi-util | 0.1.11 | Unlicense OR MIT | TXT-003, TXT-240, TXT-153 | https://github.com/BurntSushi/winapi-util |
-| winapi | 0.3.9 | MIT/Apache-2.0 | TXT-217, TXT-244 | https://github.com/retep998/winapi-rs |
-| window-vibrancy | 0.6.0 | Apache-2.0 OR MIT | TXT-193, TXT-117, TXT-152 | https://github.com/tauri-apps/tauri-plugin-vibrancy |
-| windows_x86_64_msvc | 0.52.6 | MIT OR Apache-2.0 | TXT-230, TXT-231 | https://github.com/microsoft/windows-rs |
-| windows_x86_64_msvc | 0.53.1 | MIT OR Apache-2.0 | TXT-230, TXT-231 | https://github.com/microsoft/windows-rs |
-| windows-collections | 0.2.0 | MIT OR Apache-2.0 | TXT-230, TXT-231 | https://github.com/microsoft/windows-rs |
-| windows-core | 0.61.2 | MIT OR Apache-2.0 | TXT-230, TXT-231 | https://github.com/microsoft/windows-rs |
-| windows-future | 0.2.1 | MIT OR Apache-2.0 | TXT-230, TXT-231 | https://github.com/microsoft/windows-rs |
-| windows-implement | 0.60.2 | MIT OR Apache-2.0 | TXT-230, TXT-231 | https://github.com/microsoft/windows-rs |
-| windows-interface | 0.59.3 | MIT OR Apache-2.0 | TXT-230, TXT-231 | https://github.com/microsoft/windows-rs |
-| windows-link | 0.1.3 | MIT OR Apache-2.0 | TXT-230, TXT-231 | https://github.com/microsoft/windows-rs |
-| windows-link | 0.2.1 | MIT OR Apache-2.0 | TXT-230, TXT-231 | https://github.com/microsoft/windows-rs |
-| windows-numerics | 0.2.0 | MIT OR Apache-2.0 | TXT-230, TXT-231 | https://github.com/microsoft/windows-rs |
-| windows-result | 0.3.4 | MIT OR Apache-2.0 | TXT-230, TXT-231 | https://github.com/microsoft/windows-rs |
-| windows-strings | 0.4.2 | MIT OR Apache-2.0 | TXT-230, TXT-231 | https://github.com/microsoft/windows-rs |
-| windows-sys | 0.59.0 | MIT OR Apache-2.0 | TXT-230, TXT-231 | https://github.com/microsoft/windows-rs |
-| windows-sys | 0.60.2 | MIT OR Apache-2.0 | TXT-230, TXT-231 | https://github.com/microsoft/windows-rs |
-| windows-sys | 0.61.2 | MIT OR Apache-2.0 | TXT-230, TXT-231 | https://github.com/microsoft/windows-rs |
-| windows-targets | 0.52.6 | MIT OR Apache-2.0 | TXT-230, TXT-231 | https://github.com/microsoft/windows-rs |
-| windows-targets | 0.53.5 | MIT OR Apache-2.0 | TXT-230, TXT-231 | https://github.com/microsoft/windows-rs |
-| windows-threading | 0.1.0 | MIT OR Apache-2.0 | TXT-230, TXT-231 | https://github.com/microsoft/windows-rs |
-| windows-version | 0.1.7 | MIT OR Apache-2.0 | TXT-230, TXT-231 | https://github.com/microsoft/windows-rs |
-| windows | 0.61.3 | MIT OR Apache-2.0 | TXT-230, TXT-231 | https://github.com/microsoft/windows-rs |
-| winnow | 0.7.15 | MIT | TXT-241 | https://github.com/winnow-rs/winnow |
-| winnow | 1.0.4 | MIT | TXT-241 | https://github.com/winnow-rs/winnow |
-| winreg | 0.10.1 | MIT | TXT-270 | https://github.com/gentoo90/winreg-rs |
-| writeable | 0.6.3 | Unicode-3.0 | TXT-284 | https://github.com/unicode-org/icu4x |
-| wry | 0.55.1 | Apache-2.0 OR MIT | TXT-193, TXT-278, TXT-051 | https://github.com/tauri-apps/wry |
-| yoke-derive | 0.8.2 | Unicode-3.0 | TXT-284 | https://github.com/unicode-org/icu4x |
-| yoke | 0.8.3 | Unicode-3.0 | TXT-284 | https://github.com/unicode-org/icu4x |
-| zerofrom-derive | 0.1.7 | Unicode-3.0 | TXT-284 | https://github.com/unicode-org/icu4x |
-| zerofrom | 0.1.8 | Unicode-3.0 | TXT-284 | https://github.com/unicode-org/icu4x |
-| zerotrie | 0.2.4 | Unicode-3.0 | TXT-284 | https://github.com/unicode-org/icu4x |
-| zerovec-derive | 0.11.3 | Unicode-3.0 | TXT-284 | https://github.com/unicode-org/icu4x |
-| zerovec | 0.11.6 | Unicode-3.0 | TXT-284 | https://github.com/unicode-org/icu4x |
+| webview2-com-sys | 0.39.1 | MIT | TXT-020（来自 crate VCS 提交锁定的上游仓库许可文件） | https://github.com/wravery/webview2-rs |
+| webview2-com | 0.39.1 | MIT | TXT-020（来自 crate VCS 提交锁定的上游仓库许可文件） | https://github.com/wravery/webview2-rs |
+| winapi-util | 0.1.11 | Unlicense OR MIT | TXT-003, TXT-246, TXT-156 | https://github.com/BurntSushi/winapi-util |
+| winapi | 0.3.9 | MIT/Apache-2.0 | TXT-221, TXT-250 | https://github.com/retep998/winapi-rs |
+| window-vibrancy | 0.8.1 | Apache-2.0 OR MIT | TXT-196, TXT-119, TXT-155 | https://github.com/tauri-apps/tauri-plugin-vibrancy |
+| windows_x86_64_msvc | 0.53.1 | MIT OR Apache-2.0 | TXT-235, TXT-237 | https://github.com/microsoft/windows-rs |
+| windows-collections | 0.2.0 | MIT OR Apache-2.0 | TXT-235, TXT-237 | https://github.com/microsoft/windows-rs |
+| windows-collections | 0.3.2 | MIT OR Apache-2.0 | TXT-235, TXT-237 | https://github.com/microsoft/windows-rs |
+| windows-core | 0.61.2 | MIT OR Apache-2.0 | TXT-235, TXT-237 | https://github.com/microsoft/windows-rs |
+| windows-core | 0.62.2 | MIT OR Apache-2.0 | TXT-235, TXT-237 | https://github.com/microsoft/windows-rs |
+| windows-future | 0.2.1 | MIT OR Apache-2.0 | TXT-235, TXT-237 | https://github.com/microsoft/windows-rs |
+| windows-future | 0.3.2 | MIT OR Apache-2.0 | TXT-235, TXT-237 | https://github.com/microsoft/windows-rs |
+| windows-implement | 0.60.2 | MIT OR Apache-2.0 | TXT-235, TXT-237 | https://github.com/microsoft/windows-rs |
+| windows-interface | 0.59.3 | MIT OR Apache-2.0 | TXT-235, TXT-237 | https://github.com/microsoft/windows-rs |
+| windows-link | 0.1.3 | MIT OR Apache-2.0 | TXT-235, TXT-237 | https://github.com/microsoft/windows-rs |
+| windows-link | 0.2.1 | MIT OR Apache-2.0 | TXT-235, TXT-237 | https://github.com/microsoft/windows-rs |
+| windows-numerics | 0.2.0 | MIT OR Apache-2.0 | TXT-235, TXT-237 | https://github.com/microsoft/windows-rs |
+| windows-numerics | 0.3.1 | MIT OR Apache-2.0 | TXT-235, TXT-237 | https://github.com/microsoft/windows-rs |
+| windows-result | 0.3.4 | MIT OR Apache-2.0 | TXT-235, TXT-237 | https://github.com/microsoft/windows-rs |
+| windows-result | 0.4.1 | MIT OR Apache-2.0 | TXT-235, TXT-237 | https://github.com/microsoft/windows-rs |
+| windows-strings | 0.4.2 | MIT OR Apache-2.0 | TXT-235, TXT-237 | https://github.com/microsoft/windows-rs |
+| windows-strings | 0.5.1 | MIT OR Apache-2.0 | TXT-235, TXT-237 | https://github.com/microsoft/windows-rs |
+| windows-sys | 0.60.2 | MIT OR Apache-2.0 | TXT-235, TXT-237 | https://github.com/microsoft/windows-rs |
+| windows-sys | 0.61.2 | MIT OR Apache-2.0 | TXT-235, TXT-237 | https://github.com/microsoft/windows-rs |
+| windows-targets | 0.53.5 | MIT OR Apache-2.0 | TXT-235, TXT-237 | https://github.com/microsoft/windows-rs |
+| windows-threading | 0.1.0 | MIT OR Apache-2.0 | TXT-235, TXT-237 | https://github.com/microsoft/windows-rs |
+| windows-threading | 0.2.1 | MIT OR Apache-2.0 | TXT-235, TXT-237 | https://github.com/microsoft/windows-rs |
+| windows-version | 0.1.7 | MIT OR Apache-2.0 | TXT-235, TXT-237 | https://github.com/microsoft/windows-rs |
+| windows | 0.61.3 | MIT OR Apache-2.0 | TXT-235, TXT-237 | https://github.com/microsoft/windows-rs |
+| windows | 0.62.2 | MIT OR Apache-2.0 | TXT-235, TXT-237 | https://github.com/microsoft/windows-rs |
+| winnow | 1.0.4 | MIT | TXT-247 | https://github.com/winnow-rs/winnow |
+| winreg | 0.10.1 | MIT | TXT-277 | https://github.com/gentoo90/winreg-rs |
+| writeable | 0.6.3 | Unicode-3.0 | TXT-291 | https://github.com/unicode-org/icu4x |
+| wry | 0.57.0 | Apache-2.0 OR MIT | TXT-196, TXT-285, TXT-051 | https://github.com/tauri-apps/wry |
+| yoke-derive | 0.8.2 | Unicode-3.0 | TXT-291 | https://github.com/unicode-org/icu4x |
+| yoke | 0.8.3 | Unicode-3.0 | TXT-291 | https://github.com/unicode-org/icu4x |
+| zerofrom-derive | 0.1.7 | Unicode-3.0 | TXT-291 | https://github.com/unicode-org/icu4x |
+| zerofrom | 0.1.8 | Unicode-3.0 | TXT-291 | https://github.com/unicode-org/icu4x |
+| zerotrie | 0.2.4 | Unicode-3.0 | TXT-291 | https://github.com/unicode-org/icu4x |
+| zerovec-derive | 0.11.3 | Unicode-3.0 | TXT-291 | https://github.com/unicode-org/icu4x |
+| zerovec | 0.11.6 | Unicode-3.0 | TXT-291 | https://github.com/unicode-org/icu4x |
 | zmij | 1.0.23 | MIT | TXT-048 | https://github.com/dtolnay/zmij |
 
 ## 去重许可与 NOTICE 文本
@@ -705,9 +692,9 @@ Tauri 已配置在下一次构建时把本文件放入安装包的 licenses 目�
 
 ### TXT-001
 
-SHA-256：`0154425673DB15CDFA80ECBA2C9B1F1A867F7197A006764712849BFC3A93CBB7`  
-字节数：1102  
-文件名：`LICENSE`  
+SHA-256：`0154425673DB15CDFA80ECBA2C9B1F1A867F7197A006764712849BFC3A93CBB7`<br>
+字节数：1102<br>
+文件名：`LICENSE`<br>
 引用包：`npm:node_modules/util-deprecate`
 
 ````text
@@ -739,9 +726,9 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 ### TXT-002
 
-SHA-256：`016D20F335060A70E79D9FCF8DFAA6201114D65D592211F4BDFB8AE9CA2BC1DC`  
-字节数：1082  
-文件名：`LICENSE-MIT`  
+SHA-256：`016D20F335060A70E79D9FCF8DFAA6201114D65D592211F4BDFB8AE9CA2BC1DC`<br>
+字节数：1082<br>
+文件名：`LICENSE-MIT`<br>
 引用包：`cargo:vcpkg@0.2.15`
 
 ````text
@@ -774,9 +761,9 @@ DEALINGS IN THE SOFTWARE.
 
 ### TXT-003
 
-SHA-256：`01C266BCED4A434DA0051174D6BEE16A4C82CF634E2679B6155D40D75012390F`  
-字节数：126  
-文件名：`COPYING`  
+SHA-256：`01C266BCED4A434DA0051174D6BEE16A4C82CF634E2679B6155D40D75012390F`<br>
+字节数：126<br>
+文件名：`COPYING`<br>
 引用包：`cargo:aho-corasick@1.1.4`、`cargo:byteorder@1.5.0`、`cargo:memchr@2.8.3`、`cargo:same-file@1.0.6`、`cargo:walkdir@2.5.0`、`cargo:winapi-util@0.1.11`
 
 ````text
@@ -787,9 +774,9 @@ You may use this code under the terms of either license.
 
 ### TXT-004
 
-SHA-256：`025436EDFF4CFCDDE17A5811FDEA78892D8482EFD1ABDEC5A17872D07A4F2112`  
-字节数：1062  
-文件名：`LICENSE-MIT`  
+SHA-256：`025436EDFF4CFCDDE17A5811FDEA78892D8482EFD1ABDEC5A17872D07A4F2112`<br>
+字节数：1062<br>
+文件名：`LICENSE-MIT`<br>
 引用包：`cargo:flate2@1.1.9`
 
 ````text
@@ -822,10 +809,10 @@ DEALINGS IN THE SOFTWARE.
 
 ### TXT-005
 
-SHA-256：`02B6448337B757772D90E5F31CAAA0F9E6AFAAD2221C01771D0A3DEAA4D4196C`  
-字节数：793  
-文件名：`LICENSE.spdx`  
-引用包：`cargo:tao@0.35.3`
+SHA-256：`02B6448337B757772D90E5F31CAAA0F9E6AFAAD2221C01771D0A3DEAA4D4196C`<br>
+字节数：793<br>
+文件名：`LICENSE.spdx`<br>
+引用包：`cargo:tao@0.37.1`
 
 ````text
 SPDXVersion: SPDX-2.1
@@ -850,9 +837,9 @@ Creator: Person: Daniel Thompson-Yvetot
 
 ### TXT-006
 
-SHA-256：`04512A63DCE4D2D506AD612DC0BD7681CCF6E3655F7B6EAEF7DFAC8323D1EC0B`  
-字节数：1098  
-文件名：`LICENSE`  
+SHA-256：`04512A63DCE4D2D506AD612DC0BD7681CCF6E3655F7B6EAEF7DFAC8323D1EC0B`<br>
+字节数：1098<br>
+文件名：`LICENSE`<br>
 引用包：`npm:node_modules/commander`
 
 ````text
@@ -882,9 +869,9 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 ### TXT-007
 
-SHA-256：`04575FC5BFAE19A9B63100F8691F901A2E15A399011AC02DB435A9EF27295551`  
-字节数：1102  
-文件名：`LICENSE`  
+SHA-256：`04575FC5BFAE19A9B63100F8691F901A2E15A399011AC02DB435A9EF27295551`<br>
+字节数：1102<br>
+文件名：`LICENSE`<br>
 引用包：`npm:node_modules/@vitest/expect`、`npm:node_modules/@vitest/mocker`、`npm:node_modules/@vitest/pretty-format`、`npm:node_modules/@vitest/runner`、`npm:node_modules/@vitest/snapshot`、`npm:node_modules/@vitest/spy`、`npm:node_modules/@vitest/utils`
 
 ````text
@@ -913,9 +900,9 @@ SOFTWARE.
 
 ### TXT-008
 
-SHA-256：`0463BFA47D6D763D8C824333EFB0E6D6DF3946C13C3B077C78ED9F23CA50D0F2`  
-字节数：1056  
-文件名：`LICENSE-MIT`  
+SHA-256：`0463BFA47D6D763D8C824333EFB0E6D6DF3946C13C3B077C78ED9F23CA50D0F2`<br>
+字节数：1056<br>
+文件名：`LICENSE-MIT`<br>
 引用包：`cargo:softbuffer@0.4.8`
 
 ````text
@@ -942,9 +929,9 @@ SOFTWARE.
 
 ### TXT-009
 
-SHA-256：`053A75A14B7508A897466B65E12797201A06B0E9B5066D1223DA72CAC99601B5`  
-字节数：1097  
-文件名：`LICENSE`  
+SHA-256：`053A75A14B7508A897466B65E12797201A06B0E9B5066D1223DA72CAC99601B5`<br>
+字节数：1097<br>
+文件名：`LICENSE`<br>
 引用包：`npm:node_modules/@typescript-eslint/project-service`、`npm:node_modules/@typescript-eslint/tsconfig-utils`
 
 ````text
@@ -973,9 +960,9 @@ SOFTWARE.
 
 ### TXT-010
 
-SHA-256：`070DBC7DDA03A29296F2D58BDB9B7331AF90F2ABC9F31DF22875D1EABAF29852`  
-字节数：1062  
-文件名：`LICENSE-MIT`  
+SHA-256：`070DBC7DDA03A29296F2D58BDB9B7331AF90F2ABC9F31DF22875D1EABAF29852`<br>
+字节数：1062<br>
+文件名：`LICENSE-MIT`<br>
 引用包：`cargo:powerfmt@0.2.0`
 
 ````text
@@ -1002,9 +989,9 @@ SOFTWARE.
 
 ### TXT-011
 
-SHA-256：`074E6E32C86A4C0EF8B3ED25B721CA23ACA83DF277CD88106EF7177C354615FF`  
-字节数：10280  
-文件名：`Apache-2.0.txt`  
+SHA-256：`074E6E32C86A4C0EF8B3ED25B721CA23ACA83DF277CD88106EF7177C354615FF`<br>
+字节数：10280<br>
+文件名：`Apache-2.0.txt`<br>
 引用包：`cargo:crc-catalog@2.5.0`、`npm:node_modules/@humanfs/types`
 
 ````text
@@ -1085,9 +1072,9 @@ limitations under the License.
 
 ### TXT-012
 
-SHA-256：`07919255C7E04793D8EA760D6C2CE32D19F9FF02BDBDDE3CE90B1E1880929A9B`  
-字节数：1082  
-文件名：`LICENSE`  
+SHA-256：`07919255C7E04793D8EA760D6C2CE32D19F9FF02BDBDDE3CE90B1E1880929A9B`<br>
+字节数：1082<br>
+文件名：`LICENSE`<br>
 引用包：`cargo:mio@1.2.2`
 
 ````text
@@ -1114,9 +1101,9 @@ THE SOFTWARE.
 
 ### TXT-013
 
-SHA-256：`097EC7989106EB9A27B6EFF71DBAF1CD6BB04A9B35B6C94B54FFF0829A041A8C`  
-字节数：1062  
-文件名：`LICENSE`  
+SHA-256：`097EC7989106EB9A27B6EFF71DBAF1CD6BB04A9B35B6C94B54FFF0829A041A8C`<br>
+字节数：1062<br>
+文件名：`LICENSE`<br>
 引用包：`npm:node_modules/lunar-typescript`
 
 ````text
@@ -1145,9 +1132,9 @@ SOFTWARE.
 
 ### TXT-014
 
-SHA-256：`0A54E647FE54104658B5E563C04C6F9EDF251710E47BCE692E0BD990A4DDAA39`  
-字节数：984  
-文件名：`LICENSE-ZLIB.md`  
+SHA-256：`0A54E647FE54104658B5E563C04C6F9EDF251710E47BCE692E0BD990A4DDAA39`<br>
+字节数：984<br>
+文件名：`LICENSE-ZLIB.md`<br>
 引用包：`cargo:miniz_oxide@0.8.9`
 
 ````text
@@ -1169,9 +1156,9 @@ Permission is granted to anyone to use this software for any purpose, including 
 
 ### TXT-015
 
-SHA-256：`0AB4D106B6FAAC07FB6A051815FD1B4D862D730895E2D7D7358C2F13565E7A38`  
-字节数：1099  
-文件名：`LICENSE`  
+SHA-256：`0AB4D106B6FAAC07FB6A051815FD1B4D862D730895E2D7D7358C2F13565E7A38`<br>
+字节数：1099<br>
+文件名：`LICENSE`<br>
 引用包：`cargo:phf_codegen@0.13.1`、`cargo:phf_generator@0.13.1`、`cargo:phf_macros@0.13.1`、`cargo:phf_shared@0.13.1`、`cargo:phf@0.13.1`
 
 ````text
@@ -1199,9 +1186,9 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 ### TXT-016
 
-SHA-256：`0AF366EFF4C01EC147C9C61EA9E8FFAD64A4294754C9D79355F3FD1B97CB2FB9`  
-字节数：1452  
-文件名：`LICENSE`  
+SHA-256：`0AF366EFF4C01EC147C9C61EA9E8FFAD64A4294754C9D79355F3FD1B97CB2FB9`<br>
+字节数：1452<br>
+文件名：`LICENSE`<br>
 引用包：`npm:node_modules/uri-js`
 
 ````text
@@ -1220,9 +1207,9 @@ The views and conclusions contained in the software and documentation are those 
 
 ### TXT-017
 
-SHA-256：`0B28172679E0009B655DA42797C03FD163A3379D5CFA67BA1F1655E974A2A1A9`  
-字节数：1072  
-文件名：`LICENSE-MIT`  
+SHA-256：`0B28172679E0009B655DA42797C03FD163A3379D5CFA67BA1F1655E974A2A1A9`<br>
+字节数：1072<br>
+文件名：`LICENSE-MIT`<br>
 引用包：`cargo:smallvec@1.15.2`
 
 ````text
@@ -1255,9 +1242,9 @@ DEALINGS IN THE SOFTWARE.
 
 ### TXT-018
 
-SHA-256：`0CEC06E0E55FBC3DC5CEE4FCA9B607F66CB8F4E4DBCF3B3C013594DD156732E9`  
-字节数：10173  
-文件名：`LICENSE_APACHE-2.0`  
+SHA-256：`0CEC06E0E55FBC3DC5CEE4FCA9B607F66CB8F4E4DBCF3B3C013594DD156732E9`<br>
+字节数：10173<br>
+文件名：`LICENSE_APACHE-2.0`<br>
 引用包：`cargo:tauri-plugin-autostart@2.5.1`、`cargo:tauri-plugin-opener@2.5.4`、`cargo:tauri-plugin-single-instance@2.4.3`、`cargo:tauri-plugin-sql@2.4.0`
 
 ````text
@@ -1442,10 +1429,10 @@ SHA-256：`0CEC06E0E55FBC3DC5CEE4FCA9B607F66CB8F4E4DBCF3B3C013594DD156732E9`
 
 ### TXT-019
 
-SHA-256：`0D542E0C8804E39AA7F37EB00DA5A762149DC682D7829451287E11B938E94594`  
-字节数：10174  
-文件名：`LICENSE_APACHE-2.0`、`LICENSE-Apache`、`LICENSE-APACHE`、`LICENSE-APACHE.md`  
-引用包：`cargo:fdeflate@0.3.7`、`cargo:miniz_oxide@0.8.9`、`cargo:num-conv@0.2.2`、`cargo:pin-project-lite@0.2.17`、`cargo:raw-window-handle@0.6.2`、`cargo:tauri-build@2.6.3`、`cargo:tauri-codegen@2.6.3`、`cargo:tauri-macros@2.6.3`、`cargo:tauri-plugin@2.6.3`、`cargo:tauri-runtime-wry@2.11.4`、`cargo:tauri-runtime@2.11.3`、`cargo:tauri-utils@2.9.3`、`cargo:tauri@2.11.5`、`cargo:time-core@0.1.9`、`cargo:time-macros@0.2.32`、`cargo:time@0.3.54`、`npm:node_modules/@tauri-apps/api`、`npm:node_modules/@tauri-apps/cli`、`npm:node_modules/@tauri-apps/cli-darwin-arm64`、`npm:node_modules/@tauri-apps/cli-darwin-x64`、`npm:node_modules/@tauri-apps/cli-linux-arm-gnueabihf`、`npm:node_modules/@tauri-apps/cli-linux-arm64-gnu`、`npm:node_modules/@tauri-apps/cli-linux-arm64-musl`、`npm:node_modules/@tauri-apps/cli-linux-riscv64-gnu`、`npm:node_modules/@tauri-apps/cli-linux-x64-gnu`、`npm:node_modules/@tauri-apps/cli-linux-x64-musl`、`npm:node_modules/@tauri-apps/cli-win32-arm64-msvc`、`npm:node_modules/@tauri-apps/cli-win32-ia32-msvc`、`npm:node_modules/@tauri-apps/cli-win32-x64-msvc`
+SHA-256：`0D542E0C8804E39AA7F37EB00DA5A762149DC682D7829451287E11B938E94594`<br>
+字节数：10174<br>
+文件名：`LICENSE_APACHE-2.0`、`LICENSE-Apache`、`LICENSE-APACHE`、`LICENSE-APACHE-2.0`、`LICENSE-APACHE.md`<br>
+引用包：`cargo:fdeflate@0.3.7`、`cargo:miniz_oxide@0.8.9`、`cargo:num-conv@0.2.2`、`cargo:pin-project-lite@0.2.17`、`cargo:raw-window-handle@0.6.2`、`cargo:tauri-build@2.7.3`、`cargo:tauri-codegen@2.7.3`、`cargo:tauri-macros@2.7.3`、`cargo:tauri-plugin@2.6.3`、`cargo:tauri-runtime-wry@2.12.2`、`cargo:tauri-runtime@2.12.2`、`cargo:tauri-utils@2.10.2`、`cargo:tauri@2.12.4`、`cargo:time-core@0.1.9`、`cargo:time-macros@0.2.32`、`cargo:time@0.3.54`、`npm:node_modules/@tauri-apps/api`、`npm:node_modules/@tauri-apps/cli`、`npm:node_modules/@tauri-apps/cli-darwin-arm64`、`npm:node_modules/@tauri-apps/cli-darwin-x64`、`npm:node_modules/@tauri-apps/cli-linux-arm-gnueabihf`、`npm:node_modules/@tauri-apps/cli-linux-arm64-gnu`、`npm:node_modules/@tauri-apps/cli-linux-arm64-musl`、`npm:node_modules/@tauri-apps/cli-linux-riscv64-gnu`、`npm:node_modules/@tauri-apps/cli-linux-x64-gnu`、`npm:node_modules/@tauri-apps/cli-linux-x64-musl`、`npm:node_modules/@tauri-apps/cli-win32-arm64-msvc`、`npm:node_modules/@tauri-apps/cli-win32-ia32-msvc`、`npm:node_modules/@tauri-apps/cli-win32-x64-msvc`
 
 ````text
 
@@ -1629,10 +1616,10 @@ SHA-256：`0D542E0C8804E39AA7F37EB00DA5A762149DC682D7829451287E11B938E94594`
 
 ### TXT-020
 
-SHA-256：`0DCF41516E608BBCB6CDC5229FEB7B86FE4A643B85E7DF251133C93408FDAC73`  
-字节数：1067  
-文件名：`LICENSE`  
-引用包：`cargo:webview2-com-macros@0.8.1`、`cargo:webview2-com-sys@0.38.2`、`cargo:webview2-com@0.38.2`
+SHA-256：`0DCF41516E608BBCB6CDC5229FEB7B86FE4A643B85E7DF251133C93408FDAC73`<br>
+字节数：1067<br>
+文件名：`LICENSE`<br>
+引用包：`cargo:webview2-com-macros@0.8.1`、`cargo:webview2-com-sys@0.39.1`、`cargo:webview2-com@0.39.1`
 
 ````text
 MIT License
@@ -1660,9 +1647,9 @@ SOFTWARE.
 
 ### TXT-021
 
-SHA-256：`0DD882E53DE11566D50F8E8E2D5A651BCF3FABEE4987D70F306233CF39094BA7`  
-字节数：1076  
-文件名：`LICENSE-MIT`  
+SHA-256：`0DD882E53DE11566D50F8E8E2D5A651BCF3FABEE4987D70F306233CF39094BA7`<br>
+字节数：1076<br>
+文件名：`LICENSE-MIT`<br>
 引用包：`cargo:base64@0.22.1`
 
 ````text
@@ -1691,9 +1678,9 @@ THE SOFTWARE.
 
 ### TXT-022
 
-SHA-256：`0E74697A68CEBDCD61502C30FE80AB7F9E341D995DCD452023654D57133534B1`  
-字节数：1231  
-文件名：`LICENSE.BSD`  
+SHA-256：`0E74697A68CEBDCD61502C30FE80AB7F9E341D995DCD452023654D57133534B1`<br>
+字节数：1231<br>
+文件名：`LICENSE.BSD`<br>
 引用包：`npm:node_modules/estraverse`、`npm:node_modules/esutils`
 
 ````text
@@ -1720,9 +1707,9 @@ THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 ### TXT-023
 
-SHA-256：`0F96A83840E146E43C0EC96A22EC1F392E0680E6C1226E6F3BA87E0740AF850F`  
-字节数：1081  
-文件名：`LICENSE-MIT`  
+SHA-256：`0F96A83840E146E43C0EC96A22EC1F392E0680E6C1226E6F3BA87E0740AF850F`<br>
+字节数：1081<br>
+文件名：`LICENSE-MIT`<br>
 引用包：`cargo:aho-corasick@1.1.4`、`cargo:byteorder@1.5.0`、`cargo:memchr@2.8.3`、`cargo:walkdir@2.5.0`
 
 ````text
@@ -1751,9 +1738,9 @@ THE SOFTWARE.
 
 ### TXT-024
 
-SHA-256：`117DA2AF0D4CE0FE1C8E19B5CFF9DCD806ADF973D328D27B11D4448C4FF24F76`  
-字节数：1106  
-文件名：`LICENSE`  
+SHA-256：`117DA2AF0D4CE0FE1C8E19B5CFF9DCD806ADF973D328D27B11D4448C4FF24F76`<br>
+字节数：1106<br>
+文件名：`LICENSE`<br>
 引用包：`npm:node_modules/@babel/helper-string-parser`、`npm:node_modules/@babel/helper-validator-identifier`、`npm:node_modules/@babel/types`
 
 ````text
@@ -1783,9 +1770,9 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 ### TXT-025
 
-SHA-256：`11D55BD4541C75EE7879547AC49089C489163DAE49551389713C3D026CAB383E`  
-字节数：1062  
-文件名：`LICENSE`  
+SHA-256：`11D55BD4541C75EE7879547AC49089C489163DAE49551389713C3D026CAB383E`<br>
+字节数：1062<br>
+文件名：`LICENSE`<br>
 引用包：`npm:node_modules/csstype`
 
 ````text
@@ -1812,9 +1799,9 @@ SOFTWARE.
 
 ### TXT-026
 
-SHA-256：`123A331B5DBF04C30097FA43B8F858BC85DF671FE776DE498D01F3D6B7C1F69E`  
-字节数：1066  
-文件名：`LICENSE-MIT`  
+SHA-256：`123A331B5DBF04C30097FA43B8F858BC85DF671FE776DE498D01F3D6B7C1F69E`<br>
+字节数：1066<br>
+文件名：`LICENSE-MIT`<br>
 引用包：`cargo:libc@0.2.189`
 
 ````text
@@ -1847,9 +1834,9 @@ DEALINGS IN THE SOFTWARE.
 
 ### TXT-027
 
-SHA-256：`148718606D34F467FD08A2176BB4C1AB275F999576F779368503D8D3E3642861`  
-字节数：770  
-文件名：`LICENSE`  
+SHA-256：`148718606D34F467FD08A2176BB4C1AB275F999576F779368503D8D3E3642861`<br>
+字节数：770<br>
+文件名：`LICENSE`<br>
 引用包：`npm:node_modules/flatted`
 
 ````text
@@ -1872,9 +1859,9 @@ PERFORMANCE OF THIS SOFTWARE.
 
 ### TXT-028
 
-SHA-256：`155420C6403D4E0FCA34105E3C03FDD6939B64C393C7EC6F95F5B72C5474EAB0`  
-字节数：11349  
-文件名：`LICENSE-Apache`  
+SHA-256：`155420C6403D4E0FCA34105E3C03FDD6939B64C393C7EC6F95F5B72C5474EAB0`<br>
+字节数：11349<br>
+文件名：`LICENSE-Apache`<br>
 引用包：`cargo:powerfmt@0.2.0`
 
 ````text
@@ -2084,9 +2071,9 @@ SHA-256：`155420C6403D4E0FCA34105E3C03FDD6939B64C393C7EC6F95F5B72C5474EAB0`
 
 ### TXT-029
 
-SHA-256：`161C4BCB09E94E97CF5D917129BBD78574CA2238704D602465CD54EBB9E570D6`  
-字节数：1059  
-文件名：`LICENSE-MIT`  
+SHA-256：`161C4BCB09E94E97CF5D917129BBD78574CA2238704D602465CD54EBB9E570D6`<br>
+字节数：1059<br>
+文件名：`LICENSE-MIT`<br>
 引用包：`cargo:futures-intrusive@0.5.0`
 
 ````text
@@ -2119,9 +2106,9 @@ DEALINGS IN THE SOFTWARE.
 
 ### TXT-030
 
-SHA-256：`1662FAE9B5314D11CF51284E2DCD1F006A354F7343F08712A730FCFF9A359801`  
-字节数：1079  
-文件名：`license.md`  
+SHA-256：`1662FAE9B5314D11CF51284E2DCD1F006A354F7343F08712A730FCFF9A359801`<br>
+字节数：1079<br>
+文件名：`license.md`<br>
 引用包：`npm:node_modules/ms`
 
 ````text
@@ -2150,9 +2137,9 @@ SOFTWARE.
 
 ### TXT-031
 
-SHA-256：`1954992A2B32E8A2AF24A4C11B726902E344C1934B947A77F04D404908F8DB30`  
-字节数：1068  
-文件名：`LICENSE`  
+SHA-256：`1954992A2B32E8A2AF24A4C11B726902E344C1934B947A77F04D404908F8DB30`<br>
+字节数：1068<br>
+文件名：`LICENSE`<br>
 引用包：`cargo:schemars_derive@0.8.22`、`cargo:schemars@0.8.22`
 
 ````text
@@ -2181,9 +2168,9 @@ SOFTWARE.
 
 ### TXT-032
 
-SHA-256：`1ABDBBD4E3F95E56C79D4A8AF190254C23DDB14DB34AADADFAFEF9C3AF041113`  
-字节数：1081  
-文件名：`LICENSE`  
+SHA-256：`1ABDBBD4E3F95E56C79D4A8AF190254C23DDB14DB34AADADFAFEF9C3AF041113`<br>
+字节数：1081<br>
+文件名：`LICENSE`<br>
 引用包：`cargo:embed-resource@3.0.11`
 
 ````text
@@ -2212,9 +2199,9 @@ SOFTWARE.
 
 ### TXT-033
 
-SHA-256：`1BB85CC9B13B81EF41C81C51866172FC345E0503C86726A6755B796590B70175`  
-字节数：1091  
-文件名：`LICENSE`  
+SHA-256：`1BB85CC9B13B81EF41C81C51866172FC345E0503C86726A6755B796590B70175`<br>
+字节数：1091<br>
+文件名：`LICENSE`<br>
 引用包：`npm:node_modules/@vue/compiler-core`、`npm:node_modules/@vue/compiler-dom`、`npm:node_modules/@vue/compiler-sfc`、`npm:node_modules/@vue/compiler-ssr`、`npm:node_modules/@vue/reactivity`、`npm:node_modules/@vue/runtime-core`、`npm:node_modules/@vue/runtime-dom`、`npm:node_modules/@vue/server-renderer`、`npm:node_modules/@vue/shared`、`npm:node_modules/vue`
 
 ````text
@@ -2243,9 +2230,9 @@ THE SOFTWARE.
 
 ### TXT-034
 
-SHA-256：`1CBE51B907662F6CB1492B16C359384A595180BF0E4D101603ED525E75C4E484`  
-字节数：1051  
-文件名：`LICENSE`  
+SHA-256：`1CBE51B907662F6CB1492B16C359384A595180BF0E4D101603ED525E75C4E484`<br>
+字节数：1051<br>
+文件名：`LICENSE`<br>
 引用包：`npm:node_modules/magic-string`
 
 ````text
@@ -2260,9 +2247,9 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 ### TXT-035
 
-SHA-256：`1E697CE8D21401FBF1BDDD9B5C3FD4C4C79AE1E3BDF51F81761C85E11D5A89CD`  
-字节数：1166  
-文件名：`LICENSE`  
+SHA-256：`1E697CE8D21401FBF1BDDD9B5C3FD4C4C79AE1E3BDF51F81761C85E11D5A89CD`<br>
+字节数：1166<br>
+文件名：`LICENSE`<br>
 引用包：`cargo:strsim@0.11.1`
 
 ````text
@@ -2293,9 +2280,9 @@ SOFTWARE.
 
 ### TXT-036
 
-SHA-256：`1F256ECAD192880510E84AD60474EAB7589218784B9A50BC7CEEE34C2B91F1D5`  
-字节数：16725  
-文件名：`LICENSE`  
+SHA-256：`1F256ECAD192880510E84AD60474EAB7589218784B9A50BC7CEEE34C2B91F1D5`<br>
+字节数：16725<br>
+文件名：`LICENSE`<br>
 引用包：`cargo:dtoa-short@0.3.5`
 
 ````text
@@ -2676,9 +2663,9 @@ Exhibit B - "Incompatible With Secondary Licenses" Notice
 
 ### TXT-037
 
-SHA-256：`1FA6EE8BB95A81AE3D73A5BD074A3AC380FFEC13697051063CA1A601921B91DB`  
-字节数：1078  
-文件名：`LICENSE`  
+SHA-256：`1FA6EE8BB95A81AE3D73A5BD074A3AC380FFEC13697051063CA1A601921B91DB`<br>
+字节数：1078<br>
+文件名：`LICENSE`<br>
 引用包：`npm:node_modules/convert-source-map`
 
 ````text
@@ -2709,9 +2696,9 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 ### TXT-038
 
-SHA-256：`2088F55C6731498410B20C95EBD345ED4A4A800BF74C0FBA4D282FD2A021DAAA`  
-字节数：1076  
-文件名：`LICENSE`  
+SHA-256：`2088F55C6731498410B20C95EBD345ED4A4A800BF74C0FBA4D282FD2A021DAAA`<br>
+字节数：1076<br>
+文件名：`LICENSE`<br>
 引用包：`npm:node_modules/@emnapi/core`、`npm:node_modules/@emnapi/runtime`、`npm:node_modules/@emnapi/wasi-threads`
 
 ````text
@@ -2740,9 +2727,9 @@ SOFTWARE.
 
 ### TXT-039
 
-SHA-256：`20C7855C364D57EA4C97889A5E8D98470A9952DADE37BD9248B9A54431670E5E`  
-字节数：1072  
-文件名：`LICENSE-MIT`  
+SHA-256：`20C7855C364D57EA4C97889A5E8D98470A9952DADE37BD9248B9A54431670E5E`<br>
+字节数：1072<br>
+文件名：`LICENSE-MIT`<br>
 引用包：`cargo:form_urlencoded@1.2.2`
 
 ````text
@@ -2775,9 +2762,9 @@ DEALINGS IN THE SOFTWARE.
 
 ### TXT-040
 
-SHA-256：`20FE7B00E904ED690E3B9FD6073784D3FC428141DBD10B81C01FD143D0797F58`  
-字节数：9899  
-文件名：`LICENSE-APACHE`  
+SHA-256：`20FE7B00E904ED690E3B9FD6073784D3FC428141DBD10B81C01FD143D0797F58`<br>
+字节数：9899<br>
+文件名：`LICENSE-APACHE`<br>
 引用包：`cargo:allocator-api2@0.2.21`
 
 ````text
@@ -2961,9 +2948,9 @@ END OF TERMS AND CONDITIONS
 
 ### TXT-041
 
-SHA-256：`210B19E543130388C68654B7497E967119CE17145F66AB7D85688FBD70F08751`  
-字节数：655  
-文件名：`LICENSE.txt`  
+SHA-256：`210B19E543130388C68654B7497E967119CE17145F66AB7D85688FBD70F08751`<br>
+字节数：655<br>
+文件名：`LICENSE.txt`<br>
 引用包：`npm:node_modules/tslib`
 
 ````text
@@ -2983,9 +2970,9 @@ PERFORMANCE OF THIS SOFTWARE.
 
 ### TXT-042
 
-SHA-256：`2130216D5AB4C02134F8247F32999FEDA0ABE1EAF028218BAEAC445C19CE4CEA`  
-字节数：1108  
-文件名：`LICENSE`  
+SHA-256：`2130216D5AB4C02134F8247F32999FEDA0ABE1EAF028218BAEAC445C19CE4CEA`<br>
+字节数：1108<br>
+文件名：`LICENSE`<br>
 引用包：`npm:node_modules/assertion-error`
 
 ````text
@@ -3014,9 +3001,9 @@ SOFTWARE.
 
 ### TXT-043
 
-SHA-256：`219920E865EEE70B7DCFC948A86B099E7F4FE2DE01BCCA2CA9A20C0A033F2B59`  
-字节数：1052  
-文件名：`LICENSE`  
+SHA-256：`219920E865EEE70B7DCFC948A86B099E7F4FE2DE01BCCA2CA9A20C0A033F2B59`<br>
+字节数：1052<br>
+文件名：`LICENSE`<br>
 引用包：`cargo:synstructure@0.13.2`
 
 ````text
@@ -3031,9 +3018,9 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 ### TXT-044
 
-SHA-256：`22C68811E174CBBFB3813D4135918DF4F540959C14D872E601D9ABE83D3CDE8F`  
-字节数：1076  
-文件名：`LICENSE`  
+SHA-256：`22C68811E174CBBFB3813D4135918DF4F540959C14D872E601D9ABE83D3CDE8F`<br>
+字节数：1076<br>
+文件名：`LICENSE`<br>
 引用包：`npm:node_modules/tinyglobby`
 
 ````text
@@ -3062,9 +3049,9 @@ SOFTWARE.
 
 ### TXT-045
 
-SHA-256：`231C837C45EB53F108FB48929E488965BC4FCC14E9EA21D35F50E6B99D98685B`  
-字节数：1062  
-文件名：`LICENSE-MIT`  
+SHA-256：`231C837C45EB53F108FB48929E488965BC4FCC14E9EA21D35F50E6B99D98685B`<br>
+字节数：1062<br>
+文件名：`LICENSE-MIT`<br>
 引用包：`cargo:deranged@0.5.8`
 
 ````text
@@ -3091,9 +3078,9 @@ SOFTWARE.
 
 ### TXT-046
 
-SHA-256：`23860C2A7B5D96B21569AFEDF033469BAB9FE14A1B24A35068B8641C578CE24D`  
-字节数：321  
-文件名：`COPYRIGHT`  
+SHA-256：`23860C2A7B5D96B21569AFEDF033469BAB9FE14A1B24A35068B8641C578CE24D`<br>
+字节数：321<br>
+文件名：`COPYRIGHT`<br>
 引用包：`cargo:unicode-segmentation@1.13.3`
 
 ````text
@@ -3108,9 +3095,9 @@ according to those terms.
 
 ### TXT-047
 
-SHA-256：`23ECFFF35A5A2E80D92142F75228912C3B1ABC4B5A8337A821FF4397E2F9F734`  
-字节数：1302  
-文件名：`LICENSE`  
+SHA-256：`23ECFFF35A5A2E80D92142F75228912C3B1ABC4B5A8337A821FF4397E2F9F734`<br>
+字节数：1302<br>
+文件名：`LICENSE`<br>
 引用包：`npm:node_modules/@rolldown/binding-android-arm64`、`npm:node_modules/@rolldown/binding-darwin-arm64`、`npm:node_modules/@rolldown/binding-darwin-x64`、`npm:node_modules/@rolldown/binding-freebsd-x64`、`npm:node_modules/@rolldown/binding-linux-arm-gnueabihf`、`npm:node_modules/@rolldown/binding-linux-arm64-gnu`、`npm:node_modules/@rolldown/binding-linux-arm64-musl`、`npm:node_modules/@rolldown/binding-linux-ppc64-gnu`、`npm:node_modules/@rolldown/binding-linux-s390x-gnu`、`npm:node_modules/@rolldown/binding-linux-x64-gnu`、`npm:node_modules/@rolldown/binding-linux-x64-musl`、`npm:node_modules/@rolldown/binding-openharmony-arm64`、`npm:node_modules/@rolldown/binding-wasm32-wasi`、`npm:node_modules/@rolldown/binding-win32-arm64-msvc`、`npm:node_modules/@rolldown/binding-win32-x64-msvc`、`npm:node_modules/rolldown`
 
 ````text
@@ -3143,10 +3130,10 @@ The licenses of externally maintained libraries from which parts of the Software
 
 ### TXT-048
 
-SHA-256：`23F18E03DC49DF91622FE2A76176497404E46CED8A715D9D2B67A7446571CCA3`  
-字节数：1023  
-文件名：`LICENSE-MIT`  
-引用包：`cargo:adler2@2.0.1`、`cargo:anyhow@1.0.104`、`cargo:camino@1.2.4`、`cargo:cargo_metadata@0.19.2`、`cargo:cargo-platform@0.1.9`、`cargo:displaydoc@0.2.6`、`cargo:dtoa@1.0.11`、`cargo:dyn-clone@1.0.20`、`cargo:erased-serde@0.4.10`、`cargo:event-listener@5.4.2`、`cargo:fastrand@2.5.0`、`cargo:itoa@1.0.18`、`cargo:once_cell@1.21.4`、`cargo:parking@2.2.1`、`cargo:pin-project-lite@0.2.17`、`cargo:proc-macro2@1.0.107`、`cargo:quote@1.0.47`、`cargo:semver@1.0.28`、`cargo:serde_core@1.0.229`、`cargo:serde_derive_internals@0.29.1`、`cargo:serde_derive@1.0.229`、`cargo:serde_json@1.0.151`、`cargo:serde_repr@0.1.21`、`cargo:serde-untagged@0.1.9`、`cargo:serde@1.0.229`、`cargo:servo_arc@0.4.3`、`cargo:syn@2.0.119`、`cargo:syn@3.0.3`、`cargo:thiserror-impl@1.0.69`、`cargo:thiserror-impl@2.0.19`、`cargo:thiserror@1.0.69`、`cargo:thiserror@2.0.19`、`cargo:typeid@1.0.3`、`cargo:unic-char-property@0.9.0`、`cargo:unic-char-range@0.9.0`、`cargo:unic-common@0.9.0`、`cargo:unic-ucd-ident@0.9.0`、`cargo:unic-ucd-version@0.9.0`、`cargo:unicode-ident@1.0.24`、`cargo:zmij@1.0.23`
+SHA-256：`23F18E03DC49DF91622FE2A76176497404E46CED8A715D9D2B67A7446571CCA3`<br>
+字节数：1023<br>
+文件名：`LICENSE-MIT`<br>
+引用包：`cargo:adler2@2.0.1`、`cargo:anyhow@1.0.104`、`cargo:camino@1.2.4`、`cargo:cargo_metadata@0.19.2`、`cargo:cargo-platform@0.1.9`、`cargo:displaydoc@0.2.6`、`cargo:dtoa@1.0.11`、`cargo:dyn-clone@1.0.20`、`cargo:erased-serde@0.4.10`、`cargo:event-listener@5.4.2`、`cargo:fastrand@2.5.0`、`cargo:itoa@1.0.18`、`cargo:once_cell@1.21.4`、`cargo:parking@2.2.1`、`cargo:pin-project-lite@0.2.17`、`cargo:proc-macro2@1.0.107`、`cargo:quote@1.0.47`、`cargo:semver@1.0.28`、`cargo:serde_core@1.0.229`、`cargo:serde_derive_internals@0.29.1`、`cargo:serde_derive@1.0.229`、`cargo:serde_json@1.0.151`、`cargo:serde_repr@0.1.21`、`cargo:serde-untagged@0.1.9`、`cargo:serde@1.0.229`、`cargo:servo_arc@0.4.3`、`cargo:syn@2.0.119`、`cargo:syn@3.0.3`、`cargo:thiserror-impl@1.0.69`、`cargo:thiserror-impl@2.0.19`、`cargo:thiserror@1.0.69`、`cargo:thiserror@2.0.19`、`cargo:typeid@1.0.3`、`cargo:unicode-ident@1.0.24`、`cargo:zmij@1.0.23`
 
 ````text
 Permission is hereby granted, free of charge, to any
@@ -3176,9 +3163,9 @@ DEALINGS IN THE SOFTWARE.
 
 ### TXT-049
 
-SHA-256：`2537228D9A1B44A5DC595241349CAE7090B326C8DE165AAF89BFDDEF4A00D0FC`  
-字节数：1057  
-文件名：`LICENSE-MIT`  
+SHA-256：`2537228D9A1B44A5DC595241349CAE7090B326C8DE165AAF89BFDDEF4A00D0FC`<br>
+字节数：1057<br>
+文件名：`LICENSE-MIT`<br>
 引用包：`cargo:time-core@0.1.9`、`cargo:time-macros@0.2.32`、`cargo:time@0.3.54`
 
 ````text
@@ -3205,9 +3192,9 @@ SOFTWARE.
 
 ### TXT-050
 
-SHA-256：`253CD04C6714889DF2D32F3F64D669179A1C95C76AC43C40882C52EB06BC3552`  
-字节数：1070  
-文件名：`LICENSE`  
+SHA-256：`253CD04C6714889DF2D32F3F64D669179A1C95C76AC43C40882C52EB06BC3552`<br>
+字节数：1070<br>
+文件名：`LICENSE`<br>
 引用包：`cargo:tokio-stream@0.1.19`、`cargo:tokio@1.53.1`
 
 ````text
@@ -3236,10 +3223,10 @@ SOFTWARE.
 
 ### TXT-051
 
-SHA-256：`26235C41E314FB0DA35B33B2BB5BCBC4DD523839F8EECA52EFCD43586F441FB5`  
-字节数：833  
-文件名：`LICENSE.spdx`  
-引用包：`cargo:wry@0.55.1`
+SHA-256：`26235C41E314FB0DA35B33B2BB5BCBC4DD523839F8EECA52EFCD43586F441FB5`<br>
+字节数：833<br>
+文件名：`LICENSE.spdx`<br>
+引用包：`cargo:wry@0.57.0`
 
 ````text
 SPDXVersion: SPDX-2.1
@@ -3266,9 +3253,9 @@ Creator: Person: Daniel Thompson-Yvetot
 
 ### TXT-052
 
-SHA-256：`26C95937762A3DC17A3934A0A2773C70259BA4BF28DAB713C225E4AF8EB9D349`  
-字节数：1322  
-文件名：`LICENSE`  
+SHA-256：`26C95937762A3DC17A3934A0A2773C70259BA4BF28DAB713C225E4AF8EB9D349`<br>
+字节数：1322<br>
+文件名：`LICENSE`<br>
 引用包：`npm:node_modules/espree`
 
 ````text
@@ -3301,10 +3288,10 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 ### TXT-053
 
-SHA-256：`270B0D81891AA44C7E8726CF9432DADE9556A01C848BACD2F3EF839C9C1A1859`  
-字节数：1062  
-文件名：`LICENSE`  
-引用包：`cargo:infer@0.19.0`
+SHA-256：`270B0D81891AA44C7E8726CF9432DADE9556A01C848BACD2F3EF839C9C1A1859`<br>
+字节数：1062<br>
+文件名：`LICENSE`<br>
+引用包：`cargo:infer@0.22.0`
 
 ````text
 MIT License
@@ -3332,9 +3319,9 @@ SOFTWARE.
 
 ### TXT-054
 
-SHA-256：`275C491D6D1160553C32FD6127061D7F9606C3EA25ABFAD6CA3F6ED088785427`  
-字节数：10874  
-文件名：`LICENSE-APACHE`  
+SHA-256：`275C491D6D1160553C32FD6127061D7F9606C3EA25ABFAD6CA3F6ED088785427`<br>
+字节数：10874<br>
+文件名：`LICENSE-APACHE`<br>
 引用包：`cargo:futures-channel@0.3.33`、`cargo:futures-core@0.3.33`、`cargo:futures-executor@0.3.33`、`cargo:futures-io@0.3.33`、`cargo:futures-sink@0.3.33`、`cargo:futures-task@0.3.33`、`cargo:futures-util@0.3.33`
 
 ````text
@@ -3544,9 +3531,9 @@ limitations under the License.
 
 ### TXT-055
 
-SHA-256：`2773E20DF8F4C52A026B5B578C7F2457341F5AA3FB6612FD87E1D2E1BD8F48AD`  
-字节数：10863  
-文件名：`LICENSE-APACHE`  
+SHA-256：`2773E20DF8F4C52A026B5B578C7F2457341F5AA3FB6612FD87E1D2E1BD8F48AD`<br>
+字节数：10863<br>
+文件名：`LICENSE-APACHE`<br>
 引用包：`cargo:cookie@0.18.1`
 
 ````text
@@ -3756,9 +3743,9 @@ limitations under the License.
 
 ### TXT-056
 
-SHA-256：`27995D58AD5C1145C1A8CD86244CE844886958A35EB2B78C6B772748669999AC`  
-字节数：1054  
-文件名：`LICENSE-MIT`  
+SHA-256：`27995D58AD5C1145C1A8CD86244CE844886958A35EB2B78C6B772748669999AC`<br>
+字节数：1054<br>
+文件名：`LICENSE-MIT`<br>
 引用包：`cargo:autocfg@1.5.1`
 
 ````text
@@ -3791,9 +3778,9 @@ DEALINGS IN THE SOFTWARE.
 
 ### TXT-057
 
-SHA-256：`2829716775DFDAC45467D7384D8EB1BCAA1AE186994EEDCA0F513FB09038C134`  
-字节数：1119  
-文件名：`LICENSE`  
+SHA-256：`2829716775DFDAC45467D7384D8EB1BCAA1AE186994EEDCA0F513FB09038C134`<br>
+字节数：1119<br>
+文件名：`LICENSE`<br>
 引用包：`npm:node_modules/js-beautify`
 
 ````text
@@ -3810,9 +3797,9 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 ### TXT-058
 
-SHA-256：`2998094B38F7ACE25F141FB36F334D8338F65A1812978D618B1161F4D77AE10E`  
-字节数：1092  
-文件名：`LICENSE-MIT`  
+SHA-256：`2998094B38F7ACE25F141FB36F334D8338F65A1812978D618B1161F4D77AE10E`<br>
+字节数：1092<br>
+文件名：`LICENSE-MIT`<br>
 引用包：`npm:node_modules/postcss-selector-parser`
 
 ````text
@@ -3842,9 +3829,9 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 ### TXT-059
 
-SHA-256：`29B68325FE026047D13E187B44C33B2ACACF7DC647DEC4583702E59F235E13B5`  
-字节数：1103  
-文件名：`LICENSE`  
+SHA-256：`29B68325FE026047D13E187B44C33B2ACACF7DC647DEC4583702E59F235E13B5`<br>
+字节数：1103<br>
+文件名：`LICENSE`<br>
 引用包：`npm:node_modules/@vitejs/plugin-vue`
 
 ````text
@@ -3873,9 +3860,9 @@ SOFTWARE.
 
 ### TXT-060
 
-SHA-256：`29E9FE5074BD27E0E5D5D110394FBBCD841BAEE2651A3C4B4560A632702CEDE4`  
-字节数：1130  
-文件名：`LICENSE-MIT`  
+SHA-256：`29E9FE5074BD27E0E5D5D110394FBBCD841BAEE2651A3C4B4560A632702CEDE4`<br>
+字节数：1130<br>
+文件名：`LICENSE-MIT`<br>
 引用包：`cargo:getrandom@0.3.4`
 
 ````text
@@ -3909,9 +3896,9 @@ DEALINGS IN THE SOFTWARE.
 
 ### TXT-061
 
-SHA-256：`2A8A5D6197BB97A018B8A190DD3ED853D750CA87C8E80C17AAD41D6C6FF448E1`  
-字节数：1133  
-文件名：`LICENSE`  
+SHA-256：`2A8A5D6197BB97A018B8A190DD3ED853D750CA87C8E80C17AAD41D6C6FF448E1`<br>
+字节数：1133<br>
+文件名：`LICENSE`<br>
 引用包：`npm:node_modules/fsevents`
 
 ````text
@@ -3941,10 +3928,10 @@ THE SOFTWARE.
 
 ### TXT-062
 
-SHA-256：`2AB5537B8C0CB1D475E2145B6A7994B04E7C71E6E5BD836F7F9C47C221A5AD9A`  
-字节数：1108  
-文件名：`LICENSE-MIT`  
-引用包：`cargo:muda@0.19.3`、`cargo:tray-icon@0.24.1`
+SHA-256：`2AB5537B8C0CB1D475E2145B6A7994B04E7C71E6E5BD836F7F9C47C221A5AD9A`<br>
+字节数：1108<br>
+文件名：`LICENSE-MIT`<br>
+引用包：`cargo:muda@0.20.0`、`cargo:tray-icon@0.25.1`
 
 ````text
 MIT License
@@ -3972,9 +3959,9 @@ SOFTWARE.
 
 ### TXT-063
 
-SHA-256：`2B29DCFE0D6471F7E8C92C5FB38C9F93EDEE10330937055440192F1832B1ECEF`  
-字节数：1183  
-文件名：`LICENSE`  
+SHA-256：`2B29DCFE0D6471F7E8C92C5FB38C9F93EDEE10330937055440192F1832B1ECEF`<br>
+字节数：1183<br>
+文件名：`LICENSE`<br>
 引用包：`npm:node_modules/ws`
 
 ````text
@@ -4002,10 +3989,10 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 ### TXT-064
 
-SHA-256：`2BC107BDC18A74263D20BDEFDB8073E17BC1A01B6B374DC5835683A33EE5BA7D`  
-字节数：1071  
-文件名：`LICENSE-MIT`  
-引用包：`cargo:jsonptr@0.6.3`
+SHA-256：`2BC107BDC18A74263D20BDEFDB8073E17BC1A01B6B374DC5835683A33EE5BA7D`<br>
+字节数：1071<br>
+文件名：`LICENSE-MIT`<br>
+引用包：`cargo:jsonptr@0.7.1`
 
 ````text
 MIT License
@@ -4033,9 +4020,9 @@ SOFTWARE.
 
 ### TXT-065
 
-SHA-256：`2C7C5D22ED5A8EE968C64757710979AFCD77438C48B4A265B94E615BABD8A901`  
-字节数：1550  
-文件名：`LICENSE.md`  
+SHA-256：`2C7C5D22ED5A8EE968C64757710979AFCD77438C48B4A265B94E615BABD8A901`<br>
+字节数：1550<br>
+文件名：`LICENSE.md`<br>
 引用包：`npm:node_modules/jackspeak`、`npm:node_modules/minimatch`
 
 ````text
@@ -4098,10 +4085,10 @@ software or this license, under any kind of legal claim._**
 
 ### TXT-066
 
-SHA-256：`2CF31F2AE7F3FEBA667D50FC1D4D21ECF217703C04C3068B83C9A73B6DDE723A`  
-字节数：10867  
-文件名：`LICENSE-APACHE`  
-引用包：`cargo:jsonptr@0.6.3`
+SHA-256：`2CF31F2AE7F3FEBA667D50FC1D4D21ECF217703C04C3068B83C9A73B6DDE723A`<br>
+字节数：10867<br>
+文件名：`LICENSE-APACHE`<br>
+引用包：`cargo:jsonptr@0.7.1`
 
 ````text
                                  Apache License
@@ -4309,9 +4296,9 @@ limitations under the License.
 
 ### TXT-067
 
-SHA-256：`2DC0465729366C3A7890DFA9E972A1BA7048A26C02116FB8B419A6A1AC110149`  
-字节数：731  
-文件名：`LICENSE.txt`  
+SHA-256：`2DC0465729366C3A7890DFA9E972A1BA7048A26C02116FB8B419A6A1AC110149`<br>
+字节数：731<br>
+文件名：`LICENSE.txt`<br>
 引用包：`npm:node_modules/@isaacs/cliui`
 
 ````text
@@ -4333,9 +4320,9 @@ ARISING OUT OF OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 
 ### TXT-068
 
-SHA-256：`2E97627CB278AA7556FB9E8817368302301A595B6C7582512B8D74C57B773652`  
-字节数：1086  
-文件名：`LICENSE`  
+SHA-256：`2E97627CB278AA7556FB9E8817368302301A595B6C7582512B8D74C57B773652`<br>
+字节数：1086<br>
+文件名：`LICENSE`<br>
 引用包：`npm:node_modules/@babel/parser`
 
 ````text
@@ -4362,9 +4349,9 @@ THE SOFTWARE.
 
 ### TXT-069
 
-SHA-256：`2EB5C7A0BBA9DEB77A98C81BF6B9D3FB1C67118EEBF968B6B1A787B3F8928EE0`  
-字节数：1097  
-文件名：`LICENSE`  
+SHA-256：`2EB5C7A0BBA9DEB77A98C81BF6B9D3FB1C67118EEBF968B6B1A787B3F8928EE0`<br>
+字节数：1097<br>
+文件名：`LICENSE`<br>
 引用包：`npm:node_modules/@typescript-eslint/eslint-plugin`、`npm:node_modules/@typescript-eslint/parser`、`npm:node_modules/@typescript-eslint/scope-manager`、`npm:node_modules/@typescript-eslint/types`、`npm:node_modules/@typescript-eslint/typescript-estree`、`npm:node_modules/@typescript-eslint/utils`、`npm:node_modules/@typescript-eslint/visitor-keys`、`npm:node_modules/typescript-eslint`
 
 ````text
@@ -4393,9 +4380,9 @@ SOFTWARE.
 
 ### TXT-070
 
-SHA-256：`30FEFC3A7D6A0041541858293BCBEA2DDE4CAA4C0A5802F996A7F7E8C0085652`  
-字节数：1022  
-文件名：`LICENSE-MIT`  
+SHA-256：`30FEFC3A7D6A0041541858293BCBEA2DDE4CAA4C0A5802F996A7F7E8C0085652`<br>
+字节数：1022<br>
+文件名：`LICENSE-MIT`<br>
 引用包：`cargo:flume@0.11.1`、`cargo:rustc-hash@2.1.3`
 
 ````text
@@ -4426,10 +4413,10 @@ DEALINGS IN THE SOFTWARE.
 
 ### TXT-071
 
-SHA-256：`31DBBAB009F1B2E59A1622D5955DFAFC38EBE834000215B49D954C6F85FE927C`  
-字节数：1050  
-文件名：`LICENSE-MIT`  
-引用包：`cargo:keyboard-types@0.7.0`
+SHA-256：`31DBBAB009F1B2E59A1622D5955DFAFC38EBE834000215B49D954C6F85FE927C`<br>
+字节数：1050<br>
+文件名：`LICENSE-MIT`<br>
+引用包：`cargo:keyboard-types@0.8.3`
 
 ````text
 Copyright (c) 2017 Pyfisch
@@ -4455,9 +4442,9 @@ THE SOFTWARE.
 
 ### TXT-072
 
-SHA-256：`3488679340A49ECC34D342C4009D2DABF76F4A21F12AEC2CA99B15805D656544`  
-字节数：1074  
-文件名：`LICENSE-MIT`  
+SHA-256：`3488679340A49ECC34D342C4009D2DABF76F4A21F12AEC2CA99B15805D656544`<br>
+字节数：1074<br>
+文件名：`LICENSE-MIT`<br>
 引用包：`cargo:crc@3.4.0`
 
 ````text
@@ -4486,9 +4473,9 @@ SOFTWARE.
 
 ### TXT-073
 
-SHA-256：`3521672491A3479422D5FE1ACA6645DD2984090F85DA6E5205ABFB18FB7A6897`  
-字节数：1065  
-文件名：`LICENSE-MIT`  
+SHA-256：`3521672491A3479422D5FE1ACA6645DD2984090F85DA6E5205ABFB18FB7A6897`<br>
+字节数：1065<br>
+文件名：`LICENSE-MIT`<br>
 引用包：`cargo:crypto-common@0.1.7`
 
 ````text
@@ -4521,9 +4508,9 @@ DEALINGS IN THE SOFTWARE.
 
 ### TXT-074
 
-SHA-256：`36516AEFDC84C5D5A1E7485425913A22DBDA69EB1930C5E84D6AE4972B5194B9`  
-字节数：1046  
-文件名：`LICENSE-MIT`  
+SHA-256：`36516AEFDC84C5D5A1E7485425913A22DBDA69EB1930C5E84D6AE4972B5194B9`<br>
+字节数：1046<br>
+文件名：`LICENSE-MIT`<br>
 引用包：`cargo:allocator-api2@0.2.21`
 
 ````text
@@ -4554,9 +4541,9 @@ DEALINGS IN THE SOFTWARE.
 
 ### TXT-075
 
-SHA-256：`37653EA50AC84BB5E93BF59D801DF1ECBE17F0042A30BFE335E3B20F4A4465FA`  
-字节数：1102  
-文件名：`LICENSE`  
+SHA-256：`37653EA50AC84BB5E93BF59D801DF1ECBE17F0042A30BFE335E3B20F4A4465FA`<br>
+字节数：1102<br>
+文件名：`LICENSE`<br>
 引用包：`cargo:dotenvy@0.15.7`
 
 ````text
@@ -4585,9 +4572,9 @@ THE SOFTWARE.
 
 ### TXT-076
 
-SHA-256：`378F5840B258E2779C39418F3F2D7B2BA96F1C7917DD6BE0713F88305DBDA397`  
-字节数：1057  
-文件名：`LICENSE-MIT`  
+SHA-256：`378F5840B258E2779C39418F3F2D7B2BA96F1C7917DD6BE0713F88305DBDA397`<br>
+字节数：1057<br>
+文件名：`LICENSE-MIT`<br>
 引用包：`cargo:cc@1.3.0`、`cargo:cfg-if@1.0.4`、`cargo:find-msvc-tools@0.1.9`、`cargo:pkg-config@0.3.33`、`cargo:socket2@0.6.5`
 
 ````text
@@ -4620,9 +4607,9 @@ DEALINGS IN THE SOFTWARE.
 
 ### TXT-077
 
-SHA-256：`3A61C6C96CAF5C1D9B623FB9B04C822B783DFCB78AA7E49C76A3F643E6ED7F95`  
-字节数：1139  
-文件名：`LICENSE`  
+SHA-256：`3A61C6C96CAF5C1D9B623FB9B04C822B783DFCB78AA7E49C76A3F643E6ED7F95`<br>
+字节数：1139<br>
+文件名：`LICENSE`<br>
 引用包：`npm:node_modules/debug`
 
 ````text
@@ -4649,9 +4636,9 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 ### TXT-078
 
-SHA-256：`3B6BE04F862A077A4B97929DBF247299360824D9365F8603C263769303ACE18C`  
-字节数：1094  
-文件名：`LICENSE`  
+SHA-256：`3B6BE04F862A077A4B97929DBF247299360824D9365F8603C263769303ACE18C`<br>
+字节数：1094<br>
+文件名：`LICENSE`<br>
 引用包：`npm:node_modules/eslint`
 
 ````text
@@ -4678,9 +4665,9 @@ THE SOFTWARE.
 
 ### TXT-079
 
-SHA-256：`3BDDDF0B9B08AAA2FE4365B803FC958ED32C0597CA0BD727BE8D9FCB8B248D18`  
-字节数：744  
-文件名：`LICENSE`  
+SHA-256：`3BDDDF0B9B08AAA2FE4365B803FC958ED32C0597CA0BD727BE8D9FCB8B248D18`<br>
+字节数：744<br>
+文件名：`LICENSE`<br>
 引用包：`npm:node_modules/siginfo`
 
 ````text
@@ -4701,10 +4688,10 @@ OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 
 ### TXT-080
 
-SHA-256：`3D180008E36922A4E8DAEC11C34C7AF264FED5962D07924AEA928C38E8663C94`  
-字节数：1084  
-文件名：`LICENSE.MIT`  
-引用包：`cargo:brotli@8.0.4`
+SHA-256：`3D180008E36922A4E8DAEC11C34C7AF264FED5962D07924AEA928C38E8663C94`<br>
+字节数：1084<br>
+文件名：`LICENSE.MIT`<br>
+引用包：`cargo:brotli@9.0.0`
 
 ````text
 Copyright (c) 2009, 2010, 2013-2016 by the Brotli Authors.
@@ -4730,9 +4717,9 @@ THE SOFTWARE.
 
 ### TXT-081
 
-SHA-256：`3F1CE66533302DF3A32EDBFDFC0B78F0DD34659E4C1F5817162E5EA3C2297215`  
-字节数：2138  
-文件名：`LICENSE`  
+SHA-256：`3F1CE66533302DF3A32EDBFDFC0B78F0DD34659E4C1F5817162E5EA3C2297215`<br>
+字节数：2138<br>
+文件名：`LICENSE`<br>
 引用包：`npm:node_modules/@napi-rs/wasm-runtime`
 
 ````text
@@ -4783,9 +4770,9 @@ SOFTWARE.
 
 ### TXT-082
 
-SHA-256：`3FA4CA83DCC9237839B1BDEB2E6D16BDFB5EC0C5CE42B24694D8BBF0DCBEF72C`  
-字节数：1053  
-文件名：`LICENSE-MIT`  
+SHA-256：`3FA4CA83DCC9237839B1BDEB2E6D16BDFB5EC0C5CE42B24694D8BBF0DCBEF72C`<br>
+字节数：1053<br>
+文件名：`LICENSE-MIT`<br>
 引用包：`cargo:utf8_iter@1.0.4`
 
 ````text
@@ -4818,9 +4805,9 @@ DEALINGS IN THE SOFTWARE.
 
 ### TXT-083
 
-SHA-256：`4108245A1F2DF9D4E94DF8ABED5B4BA0759BB2F9B40A6B939F1BE141077AE50B`  
-字节数：1213  
-文件名：`LICENSE`  
+SHA-256：`4108245A1F2DF9D4E94DF8ABED5B4BA0759BB2F9B40A6B939F1BE141077AE50B`<br>
+字节数：1213<br>
+文件名：`LICENSE`<br>
 引用包：`cargo:miniz_oxide@0.8.9`
 
 ````text
@@ -4853,9 +4840,9 @@ SOFTWARE.
 
 ### TXT-084
 
-SHA-256：`41CA90213441B294E7517D5858F0CC85BC12E19EC044001B45BC213DE461D33B`  
-字节数：1074  
-文件名：`LICENSE`  
+SHA-256：`41CA90213441B294E7517D5858F0CC85BC12E19EC044001B45BC213DE461D33B`<br>
+字节数：1074<br>
+文件名：`LICENSE`<br>
 引用包：`cargo:ico@0.5.0`
 
 ````text
@@ -4884,9 +4871,9 @@ SOFTWARE.
 
 ### TXT-085
 
-SHA-256：`42A35170233E83E18856792E748DE4C1CE4A63B2AFCE9A370C89EF3FE23F9F2D`  
-字节数：1078  
-文件名：`LICENSE.md`  
+SHA-256：`42A35170233E83E18856792E748DE4C1CE4A63B2AFCE9A370C89EF3FE23F9F2D`<br>
+字节数：1078<br>
+文件名：`LICENSE.md`<br>
 引用包：`cargo:simd-adler32@0.3.10`
 
 ````text
@@ -4915,9 +4902,9 @@ SOFTWARE.
 
 ### TXT-086
 
-SHA-256：`435A6722C786B0A56FBE7387028F1D9D3F3A2D0FB615BB8FEE118727C3F59B7B`  
-字节数：1073  
-文件名：`LICENSE`  
+SHA-256：`435A6722C786B0A56FBE7387028F1D9D3F3A2D0FB615BB8FEE118727C3F59B7B`<br>
+字节数：1073<br>
+文件名：`LICENSE`<br>
 引用包：`npm:node_modules/json-stable-stringify-without-jsonify`
 
 ````text
@@ -4943,9 +4930,9 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 ### TXT-087
 
-SHA-256：`436BC5A105D8E57DCD8778730F3754F7BF39C14D2F530E4CDE4BD2D17A83EC3D`  
-字节数：1157  
-文件名：`LICENSE-MIT`  
+SHA-256：`436BC5A105D8E57DCD8778730F3754F7BF39C14D2F530E4CDE4BD2D17A83EC3D`<br>
+字节数：1157<br>
+文件名：`LICENSE-MIT`<br>
 引用包：`cargo:uuid@1.24.0`
 
 ````text
@@ -4979,9 +4966,9 @@ DEALINGS IN THE SOFTWARE.
 
 ### TXT-088
 
-SHA-256：`4455BF75A91154108304CB283E0FEA9948C14F13E20D60887CF2552449DEA3B1`  
-字节数：1092  
-文件名：`LICENSE-MIT`  
+SHA-256：`4455BF75A91154108304CB283E0FEA9948C14F13E20D60887CF2552449DEA3B1`<br>
+字节数：1092<br>
+文件名：`LICENSE-MIT`<br>
 引用包：`cargo:shlex@2.0.1`
 
 ````text
@@ -5010,9 +4997,9 @@ THE SOFTWARE.
 
 ### TXT-089
 
-SHA-256：`44B1600A26039A75B28E1CE154A5DD163B16549F50E34FA577D9EFE9C1BAE179`  
-字节数：1060  
-文件名：`LICENSE-MIT`  
+SHA-256：`44B1600A26039A75B28E1CE154A5DD163B16549F50E34FA577D9EFE9C1BAE179`<br>
+字节数：1060<br>
+文件名：`LICENSE-MIT`<br>
 引用包：`cargo:sqlx-core@0.8.6`、`cargo:sqlx-macros-core@0.8.6`、`cargo:sqlx-macros@0.8.6`、`cargo:sqlx-sqlite@0.8.6`、`cargo:sqlx@0.8.6`
 
 ````text
@@ -5045,9 +5032,9 @@ DEALINGS IN THE SOFTWARE.
 
 ### TXT-090
 
-SHA-256：`451EC07EEB9C4E1B86DE9ABDAA426462A8BE48F887EC7421CF0BBB9C769555AB`  
-字节数：775  
-文件名：`LICENSE`  
+SHA-256：`451EC07EEB9C4E1B86DE9ABDAA426462A8BE48F887EC7421CF0BBB9C769555AB`<br>
+字节数：775<br>
+文件名：`LICENSE`<br>
 引用包：`npm:node_modules/lru-cache`
 
 ````text
@@ -5070,9 +5057,9 @@ IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 
 ### TXT-091
 
-SHA-256：`45F522CACECB1023856E46DF79CA625DFC550C94910078BD8AEC6E02880B3D42`  
-字节数：1055  
-文件名：`LICENSE`  
+SHA-256：`45F522CACECB1023856E46DF79CA625DFC550C94910078BD8AEC6E02880B3D42`<br>
+字节数：1055<br>
+文件名：`LICENSE`<br>
 引用包：`cargo:bytes@1.12.1`
 
 ````text
@@ -5105,9 +5092,9 @@ DEALINGS IN THE SOFTWARE.
 
 ### TXT-092
 
-SHA-256：`4618209E13998293F82505724827EA83D927070AF1C038B11E7A2FF6FD12D911`  
-字节数：10839  
-文件名：`LICENSE-APACHE`  
+SHA-256：`4618209E13998293F82505724827EA83D927070AF1C038B11E7A2FF6FD12D911`<br>
+字节数：10839<br>
+文件名：`LICENSE-APACHE`<br>
 引用包：`cargo:futures-intrusive@0.5.0`
 
 ````text
@@ -5316,9 +5303,9 @@ limitations under the License.
 
 ### TXT-093
 
-SHA-256：`46A5FBFFA79B8DC33E512852B5AC5DA71317EEE5CE122DDB601CF1ADD07848CF`  
-字节数：1083  
-文件名：`LICENSE`  
+SHA-256：`46A5FBFFA79B8DC33E512852B5AC5DA71317EEE5CE122DDB601CF1ADD07848CF`<br>
+字节数：1083<br>
+文件名：`LICENSE`<br>
 引用包：`npm:node_modules/happy-dom`
 
 ````text
@@ -5347,9 +5334,9 @@ SOFTWARE.
 
 ### TXT-094
 
-SHA-256：`470355A7EED93FCC4281EC2E0F82CA3B94E7AF1E4D83629F91DE8CFAC34D750E`  
-字节数：10846  
-文件名：`LICENSE-APACHE`  
+SHA-256：`470355A7EED93FCC4281EC2E0F82CA3B94E7AF1E4D83629F91DE8CFAC34D750E`<br>
+字节数：10846<br>
+文件名：`LICENSE-APACHE`<br>
 引用包：`cargo:crc@3.4.0`
 
 ````text
@@ -5558,9 +5545,9 @@ limitations under the License.
 
 ### TXT-095
 
-SHA-256：`483ACB265F182907D1CAF6CFF9C16C96F31325ED23792832CC5D8B12D5F88C8A`  
-字节数：1077  
-文件名：`LICENSE-MIT.txt`  
+SHA-256：`483ACB265F182907D1CAF6CFF9C16C96F31325ED23792832CC5D8B12D5F88C8A`<br>
+字节数：1077<br>
+文件名：`LICENSE-MIT.txt`<br>
 引用包：`npm:node_modules/cssesc`、`npm:node_modules/emoji-regex`、`npm:node_modules/punycode`、`npm:node_modules/string-width-cjs/node_modules/emoji-regex`、`npm:node_modules/wrap-ansi-cjs/node_modules/emoji-regex`
 
 ````text
@@ -5588,9 +5575,9 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 ### TXT-096
 
-SHA-256：`48DA2F39E100D4085767E94966B43F4FA95FF6A0698FBA57ED460914E35F94A0`  
-字节数：1109  
-文件名：`license`  
+SHA-256：`48DA2F39E100D4085767E94966B43F4FA95FF6A0698FBA57ED460914E35F94A0`<br>
+字节数：1109<br>
+文件名：`license`<br>
 引用包：`npm:node_modules/is-fullwidth-code-point`、`npm:node_modules/path-exists`、`npm:node_modules/path-key`、`npm:node_modules/shebang-regex`、`npm:node_modules/string-width-cjs`、`npm:node_modules/string-width-cjs/node_modules/ansi-regex`、`npm:node_modules/string-width-cjs/node_modules/strip-ansi`、`npm:node_modules/strip-ansi-cjs`、`npm:node_modules/strip-ansi-cjs/node_modules/ansi-regex`、`npm:node_modules/wrap-ansi-cjs/node_modules/ansi-regex`、`npm:node_modules/wrap-ansi-cjs/node_modules/ansi-styles`、`npm:node_modules/wrap-ansi-cjs/node_modules/string-width`、`npm:node_modules/wrap-ansi-cjs/node_modules/strip-ansi`
 
 ````text
@@ -5607,9 +5594,9 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 ### TXT-097
 
-SHA-256：`4CD903859549D4B20B571041F96DFAE1136ED079C476126268F9D7CC1B611150`  
-字节数：1088  
-文件名：`LICENSE`  
+SHA-256：`4CD903859549D4B20B571041F96DFAE1136ED079C476126268F9D7CC1B611150`<br>
+字节数：1088<br>
+文件名：`LICENSE`<br>
 引用包：`npm:node_modules/is-glob`
 
 ````text
@@ -5638,9 +5625,9 @@ THE SOFTWARE.
 
 ### TXT-098
 
-SHA-256：`4DA95EC4ECB65B738D470B7D762894AD9C97DA93E6CBFB18B570FC2C96F4B871`  
-字节数：1071  
-文件名：`LICENSE-MIT`  
+SHA-256：`4DA95EC4ECB65B738D470B7D762894AD9C97DA93E6CBFB18B570FC2C96F4B871`<br>
+字节数：1071<br>
+文件名：`LICENSE-MIT`<br>
 引用包：`cargo:arrayvec@0.7.8`
 
 ````text
@@ -5673,9 +5660,9 @@ DEALINGS IN THE SOFTWARE.
 
 ### TXT-099
 
-SHA-256：`4EC3D4C66CD87F5C8D8AD911B10F99BF27CB00CDFCFF82621956E379186B016B`  
-字节数：765  
-文件名：`LICENSE`  
+SHA-256：`4EC3D4C66CD87F5C8D8AD911B10F99BF27CB00CDFCFF82621956E379186B016B`<br>
+字节数：765<br>
+文件名：`LICENSE`<br>
 引用包：`npm:node_modules/ini`、`npm:node_modules/isexe`、`npm:node_modules/nopt`、`npm:node_modules/proto-list`、`npm:node_modules/semver`、`npm:node_modules/which`
 
 ````text
@@ -5698,9 +5685,9 @@ IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 
 ### TXT-100
 
-SHA-256：`508A77D2E7B51D98ADEED32648AD124B7B30241A8E70B2E72C99F92D8E5874D1`  
-字节数：1036  
-文件名：`LICENSE`  
+SHA-256：`508A77D2E7B51D98ADEED32648AD124B7B30241A8E70B2E72C99F92D8E5874D1`<br>
+字节数：1036<br>
+文件名：`LICENSE`<br>
 引用包：`cargo:ident_case@1.0.1`
 
 ````text
@@ -5727,9 +5714,9 @@ SOFTWARE.
 
 ### TXT-101
 
-SHA-256：`516B24E051BF5630880EBBD55C40A25CE9552EBAF8970A53E8976EB70E522406`  
-字节数：10835  
-文件名：`LICENSE-APACHE`  
+SHA-256：`516B24E051BF5630880EBBD55C40A25CE9552EBAF8970A53E8976EB70E522406`<br>
+字节数：10835<br>
+文件名：`LICENSE-APACHE`<br>
 引用包：`cargo:typenum@1.20.1`
 
 ````text
@@ -5938,9 +5925,9 @@ limitations under the License.
 
 ### TXT-102
 
-SHA-256：`523A42C25D245DDE9C015F882CEC7F4555AAD883382A6CF19B4B7D9B2CD5419B`  
-字节数：1130  
-文件名：`LICENSE-MIT`  
+SHA-256：`523A42C25D245DDE9C015F882CEC7F4555AAD883382A6CF19B4B7D9B2CD5419B`<br>
+字节数：1130<br>
+文件名：`LICENSE-MIT`<br>
 引用包：`cargo:getrandom@0.4.3`
 
 ````text
@@ -5974,9 +5961,9 @@ DEALINGS IN THE SOFTWARE.
 
 ### TXT-103
 
-SHA-256：`528EEC83CB836A0ADDA9F8FC3D6A2A70A710D6CC0BE9A155F92212C8DF28ACFA`  
-字节数：1069  
-文件名：`LICENSE.txt`  
+SHA-256：`528EEC83CB836A0ADDA9F8FC3D6A2A70A710D6CC0BE9A155F92212C8DF28ACFA`<br>
+字节数：1069<br>
+文件名：`LICENSE.txt`<br>
 引用包：`npm:node_modules/whatwg-mimetype`
 
 ````text
@@ -5991,9 +5978,9 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 ### TXT-104
 
-SHA-256：`52E92576851154BAD7737E90CC72818936F43665CB0E3F7428ED8EDC8CC5709B`  
-字节数：3355  
-文件名：`LICENSE`  
+SHA-256：`52E92576851154BAD7737E90CC72818936F43665CB0E3F7428ED8EDC8CC5709B`<br>
+字节数：3355<br>
+文件名：`LICENSE`<br>
 引用包：`npm:node_modules/pathe`
 
 ````text
@@ -6071,9 +6058,220 @@ DEALINGS IN THE SOFTWARE.
 
 ### TXT-105
 
-SHA-256：`54D0B82D1E7D0BC60A4B48B6172F1A9FA7385CFA8A448D14AD3A638930EF417C`  
-字节数：1104  
-文件名：`LICENSE`  
+SHA-256：`54A744942EB3FA63A74D8D359989ED6962C04F3F10FF20CFA08FF8AA7EFBE4E6`<br>
+字节数：11338<br>
+文件名：`LICENSE-APACHE`<br>
+引用包：`cargo:web-time@1.1.0`
+
+````text
+                                 Apache License
+                           Version 2.0, January 2004
+                        http://www.apache.org/licenses/
+
+   TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION
+
+   1. Definitions.
+
+      "License" shall mean the terms and conditions for use, reproduction,
+      and distribution as defined by Sections 1 through 9 of this document.
+
+      "Licensor" shall mean the copyright owner or entity authorized by
+      the copyright owner that is granting the License.
+
+      "Legal Entity" shall mean the union of the acting entity and all
+      other entities that control, are controlled by, or are under common
+      control with that entity. For the purposes of this definition,
+      "control" means (i) the power, direct or indirect, to cause the
+      direction or management of such entity, whether by contract or
+      otherwise, or (ii) ownership of fifty percent (50%) or more of the
+      outstanding shares, or (iii) beneficial ownership of such entity.
+
+      "You" (or "Your") shall mean an individual or Legal Entity
+      exercising permissions granted by this License.
+
+      "Source" form shall mean the preferred form for making modifications,
+      including but not limited to software source code, documentation
+      source, and configuration files.
+
+      "Object" form shall mean any form resulting from mechanical
+      transformation or translation of a Source form, including but
+      not limited to compiled object code, generated documentation,
+      and conversions to other media types.
+
+      "Work" shall mean the work of authorship, whether in Source or
+      Object form, made available under the License, as indicated by a
+      copyright notice that is included in or attached to the work
+      (an example is provided in the Appendix below).
+
+      "Derivative Works" shall mean any work, whether in Source or Object
+      form, that is based on (or derived from) the Work and for which the
+      editorial revisions, annotations, elaborations, or other modifications
+      represent, as a whole, an original work of authorship. For the purposes
+      of this License, Derivative Works shall not include works that remain
+      separable from, or merely link (or bind by name) to the interfaces of,
+      the Work and Derivative Works thereof.
+
+      "Contribution" shall mean any work of authorship, including
+      the original version of the Work and any modifications or additions
+      to that Work or Derivative Works thereof, that is intentionally
+      submitted to Licensor for inclusion in the Work by the copyright owner
+      or by an individual or Legal Entity authorized to submit on behalf of
+      the copyright owner. For the purposes of this definition, "submitted"
+      means any form of electronic, verbal, or written communication sent
+      to the Licensor or its representatives, including but not limited to
+      communication on electronic mailing lists, source code control systems,
+      and issue tracking systems that are managed by, or on behalf of, the
+      Licensor for the purpose of discussing and improving the Work, but
+      excluding communication that is conspicuously marked or otherwise
+      designated in writing by the copyright owner as "Not a Contribution."
+
+      "Contributor" shall mean Licensor and any individual or Legal Entity
+      on behalf of whom a Contribution has been received by Licensor and
+      subsequently incorporated within the Work.
+
+   2. Grant of Copyright License. Subject to the terms and conditions of
+      this License, each Contributor hereby grants to You a perpetual,
+      worldwide, non-exclusive, no-charge, royalty-free, irrevocable
+      copyright license to reproduce, prepare Derivative Works of,
+      publicly display, publicly perform, sublicense, and distribute the
+      Work and such Derivative Works in Source or Object form.
+
+   3. Grant of Patent License. Subject to the terms and conditions of
+      this License, each Contributor hereby grants to You a perpetual,
+      worldwide, non-exclusive, no-charge, royalty-free, irrevocable
+      (except as stated in this section) patent license to make, have made,
+      use, offer to sell, sell, import, and otherwise transfer the Work,
+      where such license applies only to those patent claims licensable
+      by such Contributor that are necessarily infringed by their
+      Contribution(s) alone or by combination of their Contribution(s)
+      with the Work to which such Contribution(s) was submitted. If You
+      institute patent litigation against any entity (including a
+      cross-claim or counterclaim in a lawsuit) alleging that the Work
+      or a Contribution incorporated within the Work constitutes direct
+      or contributory patent infringement, then any patent licenses
+      granted to You under this License for that Work shall terminate
+      as of the date such litigation is filed.
+
+   4. Redistribution. You may reproduce and distribute copies of the
+      Work or Derivative Works thereof in any medium, with or without
+      modifications, and in Source or Object form, provided that You
+      meet the following conditions:
+
+      (a) You must give any other recipients of the Work or
+          Derivative Works a copy of this License; and
+
+      (b) You must cause any modified files to carry prominent notices
+          stating that You changed the files; and
+
+      (c) You must retain, in the Source form of any Derivative Works
+          that You distribute, all copyright, patent, trademark, and
+          attribution notices from the Source form of the Work,
+          excluding those notices that do not pertain to any part of
+          the Derivative Works; and
+
+      (d) If the Work includes a "NOTICE" text file as part of its
+          distribution, then any Derivative Works that You distribute must
+          include a readable copy of the attribution notices contained
+          within such NOTICE file, excluding those notices that do not
+          pertain to any part of the Derivative Works, in at least one
+          of the following places: within a NOTICE text file distributed
+          as part of the Derivative Works; within the Source form or
+          documentation, if provided along with the Derivative Works; or,
+          within a display generated by the Derivative Works, if and
+          wherever such third-party notices normally appear. The contents
+          of the NOTICE file are for informational purposes only and
+          do not modify the License. You may add Your own attribution
+          notices within Derivative Works that You distribute, alongside
+          or as an addendum to the NOTICE text from the Work, provided
+          that such additional attribution notices cannot be construed
+          as modifying the License.
+
+      You may add Your own copyright statement to Your modifications and
+      may provide additional or different license terms and conditions
+      for use, reproduction, or distribution of Your modifications, or
+      for any such Derivative Works as a whole, provided Your use,
+      reproduction, and distribution of the Work otherwise complies with
+      the conditions stated in this License.
+
+   5. Submission of Contributions. Unless You explicitly state otherwise,
+      any Contribution intentionally submitted for inclusion in the Work
+      by You to the Licensor shall be under the terms and conditions of
+      this License, without any additional terms or conditions.
+      Notwithstanding the above, nothing herein shall supersede or modify
+      the terms of any separate license agreement you may have executed
+      with Licensor regarding such Contributions.
+
+   6. Trademarks. This License does not grant permission to use the trade
+      names, trademarks, service marks, or product names of the Licensor,
+      except as required for reasonable and customary use in describing the
+      origin of the Work and reproducing the content of the NOTICE file.
+
+   7. Disclaimer of Warranty. Unless required by applicable law or
+      agreed to in writing, Licensor provides the Work (and each
+      Contributor provides its Contributions) on an "AS IS" BASIS,
+      WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or
+      implied, including, without limitation, any warranties or conditions
+      of TITLE, NON-INFRINGEMENT, MERCHANTABILITY, or FITNESS FOR A
+      PARTICULAR PURPOSE. You are solely responsible for determining the
+      appropriateness of using or redistributing the Work and assume any
+      risks associated with Your exercise of permissions under this License.
+
+   8. Limitation of Liability. In no event and under no legal theory,
+      whether in tort (including negligence), contract, or otherwise,
+      unless required by applicable law (such as deliberate and grossly
+      negligent acts) or agreed to in writing, shall any Contributor be
+      liable to You for damages, including any direct, indirect, special,
+      incidental, or consequential damages of any character arising as a
+      result of this License or out of the use or inability to use the
+      Work (including but not limited to damages for loss of goodwill,
+      work stoppage, computer failure or malfunction, or any and all
+      other commercial damages or losses), even if such Contributor
+      has been advised of the possibility of such damages.
+
+   9. Accepting Warranty or Additional Liability. While redistributing
+      the Work or Derivative Works thereof, You may choose to offer,
+      and charge a fee for, acceptance of support, warranty, indemnity,
+      or other liability obligations and/or rights consistent with this
+      License. However, in accepting such obligations, You may act only
+      on Your own behalf and on Your sole responsibility, not on behalf
+      of any other Contributor, and only if You agree to indemnify,
+      defend, and hold each Contributor harmless for any liability
+      incurred by, or claims asserted against, such Contributor by reason
+      of your accepting any such warranty or additional liability.
+
+   END OF TERMS AND CONDITIONS
+
+   APPENDIX: How to apply the Apache License to your work.
+
+      To apply the Apache License to your work, attach the following
+      boilerplate notice, with the fields enclosed by brackets "[]"
+      replaced with your own identifying information. (Don't include
+      the brackets!)  The text should be enclosed in the appropriate
+      comment syntax for the file format. We also recommend that a
+      file or class name and description of purpose be included on the
+      same "printed page" as the copyright notice for easier
+      identification within third-party archives.
+
+   Copyright 2023 dAxpeDDa
+
+   Licensed under the Apache License, Version 2.0 (the "License");
+   you may not use this file except in compliance with the License.
+   You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.
+````
+
+### TXT-106
+
+SHA-256：`54D0B82D1E7D0BC60A4B48B6172F1A9FA7385CFA8A448D14AD3A638930EF417C`<br>
+字节数：1104<br>
+文件名：`LICENSE`<br>
 引用包：`npm:node_modules/buffer-image-size`
 
 ````text
@@ -6088,11 +6286,11 @@ The above copyright notice and this permission notice shall be included in all c
 THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 ````
 
-### TXT-106
+### TXT-107
 
-SHA-256：`553FFFCD9B1CB158BC3E9EDC35DA85CA5C3B3D7D2E61C883EBCFA8A65814B583`  
-字节数：566  
-文件名：`LICENSE-APACHE`  
+SHA-256：`553FFFCD9B1CB158BC3E9EDC35DA85CA5C3B3D7D2E61C883EBCFA8A65814B583`<br>
+字节数：566<br>
+文件名：`LICENSE-APACHE`<br>
 引用包：`cargo:shlex@2.0.1`
 
 ````text
@@ -6111,11 +6309,11 @@ See the License for the specific language governing permissions and
 limitations under the License.
 ````
 
-### TXT-107
+### TXT-108
 
-SHA-256：`5734ED989DFCA1F625B40281EE9F4530F91B2411EC01CB748223E7EB87E201AB`  
-字节数：1099  
-文件名：`LICENSE-MIT`  
+SHA-256：`5734ED989DFCA1F625B40281EE9F4530F91B2411EC01CB748223E7EB87E201AB`<br>
+字节数：1099<br>
+文件名：`LICENSE-MIT`<br>
 引用包：`cargo:crossbeam-channel@0.5.16`、`cargo:crossbeam-queue@0.3.13`、`cargo:crossbeam-utils@0.8.22`
 
 ````text
@@ -6148,11 +6346,11 @@ IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
 ````
 
-### TXT-108
+### TXT-109
 
-SHA-256：`5B0AE40D1A35F7AE6591A28E44771240E6A88CB03A66C9189A45B9681639B466`  
-字节数：1057  
-文件名：`LICENCE`  
+SHA-256：`5B0AE40D1A35F7AE6591A28E44771240E6A88CB03A66C9189A45B9681639B466`<br>
+字节数：1057<br>
+文件名：`LICENCE`<br>
 引用包：`cargo:plist@1.10.0`
 
 ````text
@@ -6177,11 +6375,11 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 ````
 
-### TXT-109
+### TXT-110
 
-SHA-256：`5B2C207DCF571267EBE0BBDD5BF321F561DDC22FF597E7B363E96F4539507A29`  
-字节数：1105  
-文件名：`LICENSE-MIT.md`  
+SHA-256：`5B2C207DCF571267EBE0BBDD5BF321F561DDC22FF597E7B363E96F4539507A29`<br>
+字节数：1105<br>
+文件名：`LICENSE-MIT.md`<br>
 引用包：`cargo:quick-xml@0.41.0`
 
 ````text
@@ -6210,11 +6408,11 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 ````
 
-### TXT-110
+### TXT-111
 
-SHA-256：`5BE1F3465BBA68A626777F984878814AAF35E7EF8E9FD314D469BCF887050FB8`  
-字节数：1095  
-文件名：`LICENSE`  
+SHA-256：`5BE1F3465BBA68A626777F984878814AAF35E7EF8E9FD314D469BCF887050FB8`<br>
+字节数：1095<br>
+文件名：`LICENSE`<br>
 引用包：`npm:node_modules/postcss`
 
 ````text
@@ -6240,11 +6438,11 @@ IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 ````
 
-### TXT-111
+### TXT-112
 
-SHA-256：`5C932D88256B4AB958F64A856FA48E8BD1F55BC1D96B8149C65689E0C61789D3`  
-字节数：1117  
-文件名：`license`  
+SHA-256：`5C932D88256B4AB958F64A856FA48E8BD1F55BC1D96B8149C65689E0C61789D3`<br>
+字节数：1117<br>
+文件名：`license`<br>
 引用包：`npm:node_modules/ansi-regex`、`npm:node_modules/ansi-styles`、`npm:node_modules/escape-string-regexp`、`npm:node_modules/find-up`、`npm:node_modules/locate-path`、`npm:node_modules/p-limit`、`npm:node_modules/p-locate`、`npm:node_modules/string-width`、`npm:node_modules/strip-ansi`、`npm:node_modules/wrap-ansi`、`npm:node_modules/wrap-ansi-cjs`、`npm:node_modules/yocto-queue`
 
 ````text
@@ -6259,12 +6457,12 @@ The above copyright notice and this permission notice shall be included in all c
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 ````
 
-### TXT-112
+### TXT-113
 
-SHA-256：`5CF1C9DC617E4CAD7FA03181FF893601AD5243AA3BE527EF39034E1CD6377676`  
-字节数：1073  
-文件名：`LICENSE`  
-引用包：`cargo:urlpattern@0.3.0`
+SHA-256：`5CF1C9DC617E4CAD7FA03181FF893601AD5243AA3BE527EF39034E1CD6377676`<br>
+字节数：1073<br>
+文件名：`LICENSE`<br>
+引用包：`cargo:urlpattern@0.6.0`
 
 ````text
 MIT License
@@ -6290,11 +6488,11 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 ````
 
-### TXT-113
+### TXT-114
 
-SHA-256：`5E05B024F653A5CE199E77CBBBD42FB5553562EC714B819421ED0C3E552A75D7`  
-字节数：1056  
-文件名：`LICENSE-MIT`  
+SHA-256：`5E05B024F653A5CE199E77CBBBD42FB5553562EC714B819421ED0C3E552A75D7`<br>
+字节数：1056<br>
+文件名：`LICENSE-MIT`<br>
 引用包：`cargo:stable_deref_trait@1.2.1`
 
 ````text
@@ -6325,11 +6523,41 @@ IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
 ````
 
-### TXT-114
+### TXT-115
 
-SHA-256：`5EBA353FE5076AC3432177F8AB1CF75E3AFCD0584251E37C3BFEAD5F447D040E`  
-字节数：15648  
-文件名：`LICENSE`  
+SHA-256：`5E834FE9788C524210DEDA859C46A550FFA5AA0CBA9EA0572F0D81120E97C008`<br>
+字节数：889<br>
+文件名：`LICENSE.spdx`<br>
+引用包：`cargo:tauri-plugin@2.6.3`、`npm:node_modules/@tauri-apps/api`
+
+````text
+SPDXVersion: SPDX-2.1
+DataLicense: CC0-1.0
+PackageName: tauri
+DataFormat: SPDXRef-1
+PackageSupplier: Organization: The Tauri Programme in the Commons Conservancy
+PackageHomePage: https://tauri.app
+PackageLicenseDeclared: Apache-2.0
+PackageLicenseDeclared: MIT
+PackageCopyrightText: 2019-2025, The Tauri Programme in the Commons Conservancy
+PackageSummary: <text>Tauri is a rust project that enables developers to make secure
+and small desktop applications using a web frontend.
+                </text>
+PackageComment: <text>The package includes the following libraries; see
+Relationship information.
+                </text>
+Created: 2019-05-20T09:00:00Z
+PackageDownloadLocation: git://github.com/tauri-apps/tauri
+PackageDownloadLocation: git+https://github.com/tauri-apps/tauri.git
+PackageDownloadLocation: git+ssh://github.com/tauri-apps/tauri.git
+Creator: Person: Daniel Thompson-Yvetot
+````
+
+### TXT-116
+
+SHA-256：`5EBA353FE5076AC3432177F8AB1CF75E3AFCD0584251E37C3BFEAD5F447D040E`<br>
+字节数：15648<br>
+文件名：`LICENSE`<br>
 引用包：`npm:node_modules/lightningcss`、`npm:node_modules/lightningcss-android-arm64`、`npm:node_modules/lightningcss-darwin-arm64`、`npm:node_modules/lightningcss-darwin-x64`、`npm:node_modules/lightningcss-freebsd-x64`、`npm:node_modules/lightningcss-linux-arm-gnueabihf`、`npm:node_modules/lightningcss-linux-arm64-gnu`、`npm:node_modules/lightningcss-linux-arm64-musl`、`npm:node_modules/lightningcss-linux-x64-gnu`、`npm:node_modules/lightningcss-linux-x64-musl`、`npm:node_modules/lightningcss-win32-arm64-msvc`、`npm:node_modules/lightningcss-win32-x64-msvc`
 
 ````text
@@ -6708,11 +6936,11 @@ This Source Code Form is "Incompatible With Secondary Licenses", as
 defined by the Mozilla Public License, v. 2.0.
 ````
 
-### TXT-115
+### TXT-117
 
-SHA-256：`60A7062291B01BA068F300612CDBDC20382AC1D4934F07BCDD7167C15299F309`  
-字节数：1061  
-文件名：`LICENSE-MIT`  
+SHA-256：`60A7062291B01BA068F300612CDBDC20382AC1D4934F07BCDD7167C15299F309`<br>
+字节数：1061<br>
+文件名：`LICENSE-MIT`<br>
 引用包：`cargo:tendril@0.5.1`
 
 ````text
@@ -6743,11 +6971,11 @@ IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
 ````
 
-### TXT-116
+### TXT-118
 
-SHA-256：`60C93A31F490375AADF64098B75F10715010379541021E00261045D7800611D3`  
-字节数：11050  
-文件名：`LICENSE-APACHE`  
+SHA-256：`60C93A31F490375AADF64098B75F10715010379541021E00261045D7800611D3`<br>
+字节数：11050<br>
+文件名：`LICENSE-APACHE`<br>
 引用包：`cargo:vcpkg@0.2.15`
 
 ````text
@@ -6954,12 +7182,12 @@ See the License for the specific language governing permissions and
 limitations under the License.
 ````
 
-### TXT-117
+### TXT-119
 
-SHA-256：`617B85F62A4F1B6A62D3D9F28F6D7003B7F68A70B7675A8174BBCC68401AC62D`  
-字节数：1108  
-文件名：`LICENSE-MIT`  
-引用包：`cargo:window-vibrancy@0.6.0`
+SHA-256：`617B85F62A4F1B6A62D3D9F28F6D7003B7F68A70B7675A8174BBCC68401AC62D`<br>
+字节数：1108<br>
+文件名：`LICENSE-MIT`<br>
+引用包：`cargo:window-vibrancy@0.8.1`
 
 ````text
 MIT License
@@ -6985,11 +7213,11 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 ````
 
-### TXT-118
+### TXT-120
 
-SHA-256：`61D383B05B87D78F94D2937E2580CCE47226D17823C0430FBCAD09596537EFCF`  
-字节数：1097  
-文件名：`LICENSE-MIT`  
+SHA-256：`61D383B05B87D78F94D2937E2580CCE47226D17823C0430FBCAD09596537EFCF`<br>
+字节数：1097<br>
+文件名：`LICENSE-MIT`<br>
 引用包：`cargo:crc32fast@1.5.0`
 
 ````text
@@ -7016,11 +7244,11 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 ````
 
-### TXT-119
+### TXT-121
 
-SHA-256：`62065228E42CAEBCA7E7D7DB1204CBB867033DE5982CA4009928915E4095F3A3`  
-字节数：1067  
-文件名：`LICENSE-MIT`  
+SHA-256：`62065228E42CAEBCA7E7D7DB1204CBB867033DE5982CA4009928915E4095F3A3`<br>
+字节数：1067<br>
+文件名：`LICENSE-MIT`<br>
 引用包：`cargo:string_cache_codegen@0.6.1`、`cargo:string_cache@0.9.0`
 
 ````text
@@ -7051,11 +7279,11 @@ IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
 ````
 
-### TXT-120
+### TXT-122
 
-SHA-256：`62C7A1E35F56406896D7AA7CA52D0CC0D272AC022B5D2796E7D6905DB8A3636A`  
-字节数：9723  
-文件名：`LICENSE-APACHE`  
+SHA-256：`62C7A1E35F56406896D7AA7CA52D0CC0D272AC022B5D2796E7D6905DB8A3636A`<br>
+字节数：9723<br>
+文件名：`LICENSE-APACHE`<br>
 引用包：`cargo:anyhow@1.0.104`、`cargo:dtoa@1.0.11`、`cargo:dyn-clone@1.0.20`、`cargo:erased-serde@0.4.10`、`cargo:itoa@1.0.18`、`cargo:libc@0.2.189`、`cargo:proc-macro2@1.0.107`、`cargo:quote@1.0.47`、`cargo:ryu@1.0.23`、`cargo:semver@1.0.28`、`cargo:serde_core@1.0.229`、`cargo:serde_derive_internals@0.29.1`、`cargo:serde_derive@1.0.229`、`cargo:serde_json@1.0.151`、`cargo:serde_repr@0.1.21`、`cargo:serde_urlencoded@0.7.1`、`cargo:serde-untagged@0.1.9`、`cargo:serde@1.0.229`、`cargo:syn@2.0.119`、`cargo:syn@3.0.3`、`cargo:thiserror-impl@1.0.69`、`cargo:thiserror-impl@2.0.19`、`cargo:thiserror@1.0.69`、`cargo:thiserror@2.0.19`、`cargo:typeid@1.0.3`、`cargo:unicode-ident@1.0.24`
 
 ````text
@@ -7237,11 +7465,11 @@ TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION
 END OF TERMS AND CONDITIONS
 ````
 
-### TXT-121
+### TXT-123
 
-SHA-256：`6485B8ED310D3F0340BF1AD1F47645069CE4069DCC6BB46C7D5C6FAF41DE1FDB`  
-字节数：1071  
-文件名：`LICENSE-MIT`  
+SHA-256：`6485B8ED310D3F0340BF1AD1F47645069CE4069DCC6BB46C7D5C6FAF41DE1FDB`<br>
+字节数：1071<br>
+文件名：`LICENSE-MIT`<br>
 引用包：`cargo:bitflags@1.3.2`、`cargo:bitflags@2.13.1`、`cargo:glob@0.3.4`、`cargo:log@0.4.33`、`cargo:num-traits@0.2.19`、`cargo:regex-automata@0.4.16`、`cargo:regex-syntax@0.8.11`、`cargo:regex@1.13.1`
 
 ````text
@@ -7272,11 +7500,11 @@ IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
 ````
 
-### TXT-122
+### TXT-124
 
-SHA-256：`653B779005A3A4D64A7288C940F7B9A0E8F0B1E0375F6AA6AF9473CAF131E564`  
-字节数：1071  
-文件名：`LICENSE`  
+SHA-256：`653B779005A3A4D64A7288C940F7B9A0E8F0B1E0375F6AA6AF9473CAF131E564`<br>
+字节数：1071<br>
+文件名：`LICENSE`<br>
 引用包：`npm:node_modules/@standard-schema/spec`
 
 ````text
@@ -7303,11 +7531,11 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 ````
 
-### TXT-123
+### TXT-125
 
-SHA-256：`6582629E2979466878F6014313DCC2F3756C9616148682227CE3063DDE310750`  
-字节数：787  
-文件名：`LICENSE`  
+SHA-256：`6582629E2979466878F6014313DCC2F3756C9616148682227CE3063DDE310750`<br>
+字节数：787<br>
+文件名：`LICENSE`<br>
 引用包：`npm:node_modules/picocolors`
 
 ````text
@@ -7328,11 +7556,11 @@ ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
 OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 ````
 
-### TXT-124
+### TXT-126
 
-SHA-256：`65FDB6C76CD61612070C066EEC9ECDB30EE74FB27859D0D9AF58B9F499FD0C3E`  
-字节数：1056  
-文件名：`LICENSE-MIT`  
+SHA-256：`65FDB6C76CD61612070C066EEC9ECDB30EE74FB27859D0D9AF58B9F499FD0C3E`<br>
+字节数：1056<br>
+文件名：`LICENSE-MIT`<br>
 引用包：`cargo:fnv@1.0.7`
 
 ````text
@@ -7363,11 +7591,11 @@ IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
 ````
 
-### TXT-125
+### TXT-127
 
-SHA-256：`6652C868F35DFE5E8EF636810A4E576B9D663F3A17FB0F5613AD73583E1B88FD`  
-字节数：1094  
-文件名：`LICENSE-MIT`  
+SHA-256：`6652C868F35DFE5E8EF636810A4E576B9D663F3A17FB0F5613AD73583E1B88FD`<br>
+字节数：1094<br>
+文件名：`LICENSE-MIT`<br>
 引用包：`cargo:futures-channel@0.3.33`、`cargo:futures-core@0.3.33`、`cargo:futures-executor@0.3.33`、`cargo:futures-io@0.3.33`、`cargo:futures-sink@0.3.33`、`cargo:futures-task@0.3.33`、`cargo:futures-util@0.3.33`
 
 ````text
@@ -7399,12 +7627,12 @@ IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
 ````
 
-### TXT-126
+### TXT-128
 
-SHA-256：`66A3107D5AD6A058AAB753EAAC2047CCB2ED0E39465DD0FE5844DA3E300D5172`  
-字节数：16727  
-文件名：`LICENSE.txt`、`MPL-2.0.txt`  
-引用包：`cargo:option-ext@0.2.0`、`cargo:selectors@0.36.1`
+SHA-256：`66A3107D5AD6A058AAB753EAAC2047CCB2ED0E39465DD0FE5844DA3E300D5172`<br>
+字节数：16727<br>
+文件名：`LICENSE.txt`、`MPL-2.0.txt`<br>
+引用包：`cargo:option-ext@0.2.0`、`cargo:selectors@0.38.0`
 
 ````text
 Mozilla Public License Version 2.0
@@ -7782,11 +8010,11 @@ Exhibit B - "Incompatible With Secondary Licenses" Notice
   defined by the Mozilla Public License, v. 2.0.
 ````
 
-### TXT-127
+### TXT-129
 
-SHA-256：`68F12F6E2C33688699249C01D8F9623C534DA20AA71989C57B061B7BC1676D14`  
-字节数：1096  
-文件名：`LICENSE`  
+SHA-256：`68F12F6E2C33688699249C01D8F9623C534DA20AA71989C57B061B7BC1676D14`<br>
+字节数：1096<br>
+文件名：`LICENSE`<br>
 引用包：`npm:node_modules/editorconfig/node_modules/brace-expansion`、`npm:node_modules/glob/node_modules/brace-expansion`
 
 ````text
@@ -7813,11 +8041,11 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 ````
 
-### TXT-128
+### TXT-130
 
-SHA-256：`693866FC419C6F61C8570438EC00659D156EC2B4D4A4D04091711F5F11A365D4`  
-字节数：1087  
-文件名：`LICENSE`  
+SHA-256：`693866FC419C6F61C8570438EC00659D156EC2B4D4A4D04091711F5F11A365D4`<br>
+字节数：1087<br>
+文件名：`LICENSE`<br>
 引用包：`npm:node_modules/color-convert`
 
 ````text
@@ -7843,11 +8071,11 @@ OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
 WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 ````
 
-### TXT-129
+### TXT-131
 
-SHA-256：`69DEE148A2CC470554DFA7142E830662062394D0FE67CDDD379ABA90DC60D6B3`  
-字节数：1116  
-文件名：`license`  
+SHA-256：`69DEE148A2CC470554DFA7142E830662062394D0FE67CDDD379ABA90DC60D6B3`<br>
+字节数：1116<br>
+文件名：`license`<br>
 引用包：`npm:node_modules/shebang-command`
 
 ````text
@@ -7862,11 +8090,11 @@ The above copyright notice and this permission notice shall be included in all c
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 ````
 
-### TXT-130
+### TXT-132
 
-SHA-256：`6A134E51AA31496C15A741592FC5D782B2DBF8D8B6B8524E15C8520AE0CD6374`  
-字节数：1079  
-文件名：`LICENSE`  
+SHA-256：`6A134E51AA31496C15A741592FC5D782B2DBF8D8B6B8524E15C8520AE0CD6374`<br>
+字节数：1079<br>
+文件名：`LICENSE`<br>
 引用包：`npm:node_modules/why-is-node-running`
 
 ````text
@@ -7893,12 +8121,12 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 ````
 
-### TXT-131
+### TXT-133
 
-SHA-256：`6A2E0ADE09A7D5F816F11566FEE2B151B32235A7FAD52B41D49CCE96F833C1A9`  
-字节数：1069  
-文件名：`LICENSE-MIT`  
-引用包：`cargo:dirs-sys@0.5.0`、`cargo:dirs@6.0.0`
+SHA-256：`6A2E0ADE09A7D5F816F11566FEE2B151B32235A7FAD52B41D49CCE96F833C1A9`<br>
+字节数：1069<br>
+文件名：`LICENSE-MIT`<br>
+引用包：`cargo:dirs-sys@0.5.0`、`cargo:dirs@7.0.0`
 
 ````text
 Copyright (c) 2018-2019 dirs-rs contributors
@@ -7922,11 +8150,11 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 ````
 
-### TXT-132
+### TXT-134
 
-SHA-256：`6AC8711FB340C62CE0A4ECD463342D3FA0E8E70DE697C863A2E1C0C53006003C`  
-字节数：1084  
-文件名：`LICENSE`  
+SHA-256：`6AC8711FB340C62CE0A4ECD463342D3FA0E8E70DE697C863A2E1C0C53006003C`<br>
+字节数：1084<br>
+文件名：`LICENSE`<br>
 引用包：`cargo:spin@0.9.9`
 
 ````text
@@ -7953,12 +8181,12 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 ````
 
-### TXT-133
+### TXT-135
 
-SHA-256：`6C1E5D0CCF5E8951401CB964036AE664D52FC8D1148173B53BC54FC534F5D404`  
-字节数：832  
-文件名：`LICENSE.spdx`  
-引用包：`cargo:tray-icon@0.24.1`
+SHA-256：`6C1E5D0CCF5E8951401CB964036AE664D52FC8D1148173B53BC54FC534F5D404`<br>
+字节数：832<br>
+文件名：`LICENSE.spdx`<br>
+引用包：`cargo:tray-icon@0.25.1`
 
 ````text
 SPDXVersion: SPDX-2.1
@@ -7982,11 +8210,11 @@ PackageDownloadLocation: git+ssh://github.com/tauri-apps/tray-icon.git
 Creator: Person: Daniel Thompson-Yvetot
 ````
 
-### TXT-134
+### TXT-136
 
-SHA-256：`6CB0631F71C7749763FD3DD1D5BEE52DD1070EC17F2EDC1710079AD070BD2FBD`  
-字节数：1526  
-文件名：`LICENSE`  
+SHA-256：`6CB0631F71C7749763FD3DD1D5BEE52DD1070EC17F2EDC1710079AD070BD2FBD`<br>
+字节数：1526<br>
+文件名：`LICENSE`<br>
 引用包：`npm:node_modules/source-map-js`
 
 ````text
@@ -8020,12 +8248,12 @@ OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 ````
 
-### TXT-135
+### TXT-137
 
-SHA-256：`6DC0E068DCF3A5BC8E054205B85B7720E1D49265BBC64BF515D2CF79197DF69A`  
-字节数：11323  
-文件名：`LICENSE`  
-引用包：`cargo:dpi@0.1.2`、`cargo:tao@0.35.3`
+SHA-256：`6DC0E068DCF3A5BC8E054205B85B7720E1D49265BBC64BF515D2CF79197DF69A`<br>
+字节数：11323<br>
+文件名：`LICENSE`<br>
+引用包：`cargo:dpi@0.1.2`、`cargo:tao@0.37.1`
 
 ````text
 Apache License
@@ -8231,12 +8459,12 @@ Apache License
    limitations under the License.
 ````
 
-### TXT-136
+### TXT-138
 
-SHA-256：`6EFB0476A1CC085077ED49357026D8C173BF33017278EF440F222FB9CBCB66E6`  
-字节数：1062  
-文件名：`LICENSE-MIT`  
-引用包：`cargo:serde_spanned@1.1.1`、`cargo:toml_datetime@0.7.5+spec-1.1.0`、`cargo:toml_datetime@1.1.1+spec-1.1.0`、`cargo:toml_parser@1.1.2+spec-1.1.0`、`cargo:toml_writer@1.1.2+spec-1.1.0`、`cargo:toml@0.9.12+spec-1.1.0`、`cargo:toml@1.1.3+spec-1.1.0`
+SHA-256：`6EFB0476A1CC085077ED49357026D8C173BF33017278EF440F222FB9CBCB66E6`<br>
+字节数：1062<br>
+文件名：`LICENSE-MIT`<br>
+引用包：`cargo:serde_spanned@1.1.1`、`cargo:toml_datetime@1.1.1+spec-1.1.0`、`cargo:toml_parser@1.1.2+spec-1.1.0`、`cargo:toml_writer@1.1.2+spec-1.1.0`、`cargo:toml@1.1.3+spec-1.1.0`
 
 ````text
 Copyright (c) Individual contributors
@@ -8260,11 +8488,11 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 ````
 
-### TXT-137
+### TXT-139
 
-SHA-256：`715F1F0F2EB7688E53E4E958ACDC7FC9E365AE3EAF26EFC2604B93CC65FDC3F5`  
-字节数：1071  
-文件名：`LICENSE`  
+SHA-256：`715F1F0F2EB7688E53E4E958ACDC7FC9E365AE3EAF26EFC2604B93CC65FDC3F5`<br>
+字节数：1071<br>
+文件名：`LICENSE`<br>
 引用包：`npm:node_modules/json-buffer`
 
 ````text
@@ -8292,11 +8520,11 @@ TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 ````
 
-### TXT-138
+### TXT-140
 
-SHA-256：`7365CC8878A1D7CE155A58C4CA09C3D7A6BE413EFA5334A80EA842912B669349`  
-字节数：1049  
-文件名：`LICENSE-MIT`  
+SHA-256：`7365CC8878A1D7CE155A58C4CA09C3D7A6BE413EFA5334A80EA842912B669349`<br>
+字节数：1049<br>
+文件名：`LICENSE-MIT`<br>
 引用包：`cargo:equivalent@1.0.2`
 
 ````text
@@ -8327,11 +8555,11 @@ IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
 ````
 
-### TXT-139
+### TXT-141
 
-SHA-256：`73B5283588BAA142C5BAAEF5F56D3E8FDEA7A30B214E8C5737E87640F882453A`  
-字节数：1087  
-文件名：`LICENSE`  
+SHA-256：`73B5283588BAA142C5BAAEF5F56D3E8FDEA7A30B214E8C5737E87640F882453A`<br>
+字节数：1087<br>
+文件名：`LICENSE`<br>
 引用包：`npm:node_modules/is-extglob`、`npm:node_modules/word-wrap`
 
 ````text
@@ -8358,12 +8586,31 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 ````
 
-### TXT-140
+### TXT-142
 
-SHA-256：`7554701D1E74FC434F68C522B1DD743C8C16D816A4B761B5213F367B898884C8`  
-字节数：1328  
-文件名：`LICENSE`  
-引用包：`cargo:dom_query@0.27.0`
+SHA-256：`748C208045A6F00734DBC85A1C0E401C9A25E1F83FC756E99916750DBD2469A7`<br>
+字节数：1101<br>
+文件名：`LICENSE-MIT`<br>
+引用包：`cargo:static_vcruntime@3.0.0`
+
+````text
+MIT License
+
+Copyright (c) 2021 Chris Denton.
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice (including the next paragraph) shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+````
+
+### TXT-143
+
+SHA-256：`7554701D1E74FC434F68C522B1DD743C8C16D816A4B761B5213F367B898884C8`<br>
+字节数：1328<br>
+文件名：`LICENSE`<br>
+引用包：`cargo:dom_query@0.28.0`
 
 ````text
 MIT License
@@ -8395,11 +8642,11 @@ derived from the "nipper" project (https://github.com/importcjj/nipper),
 developed by Chen Jiaju, licensed under the MIT License and the Apache License 2.0 (dual licensed).
 ````
 
-### TXT-141
+### TXT-144
 
-SHA-256：`7576269EA71F767B99297934C0B2367532690F8C4BADC695EDF8E04AB6A1E545`  
-字节数：1043  
-文件名：`LICENSE-MIT`  
+SHA-256：`7576269EA71F767B99297934C0B2367532690F8C4BADC695EDF8E04AB6A1E545`<br>
+字节数：1043<br>
+文件名：`LICENSE-MIT`<br>
 引用包：`cargo:either@1.16.0`、`cargo:serde_with_macros@3.21.0`、`cargo:serde_with@3.21.0`
 
 ````text
@@ -8430,11 +8677,11 @@ IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
 ````
 
-### TXT-142
+### TXT-145
 
-SHA-256：`75863F712F8F0603B0DBA33EDF4B725BAB80FC858A51756E5905A3C4C8087169`  
-字节数：1076  
-文件名：`LICENSE`  
+SHA-256：`75863F712F8F0603B0DBA33EDF4B725BAB80FC858A51756E5905A3C4C8087169`<br>
+字节数：1076<br>
+文件名：`LICENSE`<br>
 引用包：`npm:node_modules/alien-signals`
 
 ````text
@@ -8461,11 +8708,11 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 ````
 
-### TXT-143
+### TXT-146
 
-SHA-256：`769D154FBDE32A915AF110B1123650BC79F4CBE675ACC66E005265BF069C6C6C`  
-字节数：1080  
-文件名：`LICENSE`  
+SHA-256：`769D154FBDE32A915AF110B1123650BC79F4CBE675ACC66E005265BF069C6C6C`<br>
+字节数：1080<br>
+文件名：`LICENSE`<br>
 引用包：`npm:node_modules/@jridgewell/sourcemap-codec`
 
 ````text
@@ -8490,12 +8737,12 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 ````
 
-### TXT-144
+### TXT-147
 
-SHA-256：`769F80B5BCB42ED0AF4E4D2FD74E1AC9BF843CB80C5A29219D1EF3544428A6BB`  
-字节数：10846  
-文件名：`LICENSE-APACHE`  
-引用包：`cargo:keyboard-types@0.7.0`
+SHA-256：`769F80B5BCB42ED0AF4E4D2FD74E1AC9BF843CB80C5A29219D1EF3544428A6BB`<br>
+字节数：10846<br>
+文件名：`LICENSE-APACHE`<br>
+引用包：`cargo:keyboard-types@0.8.3`
 
 ````text
                               Apache License
@@ -8701,11 +8948,11 @@ See the License for the specific language governing permissions and
 limitations under the License.
 ````
 
-### TXT-145
+### TXT-148
 
-SHA-256：`76A876CF886FF9BE2A8B5E2E86514FED06223C8C9F0C1E9EE9606E93841E00B7`  
-字节数：1099  
-文件名：`LICENSE`  
+SHA-256：`76A876CF886FF9BE2A8B5E2E86514FED06223C8C9F0C1E9EE9606E93841E00B7`<br>
+字节数：1099<br>
+文件名：`LICENSE`<br>
 引用包：`npm:node_modules/acorn`
 
 ````text
@@ -8732,11 +8979,11 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 ````
 
-### TXT-146
+### TXT-149
 
-SHA-256：`76C9D5F5EA942054715C026F33F8717C9E24603196A3737B8899AFA216BCBDAB`  
-字节数：1038  
-文件名：`LICENSE.md`  
+SHA-256：`76C9D5F5EA942054715C026F33F8717C9E24603196A3737B8899AFA216BCBDAB`<br>
+字节数：1038<br>
+文件名：`LICENSE.md`<br>
 引用包：`npm:node_modules/ts-api-utils`
 
 ````text
@@ -8762,11 +9009,11 @@ TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 ````
 
-### TXT-147
+### TXT-150
 
-SHA-256：`799E9CA9D179295EF372F25D3769CDDA7D25BB2668ADD6A6A1E22D1E4C678B8D`  
-字节数：1212  
-文件名：`LICENSE-MIT.md`  
+SHA-256：`799E9CA9D179295EF372F25D3769CDDA7D25BB2668ADD6A6A1E22D1E4C678B8D`<br>
+字节数：1212<br>
+文件名：`LICENSE-MIT.md`<br>
 引用包：`cargo:miniz_oxide@0.8.9`
 
 ````text
@@ -8796,11 +9043,11 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 ````
 
-### TXT-148
+### TXT-151
 
-SHA-256：`7B63ECD5F1902AF1B63729947373683C32745C16A10E8E6292E2E2DCD7E90AE0`  
-字节数：1071  
-文件名：`LICENSE-MIT`  
+SHA-256：`7B63ECD5F1902AF1B63729947373683C32745C16A10E8E6292E2E2DCD7E90AE0`<br>
+字节数：1071<br>
+文件名：`LICENSE-MIT`<br>
 引用包：`cargo:heck@0.5.0`、`cargo:unicode-segmentation@1.13.3`
 
 ````text
@@ -8831,11 +9078,11 @@ IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
 ````
 
-### TXT-149
+### TXT-152
 
-SHA-256：`7BF9B2DE73A6B356761C948D0E9EEB4BE6C1270BD04C79CD489C1E400FFDFC1A`  
-字节数：1074  
-文件名：`LICENSE`  
+SHA-256：`7BF9B2DE73A6B356761C948D0E9EEB4BE6C1270BD04C79CD489C1E400FFDFC1A`<br>
+字节数：1074<br>
+文件名：`LICENSE`<br>
 引用包：`npm:node_modules/fast-deep-equal`、`npm:node_modules/json-schema-traverse`
 
 ````text
@@ -8862,11 +9109,11 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 ````
 
-### TXT-150
+### TXT-153
 
-SHA-256：`7C6CC83C84EAA249A85BF12FE3EEDD831BB50C696E8890B5248223AE68C7B408`  
-字节数：10760  
-文件名：`LICENSE`  
+SHA-256：`7C6CC83C84EAA249A85BF12FE3EEDD831BB50C696E8890B5248223AE68C7B408`<br>
+字节数：10760<br>
+文件名：`LICENSE`<br>
 引用包：`npm:node_modules/expect-type`
 
 ````text
@@ -9063,11 +9310,11 @@ SHA-256：`7C6CC83C84EAA249A85BF12FE3EEDD831BB50C696E8890B5248223AE68C7B408`
    END OF TERMS AND CONDITIONS
 ````
 
-### TXT-151
+### TXT-154
 
-SHA-256：`7CA6700600DFA9C9497BF5556365067DAA802C871EA78239F129309C7A2048F7`  
-字节数：1078  
-文件名：`LICENSE`  
+SHA-256：`7CA6700600DFA9C9497BF5556365067DAA802C871EA78239F129309C7A2048F7`<br>
+字节数：1078<br>
+文件名：`LICENSE`<br>
 引用包：`cargo:precomputed-hash@0.1.1`
 
 ````text
@@ -9094,12 +9341,12 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 ````
 
-### TXT-152
+### TXT-155
 
-SHA-256：`7CCEF0D35E8507FA02D7E904A5277D62723F9EC576D52F6A865CAB7B4DBF12AD`  
-字节数：840  
-文件名：`LICENSE.spdx`  
-引用包：`cargo:window-vibrancy@0.6.0`
+SHA-256：`7CCEF0D35E8507FA02D7E904A5277D62723F9EC576D52F6A865CAB7B4DBF12AD`<br>
+字节数：840<br>
+文件名：`LICENSE.spdx`<br>
+引用包：`cargo:window-vibrancy@0.8.1`
 
 ````text
 SPDXVersion: SPDX-2.1
@@ -9123,11 +9370,11 @@ PackageDownloadLocation: git+ssh://github.com/tauri-apps/window-vibrancy.git
 Creator: Person: Daniel Thompson-Yvetot
 ````
 
-### TXT-153
+### TXT-156
 
-SHA-256：`7E12E5DF4BAE12CB21581BA157CED20E1986A0508DD10D0E8A4AB9A4CF94E85C`  
-字节数：1211  
-文件名：`UNLICENSE`  
+SHA-256：`7E12E5DF4BAE12CB21581BA157CED20E1986A0508DD10D0E8A4AB9A4CF94E85C`<br>
+字节数：1211<br>
+文件名：`UNLICENSE`<br>
 引用包：`cargo:aho-corasick@1.1.4`、`cargo:byteorder@1.5.0`、`cargo:memchr@2.8.3`、`cargo:same-file@1.0.6`、`cargo:walkdir@2.5.0`、`cargo:winapi-util@0.1.11`
 
 ````text
@@ -9157,11 +9404,11 @@ OTHER DEALINGS IN THE SOFTWARE.
 For more information, please refer to <http://unlicense.org/>
 ````
 
-### TXT-154
+### TXT-157
 
-SHA-256：`8173D5C29B4F956D532781D2B86E4E30F83E6B7878DCE18C919451D6BA707C90`  
-字节数：10850  
-文件名：`LICENSE-APACHE`  
+SHA-256：`8173D5C29B4F956D532781D2B86E4E30F83E6B7878DCE18C919451D6BA707C90`<br>
+字节数：10850<br>
+文件名：`LICENSE-APACHE`<br>
 引用包：`cargo:bit-set@0.8.0`、`cargo:bit-vec@0.8.0`
 
 ````text
@@ -9368,11 +9615,11 @@ See the License for the specific language governing permissions and
 limitations under the License.
 ````
 
-### TXT-155
+### TXT-158
 
-SHA-256：`861399F8C21C042B110517E76DC6B63A2B334276C8CF17412FC3C8908CA8DC17`  
-字节数：665  
-文件名：`LICENSE-0BSD`  
+SHA-256：`861399F8C21C042B110517E76DC6B63A2B334276C8CF17412FC3C8908CA8DC17`<br>
+字节数：665<br>
+文件名：`LICENSE-0BSD`<br>
 引用包：`cargo:adler2@2.0.1`
 
 ````text
@@ -9390,12 +9637,12 @@ AN ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT
 OF OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 ````
 
-### TXT-156
+### TXT-159
 
-SHA-256：`86DD7F026F916DAF7511E39951AD8EA8CF55A8DB67AE64060DACF829761C18F3`  
-字节数：1076  
-文件名：`LICENSE-MIT`  
-引用包：`cargo:html5ever@0.38.0`、`cargo:markup5ever@0.38.0`、`cargo:web_atoms@0.2.5`
+SHA-256：`86DD7F026F916DAF7511E39951AD8EA8CF55A8DB67AE64060DACF829761C18F3`<br>
+字节数：1076<br>
+文件名：`LICENSE-MIT`<br>
+引用包：`cargo:html5ever@0.39.0`、`cargo:markup5ever@0.39.0`、`cargo:web_atoms@0.2.5`
 
 ````text
 Copyright (c) 2014 The html5ever Project Developers
@@ -9425,12 +9672,12 @@ IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
 ````
 
-### TXT-157
+### TXT-160
 
-SHA-256：`87F7527B1066337751F7F4D717089BF514FF8F7EE7D66C4C5B891B09E744EC11`  
-字节数：1068  
-文件名：`LICENSE-MIT`  
-引用包：`cargo:json-patch@3.0.1`
+SHA-256：`87F7527B1066337751F7F4D717089BF514FF8F7EE7D66C4C5B891B09E744EC11`<br>
+字节数：1068<br>
+文件名：`LICENSE-MIT`<br>
+引用包：`cargo:json-patch@4.2.0`
 
 ````text
 MIT License
@@ -9456,11 +9703,11 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 ````
 
-### TXT-158
+### TXT-161
 
-SHA-256：`881D660C26831481B697E39724D4A35C9F86E07B67156D4AEB693A0B39910435`  
-字节数：37726  
-文件名：`LICENSE.md`  
+SHA-256：`881D660C26831481B697E39724D4A35C9F86E07B67156D4AEB693A0B39910435`<br>
+字节数：37726<br>
+文件名：`LICENSE.md`<br>
 引用包：`npm:node_modules/vitest`
 
 ````text
@@ -10277,11 +10524,11 @@ Repository: git+https://github.com/websockets/ws.git
 > CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 ````
 
-### TXT-159
+### TXT-162
 
-SHA-256：`8937AFFB1FAC84258C98AA2351EB161405999975B602140C43BCBAC23B22F1E9`  
-字节数：1070  
-文件名：`LICENCE`  
+SHA-256：`8937AFFB1FAC84258C98AA2351EB161405999975B602140C43BCBAC23B22F1E9`<br>
+字节数：1070<br>
+文件名：`LICENCE`<br>
 引用包：`npm:node_modules/config-chain`
 
 ````text
@@ -10309,11 +10556,11 @@ TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 ````
 
-### TXT-160
+### TXT-163
 
-SHA-256：`898B1AE9821E98DAF8964C8D6C7F61641F5F5AA78AD500020771C0939EE0DEA1`  
-字节数：1062  
-文件名：`LICENSE`  
+SHA-256：`898B1AE9821E98DAF8964C8D6C7F61641F5F5AA78AD500020771C0939EE0DEA1`<br>
+字节数：1062<br>
+文件名：`LICENSE`<br>
 引用包：`cargo:tracing-attributes@0.1.31`、`cargo:tracing-core@0.1.36`、`cargo:tracing@0.1.44`
 
 ````text
@@ -10344,11 +10591,11 @@ IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
 ````
 
-### TXT-161
+### TXT-164
 
-SHA-256：`89FF9689DCF9DD53968785D05A26F7898BB169DBFCADA8D032B3E68CF0D55607`  
-字节数：1089  
-文件名：`LICENSE_MIT`  
+SHA-256：`89FF9689DCF9DD53968785D05A26F7898BB169DBFCADA8D032B3E68CF0D55607`<br>
+字节数：1089<br>
+文件名：`LICENSE_MIT`<br>
 引用包：`cargo:tauri-plugin-autostart@2.5.1`、`cargo:tauri-plugin-opener@2.5.4`、`cargo:tauri-plugin-sql@2.4.0`
 
 ````text
@@ -10375,11 +10622,11 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 ````
 
-### TXT-162
+### TXT-165
 
-SHA-256：`8A1AF140FDFBF5AFD3DF27F7E662F989C5B963A300020DFAFCE42033CAE9E004`  
-字节数：1552  
-文件名：`LICENSE.md`  
+SHA-256：`8A1AF140FDFBF5AFD3DF27F7E662F989C5B963A300020DFAFCE42033CAE9E004`<br>
+字节数：1552<br>
+文件名：`LICENSE.md`<br>
 引用包：`npm:node_modules/minipass`、`npm:node_modules/path-scurry`
 
 ````text
@@ -10440,11 +10687,11 @@ will be liable to anyone for any damages related to this
 software or this license, under any kind of legal claim.***
 ````
 
-### TXT-163
+### TXT-166
 
-SHA-256：`8A35369F3CA263B3C62FBB5032947E53B6BFEBC6C8A4D1BB982DE1C069F6FBA5`  
-字节数：1080  
-文件名：`LICENSE`  
+SHA-256：`8A35369F3CA263B3C62FBB5032947E53B6BFEBC6C8A4D1BB982DE1C069F6FBA5`<br>
+字节数：1080<br>
+文件名：`LICENSE`<br>
 引用包：`cargo:derive_more-impl@2.1.1`、`cargo:derive_more@2.1.1`
 
 ````text
@@ -10471,11 +10718,11 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 ````
 
-### TXT-164
+### TXT-167
 
-SHA-256：`8A4B6C44EEBFB026D23719A348145A661A555568DBFDC11618FF2D0DD9306B00`  
-字节数：1085  
-文件名：`LICENSE`  
+SHA-256：`8A4B6C44EEBFB026D23719A348145A661A555568DBFDC11618FF2D0DD9306B00`<br>
+字节数：1085<br>
+文件名：`LICENSE`<br>
 引用包：`npm:node_modules/es-module-lexer`
 
 ````text
@@ -10491,11 +10738,11 @@ The above copyright notice and this permission notice shall be included in all c
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 ````
 
-### TXT-165
+### TXT-168
 
-SHA-256：`8A6DCBABE7179F9C8489C08A7D874D0F1E093AE7449E03756CCF87CB9D0E296E`  
-字节数：1126  
-文件名：`LICENSE`  
+SHA-256：`8A6DCBABE7179F9C8489C08A7D874D0F1E093AE7449E03756CCF87CB9D0E296E`<br>
+字节数：1126<br>
+文件名：`LICENSE`<br>
 引用包：`npm:node_modules/@vitest/mocker/node_modules/estree-walker`、`npm:node_modules/estree-walker`
 
 ````text
@@ -10508,11 +10755,11 @@ The above copyright notice and this permission notice shall be included in all c
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 ````
 
-### TXT-166
+### TXT-169
 
-SHA-256：`8ADA45CD9F843ACF64E4722AE262C622A2B3B3007C7310EF36AC1061A30F6ADB`  
-字节数：10860  
-文件名：`LICENSE-APACHE`  
+SHA-256：`8ADA45CD9F843ACF64E4722AE262C622A2B3B3007C7310EF36AC1061A30F6ADB`<br>
+字节数：10860<br>
+文件名：`LICENSE-APACHE`<br>
 引用包：`cargo:adler2@2.0.1`、`cargo:cargo-platform@0.1.9`
 
 ````text
@@ -10719,11 +10966,11 @@ See the License for the specific language governing permissions and
 limitations under the License.
 ````
 
-### TXT-167
+### TXT-170
 
-SHA-256：`8B43CE8ACCD61E9D370B5CA9E9C4F953279B5C239926C62315B40E24DF51B726`  
-字节数：1062  
-文件名：`LICENSE-MIT`  
+SHA-256：`8B43CE8ACCD61E9D370B5CA9E9C4F953279B5C239926C62315B40E24DF51B726`<br>
+字节数：1062<br>
+文件名：`LICENSE-MIT`<br>
 引用包：`cargo:idna_adapter@1.2.2`
 
 ````text
@@ -10754,11 +11001,11 @@ IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
 ````
 
-### TXT-168
+### TXT-171
 
-SHA-256：`8BB1B50B0E5C9399AE33BD35FAB2769010FA6C14E8860C729A52295D84896B7A`  
-字节数：10835  
-文件名：`LICENSE-APACHE`  
+SHA-256：`8BB1B50B0E5C9399AE33BD35FAB2769010FA6C14E8860C729A52295D84896B7A`<br>
+字节数：10835<br>
+文件名：`LICENSE-APACHE`<br>
 引用包：`cargo:http@1.4.2`
 
 ````text
@@ -10965,11 +11212,11 @@ See the License for the specific language governing permissions and
 limitations under the License.
 ````
 
-### TXT-169
+### TXT-172
 
-SHA-256：`8BFF7C96E66561AF0CCDBE3033C748684713AAFF2DABA7149F2FEDA334FEE6DE`  
-字节数：1064  
-文件名：`LICENSE`  
+SHA-256：`8BFF7C96E66561AF0CCDBE3033C748684713AAFF2DABA7149F2FEDA334FEE6DE`<br>
+字节数：1064<br>
+文件名：`LICENSE`<br>
 引用包：`npm:node_modules/@one-ini/wasm`
 
 ````text
@@ -10996,11 +11243,11 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 ````
 
-### TXT-170
+### TXT-173
 
-SHA-256：`8CE0830173FDAC609DFB4EA603FDC002C2F4AF0DC9B1A005653F5DA9CF534B18`  
-字节数：1055  
-文件名：`LICENSE`  
+SHA-256：`8CE0830173FDAC609DFB4EA603FDC002C2F4AF0DC9B1A005653F5DA9CF534B18`<br>
+字节数：1055<br>
+文件名：`LICENSE`<br>
 引用包：`cargo:slab@0.4.12`
 
 ````text
@@ -11031,11 +11278,11 @@ IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
 ````
 
-### TXT-171
+### TXT-174
 
-SHA-256：`8EA93490D74A5A1B1AF3FF71D786271B3F1E5F0BEA79AC16E02EC533CEF040D6`  
-字节数：1067  
-文件名：`LICENSE`  
+SHA-256：`8EA93490D74A5A1B1AF3FF71D786271B3F1E5F0BEA79AC16E02EC533CEF040D6`<br>
+字节数：1067<br>
+文件名：`LICENSE`<br>
 引用包：`cargo:darling_core@0.23.0`、`cargo:darling_macro@0.23.0`、`cargo:darling@0.23.0`
 
 ````text
@@ -11062,11 +11309,11 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 ````
 
-### TXT-172
+### TXT-175
 
-SHA-256：`93F5D82A8D59442FE3275383453A255FEF761647FB28265644010BA799806148`  
-字节数：775  
-文件名：`LICENSE`  
+SHA-256：`93F5D82A8D59442FE3275383453A255FEF761647FB28265644010BA799806148`<br>
+字节数：775<br>
+文件名：`LICENSE`<br>
 引用包：`npm:node_modules/foreground-child`
 
 ````text
@@ -11087,11 +11334,11 @@ ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF OR
 IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 ````
 
-### TXT-173
+### TXT-176
 
-SHA-256：`942A98CB8846A6354266193F173C1354615827FBB7D67F68399599DFF12C4D6A`  
-字节数：1100  
-文件名：`LICENSE.md`  
+SHA-256：`942A98CB8846A6354266193F173C1354615827FBB7D67F68399599DFF12C4D6A`<br>
+字节数：1100<br>
+文件名：`LICENSE.md`<br>
 引用包：`npm:node_modules/fast-levenshtein`
 
 ````text
@@ -11121,11 +11368,11 @@ FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 OTHER DEALINGS IN THE SOFTWARE.
 ````
 
-### TXT-174
+### TXT-177
 
-SHA-256：`95BD3988BEEE069FA2848F648DAB43CC6E0B2ADD2AD6BCB17360CAF749802BCC`  
-字节数：9722  
-文件名：`LICENSE-APACHE`  
+SHA-256：`95BD3988BEEE069FA2848F648DAB43CC6E0B2ADD2AD6BCB17360CAF749802BCC`<br>
+字节数：9722<br>
+文件名：`LICENSE-APACHE`<br>
 引用包：`cargo:rustc-hash@2.1.3`
 
 ````text
@@ -11307,11 +11554,11 @@ TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION
 END OF TERMS AND CONDITIONS
 ````
 
-### TXT-175
+### TXT-178
 
-SHA-256：`95CED5ECF1133FBF41D409B5555C86C344F83F3B019926057DDBC07CFDCC27B3`  
-字节数：1119  
-文件名：`LICENSE`  
+SHA-256：`95CED5ECF1133FBF41D409B5555C86C344F83F3B019926057DDBC07CFDCC27B3`<br>
+字节数：1119<br>
+文件名：`LICENSE`<br>
 引用包：`npm:node_modules/@oxc-project/types`
 
 ````text
@@ -11339,11 +11586,11 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 ````
 
-### TXT-176
+### TXT-179
 
-SHA-256：`9A39F2AADAB11A3697EDD668FF2D8AD885B649737B7AB4D3BF12B34E5ADA0C86`  
-字节数：1053  
-文件名：`LICENSE`  
+SHA-256：`9A39F2AADAB11A3697EDD668FF2D8AD885B649737B7AB4D3BF12B34E5ADA0C86`<br>
+字节数：1053<br>
+文件名：`LICENSE`<br>
 引用包：`npm:node_modules/fdir`
 
 ````text
@@ -11356,11 +11603,11 @@ The above copyright notice and this permission notice shall be included in all c
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 ````
 
-### TXT-177
+### TXT-180
 
-SHA-256：`9A6D7A3C1B8EDCC706C4B6C37F8DAE9A77F02C7F9051DF603F975DB136B55419`  
-字节数：451  
-文件名：`LICENSE-THIRD-PARTY`  
+SHA-256：`9A6D7A3C1B8EDCC706C4B6C37F8DAE9A77F02C7F9051DF603F975DB136B55419`<br>
+字节数：451<br>
+文件名：`LICENSE-THIRD-PARTY`<br>
 引用包：`cargo:parking@2.2.1`
 
 ````text
@@ -11375,11 +11622,11 @@ option. All files in the project carrying such notice may not be
 copied, modified, or distributed except according to those terms.
 ````
 
-### TXT-178
+### TXT-181
 
-SHA-256：`9BE39331309BC958AAB10457C1A8459C038AE95662F26DFCF6C9088E2B3D653F`  
-字节数：10243  
-文件名：`LICENSE-APACHE`  
+SHA-256：`9BE39331309BC958AAB10457C1A8459C038AE95662F26DFCF6C9088E2B3D653F`<br>
+字节数：10243<br>
+文件名：`LICENSE-APACHE`<br>
 引用包：`cargo:sqlx-core@0.8.6`、`cargo:sqlx-macros-core@0.8.6`、`cargo:sqlx-macros@0.8.6`、`cargo:sqlx-sqlite@0.8.6`、`cargo:sqlx@0.8.6`
 
 ````text
@@ -11586,11 +11833,11 @@ See the License for the specific language governing permissions and
 limitations under the License.
 ````
 
-### TXT-179
+### TXT-182
 
-SHA-256：`9C5A80639A57C1C945570E7EBBCA0706305849CE3C098021325CCA9DB2F7ACC4`  
-字节数：1064  
-文件名：`LICENSE-MIT.md`  
+SHA-256：`9C5A80639A57C1C945570E7EBBCA0706305849CE3C098021325CCA9DB2F7ACC4`<br>
+字节数：1064<br>
+文件名：`LICENSE-MIT.md`<br>
 引用包：`cargo:raw-window-handle@0.6.2`
 
 ````text
@@ -11617,11 +11864,11 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 ````
 
-### TXT-180
+### TXT-183
 
-SHA-256：`9C63A23124D68CD30CD316A94A1A0BCA34F032786DF6DF69FC4B5F136BAC8D2E`  
-字节数：1144  
-文件名：`LICENSE`  
+SHA-256：`9C63A23124D68CD30CD316A94A1A0BCA34F032786DF6DF69FC4B5F136BAC8D2E`<br>
+字节数：1144<br>
+文件名：`LICENSE`<br>
 引用包：`npm:node_modules/brace-expansion`
 
 ````text
@@ -11650,11 +11897,11 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 ````
 
-### TXT-181
+### TXT-184
 
-SHA-256：`9C94DB23DC4B1E9AAEE5D195668B916AFC71EFED54AF226B66CF0CCC4389C1C0`  
-字节数：1095  
-文件名：`LICENSE-MIT`  
+SHA-256：`9C94DB23DC4B1E9AAEE5D195668B916AFC71EFED54AF226B66CF0CCC4389C1C0`<br>
+字节数：1095<br>
+文件名：`LICENSE-MIT`<br>
 引用包：`npm:node_modules/@typescript-eslint/eslint-plugin/node_modules/ignore`、`npm:node_modules/ignore`
 
 ````text
@@ -11681,12 +11928,12 @@ OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
 WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 ````
 
-### TXT-182
+### TXT-185
 
-SHA-256：`9DD42EA92CFF2EDE5CD477CBFCCE051B2D0115C0AC7F368EE88CB545055DFF1D`  
-字节数：1090  
-文件名：`LICENSE_MIT`  
-引用包：`cargo:tauri-build@2.6.3`、`cargo:tauri-codegen@2.6.3`、`cargo:tauri-macros@2.6.3`、`cargo:tauri-plugin@2.6.3`、`cargo:tauri-runtime-wry@2.11.4`、`cargo:tauri-runtime@2.11.3`、`cargo:tauri-utils@2.9.3`、`cargo:tauri@2.11.5`、`npm:node_modules/@tauri-apps/api`、`npm:node_modules/@tauri-apps/cli`、`npm:node_modules/@tauri-apps/cli-darwin-arm64`、`npm:node_modules/@tauri-apps/cli-darwin-x64`、`npm:node_modules/@tauri-apps/cli-linux-arm-gnueabihf`、`npm:node_modules/@tauri-apps/cli-linux-arm64-gnu`、`npm:node_modules/@tauri-apps/cli-linux-arm64-musl`、`npm:node_modules/@tauri-apps/cli-linux-riscv64-gnu`、`npm:node_modules/@tauri-apps/cli-linux-x64-gnu`、`npm:node_modules/@tauri-apps/cli-linux-x64-musl`、`npm:node_modules/@tauri-apps/cli-win32-arm64-msvc`、`npm:node_modules/@tauri-apps/cli-win32-ia32-msvc`、`npm:node_modules/@tauri-apps/cli-win32-x64-msvc`
+SHA-256：`9DD42EA92CFF2EDE5CD477CBFCCE051B2D0115C0AC7F368EE88CB545055DFF1D`<br>
+字节数：1090<br>
+文件名：`LICENSE_MIT`、`LICENSE-MIT`<br>
+引用包：`cargo:tauri-build@2.7.3`、`cargo:tauri-codegen@2.7.3`、`cargo:tauri-macros@2.7.3`、`cargo:tauri-plugin@2.6.3`、`cargo:tauri-runtime-wry@2.12.2`、`cargo:tauri-runtime@2.12.2`、`cargo:tauri-utils@2.10.2`、`cargo:tauri@2.12.4`、`npm:node_modules/@tauri-apps/api`、`npm:node_modules/@tauri-apps/cli`、`npm:node_modules/@tauri-apps/cli-darwin-arm64`、`npm:node_modules/@tauri-apps/cli-darwin-x64`、`npm:node_modules/@tauri-apps/cli-linux-arm-gnueabihf`、`npm:node_modules/@tauri-apps/cli-linux-arm64-gnu`、`npm:node_modules/@tauri-apps/cli-linux-arm64-musl`、`npm:node_modules/@tauri-apps/cli-linux-riscv64-gnu`、`npm:node_modules/@tauri-apps/cli-linux-x64-gnu`、`npm:node_modules/@tauri-apps/cli-linux-x64-musl`、`npm:node_modules/@tauri-apps/cli-win32-arm64-msvc`、`npm:node_modules/@tauri-apps/cli-win32-ia32-msvc`、`npm:node_modules/@tauri-apps/cli-win32-x64-msvc`
 
 ````text
 MIT License
@@ -11712,11 +11959,11 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 ````
 
-### TXT-183
+### TXT-186
 
-SHA-256：`9E0D5C7989F7E9F07D7C4B158ACEFF270F235EB7464ACE41C5E7B200834A43E0`  
-字节数：2011  
-文件名：`LICENSE`  
+SHA-256：`9E0D5C7989F7E9F07D7C4B158ACEFF270F235EB7464ACE41C5E7B200834A43E0`<br>
+字节数：2011<br>
+文件名：`LICENSE`<br>
 引用包：`npm:node_modules/abbrev`
 
 ````text
@@ -11768,11 +12015,11 @@ FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 OTHER DEALINGS IN THE SOFTWARE.
 ````
 
-### TXT-184
+### TXT-187
 
-SHA-256：`9E0DFD2DD4173A530E238CB6ADB37AA78C34C6BC7444E0E10C1AB5D8881F63BA`  
-字节数：1057  
-文件名：`LICENSE-MIT`  
+SHA-256：`9E0DFD2DD4173A530E238CB6ADB37AA78C34C6BC7444E0E10C1AB5D8881F63BA`<br>
+字节数：1057<br>
+文件名：`LICENSE-MIT`<br>
 引用包：`cargo:digest@0.10.7`
 
 ````text
@@ -11803,11 +12050,11 @@ IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
 ````
 
-### TXT-185
+### TXT-188
 
-SHA-256：`9EFF396A99BAFD208E7126602420D6864F6066C08B84485A5B032320A9C01997`  
-字节数：2444  
-文件名：`LICENSE-LIBM-MIT`  
+SHA-256：`9EFF396A99BAFD208E7126602420D6864F6066C08B84485A5B032320A9C01997`<br>
+字节数：2444<br>
+文件名：`LICENSE-LIBM-MIT`<br>
 引用包：`cargo:dpi@0.1.2`
 
 ````text
@@ -11864,11 +12111,11 @@ have been licensed under extremely permissive terms.
 ------------------------------------------------------------------------------
 ````
 
-### TXT-186
+### TXT-189
 
-SHA-256：`A0E2F73971F663B49D3C66CC6749FC88DE0F475680CCF5B980A9CBCC0C52490F`  
-字节数：1086  
-文件名：`LICENSE`  
+SHA-256：`A0E2F73971F663B49D3C66CC6749FC88DE0F475680CCF5B980A9CBCC0C52490F`<br>
+字节数：1086<br>
+文件名：`LICENSE`<br>
 引用包：`npm:node_modules/file-entry-cache`
 
 ````text
@@ -11895,11 +12142,11 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 ````
 
-### TXT-187
+### TXT-190
 
-SHA-256：`A1BD5DEADB6A06DD74EFA852C1B8B23F63B67F2214FBE9C8BD591DA51DA69268`  
-字节数：1096  
-文件名：`LICENSE.md`  
+SHA-256：`A1BD5DEADB6A06DD74EFA852C1B8B23F63B67F2214FBE9C8BD591DA51DA69268`<br>
+字节数：1096<br>
+文件名：`LICENSE.md`<br>
 引用包：`npm:node_modules/editorconfig/node_modules/balanced-match`、`npm:node_modules/glob/node_modules/balanced-match`
 
 ````text
@@ -11926,11 +12173,11 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 ````
 
-### TXT-188
+### TXT-191
 
-SHA-256：`A2010F343487D3F7618AFFE54F789F5487602331C0A8D03F49E9A7C547CF0499`  
-字节数：7048  
-文件名：`LICENSE`  
+SHA-256：`A2010F343487D3F7618AFFE54F789F5487602331C0A8D03F49E9A7C547CF0499`<br>
+字节数：7048<br>
+文件名：`LICENSE`<br>
 引用包：`cargo:dunce@1.0.5`
 
 ````text
@@ -12057,11 +12304,11 @@ express Statement of Purpose.
     this CC0 or use of the Work.
 ````
 
-### TXT-189
+### TXT-192
 
-SHA-256：`A22B9D5763F574E5DB347C30ACC0B33EAF4846767C03D2E27D012E864E79A824`  
-字节数：1071  
-文件名：`LICENSE`  
+SHA-256：`A22B9D5763F574E5DB347C30ACC0B33EAF4846767C03D2E27D012E864E79A824`<br>
+字节数：1071<br>
+文件名：`LICENSE`<br>
 引用包：`npm:node_modules/path-browserify`
 
 ````text
@@ -12087,11 +12334,11 @@ IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 ````
 
-### TXT-190
+### TXT-193
 
-SHA-256：`A4445427440043E8CE6FADF7A43FB906CB0D7F6C573A560A9F142CF9F9BF8FF4`  
-字节数：11312  
-文件名：`LICENSE-APACHE`  
+SHA-256：`A4445427440043E8CE6FADF7A43FB906CB0D7F6C573A560A9F142CF9F9BF8FF4`<br>
+字节数：11312<br>
+文件名：`LICENSE-APACHE`<br>
 引用包：`cargo:softbuffer@0.4.8`
 
 ````text
@@ -12298,11 +12545,11 @@ Apache License
    limitations under the License.
 ````
 
-### TXT-191
+### TXT-194
 
-SHA-256：`A49C9BA464796F65B59FCA3F1E6CA40912DF1E859F575383223F7EC6C5BAAE09`  
-字节数：1764  
-文件名：`LICENSE.md`  
+SHA-256：`A49C9BA464796F65B59FCA3F1E6CA40912DF1E859F575383223F7EC6C5BAAE09`<br>
+字节数：1764<br>
+文件名：`LICENSE.md`<br>
 引用包：`npm:node_modules/package-json-from-dist`
 
 ````text
@@ -12371,11 +12618,11 @@ will be liable to anyone for any damages related to this
 software or this license, under any kind of legal claim.***
 ````
 
-### TXT-192
+### TXT-195
 
-SHA-256：`A56351045B45475385A9479D7310208FF0BE9489BABDB4E635FCEA5D7DC1FB02`  
-字节数：1076  
-文件名：`LICENSE`  
+SHA-256：`A56351045B45475385A9479D7310208FF0BE9489BABDB4E635FCEA5D7DC1FB02`<br>
+字节数：1076<br>
+文件名：`LICENSE`<br>
 引用包：`npm:node_modules/@volar/language-core`、`npm:node_modules/@volar/source-map`、`npm:node_modules/@volar/typescript`、`npm:node_modules/@vue/language-core`、`npm:node_modules/vue-tsc`
 
 ````text
@@ -12402,12 +12649,12 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 ````
 
-### TXT-193
+### TXT-196
 
-SHA-256：`A60EEA817514531668D7E00765731449FE14D059D3249E0BC93B36DE45F759F2`  
-字节数：10847  
-文件名：`LICENSE-APACHE`  
-引用包：`cargo:arrayvec@0.7.8`、`cargo:autocfg@1.5.1`、`cargo:base64@0.22.1`、`cargo:bitflags@1.3.2`、`cargo:bitflags@2.13.1`、`cargo:camino@1.2.4`、`cargo:cc@1.3.0`、`cargo:cfg-if@1.0.4`、`cargo:crossbeam-channel@0.5.16`、`cargo:crossbeam-queue@0.3.13`、`cargo:crossbeam-utils@0.8.22`、`cargo:displaydoc@0.2.6`、`cargo:either@1.16.0`、`cargo:equivalent@1.0.2`、`cargo:event-listener@5.4.2`、`cargo:fastrand@2.5.0`、`cargo:find-msvc-tools@0.1.9`、`cargo:flate2@1.1.9`、`cargo:fnv@1.0.7`、`cargo:form_urlencoded@1.2.2`、`cargo:glob@0.3.4`、`cargo:hashbrown@0.12.3`、`cargo:hashbrown@0.15.5`、`cargo:hashbrown@0.17.1`、`cargo:heck@0.5.0`、`cargo:html5ever@0.38.0`、`cargo:idna_adapter@1.2.2`、`cargo:idna@1.1.0`、`cargo:indexmap@1.9.3`、`cargo:indexmap@2.14.0`、`cargo:lock_api@0.4.14`、`cargo:log@0.4.33`、`cargo:markup5ever@0.38.0`、`cargo:mime@0.3.17`、`cargo:muda@0.19.3`、`cargo:num-traits@0.2.19`、`cargo:once_cell@1.21.4`、`cargo:parking_lot_core@0.9.12`、`cargo:parking_lot@0.12.5`、`cargo:parking@2.2.1`、`cargo:percent-encoding@2.3.2`、`cargo:pkg-config@0.3.33`、`cargo:png@0.17.16`、`cargo:regex-automata@0.4.16`、`cargo:regex-syntax@0.8.11`、`cargo:regex@1.13.1`、`cargo:rustc_version@0.4.1`、`cargo:scopeguard@1.2.0`、`cargo:serde_with_macros@3.21.0`、`cargo:serde_with@3.21.0`、`cargo:servo_arc@0.4.3`、`cargo:smallvec@1.15.2`、`cargo:socket2@0.6.5`、`cargo:stable_deref_trait@1.2.1`、`cargo:string_cache_codegen@0.6.1`、`cargo:string_cache@0.9.0`、`cargo:tendril@0.5.1`、`cargo:tray-icon@0.24.1`、`cargo:unic-char-property@0.9.0`、`cargo:unic-char-range@0.9.0`、`cargo:unic-common@0.9.0`、`cargo:unic-ucd-ident@0.9.0`、`cargo:unic-ucd-version@0.9.0`、`cargo:unicode-segmentation@1.13.3`、`cargo:url@2.5.8`、`cargo:uuid@1.24.0`、`cargo:version_check@0.9.5`、`cargo:web_atoms@0.2.5`、`cargo:window-vibrancy@0.6.0`、`cargo:wry@0.55.1`
+SHA-256：`A60EEA817514531668D7E00765731449FE14D059D3249E0BC93B36DE45F759F2`<br>
+字节数：10847<br>
+文件名：`LICENSE-APACHE`<br>
+引用包：`cargo:arrayvec@0.7.8`、`cargo:autocfg@1.5.1`、`cargo:base64@0.22.1`、`cargo:base64@0.23.1`、`cargo:bitflags@1.3.2`、`cargo:bitflags@2.13.1`、`cargo:camino@1.2.4`、`cargo:cc@1.3.0`、`cargo:cfg-if@1.0.4`、`cargo:crossbeam-channel@0.5.16`、`cargo:crossbeam-queue@0.3.13`、`cargo:crossbeam-utils@0.8.22`、`cargo:displaydoc@0.2.6`、`cargo:either@1.16.0`、`cargo:equivalent@1.0.2`、`cargo:event-listener@5.4.2`、`cargo:fastrand@2.5.0`、`cargo:find-msvc-tools@0.1.9`、`cargo:flate2@1.1.9`、`cargo:fnv@1.0.7`、`cargo:form_urlencoded@1.2.2`、`cargo:glob@0.3.4`、`cargo:hashbrown@0.12.3`、`cargo:hashbrown@0.15.5`、`cargo:hashbrown@0.17.1`、`cargo:heck@0.5.0`、`cargo:html5ever@0.39.0`、`cargo:idna_adapter@1.2.2`、`cargo:idna@1.1.0`、`cargo:indexmap@1.9.3`、`cargo:indexmap@2.14.0`、`cargo:lock_api@0.4.14`、`cargo:log@0.4.33`、`cargo:markup5ever@0.39.0`、`cargo:mime@0.3.17`、`cargo:muda@0.20.0`、`cargo:num-traits@0.2.19`、`cargo:once_cell@1.21.4`、`cargo:parking_lot_core@0.9.12`、`cargo:parking_lot@0.12.5`、`cargo:parking@2.2.1`、`cargo:percent-encoding@2.3.2`、`cargo:pkg-config@0.3.33`、`cargo:png@0.17.16`、`cargo:png@0.18.1`、`cargo:regex-automata@0.4.16`、`cargo:regex-syntax@0.8.11`、`cargo:regex@1.13.1`、`cargo:rustc_version@0.4.1`、`cargo:scopeguard@1.2.0`、`cargo:serde_with_macros@3.21.0`、`cargo:serde_with@3.21.0`、`cargo:servo_arc@0.4.3`、`cargo:smallvec@1.15.2`、`cargo:socket2@0.6.5`、`cargo:stable_deref_trait@1.2.1`、`cargo:string_cache_codegen@0.6.1`、`cargo:string_cache@0.9.0`、`cargo:tendril@0.5.1`、`cargo:tray-icon@0.25.1`、`cargo:unicode-segmentation@1.13.3`、`cargo:url@2.5.8`、`cargo:uuid@1.24.0`、`cargo:version_check@0.9.5`、`cargo:web_atoms@0.2.5`、`cargo:window-vibrancy@0.8.1`、`cargo:wry@0.57.0`
 
 ````text
                               Apache License
@@ -12613,11 +12860,11 @@ See the License for the specific language governing permissions and
 limitations under the License.
 ````
 
-### TXT-194
+### TXT-197
 
-SHA-256：`A6A23FB76D91D98669F5ED6EB58213DF594AB2D56C9E981AE021B194E3D662A7`  
-字节数：1088  
-文件名：`LICENSE`  
+SHA-256：`A6A23FB76D91D98669F5ED6EB58213DF594AB2D56C9E981AE021B194E3D662A7`<br>
+字节数：1088<br>
+文件名：`LICENSE`<br>
 引用包：`npm:node_modules/flat-cache`
 
 ````text
@@ -12644,11 +12891,11 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 ````
 
-### TXT-195
+### TXT-198
 
-SHA-256：`A6CBA85BC92E0CFF7A450B1D873C0EAA2E9FC96BF472DF0247A26BEC77BF3FF9`  
-字节数：10173  
-文件名：`LICENSE.txt`  
+SHA-256：`A6CBA85BC92E0CFF7A450B1D873C0EAA2E9FC96BF472DF0247A26BEC77BF3FF9`<br>
+字节数：10173<br>
+文件名：`LICENSE.txt`<br>
 引用包：`npm:node_modules/xml-name-validator`
 
 ````text
@@ -12830,11 +13077,11 @@ SHA-256：`A6CBA85BC92E0CFF7A450B1D873C0EAA2E9FC96BF472DF0247A26BEC77BF3FF9`
    END OF TERMS AND CONDITIONS
 ````
 
-### TXT-196
+### TXT-199
 
-SHA-256：`A6DB8096B2707BC0102D256917D4D33F298BA36D8C3F25DE067A2B5BB379DB27`  
-字节数：1090  
-文件名：`LICENSE`  
+SHA-256：`A6DB8096B2707BC0102D256917D4D33F298BA36D8C3F25DE067A2B5BB379DB27`<br>
+字节数：1090<br>
+文件名：`LICENSE`<br>
 引用包：`npm:node_modules/undici-types`
 
 ````text
@@ -12861,11 +13108,11 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 ````
 
-### TXT-197
+### TXT-200
 
-SHA-256：`A6F36438E46FB911859F3B9C4CAD045BA64E1AF3D8F4512C60258FA2D7552D28`  
-字节数：1079  
-文件名：`LICENCE`  
+SHA-256：`A6F36438E46FB911859F3B9C4CAD045BA64E1AF3D8F4512C60258FA2D7552D28`<br>
+字节数：1079<br>
+文件名：`LICENCE`<br>
 引用包：`npm:node_modules/std-env`
 
 ````text
@@ -12892,11 +13139,11 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 ````
 
-### TXT-198
+### TXT-201
 
-SHA-256：`A7D00BFD54525BC694B6E32F64C7EBCF5E6B7AE3657BE5CC12767BCE74654A47`  
-字节数：9197  
-文件名：`LICENSE.txt`  
+SHA-256：`A7D00BFD54525BC694B6E32F64C7EBCF5E6B7AE3657BE5CC12767BCE74654A47`<br>
+字节数：9197<br>
+文件名：`LICENSE.txt`<br>
 引用包：`npm:node_modules/typescript`
 
 ````text
@@ -12957,11 +13204,11 @@ If the Work includes a "NOTICE" text file as part of its distribution, then any 
 END OF TERMS AND CONDITIONS
 ````
 
-### TXT-199
+### TXT-202
 
-SHA-256：`A825BD853AB71619A4923D7B4311221427848070FF44D990DA39B0B274C1683F`  
-字节数：1083  
-文件名：`LICENSE-MIT`  
+SHA-256：`A825BD853AB71619A4923D7B4311221427848070FF44D990DA39B0B274C1683F`<br>
+字节数：1083<br>
+文件名：`LICENSE-MIT`<br>
 引用包：`cargo:typenum@1.20.1`
 
 ````text
@@ -12988,11 +13235,11 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 ````
 
-### TXT-200
+### TXT-203
 
-SHA-256：`A833D366242C298CF1B10263516572FB8DCBE68EB5072CDCAC2B4546E2B4EB36`  
-字节数：1145  
-文件名：`LICENSE`  
+SHA-256：`A833D366242C298CF1B10263516572FB8DCBE68EB5072CDCAC2B4546E2B4EB36`<br>
+字节数：1145<br>
+文件名：`LICENSE`<br>
 引用包：`npm:node_modules/fast-json-stable-stringify`
 
 ````text
@@ -13019,12 +13266,12 @@ IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 ````
 
-### TXT-201
+### TXT-204
 
-SHA-256：`A8AD31B1C3F40DCA5A84119351B8FA8DDC868EDD77FAD8A8EBF6D8F2D16FA4AE`  
-字节数：11324  
-文件名：`LICENSE-APACHE`  
-引用包：`cargo:ctor-proc-macro@0.0.7`、`cargo:ctor@0.8.0`
+SHA-256：`A8AD31B1C3F40DCA5A84119351B8FA8DDC868EDD77FAD8A8EBF6D8F2D16FA4AE`<br>
+字节数：11324<br>
+文件名：`LICENSE-APACHE`<br>
+引用包：`cargo:ctor@1.0.13`
 
 ````text
 Apache License
@@ -13230,11 +13477,11 @@ Apache License
    limitations under the License.
 ````
 
-### TXT-202
+### TXT-205
 
-SHA-256：`A9040321C3712D8FD0B09CF52B17445DE04A23A10165049AE187CD39E5C86BE5`  
-字节数：10849  
-文件名：`LICENSE-APACHE`  
+SHA-256：`A9040321C3712D8FD0B09CF52B17445DE04A23A10165049AE187CD39E5C86BE5`<br>
+字节数：10849<br>
+文件名：`LICENSE-APACHE`<br>
 引用包：`cargo:block-buffer@0.10.4`、`cargo:cpufeatures@0.2.17`、`cargo:crypto-common@0.1.7`、`cargo:digest@0.10.7`、`cargo:sha2@0.10.9`
 
 ````text
@@ -13441,11 +13688,11 @@ See the License for the specific language governing permissions and
 limitations under the License.
 ````
 
-### TXT-203
+### TXT-206
 
-SHA-256：`AAA78451B6FECD1B9C4594C796C133C0E90CAD100372FF8BC6DE615E9EF9ADF1`  
-字节数：1105  
-文件名：`LICENSE`  
+SHA-256：`AAA78451B6FECD1B9C4594C796C133C0E90CAD100372FF8BC6DE615E9EF9ADF1`<br>
+字节数：1105<br>
+文件名：`LICENSE`<br>
 引用包：`npm:node_modules/cross-spawn`
 
 ````text
@@ -13472,11 +13719,11 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 ````
 
-### TXT-204
+### TXT-207
 
-SHA-256：`AAFF376532EA30A0CD5330B9502AD4A4C8BF769C539C87FFE78819D188A18EBF`  
-字节数：10849  
-文件名：`LICENSE-APACHE`  
+SHA-256：`AAFF376532EA30A0CD5330B9502AD4A4C8BF769C539C87FFE78819D188A18EBF`<br>
+字节数：10849<br>
+文件名：`LICENSE-APACHE`<br>
 引用包：`cargo:getrandom@0.3.4`、`cargo:getrandom@0.4.3`
 
 ````text
@@ -13683,11 +13930,42 @@ See the License for the specific language governing permissions and
 limitations under the License.
 ````
 
-### TXT-205
+### TXT-208
 
-SHA-256：`AC07310D94980D9819CF2C28B3A2F63D11DB283F48F02F67208B549F44860AC0`  
-字节数：1076  
-文件名：`LICENSE`  
+SHA-256：`AB499C75A0F0DA8E0FE83BF9BA3A27E5C39705310F07107C6C66B69958D2401C`<br>
+字节数：1093<br>
+文件名：`LICENSE-MIT`<br>
+引用包：`cargo:base64@0.23.1`
+
+````text
+The MIT License (MIT)
+
+Copyright (c) 2025 Alice Maz, Marshall Pierce
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.
+````
+
+### TXT-209
+
+SHA-256：`AC07310D94980D9819CF2C28B3A2F63D11DB283F48F02F67208B549F44860AC0`<br>
+字节数：1076<br>
+文件名：`LICENSE`<br>
 引用包：`npm:node_modules/vue-component-type-helpers`
 
 ````text
@@ -13714,11 +13992,11 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 ````
 
-### TXT-206
+### TXT-210
 
-SHA-256：`AC68116AE73740DE4190892F334992E449A124600924EC761E64319D3AAC9E6E`  
-字节数：1488  
-文件名：`license.txt`  
+SHA-256：`AC68116AE73740DE4190892F334992E449A124600924EC761E64319D3AAC9E6E`<br>
+字节数：1488<br>
+文件名：`license.txt`<br>
 引用包：`npm:node_modules/esquery`
 
 ````text
@@ -13748,11 +14026,11 @@ ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 ````
 
-### TXT-207
+### TXT-211
 
-SHA-256：`AE895C8576E682F310FB70D93D9F99B1DD82872094C54A8F6CDFE2CA5C2D6ECB`  
-字节数：836  
-文件名：`LICENSE-ZLIB.md`  
+SHA-256：`AE895C8576E682F310FB70D93D9F99B1DD82872094C54A8F6CDFE2CA5C2D6ECB`<br>
+字节数：836<br>
+文件名：`LICENSE-ZLIB.md`<br>
 引用包：`cargo:raw-window-handle@0.6.2`
 
 ````text
@@ -13769,11 +14047,11 @@ Permission is granted to anyone to use this software for any purpose, including 
 3. This notice may not be removed or altered from any source distribution.
 ````
 
-### TXT-208
+### TXT-212
 
-SHA-256：`AE9BAA7BEEA910273C2F384C2A6B721FB7BD02BDA3436074A1072E4EE689F985`  
-字节数：1082  
-文件名：`LICENSE-MIT`  
+SHA-256：`AE9BAA7BEEA910273C2F384C2A6B721FB7BD02BDA3436074A1072E4EE689F985`<br>
+字节数：1082<br>
+文件名：`LICENSE-MIT`<br>
 引用包：`cargo:cpufeatures@0.2.17`
 
 ````text
@@ -13804,11 +14082,11 @@ IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
 ````
 
-### TXT-209
+### TXT-213
 
-SHA-256：`AFB11426E09DA40A1AE4F8FA17DDCC6B6A52D14DF04C29BC5BCD06EB8730624D`  
-字节数：1057  
-文件名：`LICENSE`  
+SHA-256：`AFB11426E09DA40A1AE4F8FA17DDCC6B6A52D14DF04C29BC5BCD06EB8730624D`<br>
+字节数：1057<br>
+文件名：`LICENSE`<br>
 引用包：`cargo:atoi@2.0.0`
 
 ````text
@@ -13835,11 +14113,11 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 ````
 
-### TXT-210
+### TXT-214
 
-SHA-256：`B05785F9F18E6716BAB63424B11454513B9943A222595B70411009202FC592B5`  
-字节数：1078  
-文件名：`MIT.txt`  
+SHA-256：`B05785F9F18E6716BAB63424B11454513B9943A222595B70411009202FC592B5`<br>
+字节数：1078<br>
+文件名：`MIT.txt`<br>
 引用包：`cargo:crc-catalog@2.5.0`、`npm:node_modules/@tybys/wasm-util`、`npm:node_modules/eastasianwidth`、`npm:node_modules/imurmurhash`、`npm:node_modules/keyv`、`npm:node_modules/natural-compare`、`npm:node_modules/stackback`
 
 ````text
@@ -13863,11 +14141,11 @@ IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTI
 USE OR OTHER DEALINGS IN THE SOFTWARE.
 ````
 
-### TXT-211
+### TXT-215
 
-SHA-256：`B1181A40B2A7B25CF66FD01481713BC1005DF082C53EF73E851E55071B102744`  
-字节数：856  
-文件名：`LICENSE`  
+SHA-256：`B1181A40B2A7B25CF66FD01481713BC1005DF082C53EF73E851E55071B102744`<br>
+字节数：856<br>
+文件名：`LICENSE`<br>
 引用包：`cargo:foldhash@0.1.5`、`cargo:foldhash@0.2.0`
 
 ````text
@@ -13892,11 +14170,11 @@ the following restrictions:
 3. This notice may not be removed or altered from any source distribution.
 ````
 
-### TXT-212
+### TXT-216
 
-SHA-256：`B16DB96B93B1D7CF7BEA533F572091EC6BCA3234FBE0A83038BE772FF391A44C`  
-字节数：33447  
-文件名：`LICENSE-THIRD-PARTY`  
+SHA-256：`B16DB96B93B1D7CF7BEA533F572091EC6BCA3234FBE0A83038BE772FF391A44C`<br>
+字节数：33447<br>
+文件名：`LICENSE-THIRD-PARTY`<br>
 引用包：`cargo:crossbeam-channel@0.5.16`
 
 ````text
@@ -14495,11 +14773,11 @@ See the License for the specific language governing permissions and
 limitations under the License.
 ````
 
-### TXT-213
+### TXT-217
 
-SHA-256：`B173E19B9A78DF305577ACE0E52EF45A4BCC915EA28B47B256DC3B68DCB1F7E7`  
-字节数：790  
-文件名：`LICENSE.txt`  
+SHA-256：`B173E19B9A78DF305577ACE0E52EF45A4BCC915EA28B47B256DC3B68DCB1F7E7`<br>
+字节数：790<br>
+文件名：`LICENSE.txt`<br>
 引用包：`npm:node_modules/signal-exit`
 
 ````text
@@ -14521,11 +14799,11 @@ WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION,
 ARISING OUT OF OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 ````
 
-### TXT-214
+### TXT-218
 
-SHA-256：`B181DA80336FF9DD1043FC8BE1A764D7382363433319AA872E4D2CB5CE2A3066`  
-字节数：1082  
-文件名：`LICENSE`  
+SHA-256：`B181DA80336FF9DD1043FC8BE1A764D7382363433319AA872E4D2CB5CE2A3066`<br>
+字节数：1082<br>
+文件名：`LICENSE`<br>
 引用包：`npm:node_modules/chai`
 
 ````text
@@ -14552,11 +14830,11 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 ````
 
-### TXT-215
+### TXT-219
 
-SHA-256：`B1D741C26B53DE1BBC0D4D7D3365B79888F9FE511527544A8A7B8E24DEC43147`  
-字节数：110976  
-文件名：`LICENSE.md`  
+SHA-256：`B1D741C26B53DE1BBC0D4D7D3365B79888F9FE511527544A8A7B8E24DEC43147`<br>
+字节数：110976<br>
+文件名：`LICENSE.md`<br>
 引用包：`npm:node_modules/vite`
 
 ````text
@@ -16849,11 +17127,11 @@ Repository: https://github.com/websockets/ws
 > CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 ````
 
-### TXT-216
+### TXT-220
 
-SHA-256：`B38F11F6096706E6DE553DABE2A7ED142D59B6FA8C97E290C67496154745CDD5`  
-字节数：1072  
-文件名：`LICENSE-MIT`  
+SHA-256：`B38F11F6096706E6DE553DABE2A7ED142D59B6FA8C97E290C67496154745CDD5`<br>
+字节数：1072<br>
+文件名：`LICENSE-MIT`<br>
 引用包：`cargo:idna@1.1.0`、`cargo:percent-encoding@2.3.2`、`cargo:url@2.5.8`
 
 ````text
@@ -16884,12 +17162,12 @@ IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
 ````
 
-### TXT-217
+### TXT-221
 
-SHA-256：`B40930BBCF80744C86C46A12BC9DA056641D722716C378F5659B9E555EF833E1`  
-字节数：11357  
-文件名：`LICENSE`、`LICENSE-APACHE`  
-引用包：`cargo:json-patch@3.0.1`、`cargo:winapi@0.3.9`、`npm:node_modules/detect-libc`
+SHA-256：`B40930BBCF80744C86C46A12BC9DA056641D722716C378F5659B9E555EF833E1`<br>
+字节数：11357<br>
+文件名：`LICENSE`、`LICENSE-APACHE`<br>
+引用包：`cargo:json-patch@4.2.0`、`cargo:winapi@0.3.9`、`npm:node_modules/detect-libc`
 
 ````text
                                  Apache License
@@ -17095,11 +17373,11 @@ SHA-256：`B40930BBCF80744C86C46A12BC9DA056641D722716C378F5659B9E555EF833E1`
    limitations under the License.
 ````
 
-### TXT-218
+### TXT-222
 
-SHA-256：`B4EB00DF6E2A4D22518FCAA6A2B4646F249B3A3C9814509B22BD2091F1392FF1`  
-字节数：1138  
-文件名：`LICENSE-MIT`  
+SHA-256：`B4EB00DF6E2A4D22518FCAA6A2B4646F249B3A3C9814509B22BD2091F1392FF1`<br>
+字节数：1138<br>
+文件名：`LICENSE-MIT`<br>
 引用包：`cargo:sha2@0.10.9`
 
 ````text
@@ -17132,11 +17410,11 @@ IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
 ````
 
-### TXT-219
+### TXT-223
 
-SHA-256：`B7E650F3FCE5C53249D1CDC608B54DF156A97EDD636CF9D23498D0CFE7AEC63E`  
-字节数：1085  
-文件名：`LICENSE-MIT`  
+SHA-256：`B7E650F3FCE5C53249D1CDC608B54DF156A97EDD636CF9D23498D0CFE7AEC63E`<br>
+字节数：1085<br>
+文件名：`LICENSE-MIT`<br>
 引用包：`cargo:version_check@0.9.5`
 
 ````text
@@ -17161,11 +17439,11 @@ IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 ````
 
-### TXT-220
+### TXT-224
 
-SHA-256：`B7F455413BFE5F9D7DA501A4468D4C5F866A432C325947E98CC9535E8B26CD6D`  
-字节数：1112  
-文件名：`LICENSE_MIT`  
+SHA-256：`B7F455413BFE5F9D7DA501A4468D4C5F866A432C325947E98CC9535E8B26CD6D`<br>
+字节数：1112<br>
+文件名：`LICENSE_MIT`<br>
 引用包：`cargo:tauri-plugin-single-instance@2.4.3`
 
 ````text
@@ -17192,12 +17470,23 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 ````
 
-### TXT-221
+### TXT-225
 
-SHA-256：`B99F9D43803F2AC979C50949DF630BD8EEAF2FCD1B9FDB9093710D70F5DFB63D`  
-字节数：809  
-文件名：`LICENSE.spdx`  
-引用包：`cargo:muda@0.19.3`
+SHA-256：`B9290E9D37BC53272FF4F3FB392C1762169FC0A8B797D164803049C81EACB48C`<br>
+字节数：26<br>
+文件名：`LICENSE`<br>
+引用包：`cargo:static_vcruntime@3.0.0`
+
+````text
+MIT OR Apache-2.0 OR Zlib
+````
+
+### TXT-226
+
+SHA-256：`B99F9D43803F2AC979C50949DF630BD8EEAF2FCD1B9FDB9093710D70F5DFB63D`<br>
+字节数：809<br>
+文件名：`LICENSE.spdx`<br>
+引用包：`cargo:muda@0.20.0`
 
 ````text
 SPDXVersion: SPDX-2.1
@@ -17221,11 +17510,11 @@ PackageDownloadLocation: git+ssh://github.com/tauri-apps/muda.git
 Creator: Person: Daniel Thompson-Yvetot
 ````
 
-### TXT-222
+### TXT-227
 
-SHA-256：`B9EB082C39FE245E38793699074C394C43A722C51FCE031C3C165CB92A31035C`  
-字节数：1054  
-文件名：`LICENSE`  
+SHA-256：`B9EB082C39FE245E38793699074C394C43A722C51FCE031C3C165CB92A31035C`<br>
+字节数：1054<br>
+文件名：`LICENSE`<br>
 引用包：`npm:node_modules/levn`、`npm:node_modules/optionator`、`npm:node_modules/prelude-ls`、`npm:node_modules/type-check`
 
 ````text
@@ -17253,11 +17542,11 @@ FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 OTHER DEALINGS IN THE SOFTWARE.
 ````
 
-### TXT-223
+### TXT-228
 
-SHA-256：`B9EB266294324F672CBE945FE8F2E32F85024F0D61A1A7D14382CDDE0AC44769`  
-字节数：1058  
-文件名：`LICENSE-MIT`  
+SHA-256：`B9EB266294324F672CBE945FE8F2E32F85024F0D61A1A7D14382CDDE0AC44769`<br>
+字节数：1058<br>
+文件名：`LICENSE-MIT`<br>
 引用包：`cargo:serde_urlencoded@0.7.1`
 
 ````text
@@ -17288,11 +17577,11 @@ IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
 ````
 
-### TXT-224
+### TXT-229
 
-SHA-256：`BC6944D7FE185CC5185998482DEF16AEAA83F96405599BFD388A5611718139A5`  
-字节数：1068  
-文件名：`LICENSE`  
+SHA-256：`BC6944D7FE185CC5185998482DEF16AEAA83F96405599BFD388A5611718139A5`<br>
+字节数：1068<br>
+文件名：`LICENSE`<br>
 引用包：`npm:node_modules/editorconfig`
 
 ````text
@@ -17317,12 +17606,12 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 ````
 
-### TXT-225
+### TXT-230
 
-SHA-256：`BCCAA8B6C09F94E81F06696E179DBE058464BBDFBC823B6D49CADA1D71E84AC3`  
-字节数：1022  
-文件名：`LICENSE-MIT`  
-引用包：`cargo:ctor-proc-macro@0.0.7`、`cargo:ctor@0.8.0`
+SHA-256：`BCCAA8B6C09F94E81F06696E179DBE058464BBDFBC823B6D49CADA1D71E84AC3`<br>
+字节数：1022<br>
+文件名：`LICENSE-MIT`<br>
+引用包：`cargo:ctor@1.0.13`
 
 ````text
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
@@ -17332,11 +17621,11 @@ The above copyright notice and this permission notice shall be included in all c
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 ````
 
-### TXT-226
+### TXT-231
 
-SHA-256：`C064F7A3E353BC1BC977F3C897941C75EF763F44F41677E0A15370CA0853D6E2`  
-字节数：1085  
-文件名：`LICENSE`  
+SHA-256：`C064F7A3E353BC1BC977F3C897941C75EF763F44F41677E0A15370CA0853D6E2`<br>
+字节数：1085<br>
+文件名：`LICENSE`<br>
 引用包：`npm:node_modules/color-name`
 
 ````text
@@ -17350,11 +17639,11 @@ The above copyright notice and this permission notice shall be included in all c
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 ````
 
-### TXT-227
+### TXT-232
 
-SHA-256：`C09AAE9D3C77B531F56351A9947BC7446511D6B025B3255312D3E3442A9A7583`  
-字节数：1107  
-文件名：`LICENSE`  
+SHA-256：`C09AAE9D3C77B531F56351A9947BC7446511D6B025B3255312D3E3442A9A7583`<br>
+字节数：1107<br>
+文件名：`LICENSE`<br>
 引用包：`cargo:generic-array@0.14.7`
 
 ````text
@@ -17381,12 +17670,12 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 ````
 
-### TXT-228
+### TXT-233
 
-SHA-256：`C0C56F26D9C051CAC4D200C34C84E7AE9AAA853E01A982A1DF08B09931E518AE`  
-字节数：1483  
-文件名：`LICENSE`、`LICENSE.BSD-3-Clause`  
-引用包：`cargo:alloc-no-stdlib@2.0.4`、`cargo:alloc-stdlib@0.2.4`、`cargo:brotli-decompressor@5.0.3`、`cargo:brotli@8.0.4`
+SHA-256：`C0C56F26D9C051CAC4D200C34C84E7AE9AAA853E01A982A1DF08B09931E518AE`<br>
+字节数：1483<br>
+文件名：`LICENSE`、`LICENSE.BSD-3-Clause`<br>
+引用包：`cargo:alloc-no-stdlib@3.0.0`、`cargo:alloc-stdlib@0.3.0`、`cargo:brotli-decompressor@6.0.1`、`cargo:brotli@9.0.0`
 
 ````text
 Copyright (c) 2016 Dropbox, Inc.
@@ -17403,11 +17692,11 @@ Redistribution and use in source and binary forms, with or without modification,
 THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 ````
 
-### TXT-229
+### TXT-234
 
-SHA-256：`C144680885B29E4719E2A51F0AAB5439A1E02D980692B5AAF086CAE12727F28B`  
-字节数：10849  
-文件名：`LICENSE-APACHE`  
+SHA-256：`C144680885B29E4719E2A51F0AAB5439A1E02D980692B5AAF086CAE12727F28B`<br>
+字节数：10849<br>
+文件名：`LICENSE-APACHE`<br>
 引用包：`cargo:hashlink@0.10.0`
 
 ````text
@@ -17614,12 +17903,12 @@ See the License for the specific language governing permissions and
 limitations under the License.
 ````
 
-### TXT-230
+### TXT-235
 
-SHA-256：`C16F8DCF1A368B83BE78D826EA23DE4079FE1B4469A0AB9EE20563F37FF3D44B`  
-字节数：11351  
-文件名：`license-apache-2.0`  
-引用包：`cargo:windows_x86_64_msvc@0.52.6`、`cargo:windows_x86_64_msvc@0.53.1`、`cargo:windows-collections@0.2.0`、`cargo:windows-core@0.61.2`、`cargo:windows-future@0.2.1`、`cargo:windows-implement@0.60.2`、`cargo:windows-interface@0.59.3`、`cargo:windows-link@0.1.3`、`cargo:windows-link@0.2.1`、`cargo:windows-numerics@0.2.0`、`cargo:windows-result@0.3.4`、`cargo:windows-strings@0.4.2`、`cargo:windows-sys@0.59.0`、`cargo:windows-sys@0.60.2`、`cargo:windows-sys@0.61.2`、`cargo:windows-targets@0.52.6`、`cargo:windows-targets@0.53.5`、`cargo:windows-threading@0.1.0`、`cargo:windows-version@0.1.7`、`cargo:windows@0.61.3`
+SHA-256：`C16F8DCF1A368B83BE78D826EA23DE4079FE1B4469A0AB9EE20563F37FF3D44B`<br>
+字节数：11351<br>
+文件名：`license-apache-2.0`<br>
+引用包：`cargo:windows_x86_64_msvc@0.53.1`、`cargo:windows-collections@0.2.0`、`cargo:windows-collections@0.3.2`、`cargo:windows-core@0.61.2`、`cargo:windows-core@0.62.2`、`cargo:windows-future@0.2.1`、`cargo:windows-future@0.3.2`、`cargo:windows-implement@0.60.2`、`cargo:windows-interface@0.59.3`、`cargo:windows-link@0.1.3`、`cargo:windows-link@0.2.1`、`cargo:windows-numerics@0.2.0`、`cargo:windows-numerics@0.3.1`、`cargo:windows-result@0.3.4`、`cargo:windows-result@0.4.1`、`cargo:windows-strings@0.4.2`、`cargo:windows-strings@0.5.1`、`cargo:windows-sys@0.60.2`、`cargo:windows-sys@0.61.2`、`cargo:windows-targets@0.53.5`、`cargo:windows-threading@0.1.0`、`cargo:windows-threading@0.2.1`、`cargo:windows-version@0.1.7`、`cargo:windows@0.61.3`、`cargo:windows@0.62.2`
 
 ````text
                                  Apache License
@@ -17825,12 +18114,33 @@ SHA-256：`C16F8DCF1A368B83BE78D826EA23DE4079FE1B4469A0AB9EE20563F37FF3D44B`
    limitations under the License.
 ````
 
-### TXT-231
+### TXT-236
 
-SHA-256：`C2CFCCB812FE482101A8F04597DFC5A9991A6B2748266C47AC91B6A5AAE15383`  
-字节数：1141  
-文件名：`LICENSE`、`license-mit`  
-引用包：`cargo:windows_x86_64_msvc@0.52.6`、`cargo:windows_x86_64_msvc@0.53.1`、`cargo:windows-collections@0.2.0`、`cargo:windows-core@0.61.2`、`cargo:windows-future@0.2.1`、`cargo:windows-implement@0.60.2`、`cargo:windows-interface@0.59.3`、`cargo:windows-link@0.1.3`、`cargo:windows-link@0.2.1`、`cargo:windows-numerics@0.2.0`、`cargo:windows-result@0.3.4`、`cargo:windows-strings@0.4.2`、`cargo:windows-sys@0.59.0`、`cargo:windows-sys@0.60.2`、`cargo:windows-sys@0.61.2`、`cargo:windows-targets@0.52.6`、`cargo:windows-targets@0.53.5`、`cargo:windows-threading@0.1.0`、`cargo:windows-version@0.1.7`、`cargo:windows@0.61.3`、`npm:node_modules/@types/chai`、`npm:node_modules/@types/deep-eql`、`npm:node_modules/@types/esrecurse`、`npm:node_modules/@types/estree`、`npm:node_modules/@types/json-schema`、`npm:node_modules/@types/node`、`npm:node_modules/@types/whatwg-mimetype`、`npm:node_modules/@types/ws`
+SHA-256：`C1FF532091CAC33BDECEDF7268FF4F9BC3DDCFFBA494249FB723033E9E782F1A`<br>
+字节数：842<br>
+文件名：`LICENSE-ZLIB`<br>
+引用包：`cargo:static_vcruntime@3.0.0`
+
+````text
+Copyright (c) 2021 Chris Denton.
+
+This software is provided 'as-is', without any express or implied warranty. In no event will the authors be held liable for any damages arising from the use of this software.
+
+Permission is granted to anyone to use this software for any purpose, including commercial applications, and to alter it and redistribute it freely, subject to the following restrictions:
+
+1. The origin of this software must not be misrepresented; you must not claim that you wrote the original software. If you use this software in a product, an acknowledgment in the product documentation would be appreciated but is not required.
+
+2. Altered source versions must be plainly marked as such, and must not be misrepresented as being the original software.
+
+3. This notice may not be removed or altered from any source distribution.
+````
+
+### TXT-237
+
+SHA-256：`C2CFCCB812FE482101A8F04597DFC5A9991A6B2748266C47AC91B6A5AAE15383`<br>
+字节数：1141<br>
+文件名：`LICENSE`、`license-mit`<br>
+引用包：`cargo:windows_x86_64_msvc@0.53.1`、`cargo:windows-collections@0.2.0`、`cargo:windows-collections@0.3.2`、`cargo:windows-core@0.61.2`、`cargo:windows-core@0.62.2`、`cargo:windows-future@0.2.1`、`cargo:windows-future@0.3.2`、`cargo:windows-implement@0.60.2`、`cargo:windows-interface@0.59.3`、`cargo:windows-link@0.1.3`、`cargo:windows-link@0.2.1`、`cargo:windows-numerics@0.2.0`、`cargo:windows-numerics@0.3.1`、`cargo:windows-result@0.3.4`、`cargo:windows-result@0.4.1`、`cargo:windows-strings@0.4.2`、`cargo:windows-strings@0.5.1`、`cargo:windows-sys@0.60.2`、`cargo:windows-sys@0.61.2`、`cargo:windows-targets@0.53.5`、`cargo:windows-threading@0.1.0`、`cargo:windows-threading@0.2.1`、`cargo:windows-version@0.1.7`、`cargo:windows@0.61.3`、`cargo:windows@0.62.2`、`npm:node_modules/@types/chai`、`npm:node_modules/@types/deep-eql`、`npm:node_modules/@types/esrecurse`、`npm:node_modules/@types/estree`、`npm:node_modules/@types/json-schema`、`npm:node_modules/@types/node`、`npm:node_modules/@types/whatwg-mimetype`、`npm:node_modules/@types/ws`
 
 ````text
     MIT License
@@ -17856,11 +18166,11 @@ SHA-256：`C2CFCCB812FE482101A8F04597DFC5A9991A6B2748266C47AC91B6A5AAE15383`
     SOFTWARE
 ````
 
-### TXT-232
+### TXT-238
 
-SHA-256：`C30152C94A6D75E021ADBC52B3A52470366A46EDB917E17DEAE3259251AF244C`  
-字节数：1742  
-文件名：`COPYRIGHT`  
+SHA-256：`C30152C94A6D75E021ADBC52B3A52470366A46EDB917E17DEAE3259251AF244C`<br>
+字节数：1742<br>
+文件名：`COPYRIGHT`<br>
 引用包：`cargo:utf8_iter@1.0.4`
 
 ````text
@@ -17908,12 +18218,12 @@ licensed under the Apache License, Version 2.0 <LICENSE-APACHE> or
 <LICENSE-MIT> or <http://opensource.org/licenses/MIT>, at your option.
 ````
 
-### TXT-233
+### TXT-239
 
-SHA-256：`C6596EB7BE8581C18BE736C846FB9173B69ECCF6EF94C5135893EC56BD92BA08`  
-字节数：11358  
-文件名：`LICENSE-APACHE`  
-引用包：`cargo:crc32fast@1.5.0`、`cargo:hex@0.4.3`、`cargo:serde_spanned@1.1.1`、`cargo:toml_datetime@0.7.5+spec-1.1.0`、`cargo:toml_datetime@1.1.1+spec-1.1.0`、`cargo:toml_parser@1.1.2+spec-1.1.0`、`cargo:toml_writer@1.1.2+spec-1.1.0`、`cargo:toml@0.9.12+spec-1.1.0`、`cargo:toml@1.1.3+spec-1.1.0`
+SHA-256：`C6596EB7BE8581C18BE736C846FB9173B69ECCF6EF94C5135893EC56BD92BA08`<br>
+字节数：11358<br>
+文件名：`LICENSE-APACHE`<br>
+引用包：`cargo:crc32fast@1.5.0`、`cargo:hex@0.4.3`、`cargo:serde_spanned@1.1.1`、`cargo:toml_datetime@1.1.1+spec-1.1.0`、`cargo:toml_parser@1.1.2+spec-1.1.0`、`cargo:toml_writer@1.1.2+spec-1.1.0`、`cargo:toml@1.1.3+spec-1.1.0`
 
 ````text
                                  Apache License
@@ -18119,11 +18429,11 @@ SHA-256：`C6596EB7BE8581C18BE736C846FB9173B69ECCF6EF94C5135893EC56BD92BA08`
    limitations under the License.
 ````
 
-### TXT-234
+### TXT-240
 
-SHA-256：`C669138CB1EB01FBB745E8E460B291E4F2869C14A40061390B6095D845ED4C82`  
-字节数：1070  
-文件名：`LICENSE.md`  
+SHA-256：`C669138CB1EB01FBB745E8E460B291E4F2869C14A40061390B6095D845ED4C82`<br>
+字节数：1070<br>
+文件名：`LICENSE.md`<br>
 引用包：`npm:node_modules/vscode-uri`
 
 ````text
@@ -18138,11 +18448,11 @@ The above copyright notice and this permission notice shall be included in all c
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 ````
 
-### TXT-235
+### TXT-241
 
-SHA-256：`C71D239DF91726FC519C6EB72D318EC65820627232B2F796219E87DCF35D0AB4`  
-字节数：11357  
-文件名：`LICENSE`、`LICENSE-APACHE`  
+SHA-256：`C71D239DF91726FC519C6EB72D318EC65820627232B2F796219E87DCF35D0AB4`<br>
+字节数：11357<br>
+文件名：`LICENSE`、`LICENSE-APACHE`<br>
 引用包：`cargo:serialize-to-javascript-impl@0.1.2`、`cargo:serialize-to-javascript@0.1.2`、`npm:node_modules/@eslint/config-array`、`npm:node_modules/@eslint/config-helpers`、`npm:node_modules/@eslint/core`、`npm:node_modules/@eslint/object-schema`、`npm:node_modules/@eslint/plugin-kit`、`npm:node_modules/@humanfs/core`、`npm:node_modules/@humanfs/node`、`npm:node_modules/@humanwhocodes/module-importer`、`npm:node_modules/@humanwhocodes/retry`、`npm:node_modules/@pkgjs/parseargs`
 
 ````text
@@ -18349,11 +18659,11 @@ SHA-256：`C71D239DF91726FC519C6EB72D318EC65820627232B2F796219E87DCF35D0AB4`
    limitations under the License.
 ````
 
-### TXT-236
+### TXT-242
 
-SHA-256：`C77A4CF9DA729987D0FE7CCD811E3BD27393914DDF3D23467C18CC22954513B3`  
-字节数：1036  
-文件名：`LICENSE-MIT`  
+SHA-256：`C77A4CF9DA729987D0FE7CCD811E3BD27393914DDF3D23467C18CC22954513B3`<br>
+字节数：1036<br>
+文件名：`LICENSE-MIT`<br>
 引用包：`cargo:fdeflate@0.3.7`
 
 ````text
@@ -18384,11 +18694,11 @@ IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
 ````
 
-### TXT-237
+### TXT-243
 
-SHA-256：`C962EE4D1D05DDC138B202B2540219EBC57893FCF97B364852094A9A94CE1365`  
-字节数：281  
-文件名：`COPYING`  
+SHA-256：`C962EE4D1D05DDC138B202B2540219EBC57893FCF97B364852094A9A94CE1365`<br>
+字节数：281<br>
+文件名：`COPYING`<br>
 引用包：`cargo:siphasher@1.0.3`
 
 ````text
@@ -18401,11 +18711,11 @@ http://www.apache.org/licenses/LICENSE-2.0> or the MIT license
 option.
 ````
 
-### TXT-238
+### TXT-244
 
-SHA-256：`C9A75F18B9AB2927829A208FC6AA2CF4E63B8420887BA29CDB265D6619AE82D5`  
-字节数：1071  
-文件名：`LICENSE-MIT`  
+SHA-256：`C9A75F18B9AB2927829A208FC6AA2CF4E63B8420887BA29CDB265D6619AE82D5`<br>
+字节数：1071<br>
+文件名：`LICENSE-MIT`<br>
 引用包：`cargo:lock_api@0.4.14`、`cargo:parking_lot_core@0.9.12`、`cargo:parking_lot@0.12.5`、`cargo:rustc_version@0.4.1`
 
 ````text
@@ -18436,11 +18746,11 @@ IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
 ````
 
-### TXT-239
+### TXT-245
 
-SHA-256：`C9BFF75738922193E67FA726FA225535870D2AA1059F91452C411736284AD566`  
-字节数：1338  
-文件名：`LICENSE-BOOST`  
+SHA-256：`C9BFF75738922193E67FA726FA225535870D2AA1059F91452C411736284AD566`<br>
+字节数：1338<br>
+文件名：`LICENSE-BOOST`<br>
 引用包：`cargo:ryu@1.0.23`
 
 ````text
@@ -18469,11 +18779,11 @@ ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
 ````
 
-### TXT-240
+### TXT-246
 
-SHA-256：`CB3C929A05E6CBC9DE9AB06A4C57EEB60CA8C724BEF6C138C87D3A577E27AA14`  
-字节数：1081  
-文件名：`LICENSE-MIT`  
+SHA-256：`CB3C929A05E6CBC9DE9AB06A4C57EEB60CA8C724BEF6C138C87D3A577E27AA14`<br>
+字节数：1081<br>
+文件名：`LICENSE-MIT`<br>
 引用包：`cargo:same-file@1.0.6`、`cargo:winapi-util@0.1.11`
 
 ````text
@@ -18500,12 +18810,12 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 ````
 
-### TXT-241
+### TXT-247
 
-SHA-256：`CB5AEDB296C5246D1F22E9099F925A65146F9F0D6B4EEBBA97FD27A6CDBBAB2D`  
-字节数：1023  
-文件名：`LICENSE-MIT`  
-引用包：`cargo:winnow@0.7.15`、`cargo:winnow@1.0.4`
+SHA-256：`CB5AEDB296C5246D1F22E9099F925A65146F9F0D6B4EEBBA97FD27A6CDBBAB2D`<br>
+字节数：1023<br>
+文件名：`LICENSE-MIT`<br>
+引用包：`cargo:winnow@1.0.4`
 
 ````text
 Permission is hereby granted, free of charge, to any person obtaining
@@ -18528,11 +18838,11 @@ OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
 WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 ````
 
-### TXT-242
+### TXT-248
 
-SHA-256：`CB992345949CCD6E8394B2CD6C465F7B897C864F845937DBF64E8997F389E164`  
-字节数：1260  
-文件名：`LICENSE`  
+SHA-256：`CB992345949CCD6E8394B2CD6C465F7B897C864F845937DBF64E8997F389E164`<br>
+字节数：1260<br>
+文件名：`LICENSE`<br>
 引用包：`npm:node_modules/entities`、`npm:node_modules/nth-check`
 
 ````text
@@ -18549,11 +18859,11 @@ THIS IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRE
 EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 ````
 
-### TXT-243
+### TXT-249
 
-SHA-256：`CDBC258D13806538E727964C2436A8806E6E2496CCD616224AACE6F7BF98DBC1`  
-字节数：775  
-文件名：`LICENSE`  
+SHA-256：`CDBC258D13806538E727964C2436A8806E6E2496CCD616224AACE6F7BF98DBC1`<br>
+字节数：775<br>
+文件名：`LICENSE`<br>
 引用包：`npm:node_modules/glob`
 
 ````text
@@ -18574,11 +18884,11 @@ ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF OR
 IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 ````
 
-### TXT-244
+### TXT-250
 
-SHA-256：`CE7BC3499FEE93D5022EF430D5E4201E79A6D9154F3974E42F41349F0569E09B`  
-字节数：1073  
-文件名：`LICENSE-MIT`  
+SHA-256：`CE7BC3499FEE93D5022EF430D5E4201E79A6D9154F3974E42F41349F0569E09B`<br>
+字节数：1073<br>
+文件名：`LICENSE-MIT`<br>
 引用包：`cargo:winapi@0.3.9`
 
 ````text
@@ -18603,11 +18913,11 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 ````
 
-### TXT-245
+### TXT-251
 
-SHA-256：`CEBC084D54E6DD99E53292DDB4BC1CDB63D9BFCD9CE438FE3AA6EB106D79E2EA`  
-字节数：1065  
-文件名：`LICENCE`、`LICENSE`  
+SHA-256：`CEBC084D54E6DD99E53292DDB4BC1CDB63D9BFCD9CE438FE3AA6EB106D79E2EA`<br>
+字节数：1065<br>
+文件名：`LICENCE`、`LICENSE`<br>
 引用包：`npm:node_modules/tinybench`、`npm:node_modules/tinyrainbow`
 
 ````text
@@ -18634,11 +18944,11 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 ````
 
-### TXT-246
+### TXT-252
 
-SHA-256：`CFA72B62B9AE173078823A3796B25C027A9071046A263BEDDF966DF67018CE06`  
-字节数：1068  
-文件名：`LICENSE`  
+SHA-256：`CFA72B62B9AE173078823A3796B25C027A9071046A263BEDDF966DF67018CE06`<br>
+字节数：1068<br>
+文件名：`LICENSE`<br>
 引用包：`npm:node_modules/acorn-jsx`
 
 ````text
@@ -18663,11 +18973,11 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 ````
 
-### TXT-247
+### TXT-253
 
-SHA-256：`CFC7749B96F63BD31C3C42B5C471BF756814053E847C10F3EB003417BC523D30`  
-字节数：11358  
-文件名：`LICENSE-APACHE`  
+SHA-256：`CFC7749B96F63BD31C3C42B5C471BF756814053E847C10F3EB003417BC523D30`<br>
+字节数：11358<br>
+文件名：`LICENSE-APACHE`<br>
 引用包：`cargo:utf8_iter@1.0.4`
 
 ````text
@@ -18875,11 +19185,11 @@ SHA-256：`CFC7749B96F63BD31C3C42B5C471BF756814053E847C10F3EB003417BC523D30`
    limitations under the License.
 ````
 
-### TXT-248
+### TXT-254
 
-SHA-256：`D0CD141B0C322FDED5DFAD1D4645BB2FEDFC05B7321FE1009469638190D59EF9`  
-字节数：1091  
-文件名：`LICENSE`  
+SHA-256：`D0CD141B0C322FDED5DFAD1D4645BB2FEDFC05B7321FE1009469638190D59EF9`<br>
+字节数：1091<br>
+文件名：`LICENSE`<br>
 引用包：`npm:node_modules/picomatch`
 
 ````text
@@ -18906,11 +19216,11 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 ````
 
-### TXT-249
+### TXT-255
 
-SHA-256：`D11323827FA4EDEAAFC437CC5B91B6971B335F0127EFEEB42BF5122FE8657E8F`  
-字节数：775  
-文件名：`LICENSE`  
+SHA-256：`D11323827FA4EDEAAFC437CC5B91B6971B335F0127EFEEB42BF5122FE8657E8F`<br>
+字节数：775<br>
+文件名：`LICENSE`<br>
 引用包：`npm:node_modules/editorconfig/node_modules/minimatch`、`npm:node_modules/glob/node_modules/minimatch`
 
 ````text
@@ -18931,12 +19241,12 @@ ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF OR
 IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 ````
 
-### TXT-250
+### TXT-256
 
-SHA-256：`D3174AD63E721D4C9DCCB8AD4320848992D314369BC46319720B5802C9153FE9`  
-字节数：9694  
-文件名：`LICENSE-APACHE`  
-引用包：`cargo:dirs-sys@0.5.0`、`cargo:dirs@6.0.0`
+SHA-256：`D3174AD63E721D4C9DCCB8AD4320848992D314369BC46319720B5802C9153FE9`<br>
+字节数：9694<br>
+文件名：`LICENSE-APACHE`<br>
+引用包：`cargo:dirs-sys@0.5.0`、`cargo:dirs@7.0.0`
 
 ````text
                               Apache License
@@ -19115,11 +19425,11 @@ TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION
    of your accepting any such warranty or additional liability.
 ````
 
-### TXT-251
+### TXT-257
 
-SHA-256：`D3A724E2ED749F172FF70B62A1D0631B7D4B0EA273782365A3464D4E2D6B6DBD`  
-字节数：1390  
-文件名：`LICENSE`  
+SHA-256：`D3A724E2ED749F172FF70B62A1D0631B7D4B0EA273782365A3464D4E2D6B6DBD`<br>
+字节数：1390<br>
+文件名：`LICENSE`<br>
 引用包：`npm:node_modules/eslint-scope`
 
 ````text
@@ -19147,11 +19457,11 @@ ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 ````
 
-### TXT-252
+### TXT-258
 
-SHA-256：`D408F38FFA3355C5FAEC517153295338892EB0F1EA43F57874BB23C6075979B5`  
-字节数：1155  
-文件名：`LICENSE.md`  
+SHA-256：`D408F38FFA3355C5FAEC517153295338892EB0F1EA43F57874BB23C6075979B5`<br>
+字节数：1155<br>
+文件名：`LICENSE.md`<br>
 引用包：`npm:node_modules/balanced-match`
 
 ````text
@@ -19180,11 +19490,11 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 ````
 
-### TXT-253
+### TXT-259
 
-SHA-256：`D5C22AA3118D240E877AD41C5D9FA232F9C77D757D4AAC0C2F943AFC0A95E0EF`  
-字节数：1082  
-文件名：`LICENSE-MIT`  
+SHA-256：`D5C22AA3118D240E877AD41C5D9FA232F9C77D757D4AAC0C2F943AFC0A95E0EF`<br>
+字节数：1082<br>
+文件名：`LICENSE-MIT`<br>
 引用包：`cargo:block-buffer@0.10.4`
 
 ````text
@@ -19215,11 +19525,11 @@ IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
 ````
 
-### TXT-254
+### TXT-260
 
-SHA-256：`D8621EC2EEE5B9CA3C65F8492505F3590DE8574FAC0FDF5132A77232DBA47ABC`  
-字节数：11326  
-文件名：`LICENSE-APACHE`  
+SHA-256：`D8621EC2EEE5B9CA3C65F8492505F3590DE8574FAC0FDF5132A77232DBA47ABC`<br>
+字节数：11326<br>
+文件名：`LICENSE-APACHE`<br>
 引用包：`cargo:flume@0.11.1`
 
 ````text
@@ -19426,11 +19736,11 @@ SHA-256：`D8621EC2EEE5B9CA3C65F8492505F3590DE8574FAC0FDF5132A77232DBA47ABC`
    limitations under the License.
 ````
 
-### TXT-255
+### TXT-261
 
-SHA-256：`D8BF34FF6D190640A01E7704AD78253FC181BC128949D71273FBBAA12F33C0B4`  
-字节数：11337  
-文件名：`LICENSE`  
+SHA-256：`D8BF34FF6D190640A01E7704AD78253FC181BC128949D71273FBBAA12F33C0B4`<br>
+字节数：11337<br>
+文件名：`LICENSE`<br>
 引用包：`npm:node_modules/@eslint-community/eslint-utils/node_modules/eslint-visitor-keys`、`npm:node_modules/eslint-visitor-keys`
 
 ````text
@@ -19637,11 +19947,11 @@ SHA-256：`D8BF34FF6D190640A01E7704AD78253FC181BC128949D71273FBBAA12F33C0B4`
    limitations under the License.
 ````
 
-### TXT-256
+### TXT-262
 
-SHA-256：`D9FA6B0E6FED50D4961B9C931587AF6BD127DF13E9473418D3E324F427DB4F06`  
-字节数：1129  
-文件名：`LICENSE`  
+SHA-256：`D9FA6B0E6FED50D4961B9C931587AF6BD127DF13E9473418D3E324F427DB4F06`<br>
+字节数：1129<br>
+文件名：`LICENSE`<br>
 引用包：`cargo:tauri-winres@0.3.6`
 
 ````text
@@ -19675,11 +19985,11 @@ IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
 ````
 
-### TXT-257
+### TXT-263
 
-SHA-256：`DA4DB1480D9BEEA3483A2EDA5C53B22238D0827D57DA162B48F122E04D2D9987`  
-字节数：1095  
-文件名：`LICENSE`  
+SHA-256：`DA4DB1480D9BEEA3483A2EDA5C53B22238D0827D57DA162B48F122E04D2D9987`<br>
+字节数：1095<br>
+文件名：`LICENSE`<br>
 引用包：`npm:node_modules/nanoid`
 
 ````text
@@ -19705,22 +20015,22 @@ IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 ````
 
-### TXT-258
+### TXT-264
 
-SHA-256：`DB11FEC9946737DF39CA3898D9CD8C10EC6F6C3A884A6802B0AD0B81B4E8F23A`  
-字节数：17  
-文件名：`LICENSE`  
+SHA-256：`DB11FEC9946737DF39CA3898D9CD8C10EC6F6C3A884A6802B0AD0B81B4E8F23A`<br>
+字节数：17<br>
+文件名：`LICENSE`<br>
 引用包：`cargo:typenum@1.20.1`
 
 ````text
 MIT OR Apache-2.0
 ````
 
-### TXT-259
+### TXT-265
 
-SHA-256：`DBBF03317F0101FED5643CD87CA80FB769E358FA4F428445BF2315DEEB23A154`  
-字节数：1071  
-文件名：`LICENSE`  
+SHA-256：`DBBF03317F0101FED5643CD87CA80FB769E358FA4F428445BF2315DEEB23A154`<br>
+字节数：1071<br>
+文件名：`LICENSE`<br>
 引用包：`npm:node_modules/eslint-plugin-vue`
 
 ````text
@@ -19747,11 +20057,11 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 ````
 
-### TXT-260
+### TXT-266
 
-SHA-256：`DC91F8200E4B2A1F9261035D4C18C33C246911A6C0F7B543D75347E61B249CFF`  
-字节数：1059  
-文件名：`LICENSE-MIT`  
+SHA-256：`DC91F8200E4B2A1F9261035D4C18C33C246911A6C0F7B543D75347E61B249CFF`<br>
+字节数：1059<br>
+文件名：`LICENSE-MIT`<br>
 引用包：`cargo:http@1.4.2`
 
 ````text
@@ -19782,11 +20092,11 @@ IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
 ````
 
-### TXT-261
+### TXT-267
 
-SHA-256：`DF52411DCD3C8F5897BBBEC8C94E971519E13E75818C263E9A99A86255DD301B`  
-字节数：1076  
-文件名：`LICENSE`  
+SHA-256：`DF52411DCD3C8F5897BBBEC8C94E971519E13E75818C263E9A99A86255DD301B`<br>
+字节数：1076<br>
+文件名：`LICENSE`<br>
 引用包：`npm:node_modules/muggle-string`
 
 ````text
@@ -19813,11 +20123,11 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 ````
 
-### TXT-262
+### TXT-268
 
-SHA-256：`DF9CFD06D8A44D9A671EADD39FFD97F166481DA015A30F45DFD27886209C5922`  
-字节数：1058  
-文件名：`LICENSE-MIT`  
+SHA-256：`DF9CFD06D8A44D9A671EADD39FFD97F166481DA015A30F45DFD27886209C5922`<br>
+字节数：1058<br>
+文件名：`LICENSE-MIT`<br>
 引用包：`cargo:mime@0.3.17`
 
 ````text
@@ -19842,11 +20152,11 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 ````
 
-### TXT-263
+### TXT-269
 
-SHA-256：`E1919B3B98B8BF6C1B99FCC60A0ED46027C97AC947432E1278446C9606F50161`  
-字节数：1106  
-文件名：`LICENSE`  
+SHA-256：`E1919B3B98B8BF6C1B99FCC60A0ED46027C97AC947432E1278446C9606F50161`<br>
+字节数：1106<br>
+文件名：`LICENSE`<br>
 引用包：`npm:node_modules/@rolldown/pluginutils`
 
 ````text
@@ -19873,11 +20183,11 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 ````
 
-### TXT-264
+### TXT-270
 
-SHA-256：`E2E245F2B566D0BFAFB0F6A04C16B82D710C4E6E7D799E39BB4EF6E541B85B98`  
-字节数：1050  
-文件名：`LICENSE-MIT`  
+SHA-256：`E2E245F2B566D0BFAFB0F6A04C16B82D710C4E6E7D799E39BB4EF6E541B85B98`<br>
+字节数：1050<br>
+文件名：`LICENSE-MIT`<br>
 引用包：`cargo:num-conv@0.2.2`
 
 ````text
@@ -19902,11 +20212,82 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 ````
 
-### TXT-265
+### TXT-271
 
-SHA-256：`E3DEE6D5B240791312CD89333A5CC62E6F65BE66BFF8AB6903DC9A67BBE84263`  
-字节数：1064  
-文件名：`LICENSE`  
+SHA-256：`E3BA223BB1423F0AAD8C3DFCE0FE3148DB48926D41E6FBC3AFBBF5FF9E1C89CB`<br>
+字节数：10398<br>
+文件名：`LICENSE-APACHE`<br>
+引用包：`cargo:static_vcruntime@3.0.0`
+
+````text
+Apache License
+Version 2.0, January 2004
+http://www.apache.org/licenses/
+
+TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION
+
+    1. Definitions.
+
+        "License" shall mean the terms and conditions for use, reproduction, and distribution as defined by Sections 1 through 9 of this document.
+
+        "Licensor" shall mean the copyright owner or entity authorized by the copyright owner that is granting the License.
+
+        "Legal Entity" shall mean the union of the acting entity and all other entities that control, are controlled by, or are under common control with that entity. For the purposes of this definition, "control" means (i) the power, direct or indirect, to cause the direction or management of such entity, whether by contract or otherwise, or (ii) ownership of fifty percent (50%) or more of the outstanding shares, or (iii) beneficial ownership of such entity.
+
+        "You" (or "Your") shall mean an individual or Legal Entity exercising permissions granted by this License.
+
+        "Source" form shall mean the preferred form for making modifications, including but not limited to software source code, documentation source, and configuration files.
+
+        "Object" form shall mean any form resulting from mechanical transformation or translation of a Source form, including but not limited to compiled object code, generated documentation, and conversions to other media types.
+
+        "Work" shall mean the work of authorship, whether in Source or Object form, made available under the License, as indicated by a copyright notice that is included in or attached to the work (an example is provided in the Appendix below).
+
+        "Derivative Works" shall mean any work, whether in Source or Object form, that is based on (or derived from) the Work and for which the editorial revisions, annotations, elaborations, or other modifications represent, as a whole, an original work of authorship. For the purposes of this License, Derivative Works shall not include works that remain separable from, or merely link (or bind by name) to the interfaces of, the Work and Derivative Works thereof.
+
+        "Contribution" shall mean any work of authorship, including the original version of the Work and any modifications or additions to that Work or Derivative Works thereof, that is intentionally submitted to Licensor for inclusion in the Work by the copyright owner or by an individual or Legal Entity authorized to submit on behalf of the copyright owner. For the purposes of this definition, "submitted" means any form of electronic, verbal, or written communication sent to the Licensor or its representatives, including but not limited to communication on electronic mailing lists, source code control systems, and issue tracking systems that are managed by, or on behalf of, the Licensor for the purpose of discussing and improving the Work, but excluding communication that is conspicuously marked or otherwise designated in writing by the copyright owner as "Not a Contribution."
+
+        "Contributor" shall mean Licensor and any individual or Legal Entity on behalf of whom a Contribution has been received by Licensor and subsequently incorporated within the Work.
+    2. Grant of Copyright License. Subject to the terms and conditions of this License, each Contributor hereby grants to You a perpetual, worldwide, non-exclusive, no-charge, royalty-free, irrevocable copyright license to reproduce, prepare Derivative Works of, publicly display, publicly perform, sublicense, and distribute the Work and such Derivative Works in Source or Object form.
+    3. Grant of Patent License. Subject to the terms and conditions of this License, each Contributor hereby grants to You a perpetual, worldwide, non-exclusive, no-charge, royalty-free, irrevocable (except as stated in this section) patent license to make, have made, use, offer to sell, sell, import, and otherwise transfer the Work, where such license applies only to those patent claims licensable by such Contributor that are necessarily infringed by their Contribution(s) alone or by combination of their Contribution(s) with the Work to which such Contribution(s) was submitted. If You institute patent litigation against any entity (including a cross-claim or counterclaim in a lawsuit) alleging that the Work or a Contribution incorporated within the Work constitutes direct or contributory patent infringement, then any patent licenses granted to You under this License for that Work shall terminate as of the date such litigation is filed.
+    4. Redistribution. You may reproduce and distribute copies of the Work or Derivative Works thereof in any medium, with or without modifications, and in Source or Object form, provided that You meet the following conditions:
+        (a) You must give any other recipients of the Work or Derivative Works a copy of this License; and
+        (b) You must cause any modified files to carry prominent notices stating that You changed the files; and
+        (c) You must retain, in the Source form of any Derivative Works that You distribute, all copyright, patent, trademark, and attribution notices from the Source form of the Work, excluding those notices that do not pertain to any part of the Derivative Works; and
+        (d) If the Work includes a "NOTICE" text file as part of its distribution, then any Derivative Works that You distribute must include a readable copy of the attribution notices contained within such NOTICE file, excluding those notices that do not pertain to any part of the Derivative Works, in at least one of the following places: within a NOTICE text file distributed as part of the Derivative Works; within the Source form or documentation, if provided along with the Derivative Works; or, within a display generated by the Derivative Works, if and wherever such third-party notices normally appear. The contents of the NOTICE file are for informational purposes only and do not modify the License. You may add Your own attribution notices within Derivative Works that You distribute, alongside or as an addendum to the NOTICE text from the Work, provided that such additional attribution notices cannot be construed as modifying the License.
+
+        You may add Your own copyright statement to Your modifications and may provide additional or different license terms and conditions for use, reproduction, or distribution of Your modifications, or for any such Derivative Works as a whole, provided Your use, reproduction, and distribution of the Work otherwise complies with the conditions stated in this License.
+    5. Submission of Contributions. Unless You explicitly state otherwise, any Contribution intentionally submitted for inclusion in the Work by You to the Licensor shall be under the terms and conditions of this License, without any additional terms or conditions. Notwithstanding the above, nothing herein shall supersede or modify the terms of any separate license agreement you may have executed with Licensor regarding such Contributions.
+    6. Trademarks. This License does not grant permission to use the trade names, trademarks, service marks, or product names of the Licensor, except as required for reasonable and customary use in describing the origin of the Work and reproducing the content of the NOTICE file.
+    7. Disclaimer of Warranty. Unless required by applicable law or agreed to in writing, Licensor provides the Work (and each Contributor provides its Contributions) on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied, including, without limitation, any warranties or conditions of TITLE, NON-INFRINGEMENT, MERCHANTABILITY, or FITNESS FOR A PARTICULAR PURPOSE. You are solely responsible for determining the appropriateness of using or redistributing the Work and assume any risks associated with Your exercise of permissions under this License.
+    8. Limitation of Liability. In no event and under no legal theory, whether in tort (including negligence), contract, or otherwise, unless required by applicable law (such as deliberate and grossly negligent acts) or agreed to in writing, shall any Contributor be liable to You for damages, including any direct, indirect, special, incidental, or consequential damages of any character arising as a result of this License or out of the use or inability to use the Work (including but not limited to damages for loss of goodwill, work stoppage, computer failure or malfunction, or any and all other commercial damages or losses), even if such Contributor has been advised of the possibility of such damages.
+    9. Accepting Warranty or Additional Liability. While redistributing the Work or Derivative Works thereof, You may choose to offer, and charge a fee for, acceptance of support, warranty, indemnity, or other liability obligations and/or rights consistent with this License. However, in accepting such obligations, You may act only on Your own behalf and on Your sole responsibility, not on behalf of any other Contributor, and only if You agree to indemnify, defend, and hold each Contributor harmless for any liability incurred by, or claims asserted against, such Contributor by reason of your accepting any such warranty or additional liability.
+
+END OF TERMS AND CONDITIONS
+
+APPENDIX: How to apply the Apache License to your work.
+
+To apply the Apache License to your work, attach the following boilerplate notice, with the fields enclosed by brackets "[]" replaced with your own identifying information. (Don't include the brackets!) The text should be enclosed in the appropriate comment syntax for the file format. We also recommend that a file or class name and description of purpose be included on the same "printed page" as the copyright notice for easier identification within third-party archives.
+
+Copyright [yyyy] [name of copyright owner]
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+````
+
+### TXT-272
+
+SHA-256：`E3DEE6D5B240791312CD89333A5CC62E6F65BE66BFF8AB6903DC9A67BBE84263`<br>
+字节数：1064<br>
+文件名：`LICENSE`<br>
 引用包：`cargo:auto-launch@0.5.0`
 
 ````text
@@ -19933,11 +20314,11 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 ````
 
-### TXT-266
+### TXT-273
 
-SHA-256：`E53A7165E8BC3CED5E5628404B3D2D28ECC14AD720F1C09BA28385D5151ECF93`  
-字节数：1066  
-文件名：`LICENSE-MIT`  
+SHA-256：`E53A7165E8BC3CED5E5628404B3D2D28ECC14AD720F1C09BA28385D5151ECF93`<br>
+字节数：1066<br>
+文件名：`LICENSE-MIT`<br>
 引用包：`cargo:serialize-to-javascript-impl@0.1.2`、`cargo:serialize-to-javascript@0.1.2`
 
 ````text
@@ -19964,11 +20345,11 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 ````
 
-### TXT-267
+### TXT-274
 
-SHA-256：`E63690624D604AA626C3C62B6EAD1A9F4A916D2260AC8132022ACBAFE2556045`  
-字节数：1115  
-文件名：`LICENSE.md`  
+SHA-256：`E63690624D604AA626C3C62B6EAD1A9F4A916D2260AC8132022ACBAFE2556045`<br>
+字节数：1115<br>
+文件名：`LICENSE.md`<br>
 引用包：`cargo:open@5.4.0`
 
 ````text
@@ -19999,11 +20380,11 @@ FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 OTHER DEALINGS IN THE SOFTWARE.
 ````
 
-### TXT-268
+### TXT-275
 
-SHA-256：`E85E131FA4ED25538FF1F4962CED1FB6F68B079BD9164A790597A0F30B8FD030`  
-字节数：1090  
-文件名：`LICENSE`  
+SHA-256：`E85E131FA4ED25538FF1F4962CED1FB6F68B079BD9164A790597A0F30B8FD030`<br>
+字节数：1090<br>
+文件名：`LICENSE`<br>
 引用包：`npm:node_modules/ajv`
 
 ````text
@@ -20030,11 +20411,11 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 ````
 
-### TXT-269
+### TXT-276
 
-SHA-256：`E915669A595B11A200873DF8286561881B0E04932F6412A585DB6297BA0BC97C`  
-字节数：1133  
-文件名：`LICENSE-MIT`  
+SHA-256：`E915669A595B11A200873DF8286561881B0E04932F6412A585DB6297BA0BC97C`<br>
+字节数：1133<br>
+文件名：`LICENSE-MIT`<br>
 引用包：`cargo:hashlink@0.10.0`
 
 ````text
@@ -20066,11 +20447,11 @@ IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
 ````
 
-### TXT-270
+### TXT-277
 
-SHA-256：`EA021D8C6383C84D19C15CE90D3B1602CF448FDCC0BF3772C98E43C7BF1BF1D1`  
-字节数：1055  
-文件名：`LICENSE`  
+SHA-256：`EA021D8C6383C84D19C15CE90D3B1602CF448FDCC0BF3772C98E43C7BF1BF1D1`<br>
+字节数：1055<br>
+文件名：`LICENSE`<br>
 引用包：`cargo:winreg@0.10.1`
 
 ````text
@@ -20095,12 +20476,12 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 ````
 
-### TXT-271
+### TXT-278
 
-SHA-256：`EAF40297C75DA471F7CDA1F3458E8D91B4B2EC866E609527A13ACFA93B638652`  
-字节数：1048  
-文件名：`LICENSE-MIT`  
-引用包：`cargo:png@0.17.16`
+SHA-256：`EAF40297C75DA471F7CDA1F3458E8D91B4B2EC866E609527A13ACFA93B638652`<br>
+字节数：1048<br>
+文件名：`LICENSE-MIT`<br>
+引用包：`cargo:png@0.17.16`、`cargo:png@0.18.1`
 
 ````text
 Copyright (c) 2015 nwin
@@ -20130,11 +20511,11 @@ IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
 ````
 
-### TXT-272
+### TXT-279
 
-SHA-256：`EB8A6C84630461B352BADCAB1DBE5D0168C56D377358B2B8C86B51003272D5EF`  
-字节数：888  
-文件名：`LICENSE.spdx`  
+SHA-256：`EB8A6C84630461B352BADCAB1DBE5D0168C56D377358B2B8C86B51003272D5EF`<br>
+字节数：888<br>
+文件名：`LICENSE.spdx`<br>
 引用包：`cargo:tauri-plugin-autostart@2.5.1`、`cargo:tauri-plugin-opener@2.5.4`、`cargo:tauri-plugin-single-instance@2.4.3`、`cargo:tauri-plugin-sql@2.4.0`、`npm:node_modules/@tauri-apps/plugin-autostart`、`npm:node_modules/@tauri-apps/plugin-opener`、`npm:node_modules/@tauri-apps/plugin-sql`
 
 ````text
@@ -20160,12 +20541,12 @@ PackageDownloadLocation: git+ssh://github.com/tauri-apps/tauri.git
 Creator: Person: Daniel Thompson-Yvetot
 ````
 
-### TXT-273
+### TXT-280
 
-SHA-256：`EBAAC853B53FEC0ED475796F533CE676912A4DF9AD9D8A621FA76D5060591E10`  
-字节数：1074  
-文件名：`LICENSE`  
-引用包：`cargo:cfb@0.7.3`
+SHA-256：`EBAAC853B53FEC0ED475796F533CE676912A4DF9AD9D8A621FA76D5060591E10`<br>
+字节数：1074<br>
+文件名：`LICENSE`<br>
+引用包：`cargo:cfb@0.14.0`
 
 ````text
 MIT License
@@ -20191,11 +20572,11 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 ````
 
-### TXT-274
+### TXT-281
 
-SHA-256：`ECC269EF87FD38A1D98E30BFAC9BA964A9DBD9315C3770FED98D4D7CB5882055`  
-字节数：1049  
-文件名：`LICENSE-MIT`  
+SHA-256：`ECC269EF87FD38A1D98E30BFAC9BA964A9DBD9315C3770FED98D4D7CB5882055`<br>
+字节数：1049<br>
+文件名：`LICENSE-MIT`<br>
 引用包：`cargo:indexmap@1.9.3`、`cargo:indexmap@2.14.0`
 
 ````text
@@ -20226,11 +20607,11 @@ IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
 ````
 
-### TXT-275
+### TXT-282
 
-SHA-256：`EDD65BDD88957A205C47D53FA499EED8865A70320F0F03F6391668CB304EA376`  
-字节数：11349  
-文件名：`LICENSE-Apache`  
+SHA-256：`EDD65BDD88957A205C47D53FA499EED8865A70320F0F03F6391668CB304EA376`<br>
+字节数：11349<br>
+文件名：`LICENSE-Apache`<br>
 引用包：`cargo:deranged@0.5.8`
 
 ````text
@@ -20438,11 +20819,11 @@ SHA-256：`EDD65BDD88957A205C47D53FA499EED8865A70320F0F03F6391668CB304EA376`
    limitations under the License.
 ````
 
-### TXT-276
+### TXT-283
 
-SHA-256：`EE48679D379CA6B4493D5E231094D85F818DD9BE40B1A4F234FB7FF657EE35D9`  
-字节数：1205  
-文件名：`LICENSE`  
+SHA-256：`EE48679D379CA6B4493D5E231094D85F818DD9BE40B1A4F234FB7FF657EE35D9`<br>
+字节数：1205<br>
+文件名：`LICENSE`<br>
 引用包：`npm:node_modules/obug`
 
 ````text
@@ -20471,12 +20852,12 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 ````
 
-### TXT-277
+### TXT-284
 
-SHA-256：`EE874098519E956C23A3C5C7E20581F8E9B1D70AA05EB178F983BE9775090A2F`  
-字节数：11193  
-文件名：`LICENSE`  
-引用包：`cargo:cargo_toml@0.22.3`
+SHA-256：`EE874098519E956C23A3C5C7E20581F8E9B1D70AA05EB178F983BE9775090A2F`<br>
+字节数：11193<br>
+文件名：`LICENSE`<br>
+引用包：`cargo:cargo_toml@1.0.1`
 
 ````text
 © Kornel Lesiński
@@ -20683,12 +21064,12 @@ IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
 ````
 
-### TXT-278
+### TXT-285
 
-SHA-256：`EF88893533AF22FFBB68CEEF0724BA1389518DF26165A34F3C99AD30B884DF4F`  
-字节数：1121  
-文件名：`LICENSE-MIT`  
-引用包：`cargo:wry@0.55.1`
+SHA-256：`EF88893533AF22FFBB68CEEF0724BA1389518DF26165A34F3C99AD30B884DF4F`<br>
+字节数：1121<br>
+文件名：`LICENSE-MIT`<br>
+引用包：`cargo:wry@0.57.0`
 
 ````text
 MIT License
@@ -20714,11 +21095,11 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 ````
 
-### TXT-279
+### TXT-286
 
-SHA-256：`EFF040F4184445A6D1F7F76D918101D631402436FF12256B924FB68E4DF28A94`  
-字节数：1118  
-文件名：`LICENSE`  
+SHA-256：`EFF040F4184445A6D1F7F76D918101D631402436FF12256B924FB68E4DF28A94`<br>
+字节数：1118<br>
+文件名：`LICENSE`<br>
 引用包：`npm:node_modules/js-cookie`
 
 ````text
@@ -20745,11 +21126,11 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 ````
 
-### TXT-280
+### TXT-287
 
-SHA-256：`F2042F3634C4136D06B5139C9C6AEFB81A3A462B514548BC1845953233DFBA98`  
-字节数：1237  
-文件名：`LICENSE`  
+SHA-256：`F2042F3634C4136D06B5139C9C6AEFB81A3A462B514548BC1845953233DFBA98`<br>
+字节数：1237<br>
+文件名：`LICENSE`<br>
 引用包：`npm:node_modules/deep-is`
 
 ````text
@@ -20777,11 +21158,11 @@ IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 ````
 
-### TXT-281
+### TXT-288
 
-SHA-256：`F28420C1906AF38BE726CD7842798F0194B27C41D6051C0D1E9EE348B8A4A0EA`  
-字节数：1091  
-文件名：`LICENSE-MIT`  
+SHA-256：`F28420C1906AF38BE726CD7842798F0194B27C41D6051C0D1E9EE348B8A4A0EA`<br>
+字节数：1091<br>
+文件名：`LICENSE-MIT`<br>
 引用包：`cargo:cookie@0.18.1`
 
 ````text
@@ -20813,11 +21194,11 @@ IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
 ````
 
-### TXT-282
+### TXT-289
 
-SHA-256：`F2EC607F67BB0DD3053B49835B02110D5CD0F8EB6DA3AAC4DC0B142A6B299BE9`  
-字节数：823  
-文件名：`ISC.txt`  
+SHA-256：`F2EC607F67BB0DD3053B49835B02110D5CD0F8EB6DA3AAC4DC0B142A6B299BE9`<br>
+字节数：823<br>
+文件名：`ISC.txt`<br>
 引用包：`npm:node_modules/boolbase`
 
 ````text
@@ -20831,11 +21212,11 @@ Permission to use, copy, modify, and/or distribute this software for any purpose
 THE SOFTWARE IS PROVIDED "AS IS" AND ISC DISCLAIMS ALL WARRANTIES WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL ISC BE LIABLE FOR ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 ````
 
-### TXT-283
+### TXT-290
 
-SHA-256：`F32FB3B417A194167CFAD068223FC975BA96C5960513A10F66A3C28720AEC1DF`  
-字节数：1267  
-文件名：`BSD-2-Clause.txt`  
+SHA-256：`F32FB3B417A194167CFAD068223FC975BA96C5960513A10F66A3C28720AEC1DF`<br>
+字节数：1267<br>
+文件名：`BSD-2-Clause.txt`<br>
 引用包：`npm:node_modules/esrecurse`
 
 ````text
@@ -20850,11 +21231,11 @@ Redistribution and use in source and binary forms, with or without modification,
 THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 ````
 
-### TXT-284
+### TXT-291
 
-SHA-256：`F367C1B8E1AA262435251E442901DA4607B4650E0E63A026F5044473ECFB90F2`  
-字节数：2195  
-文件名：`LICENSE`  
+SHA-256：`F367C1B8E1AA262435251E442901DA4607B4650E0E63A026F5044473ECFB90F2`<br>
+字节数：2195<br>
+文件名：`LICENSE`<br>
 引用包：`cargo:icu_collections@2.2.0`、`cargo:icu_locale_core@2.2.0`、`cargo:icu_normalizer_data@2.2.0`、`cargo:icu_normalizer@2.2.0`、`cargo:icu_properties_data@2.2.0`、`cargo:icu_properties@2.2.0`、`cargo:icu_provider@2.2.0`、`cargo:litemap@0.8.2`、`cargo:potential_utf@0.1.5`、`cargo:tinystr@0.8.3`、`cargo:writeable@0.6.3`、`cargo:yoke-derive@0.8.2`、`cargo:yoke@0.8.3`、`cargo:zerofrom-derive@0.1.7`、`cargo:zerofrom@0.1.8`、`cargo:zerotrie@0.2.4`、`cargo:zerovec-derive@0.11.3`、`cargo:zerovec@0.11.6`
 
 ````text
@@ -20906,11 +21287,11 @@ Portions of ICU4X may have been adapted from ICU4C and/or ICU4J.
 ICU 1.8.1 to ICU 57.1 © 1995-2016 International Business Machines Corporation and others.
 ````
 
-### TXT-285
+### TXT-292
 
-SHA-256：`F3C51ACE7F159B21566D72535E84FF354505AE7FFDCA835DAC81FCDAFBF9E879`  
-字节数：1097  
-文件名：`LICENSE`  
+SHA-256：`F3C51ACE7F159B21566D72535E84FF354505AE7FFDCA835DAC81FCDAFBF9E879`<br>
+字节数：1097<br>
+文件名：`LICENSE`<br>
 引用包：`npm:node_modules/@typescript-eslint/type-utils`
 
 ````text
@@ -20937,11 +21318,42 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 ````
 
-### TXT-286
+### TXT-293
 
-SHA-256：`F51AC2C59A222F7476CE507CA879960E2B64EA64BB2786EEFDBEB7B0B538D1B7`  
-字节数：1071  
-文件名：`LICENSE-MIT`  
+SHA-256：`F428305BBF2E70FBD807AF0F3C7AC1B7ACFB95311640F451E9D2E48DB6D7E96B`<br>
+字节数：1065<br>
+文件名：`LICENSE-MIT`<br>
+引用包：`cargo:web-time@1.1.0`
+
+````text
+MIT License
+
+Copyright (c) 2023 dAxpeDDa
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+````
+
+### TXT-294
+
+SHA-256：`F51AC2C59A222F7476CE507CA879960E2B64EA64BB2786EEFDBEB7B0B538D1B7`<br>
+字节数：1071<br>
+文件名：`LICENSE-MIT`<br>
 引用包：`cargo:bit-set@0.8.0`、`cargo:bit-vec@0.8.0`
 
 ````text
@@ -20972,11 +21384,11 @@ IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
 ````
 
-### TXT-287
+### TXT-295
 
-SHA-256：`F59BA65550F2A5ADFF98EC6478D783402C8E0A3EB515025C0B3438F3D30DC39E`  
-字节数：1072  
-文件名：`LICENSE`  
+SHA-256：`F59BA65550F2A5ADFF98EC6478D783402C8E0A3EB515025C0B3438F3D30DC39E`<br>
+字节数：1072<br>
+文件名：`LICENSE`<br>
 引用包：`cargo:libsqlite3-sys@0.30.1`
 
 ````text
@@ -21001,34 +21413,11 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 ````
 
-### TXT-288
+### TXT-296
 
-SHA-256：`F5C342C49F3AC804F3E8E7BB62A8040A44C50D47BB36902B1ABD13F66A1ADF8B`  
-字节数：608  
-文件名：`COPYRIGHT.md`  
-引用包：`cargo:unic-char-property@0.9.0`、`cargo:unic-char-range@0.9.0`、`cargo:unic-common@0.9.0`、`cargo:unic-ucd-ident@0.9.0`、`cargo:unic-ucd-version@0.9.0`
-
-````text
-* Copyright 2011-2015 The Rust Project developers.
-* Copyright 2013-2016 The rust-url developers.
-* Copyright 2015-2017 The Servo Project developers.
-* Copyright 2017 The UNIC Project developers.
-
-See [AUTHORS](AUTHORS) for the list of developers.
-
-Licensed under the Apache License, Version 2.0
-([LICENSE-APACHE](LICENSE-APACHE) or
-<http://www.apache.org/licenses/LICENSE-2.0>) or the MIT license
-([LICENSE-MIT](LICENSE-MIT) or <http://opensource.org/licenses/MIT>), at your
-option.  All files in the project carrying such notice may not be copied,
-modified, or distributed except according to those terms.
-````
-
-### TXT-289
-
-SHA-256：`F7715D38A3FA1B4AC97C5729740752505A39CB92EE83AB5B102AEB5EAA7CDEA4`  
-字节数：1057  
-文件名：`LICENSE-MIT`  
+SHA-256：`F7715D38A3FA1B4AC97C5729740752505A39CB92EE83AB5B102AEB5EAA7CDEA4`<br>
+字节数：1057<br>
+文件名：`LICENSE-MIT`<br>
 引用包：`cargo:new_debug_unreachable@1.0.6`
 
 ````text
@@ -21059,11 +21448,11 @@ IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
 ````
 
-### TXT-290
+### TXT-297
 
-SHA-256：`F7BDB3426D045CD50EFD4953026E3EB5A83D0199F458A075602611B9344DA5B9`  
-字节数：1125  
-文件名：`LICENSE-MIT`  
+SHA-256：`F7BDB3426D045CD50EFD4953026E3EB5A83D0199F458A075602611B9344DA5B9`<br>
+字节数：1125<br>
+文件名：`LICENSE-MIT`<br>
 引用包：`cargo:hex@0.4.3`
 
 ````text
@@ -21089,11 +21478,11 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 ````
 
-### TXT-291
+### TXT-298
 
-SHA-256：`F7DB81051789B729FEA528A63EC4C938FDCB93D9D61D97DC8CC2E9DF6D47F2A1`  
-字节数：1995  
-文件名：`LICENSE-UNICODE`  
+SHA-256：`F7DB81051789B729FEA528A63EC4C938FDCB93D9D61D97DC8CC2E9DF6D47F2A1`<br>
+字节数：1995<br>
+文件名：`LICENSE-UNICODE`<br>
 引用包：`cargo:unicode-ident@1.0.24`
 
 ````text
@@ -21138,11 +21527,11 @@ dealings in these Data Files or Software without prior written
 authorization of the copyright holder.
 ````
 
-### TXT-292
+### TXT-299
 
-SHA-256：`F8218253704E32441CAFEA1B9B3BCB2C6A3C51C5553CD8513D179290202BCCB2`  
-字节数：1067  
-文件名：`LICENSE`  
+SHA-256：`F8218253704E32441CAFEA1B9B3BCB2C6A3C51C5553CD8513D179290202BCCB2`<br>
+字节数：1067<br>
+文件名：`LICENSE`<br>
 引用包：`cargo:rust_decimal@1.42.1`
 
 ````text
@@ -21169,11 +21558,11 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 ````
 
-### TXT-293
+### TXT-300
 
-SHA-256：`F95F668FE64081DDB4153B322E34FDD719B991285ED08177D5AD7133B7988D92`  
-字节数：1065  
-文件名：`LICENSE`  
+SHA-256：`F95F668FE64081DDB4153B322E34FDD719B991285ED08177D5AD7133B7988D92`<br>
+字节数：1065<br>
+文件名：`LICENSE`<br>
 引用包：`npm:node_modules/tinyexec`
 
 ````text
@@ -21200,12 +21589,12 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 ````
 
-### TXT-294
+### TXT-301
 
-SHA-256：`FAB3DD6BDAB226F1C08630B1DD917E11FCB4EC5E1E020E2C16F83A0A13863E85`  
-字节数：16726  
-文件名：`LICENSE`  
-引用包：`cargo:cssparser-macros@0.6.1`、`cargo:cssparser@0.36.0`
+SHA-256：`FAB3DD6BDAB226F1C08630B1DD917E11FCB4EC5E1E020E2C16F83A0A13863E85`<br>
+字节数：16726<br>
+文件名：`LICENSE`<br>
+引用包：`cargo:cssparser-macros@0.7.1`、`cargo:cssparser@0.37.0`
 
 ````text
 Mozilla Public License Version 2.0
@@ -21583,11 +21972,11 @@ Exhibit B - "Incompatible With Secondary Licenses" Notice
   defined by the Mozilla Public License, v. 2.0.
 ````
 
-### TXT-295
+### TXT-302
 
-SHA-256：`FB58F56A8DAB39CE70D61C7FF0179549BDD292CF3B4C564259FEB30609CC670D`  
-字节数：1071  
-文件名：`LICENSE`  
+SHA-256：`FB58F56A8DAB39CE70D61C7FF0179549BDD292CF3B4C564259FEB30609CC670D`<br>
+字节数：1071<br>
+文件名：`LICENSE`<br>
 引用包：`npm:node_modules/vue-eslint-parser`
 
 ````text
@@ -21614,11 +22003,11 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 ````
 
-### TXT-296
+### TXT-303
 
-SHA-256：`FB77F0A9C53E473ABE5103C8632EF9F0F2874D4FB3F17CB2D8C661AAB9CEE9D7`  
-字节数：1097  
-文件名：`LICENSE-MIT`  
+SHA-256：`FB77F0A9C53E473ABE5103C8632EF9F0F2874D4FB3F17CB2D8C661AAB9CEE9D7`<br>
+字节数：1097<br>
+文件名：`LICENSE-MIT`<br>
 引用包：`cargo:scopeguard@1.2.0`
 
 ````text
@@ -21649,11 +22038,11 @@ IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
 ````
 
-### TXT-297
+### TXT-304
 
-SHA-256：`FC68EB8F1C8E1D6B8BE50F3C177927E24791CAE7DC251E6253A012F37926A30C`  
-字节数：857  
-文件名：`LICENSE`  
+SHA-256：`FC68EB8F1C8E1D6B8BE50F3C177927E24791CAE7DC251E6253A012F37926A30C`<br>
+字节数：857<br>
+文件名：`LICENSE`<br>
 引用包：`npm:node_modules/glob-parent`
 
 ````text
@@ -21674,11 +22063,11 @@ ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF OR
 IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 ````
 
-### TXT-298
+### TXT-305
 
-SHA-256：`FCB656436F40DAAC58B400B26CE8BCC7B4ECE41EA39267AC8EEF74126E57FF02`  
-字节数：1079  
-文件名：`LICENSE`  
+SHA-256：`FCB656436F40DAAC58B400B26CE8BCC7B4ECE41EA39267AC8EEF74126E57FF02`<br>
+字节数：1079<br>
+文件名：`LICENSE`<br>
 引用包：`npm:node_modules/@vue/test-utils`
 
 ````text
@@ -21705,11 +22094,11 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 ````
 
-### TXT-299
+### TXT-306
 
-SHA-256：`FCF6EABF68CA96988A6B506B4FDC6CC32535D80EB2E11C79724AF5AC6F50262B`  
-字节数：1071  
-文件名：`LICENSE`  
+SHA-256：`FCF6EABF68CA96988A6B506B4FDC6CC32535D80EB2E11C79724AF5AC6F50262B`<br>
+字节数：1071<br>
+文件名：`LICENSE`<br>
 引用包：`npm:node_modules/@eslint-community/eslint-utils`、`npm:node_modules/@eslint-community/regexpp`
 
 ````text
@@ -21736,11 +22125,11 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 ````
 
-### TXT-300
+### TXT-307
 
-SHA-256：`FF8F68CB076CAF8CEFE7A6430D4AC086CE6AF2CA8CE2C4E5A2004D4552EF52A2`  
-字节数：1060  
-文件名：`LICENSE-MIT`  
+SHA-256：`FF8F68CB076CAF8CEFE7A6430D4AC086CE6AF2CA8CE2C4E5A2004D4552EF52A2`<br>
+字节数：1060<br>
+文件名：`LICENSE-MIT`<br>
 引用包：`cargo:hashbrown@0.12.3`、`cargo:hashbrown@0.15.5`、`cargo:hashbrown@0.17.1`
 
 ````text

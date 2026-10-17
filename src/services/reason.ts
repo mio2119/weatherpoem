@@ -5,6 +5,7 @@ import type {
 } from "../types";
 import {
   CONTENT_VERSION,
+  RETAINED_CONTEXT,
   RULE_VERSION,
 } from "../core/recommendation";
 
@@ -69,6 +70,8 @@ const UNSAFE_REASON_PATTERNS = [
   /https?:\/\//i,
   /\r|\n/,
   /作为一个AI|作为人工智能|语言模型/i,
+  /。，|，，|；。/,
+  /\b(?:spring|summer|autumn|winter)\b/i,
 ];
 
 export function validateReasonResponse(
@@ -141,7 +144,11 @@ export async function enrichRecommendationReason(
   if (
     !endpoint ||
     !isAllowedReasonServiceUrl(endpoint) ||
-    weather.shouldSuppressPoem
+    recommendation.primaryContext === RETAINED_CONTEXT ||
+    weather.shouldSuppressPoem ||
+    weather.kind === "unknown" ||
+    weather.freshness !== "fresh" ||
+    weather.source !== "open-meteo"
   ) {
     return recommendation;
   }

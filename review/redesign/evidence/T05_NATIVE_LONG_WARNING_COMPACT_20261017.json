@@ -1,0 +1,119 @@
+{
+  "schemaVersion": "1.0",
+  "testKind": "isolated-native-hidden-cached-safety-warning",
+  "generatedAt": "2026-10-17T03:18:21.820Z",
+  "candidate": {
+    "path": ".work/redesign-reveal-copy-20261017/release/weatherpoem.exe",
+    "sha256": "6D15856C4A8F10706A76A54C5F53EC1F1AC25F433EF1F31E3B15B3A8D2C5B32F"
+  },
+  "isolation": {
+    "temporaryProfile": true,
+    "systemClockChanged": false,
+    "installedOrUninstalled": false,
+    "realUserDataTouched": false,
+    "processOnlyWeatherHostBlock": true
+  },
+  "scenario": "network-blocked-cached-warning",
+  "concealAction": "tray-hide-button",
+  "activationPath": "native-single-instance",
+  "revealElapsedMs": 1183,
+  "readyView": "poem",
+  "original": {
+    "date": "10月17日",
+    "title": "秋词",
+    "context": "10月17日天气未更新秋 收藏 0",
+    "visible": "visible",
+    "poem": true
+  },
+  "hidden": {
+    "visibility": "visible",
+    "poem": false,
+    "loading": true
+  },
+  "warningDailyState": {
+    "state": "alert-suppressed",
+    "work_id": "liu-yu-xi-qiu-ci"
+  },
+  "warningText": "安全信息优先今日诗笺暂缓展示这是隔离演练，不是真实气象预警。请先阅读安全信息。隔离暴雨预警演练这是临时资料中的长文排版演练，不是真实气象预警。这是临时资料中的长文排版演练，不是真实气象预警。这是临时资料中的长文排版演练，不是真实气象预警。这是临时资料中的长文排版演练，不是真实气象预警。这是临时资料中的长文排版演练，不是真实气象预警。这是临时资料中的长文排版演练，不是真实气象预警。这是临时资料中的长文排版演练，不是真实气象预警。这是临时资料中的长文排版演练，不是真实气象预警。北京市 · WeatherPoem 隔离性能演练  · 发布 10/17 11:18 · 有效至 10/17 17:18本页仅用于隔离安全路径演练，没有连接真实预警网关；请以当地气象部门最新信息为准。",
+  "compactWarningAudit": {
+    "syntheticLongText": true,
+    "top": {
+      "viewport": {
+        "width": 320,
+        "height": 260
+      },
+      "scroll": {
+        "clientWidth": 311,
+        "scrollWidth": 311,
+        "clientHeight": 200,
+        "scrollHeight": 746,
+        "scrollTop": 0
+      },
+      "rootRect": {
+        "top": 59,
+        "bottom": 259
+      },
+      "disclaimerRect": {
+        "top": 733.515625,
+        "bottom": 770.890625
+      },
+      "warningCount": 1,
+      "hasOldPoem": false
+    },
+    "bottom": {
+      "viewport": {
+        "width": 320,
+        "height": 260
+      },
+      "scroll": {
+        "clientWidth": 311,
+        "scrollWidth": 311,
+        "clientHeight": 200,
+        "scrollHeight": 746,
+        "scrollTop": 546
+      },
+      "rootRect": {
+        "top": 59,
+        "bottom": 259
+      },
+      "disclaimerRect": {
+        "top": 187.515625,
+        "bottom": 224.890625
+      },
+      "warningCount": 1,
+      "hasOldPoem": false
+    },
+    "screenshots": [
+      "review/redesign/evidence/T05_NATIVE_LONG_WARNING_COMPACT_20261017_compact_warning_top.png",
+      "review/redesign/evidence/T05_NATIVE_LONG_WARNING_COMPACT_20261017_compact_warning_bottom.png"
+    ]
+  },
+  "screenshots": [
+    "review/redesign/evidence/T05_NATIVE_LONG_WARNING_COMPACT_20261017_before.png",
+    "review/redesign/evidence/T05_NATIVE_LONG_WARNING_COMPACT_20261017_after.png"
+  ],
+  "observed": [
+    {
+      "visible": "visible",
+      "poem": false,
+      "loading": true,
+      "correction": false,
+      "warning": false
+    },
+    {
+      "visible": "visible",
+      "poem": false,
+      "loading": true,
+      "correction": false,
+      "warning": false
+    },
+    {
+      "visible": "visible",
+      "poem": false,
+      "loading": false,
+      "correction": false,
+      "warning": true
+    }
+  ],
+  "result": "passed"
+}

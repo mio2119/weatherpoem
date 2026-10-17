@@ -584,7 +584,10 @@ export function mergeCanonicalLicenseGroups(groups) {
     );
 }
 
-export async function collectThirdPartyNoticeInputs(projectRoot) {
+export async function collectThirdPartyNoticeInputs(
+  projectRoot,
+  { skipCanonicalCargo = false } = {},
+) {
   const readJson = async (relativePath) =>
     JSON.parse(
       await readFile(path.join(projectRoot, relativePath), "utf8"),
@@ -721,13 +724,15 @@ export async function collectThirdPartyNoticeInputs(projectRoot) {
       cargoLicenseSupplements,
       projectRoot,
     );
-  const canonicalCargo = await applyCanonicalLicenseSources(
-    vendoredCargo.packages,
-    "cargo",
-    canonicalLicensePolicy,
-    canonicalLicenseSupplements,
-    projectRoot,
-  );
+  const canonicalCargo = skipCanonicalCargo
+    ? { packages: vendoredCargo.packages, bindings: [], groups: [] }
+    : await applyCanonicalLicenseSources(
+      vendoredCargo.packages,
+      "cargo",
+      canonicalLicensePolicy,
+      canonicalLicenseSupplements,
+      projectRoot,
+    );
 
   const inputFiles = {
     packageJson: "package.json",
@@ -971,9 +976,9 @@ function buildMarkdown(report, textArtifacts) {
   const lines = [
     "# WeatherPoem 第三方许可与 NOTICE 草案",
     "",
-    `生成时间：${report.generatedAt}  `,
-    `适用版本：WeatherPoem ${report.appVersion}  `,
-    `Windows 目标：${report.target}`,
+    `- 生成时间：${report.generatedAt}`,
+    `- 适用版本：WeatherPoem ${report.appVersion}`,
+    `- Windows 目标：${report.target}`,
     "",
     "> 这是从当前锁文件与本机已安装依赖自动生成的审阅草案，不构成法律意见，",
     "> 也不代表已满足每个许可证的分发、源代码提供或署名义务。",
@@ -1121,9 +1126,9 @@ function buildMarkdown(report, textArtifacts) {
     lines.push(
       `### ${artifact.textId}`,
       "",
-      `SHA-256：\`${artifact.sha256}\`  `,
-      `字节数：${artifact.bytes}  `,
-      `文件名：${artifact.fileNames.map((item) => `\`${item}\``).join("、")}  `,
+      `SHA-256：\`${artifact.sha256}\`<br>`,
+      `字节数：${artifact.bytes}<br>`,
+      `文件名：${artifact.fileNames.map((item) => `\`${item}\``).join("、")}<br>`,
       `引用包：${artifact.packageIds.map((item) => `\`${item}\``).join("、")}`,
       "",
       "````text",

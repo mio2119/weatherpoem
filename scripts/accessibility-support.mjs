@@ -39,7 +39,7 @@ export function contrastRatio(foreground, background) {
 export function validateAccessibilityPlan(plan) {
   assert(plan.schemaVersion === "1.0", "可访问性计划 Schema 不匹配");
   assert(
-    plan.baselineVersion === "2026.07-accessibility-v1",
+    plan.baselineVersion === "2026.10-accessibility-v2",
     "可访问性基线版本不匹配",
   );
   assert(
@@ -86,6 +86,14 @@ export function validateAccessibilityPlan(plan) {
 
   const minimumRatio = plan.automaticBaseline.contrast.minimumRatio;
   assert(minimumRatio >= 4.5, "普通文本对比度门槛不得低于 4.5:1");
+  const sceneOverlay = plan.automaticBaseline.contrast.sceneOverlay;
+  assert(
+    sceneOverlay?.status === "passed" &&
+      JSON.stringify(sceneOverlay.themes) === JSON.stringify(["light", "dark"]) &&
+      JSON.stringify(sceneOverlay.foregroundTokens) ===
+        JSON.stringify(["ink", "muted", "faint", "accent"]),
+    "诗境叠色对比度检查范围不完整",
+  );
   for (const pair of plan.automaticBaseline.contrast.pairs) {
     const ratio = contrastRatio(pair.foreground, pair.background);
     assert(

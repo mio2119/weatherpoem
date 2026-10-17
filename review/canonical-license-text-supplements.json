@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.0",
-  "generatedAt": "2026-07-24T05:14:25.993Z",
+  "generatedAt": "2026-10-16T03:22:15.531Z",
   "source": {
     "repository": "https://github.com/spdx/license-list-data",
     "releaseTag": "v3.28.0",
@@ -147,12 +147,12 @@
     },
     {
       "ecosystem": "cargo",
-      "packageId": "cargo:selectors@0.36.1",
+      "packageId": "cargo:selectors@0.38.0",
       "name": "selectors",
-      "version": "0.36.1",
+      "version": "0.38.0",
       "license": "MPL-2.0",
       "source": "https://github.com/servo/stylo",
-      "checksum": "C5D9C0C92A92D33F08817311CF3F2C29A3538A8240E94A6A3C622CE652D7E00C",
+      "checksum": "8ADFA1C298912827B8A28B223B3B874357397AE706E6190ACD9BF28CEE99114D",
       "licenseIds": [
         "MPL-2.0"
       ],

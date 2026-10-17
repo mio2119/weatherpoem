@@ -77,6 +77,24 @@ test("三种隔离故障场景均可绑定发布物和逐次最终状态", () =>
   );
 });
 
+test("改版故障矩阵只能绑定指定内部候选", () => {
+  const report = fixture();
+  report.artifact.path = ".work/redesign-target/release/weatherpoem.exe";
+  assert.doesNotThrow(() =>
+    validatePerformanceFaultMatrix(report, {
+      appVersion: "0.2.0",
+      exeSha256: HASH,
+      artifactPath: ".work/redesign-target/release/weatherpoem.exe",
+    }),
+  );
+  assert.throws(() =>
+    validatePerformanceFaultMatrix(report, {
+      appVersion: "0.2.0",
+      exeSha256: HASH,
+    }),
+  );
+});
+
 test("错误最终视图、伪造 P95 和过期 EXE 都会失败", () => {
   const wrongView = fixture();
   wrongView.scenarios[2].samples[0].readyView = "poem";

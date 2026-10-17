@@ -9,7 +9,7 @@ import { fetchOfficialWarnings } from "./warning-gateway";
 
 interface OpenMeteoResponse {
   current?: {
-    time?: string;
+    time?: number;
     temperature_2m?: number;
     apparent_temperature?: number;
     precipitation?: number;
@@ -20,6 +20,22 @@ interface OpenMeteoResponse {
 
 const WEATHER_CACHE_KEY = "weatherpoem.weather-cache.v1";
 const CACHE_MAX_AGE_MS = 6 * 60 * 60 * 1000;
+const CURRENT_MAX_AGE_MS = 2 * 60 * 60 * 1000;
+const CURRENT_MAX_FUTURE_MS = 15 * 60 * 1000;
+const CACHE_WEATHER_LABELS = new Map<WeatherKind, string>([
+  ["clear", "晴"],
+  ["cloudy", "多云"],
+  ["overcast", "阴"],
+  ["light-rain", "小雨"],
+  ["rain", "雨"],
+  ["heavy-rain", "大雨"],
+  ["snow", "雪"],
+  ["fog", "雾"],
+  ["wind", "风"],
+  ["thunderstorm", "雷暴"],
+  ["hot", "炎热"],
+  ["cold", "严寒"],
+]);
 export const DEFAULT_WEATHER_TIMEOUT_MS = 1100;
 const MIN_WEATHER_TIMEOUT_MS = 250;
 const MAX_WEATHER_TIMEOUT_MS = 5000;
@@ -69,6 +85,16 @@ async function controlledPerformanceWeather(
     });
     return controlledOfflineWeather();
   }
+  if (scenario === "scene-rain") {
+    return {
+      kind: "light-rain",
+      label: "小雨（隔离演练）",
+      freshness: "fresh",
+      source: "synthetic",
+      warnings: [],
+      shouldSuppressPoem: false,
+    };
+  }
   if (scenario !== "official-warning") {
     throw new Error("未知的隔离性能天气场景");
   }
@@ -86,7 +112,9 @@ async function controlledPerformanceWeather(
         "这是隔离性能账户中的安全优先路径演练，不是真实气象预警。",
       source: "WeatherPoem 隔离性能演练",
       origin: "official",
-      area: `${city.province}${city.name}`,
+      area: city.province === city.name
+        ? city.name
+        : `${city.province}${city.name}`,
       publishedAt: publishedAt.toISOString(),
       expiresAt: expiresAt.toISOString(),
     },
@@ -208,21 +236,80 @@ function cacheWeather(cityId: string, weather: WeatherContext): void {
   }
 }
 
+function isRecord(value: unknown): value is Record<string, unknown> {
+  return typeof value === "object" && value !== null && !Array.isArray(value);
+}
+
+function isNonemptyText(value: unknown): value is string {
+  return typeof value === "string" && value.trim().length > 0;
+}
+
+function isCachedWarning(value: unknown): value is WeatherWarning {
+  if (!isRecord(value)) return false;
+  if (
+    !isNonemptyText(value.id) ||
+    !isNonemptyText(value.title) ||
+    !isNonemptyText(value.description) ||
+    !isNonemptyText(value.source) ||
+    typeof value.level !== "string" ||
+    !["advisory", "warning", "severe"].includes(value.level) ||
+    typeof value.origin !== "string" ||
+    !["official", "weather-proxy"].includes(value.origin)
+  ) {
+    return false;
+  }
+  if (value.origin !== "official") return true;
+  return isNonemptyText(value.area) &&
+    isNonemptyText(value.publishedAt) &&
+    isNonemptyText(value.expiresAt) &&
+    Number.isFinite(Date.parse(value.publishedAt)) &&
+    Number.isFinite(Date.parse(value.expiresAt));
+}
+
+function isCachedWeather(value: unknown): value is WeatherContext {
+  if (!isRecord(value)) return false;
+  const expectedLabel = typeof value.kind === "string"
+    ? CACHE_WEATHER_LABELS.get(value.kind as WeatherKind)
+    : undefined;
+  return expectedLabel !== undefined &&
+    value.label === expectedLabel &&
+    value.source === "open-meteo" &&
+    value.freshness === "fresh" &&
+    typeof value.shouldSuppressPoem === "boolean" &&
+    Array.isArray(value.warnings) &&
+    value.warnings.length <= 23 &&
+    value.warnings.every(isCachedWarning);
+}
+
 function loadCachedWeather(cityId: string): WeatherContext | undefined {
   try {
     const raw = localStorage.getItem(WEATHER_CACHE_KEY);
     if (!raw) return undefined;
-    const cached = JSON.parse(raw) as {
-      cityId: string;
-      cachedAt: number;
-      weather: WeatherContext;
-    };
+    const cached: unknown = JSON.parse(raw);
+    if (!isRecord(cached)) return undefined;
     if (
       cached.cityId !== cityId ||
-      Date.now() - cached.cachedAt > CACHE_MAX_AGE_MS
+      typeof cached.cachedAt !== "number" ||
+      !Number.isFinite(cached.cachedAt) ||
+      !isCachedWeather(cached.weather)
     ) {
       return undefined;
     }
+    const observedAt = cached.weather.observedAt;
+    if (
+      typeof observedAt !== "string" ||
+      !/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}\.\d{3}Z$/.test(observedAt)
+    ) return undefined;
+    const now = Date.now();
+    const age = now - cached.cachedAt;
+    const observationAge = now - Date.parse(observedAt);
+    if (
+      age < 0 ||
+      age > CACHE_MAX_AGE_MS ||
+      !Number.isFinite(observationAge) ||
+      observationAge < -CURRENT_MAX_FUTURE_MS ||
+      observationAge > CACHE_MAX_AGE_MS
+    ) return undefined;
     const warnings = activeCachedWarnings(cached.weather.warnings);
     return {
       ...cached.weather,
@@ -257,6 +344,7 @@ export async function fetchWeather(
     current:
       "temperature_2m,apparent_temperature,precipitation,weather_code,wind_speed_10m",
     timezone: "auto",
+    timeformat: "unixtime",
   });
   const officialWarningsPromise = fetchOfficialWarnings(city);
 
@@ -270,12 +358,38 @@ export async function fetchWeather(
     }
     const payload = (await response.json()) as OpenMeteoResponse;
     const current = payload.current;
-    if (!current || typeof current.weather_code !== "number") {
-      throw new Error("天气数据缺少必要字段");
+    const observedAtSeconds = current?.time;
+    // Open-Meteo Unix time is UTC; city-local ISO text must not be parsed in the host timezone.
+    const observedAtMs = typeof observedAtSeconds === "number"
+      ? observedAtSeconds * 1000
+      : NaN;
+    const ageMs = Date.now() - observedAtMs;
+    if (
+      !current ||
+      typeof current.weather_code !== "number" ||
+      !Number.isInteger(current.weather_code) ||
+      typeof observedAtSeconds !== "number" ||
+      !Number.isInteger(observedAtSeconds) ||
+      !Number.isFinite(observedAtMs) ||
+      ageMs < -CURRENT_MAX_FUTURE_MS ||
+      ageMs > CURRENT_MAX_AGE_MS ||
+      typeof current.temperature_2m !== "number" ||
+      !Number.isFinite(current.temperature_2m) ||
+      typeof current.wind_speed_10m !== "number" ||
+      !Number.isFinite(current.wind_speed_10m) ||
+      current.wind_speed_10m < 0 ||
+      typeof current.precipitation !== "number" ||
+      !Number.isFinite(current.precipitation) ||
+      current.precipitation < 0 ||
+      (current.apparent_temperature !== undefined &&
+        (typeof current.apparent_temperature !== "number" ||
+          !Number.isFinite(current.apparent_temperature)))
+    ) {
+      throw new Error("天气数据缺少必要字段或不够新鲜");
     }
     const temperature = current.temperature_2m;
-    const windSpeed = current.wind_speed_10m ?? 0;
-    const precipitation = current.precipitation ?? 0;
+    const windSpeed = current.wind_speed_10m;
+    const precipitation = current.precipitation;
     const mapped = mapWeatherCode(current.weather_code);
     let kind = mapped.kind;
     let label = mapped.label;
@@ -303,7 +417,7 @@ export async function fetchWeather(
       apparentTemperature: current.apparent_temperature,
       windSpeed,
       precipitation,
-      observedAt: current.time,
+      observedAt: new Date(observedAtMs).toISOString(),
       freshness: "fresh",
       source: "open-meteo",
       warnings,

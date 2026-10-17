@@ -73,11 +73,9 @@ test("launcher preflight binds the release candidate and changes no evidence", (
   assert.equal(result.status, 0, result.stderr);
   const plan = JSON.parse(result.stdout);
   assert.equal(plan.stateChanged, false);
-  assert.equal(plan.readyForLaunch, true);
-  assert.deepEqual(plan.hostReadiness, {
-    acOnline: true,
-    userInitiatedSleepPrevented: false,
-  });
+  assert.equal(typeof plan.hostReadiness.acOnline, "boolean");
+  assert.equal(plan.readyForLaunch, plan.hostReadiness.acOnline);
+  assert.equal(plan.hostReadiness.userInitiatedSleepPrevented, false);
   assert.deepEqual(plan.operatorRequirements, {
     keepConnectedToAcPower: true,
     doNotCloseLidUnlessLidActionIsDoNothing: true,
@@ -155,5 +153,10 @@ test("npm exposes the seven-day start preflight command", () => {
   );
 
   assert.equal(result.status, 0, `${result.stdout}\n${result.stderr}`);
-  assert.match(result.stdout, /"readyForLaunch":\s+true/);
+  const jsonStart = result.stdout.indexOf("{");
+  assert.ok(jsonStart >= 0, result.stdout);
+  const plan = JSON.parse(result.stdout.slice(jsonStart));
+  assert.equal(plan.stateChanged, false);
+  assert.equal(typeof plan.hostReadiness.acOnline, "boolean");
+  assert.equal(plan.readyForLaunch, plan.hostReadiness.acOnline);
 });

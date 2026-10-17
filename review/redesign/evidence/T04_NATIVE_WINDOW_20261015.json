@@ -1,0 +1,259 @@
+{
+  "schemaVersion": "1.0",
+  "testKind": "isolated-native-window",
+  "generatedAt": "2026-10-15T08:22:39.6584784Z",
+  "sourceCommit": "5a57ced91e7a7599426bbc71442671ead4b7ebc6",
+  "candidate": {
+    "path": "E:\\weatherpoem\\.work\\redesign-native-20261015\\release\\weatherpoem.exe",
+    "sha256": "064E619229B3B457752AFAF70D62246B62C5E59327AC97FC6FD8012E69847701"
+  },
+  "profileIsolation": true,
+  "realUserDataTouched": false,
+  "systemAutostartChanged": false,
+  "systemDisplaySettingsChanged": false,
+  "observations": {
+    "foregroundBeforePid": 50160,
+    "readyView": "poem",
+    "readyMode": "offline-rules",
+    "processId": 55872,
+    "windowHandle": "12978652",
+    "windowHandleType": "System.IntPtr",
+    "foregroundAfterPid": 50160,
+    "productTookFocus": false,
+    "foregroundUnchanged": true,
+    "glance": {
+      "left": 1490,
+      "top": 572,
+      "right": 1898,
+      "bottom": 1010,
+      "width": 408,
+      "height": 438,
+      "dpi": 96,
+      "workingArea": {
+        "left": 0,
+        "top": 0,
+        "right": 1920,
+        "bottom": 1032
+      }
+    },
+    "accessibleElements": [
+      {
+        "name": "WeatherPoem 今日诗笺",
+        "controlType": "ControlType.Pane"
+      },
+      {
+        "name": "WeatherPoem 今日诗笺 - Web 内容",
+        "controlType": "ControlType.Pane"
+      },
+      {
+        "name": "WeatherPoem 今日诗笺",
+        "controlType": "ControlType.Document"
+      },
+      {
+        "name": "今日诗笺",
+        "controlType": "ControlType.Text"
+      },
+      {
+        "name": "北京 · 九月初六",
+        "controlType": "ControlType.Text"
+      },
+      {
+        "name": "设置",
+        "controlType": "ControlType.Button"
+      },
+      {
+        "name": "最小化",
+        "controlType": "ControlType.Button"
+      },
+      {
+        "name": "隐藏到托盘",
+        "controlType": "ControlType.Button"
+      },
+      {
+        "name": "赤壁",
+        "controlType": "ControlType.Group"
+      },
+      {
+        "name": "今日环境",
+        "controlType": "ControlType.Group"
+      },
+      {
+        "name": "10月15日",
+        "controlType": "ControlType.Text"
+      },
+      {
+        "name": "天气未更新",
+        "controlType": "ControlType.Text"
+      },
+      {
+        "name": "抽象季节纹样，不代表当地实时天气",
+        "controlType": "ControlType.Image"
+      },
+      {
+        "name": "收藏 0",
+        "controlType": "ControlType.Button"
+      },
+      {
+        "name": "赤壁",
+        "controlType": "ControlType.Group"
+      },
+      {
+        "name": "赤壁",
+        "controlType": "ControlType.Text"
+      },
+      {
+        "name": "杜牧 · 唐",
+        "controlType": "ControlType.Text"
+      },
+      {
+        "name": "改为竖排诗句",
+        "controlType": "ControlType.Button"
+      },
+      {
+        "name": "诗句节选",
+        "controlType": "ControlType.Group"
+      },
+      {
+        "name": "折戟沉沙铁未销，自将磨洗认前朝。",
+        "controlType": "ControlType.Text"
+      },
+      {
+        "name": "东风不与周郎便，铜雀春深锁二乔。",
+        "controlType": "ControlType.Text"
+      },
+      {
+        "name": "秋日，一截沉沙旧戟引出对历史偶然与个人际遇的重新设想。",
+        "controlType": "ControlType.Text"
+      },
+      {
+        "name": "继续读",
+        "controlType": "ControlType.Button"
+      },
+      {
+        "name": "收藏",
+        "controlType": "ControlType.Button"
+      },
+      {
+        "name": "收起",
+        "controlType": "ControlType.Button"
+      },
+      {
+        "name": "更多",
+        "controlType": "ControlType.Button"
+      }
+    ],
+    "manualForegroundOwnerPid": 29824,
+    "reading": {
+      "left": 1328,
+      "top": 287,
+      "right": 1904,
+      "bottom": 1016,
+      "width": 576,
+      "height": 729,
+      "dpi": 96,
+      "workingArea": {
+        "left": 0,
+        "top": 0,
+        "right": 1920,
+        "bottom": 1032
+      }
+    },
+    "readingScreenshot": "T04_NATIVE_READING_20261015.png",
+    "resizedReading": {
+      "left": 350,
+      "top": 160,
+      "right": 990,
+      "bottom": 800,
+      "width": 640,
+      "height": 640,
+      "dpi": 96,
+      "workingArea": {
+        "left": 0,
+        "top": 0,
+        "right": 1920,
+        "bottom": 1032
+      }
+    },
+    "returnedGlance": {
+      "left": 1490,
+      "top": 572,
+      "right": 1898,
+      "bottom": 1010,
+      "width": 408,
+      "height": 438,
+      "dpi": 96,
+      "workingArea": {
+        "left": 0,
+        "top": 0,
+        "right": 1920,
+        "bottom": 1032
+      }
+    },
+    "reopenedReading": {
+      "left": 1264,
+      "top": 376,
+      "right": 1904,
+      "bottom": 1016,
+      "width": 640,
+      "height": 640,
+      "dpi": 96,
+      "workingArea": {
+        "left": 0,
+        "top": 0,
+        "right": 1920,
+        "bottom": 1032
+      }
+    },
+    "hiddenProcessAlive": true,
+    "trayDiagnostic": [
+      {
+        "name": "显示隐藏的图标",
+        "controlType": "ControlType.Button",
+        "className": "SystemTray.NormalButton"
+      },
+      {
+        "name": "WeatherPoem 今日诗笺",
+        "controlType": "ControlType.Button",
+        "className": "SystemTray.NormalButton"
+      }
+    ],
+    "trayControlType": "ControlType.Button",
+    "trayBounds": {
+      "left": 1571.0,
+      "top": 855.0,
+      "width": 40.0,
+      "height": 40.0,
+      "offscreen": false
+    },
+    "trayInteraction": "bounded physical left click",
+    "trayWindowHandle": "12978652",
+    "trayRecovered": true,
+    "trayForegroundOwnerPid": 55872,
+    "trayOpenedWithFocus": true,
+    "persistedReadingSize": {
+      "width": 624,
+      "height": 631
+    },
+    "restartProcessId": 47024,
+    "restartReading": {
+      "left": 1264,
+      "top": 376,
+      "right": 1904,
+      "bottom": 1016,
+      "width": 640,
+      "height": 640,
+      "dpi": 96,
+      "workingArea": {
+        "left": 0,
+        "top": 0,
+        "right": 1920,
+        "bottom": 1032
+      }
+    }
+  },
+  "limitations": [
+    "Glance screenshot omitted because Windows did not foreground the test app.",
+    "Resize was generated by Win32 MoveWindow, not a physical drag."
+  ],
+  "result": "focus-resize-tray-and-restart-passed"
+}

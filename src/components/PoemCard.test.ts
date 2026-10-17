@@ -1,0 +1,191 @@
+import { mount } from "@vue/test-utils";
+import { nextTick } from "vue";
+import { describe, expect, it } from "vitest";
+import { recommendPoem } from "../core/recommendation";
+import { POEMS } from "../data/poems";
+import type { CalendarContext, WeatherContext } from "../types";
+import PoemCard from "./PoemCard.vue";
+
+const calendar: CalendarContext = {
+  localDate: "2026-02-17",
+  displayDate: "2月17日",
+  weekday: "星期二",
+  festival: "春节",
+  lunarLabel: "正月初一",
+  season: "winter",
+  timePeriod: "morning",
+};
+
+const weather: WeatherContext = {
+  kind: "clear",
+  label: "晴",
+  freshness: "fresh",
+  source: "open-meteo",
+  warnings: [],
+  shouldSuppressPoem: false,
+};
+
+const recommendation = recommendPoem({
+  poems: POEMS,
+  calendar,
+  weather,
+  history: [],
+  feedback: [],
+});
+
+function render(overrides: Record<string, unknown> = {}) {
+  return mount(PoemCard, {
+    props: {
+      recommendation,
+      calendar,
+      weather,
+      favorite: false,
+      favoriteCount: 2,
+      canReplace: true,
+      replacing: false,
+      canDislike: true,
+      disliking: false,
+      poemLayout: "horizontal",
+      poemFontSize: "medium",
+      ...overrides,
+    },
+  });
+}
+
+describe("glance poem card", () => {
+  it("shows the complete excerpt, context, reason and stable main actions", async () => {
+    const wrapper = render();
+    await nextTick();
+    expect(wrapper.get("h1").text()).toBe(recommendation.poem.title);
+    for (const line of recommendation.poem.excerpt) {
+      expect(wrapper.text()).toContain(line);
+    }
+    expect(wrapper.text()).toContain(recommendation.reason);
+    expect(wrapper.text()).toContain("春节 · 晴");
+    expect(wrapper.text()).toContain("收藏 2");
+    expect(wrapper.get(".read-button").text()).toContain("继续读");
+    expect(wrapper.text()).toContain("收起");
+    expect(wrapper.emitted("heightNeeded")?.length).toBeGreaterThan(0);
+  });
+
+  it("keeps replacement and mismatch actions discoverable behind More", async () => {
+    const wrapper = render();
+    expect(wrapper.find(".secondary-actions").exists()).toBe(false);
+    await wrapper.get(".more-action").trigger("click");
+    expect(wrapper.get(".more-action").attributes("aria-expanded")).toBe("true");
+    const buttons = wrapper.findAll(".secondary-actions button");
+    expect(buttons.map((button) => button.text())).toEqual(["换一首", "不太贴合"]);
+    await buttons[0]!.trigger("click");
+    await buttons[1]!.trigger("click");
+    expect(wrapper.emitted("replace")).toHaveLength(1);
+    expect(wrapper.emitted("dislike")).toHaveLength(1);
+  });
+
+  it("shows a pending label while replacement is in progress", async () => {
+    const wrapper = render({ replacing: true });
+    await wrapper.get(".more-action").trigger("click");
+    const replace = wrapper.findAll(".secondary-actions button")[0]!;
+    expect(replace.text()).toBe("正在换诗");
+    expect(replace.attributes("disabled")).toBeDefined();
+  });
+
+  it("shows a pending or recorded mismatch without accepting another click", async () => {
+    const wrapper = render({ disliking: true });
+    await wrapper.get(".more-action").trigger("click");
+    const dislike = wrapper.findAll(".secondary-actions button")[1]!;
+    expect(dislike.text()).toBe("正在记录");
+    expect(dislike.attributes("disabled")).toBeDefined();
+    await wrapper.setProps({ disliking: false, canDislike: false });
+    expect(dislike.text()).toBe("已记录不太贴合");
+    expect(dislike.attributes("disabled")).toBeDefined();
+  });
+
+  it("labels stale and unavailable weather without claiming live conditions", () => {
+    const stale = render({ weather: { ...weather, freshness: "stale", source: "cache" } });
+    expect(stale.text()).toContain("缓存天气：晴");
+    const offline = render({
+      calendar: { ...calendar, festival: undefined },
+      weather: { ...weather, kind: "unknown", label: "天气暂不可用", freshness: "unavailable", source: "offline" },
+    });
+    expect(offline.text()).toContain("天气未更新");
+    expect(offline.text()).not.toContain("当地正有晴");
+    expect(offline.get(".poem-paper").attributes("data-scene")).toBe("season");
+    expect(offline.get(".scene-mark").attributes("aria-label"))
+      .toContain("不代表当地实时天气");
+  });
+
+  it("shows actual weather without painting it onto an unrelated poem", () => {
+    const poem = POEMS.find((item) =>
+      !item.tags.weather.includes("rain") &&
+      !item.tags.festivals.includes("春节"),
+    );
+    expect(poem).toBeDefined();
+    const wrapper = render({
+      recommendation: {
+        ...recommendation,
+        poem: poem!,
+        primaryContext: "冬日",
+      },
+      calendar: { ...calendar, festival: undefined },
+      weather: { ...weather, kind: "rain", label: "雨" },
+    });
+    expect(wrapper.get(".context-strip").text()).toContain("雨");
+    expect(wrapper.get(".poem-paper").attributes("data-scene")).toBe("season");
+    expect(wrapper.get(".scene-mark").attributes("aria-label"))
+      .toContain("不代表当地实时天气");
+  });
+
+  it("marks Wen Xiu's Chu River as a poem image, not local weather", () => {
+    const poem = POEMS.find((item) => item.id === "wen-xiu-duan-wu")!;
+    const wrapper = render({
+      recommendation: { ...recommendation, poem },
+      calendar: { ...calendar, festival: "端午节" },
+    });
+    expect(wrapper.get(".poem-paper").attributes("data-scene")).toBe("festival");
+    expect(wrapper.get(".poem-paper").attributes("data-motif")).toBe("chu-river");
+    expect(wrapper.get(".scene-mark").text()).toBe("江");
+    expect(wrapper.get(".scene-mark").attributes("aria-label"))
+      .toContain("不代表当地天气");
+  });
+
+  it("labels Su Shi's Mid-Autumn moon as a literary image", () => {
+    const poem = POEMS.find((item) => item.id === "su-shi-shui-diao-ge-tou")!;
+    const wrapper = render({
+      recommendation: { ...recommendation, poem },
+      calendar: { ...calendar, festival: "中秋节", season: "autumn" },
+    });
+    expect(wrapper.get(".poem-paper").attributes("data-scene")).toBe("festival");
+    expect(wrapper.get(".poem-paper").attributes("data-motif")).toBe("shared-moon");
+    expect(wrapper.get(".scene-mark").text()).toBe("月");
+    expect(wrapper.get(".scene-mark").attributes("aria-label"))
+      .toContain("不代表当地天气");
+  });
+
+  it("switches to vertical columns without changing the poem text", async () => {
+    const wrapper = render();
+    const initialHeightReports = wrapper.emitted("heightNeeded")?.length ?? 0;
+    await wrapper.get(".layout-toggle").trigger("click");
+    expect(wrapper.emitted("layoutChange")?.[0]).toEqual(["vertical"]);
+    await wrapper.setProps({ poemLayout: "vertical" });
+    expect(wrapper.get(".poem-lines").classes()).toContain("is-vertical");
+    expect(wrapper.findAll(".poem-lines p").map((line) => line.text()).join(""))
+      .toBe(recommendation.poem.excerpt.join(""));
+    expect(wrapper.emitted("heightNeeded")?.length).toBeGreaterThan(initialHeightReports);
+  });
+
+  it("shows an overlong vertical excerpt in full horizontal text without changing the preference", () => {
+    const excerpt = ["江天万里云水相接连绵不绝"];
+    const wrapper = render({
+      recommendation: {
+        ...recommendation,
+        poem: { ...recommendation.poem, excerpt },
+      },
+      poemLayout: "vertical",
+    });
+    expect(wrapper.props("poemLayout")).toBe("vertical");
+    expect(wrapper.get(".poem-lines").classes()).not.toContain("is-vertical");
+    expect(wrapper.get(".poem-lines").text()).toBe(excerpt[0]);
+    expect(wrapper.find(".layout-toggle").exists()).toBe(false);
+    expect(wrapper.get(".layout-fallback-note").text()).toContain("暂用横排");
+  });
+});

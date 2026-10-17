@@ -1,25 +1,25 @@
 {
   "schemaVersion": "1.0",
-  "generatedAt": "2026-07-24T03:36:03.898Z",
+  "generatedAt": "2026-10-16T03:24:59.050Z",
   "entries": [
     {
       "sourceKind": "cargo-git-commit",
-      "packageId": "cargo:alloc-stdlib@0.2.4",
+      "packageId": "cargo:alloc-stdlib@0.3.0",
       "name": "alloc-stdlib",
-      "version": "0.2.4",
+      "version": "0.3.0",
       "license": "BSD-3-Clause",
       "repository": "https://github.com/dropbox/rust-alloc-no-stdlib",
-      "downloadUrl": "https://crates.io/api/v1/crates/alloc-stdlib/0.2.4/download",
-      "lockChecksumSha256": "0E76A019E91224D279006FF972F1E984179A6E9FEB050ADBA6CE8274AEF23195",
-      "crateSha256": "0E76A019E91224D279006FF972F1E984179A6E9FEB050ADBA6CE8274AEF23195",
-      "vcsInfoArchivePath": "alloc-stdlib-0.2.4/.cargo_vcs_info.json",
-      "vcsInfoSha256": "5D07554DB80324E6F09A3074928E6AE0E7CEA58248F4C1DB3F32D9CE0EC85EFB",
-      "gitHead": "ae42d22078b98549e987d2f03d12df7b984fde47",
+      "downloadUrl": "https://crates.io/api/v1/crates/alloc-stdlib/0.3.0/download",
+      "lockChecksumSha256": "0B5C1865780388BFA186411AB5F247819487FC4864C6E9C3106611FA347586E1",
+      "crateSha256": "0B5C1865780388BFA186411AB5F247819487FC4864C6E9C3106611FA347586E1",
+      "vcsInfoArchivePath": "alloc-stdlib-0.3.0/.cargo_vcs_info.json",
+      "vcsInfoSha256": "2BFC044805E0E75273A7E4D06C9D72F4E029A6CB926E4645C382BDE160ECFD95",
+      "gitHead": "0a81fd6928ea3b33c8cd484aa4575d50ffb98012",
       "files": [
         {
           "repositoryPath": "LICENSE",
-          "sourceUrl": "https://api.github.com/repos/dropbox/rust-alloc-no-stdlib/contents/LICENSE?ref=ae42d22078b98549e987d2f03d12df7b984fde47",
-          "path": "third_party/license-texts/cargo/alloc-stdlib@0.2.4/LICENSE",
+          "sourceUrl": "https://api.github.com/repos/dropbox/rust-alloc-no-stdlib/contents/LICENSE?ref=0a81fd6928ea3b33c8cd484aa4575d50ffb98012",
+          "path": "third_party/license-texts/cargo/alloc-stdlib@0.3.0/LICENSE",
           "bytes": 1483,
           "sha256": "C0C56F26D9C051CAC4D200C34C84E7AE9AAA853E01A982A1DF08B09931E518AE"
         }
@@ -27,186 +27,38 @@
     },
     {
       "sourceKind": "cargo-git-commit",
-      "packageId": "cargo:unic-char-property@0.9.0",
-      "name": "unic-char-property",
-      "version": "0.9.0",
-      "license": "MIT/Apache-2.0",
-      "repository": "https://github.com/open-i18n/rust-unic",
-      "downloadUrl": "https://crates.io/api/v1/crates/unic-char-property/0.9.0/download",
-      "lockChecksumSha256": "A8C57A407D9B6FA02B4795EB81C5B6652060A15A7903EA981F3D723E6C0BE221",
-      "crateSha256": "A8C57A407D9B6FA02B4795EB81C5B6652060A15A7903EA981F3D723E6C0BE221",
-      "vcsInfoArchivePath": "unic-char-property-0.9.0/.cargo_vcs_info.json",
-      "vcsInfoSha256": "72A0E361AAB8E7AF18AF799A6046B290A930D94B76C551BF0667E0726F9D42D1",
-      "gitHead": "5878605364af97a3358368a6eaef02104af2e016",
+      "packageId": "cargo:tauri-plugin@2.6.3",
+      "name": "tauri-plugin",
+      "version": "2.6.3",
+      "license": "Apache-2.0 OR MIT",
+      "repository": "https://github.com/tauri-apps/tauri",
+      "downloadUrl": "https://crates.io/api/v1/crates/tauri-plugin/2.6.3/download",
+      "lockChecksumSha256": "74BE5DD4BED9AFBD145E5716B5FA2EC28CBC29C34FFA61C258C9273D896C8020",
+      "crateSha256": "74BE5DD4BED9AFBD145E5716B5FA2EC28CBC29C34FFA61C258C9273D896C8020",
+      "vcsInfoArchivePath": "tauri-plugin-2.6.3/.cargo_vcs_info.json",
+      "vcsInfoSha256": "080E80C84C44A6DE683F2DDFA9A7173BD2D5A6732F5C4A3957F832824F578F48",
+      "gitHead": "6f6ab1207bb3923c2721fbc67d2fdb1c8deb0c7a",
       "files": [
         {
-          "repositoryPath": "COPYRIGHT.md",
-          "sourceUrl": "https://api.github.com/repos/open-i18n/rust-unic/contents/COPYRIGHT.md?ref=5878605364af97a3358368a6eaef02104af2e016",
-          "path": "third_party/license-texts/cargo/unic-char-property@0.9.0/COPYRIGHT.md",
-          "bytes": 608,
-          "sha256": "F5C342C49F3AC804F3E8E7BB62A8040A44C50D47BB36902B1ABD13F66A1ADF8B"
+          "repositoryPath": "LICENSE_APACHE-2.0",
+          "sourceUrl": "https://api.github.com/repos/tauri-apps/tauri/contents/LICENSE_APACHE-2.0?ref=6f6ab1207bb3923c2721fbc67d2fdb1c8deb0c7a",
+          "path": "third_party/license-texts/cargo/tauri-plugin@2.6.3/LICENSE_APACHE-2.0",
+          "bytes": 10174,
+          "sha256": "0D542E0C8804E39AA7F37EB00DA5A762149DC682D7829451287E11B938E94594"
         },
         {
-          "repositoryPath": "LICENSE-APACHE",
-          "sourceUrl": "https://api.github.com/repos/open-i18n/rust-unic/contents/LICENSE-APACHE?ref=5878605364af97a3358368a6eaef02104af2e016",
-          "path": "third_party/license-texts/cargo/unic-char-property@0.9.0/LICENSE-APACHE",
-          "bytes": 10847,
-          "sha256": "A60EEA817514531668D7E00765731449FE14D059D3249E0BC93B36DE45F759F2"
+          "repositoryPath": "LICENSE_MIT",
+          "sourceUrl": "https://api.github.com/repos/tauri-apps/tauri/contents/LICENSE_MIT?ref=6f6ab1207bb3923c2721fbc67d2fdb1c8deb0c7a",
+          "path": "third_party/license-texts/cargo/tauri-plugin@2.6.3/LICENSE_MIT",
+          "bytes": 1090,
+          "sha256": "9DD42EA92CFF2EDE5CD477CBFCCE051B2D0115C0AC7F368EE88CB545055DFF1D"
         },
         {
-          "repositoryPath": "LICENSE-MIT",
-          "sourceUrl": "https://api.github.com/repos/open-i18n/rust-unic/contents/LICENSE-MIT?ref=5878605364af97a3358368a6eaef02104af2e016",
-          "path": "third_party/license-texts/cargo/unic-char-property@0.9.0/LICENSE-MIT",
-          "bytes": 1023,
-          "sha256": "23F18E03DC49DF91622FE2A76176497404E46CED8A715D9D2B67A7446571CCA3"
-        }
-      ]
-    },
-    {
-      "sourceKind": "cargo-git-commit",
-      "packageId": "cargo:unic-char-range@0.9.0",
-      "name": "unic-char-range",
-      "version": "0.9.0",
-      "license": "MIT/Apache-2.0",
-      "repository": "https://github.com/open-i18n/rust-unic",
-      "downloadUrl": "https://crates.io/api/v1/crates/unic-char-range/0.9.0/download",
-      "lockChecksumSha256": "0398022D5F700414F6B899E10B8348231ABF9173FA93144CBC1A43B9793C1FBC",
-      "crateSha256": "0398022D5F700414F6B899E10B8348231ABF9173FA93144CBC1A43B9793C1FBC",
-      "vcsInfoArchivePath": "unic-char-range-0.9.0/.cargo_vcs_info.json",
-      "vcsInfoSha256": "72A0E361AAB8E7AF18AF799A6046B290A930D94B76C551BF0667E0726F9D42D1",
-      "gitHead": "5878605364af97a3358368a6eaef02104af2e016",
-      "files": [
-        {
-          "repositoryPath": "COPYRIGHT.md",
-          "sourceUrl": "https://api.github.com/repos/open-i18n/rust-unic/contents/COPYRIGHT.md?ref=5878605364af97a3358368a6eaef02104af2e016",
-          "path": "third_party/license-texts/cargo/unic-char-range@0.9.0/COPYRIGHT.md",
-          "bytes": 608,
-          "sha256": "F5C342C49F3AC804F3E8E7BB62A8040A44C50D47BB36902B1ABD13F66A1ADF8B"
-        },
-        {
-          "repositoryPath": "LICENSE-APACHE",
-          "sourceUrl": "https://api.github.com/repos/open-i18n/rust-unic/contents/LICENSE-APACHE?ref=5878605364af97a3358368a6eaef02104af2e016",
-          "path": "third_party/license-texts/cargo/unic-char-range@0.9.0/LICENSE-APACHE",
-          "bytes": 10847,
-          "sha256": "A60EEA817514531668D7E00765731449FE14D059D3249E0BC93B36DE45F759F2"
-        },
-        {
-          "repositoryPath": "LICENSE-MIT",
-          "sourceUrl": "https://api.github.com/repos/open-i18n/rust-unic/contents/LICENSE-MIT?ref=5878605364af97a3358368a6eaef02104af2e016",
-          "path": "third_party/license-texts/cargo/unic-char-range@0.9.0/LICENSE-MIT",
-          "bytes": 1023,
-          "sha256": "23F18E03DC49DF91622FE2A76176497404E46CED8A715D9D2B67A7446571CCA3"
-        }
-      ]
-    },
-    {
-      "sourceKind": "cargo-git-commit",
-      "packageId": "cargo:unic-common@0.9.0",
-      "name": "unic-common",
-      "version": "0.9.0",
-      "license": "MIT/Apache-2.0",
-      "repository": "https://github.com/open-i18n/rust-unic",
-      "downloadUrl": "https://crates.io/api/v1/crates/unic-common/0.9.0/download",
-      "lockChecksumSha256": "80D7FF825A6A654EE85A63E80F92F054F904F21E7D12DA4E22F9834A4AAA35BC",
-      "crateSha256": "80D7FF825A6A654EE85A63E80F92F054F904F21E7D12DA4E22F9834A4AAA35BC",
-      "vcsInfoArchivePath": "unic-common-0.9.0/.cargo_vcs_info.json",
-      "vcsInfoSha256": "72A0E361AAB8E7AF18AF799A6046B290A930D94B76C551BF0667E0726F9D42D1",
-      "gitHead": "5878605364af97a3358368a6eaef02104af2e016",
-      "files": [
-        {
-          "repositoryPath": "COPYRIGHT.md",
-          "sourceUrl": "https://api.github.com/repos/open-i18n/rust-unic/contents/COPYRIGHT.md?ref=5878605364af97a3358368a6eaef02104af2e016",
-          "path": "third_party/license-texts/cargo/unic-common@0.9.0/COPYRIGHT.md",
-          "bytes": 608,
-          "sha256": "F5C342C49F3AC804F3E8E7BB62A8040A44C50D47BB36902B1ABD13F66A1ADF8B"
-        },
-        {
-          "repositoryPath": "LICENSE-APACHE",
-          "sourceUrl": "https://api.github.com/repos/open-i18n/rust-unic/contents/LICENSE-APACHE?ref=5878605364af97a3358368a6eaef02104af2e016",
-          "path": "third_party/license-texts/cargo/unic-common@0.9.0/LICENSE-APACHE",
-          "bytes": 10847,
-          "sha256": "A60EEA817514531668D7E00765731449FE14D059D3249E0BC93B36DE45F759F2"
-        },
-        {
-          "repositoryPath": "LICENSE-MIT",
-          "sourceUrl": "https://api.github.com/repos/open-i18n/rust-unic/contents/LICENSE-MIT?ref=5878605364af97a3358368a6eaef02104af2e016",
-          "path": "third_party/license-texts/cargo/unic-common@0.9.0/LICENSE-MIT",
-          "bytes": 1023,
-          "sha256": "23F18E03DC49DF91622FE2A76176497404E46CED8A715D9D2B67A7446571CCA3"
-        }
-      ]
-    },
-    {
-      "sourceKind": "cargo-git-commit",
-      "packageId": "cargo:unic-ucd-ident@0.9.0",
-      "name": "unic-ucd-ident",
-      "version": "0.9.0",
-      "license": "MIT/Apache-2.0",
-      "repository": "https://github.com/open-i18n/rust-unic",
-      "downloadUrl": "https://crates.io/api/v1/crates/unic-ucd-ident/0.9.0/download",
-      "lockChecksumSha256": "E230A37C0381CAA9219D67CF063AA3A375FFED5BF541A452DB16E744BDAB6987",
-      "crateSha256": "E230A37C0381CAA9219D67CF063AA3A375FFED5BF541A452DB16E744BDAB6987",
-      "vcsInfoArchivePath": "unic-ucd-ident-0.9.0/.cargo_vcs_info.json",
-      "vcsInfoSha256": "64E154B113A16828624A2BAEDC6E70E8E6EA8F5C8CF8455D2C255762C0F43A8A",
-      "gitHead": "8a6ce83063d90b91ae2ce59eddb803edd393fca9",
-      "files": [
-        {
-          "repositoryPath": "COPYRIGHT.md",
-          "sourceUrl": "https://api.github.com/repos/open-i18n/rust-unic/contents/COPYRIGHT.md?ref=8a6ce83063d90b91ae2ce59eddb803edd393fca9",
-          "path": "third_party/license-texts/cargo/unic-ucd-ident@0.9.0/COPYRIGHT.md",
-          "bytes": 608,
-          "sha256": "F5C342C49F3AC804F3E8E7BB62A8040A44C50D47BB36902B1ABD13F66A1ADF8B"
-        },
-        {
-          "repositoryPath": "LICENSE-APACHE",
-          "sourceUrl": "https://api.github.com/repos/open-i18n/rust-unic/contents/LICENSE-APACHE?ref=8a6ce83063d90b91ae2ce59eddb803edd393fca9",
-          "path": "third_party/license-texts/cargo/unic-ucd-ident@0.9.0/LICENSE-APACHE",
-          "bytes": 10847,
-          "sha256": "A60EEA817514531668D7E00765731449FE14D059D3249E0BC93B36DE45F759F2"
-        },
-        {
-          "repositoryPath": "LICENSE-MIT",
-          "sourceUrl": "https://api.github.com/repos/open-i18n/rust-unic/contents/LICENSE-MIT?ref=8a6ce83063d90b91ae2ce59eddb803edd393fca9",
-          "path": "third_party/license-texts/cargo/unic-ucd-ident@0.9.0/LICENSE-MIT",
-          "bytes": 1023,
-          "sha256": "23F18E03DC49DF91622FE2A76176497404E46CED8A715D9D2B67A7446571CCA3"
-        }
-      ]
-    },
-    {
-      "sourceKind": "cargo-git-commit",
-      "packageId": "cargo:unic-ucd-version@0.9.0",
-      "name": "unic-ucd-version",
-      "version": "0.9.0",
-      "license": "MIT/Apache-2.0",
-      "repository": "https://github.com/open-i18n/rust-unic",
-      "downloadUrl": "https://crates.io/api/v1/crates/unic-ucd-version/0.9.0/download",
-      "lockChecksumSha256": "96BD2F2237FE450FCD0A1D2F5F4E91711124F7857BA2E964247776EBEEB7B0C4",
-      "crateSha256": "96BD2F2237FE450FCD0A1D2F5F4E91711124F7857BA2E964247776EBEEB7B0C4",
-      "vcsInfoArchivePath": "unic-ucd-version-0.9.0/.cargo_vcs_info.json",
-      "vcsInfoSha256": "72A0E361AAB8E7AF18AF799A6046B290A930D94B76C551BF0667E0726F9D42D1",
-      "gitHead": "5878605364af97a3358368a6eaef02104af2e016",
-      "files": [
-        {
-          "repositoryPath": "COPYRIGHT.md",
-          "sourceUrl": "https://api.github.com/repos/open-i18n/rust-unic/contents/COPYRIGHT.md?ref=5878605364af97a3358368a6eaef02104af2e016",
-          "path": "third_party/license-texts/cargo/unic-ucd-version@0.9.0/COPYRIGHT.md",
-          "bytes": 608,
-          "sha256": "F5C342C49F3AC804F3E8E7BB62A8040A44C50D47BB36902B1ABD13F66A1ADF8B"
-        },
-        {
-          "repositoryPath": "LICENSE-APACHE",
-          "sourceUrl": "https://api.github.com/repos/open-i18n/rust-unic/contents/LICENSE-APACHE?ref=5878605364af97a3358368a6eaef02104af2e016",
-          "path": "third_party/license-texts/cargo/unic-ucd-version@0.9.0/LICENSE-APACHE",
-          "bytes": 10847,
-          "sha256": "A60EEA817514531668D7E00765731449FE14D059D3249E0BC93B36DE45F759F2"
-        },
-        {
-          "repositoryPath": "LICENSE-MIT",
-          "sourceUrl": "https://api.github.com/repos/open-i18n/rust-unic/contents/LICENSE-MIT?ref=5878605364af97a3358368a6eaef02104af2e016",
-          "path": "third_party/license-texts/cargo/unic-ucd-version@0.9.0/LICENSE-MIT",
-          "bytes": 1023,
-          "sha256": "23F18E03DC49DF91622FE2A76176497404E46CED8A715D9D2B67A7446571CCA3"
+          "repositoryPath": "LICENSE.spdx",
+          "sourceUrl": "https://api.github.com/repos/tauri-apps/tauri/contents/LICENSE.spdx?ref=6f6ab1207bb3923c2721fbc67d2fdb1c8deb0c7a",
+          "path": "third_party/license-texts/cargo/tauri-plugin@2.6.3/LICENSE.spdx",
+          "bytes": 889,
+          "sha256": "5E834FE9788C524210DEDA859C46A550FFA5AA0CBA9EA0572F0D81120E97C008"
         }
       ]
     },
@@ -235,22 +87,22 @@
     },
     {
       "sourceKind": "cargo-git-commit",
-      "packageId": "cargo:webview2-com-sys@0.38.2",
+      "packageId": "cargo:webview2-com-sys@0.39.1",
       "name": "webview2-com-sys",
-      "version": "0.38.2",
+      "version": "0.39.1",
       "license": "MIT",
       "repository": "https://github.com/wravery/webview2-rs",
-      "downloadUrl": "https://crates.io/api/v1/crates/webview2-com-sys/0.38.2/download",
-      "lockChecksumSha256": "381336CFFFD772377D291702245447A5251A2FFA5BAD679C99E61BC48BACBF9C",
-      "crateSha256": "381336CFFFD772377D291702245447A5251A2FFA5BAD679C99E61BC48BACBF9C",
-      "vcsInfoArchivePath": "webview2-com-sys-0.38.2/.cargo_vcs_info.json",
-      "vcsInfoSha256": "8AF502BD8832383DC1DD8BBD7FB00EB76A72B111688BC492E110BBAC44CB005F",
-      "gitHead": "b74dc5e2b394044bea5191052868ce7a106c202c",
+      "downloadUrl": "https://crates.io/api/v1/crates/webview2-com-sys/0.39.1/download",
+      "lockChecksumSha256": "B3A07132775117D6065853D9D1178157B8C90E228DE47129D6BCE2C7EDEBEDFB",
+      "crateSha256": "B3A07132775117D6065853D9D1178157B8C90E228DE47129D6BCE2C7EDEBEDFB",
+      "vcsInfoArchivePath": "webview2-com-sys-0.39.1/.cargo_vcs_info.json",
+      "vcsInfoSha256": "D4137410068017C3F66FE98578F2FD40F0E76D3FD628FA361C758F3B262351C7",
+      "gitHead": "edc2caf886175ccaebe86078c9cfe1ae2a187328",
       "files": [
         {
           "repositoryPath": "LICENSE",
-          "sourceUrl": "https://api.github.com/repos/wravery/webview2-rs/contents/LICENSE?ref=b74dc5e2b394044bea5191052868ce7a106c202c",
-          "path": "third_party/license-texts/cargo/webview2-com-sys@0.38.2/LICENSE",
+          "sourceUrl": "https://api.github.com/repos/wravery/webview2-rs/contents/LICENSE?ref=edc2caf886175ccaebe86078c9cfe1ae2a187328",
+          "path": "third_party/license-texts/cargo/webview2-com-sys@0.39.1/LICENSE",
           "bytes": 1067,
           "sha256": "0DCF41516E608BBCB6CDC5229FEB7B86FE4A643B85E7DF251133C93408FDAC73"
         }
@@ -258,22 +110,22 @@
     },
     {
       "sourceKind": "cargo-git-commit",
-      "packageId": "cargo:webview2-com@0.38.2",
+      "packageId": "cargo:webview2-com@0.39.1",
       "name": "webview2-com",
-      "version": "0.38.2",
+      "version": "0.39.1",
       "license": "MIT",
       "repository": "https://github.com/wravery/webview2-rs",
-      "downloadUrl": "https://crates.io/api/v1/crates/webview2-com/0.38.2/download",
-      "lockChecksumSha256": "7130243A7A5B33C54A444E54842E6A9E133DE08B5AD7B5861CD8ED9A6A5BC96A",
-      "crateSha256": "7130243A7A5B33C54A444E54842E6A9E133DE08B5AD7B5861CD8ED9A6A5BC96A",
-      "vcsInfoArchivePath": "webview2-com-0.38.2/.cargo_vcs_info.json",
-      "vcsInfoSha256": "CD98F3865CAA97F47155B4238EA574245680DE51FC689AB117B29CCAC7566221",
-      "gitHead": "b74dc5e2b394044bea5191052868ce7a106c202c",
+      "downloadUrl": "https://crates.io/api/v1/crates/webview2-com/0.39.1/download",
+      "lockChecksumSha256": "3F89FCA7A704CEE10DCB3654C1DBB8941D1783132F1917358AF75BEC37A7D7E6",
+      "crateSha256": "3F89FCA7A704CEE10DCB3654C1DBB8941D1783132F1917358AF75BEC37A7D7E6",
+      "vcsInfoArchivePath": "webview2-com-0.39.1/.cargo_vcs_info.json",
+      "vcsInfoSha256": "88413F4E9DE3A9360FAFB0D8C9A0FDF5A01A45D73F9DED314FA7B9FFA2108ACE",
+      "gitHead": "edc2caf886175ccaebe86078c9cfe1ae2a187328",
       "files": [
         {
           "repositoryPath": "LICENSE",
-          "sourceUrl": "https://api.github.com/repos/wravery/webview2-rs/contents/LICENSE?ref=b74dc5e2b394044bea5191052868ce7a106c202c",
-          "path": "third_party/license-texts/cargo/webview2-com@0.38.2/LICENSE",
+          "sourceUrl": "https://api.github.com/repos/wravery/webview2-rs/contents/LICENSE?ref=edc2caf886175ccaebe86078c9cfe1ae2a187328",
+          "path": "third_party/license-texts/cargo/webview2-com@0.39.1/LICENSE",
           "bytes": 1067,
           "sha256": "0DCF41516E608BBCB6CDC5229FEB7B86FE4A643B85E7DF251133C93408FDAC73"
         }

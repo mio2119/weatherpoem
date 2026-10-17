@@ -1,0 +1,54 @@
+{
+  "schemaVersion": "1.0",
+  "testKind": "isolated-native-hidden-day-reveal",
+  "generatedAt": "2026-10-16T17:31:26.292Z",
+  "candidate": {
+    "path": ".work/redesign-tauri-noactivate-experiment-20261017/release/weatherpoem.exe",
+    "sha256": "0921010061A8D66C551DEAC609B74063433C88B07D836B321F4EAECAF401D4AD"
+  },
+  "isolation": {
+    "temporaryProfile": true,
+    "systemClockChanged": false,
+    "installedOrUninstalled": false,
+    "realUserDataTouched": false
+  },
+  "scenario": "weather-offline",
+  "concealAction": "tray-hide-button",
+  "activationPath": "native-single-instance",
+  "readyView": "poem",
+  "original": {
+    "date": "10月17日",
+    "title": "宿建德江",
+    "visible": "visible",
+    "poem": true
+  },
+  "hidden": {
+    "visibility": "visible",
+    "poem": false,
+    "loading": true
+  },
+  "expectedDate": "10月18日",
+  "screenshots": [],
+  "observed": [
+    {
+      "visible": "visible",
+      "poem": false,
+      "loading": true,
+      "correction": false
+    },
+    {
+      "visible": "visible",
+      "poem": false,
+      "loading": true,
+      "correction": false
+    },
+    {
+      "visible": "visible",
+      "date": "10月18日",
+      "poem": true,
+      "loading": false,
+      "correction": false
+    }
+  ],
+  "result": "passed"
+}

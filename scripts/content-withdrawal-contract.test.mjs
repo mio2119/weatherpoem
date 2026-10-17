@@ -1,4 +1,5 @@
 import assert from "node:assert/strict";
+import { readFileSync } from "node:fs";
 import test from "node:test";
 import { assertContentWithdrawalDrillReport } from "./content-withdrawal-support.mjs";
 
@@ -98,4 +99,15 @@ test("旧目录、缺少缓存防回退或错误候选数量都会被拒绝", ()
   assert.throws(() =>
     assertContentWithdrawalDrillReport(wrongCount, CONTEXT),
   );
+});
+
+test("改版全项目检查使用独立撤回报告而不覆盖旧候选入口", () => {
+  const packageJson = JSON.parse(readFileSync(new URL("../package.json", import.meta.url), "utf8"));
+  assert.match(
+    packageJson.scripts["content:withdrawal:redesign:check"],
+    /--check --report=T08_CONTENT_WITHDRAWAL_DRILL_20261015\.json/,
+  );
+  assert.match(packageJson.scripts.check, /content:withdrawal:redesign:check/);
+  assert.doesNotMatch(packageJson.scripts.check, /content:withdrawal:check(?:\s|$)/);
+  assert.match(packageJson.scripts["content:withdrawal:check"], /content-withdrawal-drill\.mjs --check/);
 });

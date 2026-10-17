@@ -8,6 +8,7 @@ export default [
       "coverage/**",
       "node_modules/**",
       "src-tauri/target/**",
+      ".work/**",
       "prototype/**",
       "tmp/**",
       "tools/**",

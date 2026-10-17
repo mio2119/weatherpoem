@@ -11,6 +11,8 @@ use tauri::{
     Emitter, Manager, WebviewWindowBuilder, WindowEvent,
 };
 
+mod foreground;
+
 static PROCESS_STARTED: OnceLock<Instant> = OnceLock::new();
 static PERFORMANCE_PROFILE: OnceLock<Option<PerformanceProfile>> = OnceLock::new();
 const APP_IDENTIFIER: &str = "cn.weatherpoem.desktop";
@@ -26,6 +28,7 @@ struct PerformanceProfile {
 #[serde(rename_all = "camelCase")]
 struct LaunchContext {
     is_autostart: bool,
+    foreground_presentation: foreground::ForegroundPresentation,
 }
 
 #[derive(serde::Serialize)]
@@ -41,13 +44,33 @@ struct PerformanceProbe {
     ready_mode: String,
     view_render_ms: f64,
     performance_scenario: Option<String>,
+    scene_motion: Option<SceneMotionProbe>,
     recorded_at_unix_ms: u128,
+}
+
+#[derive(serde::Deserialize, serde::Serialize)]
+#[serde(rename_all = "camelCase")]
+struct SceneMotionProbe {
+    scene_kind: String,
+    app_reduced: bool,
+    system_reduced: bool,
+    scene_active: bool,
+    visibility_state: String,
+    animation_name: String,
+    animation_duration: String,
+    animation_iteration_count: String,
 }
 
 #[tauri::command]
 fn launch_context() -> LaunchContext {
+    let is_autostart = std::env::args().any(|argument| argument == "--autostart");
     LaunchContext {
-        is_autostart: std::env::args().any(|argument| argument == "--autostart"),
+        is_autostart,
+        foreground_presentation: if is_autostart {
+            foreground::foreground_presentation()
+        } else {
+            foreground::ForegroundPresentation::Clear
+        },
     }
 }
 
@@ -130,7 +153,7 @@ fn resolve_performance_profile() -> Result<Option<PerformanceProfile>, String> {
     if let Some(value) = scenario.as_deref() {
         if !matches!(
             value,
-            "weather-offline" | "weather-timeout" | "official-warning"
+            "weather-offline" | "weather-timeout" | "official-warning" | "scene-rain"
         ) {
             return Err("性能故障场景名称不合法".to_string());
         }
@@ -170,6 +193,11 @@ fn performance_scenario() -> Option<String> {
         .get()
         .and_then(Option::as_ref)
         .and_then(|profile| profile.scenario.clone())
+}
+
+#[tauri::command]
+fn is_performance_profile() -> bool {
+    PERFORMANCE_PROFILE.get().and_then(Option::as_ref).is_some()
 }
 
 fn is_valid_ready_pair(view: &str, mode: &str) -> bool {
@@ -212,6 +240,7 @@ fn report_frontend_ready(
     ready_view: String,
     ready_mode: String,
     view_render_ms: f64,
+    scene_motion: Option<SceneMotionProbe>,
 ) -> Result<(), String> {
     let Some(probe_path) = std::env::var_os("WEATHERPOEM_PERFORMANCE_PROBE") else {
         return Ok(());
@@ -276,6 +305,7 @@ fn report_frontend_ready(
             .get()
             .and_then(Option::as_ref)
             .and_then(|profile| profile.scenario.clone()),
+        scene_motion,
         recorded_at_unix_ms,
     };
     let payload =
@@ -347,6 +377,7 @@ pub fn run() {
             launch_context,
             open_third_party_notices,
             performance_scenario,
+            is_performance_profile,
             report_frontend_ready
         ])
         .setup(move |app| {
@@ -399,6 +430,7 @@ pub fn run() {
         .on_window_event(|window, event| {
             if let WindowEvent::CloseRequested { api, .. } = event {
                 api.prevent_close();
+                let _ = window.emit("weatherpoem://conceal-main", ());
                 let _ = window.hide();
             }
         })

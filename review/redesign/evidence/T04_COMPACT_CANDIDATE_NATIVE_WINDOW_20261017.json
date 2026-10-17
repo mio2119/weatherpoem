@@ -1,0 +1,258 @@
+{
+  "schemaVersion": "1.0",
+  "testKind": "isolated-native-window",
+  "generatedAt": "2026-10-17T03:28:15.4816563Z",
+  "sourceCommit": "4f6a7dd60dcdec1187bbc381b91fd0847a2434b1",
+  "candidate": {
+    "path": "E:\\weatherpoem\\.work\\redesign-compact-warning-20261017\\release\\weatherpoem.exe",
+    "sha256": "1DFDFC7064455FED11780922596A6328C50F63793AAE1DDAE1A3141211813BE1"
+  },
+  "profileIsolation": true,
+  "realUserDataTouched": false,
+  "systemAutostartChanged": false,
+  "systemDisplaySettingsChanged": false,
+  "observations": {
+    "foregroundBeforePid": 80972,
+    "readyView": "poem",
+    "readyMode": "offline-rules",
+    "processId": 107060,
+    "windowHandle": "10095422",
+    "windowHandleType": "System.IntPtr",
+    "foregroundAfterPid": 80972,
+    "productTookFocus": false,
+    "foregroundUnchanged": true,
+    "glance": {
+      "left": 1500,
+      "top": 658,
+      "right": 1898,
+      "bottom": 1010,
+      "width": 398,
+      "height": 352,
+      "dpi": 96,
+      "workingArea": {
+        "left": 0,
+        "top": 0,
+        "right": 1920,
+        "bottom": 1032
+      }
+    },
+    "accessibleElements": [
+      {
+        "name": "WeatherPoem 今日诗笺",
+        "controlType": "ControlType.Pane"
+      },
+      {
+        "name": "WeatherPoem 今日诗笺 - Web 内容",
+        "controlType": "ControlType.Pane"
+      },
+      {
+        "name": "WeatherPoem 今日诗笺",
+        "controlType": "ControlType.Document"
+      },
+      {
+        "name": "今日诗笺",
+        "controlType": "ControlType.Text"
+      },
+      {
+        "name": "北京 · 九月初八",
+        "controlType": "ControlType.Text"
+      },
+      {
+        "name": "设置",
+        "controlType": "ControlType.Button"
+      },
+      {
+        "name": "最小化",
+        "controlType": "ControlType.Button"
+      },
+      {
+        "name": "隐藏到托盘",
+        "controlType": "ControlType.Button"
+      },
+      {
+        "name": "秋词",
+        "controlType": "ControlType.Group"
+      },
+      {
+        "name": "今日环境",
+        "controlType": "ControlType.Group"
+      },
+      {
+        "name": "10月17日",
+        "controlType": "ControlType.Text"
+      },
+      {
+        "name": "天气未更新",
+        "controlType": "ControlType.Text"
+      },
+      {
+        "name": "抽象季节纹样，不代表当地实时天气",
+        "controlType": "ControlType.Image"
+      },
+      {
+        "name": "收藏 0",
+        "controlType": "ControlType.Button"
+      },
+      {
+        "name": "秋词",
+        "controlType": "ControlType.Group"
+      },
+      {
+        "name": "秋词",
+        "controlType": "ControlType.Text"
+      },
+      {
+        "name": "刘禹锡 · 唐",
+        "controlType": "ControlType.Text"
+      },
+      {
+        "name": "改为竖排诗句",
+        "controlType": "ControlType.Button"
+      },
+      {
+        "name": "诗句节选",
+        "controlType": "ControlType.Group"
+      },
+      {
+        "name": "晴空一鹤排云上",
+        "controlType": "ControlType.Text"
+      },
+      {
+        "name": "便引诗情到碧霄",
+        "controlType": "ControlType.Text"
+      },
+      {
+        "name": "秋日，清秋也可以向上，不必沿用别人规定的情绪。",
+        "controlType": "ControlType.Text"
+      },
+      {
+        "name": "继续读",
+        "controlType": "ControlType.Button"
+      },
+      {
+        "name": "收藏",
+        "controlType": "ControlType.Button"
+      },
+      {
+        "name": "收起",
+        "controlType": "ControlType.Button"
+      },
+      {
+        "name": "更多",
+        "controlType": "ControlType.Button"
+      }
+    ],
+    "manualForegroundOwnerPid": 107060,
+    "reading": {
+      "left": 1328,
+      "top": 287,
+      "right": 1904,
+      "bottom": 1016,
+      "width": 576,
+      "height": 729,
+      "dpi": 96,
+      "workingArea": {
+        "left": 0,
+        "top": 0,
+        "right": 1920,
+        "bottom": 1032
+      }
+    },
+    "resizedReading": {
+      "left": 350,
+      "top": 160,
+      "right": 990,
+      "bottom": 800,
+      "width": 640,
+      "height": 640,
+      "dpi": 96,
+      "workingArea": {
+        "left": 0,
+        "top": 0,
+        "right": 1920,
+        "bottom": 1032
+      }
+    },
+    "returnedGlance": {
+      "left": 1490,
+      "top": 658,
+      "right": 1898,
+      "bottom": 1010,
+      "width": 408,
+      "height": 352,
+      "dpi": 96,
+      "workingArea": {
+        "left": 0,
+        "top": 0,
+        "right": 1920,
+        "bottom": 1032
+      }
+    },
+    "reopenedReading": {
+      "left": 1264,
+      "top": 376,
+      "right": 1904,
+      "bottom": 1016,
+      "width": 640,
+      "height": 640,
+      "dpi": 96,
+      "workingArea": {
+        "left": 0,
+        "top": 0,
+        "right": 1920,
+        "bottom": 1032
+      }
+    },
+    "hiddenProcessAlive": true,
+    "trayDiagnostic": [
+      {
+        "name": "显示隐藏的图标",
+        "controlType": "ControlType.Button",
+        "className": "SystemTray.NormalButton"
+      },
+      {
+        "name": "WeatherPoem 今日诗笺",
+        "controlType": "ControlType.Button",
+        "className": "SystemTray.NormalButton"
+      }
+    ],
+    "trayControlType": "ControlType.Button",
+    "trayBounds": {
+      "left": 1571.0,
+      "top": 855.0,
+      "width": 40.0,
+      "height": 40.0,
+      "offscreen": false
+    },
+    "trayInteraction": "exact UI Automation InvokePattern",
+    "trayWindowHandle": "10095422",
+    "trayRecovered": true,
+    "trayForegroundOwnerPid": 107060,
+    "trayOpenedWithFocus": true,
+    "persistedReadingSize": {
+      "width": 624,
+      "height": 631
+    },
+    "restartProcessId": 107860,
+    "restartReading": {
+      "left": 1264,
+      "top": 376,
+      "right": 1904,
+      "bottom": 1016,
+      "width": 640,
+      "height": 640,
+      "dpi": 96,
+      "workingArea": {
+        "left": 0,
+        "top": 0,
+        "right": 1920,
+        "bottom": 1032
+      }
+    }
+  },
+  "limitations": [
+    "Resize was generated by Win32 MoveWindow, not a physical drag.",
+    "Programmatic UI Automation invocation cannot replace a human manual-click focus check."
+  ],
+  "result": "focus-resize-tray-invoke-and-restart-passed"
+}

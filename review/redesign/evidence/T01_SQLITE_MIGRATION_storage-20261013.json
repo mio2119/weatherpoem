@@ -1,0 +1,48 @@
+{
+  "schemaVersion": "1.0",
+  "testKind": "isolated-legacy-sqlite-migration",
+  "appVersion": "0.2.0",
+  "generatedAt": "2026-10-13T12:01:09.941Z",
+  "artifact": {
+    "path": ".work/redesign-storage-20261013/release/weatherpoem.exe",
+    "sha256": "E7A42D12AD45FBD33EEAD869377328DF0E19548351AB0F0580242B8F136B2EC1"
+  },
+  "scenario": {
+    "legacyDate": "2025-01-01",
+    "legacyWorkId": "li-bai-du-zuo-jing-ting-shan",
+    "launches": 2,
+    "profileIsolated": true,
+    "realUserDataTouched": false,
+    "simulatedWeather": "weather-offline"
+  },
+  "firstLaunch": {
+    "readyView": "poem",
+    "readyMode": "offline-rules",
+    "legacyHistoryRows": 1,
+    "migratedLegacyEventRows": 1,
+    "currentDisplayEventRows": 1,
+    "oldFavoritePreserved": true,
+    "oldFeedbackPreserved": true,
+    "oldSettingsPreserved": true,
+    "oldDailyStatePreserved": true,
+    "feedbackLocalDateColumnAdded": true
+  },
+  "secondLaunch": {
+    "readyView": "poem",
+    "readyMode": "offline-rules",
+    "legacyHistoryRows": 1,
+    "migratedLegacyEventRows": 1,
+    "currentDisplayEventRows": 2,
+    "oldFavoritePreserved": true,
+    "oldFeedbackPreserved": true,
+    "oldSettingsPreserved": true,
+    "oldDailyStatePreserved": true,
+    "feedbackLocalDateColumnAdded": true
+  },
+  "result": "passed",
+  "limitations": {
+    "actualUserDatabaseNotRead": true,
+    "hibernationAndMidnightNotMeasured": true,
+    "browserStorageMigrationNotMeasured": true
+  }
+}

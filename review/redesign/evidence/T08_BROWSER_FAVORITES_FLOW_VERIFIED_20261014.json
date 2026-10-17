@@ -1,0 +1,268 @@
+{
+  "schemaVersion": "1.0",
+  "browser": "Chrome/155.0.8059.40",
+  "localDate": "2026-06-01",
+  "poemId": "cui-hao-huang-he-lou",
+  "isolatedProfile": true,
+  "nativeWebView2": false,
+  "favoriteFlow": [
+    {
+      "stage": "card-before",
+      "panel": "card",
+      "focusPanel": "poem-view",
+      "activeIsPanel": true,
+      "cardTitle": "黄鹤楼",
+      "readingTitle": null,
+      "backLabel": null,
+      "cardFavorite": "false",
+      "readingFavorite": null,
+      "poemFontSize": "medium",
+      "poemVertical": false,
+      "favoriteTitles": [],
+      "favoriteCount": "收藏 1",
+      "storageFavorites": [
+        "wang-an-shi-yuan-ri"
+      ],
+      "documentScrollWidth": 392,
+      "viewportWidth": 392,
+      "viewportHeight": 430
+    },
+    {
+      "stage": "reading-from-card",
+      "panel": "reading",
+      "focusPanel": "reading-panel",
+      "activeIsPanel": true,
+      "cardTitle": null,
+      "readingTitle": "黄鹤楼",
+      "backLabel": "今日诗笺",
+      "cardFavorite": null,
+      "readingFavorite": "false",
+      "poemFontSize": "medium",
+      "poemVertical": false,
+      "favoriteTitles": [],
+      "favoriteCount": null,
+      "storageFavorites": [
+        "wang-an-shi-yuan-ri"
+      ],
+      "documentScrollWidth": 560,
+      "viewportWidth": 560,
+      "viewportHeight": 720
+    },
+    {
+      "stage": "reading-collected",
+      "panel": "reading",
+      "focusPanel": "reading-panel",
+      "activeIsPanel": true,
+      "cardTitle": null,
+      "readingTitle": "黄鹤楼",
+      "backLabel": "今日诗笺",
+      "cardFavorite": null,
+      "readingFavorite": "true",
+      "poemFontSize": "medium",
+      "poemVertical": false,
+      "favoriteTitles": [],
+      "favoriteCount": null,
+      "storageFavorites": [
+        "cui-hao-huang-he-lou",
+        "wang-an-shi-yuan-ri"
+      ],
+      "documentScrollWidth": 560,
+      "viewportWidth": 560,
+      "viewportHeight": 720
+    },
+    {
+      "stage": "card-collected",
+      "panel": "card",
+      "focusPanel": "poem-view",
+      "activeIsPanel": true,
+      "cardTitle": "黄鹤楼",
+      "readingTitle": null,
+      "backLabel": null,
+      "cardFavorite": "true",
+      "readingFavorite": null,
+      "poemFontSize": "medium",
+      "poemVertical": false,
+      "favoriteTitles": [],
+      "favoriteCount": "收藏 2",
+      "storageFavorites": [
+        "cui-hao-huang-he-lou",
+        "wang-an-shi-yuan-ri"
+      ],
+      "documentScrollWidth": 392,
+      "viewportWidth": 392,
+      "viewportHeight": 430
+    },
+    {
+      "stage": "card-after-reload",
+      "panel": "card",
+      "focusPanel": "poem-view",
+      "activeIsPanel": true,
+      "cardTitle": "黄鹤楼",
+      "readingTitle": null,
+      "backLabel": null,
+      "cardFavorite": "true",
+      "readingFavorite": null,
+      "poemFontSize": "medium",
+      "poemVertical": false,
+      "favoriteTitles": [],
+      "favoriteCount": "收藏 2",
+      "storageFavorites": [
+        "cui-hao-huang-he-lou",
+        "wang-an-shi-yuan-ri"
+      ],
+      "documentScrollWidth": 392,
+      "viewportWidth": 392,
+      "viewportHeight": 430
+    },
+    {
+      "stage": "favorites-list",
+      "panel": "favorites",
+      "focusPanel": "favorites-panel",
+      "activeIsPanel": true,
+      "cardTitle": null,
+      "readingTitle": null,
+      "backLabel": "今日诗笺",
+      "cardFavorite": null,
+      "readingFavorite": null,
+      "poemFontSize": null,
+      "poemVertical": false,
+      "favoriteTitles": [
+        "黄鹤楼",
+        "元日"
+      ],
+      "favoriteCount": null,
+      "storageFavorites": [
+        "cui-hao-huang-he-lou",
+        "wang-an-shi-yuan-ri"
+      ],
+      "documentScrollWidth": 392,
+      "viewportWidth": 392,
+      "viewportHeight": 430
+    },
+    {
+      "stage": "reading-from-favorites",
+      "panel": "reading",
+      "focusPanel": "reading-panel",
+      "activeIsPanel": true,
+      "cardTitle": null,
+      "readingTitle": "黄鹤楼",
+      "backLabel": "我的收藏",
+      "cardFavorite": null,
+      "readingFavorite": "true",
+      "poemFontSize": "medium",
+      "poemVertical": false,
+      "favoriteTitles": [],
+      "favoriteCount": null,
+      "storageFavorites": [
+        "cui-hao-huang-he-lou",
+        "wang-an-shi-yuan-ri"
+      ],
+      "documentScrollWidth": 560,
+      "viewportWidth": 560,
+      "viewportHeight": 720
+    },
+    {
+      "stage": "reading-uncollected",
+      "panel": "reading",
+      "focusPanel": "reading-panel",
+      "activeIsPanel": true,
+      "cardTitle": null,
+      "readingTitle": "黄鹤楼",
+      "backLabel": "我的收藏",
+      "cardFavorite": null,
+      "readingFavorite": "false",
+      "poemFontSize": "medium",
+      "poemVertical": false,
+      "favoriteTitles": [],
+      "favoriteCount": null,
+      "storageFavorites": [
+        "wang-an-shi-yuan-ri"
+      ],
+      "documentScrollWidth": 560,
+      "viewportWidth": 560,
+      "viewportHeight": 720
+    },
+    {
+      "stage": "favorites-after-remove",
+      "panel": "favorites",
+      "focusPanel": "favorites-panel",
+      "activeIsPanel": true,
+      "cardTitle": null,
+      "readingTitle": null,
+      "backLabel": "今日诗笺",
+      "cardFavorite": null,
+      "readingFavorite": null,
+      "poemFontSize": null,
+      "poemVertical": false,
+      "favoriteTitles": [
+        "元日"
+      ],
+      "favoriteCount": null,
+      "storageFavorites": [
+        "wang-an-shi-yuan-ri"
+      ],
+      "documentScrollWidth": 392,
+      "viewportWidth": 392,
+      "viewportHeight": 430
+    },
+    {
+      "stage": "card-after-remove",
+      "panel": "card",
+      "focusPanel": "poem-view",
+      "activeIsPanel": true,
+      "cardTitle": "黄鹤楼",
+      "readingTitle": null,
+      "backLabel": null,
+      "cardFavorite": "false",
+      "readingFavorite": null,
+      "poemFontSize": "medium",
+      "poemVertical": false,
+      "favoriteTitles": [],
+      "favoriteCount": "收藏 1",
+      "storageFavorites": [
+        "wang-an-shi-yuan-ri"
+      ],
+      "documentScrollWidth": 392,
+      "viewportWidth": 392,
+      "viewportHeight": 430
+    }
+  ],
+  "favoriteCompactReading": {
+    "theme": "light",
+    "fontSize": "medium",
+    "vertical": false,
+    "title": "黄鹤楼",
+    "poemText": "昔人已乘黄鹤去，此地空余黄鹤楼。黄鹤一去不复返，白云千载空悠悠。晴川历历汉阳树，芳草萋萋鹦鹉洲。日暮乡关何处是？烟波江上使人愁。",
+    "poemLineCount": 4,
+    "documentScrollWidth": 320,
+    "panelClientHeight": 200,
+    "panelScrollHeight": 831,
+    "panelScrollTop": 631,
+    "frameClientWidth": 243,
+    "frameScrollWidth": 243,
+    "frameInitialScroll": 0,
+    "frameEndScroll": 0,
+    "back": {
+      "top": 67,
+      "bottom": 97,
+      "left": 21,
+      "right": 87
+    },
+    "layoutAction": {
+      "top": -394,
+      "bottom": -362,
+      "left": 222,
+      "right": 278
+    },
+    "edition": {
+      "top": 200,
+      "bottom": 211,
+      "left": 35,
+      "right": 278
+    },
+    "viewport": {
+      "width": 320,
+      "height": 260
+    }
+  }
+}

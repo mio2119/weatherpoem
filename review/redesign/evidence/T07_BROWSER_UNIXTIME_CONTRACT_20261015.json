@@ -1,0 +1,1369 @@
+{
+  "schemaVersion": "1.0",
+  "browser": "Chrome/155.0.8059.40",
+  "nativeWebView2": false,
+  "isolatedProfile": true,
+  "syntheticWeather": true,
+  "weatherMeasurements": [
+    {
+      "theme": "light",
+      "scenario": "fresh-rain",
+      "date": "2026-04-12",
+      "hour": 9,
+      "workId": "du-fu-chun-ye-xi-yu",
+      "tags": {
+        "weather": [
+          "light-rain",
+          "rain",
+          "overcast"
+        ],
+        "seasons": [
+          "spring"
+        ]
+      },
+      "fixture": {
+        "mode": "fresh",
+        "code": 51
+      },
+      "expectedScene": "rain",
+      "roomy": {
+        "theme": "light",
+        "motion": "reduced",
+        "scene": "rain",
+        "sceneDescription": "当地天气：小雨",
+        "context": "4月12日小雨雨 收藏 0",
+        "reason": "当地有小雨，真正有效的滋养，常常安静得不被立即察觉。",
+        "title": "春夜喜雨",
+        "poemText": "随风潜入夜润物细无声",
+        "decorationAnimation": "none",
+        "decorationDuration": "1e-05s",
+        "decorationIterations": "1",
+        "documentOverflow": false,
+        "viewScrollHeight": 660,
+        "viewClientHeight": 660,
+        "poemBox": {
+          "top": 170,
+          "bottom": 236,
+          "left": 32,
+          "right": 360
+        },
+        "paperBox": {
+          "top": 101,
+          "bottom": 350,
+          "left": 15,
+          "right": 377
+        },
+        "actionsBox": {
+          "top": 304,
+          "bottom": 338,
+          "left": 32,
+          "right": 360
+        },
+        "viewport": {
+          "width": 392,
+          "height": 720
+        }
+      },
+      "compact": {
+        "theme": "light",
+        "motion": "reduced",
+        "scene": "rain",
+        "sceneDescription": "当地天气：小雨",
+        "context": "4月12日小雨雨 收藏 0",
+        "reason": "当地有小雨，真正有效的滋养，常常安静得不被立即察觉。",
+        "title": "春夜喜雨",
+        "poemText": "随风潜入夜润物细无声",
+        "decorationAnimation": "none",
+        "decorationDuration": "1e-05s",
+        "decorationIterations": "1",
+        "documentOverflow": false,
+        "viewScrollHeight": 303,
+        "viewClientHeight": 200,
+        "poemBox": {
+          "top": 67,
+          "bottom": 133,
+          "left": 34,
+          "right": 279
+        },
+        "paperBox": {
+          "top": -2,
+          "bottom": 247,
+          "left": 17,
+          "right": 296
+        },
+        "actionsBox": {
+          "top": 201,
+          "bottom": 235,
+          "left": 34,
+          "right": 279
+        },
+        "viewport": {
+          "width": 320,
+          "height": 260
+        }
+      }
+    },
+    {
+      "theme": "light",
+      "scenario": "fresh-snow",
+      "date": "2026-12-12",
+      "hour": 9,
+      "workId": "liu-zong-yuan-jiang-xue",
+      "tags": {
+        "weather": [
+          "snow",
+          "cold"
+        ],
+        "seasons": [
+          "winter"
+        ]
+      },
+      "fixture": {
+        "mode": "fresh",
+        "code": 71
+      },
+      "expectedScene": "snow",
+      "roomy": {
+        "theme": "light",
+        "motion": "reduced",
+        "scene": "snow",
+        "sceneDescription": "当地天气：雪",
+        "context": "12月12日雪雪 收藏 0",
+        "reason": "当地正在下雪，大雪收去喧响，留下一个不被环境改变的身影。",
+        "title": "江雪",
+        "poemText": "孤舟蓑笠翁独钓寒江雪",
+        "decorationAnimation": "none",
+        "decorationDuration": "1e-05s",
+        "decorationIterations": "1",
+        "documentOverflow": false,
+        "viewScrollHeight": 660,
+        "viewClientHeight": 660,
+        "poemBox": {
+          "top": 170,
+          "bottom": 236,
+          "left": 32,
+          "right": 360
+        },
+        "paperBox": {
+          "top": 101,
+          "bottom": 350,
+          "left": 15,
+          "right": 377
+        },
+        "actionsBox": {
+          "top": 304,
+          "bottom": 338,
+          "left": 32,
+          "right": 360
+        },
+        "viewport": {
+          "width": 392,
+          "height": 720
+        }
+      },
+      "compact": {
+        "theme": "light",
+        "motion": "reduced",
+        "scene": "snow",
+        "sceneDescription": "当地天气：雪",
+        "context": "12月12日雪雪 收藏 0",
+        "reason": "当地正在下雪，大雪收去喧响，留下一个不被环境改变的身影。",
+        "title": "江雪",
+        "poemText": "孤舟蓑笠翁独钓寒江雪",
+        "decorationAnimation": "none",
+        "decorationDuration": "1e-05s",
+        "decorationIterations": "1",
+        "documentOverflow": false,
+        "viewScrollHeight": 303,
+        "viewClientHeight": 200,
+        "poemBox": {
+          "top": 67,
+          "bottom": 133,
+          "left": 34,
+          "right": 279
+        },
+        "paperBox": {
+          "top": -2,
+          "bottom": 247,
+          "left": 17,
+          "right": 296
+        },
+        "actionsBox": {
+          "top": 201,
+          "bottom": 235,
+          "left": 34,
+          "right": 279
+        },
+        "viewport": {
+          "width": 320,
+          "height": 260
+        }
+      }
+    },
+    {
+      "theme": "light",
+      "scenario": "fresh-sun",
+      "date": "2026-10-14",
+      "hour": 9,
+      "workId": "liu-yu-xi-qiu-ci",
+      "tags": {
+        "weather": [
+          "clear",
+          "wind"
+        ],
+        "seasons": [
+          "autumn"
+        ]
+      },
+      "fixture": {
+        "mode": "fresh",
+        "code": 0
+      },
+      "expectedScene": "sun",
+      "roomy": {
+        "theme": "light",
+        "motion": "reduced",
+        "scene": "sun",
+        "sceneDescription": "当地天气：晴",
+        "context": "10月14日晴晴 收藏 0",
+        "reason": "当地天气晴朗，清秋也可以向上，不必沿用别人规定的情绪。",
+        "title": "秋词",
+        "poemText": "晴空一鹤排云上便引诗情到碧霄",
+        "decorationAnimation": "none",
+        "decorationDuration": "1e-05s",
+        "decorationIterations": "1",
+        "documentOverflow": false,
+        "viewScrollHeight": 660,
+        "viewClientHeight": 660,
+        "poemBox": {
+          "top": 170,
+          "bottom": 236,
+          "left": 32,
+          "right": 360
+        },
+        "paperBox": {
+          "top": 101,
+          "bottom": 350,
+          "left": 15,
+          "right": 377
+        },
+        "actionsBox": {
+          "top": 304,
+          "bottom": 338,
+          "left": 32,
+          "right": 360
+        },
+        "viewport": {
+          "width": 392,
+          "height": 720
+        }
+      },
+      "compact": {
+        "theme": "light",
+        "motion": "reduced",
+        "scene": "sun",
+        "sceneDescription": "当地天气：晴",
+        "context": "10月14日晴晴 收藏 0",
+        "reason": "当地天气晴朗，清秋也可以向上，不必沿用别人规定的情绪。",
+        "title": "秋词",
+        "poemText": "晴空一鹤排云上便引诗情到碧霄",
+        "decorationAnimation": "none",
+        "decorationDuration": "1e-05s",
+        "decorationIterations": "1",
+        "documentOverflow": false,
+        "viewScrollHeight": 303,
+        "viewClientHeight": 200,
+        "poemBox": {
+          "top": 67,
+          "bottom": 133,
+          "left": 34,
+          "right": 279
+        },
+        "paperBox": {
+          "top": -2,
+          "bottom": 247,
+          "left": 17,
+          "right": 296
+        },
+        "actionsBox": {
+          "top": 201,
+          "bottom": 235,
+          "left": 34,
+          "right": 279
+        },
+        "viewport": {
+          "width": 320,
+          "height": 260
+        }
+      }
+    },
+    {
+      "theme": "light",
+      "scenario": "fresh-night",
+      "date": "2026-10-14",
+      "hour": 21,
+      "workId": "zhang-ji-feng-qiao-ye-bo",
+      "tags": {
+        "weather": [
+          "clear",
+          "cold",
+          "fog"
+        ],
+        "seasons": [
+          "autumn",
+          "winter"
+        ]
+      },
+      "fixture": {
+        "mode": "fresh",
+        "code": 0
+      },
+      "expectedScene": "night",
+      "roomy": {
+        "theme": "light",
+        "motion": "reduced",
+        "scene": "night",
+        "sceneDescription": "当地晴夜",
+        "context": "10月14日晴夜 收藏 0",
+        "reason": "当地天气晴朗，睡不着的夜里，远处钟声让时间有了形状。",
+        "title": "枫桥夜泊",
+        "poemText": "姑苏城外寒山寺夜半钟声到客船",
+        "decorationAnimation": "none",
+        "decorationDuration": "1e-05s",
+        "decorationIterations": "1",
+        "documentOverflow": false,
+        "viewScrollHeight": 660,
+        "viewClientHeight": 660,
+        "poemBox": {
+          "top": 170,
+          "bottom": 236,
+          "left": 32,
+          "right": 360
+        },
+        "paperBox": {
+          "top": 101,
+          "bottom": 350,
+          "left": 15,
+          "right": 377
+        },
+        "actionsBox": {
+          "top": 304,
+          "bottom": 338,
+          "left": 32,
+          "right": 360
+        },
+        "viewport": {
+          "width": 392,
+          "height": 720
+        }
+      },
+      "compact": {
+        "theme": "light",
+        "motion": "reduced",
+        "scene": "night",
+        "sceneDescription": "当地晴夜",
+        "context": "10月14日晴夜 收藏 0",
+        "reason": "当地天气晴朗，睡不着的夜里，远处钟声让时间有了形状。",
+        "title": "枫桥夜泊",
+        "poemText": "姑苏城外寒山寺夜半钟声到客船",
+        "decorationAnimation": "none",
+        "decorationDuration": "1e-05s",
+        "decorationIterations": "1",
+        "documentOverflow": false,
+        "viewScrollHeight": 303,
+        "viewClientHeight": 200,
+        "poemBox": {
+          "top": 67,
+          "bottom": 133,
+          "left": 34,
+          "right": 279
+        },
+        "paperBox": {
+          "top": -2,
+          "bottom": 247,
+          "left": 17,
+          "right": 296
+        },
+        "actionsBox": {
+          "top": 201,
+          "bottom": 235,
+          "left": 34,
+          "right": 279
+        },
+        "viewport": {
+          "width": 320,
+          "height": 260
+        }
+      }
+    },
+    {
+      "theme": "light",
+      "scenario": "cached-snow",
+      "date": "2026-12-12",
+      "hour": 9,
+      "workId": "liu-zong-yuan-jiang-xue",
+      "tags": {
+        "weather": [
+          "snow",
+          "cold"
+        ],
+        "seasons": [
+          "winter"
+        ]
+      },
+      "fixture": {
+        "mode": "offline"
+      },
+      "expectedScene": "season",
+      "roomy": {
+        "theme": "light",
+        "motion": "reduced",
+        "scene": "season",
+        "sceneDescription": "抽象季节纹样，不代表当地实时天气",
+        "context": "12月12日缓存天气：雪冬 收藏 0",
+        "reason": "最近的天气记录显示雪，大雪收去喧响，留下一个不被环境改变的身影。",
+        "title": "江雪",
+        "poemText": "孤舟蓑笠翁独钓寒江雪",
+        "decorationAnimation": "none",
+        "decorationDuration": "1e-05s",
+        "decorationIterations": "1",
+        "documentOverflow": false,
+        "viewScrollHeight": 660,
+        "viewClientHeight": 660,
+        "poemBox": {
+          "top": 170,
+          "bottom": 236,
+          "left": 32,
+          "right": 360
+        },
+        "paperBox": {
+          "top": 101,
+          "bottom": 350,
+          "left": 15,
+          "right": 377
+        },
+        "actionsBox": {
+          "top": 304,
+          "bottom": 338,
+          "left": 32,
+          "right": 360
+        },
+        "viewport": {
+          "width": 392,
+          "height": 720
+        }
+      },
+      "compact": {
+        "theme": "light",
+        "motion": "reduced",
+        "scene": "season",
+        "sceneDescription": "抽象季节纹样，不代表当地实时天气",
+        "context": "12月12日缓存天气：雪冬 收藏 0",
+        "reason": "最近的天气记录显示雪，大雪收去喧响，留下一个不被环境改变的身影。",
+        "title": "江雪",
+        "poemText": "孤舟蓑笠翁独钓寒江雪",
+        "decorationAnimation": "none",
+        "decorationDuration": "1e-05s",
+        "decorationIterations": "1",
+        "documentOverflow": false,
+        "viewScrollHeight": 303,
+        "viewClientHeight": 200,
+        "poemBox": {
+          "top": 67,
+          "bottom": 133,
+          "left": 34,
+          "right": 279
+        },
+        "paperBox": {
+          "top": -2,
+          "bottom": 247,
+          "left": 17,
+          "right": 296
+        },
+        "actionsBox": {
+          "top": 201,
+          "bottom": 235,
+          "left": 34,
+          "right": 279
+        },
+        "viewport": {
+          "width": 320,
+          "height": 260
+        }
+      }
+    },
+    {
+      "theme": "light",
+      "scenario": "offline",
+      "date": "2026-10-14",
+      "hour": 9,
+      "workId": "liu-yu-xi-qiu-ci",
+      "tags": {
+        "weather": [
+          "clear",
+          "wind"
+        ],
+        "seasons": [
+          "autumn"
+        ]
+      },
+      "fixture": {
+        "mode": "offline"
+      },
+      "expectedScene": "season",
+      "roomy": {
+        "theme": "light",
+        "motion": "reduced",
+        "scene": "season",
+        "sceneDescription": "抽象季节纹样，不代表当地实时天气",
+        "context": "10月14日天气未更新秋 收藏 0",
+        "reason": "秋日，清秋也可以向上，不必沿用别人规定的情绪。",
+        "title": "秋词",
+        "poemText": "晴空一鹤排云上便引诗情到碧霄",
+        "decorationAnimation": "none",
+        "decorationDuration": "1e-05s",
+        "decorationIterations": "1",
+        "documentOverflow": false,
+        "viewScrollHeight": 660,
+        "viewClientHeight": 660,
+        "poemBox": {
+          "top": 170,
+          "bottom": 236,
+          "left": 32,
+          "right": 360
+        },
+        "paperBox": {
+          "top": 101,
+          "bottom": 330,
+          "left": 15,
+          "right": 377
+        },
+        "actionsBox": {
+          "top": 284,
+          "bottom": 318,
+          "left": 32,
+          "right": 360
+        },
+        "viewport": {
+          "width": 392,
+          "height": 720
+        }
+      },
+      "compact": {
+        "theme": "light",
+        "motion": "reduced",
+        "scene": "season",
+        "sceneDescription": "抽象季节纹样，不代表当地实时天气",
+        "context": "10月14日天气未更新秋 收藏 0",
+        "reason": "秋日，清秋也可以向上，不必沿用别人规定的情绪。",
+        "title": "秋词",
+        "poemText": "晴空一鹤排云上便引诗情到碧霄",
+        "decorationAnimation": "none",
+        "decorationDuration": "1e-05s",
+        "decorationIterations": "1",
+        "documentOverflow": false,
+        "viewScrollHeight": 303,
+        "viewClientHeight": 200,
+        "poemBox": {
+          "top": 67,
+          "bottom": 133,
+          "left": 34,
+          "right": 279
+        },
+        "paperBox": {
+          "top": -2,
+          "bottom": 247,
+          "left": 17,
+          "right": 296
+        },
+        "actionsBox": {
+          "top": 201,
+          "bottom": 235,
+          "left": 34,
+          "right": 279
+        },
+        "viewport": {
+          "width": 320,
+          "height": 260
+        }
+      }
+    },
+    {
+      "theme": "light",
+      "scenario": "mismatch-rain",
+      "date": "2026-10-14",
+      "hour": 9,
+      "workId": "liu-yu-xi-qiu-ci",
+      "tags": {
+        "weather": [
+          "clear",
+          "wind"
+        ],
+        "seasons": [
+          "autumn"
+        ]
+      },
+      "fixture": {
+        "mode": "fresh",
+        "code": 51
+      },
+      "expectedScene": "season",
+      "roomy": {
+        "theme": "light",
+        "motion": "reduced",
+        "scene": "season",
+        "sceneDescription": "抽象季节纹样，不代表当地实时天气",
+        "context": "10月14日小雨秋 收藏 0",
+        "reason": "秋日，清秋也可以向上，不必沿用别人规定的情绪。",
+        "title": "秋词",
+        "poemText": "晴空一鹤排云上便引诗情到碧霄",
+        "decorationAnimation": "none",
+        "decorationDuration": "1e-05s",
+        "decorationIterations": "1",
+        "documentOverflow": false,
+        "viewScrollHeight": 660,
+        "viewClientHeight": 660,
+        "poemBox": {
+          "top": 170,
+          "bottom": 236,
+          "left": 32,
+          "right": 360
+        },
+        "paperBox": {
+          "top": 101,
+          "bottom": 330,
+          "left": 15,
+          "right": 377
+        },
+        "actionsBox": {
+          "top": 284,
+          "bottom": 318,
+          "left": 32,
+          "right": 360
+        },
+        "viewport": {
+          "width": 392,
+          "height": 720
+        }
+      },
+      "compact": {
+        "theme": "light",
+        "motion": "reduced",
+        "scene": "season",
+        "sceneDescription": "抽象季节纹样，不代表当地实时天气",
+        "context": "10月14日小雨秋 收藏 0",
+        "reason": "秋日，清秋也可以向上，不必沿用别人规定的情绪。",
+        "title": "秋词",
+        "poemText": "晴空一鹤排云上便引诗情到碧霄",
+        "decorationAnimation": "none",
+        "decorationDuration": "1e-05s",
+        "decorationIterations": "1",
+        "documentOverflow": false,
+        "viewScrollHeight": 303,
+        "viewClientHeight": 200,
+        "poemBox": {
+          "top": 67,
+          "bottom": 133,
+          "left": 34,
+          "right": 279
+        },
+        "paperBox": {
+          "top": -2,
+          "bottom": 247,
+          "left": 17,
+          "right": 296
+        },
+        "actionsBox": {
+          "top": 201,
+          "bottom": 235,
+          "left": 34,
+          "right": 279
+        },
+        "viewport": {
+          "width": 320,
+          "height": 260
+        }
+      }
+    },
+    {
+      "theme": "dark",
+      "scenario": "fresh-rain",
+      "date": "2026-04-12",
+      "hour": 9,
+      "workId": "du-fu-chun-ye-xi-yu",
+      "tags": {
+        "weather": [
+          "light-rain",
+          "rain",
+          "overcast"
+        ],
+        "seasons": [
+          "spring"
+        ]
+      },
+      "fixture": {
+        "mode": "fresh",
+        "code": 51
+      },
+      "expectedScene": "rain",
+      "roomy": {
+        "theme": "dark",
+        "motion": "reduced",
+        "scene": "rain",
+        "sceneDescription": "当地天气：小雨",
+        "context": "4月12日小雨雨 收藏 0",
+        "reason": "当地有小雨，真正有效的滋养，常常安静得不被立即察觉。",
+        "title": "春夜喜雨",
+        "poemText": "随风潜入夜润物细无声",
+        "decorationAnimation": "none",
+        "decorationDuration": "1e-05s",
+        "decorationIterations": "1",
+        "documentOverflow": false,
+        "viewScrollHeight": 660,
+        "viewClientHeight": 660,
+        "poemBox": {
+          "top": 170,
+          "bottom": 236,
+          "left": 32,
+          "right": 360
+        },
+        "paperBox": {
+          "top": 101,
+          "bottom": 350,
+          "left": 15,
+          "right": 377
+        },
+        "actionsBox": {
+          "top": 304,
+          "bottom": 338,
+          "left": 32,
+          "right": 360
+        },
+        "viewport": {
+          "width": 392,
+          "height": 720
+        }
+      },
+      "compact": {
+        "theme": "dark",
+        "motion": "reduced",
+        "scene": "rain",
+        "sceneDescription": "当地天气：小雨",
+        "context": "4月12日小雨雨 收藏 0",
+        "reason": "当地有小雨，真正有效的滋养，常常安静得不被立即察觉。",
+        "title": "春夜喜雨",
+        "poemText": "随风潜入夜润物细无声",
+        "decorationAnimation": "none",
+        "decorationDuration": "1e-05s",
+        "decorationIterations": "1",
+        "documentOverflow": false,
+        "viewScrollHeight": 303,
+        "viewClientHeight": 200,
+        "poemBox": {
+          "top": 67,
+          "bottom": 133,
+          "left": 34,
+          "right": 279
+        },
+        "paperBox": {
+          "top": -2,
+          "bottom": 247,
+          "left": 17,
+          "right": 296
+        },
+        "actionsBox": {
+          "top": 201,
+          "bottom": 235,
+          "left": 34,
+          "right": 279
+        },
+        "viewport": {
+          "width": 320,
+          "height": 260
+        }
+      }
+    },
+    {
+      "theme": "dark",
+      "scenario": "fresh-snow",
+      "date": "2026-12-12",
+      "hour": 9,
+      "workId": "liu-zong-yuan-jiang-xue",
+      "tags": {
+        "weather": [
+          "snow",
+          "cold"
+        ],
+        "seasons": [
+          "winter"
+        ]
+      },
+      "fixture": {
+        "mode": "fresh",
+        "code": 71
+      },
+      "expectedScene": "snow",
+      "roomy": {
+        "theme": "dark",
+        "motion": "reduced",
+        "scene": "snow",
+        "sceneDescription": "当地天气：雪",
+        "context": "12月12日雪雪 收藏 0",
+        "reason": "当地正在下雪，大雪收去喧响，留下一个不被环境改变的身影。",
+        "title": "江雪",
+        "poemText": "孤舟蓑笠翁独钓寒江雪",
+        "decorationAnimation": "none",
+        "decorationDuration": "1e-05s",
+        "decorationIterations": "1",
+        "documentOverflow": false,
+        "viewScrollHeight": 660,
+        "viewClientHeight": 660,
+        "poemBox": {
+          "top": 170,
+          "bottom": 236,
+          "left": 32,
+          "right": 360
+        },
+        "paperBox": {
+          "top": 101,
+          "bottom": 350,
+          "left": 15,
+          "right": 377
+        },
+        "actionsBox": {
+          "top": 304,
+          "bottom": 338,
+          "left": 32,
+          "right": 360
+        },
+        "viewport": {
+          "width": 392,
+          "height": 720
+        }
+      },
+      "compact": {
+        "theme": "dark",
+        "motion": "reduced",
+        "scene": "snow",
+        "sceneDescription": "当地天气：雪",
+        "context": "12月12日雪雪 收藏 0",
+        "reason": "当地正在下雪，大雪收去喧响，留下一个不被环境改变的身影。",
+        "title": "江雪",
+        "poemText": "孤舟蓑笠翁独钓寒江雪",
+        "decorationAnimation": "none",
+        "decorationDuration": "1e-05s",
+        "decorationIterations": "1",
+        "documentOverflow": false,
+        "viewScrollHeight": 303,
+        "viewClientHeight": 200,
+        "poemBox": {
+          "top": 67,
+          "bottom": 133,
+          "left": 34,
+          "right": 279
+        },
+        "paperBox": {
+          "top": -2,
+          "bottom": 247,
+          "left": 17,
+          "right": 296
+        },
+        "actionsBox": {
+          "top": 201,
+          "bottom": 235,
+          "left": 34,
+          "right": 279
+        },
+        "viewport": {
+          "width": 320,
+          "height": 260
+        }
+      }
+    },
+    {
+      "theme": "dark",
+      "scenario": "fresh-sun",
+      "date": "2026-10-14",
+      "hour": 9,
+      "workId": "liu-yu-xi-qiu-ci",
+      "tags": {
+        "weather": [
+          "clear",
+          "wind"
+        ],
+        "seasons": [
+          "autumn"
+        ]
+      },
+      "fixture": {
+        "mode": "fresh",
+        "code": 0
+      },
+      "expectedScene": "sun",
+      "roomy": {
+        "theme": "dark",
+        "motion": "reduced",
+        "scene": "sun",
+        "sceneDescription": "当地天气：晴",
+        "context": "10月14日晴晴 收藏 0",
+        "reason": "当地天气晴朗，清秋也可以向上，不必沿用别人规定的情绪。",
+        "title": "秋词",
+        "poemText": "晴空一鹤排云上便引诗情到碧霄",
+        "decorationAnimation": "none",
+        "decorationDuration": "1e-05s",
+        "decorationIterations": "1",
+        "documentOverflow": false,
+        "viewScrollHeight": 660,
+        "viewClientHeight": 660,
+        "poemBox": {
+          "top": 170,
+          "bottom": 236,
+          "left": 32,
+          "right": 360
+        },
+        "paperBox": {
+          "top": 101,
+          "bottom": 350,
+          "left": 15,
+          "right": 377
+        },
+        "actionsBox": {
+          "top": 304,
+          "bottom": 338,
+          "left": 32,
+          "right": 360
+        },
+        "viewport": {
+          "width": 392,
+          "height": 720
+        }
+      },
+      "compact": {
+        "theme": "dark",
+        "motion": "reduced",
+        "scene": "sun",
+        "sceneDescription": "当地天气：晴",
+        "context": "10月14日晴晴 收藏 0",
+        "reason": "当地天气晴朗，清秋也可以向上，不必沿用别人规定的情绪。",
+        "title": "秋词",
+        "poemText": "晴空一鹤排云上便引诗情到碧霄",
+        "decorationAnimation": "none",
+        "decorationDuration": "1e-05s",
+        "decorationIterations": "1",
+        "documentOverflow": false,
+        "viewScrollHeight": 303,
+        "viewClientHeight": 200,
+        "poemBox": {
+          "top": 67,
+          "bottom": 133,
+          "left": 34,
+          "right": 279
+        },
+        "paperBox": {
+          "top": -2,
+          "bottom": 247,
+          "left": 17,
+          "right": 296
+        },
+        "actionsBox": {
+          "top": 201,
+          "bottom": 235,
+          "left": 34,
+          "right": 279
+        },
+        "viewport": {
+          "width": 320,
+          "height": 260
+        }
+      }
+    },
+    {
+      "theme": "dark",
+      "scenario": "fresh-night",
+      "date": "2026-10-14",
+      "hour": 21,
+      "workId": "zhang-ji-feng-qiao-ye-bo",
+      "tags": {
+        "weather": [
+          "clear",
+          "cold",
+          "fog"
+        ],
+        "seasons": [
+          "autumn",
+          "winter"
+        ]
+      },
+      "fixture": {
+        "mode": "fresh",
+        "code": 0
+      },
+      "expectedScene": "night",
+      "roomy": {
+        "theme": "dark",
+        "motion": "reduced",
+        "scene": "night",
+        "sceneDescription": "当地晴夜",
+        "context": "10月14日晴夜 收藏 0",
+        "reason": "当地天气晴朗，睡不着的夜里，远处钟声让时间有了形状。",
+        "title": "枫桥夜泊",
+        "poemText": "姑苏城外寒山寺夜半钟声到客船",
+        "decorationAnimation": "none",
+        "decorationDuration": "1e-05s",
+        "decorationIterations": "1",
+        "documentOverflow": false,
+        "viewScrollHeight": 660,
+        "viewClientHeight": 660,
+        "poemBox": {
+          "top": 170,
+          "bottom": 236,
+          "left": 32,
+          "right": 360
+        },
+        "paperBox": {
+          "top": 101,
+          "bottom": 350,
+          "left": 15,
+          "right": 377
+        },
+        "actionsBox": {
+          "top": 304,
+          "bottom": 338,
+          "left": 32,
+          "right": 360
+        },
+        "viewport": {
+          "width": 392,
+          "height": 720
+        }
+      },
+      "compact": {
+        "theme": "dark",
+        "motion": "reduced",
+        "scene": "night",
+        "sceneDescription": "当地晴夜",
+        "context": "10月14日晴夜 收藏 0",
+        "reason": "当地天气晴朗，睡不着的夜里，远处钟声让时间有了形状。",
+        "title": "枫桥夜泊",
+        "poemText": "姑苏城外寒山寺夜半钟声到客船",
+        "decorationAnimation": "none",
+        "decorationDuration": "1e-05s",
+        "decorationIterations": "1",
+        "documentOverflow": false,
+        "viewScrollHeight": 303,
+        "viewClientHeight": 200,
+        "poemBox": {
+          "top": 67,
+          "bottom": 133,
+          "left": 34,
+          "right": 279
+        },
+        "paperBox": {
+          "top": -2,
+          "bottom": 247,
+          "left": 17,
+          "right": 296
+        },
+        "actionsBox": {
+          "top": 201,
+          "bottom": 235,
+          "left": 34,
+          "right": 279
+        },
+        "viewport": {
+          "width": 320,
+          "height": 260
+        }
+      }
+    },
+    {
+      "theme": "dark",
+      "scenario": "cached-snow",
+      "date": "2026-12-12",
+      "hour": 9,
+      "workId": "liu-zong-yuan-jiang-xue",
+      "tags": {
+        "weather": [
+          "snow",
+          "cold"
+        ],
+        "seasons": [
+          "winter"
+        ]
+      },
+      "fixture": {
+        "mode": "offline"
+      },
+      "expectedScene": "season",
+      "roomy": {
+        "theme": "dark",
+        "motion": "reduced",
+        "scene": "season",
+        "sceneDescription": "抽象季节纹样，不代表当地实时天气",
+        "context": "12月12日缓存天气：雪冬 收藏 0",
+        "reason": "最近的天气记录显示雪，大雪收去喧响，留下一个不被环境改变的身影。",
+        "title": "江雪",
+        "poemText": "孤舟蓑笠翁独钓寒江雪",
+        "decorationAnimation": "none",
+        "decorationDuration": "1e-05s",
+        "decorationIterations": "1",
+        "documentOverflow": false,
+        "viewScrollHeight": 660,
+        "viewClientHeight": 660,
+        "poemBox": {
+          "top": 170,
+          "bottom": 236,
+          "left": 32,
+          "right": 360
+        },
+        "paperBox": {
+          "top": 101,
+          "bottom": 350,
+          "left": 15,
+          "right": 377
+        },
+        "actionsBox": {
+          "top": 304,
+          "bottom": 338,
+          "left": 32,
+          "right": 360
+        },
+        "viewport": {
+          "width": 392,
+          "height": 720
+        }
+      },
+      "compact": {
+        "theme": "dark",
+        "motion": "reduced",
+        "scene": "season",
+        "sceneDescription": "抽象季节纹样，不代表当地实时天气",
+        "context": "12月12日缓存天气：雪冬 收藏 0",
+        "reason": "最近的天气记录显示雪，大雪收去喧响，留下一个不被环境改变的身影。",
+        "title": "江雪",
+        "poemText": "孤舟蓑笠翁独钓寒江雪",
+        "decorationAnimation": "none",
+        "decorationDuration": "1e-05s",
+        "decorationIterations": "1",
+        "documentOverflow": false,
+        "viewScrollHeight": 303,
+        "viewClientHeight": 200,
+        "poemBox": {
+          "top": 67,
+          "bottom": 133,
+          "left": 34,
+          "right": 279
+        },
+        "paperBox": {
+          "top": -2,
+          "bottom": 247,
+          "left": 17,
+          "right": 296
+        },
+        "actionsBox": {
+          "top": 201,
+          "bottom": 235,
+          "left": 34,
+          "right": 279
+        },
+        "viewport": {
+          "width": 320,
+          "height": 260
+        }
+      }
+    },
+    {
+      "theme": "dark",
+      "scenario": "offline",
+      "date": "2026-10-14",
+      "hour": 9,
+      "workId": "liu-yu-xi-qiu-ci",
+      "tags": {
+        "weather": [
+          "clear",
+          "wind"
+        ],
+        "seasons": [
+          "autumn"
+        ]
+      },
+      "fixture": {
+        "mode": "offline"
+      },
+      "expectedScene": "season",
+      "roomy": {
+        "theme": "dark",
+        "motion": "reduced",
+        "scene": "season",
+        "sceneDescription": "抽象季节纹样，不代表当地实时天气",
+        "context": "10月14日天气未更新秋 收藏 0",
+        "reason": "秋日，清秋也可以向上，不必沿用别人规定的情绪。",
+        "title": "秋词",
+        "poemText": "晴空一鹤排云上便引诗情到碧霄",
+        "decorationAnimation": "none",
+        "decorationDuration": "1e-05s",
+        "decorationIterations": "1",
+        "documentOverflow": false,
+        "viewScrollHeight": 660,
+        "viewClientHeight": 660,
+        "poemBox": {
+          "top": 170,
+          "bottom": 236,
+          "left": 32,
+          "right": 360
+        },
+        "paperBox": {
+          "top": 101,
+          "bottom": 330,
+          "left": 15,
+          "right": 377
+        },
+        "actionsBox": {
+          "top": 284,
+          "bottom": 318,
+          "left": 32,
+          "right": 360
+        },
+        "viewport": {
+          "width": 392,
+          "height": 720
+        }
+      },
+      "compact": {
+        "theme": "dark",
+        "motion": "reduced",
+        "scene": "season",
+        "sceneDescription": "抽象季节纹样，不代表当地实时天气",
+        "context": "10月14日天气未更新秋 收藏 0",
+        "reason": "秋日，清秋也可以向上，不必沿用别人规定的情绪。",
+        "title": "秋词",
+        "poemText": "晴空一鹤排云上便引诗情到碧霄",
+        "decorationAnimation": "none",
+        "decorationDuration": "1e-05s",
+        "decorationIterations": "1",
+        "documentOverflow": false,
+        "viewScrollHeight": 303,
+        "viewClientHeight": 200,
+        "poemBox": {
+          "top": 67,
+          "bottom": 133,
+          "left": 34,
+          "right": 279
+        },
+        "paperBox": {
+          "top": -2,
+          "bottom": 247,
+          "left": 17,
+          "right": 296
+        },
+        "actionsBox": {
+          "top": 201,
+          "bottom": 235,
+          "left": 34,
+          "right": 279
+        },
+        "viewport": {
+          "width": 320,
+          "height": 260
+        }
+      }
+    },
+    {
+      "theme": "dark",
+      "scenario": "mismatch-rain",
+      "date": "2026-10-14",
+      "hour": 9,
+      "workId": "liu-yu-xi-qiu-ci",
+      "tags": {
+        "weather": [
+          "clear",
+          "wind"
+        ],
+        "seasons": [
+          "autumn"
+        ]
+      },
+      "fixture": {
+        "mode": "fresh",
+        "code": 51
+      },
+      "expectedScene": "season",
+      "roomy": {
+        "theme": "dark",
+        "motion": "reduced",
+        "scene": "season",
+        "sceneDescription": "抽象季节纹样，不代表当地实时天气",
+        "context": "10月14日小雨秋 收藏 0",
+        "reason": "秋日，清秋也可以向上，不必沿用别人规定的情绪。",
+        "title": "秋词",
+        "poemText": "晴空一鹤排云上便引诗情到碧霄",
+        "decorationAnimation": "none",
+        "decorationDuration": "1e-05s",
+        "decorationIterations": "1",
+        "documentOverflow": false,
+        "viewScrollHeight": 660,
+        "viewClientHeight": 660,
+        "poemBox": {
+          "top": 170,
+          "bottom": 236,
+          "left": 32,
+          "right": 360
+        },
+        "paperBox": {
+          "top": 101,
+          "bottom": 330,
+          "left": 15,
+          "right": 377
+        },
+        "actionsBox": {
+          "top": 284,
+          "bottom": 318,
+          "left": 32,
+          "right": 360
+        },
+        "viewport": {
+          "width": 392,
+          "height": 720
+        }
+      },
+      "compact": {
+        "theme": "dark",
+        "motion": "reduced",
+        "scene": "season",
+        "sceneDescription": "抽象季节纹样，不代表当地实时天气",
+        "context": "10月14日小雨秋 收藏 0",
+        "reason": "秋日，清秋也可以向上，不必沿用别人规定的情绪。",
+        "title": "秋词",
+        "poemText": "晴空一鹤排云上便引诗情到碧霄",
+        "decorationAnimation": "none",
+        "decorationDuration": "1e-05s",
+        "decorationIterations": "1",
+        "documentOverflow": false,
+        "viewScrollHeight": 303,
+        "viewClientHeight": 200,
+        "poemBox": {
+          "top": 67,
+          "bottom": 133,
+          "left": 34,
+          "right": 279
+        },
+        "paperBox": {
+          "top": -2,
+          "bottom": 247,
+          "left": 17,
+          "right": 296
+        },
+        "actionsBox": {
+          "top": 201,
+          "bottom": 235,
+          "left": 34,
+          "right": 279
+        },
+        "viewport": {
+          "width": 320,
+          "height": 260
+        }
+      }
+    }
+  ]
+}

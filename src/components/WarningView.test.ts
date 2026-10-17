@@ -62,4 +62,14 @@ describe("WarningView", () => {
     expect(wrapper.text()).toContain("不替代官方预警或应急指引");
     expect(wrapper.text()).not.toContain("授权网关转发");
   });
+
+  it("隔离演练不冒称已收到真实预警或授权网关数据", () => {
+    const weather = warningWeather("official");
+    weather.source = "cache";
+    weather.warnings[0]!.source = "WeatherPoem 隔离性能演练";
+    const wrapper = mount(WarningView, { props: { weather } });
+    expect(wrapper.text()).toContain("隔离演练，不是真实气象预警");
+    expect(wrapper.text()).not.toContain("已收到仍在有效期内的气象预警");
+    expect(wrapper.text()).not.toContain("授权网关转发");
+  });
 });

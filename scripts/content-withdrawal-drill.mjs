@@ -1,4 +1,5 @@
 import { createHash } from "node:crypto";
+import { existsSync } from "node:fs";
 import { readFile, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
@@ -29,12 +30,23 @@ const schemaPath = path.join(
   "content-withdrawal.schema.json",
 );
 const catalog = JSON.parse(await readFile(catalogPath, "utf8"));
-const reportPath = path.join(
+const baselineReportPath = path.join(
   projectRoot,
   "output",
   `WeatherPoem_${packageJson.version}_CONTENT_WITHDRAWAL_DRILL.json`,
 );
+const reportName = process.argv.find((arg) => arg.startsWith("--report="))
+  ?.slice("--report=".length);
+if (reportName && !/^T08_[A-Za-z0-9_-]+\.json$/.test(reportName)) {
+  throw new Error("--report requires a T08_*.json filename");
+}
+const reportPath = reportName
+  ? path.join(projectRoot, "review", "redesign", "evidence", reportName)
+  : baselineReportPath;
 const checkOnly = process.argv.includes("--check");
+if (!checkOnly && reportName && existsSync(reportPath)) {
+  throw new Error(`Refusing to overwrite a redesign evidence report: ${reportPath}`);
+}
 
 async function sha256(filePath) {
   return createHash("sha256")

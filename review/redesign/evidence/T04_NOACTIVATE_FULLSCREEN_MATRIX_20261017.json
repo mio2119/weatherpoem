@@ -1,0 +1,46 @@
+{
+  "schemaVersion": "1.0",
+  "testKind": "isolated-native-autostart-foreground-bounds",
+  "generatedAt": "2026-10-16T17:48:21.5716487Z",
+  "sourceCommit": "40f9ff1bfb0f6eb791d453c83952ef0cc608d587",
+  "candidate": {
+    "path": "E:\\weatherpoem\\.work\\redesign-tauri-noactivate-experiment-20261017\\release\\weatherpoem.exe",
+    "sha256": "0921010061A8D66C551DEAC609B74063433C88B07D836B321F4EAECAF401D4AD"
+  },
+  "isolation": {
+    "temporaryProfile": true,
+    "realUserDataTouched": false,
+    "systemAutostartChanged": false,
+    "systemDisplaySettingsChanged": false
+  },
+  "observations": {
+    "probeMode": "full-screen",
+    "foregroundProbePrecondition": true,
+    "foregroundProbeActivationAttempts": 1,
+    "monitorBounds": {
+      "left": 0,
+      "top": 0,
+      "right": 1920,
+      "bottom": 1080
+    },
+    "workAreaBounds": {
+      "left": 0,
+      "top": 0,
+      "right": 1920,
+      "bottom": 1032
+    },
+    "appPid": 111920,
+    "productWindowHandle": "65342950",
+    "autoVisible": false,
+    "probeStillForeground": true,
+    "readyMarkerAfterAuto": false,
+    "secondInstancePid": 110956,
+    "manualVisible": true,
+    "manualFocused": true,
+    "manualResult": true
+  },
+  "limitations": [
+    "Borderless WinForms probe is not a real presentation, game, or ordinary maximized application; single monitor and current DPI only."
+  ],
+  "result": "full-screen-autostart-suppressed-manual-recovery-passed"
+}

@@ -29,6 +29,15 @@ test("低对比颜色会被拒绝", () => {
   );
 });
 
+test("诗境叠色检查不能从自动基线中移除", () => {
+  const invalid = fixture();
+  delete invalid.automaticBaseline.contrast.sceneOverlay;
+  assert.throws(
+    () => validateAccessibilityPlan(invalid),
+    /诗境叠色对比度检查范围不完整/,
+  );
+});
+
 test("不能用计划文件冒充真实辅助技术验收", () => {
   const fakePass = fixture();
   fakePass.manualSystemTests[0].status = "passed";

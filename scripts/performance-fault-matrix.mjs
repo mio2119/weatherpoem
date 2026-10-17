@@ -21,18 +21,32 @@ const projectRoot = path.resolve(
 const packageJson = JSON.parse(
   await readFile(path.join(projectRoot, "package.json"), "utf8"),
 );
-const exePath = path.join(
-  projectRoot,
-  "src-tauri",
-  "target",
-  "release",
-  "weatherpoem.exe",
+const redesignCandidate = process.argv.includes("--redesign-candidate");
+const candidateArguments = process.argv.filter((value) =>
+  value.startsWith("--candidate="),
 );
-const reportPath = path.join(
-  projectRoot,
-  "output",
-  "WeatherPoem_0.2.0_PERFORMANCE_FAULT_MATRIX.json",
-);
+const namedCandidate = candidateArguments[0]?.slice("--candidate=".length);
+if (
+  (candidateArguments.length > 0 &&
+    (!/^[a-z0-9][a-z0-9-]{0,39}$/.test(namedCandidate ?? "") ||
+      namedCandidate === "target")) ||
+  (candidateArguments.length > 0 && redesignCandidate) ||
+  candidateArguments.length > 1
+) {
+  throw new Error("内部候选名称不合法或与旧候选选项冲突");
+}
+const artifactPath = namedCandidate
+  ? `.work/redesign-${namedCandidate}/release/weatherpoem.exe`
+  : redesignCandidate
+    ? ".work/redesign-target/release/weatherpoem.exe"
+    : "src-tauri/target/release/weatherpoem.exe";
+const reportRelativePath = namedCandidate
+  ? `review/redesign/evidence/T09_FAULT_MATRIX_${namedCandidate}.json`
+  : redesignCandidate
+    ? "review/redesign/evidence/T09_FAULT_MATRIX.json"
+    : "output/WeatherPoem_0.2.0_PERFORMANCE_FAULT_MATRIX.json";
+const exePath = path.join(projectRoot, ...artifactPath.split("/"));
+const reportPath = path.join(projectRoot, ...reportRelativePath.split("/"));
 const samplesArgument = Number(
   process.argv.find((value) => value.startsWith("--samples="))
     ?.split("=")[1] ?? 3,
@@ -277,7 +291,7 @@ try {
     generatedAt: new Date().toISOString(),
     testKind: "controlled-performance-fault-matrix",
     artifact: {
-      path: "src-tauri/target/release/weatherpoem.exe",
+      path: artifactPath,
       sha256: await sha256File(exePath),
       sizeBytes: executable.size,
     },

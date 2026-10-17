@@ -1,0 +1,118 @@
+{
+  "schemaVersion": "1.0",
+  "testKind": "isolated-native-webview2-poem-layout",
+  "generatedAt": "2026-10-16T17:55:06.837Z",
+  "candidate": {
+    "path": ".work/redesign-tauri-noactivate-experiment-20261017/release/weatherpoem.exe",
+    "sha256": "0921010061A8D66C551DEAC609B74063433C88B07D836B321F4EAECAF401D4AD"
+  },
+  "isolation": {
+    "temporaryProfile": true,
+    "realUserDataTouched": false,
+    "systemClockChanged": false,
+    "systemDisplaySettingsChanged": false,
+    "installedOrUninstalled": false
+  },
+  "catalog": {
+    "poemId": "su-shi-huan-xi-sha-you-qi-shui",
+    "title": "浣溪沙·游蕲水清泉寺",
+    "localDate": "2026-10-17",
+    "contentVersion": "2026.07.1",
+    "ruleVersion": "1.2.3"
+  },
+  "setup": {
+    "layout": "vertical",
+    "fontSize": "large",
+    "theme": "light",
+    "weather": "offline-rules"
+  },
+  "observations": {
+    "readyMarker": {
+      "schemaVersion": "1.2",
+      "runId": "67bc32b370774b36bd3cfe5bee70fe3f",
+      "appVersion": "0.2.0",
+      "processId": 108352,
+      "nativeReadyMs": 614.1012999999999,
+      "frontendReadyMs": 324.59999999403954,
+      "readyView": "poem",
+      "readyMode": "offline-rules",
+      "viewRenderMs": 142.09999999403954,
+      "performanceScenario": "weather-offline",
+      "sceneMotion": {
+        "sceneKind": "neutral",
+        "appReduced": false,
+        "systemReduced": false,
+        "sceneActive": true,
+        "visibilityState": "visible",
+        "animationName": "none",
+        "animationDuration": "0s",
+        "animationIterationCount": "1"
+      },
+      "recordedAtUnixMs": 1792173307525
+    },
+    "glance": {
+      "title": "浣溪沙·游蕲水清泉寺",
+      "text": "山下兰芽短浸溪，松间沙路净无泥，萧萧暮雨子规啼。谁道人生无再少？门前流水尚能西！休将白发唱黄鸡。",
+      "vertical": true,
+      "fontSize": "large",
+      "fallbackNote": null,
+      "documentOverflow": false,
+      "actionsInScrollRegion": true,
+      "paperWidth": 352,
+      "viewport": {
+        "width": 382,
+        "height": 551
+      }
+    },
+    "glanceScreenshot": "review/redesign/evidence/T06_NATIVE_LONG_EXCERPT_CI_20261017_glance.png",
+    "readingInitial": {
+      "title": "浣溪沙·游蕲水清泉寺",
+      "text": "山下兰芽短浸溪，松间沙路净无泥，萧萧暮雨子规啼。谁道人生无再少？门前流水尚能西！休将白发唱黄鸡。",
+      "vertical": true,
+      "writingMode": "vertical-rl",
+      "fontSize": "large",
+      "frameClientWidth": 483,
+      "frameScrollWidth": 483,
+      "frameScrollLeft": 0,
+      "frameTabIndex": 0,
+      "panelScrollWidth": 551,
+      "panelClientWidth": 551,
+      "backVisible": true,
+      "sourcePresent": true,
+      "viewport": {
+        "width": 560,
+        "height": 720
+      }
+    },
+    "readingScreenshot": "review/redesign/evidence/T06_NATIVE_LONG_EXCERPT_CI_20261017_reading_vertical.png",
+    "readingHorizontal": {
+      "title": "浣溪沙·游蕲水清泉寺",
+      "text": "山下兰芽短浸溪，松间沙路净无泥，萧萧暮雨子规啼。谁道人生无再少？门前流水尚能西！休将白发唱黄鸡。",
+      "vertical": false,
+      "writingMode": "horizontal-tb",
+      "fontSize": "large",
+      "frameClientWidth": 490,
+      "frameScrollWidth": 490,
+      "frameScrollLeft": 0,
+      "frameTabIndex": -1,
+      "panelScrollWidth": 558,
+      "panelClientWidth": 558,
+      "backVisible": true,
+      "sourcePresent": true,
+      "viewport": {
+        "width": 560,
+        "height": 720
+      }
+    },
+    "sqliteLayoutAfterSwitch": "horizontal",
+    "returnedGlance": {
+      "title": "浣溪沙·游蕲水清泉寺",
+      "vertical": false
+    }
+  },
+  "limitations": [
+    "WebView2 page and the current single-monitor native window only; CDP keys are not a human screen-reader or mixed-DPI test.",
+    "The catalog poem is preselected only in the temporary SQLite profile, not by the live recommendation algorithm."
+  ],
+  "result": "native-layout-reading-scroll-and-sqlite-save-passed"
+}

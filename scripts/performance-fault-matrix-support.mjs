@@ -87,7 +87,7 @@ export function validatePerformanceFaultMatrix(report, expected) {
   );
   assert(
     report.artifact.path ===
-        "src-tauri/target/release/weatherpoem.exe" &&
+        (expected.artifactPath ?? "src-tauri/target/release/weatherpoem.exe") &&
       report.artifact.sha256 === expected.exeSha256 &&
       /^[A-F0-9]{64}$/.test(report.artifact.sha256) &&
       Number.isInteger(report.artifact.sizeBytes) &&
@@ -230,4 +230,3 @@ export function validatePerformanceFaultMatrix(report, expected) {
   );
   assert(passed, "合成故障矩阵仍有失败场景");
 }
-

@@ -1,25 +1,22 @@
 import assert from "node:assert/strict";
 import test from "node:test";
-import {
-  EXPECTED_UNIC_WARNINGS,
-  validateDependencyRiskReview,
-} from "./dependency-risk-review-support.mjs";
+import { validateDependencyRiskReview } from "./dependency-risk-review-support.mjs";
 
 const HASH = "A".repeat(64);
 
 function fixture() {
   const generatedAt = new Date().toISOString();
   const targetDate = new Date(
-    Date.parse(generatedAt) + 89 * 24 * 60 * 60 * 1000,
+    Date.parse(generatedAt) + 29 * 24 * 60 * 60 * 1000,
   )
     .toISOString()
     .slice(0, 10);
   return {
-    schemaVersion: "1.0",
+    schemaVersion: "2.0",
     product: "WeatherPoem",
     appVersion: "0.2.0",
     generatedAt,
-    status: "review-ready-not-approved",
+    status: "upgrade-applied-review-pending",
     inputs: {
       cargoAuditReport:
         "output/WeatherPoem_0.2.0_CARGO_AUDIT.json",
@@ -31,31 +28,30 @@ function fixture() {
     currentTarget: {
       vulnerabilityCount: 0,
       blockingWarningCount: 0,
-      unmaintainedWarningCount: 5,
-      unmaintainedWarnings: structuredClone(
-        EXPECTED_UNIC_WARNINGS,
-      ),
+      unmaintainedWarningCount: 0,
+      unmaintainedWarnings: [],
     },
     dependencyCluster: {
-      independentRiskCount: 1,
-      clusteredWarningCount: 5,
-      frameworkPackage: "tauri-utils@2.9.3",
-      rootPackage: "urlpattern@0.3.0",
-      leafPackage: "unic-ucd-ident@0.9.0",
+      independentRiskCount: 0,
+      clusteredWarningCount: 0,
+      frameworkPackage: "tauri-utils@2.10.2",
+      rootPackage: "urlpattern@0.6.0",
+      leafPackage: null,
       path: [
         "weatherpoem@0.2.0",
-        "tauri@2.11.5",
-        "tauri-utils@2.9.3",
-        "urlpattern@0.3.0",
-        "unic-ucd-ident@0.9.0",
+        "tauri@2.12.4",
+        "tauri-utils@2.10.2",
+        "urlpattern@0.6.0",
       ],
     },
     upstream: {
       checkedAt: generatedAt,
-      tauriLatestStable: "2.11.5",
-      tauriUtilsLatestStable: "2.9.3",
+      tauriLatestStable: "2.12.4",
+      tauriUtilsLatestStable: "2.10.2",
       urlpatternLatestStable: "0.6.0",
       urlpattern060RemovesUnicUcdIdent: true,
+      releasedTauriUtilsRequirement: "~2.10.2",
+      releasedUrlpatternRequirement: "^0.6",
       tauriPullRequest:
         "https://github.com/tauri-apps/tauri/pull/15660",
       mergeCommitSha:
@@ -72,15 +68,20 @@ function fixture() {
           "https://github.com/tauri-apps/tauri/pull/15660",
         tauriDevCargoToml:
           "https://github.com/tauri-apps/tauri/blob/dev/crates/tauri-utils/Cargo.toml",
+        tauriStableDependencies:
+          "https://crates.io/api/v1/crates/tauri/2.12.4/dependencies",
+        tauriUtilsStableDependencies:
+          "https://crates.io/api/v1/crates/tauri-utils/2.10.2/dependencies",
       },
     },
     proposedDisposition: {
-      action: "upgrade-next-stable-tauri-release",
-      reason: "avoid-unreleased-core-framework-git-patch",
+      action: "verify-applied-stable-upgrade-before-release",
+      reason: "old-unic-chain-removed-from-windows-target",
       temporaryControl:
         "block-vulnerabilities-unsound-yanked-and-review-each-candidate",
       upgradeTrigger:
-        "stable-tauri-release-containing-pr-15660",
+        "locked-windows-tree-resolves-urlpattern-0.6",
+      releaseGate: "before-next-release-candidate",
       targetDate,
     },
     approval: {
@@ -91,12 +92,13 @@ function fixture() {
         "review/evidence/RQT-15-security-privacy-review.json",
     },
     limitations: {
-      upstreamFixMergedNotReleased: true,
-      runtimeWarningStillPresent: true,
+      upstreamFixReleased: true,
+      upgradeNotYetApplied: false,
+      runtimeWarningStillPresent: false,
       namedSecurityReviewCompleted: false,
     },
     gateSatisfied: false,
-    result: "automated-disposition-draft-ready",
+    result: "automated-upgrade-verified-review-pending",
   };
 }
 
@@ -104,10 +106,15 @@ const expected = {
   appVersion: "0.2.0",
   cargoAuditSha256: HASH,
   cargoLockSha256: HASH,
-  targetUnmaintainedWarnings: EXPECTED_UNIC_WARNINGS,
+  targetUnmaintainedWarnings: [],
+  targetPackages: [
+    { name: "tauri", version: "2.12.4" },
+    { name: "tauri-utils", version: "2.10.2" },
+    { name: "urlpattern", version: "0.6.0" },
+  ],
 };
 
-test("five unic advisories are clustered without claiming approval", () => {
+test("stable upgrade removes unic advisories without claiming approval", () => {
   assert.doesNotThrow(() =>
     validateDependencyRiskReview(fixture(), expected),
   );
@@ -122,19 +129,23 @@ test("stale input or changed target warnings are rejected", () => {
   );
 
   const changed = fixture();
-  changed.currentTarget.unmaintainedWarnings.pop();
+  changed.currentTarget.unmaintainedWarnings.push({
+    advisoryId: "RUSTSEC-example",
+    package: "example",
+    version: "1.0.0",
+  });
   assert.throws(
     () => validateDependencyRiskReview(changed, expected),
     /风险与 cargo-audit 不一致/,
   );
 });
 
-test("draft cannot pretend the fix is released or approved", () => {
-  const released = fixture();
-  released.limitations.upstreamFixMergedNotReleased = false;
+test("draft cannot pretend the upgrade is pending or approved", () => {
+  const pending = fixture();
+  pending.limitations.upgradeNotYetApplied = true;
   assert.throws(
-    () => validateDependencyRiskReview(released, expected),
-    /掩盖了未发布/,
+    () => validateDependencyRiskReview(pending, expected),
+    /掩盖了升级后依赖状态/,
   );
 
   const approved = fixture();
@@ -145,5 +156,28 @@ test("draft cannot pretend the fix is released or approved", () => {
   assert.throws(
     () => validateDependencyRiskReview(approved, expected),
     /不得伪造具名安全批准/,
+  );
+});
+
+test("draft rejects an unverified stable dependency path", () => {
+  const oldUtils = fixture();
+  oldUtils.upstream.releasedTauriUtilsRequirement = "~2.9.3";
+  assert.throws(
+    () => validateDependencyRiskReview(oldUtils, expected),
+    /修复依赖链不准确/,
+  );
+
+  const oldPattern = fixture();
+  oldPattern.upstream.releasedUrlpatternRequirement = "^0.3";
+  assert.throws(
+    () => validateDependencyRiskReview(oldPattern, expected),
+    /修复依赖链不准确/,
+  );
+
+  const oldTarget = structuredClone(expected);
+  oldTarget.targetPackages.push({ name: "unic-ucd-ident", version: "0.9.0" });
+  assert.throws(
+    () => validateDependencyRiskReview(fixture(), oldTarget),
+    /风险与 cargo-audit 不一致/,
   );
 });

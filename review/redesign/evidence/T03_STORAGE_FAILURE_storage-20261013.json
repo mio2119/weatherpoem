@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "1.0",
+  "testKind": "isolated-native-sqlite-open-failure",
+  "generatedAt": "2026-10-13T12:02:23Z",
+  "artifact": {
+    "path": ".work/redesign-storage-20261013/release/weatherpoem.exe",
+    "sha256": "E7A42D12AD45FBD33EEAD869377328DF0E19548351AB0F0580242B8F136B2EC1"
+  },
+  "scenario": {
+    "profileDirectoryName": "WeatherPoem.Performance.StorageFailure.F5MN46",
+    "databaseTargetIsDirectory": true,
+    "profileIsolated": true,
+    "realUserDataTouched": false,
+    "systemSettingsChanged": false,
+    "simulatedWeather": "weather-offline"
+  },
+  "readyMarker": {
+    "schemaVersion": "1.2",
+    "runId": "c1d53f4b-03e2-4118-b32f-86f1a678c3f4",
+    "appVersion": "0.2.0",
+    "processId": 49508,
+    "nativeReadyMs": 856.9456,
+    "frontendReadyMs": 325.1000000089407,
+    "readyView": "error",
+    "readyMode": "error",
+    "viewRenderMs": 206.9000000059605,
+    "performanceScenario": "weather-offline",
+    "sceneMotion": null,
+    "recordedAtUnixMs": 1791885993958
+  },
+  "windowObservation": {
+    "windowTitle": "WeatherPoem 今日诗笺",
+    "visibleMessage": "本地资料暂时无法读取。为保护收藏和设置，已停止载入；请重试。",
+    "retryButtonVisible": true,
+    "screenshotArchived": false,
+    "accessibilityTextCaptured": false
+  },
+  "cleanup": {
+    "testProcessStopped": true,
+    "temporaryProfileRemoved": false,
+    "temporaryProfileRemovalBlockedByToolPolicy": true
+  },
+  "result": "error-view-observed",
+  "limitations": {
+    "retryButtonNotActivated": true,
+    "realSqliteLockNotSimulated": true,
+    "realUserDatabaseNotRead": true,
+    "nativeScreenReaderNotChecked": true
+  }
+}
