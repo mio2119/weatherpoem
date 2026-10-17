@@ -966,6 +966,29 @@ function handleConcealRequest(): void {
   revealPending.value = true;
 }
 
+async function refreshSafetyOnReveal(): Promise<void> {
+  if (!recommendation.value || !repository.value) return;
+  const nextWeather = await fetchWeather(findCity(settings.value.cityId), {
+    performanceScenario: performanceWeatherScenario,
+  });
+  if (!nextWeather.shouldSuppressPoem) return;
+  const suppressedState = {
+    localDate: calendar.value.localDate,
+    state: "alert-suppressed",
+    workId: recommendation.value.poem.id,
+    shownAt: new Date().toISOString(),
+    contentVersion: CONTENT_VERSION,
+    ruleVersion: RULE_VERSION,
+  } as const;
+  await repository.value.saveDailyState(suppressedState);
+  bootstrap.value.dailyState = suppressedState;
+  weather.value = nextWeather;
+  recommendation.value = undefined;
+  selectedReadingPoem.value = undefined;
+  panel.value = "card";
+  await recordPilotActivity("warning-suppressed");
+}
+
 function validateRevealedContent(): Promise<void> {
   if (revealValidationPromise) return revealValidationPromise;
   revealPending.value = true;
@@ -973,8 +996,9 @@ function validateRevealedContent(): Promise<void> {
     if (!settings.value.configured || !repository.value) return;
     if (!(await refreshDateIfChanged())) {
       const correction = await refreshContentControl();
-      if (!correction && !recommendation.value) {
-        await loadToday(false, true);
+      if (!correction) {
+        if (recommendation.value) await refreshSafetyOnReveal();
+        else await loadToday(false, true);
       }
     }
   })()

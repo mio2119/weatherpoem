@@ -69,3 +69,5 @@
 同哈希补上[带原生窗口画面的托盘跨日复核](./evidence/T01_NATIVE_TRAY_DAY_VISUAL_20261017.json)：通过隐藏按钮进入托盘后，仅把隔离 WebView 的页面时间推进一天，再用第二实例唤醒。DOM 记录按“遮挡→遮挡→新日诗笺”变化，没有重新出现旧日诗卡；[原日画面](./evidence/T01_NATIVE_TRAY_DAY_VISUAL_20261017_before.png)与[新日画面](./evidence/T01_NATIVE_TRAY_DAY_VISUAL_20261017_after.png)已逐张查看，新日显示 10 月 18 日的重阳情境和另一首诗。静帧不能证明两张画面之间原生合成器的每一帧；真实系统跨午夜、休眠／唤醒和不同缩放仍未测，A1 继续**部分通过**。
 
 演练预警文案修正后的新内部候选哈希 `4507FF5002D3C4E749C6F411D371D3331C30E0AC5F438353634D19FD371BC029` 又重跑[隔离托盘跨日 DOM 路径](./evidence/T01_WARNING_COPY_CANDIDATE_DAY_RECHECK_20261017.json)并通过；原窗口画面仍属于前述旧哈希，不能跨候选冒充新截图。A1 不因此完成真实系统跨日或休眠验收。
+
+隐藏期间安全提醒复查修正后的新内部候选哈希 `3CD3094FDF09CCD36E0EA67E0C59CD5E3DF3609BAFCA0363FE62BC7F1BE0C6F0` 再跑[托盘隔离跨日回归](./evidence/T01_HIDDEN_WARNING_CANDIDATE_DAY_RECHECK_20261017.json)并通过；它只记录 DOM 状态，跨日静帧仍属于更早的哈希。真实系统跨午夜和休眠仍未验，A1 继续**部分通过**。

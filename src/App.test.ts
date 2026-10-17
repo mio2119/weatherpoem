@@ -6,6 +6,8 @@ import { POEMS } from "./data/poems";
 import { CONTENT_WITHDRAWAL_CACHE_KEY } from "./services/content-control";
 import { createRepository } from "./services/persistence";
 import * as reasonService from "./services/reason";
+import { fetchWeather } from "./services/weather";
+import type { WeatherContext } from "./types";
 
 vi.mock("./services/weather", async (importOriginal) => {
   const original = await importOriginal<typeof import("./services/weather")>();
@@ -24,9 +26,31 @@ vi.mock("./services/weather", async (importOriginal) => {
 
 let wrapper: VueWrapper | undefined;
 
+function activeSafetyWarning(): WeatherContext {
+  return {
+    kind: "heavy-rain", label: "暴雨", freshness: "fresh", source: "open-meteo",
+    shouldSuppressPoem: true,
+    warnings: [{
+      id: "official-new-warning", title: "暴雨预警", level: "warning",
+      description: "请优先查看当地气象部门最新信息。", source: "北京市气象台",
+      origin: "official", area: "北京市",
+      publishedAt: new Date().toISOString(),
+      expiresAt: new Date(Date.now() + 60 * 60 * 1000).toISOString(),
+    }],
+  };
+}
+
 beforeEach(() => {
   localStorage.clear();
   delete window.__TAURI_INTERNALS__;
+  vi.mocked(fetchWeather).mockReset().mockResolvedValue({
+    kind: "unknown",
+    label: "天气暂不可用",
+    freshness: "unavailable",
+    source: "offline",
+    warnings: [],
+    shouldSuppressPoem: false,
+  });
   vi.stubGlobal("matchMedia", () => ({
     matches: false,
     addEventListener: vi.fn(),
@@ -519,6 +543,82 @@ describe("browser preview user flow", () => {
       .not.toContain(originalTitle);
     expect((await (await createRepository()).load()).dailyState)
       .toMatchObject({ state: "content-withdrawn", workId: originalId });
+  });
+
+  it("holds a hidden same-day poem until a newly arrived safety warning is checked", async () => {
+    vi.useFakeTimers({ toFake: ["Date"] });
+    vi.setSystemTime(new Date(2026, 9, 14, 9));
+    vi.spyOn(document, "visibilityState", "get").mockReturnValue("visible");
+    localStorage.setItem("weatherpoem.local.v1", JSON.stringify({
+      settings: { configured: true, cityId: "beijing" },
+      history: [], favorites: [], feedback: [],
+    }));
+    wrapper = mount(App, { attachTo: document.body });
+    await vi.waitFor(() => expect(wrapper!.find(".poem-view").exists()).toBe(true));
+    const oldTitle = wrapper.get(".poem-view h1").text();
+    const original = await (await createRepository()).load();
+    expect(original.dailyState?.state).toBe("shown");
+
+    window.dispatchEvent(new Event("weatherpoem:conceal"));
+    await flushPromises();
+    expect(wrapper.find(".poem-view").exists()).toBe(false);
+    let deliverWarning!: (weather: WeatherContext) => void;
+    vi.mocked(fetchWeather).mockImplementationOnce(() => new Promise((resolve) => {
+      deliverWarning = resolve;
+    }));
+    window.dispatchEvent(new Event("focus"));
+    await vi.waitFor(() => expect(fetchWeather).toHaveBeenCalledTimes(2));
+    expect(wrapper.find(".loading-view").exists()).toBe(true);
+    expect(wrapper.find(".poem-view").exists()).toBe(false);
+
+    deliverWarning(activeSafetyWarning());
+    await vi.waitFor(() => expect(wrapper!.find(".warning-view").exists()).toBe(true));
+    expect(wrapper.find(".poem-view").exists()).toBe(false);
+    expect(wrapper.get(".warning-view").text()).not.toContain(oldTitle);
+    const after = await (await createRepository()).load();
+    expect(after.dailyState).toMatchObject({ state: "alert-suppressed", workId: original.dailyState?.workId });
+    expect(after.history).toHaveLength(original.history.length);
+  });
+
+  it("does not reveal a hidden poem when the safety recheck fails unexpectedly", async () => {
+    localStorage.setItem("weatherpoem.local.v1", JSON.stringify({
+      settings: { configured: true, cityId: "beijing" },
+      history: [], favorites: [], feedback: [],
+    }));
+    wrapper = mount(App, { attachTo: document.body });
+    await vi.waitFor(() => expect(wrapper!.find(".poem-view").exists()).toBe(true));
+    window.dispatchEvent(new Event("weatherpoem:conceal"));
+    await flushPromises();
+    expect(wrapper.find(".poem-view").exists()).toBe(false);
+    vi.mocked(fetchWeather).mockRejectedValueOnce(new Error("isolated weather failure"));
+    const consoleError = vi.spyOn(console, "error").mockImplementation(() => undefined);
+    try {
+      window.dispatchEvent(new Event("focus"));
+      await vi.waitFor(() => expect(wrapper!.find(".error-view").exists()).toBe(true));
+      expect(wrapper.find(".poem-view").exists()).toBe(false);
+      expect(wrapper.get(".error-view").text()).toContain("暂时未能打开");
+    } finally {
+      consoleError.mockRestore();
+    }
+  });
+
+  it("closes hidden full-poem reading before showing a newly arrived safety warning", async () => {
+    localStorage.setItem("weatherpoem.local.v1", JSON.stringify({
+      settings: { configured: true, cityId: "beijing" },
+      history: [], favorites: [], feedback: [],
+    }));
+    wrapper = mount(App, { attachTo: document.body });
+    await vi.waitFor(() => expect(wrapper!.find(".poem-view").exists()).toBe(true));
+    await wrapper.get(".read-button").trigger("click");
+    await vi.waitFor(() => expect(wrapper!.find(".reading-panel").exists()).toBe(true));
+    window.dispatchEvent(new Event("weatherpoem:conceal"));
+    await flushPromises();
+    expect(wrapper.find(".reading-panel").exists()).toBe(false);
+    vi.mocked(fetchWeather).mockResolvedValueOnce(activeSafetyWarning());
+    window.dispatchEvent(new Event("focus"));
+    await vi.waitFor(() => expect(wrapper!.find(".warning-view").exists()).toBe(true));
+    expect(wrapper.find(".reading-panel").exists()).toBe(false);
+    expect(wrapper.find(".poem-view").exists()).toBe(false);
   });
 
   it("refreshes the local day immediately when returning from reading or favorites", async () => {

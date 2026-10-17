@@ -15,12 +15,16 @@ const candidate = path.resolve(process.argv[2] ?? "");
 const reportPath = path.resolve(process.argv[3] ?? "");
 const nativeClose = process.argv.includes("--native-close");
 const withdrawal = process.argv.includes("--withdrawal");
+const cachedWarning = process.argv.includes("--cached-warning");
+const sameDay = process.argv.includes("--same-day");
 const motion = process.argv.includes("--motion");
 const minimize = process.argv.includes("--minimize");
 const secondInstance = process.argv.includes("--second-instance");
 const capture = process.argv.includes("--capture");
 const record = process.argv.includes("--record");
 assert.ok(!(motion && withdrawal), "Choose motion or withdrawal evidence");
+assert.ok(!cachedWarning || (!withdrawal && !motion), "Cached warning requires its own isolated scenario");
+assert.ok(!sameDay || (!cachedWarning && !withdrawal && !motion), "Same-day recovery requires its own isolated scenario");
 assert.ok(!minimize || secondInstance, "Minimized recovery must use the native second-instance path");
 assert.ok(!record || motion, "Motion recording requires the native rain scene");
 const internalRoot = path.join(root, ".work") + path.sep;
@@ -76,8 +80,10 @@ try {
       WEATHERPOEM_PERFORMANCE_PROFILE: profile,
       WEATHERPOEM_PERFORMANCE_PROBE: markerPath,
       WEATHERPOEM_PERFORMANCE_RUN_ID: randomUUID().replaceAll("-", ""),
-      WEATHERPOEM_PERFORMANCE_SCENARIO: motion ? "scene-rain" : "weather-offline",
-      WEBVIEW2_ADDITIONAL_BROWSER_ARGUMENTS: `--remote-debugging-port=${port}`,
+      WEATHERPOEM_PERFORMANCE_SCENARIO: cachedWarning ? "" : motion ? "scene-rain" : "weather-offline",
+      WEBVIEW2_ADDITIONAL_BROWSER_ARGUMENTS: cachedWarning
+        ? `--remote-debugging-port=${port} --host-resolver-rules="MAP api.open-meteo.com 127.0.0.1" --no-proxy-server`
+        : `--remote-debugging-port=${port}`,
   };
   child = spawn(candidate, [], {
     cwd: path.dirname(candidate),
@@ -150,9 +156,16 @@ try {
       };
     })()`);
   }
-  const original = await evaluate("({ date: document.querySelector('.context-strip strong')?.textContent, title: document.querySelector('.poem-view h1')?.textContent, visible: document.visibilityState, poem: Boolean(document.querySelector('.poem-view')) })");
+  const original = await evaluate("({ date: document.querySelector('.context-strip strong')?.textContent, title: document.querySelector('.poem-view h1')?.textContent, context: document.querySelector('.context-strip')?.textContent, visible: document.visibilityState, poem: Boolean(document.querySelector('.poem-view')) })");
   assert.equal(original.visible, "visible");
   assert.equal(original.poem, true);
+  if (cachedWarning) assert.ok(original.context?.includes("天气未更新"), "Initial poem must use blocked-network offline weather");
+  let initialDisplayEvents;
+  if (sameDay) {
+    const database = new DatabaseSync(resolvePerformanceDatabasePath(profile), { readOnly: true });
+    try { initialDisplayEvents = database.prepare("SELECT COUNT(*) AS count FROM recommendation_display_events").get().count; }
+    finally { database.close(); }
+  }
   const initialMotion = motion ? await sceneMotion() : undefined;
   if (motion) {
     assert.equal(initialMotion.sceneKind, "rain");
@@ -227,7 +240,31 @@ try {
   }
   let expectedDate;
   let withdrawnWorkId;
-  if (withdrawal) {
+  if (cachedWarning) {
+    await evaluate(`(() => {
+      const now = new Date();
+      const warning = {
+        id: 'official-isolated-reveal-exercise',
+        title: '隔离暴雨预警演练',
+        level: 'warning',
+        description: '这是临时资料中的安全提醒演练，不是真实气象预警。',
+        source: 'WeatherPoem 隔离性能演练',
+        origin: 'official',
+        area: '北京市',
+        publishedAt: now.toISOString(),
+        expiresAt: new Date(now.getTime() + 6 * 60 * 60 * 1000).toISOString(),
+      };
+      localStorage.setItem('weatherpoem.weather-cache.v1', JSON.stringify({
+        cityId: 'beijing',
+        cachedAt: now.getTime(),
+        weather: {
+          kind: 'clear', label: '晴', observedAt: now.toISOString(),
+          freshness: 'fresh', source: 'open-meteo',
+          warnings: [warning], shouldSuppressPoem: true,
+        },
+      }));
+    })()`);
+  } else if (withdrawal) {
     const database = new DatabaseSync(resolvePerformanceDatabasePath(profile), { readOnly: true });
     try {
       const daily = database.prepare("SELECT work_id, content_version FROM daily_state ORDER BY local_date DESC LIMIT 1").get();
@@ -245,6 +282,8 @@ try {
     } finally {
       database.close();
     }
+  } else if (sameDay) {
+    expectedDate = original.date;
   } else if (!motion) {
     expectedDate = await evaluate(`(() => {
       const RealDate = Date;
@@ -268,11 +307,13 @@ try {
       poem: Boolean(document.querySelector('.poem-view')),
       loading: Boolean(document.querySelector('.loading-view')),
       correction: Boolean(document.querySelector('.content-correction-view')),
+      warning: Boolean(document.querySelector('.warning-view')),
     });
     new MutationObserver(sample).observe(document.body, { subtree: true, childList: true, characterData: true });
     document.addEventListener('visibilitychange', sample);
     sample();
   })()`);
+  const revealStartedAt = Date.now();
   if (secondInstance) {
     secondary = spawn(candidate, [], {
       cwd: path.dirname(candidate), windowsHide: true, stdio: "ignore", env: launchEnv,
@@ -282,14 +323,31 @@ try {
     await evaluate("window.__TAURI_INTERNALS__.invoke('plugin:window|show', { label: 'main' })");
     await evaluate("window.__TAURI_INTERNALS__.invoke('plugin:window|set_focus', { label: 'main' })");
   }
-  if (withdrawal) {
+  if (cachedWarning) {
+    try {
+      await waitFor(async () => (await evaluate("Boolean(document.querySelector('.warning-view')) && !document.querySelector('.poem-view')")) === true, "native cached safety warning", 25000);
+    } catch (error) {
+      const diagnostic = await evaluate("({ poemTitle: document.querySelector('.poem-view h1')?.textContent, warning: Boolean(document.querySelector('.warning-view')), loading: Boolean(document.querySelector('.loading-view')), observed: window.__revealObserved })");
+      throw new Error(`${error.message}; diagnostic: ${JSON.stringify(diagnostic)}`);
+    }
+  } else if (withdrawal) {
     await waitFor(async () => (await evaluate("Boolean(document.querySelector('.content-correction-view')) && !document.querySelector('.poem-view')")) === true, "native content correction", 25000);
   } else {
     await waitFor(async () => (await evaluate(`document.querySelector('.context-strip strong')?.textContent === ${JSON.stringify(expectedDate)} && Boolean(document.querySelector('.poem-view'))`)) === true, "new local-day native poem", 25000);
   }
+  const revealElapsedMs = Date.now() - revealStartedAt;
   const observed = await evaluate("window.__revealObserved");
-  if (!motion) {
-    assert.equal(observed.some((frame) => frame.poem && (withdrawal || frame.date === original.date)), false, "Old poem was visible during reveal");
+  if (!motion && !sameDay) {
+    assert.equal(observed.some((frame) => frame.poem && (withdrawal || cachedWarning || frame.date === original.date)), false, "Old poem was visible during reveal");
+  }
+  let finalDisplayEvents;
+  if (sameDay) {
+    const recoveredTitle = await evaluate("document.querySelector('.poem-view h1')?.textContent");
+    assert.equal(recoveredTitle, original.title, "Same-day recovery changed the current poem");
+    const database = new DatabaseSync(resolvePerformanceDatabasePath(profile), { readOnly: true });
+    try { finalDisplayEvents = database.prepare("SELECT COUNT(*) AS count FROM recommendation_display_events").get().count; }
+    finally { database.close(); }
+    assert.equal(finalDisplayEvents, initialDisplayEvents, "Same-day recovery recorded an extra poem display");
   }
   const restoredMotion = motion ? await sceneMotion() : undefined;
   if (motion) {
@@ -309,22 +367,41 @@ try {
       database.close();
     }
   }
+  let warningText;
+  let warningDailyState;
+  if (cachedWarning) {
+    warningText = await evaluate("document.querySelector('.warning-view')?.textContent");
+    assert.ok(warningText.includes("隔离暴雨预警演练"), "Isolated warning was not rendered");
+    assert.ok(warningText.includes("没有连接真实预警网关"), "Isolated warning was misrepresented as live gateway data");
+    assert.ok(!warningText.includes(original.title), "Old poem title leaked into safety warning");
+    const database = new DatabaseSync(resolvePerformanceDatabasePath(profile), { readOnly: true });
+    try {
+      warningDailyState = database.prepare("SELECT state, work_id FROM daily_state ORDER BY local_date DESC LIMIT 1").get();
+      assert.equal(warningDailyState?.state, "alert-suppressed");
+      assert.ok(warningDailyState?.work_id, "Suppressed daily state lost the original work ID");
+    } finally { database.close(); }
+  }
   const finalScreenshot = await screenshot("after");
   const report = {
     schemaVersion: "1.0",
-    testKind: motion ? minimize ? "isolated-native-minimized-motion" : "isolated-native-hidden-motion" : withdrawal ? "isolated-native-hidden-content-withdrawal" : nativeClose ? "isolated-native-close-day-reveal" : "isolated-native-hidden-day-reveal",
+    testKind: cachedWarning ? "isolated-native-hidden-cached-safety-warning" : sameDay ? "isolated-native-hidden-same-day-reveal" : motion ? minimize ? "isolated-native-minimized-motion" : "isolated-native-hidden-motion" : withdrawal ? "isolated-native-hidden-content-withdrawal" : nativeClose ? "isolated-native-close-day-reveal" : "isolated-native-hidden-day-reveal",
     generatedAt: new Date().toISOString(),
     candidate: { path: path.relative(root, candidate).replaceAll(path.sep, "/"), sha256: createHash("sha256").update(readFileSync(candidate)).digest("hex").toUpperCase() },
-    isolation: { temporaryProfile: true, systemClockChanged: false, installedOrUninstalled: false, realUserDataTouched: false },
-    scenario: motion ? "scene-rain" : "weather-offline",
+    isolation: { temporaryProfile: true, systemClockChanged: false, installedOrUninstalled: false, realUserDataTouched: false, processOnlyWeatherHostBlock: cachedWarning },
+    scenario: cachedWarning ? "network-blocked-cached-warning" : motion ? "scene-rain" : "weather-offline",
     concealAction: nativeClose ? "native-close" : minimize ? "minimize-button" : "tray-hide-button",
     activationPath: secondInstance ? "native-single-instance" : "isolated-window-commands",
+    revealElapsedMs,
     readyView: marker.readyView,
     original,
+    initialDisplayEvents,
     hidden,
     expectedDate,
     withdrawnWorkId,
     correctedDailyState,
+    finalDisplayEvents,
+    warningDailyState,
+    warningText: cachedWarning ? warningText : undefined,
     motion: motion ? { initial: initialMotion, hidden: hiddenMotion, steadyHiddenAfter3s: steadyHiddenMotion, restored: restoredMotion } : undefined,
     motionRecording,
     screenshots: [firstScreenshot, finalScreenshot].filter(Boolean),

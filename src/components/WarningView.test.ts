@@ -65,7 +65,7 @@ describe("WarningView", () => {
 
   it("隔离演练不冒称已收到真实预警或授权网关数据", () => {
     const weather = warningWeather("official");
-    weather.source = "offline";
+    weather.source = "cache";
     weather.warnings[0]!.source = "WeatherPoem 隔离性能演练";
     const wrapper = mount(WarningView, { props: { weather } });
     expect(wrapper.text()).toContain("隔离演练，不是真实气象预警");

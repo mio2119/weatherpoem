@@ -12,7 +12,6 @@ const hasOfficialWarning = computed(() =>
   props.weather.warnings.some((warning) => warning.origin === "official"),
 );
 const isIsolatedExercise = computed(() =>
-  props.weather.source === "offline" &&
   props.weather.warnings.some(
     (warning) => warning.source === "WeatherPoem 隔离性能演练",
   ),

@@ -1,0 +1,58 @@
+{
+  "schemaVersion": "1.0",
+  "testKind": "isolated-native-hidden-same-day-reveal",
+  "generatedAt": "2026-10-17T03:00:34.075Z",
+  "candidate": {
+    "path": ".work/redesign-hidden-warning-20261017/release/weatherpoem.exe",
+    "sha256": "3CD3094FDF09CCD36E0EA67E0C59CD5E3DF3609BAFCA0363FE62BC7F1BE0C6F0"
+  },
+  "isolation": {
+    "temporaryProfile": true,
+    "systemClockChanged": false,
+    "installedOrUninstalled": false,
+    "realUserDataTouched": false,
+    "processOnlyWeatherHostBlock": false
+  },
+  "scenario": "weather-offline",
+  "concealAction": "tray-hide-button",
+  "activationPath": "native-single-instance",
+  "revealElapsedMs": 105,
+  "readyView": "poem",
+  "original": {
+    "date": "10月17日",
+    "title": "秋词",
+    "context": "10月17日天气未更新秋 收藏 0",
+    "visible": "visible",
+    "poem": true
+  },
+  "initialDisplayEvents": 1,
+  "hidden": {
+    "visibility": "visible",
+    "poem": false,
+    "loading": true
+  },
+  "expectedDate": "10月17日",
+  "finalDisplayEvents": 1,
+  "screenshots": [
+    "review/redesign/evidence/T05_NATIVE_SAME_DAY_RECOVERY_20261017_before.png",
+    "review/redesign/evidence/T05_NATIVE_SAME_DAY_RECOVERY_20261017_after.png"
+  ],
+  "observed": [
+    {
+      "visible": "visible",
+      "poem": false,
+      "loading": true,
+      "correction": false,
+      "warning": false
+    },
+    {
+      "visible": "visible",
+      "date": "10月17日",
+      "poem": true,
+      "loading": false,
+      "correction": false,
+      "warning": false
+    }
+  ],
+  "result": "passed"
+}
