@@ -1,0 +1,47 @@
+{
+  "schemaVersion": "1.0",
+  "testKind": "isolated-native-autostart-foreground-bounds",
+  "generatedAt": "2026-10-17T03:28:34.1602883Z",
+  "sourceCommit": "4f6a7dd60dcdec1187bbc381b91fd0847a2434b1",
+  "candidate": {
+    "path": "E:\\weatherpoem\\.work\\redesign-compact-warning-20261017\\release\\weatherpoem.exe",
+    "sha256": "1DFDFC7064455FED11780922596A6328C50F63793AAE1DDAE1A3141211813BE1"
+  },
+  "isolation": {
+    "temporaryProfile": true,
+    "realUserDataTouched": false,
+    "systemAutostartChanged": false,
+    "systemDisplaySettingsChanged": false
+  },
+  "observations": {
+    "probeMode": "full-screen",
+    "foregroundProbePrecondition": true,
+    "foregroundProbeActivationAttempts": 1,
+    "foregroundProbeDpi": 96,
+    "monitorBounds": {
+      "left": 0,
+      "top": 0,
+      "right": 1920,
+      "bottom": 1080
+    },
+    "workAreaBounds": {
+      "left": 0,
+      "top": 0,
+      "right": 1920,
+      "bottom": 1032
+    },
+    "appPid": 105184,
+    "productWindowHandle": "12389688",
+    "autoVisible": false,
+    "probeStillForeground": true,
+    "readyMarkerAfterAuto": false,
+    "secondInstancePid": 97312,
+    "manualVisible": true,
+    "manualFocused": true,
+    "manualResult": true
+  },
+  "limitations": [
+    "Borderless WinForms probe is not a real presentation, game, or ordinary maximized application; single monitor and current DPI only."
+  ],
+  "result": "full-screen-autostart-suppressed-manual-recovery-passed"
+}

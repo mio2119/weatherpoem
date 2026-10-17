@@ -360,13 +360,23 @@ try {
     $report.observations.glance = Get-WindowObservation -Handle $window
     if ($FocusOnly) {
         Start-Sleep -Milliseconds 1000
+        [System.Windows.Forms.Application]::DoEvents()
+        $foregroundAfterOneSecond = [WeatherPoemNativeWindowProbe]::GetForegroundWindow()
         $report.observations.foregroundAfterOneSecondPid = [WeatherPoemNativeWindowProbe]::OwnerPid(
-            [WeatherPoemNativeWindowProbe]::GetForegroundWindow()
+            $foregroundAfterOneSecond
         )
+        $report.observations.foregroundAfterOneSecondSameHandle = $foregroundAfterOneSecond -eq $foregroundBefore
+        if ($ControlledInput) {
+            $report.observations.foregroundProbeInputStillFocused = $focusInput.Focused
+        }
         $report.observations.productTookFocus = $report.observations.productTookFocus -or
             $report.observations.foregroundAfterOneSecondPid -eq $process.Id
         $report.result = if ($report.observations.productTookFocus) {
             "autostart-took-focus"
+        } elseif ($ControlledInput -and
+            (-not $report.observations.foregroundAfterOneSecondSameHandle -or
+             -not $report.observations.foregroundProbeInputStillFocused)) {
+            "input-focus-not-preserved-cause-unresolved"
         } else {
             "autostart-preserved-focus"
         }
