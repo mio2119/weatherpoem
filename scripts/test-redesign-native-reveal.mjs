@@ -21,12 +21,14 @@ const motion = process.argv.includes("--motion");
 const minimize = process.argv.includes("--minimize");
 const secondInstance = process.argv.includes("--second-instance");
 const capture = process.argv.includes("--capture");
+const captureRevealMask = process.argv.includes("--capture-reveal-mask");
 const record = process.argv.includes("--record");
 assert.ok(!(motion && withdrawal), "Choose motion or withdrawal evidence");
 assert.ok(!cachedWarning || (!withdrawal && !motion), "Cached warning requires its own isolated scenario");
 assert.ok(!sameDay || (!cachedWarning && !withdrawal && !motion), "Same-day recovery requires its own isolated scenario");
 assert.ok(!minimize || secondInstance, "Minimized recovery must use the native second-instance path");
 assert.ok(!record || motion, "Motion recording requires the native rain scene");
+assert.ok(!captureRevealMask || (cachedWarning && capture), "Reveal-mask capture requires cached warning and screenshots");
 const internalRoot = path.join(root, ".work") + path.sep;
 const evidenceRoot = path.join(root, "review", "redesign", "evidence") + path.sep;
 assert.ok(candidate.toLowerCase().startsWith(internalRoot.toLowerCase()) && candidate.endsWith("weatherpoem.exe"), "Use an isolated internal candidate");
@@ -323,6 +325,17 @@ try {
     await evaluate("window.__TAURI_INTERNALS__.invoke('plugin:window|show', { label: 'main' })");
     await evaluate("window.__TAURI_INTERNALS__.invoke('plugin:window|set_focus', { label: 'main' })");
   }
+  let revealMask;
+  if (captureRevealMask) {
+    await waitFor(() => evaluate(`(async () =>
+      Boolean(document.querySelector('.loading-view')) &&
+      await window.__TAURI_INTERNALS__.invoke('plugin:window|is_visible', { label: 'main' })
+    )()`), "visible native safety-check mask", 5000);
+    revealMask = await evaluate("({ text: document.querySelector('.loading-view p')?.textContent, poem: Boolean(document.querySelector('.poem-view')), warning: Boolean(document.querySelector('.warning-view')) })");
+    assert.equal(revealMask.text, "正在核对今日内容与安全信息");
+    assert.equal(revealMask.poem, false);
+    revealMask.screenshot = await screenshot("reveal_mask");
+  }
   if (cachedWarning) {
     try {
       await waitFor(async () => (await evaluate("Boolean(document.querySelector('.warning-view')) && !document.querySelector('.poem-view')")) === true, "native cached safety warning", 25000);
@@ -396,6 +409,7 @@ try {
     original,
     initialDisplayEvents,
     hidden,
+    revealMask,
     expectedDate,
     withdrawnWorkId,
     correctedDailyState,

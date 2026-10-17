@@ -68,6 +68,26 @@ afterEach(() => {
 });
 
 describe("browser preview user flow", () => {
+  it("keeps poem-selection copy during initial loading", async () => {
+    localStorage.setItem("weatherpoem.local.v1", JSON.stringify({
+      settings: { configured: true, cityId: "beijing" },
+      history: [], favorites: [], feedback: [],
+    }));
+    let finishWeather!: (weather: WeatherContext) => void;
+    vi.mocked(fetchWeather).mockImplementationOnce(() => new Promise((resolve) => {
+      finishWeather = resolve;
+    }));
+    wrapper = mount(App, { attachTo: document.body });
+    await vi.waitFor(() => expect(wrapper!.get(".loading-view p").text())
+      .toBe("正在择取今日诗句"));
+    await vi.waitFor(() => expect(fetchWeather).toHaveBeenCalledTimes(1));
+    finishWeather({
+      kind: "unknown", label: "天气暂不可用", freshness: "unavailable",
+      source: "offline", warnings: [], shouldSuppressPoem: false,
+    });
+    await vi.waitFor(() => expect(wrapper!.find(".poem-view").exists()).toBe(true));
+  });
+
   it("shows a recoverable data error instead of blank onboarding for damaged browser data", async () => {
     const damaged = '{"settings":{"configured":true},';
     localStorage.setItem("weatherpoem.local.v1", damaged);
@@ -562,6 +582,8 @@ describe("browser preview user flow", () => {
     window.dispatchEvent(new Event("weatherpoem:conceal"));
     await flushPromises();
     expect(wrapper.find(".poem-view").exists()).toBe(false);
+    expect(wrapper.get(".loading-view p").text())
+      .toBe("正在核对今日内容与安全信息");
     let deliverWarning!: (weather: WeatherContext) => void;
     vi.mocked(fetchWeather).mockImplementationOnce(() => new Promise((resolve) => {
       deliverWarning = resolve;

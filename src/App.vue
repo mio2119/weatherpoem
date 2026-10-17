@@ -1320,7 +1320,7 @@ onBeforeUnmount(() => {
 
     <div v-if="loading || revealPending" class="loading-view" aria-live="polite">
       <span class="loading-line" />
-      <p>正在择取今日诗句</p>
+      <p>{{ revealPending ? "正在核对今日内容与安全信息" : "正在择取今日诗句" }}</p>
     </div>
 
     <div v-else-if="errorMessage" class="error-view" role="alert">
