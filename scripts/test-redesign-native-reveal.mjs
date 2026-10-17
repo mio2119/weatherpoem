@@ -22,6 +22,7 @@ const minimize = process.argv.includes("--minimize");
 const secondInstance = process.argv.includes("--second-instance");
 const capture = process.argv.includes("--capture");
 const captureRevealMask = process.argv.includes("--capture-reveal-mask");
+const compactWarning = process.argv.includes("--compact-warning");
 const record = process.argv.includes("--record");
 assert.ok(!(motion && withdrawal), "Choose motion or withdrawal evidence");
 assert.ok(!cachedWarning || (!withdrawal && !motion), "Cached warning requires its own isolated scenario");
@@ -29,6 +30,7 @@ assert.ok(!sameDay || (!cachedWarning && !withdrawal && !motion), "Same-day reco
 assert.ok(!minimize || secondInstance, "Minimized recovery must use the native second-instance path");
 assert.ok(!record || motion, "Motion recording requires the native rain scene");
 assert.ok(!captureRevealMask || (cachedWarning && capture), "Reveal-mask capture requires cached warning and screenshots");
+assert.ok(!compactWarning || (cachedWarning && capture), "Compact warning audit requires cached warning and screenshots");
 const internalRoot = path.join(root, ".work") + path.sep;
 const evidenceRoot = path.join(root, "review", "redesign", "evidence") + path.sep;
 assert.ok(candidate.toLowerCase().startsWith(internalRoot.toLowerCase()) && candidate.endsWith("weatherpoem.exe"), "Use an isolated internal candidate");
@@ -249,7 +251,9 @@ try {
         id: 'official-isolated-reveal-exercise',
         title: '隔离暴雨预警演练',
         level: 'warning',
-        description: '这是临时资料中的安全提醒演练，不是真实气象预警。',
+        description: ${compactWarning
+          ? "'这是临时资料中的长文排版演练，不是真实气象预警。'.repeat(8)"
+          : "'这是临时资料中的安全提醒演练，不是真实气象预警。'"},
         source: 'WeatherPoem 隔离性能演练',
         origin: 'official',
         area: '北京市',
@@ -394,6 +398,46 @@ try {
       assert.ok(warningDailyState?.work_id, "Suppressed daily state lost the original work ID");
     } finally { database.close(); }
   }
+  let compactWarningAudit;
+  if (compactWarning) {
+    await evaluate("window.__TAURI_INTERNALS__.invoke('plugin:window|set_min_size', { label: 'main', value: null })");
+    await evaluate("window.__TAURI_INTERNALS__.invoke('plugin:window|set_size', { label: 'main', value: { Logical: { width: 320, height: 260 } } })");
+    await waitFor(() => evaluate("window.innerWidth <= 320 && window.innerHeight <= 260"), "isolated compact warning window", 5000);
+    const measureWarning = `(() => {
+      const root = document.querySelector('.warning-view');
+      const disclaimer = root.querySelector('.warning-disclaimer');
+      const introduction = root.querySelector('h1 + p');
+      const warningTitle = root.querySelector('.warning-item h2');
+      const rootRect = root.getBoundingClientRect();
+      const disclaimerRect = disclaimer.getBoundingClientRect();
+      const introRect = introduction.getBoundingClientRect();
+      const titleRect = warningTitle.getBoundingClientRect();
+      return {
+        viewport: { width: innerWidth, height: innerHeight },
+        scroll: { clientWidth: root.clientWidth, scrollWidth: root.scrollWidth, clientHeight: root.clientHeight, scrollHeight: root.scrollHeight, scrollTop: root.scrollTop },
+        rootRect: { top: rootRect.top, bottom: rootRect.bottom },
+        introductionRect: { top: introRect.top, bottom: introRect.bottom },
+        warningTitleRect: { top: titleRect.top, bottom: titleRect.bottom },
+        disclaimerRect: { top: disclaimerRect.top, bottom: disclaimerRect.bottom },
+        warningCount: root.querySelectorAll('.warning-item').length,
+        hasOldPoem: Boolean(document.querySelector('.poem-view')),
+      };
+    })()`;
+    const top = await evaluate(measureWarning);
+    assert.ok(top.scroll.scrollHeight > top.scroll.clientHeight, "Long warning should scroll in the compact window");
+    assert.ok(top.scroll.scrollWidth <= top.scroll.clientWidth + 1, "Long warning overflowed horizontally");
+    assert.ok(top.introductionRect.bottom <= top.rootRect.bottom + 1, "Compact warning hides the safety explanation on first view");
+    assert.ok(top.warningTitleRect.top < top.rootRect.bottom, "Compact warning hides the alert title on first view");
+    assert.equal(top.hasOldPoem, false);
+    const topScreenshot = await screenshot("compact_warning_top");
+    await evaluate("document.querySelector('.warning-view').scrollTop = document.querySelector('.warning-view').scrollHeight");
+    await waitFor(() => evaluate("(() => { const e = document.querySelector('.warning-view'); return e.scrollTop + e.clientHeight >= e.scrollHeight - 2; })()"), "warning bottom scroll", 5000);
+    const bottom = await evaluate(measureWarning);
+    assert.ok(bottom.disclaimerRect.top >= bottom.rootRect.top - 1 && bottom.disclaimerRect.bottom <= bottom.rootRect.bottom + 1, "Safety disclaimer is unreachable at compact size");
+    assert.ok(bottom.scroll.scrollWidth <= bottom.scroll.clientWidth + 1, "Long warning overflowed horizontally after scroll");
+    const bottomScreenshot = await screenshot("compact_warning_bottom");
+    compactWarningAudit = { syntheticLongText: true, top, bottom, screenshots: [topScreenshot, bottomScreenshot] };
+  }
   const finalScreenshot = await screenshot("after");
   const report = {
     schemaVersion: "1.0",
@@ -416,6 +460,7 @@ try {
     finalDisplayEvents,
     warningDailyState,
     warningText: cachedWarning ? warningText : undefined,
+    compactWarningAudit,
     motion: motion ? { initial: initialMotion, hidden: hiddenMotion, steadyHiddenAfter3s: steadyHiddenMotion, restored: restoredMotion } : undefined,
     motionRecording,
     screenshots: [firstScreenshot, finalScreenshot].filter(Boolean),
