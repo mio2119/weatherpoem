@@ -23,6 +23,7 @@ const secondInstance = process.argv.includes("--second-instance");
 const capture = process.argv.includes("--capture");
 const captureRevealMask = process.argv.includes("--capture-reveal-mask");
 const compactWarning = process.argv.includes("--compact-warning");
+const favoriteJourney = process.argv.includes("--favorite-journey");
 const record = process.argv.includes("--record");
 assert.ok(!(motion && withdrawal), "Choose motion or withdrawal evidence");
 assert.ok(!cachedWarning || (!withdrawal && !motion), "Cached warning requires its own isolated scenario");
@@ -31,6 +32,7 @@ assert.ok(!minimize || secondInstance, "Minimized recovery must use the native s
 assert.ok(!record || motion, "Motion recording requires the native rain scene");
 assert.ok(!captureRevealMask || (cachedWarning && capture), "Reveal-mask capture requires cached warning and screenshots");
 assert.ok(!compactWarning || (cachedWarning && capture), "Compact warning audit requires cached warning and screenshots");
+assert.ok(!favoriteJourney || (sameDay && capture), "Native favorite journey requires same-day recovery and screenshots");
 const internalRoot = path.join(root, ".work") + path.sep;
 const evidenceRoot = path.join(root, "review", "redesign", "evidence") + path.sep;
 assert.ok(candidate.toLowerCase().startsWith(internalRoot.toLowerCase()) && candidate.endsWith("weatherpoem.exe"), "Use an isolated internal candidate");
@@ -366,6 +368,74 @@ try {
     finally { database.close(); }
     assert.equal(finalDisplayEvents, initialDisplayEvents, "Same-day recovery recorded an extra poem display");
   }
+  let favoriteJourneyAudit;
+  if (favoriteJourney) {
+    const databasePath = resolvePerformanceDatabasePath(profile);
+    const database = new DatabaseSync(databasePath);
+    const workId = database.prepare("SELECT work_id FROM daily_state ORDER BY local_date DESC LIMIT 1").get()?.work_id;
+    assert.ok(workId, "Isolated daily work is missing");
+    const countFavorite = () => database.prepare("SELECT COUNT(*) AS count FROM favorites WHERE work_id = ?").get(workId).count;
+    assert.equal(countFavorite(), 0, "Isolated favorite should start empty");
+    let failedAdd;
+    let failedRemove;
+    try {
+      database.exec("CREATE TRIGGER isolated_favorite_insert_fault BEFORE INSERT ON favorites BEGIN SELECT RAISE(ABORT, 'isolated favorite insert fault'); END");
+      await evaluate("document.querySelector('.card-actions button[aria-pressed]').click()");
+      await waitFor(() => evaluate("document.querySelector('.toast-message')?.textContent?.includes('收藏未能保存') && !document.querySelector('.card-actions button[aria-pressed]').disabled"), "native favorite save failure");
+      failedAdd = await evaluate("({ notice: document.querySelector('.toast-message')?.textContent, pressed: document.querySelector('.card-actions button[aria-pressed]')?.getAttribute('aria-pressed'), disabled: document.querySelector('.card-actions button[aria-pressed]')?.disabled })");
+      assert.equal(failedAdd.pressed, "false");
+      assert.equal(countFavorite(), 0, "Failed native favorite insert changed SQLite");
+      failedAdd.screenshot = await screenshot("favorite_add_failed");
+      database.exec("DROP TRIGGER isolated_favorite_insert_fault");
+
+      await evaluate("document.querySelector('.card-actions button[aria-pressed]').click()");
+      await waitFor(() => evaluate("document.querySelector('.card-actions button[aria-pressed]')?.getAttribute('aria-pressed') === 'true'"), "native favorite retry");
+      assert.equal(countFavorite(), 1, "Favorite retry was not written to native SQLite");
+      await evaluate("document.querySelector('.read-button').click()");
+      await waitFor(() => evaluate("Boolean(document.querySelector('.reading-panel'))"), "reading favorited poem");
+      const reading = await evaluate("({ title: document.querySelector('.reading-panel h1')?.textContent, pressed: document.querySelector('.reading-panel button[aria-pressed]')?.getAttribute('aria-pressed'), back: document.querySelector('.reading-panel .back-button')?.textContent })");
+      assert.equal(reading.title, original.title);
+      assert.equal(reading.pressed, "true");
+      reading.screenshot = await screenshot("favorite_reading");
+
+      await evaluate("document.querySelector('.reading-panel .back-button').click()");
+      await waitFor(() => evaluate("Boolean(document.querySelector('.poem-view'))"), "return to favorite card");
+      await evaluate("document.querySelector('.context-favorites').click()");
+      await waitFor(() => evaluate("Boolean(document.querySelector('.favorites-panel .favorite-open'))"), "favorite list");
+      const list = await evaluate("({ title: document.querySelector('.favorite-open strong')?.textContent, removeLabel: document.querySelector('.favorite-remove')?.getAttribute('aria-label') })");
+      assert.equal(list.title, original.title);
+      list.screenshot = await screenshot("favorite_list");
+      await evaluate("document.querySelector('.favorite-open').click()");
+      await waitFor(() => evaluate("Boolean(document.querySelector('.reading-panel'))"), "reopen favorite reading");
+      const reopened = await evaluate("({ title: document.querySelector('.reading-panel h1')?.textContent, back: document.querySelector('.reading-panel .back-button')?.textContent })");
+      assert.equal(reopened.title, original.title);
+      assert.ok(reopened.back.includes("我的收藏"));
+      await evaluate("document.querySelector('.reading-panel .back-button').click()");
+      await waitFor(() => evaluate("Boolean(document.querySelector('.favorites-panel .favorite-remove'))"), "return to favorite list");
+
+      database.exec("CREATE TRIGGER isolated_favorite_delete_fault BEFORE DELETE ON favorites BEGIN SELECT RAISE(ABORT, 'isolated favorite delete fault'); END");
+      await evaluate("document.querySelector('.favorite-remove').click()");
+      await waitFor(() => evaluate("document.querySelector('.toast-message')?.textContent?.includes('取消收藏未能保存') && !document.querySelector('.favorite-remove').disabled"), "native favorite removal failure");
+      failedRemove = await evaluate("({ notice: document.querySelector('.toast-message')?.textContent, listed: Boolean(document.querySelector('.favorites-panel .favorite-open')), disabled: document.querySelector('.favorite-remove')?.disabled })");
+      assert.equal(failedRemove.listed, true);
+      assert.equal(countFavorite(), 1, "Failed native favorite delete changed SQLite");
+      failedRemove.screenshot = await screenshot("favorite_remove_failed");
+      database.exec("DROP TRIGGER isolated_favorite_delete_fault");
+
+      await evaluate("document.querySelector('.favorite-remove').click()");
+      await waitFor(() => evaluate("!document.querySelector('.favorites-panel .favorite-open')"), "native favorite removal retry");
+      assert.equal(countFavorite(), 0, "Favorite removal retry did not update native SQLite");
+      await evaluate("document.querySelector('.favorites-panel .back-button').click()");
+      await waitFor(() => evaluate("Boolean(document.querySelector('.poem-view'))"), "return to card after favorite removal");
+      const final = await evaluate("({ title: document.querySelector('.poem-view h1')?.textContent, pressed: document.querySelector('.card-actions button[aria-pressed]')?.getAttribute('aria-pressed'), favoriteCount: document.querySelector('.context-favorites')?.textContent })");
+      assert.equal(final.title, original.title);
+      assert.equal(final.pressed, "false");
+      final.screenshot = await screenshot("favorite_removed_card");
+      favoriteJourneyAudit = { workId, failedAdd, reading, list, reopened, failedRemove, final, sqliteFavoriteCount: countFavorite() };
+    } finally {
+      database.close();
+    }
+  }
   const restoredMotion = motion ? await sceneMotion() : undefined;
   if (motion) {
     assert.equal(restoredMotion.sceneActive, "true");
@@ -441,7 +511,7 @@ try {
   const finalScreenshot = await screenshot("after");
   const report = {
     schemaVersion: "1.0",
-    testKind: cachedWarning ? "isolated-native-hidden-cached-safety-warning" : sameDay ? "isolated-native-hidden-same-day-reveal" : motion ? minimize ? "isolated-native-minimized-motion" : "isolated-native-hidden-motion" : withdrawal ? "isolated-native-hidden-content-withdrawal" : nativeClose ? "isolated-native-close-day-reveal" : "isolated-native-hidden-day-reveal",
+    testKind: favoriteJourney ? "isolated-native-favorite-save-failure-retry-and-reading" : cachedWarning ? "isolated-native-hidden-cached-safety-warning" : sameDay ? "isolated-native-hidden-same-day-reveal" : motion ? minimize ? "isolated-native-minimized-motion" : "isolated-native-hidden-motion" : withdrawal ? "isolated-native-hidden-content-withdrawal" : nativeClose ? "isolated-native-close-day-reveal" : "isolated-native-hidden-day-reveal",
     generatedAt: new Date().toISOString(),
     candidate: { path: path.relative(root, candidate).replaceAll(path.sep, "/"), sha256: createHash("sha256").update(readFileSync(candidate)).digest("hex").toUpperCase() },
     isolation: { temporaryProfile: true, systemClockChanged: false, installedOrUninstalled: false, realUserDataTouched: false, processOnlyWeatherHostBlock: cachedWarning },
@@ -458,6 +528,7 @@ try {
     withdrawnWorkId,
     correctedDailyState,
     finalDisplayEvents,
+    favoriteJourneyAudit,
     warningDailyState,
     warningText: cachedWarning ? warningText : undefined,
     compactWarningAudit,

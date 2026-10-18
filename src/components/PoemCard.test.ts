@@ -40,6 +40,7 @@ function render(overrides: Record<string, unknown> = {}) {
       calendar,
       weather,
       favorite: false,
+      favoriteSaving: false,
       favoriteCount: 2,
       canReplace: true,
       replacing: false,
@@ -53,6 +54,13 @@ function render(overrides: Record<string, unknown> = {}) {
 }
 
 describe("glance poem card", () => {
+  it("disables the favorite action while a save is pending", () => {
+    const wrapper = render({ favoriteSaving: true });
+    const button = wrapper.get('.card-actions button[aria-pressed]');
+    expect(button.attributes("disabled")).toBeDefined();
+    expect(button.attributes("aria-busy")).toBe("true");
+  });
+
   it("shows the complete excerpt, context, reason and stable main actions", async () => {
     const wrapper = render();
     await nextTick();

@@ -6,6 +6,7 @@ import IconSymbol from "./IconSymbol.vue";
 defineProps<{
   poems: Poem[];
   withdrawnWorkIds: string[];
+  favoriteSaving: boolean;
   backLabel: string;
 }>();
 
@@ -53,6 +54,8 @@ useInitialFocus();
           class="favorite-remove"
           type="button"
           :aria-label="`取消收藏《${poem.title}》`"
+          :aria-busy="favoriteSaving"
+          :disabled="favoriteSaving"
           @click="emit('remove', poem.id)"
         >
           <IconSymbol name="bookmark-filled" :size="18" />
@@ -67,6 +70,8 @@ useInitialFocus();
         <button
           type="button"
           :aria-label="`移除第${index + 1}条已撤回收藏记录`"
+          :aria-busy="favoriteSaving"
+          :disabled="favoriteSaving"
           @click="emit('remove', workId)"
         >
           移除记录

@@ -99,6 +99,7 @@ let performanceWeatherScenario:
 const recommendation = ref<Recommendation>();
 const replacementInProgress = ref(false);
 const dislikeInProgress = ref(false);
+const favoriteInProgress = ref(false);
 const panel = ref<Panel>("card");
 const loading = ref(true);
 const revealPending = ref(false);
@@ -691,18 +692,26 @@ async function toggleFavorite(workId?: string): Promise<void> {
       ? selectedReadingPoem.value?.id
       : recommendation.value?.poem.id);
   const workIdToSave = targetWorkId;
-  if (!workIdToSave || !repository.value) return;
+  if (!workIdToSave || !repository.value || favoriteInProgress.value) return;
   const next = !bootstrap.value.favorites.includes(workIdToSave);
-  await repository.value.toggleFavorite(workIdToSave, next);
-  bootstrap.value.favorites = next
-    ? [workIdToSave, ...bootstrap.value.favorites]
-    : bootstrap.value.favorites.filter(
-        (item) => item !== workIdToSave,
-      );
-  if (next) {
-    await recordPilotActivity("favorite-added");
+  favoriteInProgress.value = true;
+  try {
+    await repository.value.toggleFavorite(workIdToSave, next);
+    bootstrap.value.favorites = next
+      ? [workIdToSave, ...bootstrap.value.favorites]
+      : bootstrap.value.favorites.filter(
+          (item) => item !== workIdToSave,
+        );
+    if (next) {
+      await recordPilotActivity("favorite-added");
+    }
+    showToast(next ? "已收入你的诗笺收藏" : "已取消收藏");
+  } catch (error) {
+    console.error(error);
+    showToast(next ? "收藏未能保存，请再试一次" : "取消收藏未能保存，请再试一次");
+  } finally {
+    favoriteInProgress.value = false;
   }
-  showToast(next ? "已收入你的诗笺收藏" : "已取消收藏");
 }
 
 async function openDailyReading(): Promise<void> {
@@ -1370,6 +1379,7 @@ onBeforeUnmount(() => {
       v-else-if="panel === 'favorites'"
       :poems="favoritePoems"
       :withdrawn-work-ids="withdrawnFavoriteIds"
+      :favorite-saving="favoriteInProgress"
       :back-label="favoritesReturnPanel === 'card' ? '今日诗笺' : '设置'"
       @back="returnFromFavorites"
       @open="openFavoriteReading"
@@ -1392,6 +1402,7 @@ onBeforeUnmount(() => {
       v-else-if="panel === 'reading' && selectedReadingPoem"
       :poem="selectedReadingPoem"
       :favorite="readingFavorite"
+      :favorite-saving="favoriteInProgress"
       :poem-layout="settings.poemLayout"
       :poem-font-size="settings.poemFontSize"
       :back-label="
@@ -1408,6 +1419,7 @@ onBeforeUnmount(() => {
       :calendar="calendar"
       :weather="weather"
       :favorite="favorite"
+      :favorite-saving="favoriteInProgress"
       :favorite-count="favoritePoems.length"
       :can-replace="!replacedToday"
       :replacing="replacementInProgress"

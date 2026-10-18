@@ -6,11 +6,24 @@ import ReadingPanel from "./ReadingPanel.vue";
 const poem = POEMS.find((item) => item.title === "黄鹤楼") ?? POEMS[0]!;
 
 describe("reading orientation", () => {
+  it("disables the favorite action while a save is pending", () => {
+    const wrapper = mount(ReadingPanel, {
+      props: {
+        poem, favorite: false, favoriteSaving: true, backLabel: "今日诗笺",
+        poemLayout: "horizontal", poemFontSize: "medium",
+      },
+    });
+    const button = wrapper.get('button[aria-pressed]');
+    expect(button.attributes("disabled")).toBeDefined();
+    expect(button.attributes("aria-busy")).toBe("true");
+  });
+
   it("keeps the full text and its order when orientation changes", async () => {
     const wrapper = mount(ReadingPanel, {
       props: {
         poem,
         favorite: false,
+        favoriteSaving: false,
         backLabel: "今日诗笺",
         poemLayout: "horizontal",
         poemFontSize: "medium",
@@ -39,6 +52,7 @@ describe("reading orientation", () => {
       props: {
         poem: { ...poem, fullText: [longLine] },
         favorite: false,
+        favoriteSaving: false,
         backLabel: "今日诗笺",
         poemLayout: "vertical",
         poemFontSize: "large",

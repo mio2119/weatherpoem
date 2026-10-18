@@ -13,6 +13,7 @@ const props = defineProps<{
   calendar: CalendarContext;
   weather: WeatherContext;
   favorite: boolean;
+  favoriteSaving: boolean;
   favoriteCount: number;
   canReplace: boolean;
   replacing: boolean;
@@ -165,6 +166,8 @@ onBeforeUnmount(() => resizeObserver?.disconnect());
             class="quiet-action"
             type="button"
             :aria-pressed="favorite"
+            :aria-busy="favoriteSaving"
+            :disabled="favoriteSaving"
             @click="emit('favorite')"
           >
             <IconSymbol :name="favorite ? 'bookmark-filled' : 'bookmark'" :size="16" />

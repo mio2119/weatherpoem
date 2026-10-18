@@ -8,6 +8,7 @@ import IconSymbol from "./IconSymbol.vue";
 const props = defineProps<{
   poem: Poem;
   favorite: boolean;
+  favoriteSaving: boolean;
   backLabel: string;
   poemLayout: PoemLayout;
   poemFontSize: PoemFontSize;
@@ -43,6 +44,8 @@ useInitialFocus();
         type="button"
         :aria-label="favorite ? '取消收藏' : '收藏'"
         :aria-pressed="favorite"
+        :aria-busy="favoriteSaving"
+        :disabled="favoriteSaving"
         @click="emit('favorite')"
       >
         <IconSymbol :name="favorite ? 'bookmark-filled' : 'bookmark'" :size="19" />

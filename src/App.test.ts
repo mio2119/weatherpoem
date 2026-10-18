@@ -828,6 +828,87 @@ describe("browser preview user flow", () => {
     });
   });
 
+  it("keeps a failed favorite save retryable without claiming success", async () => {
+    localStorage.setItem("weatherpoem.local.v1", JSON.stringify({
+      settings: { configured: true, cityId: "beijing" },
+      history: [], favorites: [], feedback: [],
+    }));
+    wrapper = mount(App, { attachTo: document.body });
+    await vi.waitFor(() => expect(wrapper!.find(".poem-view").exists()).toBe(true));
+    const favoriteButton = wrapper.get(".card-actions button[aria-pressed]");
+    const originalSetItem = localStorage.setItem.bind(localStorage);
+    const storageSpy = vi.spyOn(localStorage, "setItem")
+      .mockImplementation((key, value) => {
+        if (key === "weatherpoem.local.v1") throw new Error("storage full");
+        return originalSetItem(key, value);
+      });
+    await favoriteButton.trigger("click");
+    await vi.waitFor(() => {
+      expect(wrapper!.get(".toast-message").text()).toContain("收藏未能保存");
+      expect(favoriteButton.attributes("aria-pressed")).toBe("false");
+      expect(favoriteButton.attributes("disabled")).toBeUndefined();
+    });
+    expect((await (await createRepository()).load()).favorites).toEqual([]);
+
+    storageSpy.mockRestore();
+    await favoriteButton.trigger("click");
+    await vi.waitFor(async () => {
+      expect((await (await createRepository()).load()).favorites).toHaveLength(1);
+      expect(favoriteButton.attributes("aria-pressed")).toBe("true");
+    });
+  });
+
+  it("does not write a favorite twice when its button is activated rapidly", async () => {
+    localStorage.setItem("weatherpoem.local.v1", JSON.stringify({
+      settings: { configured: true, cityId: "beijing" },
+      history: [], favorites: [], feedback: [],
+    }));
+    wrapper = mount(App, { attachTo: document.body });
+    await vi.waitFor(() => expect(wrapper!.find(".poem-view").exists()).toBe(true));
+    const favoriteButton = wrapper.get(".card-actions button[aria-pressed]");
+    const storageSpy = vi.spyOn(localStorage, "setItem");
+    favoriteButton.element.dispatchEvent(new MouseEvent("click", { bubbles: true }));
+    favoriteButton.element.dispatchEvent(new MouseEvent("click", { bubbles: true }));
+    await flushPromises();
+    expect(storageSpy.mock.calls.filter(([key]) => key === "weatherpoem.local.v1"))
+      .toHaveLength(1);
+    expect(favoriteButton.attributes("aria-pressed")).toBe("true");
+    expect((await (await createRepository()).load()).favorites).toHaveLength(1);
+  });
+
+  it("keeps a failed favorite removal in the list until retry succeeds", async () => {
+    const favoritePoem = POEMS.find((poem) => poem.id === "wang-an-shi-yuan-ri")!;
+    localStorage.setItem("weatherpoem.local.v1", JSON.stringify({
+      settings: { configured: true, cityId: "beijing" },
+      history: [], favorites: [favoritePoem.id], feedback: [],
+    }));
+    wrapper = mount(App, { attachTo: document.body });
+    await vi.waitFor(() => expect(wrapper!.find(".poem-view").exists()).toBe(true));
+    await wrapper.get(".context-favorites").trigger("click");
+    await vi.waitFor(() => expect(wrapper!.find(".favorites-panel").exists()).toBe(true));
+    const removeButton = wrapper.get(".favorite-remove");
+    const originalSetItem = localStorage.setItem.bind(localStorage);
+    const storageSpy = vi.spyOn(localStorage, "setItem")
+      .mockImplementation((key, value) => {
+        if (key === "weatherpoem.local.v1") throw new Error("storage full");
+        return originalSetItem(key, value);
+      });
+    await removeButton.trigger("click");
+    await vi.waitFor(() => {
+      expect(wrapper!.get(".toast-message").text()).toContain("取消收藏未能保存");
+      expect(wrapper!.find(".favorite-open").exists()).toBe(true);
+      expect(removeButton.attributes("disabled")).toBeUndefined();
+    });
+    expect((await (await createRepository()).load()).favorites).toEqual([favoritePoem.id]);
+
+    storageSpy.mockRestore();
+    await removeButton.trigger("click");
+    await vi.waitFor(async () => {
+      expect((await (await createRepository()).load()).favorites).toEqual([]);
+      expect(wrapper!.find(".favorite-open").exists()).toBe(false);
+    });
+  });
+
   it("closes a withdrawn favorite during reading and lets its record be removed", async () => {
     vi.useFakeTimers({ toFake: ["Date"] });
     vi.setSystemTime(new Date(2026, 9, 13, 9));
