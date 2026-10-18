@@ -1,0 +1,148 @@
+{
+  "schemaVersion": "1.0",
+  "testKind": "isolated-native-weather-network-diagnostic",
+  "generatedAt": "2026-10-18T09:32:46.787Z",
+  "candidate": {
+    "path": ".work/redesign-weather-all-loads-20261018/release/weatherpoem.exe",
+    "sha256": "BF5CCC3C7DF1D3B9DF41BC2AC4A5CFF702AE9651C295C16C8FD82D8F77B69FEC"
+  },
+  "isolation": {
+    "temporaryProfile": true,
+    "realUserDataTouched": false,
+    "installedOrUninstalled": false,
+    "systemClockChanged": false,
+    "pageLocalClockChanged": true
+  },
+  "simulatedWarning": false,
+  "simulatedCrossDayRain": true,
+  "startup": {
+    "schemaVersion": "1.2",
+    "runId": "8e836cc1bb6c49fab08108f4384791fb",
+    "appVersion": "0.2.0",
+    "processId": 126092,
+    "nativeReadyMs": 1698.1937,
+    "frontendReadyMs": 1425.5999999642372,
+    "readyView": "poem",
+    "readyMode": "offline-rules",
+    "viewRenderMs": 149.89999997615814,
+    "performanceScenario": null,
+    "sceneMotion": {
+      "sceneKind": "festival",
+      "appReduced": false,
+      "systemReduced": false,
+      "sceneActive": true,
+      "visibilityState": "visible",
+      "animationName": "none",
+      "animationDuration": "0s",
+      "animationIterationCount": "1"
+    },
+    "recordedAtUnixMs": 1792315968538
+  },
+  "startupNetwork": [
+    {
+      "requestId": "130856.30",
+      "event": "request",
+      "timestamp": 356584.258977
+    },
+    {
+      "requestId": "130856.40",
+      "event": "request",
+      "timestamp": 356585.3734
+    },
+    {
+      "requestId": "130856.30",
+      "event": "loadingFailed",
+      "timestamp": 356585.375709,
+      "errorText": "net::ERR_ABORTED",
+      "canceled": true
+    },
+    {
+      "requestId": "130856.40",
+      "event": "responseReceived",
+      "timestamp": 356586.413462,
+      "status": 200
+    },
+    {
+      "requestId": "130856.40",
+      "event": "loadingFinished",
+      "timestamp": 356586.412558
+    },
+    {
+      "requestId": "130856.71",
+      "event": "request",
+      "timestamp": 356592.148344
+    },
+    {
+      "requestId": "130856.74",
+      "event": "request",
+      "timestamp": 356593.256683
+    },
+    {
+      "requestId": "130856.71",
+      "event": "loadingFailed",
+      "timestamp": 356593.258981,
+      "errorText": "net::ERR_ABORTED",
+      "canceled": true
+    },
+    {
+      "requestId": "130856.74",
+      "event": "responseReceived",
+      "timestamp": 356595.074038,
+      "status": 200
+    },
+    {
+      "requestId": "130856.74",
+      "event": "loadingFinished",
+      "timestamp": 356595.072967
+    }
+  ],
+  "webViewFetches": [],
+  "nativeViews": {
+    "atReady": {
+      "title": "过故人庄",
+      "context": "10月18日重阳节 · 天气未更新节 收藏 0",
+      "warning": false,
+      "loading": false,
+      "toast": null
+    },
+    "atReadyScreenshot": "review/redesign/evidence/T01_NATIVE_CROSS_DAY_LATE_RAIN_DEFERRED_weather-all-loads-20261018_ready.png",
+    "beforeCrossDay": {
+      "title": "过故人庄",
+      "context": "10月18日重阳节 · 晴节 收藏 0",
+      "warning": false,
+      "loading": false,
+      "toast": null
+    },
+    "newDayBeforeLate": {
+      "title": "登飞来峰",
+      "context": "10月19日天气未更新秋 收藏 0",
+      "warning": false,
+      "loading": false,
+      "toast": null
+    },
+    "newDayBeforeLateScreenshot": "review/redesign/evidence/T01_NATIVE_CROSS_DAY_LATE_RAIN_DEFERRED_weather-all-loads-20261018_new_day_before_late.png",
+    "afterWait": {
+      "title": "山居秋暝",
+      "context": "10月19日小雨雨 收藏 0",
+      "warning": false,
+      "loading": false,
+      "toast": null
+    },
+    "afterWaitScreenshot": "review/redesign/evidence/T01_NATIVE_CROSS_DAY_LATE_RAIN_DEFERRED_weather-all-loads-20261018_after.png"
+  },
+  "result": "diagnostic-captured",
+  "crossDay": {
+    "clock": {
+      "localDate": "2026-10-19",
+      "displayDate": "10月19日",
+      "unixSeconds": 1792371600
+    },
+    "pageLocalOnly": true
+  },
+  "interceptedWeatherRequests": 2,
+  "savedDailyState": {
+    "local_date": "2026-10-19",
+    "state": "shown",
+    "work_id": "wang-wei-shan-ju-qiu-ming"
+  }
+}

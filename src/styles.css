@@ -99,7 +99,7 @@ button:disabled {
   height: 100%;
   background: rgb(244 240 231 / 72%);
   border: 1px solid var(--line-strong);
-  grid-template-rows: auto minmax(0, 1fr);
+  grid-template-rows: auto minmax(0, 1fr) auto;
 }
 
 :root[data-theme="dark"] .app-shell {
@@ -1808,20 +1808,19 @@ button:disabled {
 }
 
 .toast-message {
-  position: absolute;
   z-index: 30;
-  bottom: 22px;
-  left: 50%;
+  justify-self: center;
   max-width: calc(100% - 48px);
+  margin-bottom: 10px;
   padding: 9px 14px;
   border: 1px solid var(--line-strong);
   border-radius: 8px;
   background: var(--ink);
   color: var(--surface);
   box-shadow: var(--shadow);
-  font-size: 10px;
+  font-size: 11px;
   text-align: center;
-  transform: translateX(-50%);
+  pointer-events: none;
 }
 
 .toast-enter-active,
@@ -1834,7 +1833,7 @@ button:disabled {
 .toast-enter-from,
 .toast-leave-to {
   opacity: 0;
-  transform: translate(-50%, 5px);
+  transform: translateY(5px);
 }
 
 ::-webkit-scrollbar {

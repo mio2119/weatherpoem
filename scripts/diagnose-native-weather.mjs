@@ -14,7 +14,10 @@ const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const candidate = path.resolve(process.argv[2] ?? "");
 const reportPath = path.resolve(process.argv[3] ?? "");
 const simulateLateWarning = process.argv.includes("--simulate-late-warning");
-const observeLate = process.argv.includes("--observe-late") || simulateLateWarning;
+const simulateCrossDayRain = process.argv.includes("--simulate-cross-day-rain");
+const simulateFirstUseRain = process.argv.includes("--simulate-first-use-rain");
+assert.ok([simulateLateWarning, simulateCrossDayRain, simulateFirstUseRain].filter(Boolean).length <= 1, "Choose one synthetic weather scenario");
+const observeLate = process.argv.includes("--observe-late") || simulateLateWarning || simulateCrossDayRain || simulateFirstUseRain;
 assert.ok(candidate.toLowerCase().startsWith((path.join(root, ".work") + path.sep).toLowerCase()) && path.basename(candidate).toLowerCase() === "weatherpoem.exe", "Use an internal EXE");
 assert.ok(reportPath.toLowerCase().startsWith((path.join(root, "review", "redesign", "evidence") + path.sep).toLowerCase()) && reportPath.endsWith(".json"), "Use a redesign evidence JSON path");
 assert.ok(existsSync(candidate) && !existsSync(reportPath), "Candidate missing or report already exists");
@@ -30,8 +33,10 @@ const report = {
     path: path.relative(root, candidate).replaceAll(path.sep, "/"),
     sha256: createHash("sha256").update(readFileSync(candidate)).digest("hex").toUpperCase(),
   },
-  isolation: { temporaryProfile: true, realUserDataTouched: false, installedOrUninstalled: false, systemClockChanged: false },
+  isolation: { temporaryProfile: true, realUserDataTouched: false, installedOrUninstalled: false, systemClockChanged: false, pageLocalClockChanged: simulateCrossDayRain || simulateFirstUseRain },
   simulatedWarning: simulateLateWarning,
+  simulatedCrossDayRain: simulateCrossDayRain,
+  simulatedFirstUseRain: simulateFirstUseRain,
   startup: null,
   startupNetwork: [],
   webViewFetches: [],
@@ -43,6 +48,7 @@ let socket;
 let failure;
 let nextId = 0;
 let interceptedWeatherRequests = 0;
+let syntheticObservedAtSeconds;
 const pending = new Map();
 
 async function waitFor(predicate, label, timeoutMs = 20000) {
@@ -80,6 +86,16 @@ async function evaluate(expression) {
 try {
   for (const segment of ["appdata", "localappdata", "temp/probe"]) mkdirSync(path.join(profile, segment), { recursive: true });
   seedPerformanceProfile(profile);
+  if (simulateFirstUseRain) {
+    const database = new DatabaseSync(resolvePerformanceDatabasePath(profile));
+    try {
+      const settings = JSON.parse(database.prepare("SELECT value FROM app_kv WHERE key = 'settings'").get().value);
+      settings.configured = false;
+      database.prepare("UPDATE app_kv SET value = ? WHERE key = 'settings'").run(JSON.stringify(settings));
+    } finally {
+      database.close();
+    }
+  }
   const markerPath = path.join(profile, "temp", "probe", "weatherpoem-performance-ready.json");
   const port = await freePort();
   child = spawn(candidate, [], {
@@ -112,27 +128,31 @@ try {
   });
   socket.addEventListener("message", ({ data }) => {
     const message = JSON.parse(String(data));
-    if (simulateLateWarning && message.method === "Fetch.requestPaused" && message.params?.request?.url?.startsWith("https://api.open-meteo.com/")) {
+    if ((simulateLateWarning || simulateCrossDayRain || simulateFirstUseRain) && message.method === "Fetch.requestPaused" && message.params?.request?.url?.startsWith("https://api.open-meteo.com/")) {
       interceptedWeatherRequests += 1;
       const requestId = message.params.requestId;
       if (interceptedWeatherRequests === 2) {
         const payload = JSON.stringify({ current: {
-          time: Math.floor(Date.now() / 1000),
-          weather_code: 95,
+          time: syntheticObservedAtSeconds ?? Math.floor(Date.now() / 1000),
+          weather_code: (simulateCrossDayRain || simulateFirstUseRain) ? 61 : 95,
           temperature_2m: 20,
           apparent_temperature: 20,
-          precipitation: 12,
+          precipitation: (simulateCrossDayRain || simulateFirstUseRain) ? 0.3 : 12,
           wind_speed_10m: 8,
         } });
-        void send("Fetch.fulfillRequest", {
-          requestId,
-          responseCode: 200,
-          responseHeaders: [
-            { name: "Content-Type", value: "application/json" },
-            { name: "Access-Control-Allow-Origin", value: "*" },
-          ],
-          body: Buffer.from(payload).toString("base64"),
-        }).catch((error) => { failure ??= error; });
+        const fulfill = () => {
+          void send("Fetch.fulfillRequest", {
+            requestId,
+            responseCode: 200,
+            responseHeaders: [
+              { name: "Content-Type", value: "application/json" },
+              { name: "Access-Control-Allow-Origin", value: "*" },
+            ],
+            body: Buffer.from(payload).toString("base64"),
+          }).catch((error) => { failure ??= error; });
+        };
+        if (simulateCrossDayRain || simulateFirstUseRain) setTimeout(fulfill, 1800);
+        else fulfill();
       }
     }
     if (message.method === "Network.requestWillBeSent" && message.params?.request?.url?.startsWith("https://api.open-meteo.com/")) {
@@ -152,7 +172,7 @@ try {
     else entry.resolve(message.result);
   });
   await send("Network.enable");
-  if (simulateLateWarning) {
+  if (simulateLateWarning || simulateFirstUseRain) {
     await send("Fetch.enable", { patterns: [{ urlPattern: "https://api.open-meteo.com/*" }] });
   }
   await waitFor(() => {
@@ -166,8 +186,27 @@ try {
       context: document.querySelector('.context-strip')?.textContent?.replace(/\\s+/g, ' ').trim() ?? null,
       warning: Boolean(document.querySelector('.warning-view')),
       loading: Boolean(document.querySelector('.loading-view')),
-      toast: document.querySelector('.toast')?.textContent ?? null,
+      toast: document.querySelector('.toast-message')?.textContent ?? null,
+      toastOverlapsReadButton: (() => {
+        const toast = document.querySelector('.toast-message');
+        const read = document.querySelector('.poem-view .read-button');
+        if (!toast || !read) return null;
+        const a = toast.getBoundingClientRect();
+        const b = read.getBoundingClientRect();
+        return a.left < b.right && a.right > b.left && a.top < b.bottom && a.bottom > b.top;
+      })(),
     }))()`);
+    const pageTomorrowClock = () => evaluate(`(() => {
+      const RealDate = Date;
+      const tomorrow = new RealDate(RealDate.now() + 86400000);
+      tomorrow.setHours(9, 0, 0, 0);
+      const fixed = tomorrow.getTime();
+      window.Date = class extends RealDate {
+        constructor(...args) { super(...(args.length ? args : [fixed])); }
+        static now() { return fixed; }
+      };
+      return { localDate: tomorrow.getFullYear() + '-' + String(tomorrow.getMonth() + 1).padStart(2, '0') + '-' + String(tomorrow.getDate()).padStart(2, '0'), displayDate: String(tomorrow.getMonth() + 1) + '月' + tomorrow.getDate() + '日', unixSeconds: Math.floor(fixed / 1000) };
+    })()`);
     const screenshot = async (label) => {
       const imagePath = reportPath.replace(/\.json$/, `_${label}.png`);
       assert.ok(!existsSync(imagePath), "Refusing to overwrite a native screenshot");
@@ -179,9 +218,79 @@ try {
       atReady: await view(),
       atReadyScreenshot: await screenshot("ready"),
     };
-    await delay(6500);
-    report.nativeViews.afterWait = await view();
-    report.nativeViews.afterWaitScreenshot = await screenshot("after");
+    if (!simulateFirstUseRain) await delay(6500);
+    if (simulateFirstUseRain) {
+      const clock = await pageTomorrowClock();
+      syntheticObservedAtSeconds = clock.unixSeconds;
+      report.firstUse = { clock, pageLocalOnly: true, selectedCityId: "hangzhou" };
+      assert.equal(report.startup.readyMode, "local-onboarding");
+      await evaluate(`(() => {
+        const search = document.querySelector('#city-search');
+        search.value = '杭州';
+        search.dispatchEvent(new Event('input', { bubbles: true }));
+      })()`);
+      await waitFor(() => evaluate("Boolean(document.querySelector('input[value=\"hangzhou\"]'))"), "Hangzhou choice");
+      await evaluate(`(() => {
+        document.querySelector('input[value="hangzhou"]').click();
+        document.querySelector('.consent-row input').click();
+        document.querySelector('.onboarding-form').dispatchEvent(new Event('submit', { bubbles: true, cancelable: true }));
+      })()`);
+      await waitFor(async () => {
+        const current = await view();
+        return current.context?.includes(clock.displayDate) && current.context?.includes("天气未更新") && current.title;
+      }, "first-use offline poem", 25000);
+      report.nativeViews.firstUseBeforeLate = await view();
+      report.nativeViews.firstUseBeforeLateScreenshot = await screenshot("first_use_before_late");
+      await waitFor(async () => (await view()).context?.includes("小雨"), "delayed first-use rainy weather", 15000);
+      report.nativeViews.afterWait = await view();
+      report.nativeViews.afterWaitScreenshot = await screenshot("after");
+      report.interceptedWeatherRequests = interceptedWeatherRequests;
+      assert.ok(interceptedWeatherRequests >= 2, "The first-use request and retry were not both intercepted");
+      assert.notEqual(report.nativeViews.firstUseBeforeLate.title, report.nativeViews.afterWait.title, "Late rain did not update the untouched first-use poem");
+      assert.ok(report.nativeViews.afterWait.context?.includes(clock.displayDate));
+      assert.notEqual(report.nativeViews.afterWait.toastOverlapsReadButton, true, "Toast covers the first-use read button");
+      const database = new DatabaseSync(resolvePerformanceDatabasePath(profile), { readOnly: true });
+      try {
+        report.savedSettings = JSON.parse(database.prepare("SELECT value FROM app_kv WHERE key = 'settings'").get().value);
+        report.savedDailyState = database.prepare("SELECT local_date, state, work_id FROM daily_state ORDER BY local_date DESC LIMIT 1").get();
+      } finally {
+        database.close();
+      }
+      assert.equal(report.savedSettings.cityId, "hangzhou");
+      assert.equal(report.savedDailyState?.local_date, clock.localDate);
+      assert.equal(report.savedDailyState?.state, "shown");
+    } else if (simulateCrossDayRain) {
+      report.nativeViews.beforeCrossDay = await view();
+      const clock = await pageTomorrowClock();
+      syntheticObservedAtSeconds = clock.unixSeconds;
+      report.crossDay = { clock, pageLocalOnly: true };
+      await send("Fetch.enable", { patterns: [{ urlPattern: "https://api.open-meteo.com/*" }] });
+      await evaluate("window.dispatchEvent(new Event('focus'))");
+      await waitFor(async () => {
+        const current = await view();
+        return current.context?.includes(clock.displayDate) && current.title;
+      }, "new local-day native poem", 25000);
+      report.nativeViews.newDayBeforeLate = await view();
+      report.nativeViews.newDayBeforeLateScreenshot = await screenshot("new_day_before_late");
+      await waitFor(async () => (await view()).context?.includes("小雨"), "delayed cross-day rainy weather", 15000);
+      report.nativeViews.afterWait = await view();
+      report.nativeViews.afterWaitScreenshot = await screenshot("after");
+      report.interceptedWeatherRequests = interceptedWeatherRequests;
+      assert.ok(interceptedWeatherRequests >= 2, "The cross-day request and delayed retry were not both intercepted");
+      assert.ok(report.nativeViews.afterWait.context?.includes(clock.displayDate));
+      assert.ok(report.nativeViews.afterWait.context?.includes("小雨"));
+      const database = new DatabaseSync(resolvePerformanceDatabasePath(profile), { readOnly: true });
+      try {
+        report.savedDailyState = database.prepare("SELECT local_date, state, work_id FROM daily_state ORDER BY local_date DESC LIMIT 1").get();
+      } finally {
+        database.close();
+      }
+      assert.equal(report.savedDailyState?.local_date, clock.localDate);
+      assert.equal(report.savedDailyState?.state, "shown");
+    } else {
+      report.nativeViews.afterWait = await view();
+      report.nativeViews.afterWaitScreenshot = await screenshot("after");
+    }
     if (simulateLateWarning) {
       report.interceptedWeatherRequests = interceptedWeatherRequests;
       assert.ok(interceptedWeatherRequests >= 2, "The initial request and delayed retry were not both intercepted");

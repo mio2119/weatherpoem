@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, onBeforeUnmount, onMounted, ref, shallowRef, watch } from "vue";
+import { computed, nextTick, onBeforeUnmount, onMounted, ref, shallowRef, watch } from "vue";
 import ContentCorrectionView from "./components/ContentCorrectionView.vue";
 import OnboardingView from "./components/OnboardingView.vue";
 import FavoritesPanel from "./components/FavoritesPanel.vue";
@@ -111,6 +111,7 @@ const errorMessage = ref("");
 const onboardingSaving = ref(false);
 const onboardingError = ref("");
 const toast = ref("");
+const toastElement = ref<HTMLElement>();
 const autostartWarning = ref("");
 const selectedReadingPoem = ref<Poem>();
 const poems = shallowRef<Poem[]>([]);
@@ -137,6 +138,12 @@ let windowModeReady = false;
 let windowModeTask: Promise<void> = Promise.resolve();
 let glanceContentHeight = 320;
 
+function glanceHeightWithStatus(): number {
+  return glanceContentHeight + (toast.value
+    ? Math.ceil(toastElement.value?.getBoundingClientRect().height ?? 42) + 10
+    : 0);
+}
+
 const configured = computed(() => settings.value.configured);
 const windowMode = computed<WindowMode>(() => {
   if (!configured.value) return "setup";
@@ -152,7 +159,7 @@ function queueWindowMode(mode: WindowMode): Promise<void> {
     .then(async () => {
       await setWindowMode(mode, settings.value.readingWindowSize);
       if (mode === "glance") {
-        await fitGlanceWindowHeight(glanceContentHeight);
+        await fitGlanceWindowHeight(glanceHeightWithStatus());
       }
     })
     .catch((error) => {
@@ -166,7 +173,7 @@ function fitGlanceToContent(height: number): void {
   if (windowModeReady && windowMode.value === "glance") {
     void windowModeTask.then(() => {
       if (windowMode.value === "glance") {
-        return fitGlanceWindowHeight(glanceContentHeight);
+        return fitGlanceWindowHeight(glanceHeightWithStatus());
       }
     });
   }
@@ -174,6 +181,11 @@ function fitGlanceToContent(height: number): void {
 
 watch(windowMode, (mode) => {
   if (windowModeReady) void queueWindowMode(mode);
+});
+
+watch(toast, async () => {
+  await nextTick();
+  fitGlanceToContent(glanceContentHeight);
 });
 
 function handleReadingResize(size: WindowDimensions): void {
@@ -564,140 +576,175 @@ async function loadToday(
   weather.value = offlineWeather();
   errorMessage.value = "";
   const city = findCity(settings.value.cityId);
+  const lateContext: DelayedWeatherContext = {
+    generation: weatherLoadGeneration,
+    localDate: nextCalendar.localDate,
+    cityId: settings.value.cityId,
+    hadTodaySelection:
+      bootstrap.value.dailyState?.localDate === nextCalendar.localDate &&
+      Boolean(bootstrap.value.dailyState.workId),
+    historyBeforeDisplay: [...bootstrap.value.history],
+  };
+  let loadFinished = false;
+  let loadSucceeded = false;
+  let bufferedDelayedWeather: WeatherContext | undefined;
   const catalogReady = ensurePoemCatalog().then(
     () => ({ ok: true as const }),
     (error: unknown) => ({ ok: false as const, error }),
   );
-  weather.value = await (pendingWeather ?? fetchWeather(city, {
-    performanceScenario: performanceWeatherScenario,
-  }));
-  if (buildCalendarContext().localDate !== calendar.value.localDate) {
-    await loadToday(forceNew);
-    return;
-  }
+  try {
+    weather.value = await (pendingWeather ?? fetchWeather(city, {
+      performanceScenario: performanceWeatherScenario,
+      onDelayedWeather: async (delayed) => {
+        if (!loadFinished) {
+          bufferedDelayedWeather = delayed;
+      } else if (loadSucceeded) {
+          await applyDelayedWeather(delayed, lateContext);
+        }
+      },
+    }));
+    if (buildCalendarContext().localDate !== calendar.value.localDate) {
+      await loadToday(forceNew);
+      return;
+    }
 
-  const weatherScenario =
-    import.meta.env.DEV &&
-    new URLSearchParams(window.location.search).get("scenario");
-  if (
-    weatherScenario === "warning" ||
-    weatherScenario === "official-warning"
-  ) {
-    const official = weatherScenario === "official-warning";
-    const demoPublishedAt = new Date();
-    const demoExpiresAt = new Date(
-      demoPublishedAt.getTime() + 8 * 60 * 60 * 1000,
-    );
-    weather.value = {
-      kind: "thunderstorm",
-      label: "雷暴",
-      temperature: 27,
-      freshness: "fresh",
-      source: "open-meteo",
-      shouldSuppressPoem: true,
-      warnings: [
-        {
-          id: "demo-warning",
-          title: official ? "暴雨黄色预警" : "雷暴天气提示",
-          level: "warning",
-          description: official
-            ? "预计未来六小时部分地区将出现强降水。"
-            : "当前天气代码显示雷暴风险，请优先查看当地官方预警。",
-          source: official ? "北京市气象台" : "演示场景",
-          origin: official ? "official" : "weather-proxy",
-          area: official ? "北京市" : undefined,
-          publishedAt: official ? demoPublishedAt.toISOString() : undefined,
-          expiresAt: official ? demoExpiresAt.toISOString() : undefined,
-        },
-      ],
-    };
-  }
+    const weatherScenario =
+      import.meta.env.DEV &&
+      new URLSearchParams(window.location.search).get("scenario");
+    if (
+      weatherScenario === "warning" ||
+      weatherScenario === "official-warning"
+    ) {
+      const official = weatherScenario === "official-warning";
+      const demoPublishedAt = new Date();
+      const demoExpiresAt = new Date(
+        demoPublishedAt.getTime() + 8 * 60 * 60 * 1000,
+      );
+      weather.value = {
+        kind: "thunderstorm",
+        label: "雷暴",
+        temperature: 27,
+        freshness: "fresh",
+        source: "open-meteo",
+        shouldSuppressPoem: true,
+        warnings: [
+          {
+            id: "demo-warning",
+            title: official ? "暴雨黄色预警" : "雷暴天气提示",
+            level: "warning",
+            description: official
+              ? "预计未来六小时部分地区将出现强降水。"
+              : "当前天气代码显示雷暴风险，请优先查看当地官方预警。",
+            source: official ? "北京市气象台" : "演示场景",
+            origin: official ? "official" : "weather-proxy",
+            area: official ? "北京市" : undefined,
+            publishedAt: official ? demoPublishedAt.toISOString() : undefined,
+            expiresAt: official ? demoExpiresAt.toISOString() : undefined,
+          },
+        ],
+      };
+    }
 
-  if (weather.value.shouldSuppressPoem) {
-    const previousWorkId =
-      bootstrap.value.dailyState?.localDate === calendar.value.localDate
+    if (weather.value.shouldSuppressPoem) {
+      const previousWorkId =
+        bootstrap.value.dailyState?.localDate === calendar.value.localDate
+          ? bootstrap.value.dailyState.workId
+          : undefined;
+      const suppressedState = {
+        localDate: calendar.value.localDate,
+        state: "alert-suppressed",
+        workId: previousWorkId,
+        shownAt: new Date().toISOString(),
+        contentVersion: CONTENT_VERSION,
+        ruleVersion: RULE_VERSION,
+      } as const;
+      await repository.value?.saveDailyState(suppressedState);
+      bootstrap.value.dailyState = suppressedState;
+      await recordPilotActivity("warning-suppressed");
+      return;
+    }
+
+    const catalogResult = await catalogReady;
+    if (!catalogResult.ok) throw catalogResult.error;
+    const contentScenario =
+      import.meta.env.DEV &&
+      new URLSearchParams(window.location.search).get("scenario");
+    if (
+      !forceNew &&
+      (contentScenario === "content-correction" ||
+        contentScenario === "content-suspended")
+    ) {
+      const currentWorkId =
+        bootstrap.value.dailyState?.workId ?? poems.value[0]?.id;
+      recommendationsSuspended.value =
+        contentScenario === "content-suspended";
+      withdrawnWorkIds.value = recommendationsSuspended.value
+        ? []
+        : currentWorkId
+          ? [currentWorkId]
+          : [];
+      recommendation.value = undefined;
+      contentCorrectionPending.value = true;
+      await persistContentCorrection(currentWorkId);
+      panel.value = "card";
+      return;
+    }
+    if (
+      !contentControlChecked &&
+      (await refreshContentControl(forceNew))
+    ) {
+      return;
+    }
+    contentCorrectionPending.value = false;
+    const retainedId =
+      !forceNew &&
+      bootstrap.value.dailyState?.localDate === calendar.value.localDate &&
+      (bootstrap.value.dailyState.state === "shown" ||
+        bootstrap.value.dailyState.state === "retained" ||
+        bootstrap.value.dailyState.state === "alert-suppressed")
         ? bootstrap.value.dailyState.workId
         : undefined;
-    const suppressedState = {
-      localDate: calendar.value.localDate,
-      state: "alert-suppressed",
-      workId: previousWorkId,
-      shownAt: new Date().toISOString(),
-      contentVersion: CONTENT_VERSION,
-      ruleVersion: RULE_VERSION,
-    } as const;
-    await repository.value?.saveDailyState(suppressedState);
-    bootstrap.value.dailyState = suppressedState;
-    await recordPilotActivity("warning-suppressed");
-    return;
+    const retainedPoem = findPoem(retainedId);
+    recommendation.value = await enrichRecommendationReason(
+      recommendationFor(retainedPoem),
+      calendar.value,
+      weather.value,
+    );
+    if (buildCalendarContext().localDate !== calendar.value.localDate) {
+      await loadToday(forceNew);
+      return;
+    }
+    const showReadingScenario =
+      import.meta.env.DEV &&
+      new URLSearchParams(window.location.search).get("scenario") ===
+        "reading";
+    if (showReadingScenario) {
+      selectedReadingPoem.value = recommendation.value.poem;
+      readingReturnPanel.value = "card";
+      panel.value = "reading";
+    } else {
+      panel.value = "card";
+    }
+    await persistRecommendation(
+      recommendation.value,
+      retainedPoem ? "retained" : "shown",
+    );
+    await recordPilotActivity("poem-presented");
+    loadSucceeded = true;
+  } finally {
+    loadFinished = true;
+    if (loadSucceeded && bufferedDelayedWeather) {
+      if (bufferedDelayedWeather.shouldSuppressPoem) {
+        // Keep the first-use or cross-day loading mask until safety wins.
+        await applyDelayedWeather(bufferedDelayedWeather, lateContext);
+      } else {
+        void applyDelayedWeather(bufferedDelayedWeather, lateContext)
+          .catch((error: unknown) => {
+            console.warn("迟到的天气信息未能应用。", error);
+          });
+      }
+    }
   }
-
-  const catalogResult = await catalogReady;
-  if (!catalogResult.ok) throw catalogResult.error;
-  const contentScenario =
-    import.meta.env.DEV &&
-    new URLSearchParams(window.location.search).get("scenario");
-  if (
-    !forceNew &&
-    (contentScenario === "content-correction" ||
-      contentScenario === "content-suspended")
-  ) {
-    const currentWorkId =
-      bootstrap.value.dailyState?.workId ?? poems.value[0]?.id;
-    recommendationsSuspended.value =
-      contentScenario === "content-suspended";
-    withdrawnWorkIds.value = recommendationsSuspended.value
-      ? []
-      : currentWorkId
-        ? [currentWorkId]
-        : [];
-    recommendation.value = undefined;
-    contentCorrectionPending.value = true;
-    await persistContentCorrection(currentWorkId);
-    panel.value = "card";
-    return;
-  }
-  if (
-    !contentControlChecked &&
-    (await refreshContentControl(forceNew))
-  ) {
-    return;
-  }
-  contentCorrectionPending.value = false;
-  const retainedId =
-    !forceNew &&
-    bootstrap.value.dailyState?.localDate === calendar.value.localDate &&
-    (bootstrap.value.dailyState.state === "shown" ||
-      bootstrap.value.dailyState.state === "retained" ||
-      bootstrap.value.dailyState.state === "alert-suppressed")
-      ? bootstrap.value.dailyState.workId
-      : undefined;
-  const retainedPoem = findPoem(retainedId);
-  recommendation.value = await enrichRecommendationReason(
-    recommendationFor(retainedPoem),
-    calendar.value,
-    weather.value,
-  );
-  if (buildCalendarContext().localDate !== calendar.value.localDate) {
-    await loadToday(forceNew);
-    return;
-  }
-  const showReadingScenario =
-    import.meta.env.DEV &&
-    new URLSearchParams(window.location.search).get("scenario") ===
-      "reading";
-  if (showReadingScenario) {
-    selectedReadingPoem.value = recommendation.value.poem;
-    readingReturnPanel.value = "card";
-    panel.value = "reading";
-  } else {
-    panel.value = "card";
-  }
-  await persistRecommendation(
-    recommendation.value,
-    retainedPoem ? "retained" : "shown",
-  );
-  await recordPilotActivity("poem-presented");
 }
 
 async function refreshDateIfChanged(): Promise<boolean> {
@@ -1573,7 +1620,7 @@ onBeforeUnmount(() => {
     />
 
     <Transition name="toast">
-      <div v-if="toast" class="toast-message" role="status">{{ toast }}</div>
+      <div v-if="toast" ref="toastElement" class="toast-message" role="status">{{ toast }}</div>
     </Transition>
   </div>
 </template>

@@ -280,6 +280,96 @@ describe("browser preview user flow", () => {
     expect((await (await createRepository()).load()).settings.cityId).toBe("hangzhou");
   });
 
+  it("applies delayed live weather after first-use city setup", async () => {
+    vi.useFakeTimers({ toFake: ["Date"] });
+    vi.setSystemTime(new Date(2026, 9, 14, 9));
+    wrapper = mount(App, { attachTo: document.body });
+    await vi.waitFor(() => expect(wrapper!.find(".onboarding-view").exists()).toBe(true));
+    await wrapper.get<HTMLInputElement>("#city-search").setValue("杭州");
+    await wrapper.get<HTMLInputElement>('input[value="hangzhou"]').setValue(true);
+    await wrapper.get<HTMLInputElement>(".consent-row input").setValue(true);
+    let deliver: ((weather: WeatherContext) => void | Promise<void>) | undefined;
+    vi.mocked(fetchWeather).mockImplementationOnce((_city, options) => {
+      deliver = options?.onDelayedWeather;
+      return Promise.resolve({
+        kind: "unknown", label: "天气暂不可用", freshness: "unavailable",
+        source: "offline", warnings: [], shouldSuppressPoem: false,
+      });
+    });
+    await wrapper.get(".onboarding-form").trigger("submit");
+    await vi.waitFor(() => expect(wrapper!.find(".poem-view").exists()).toBe(true));
+    expect(deliver).toBeTypeOf("function");
+    await deliver!({
+      kind: "light-rain", label: "小雨", freshness: "fresh", source: "open-meteo",
+      observedAt: new Date().toISOString(), warnings: [], shouldSuppressPoem: false,
+    });
+    await vi.waitFor(() => expect(wrapper!.get(".context-strip").text()).toContain("小雨"));
+    expect((await (await createRepository()).load()).settings.cityId).toBe("hangzhou");
+  });
+
+  it("keeps first-use loading over a buffered late warning until the safety page is ready", async () => {
+    wrapper = mount(App, { attachTo: document.body });
+    await vi.waitFor(() => expect(wrapper!.find(".onboarding-view").exists()).toBe(true));
+    await wrapper.get<HTMLInputElement>("#city-search").setValue("杭州");
+    await wrapper.get<HTMLInputElement>('input[value="hangzhou"]').setValue(true);
+    await wrapper.get<HTMLInputElement>(".consent-row input").setValue(true);
+    let deliver!: (weather: WeatherContext) => void | Promise<void>;
+    vi.mocked(fetchWeather).mockImplementationOnce((_city, options) => {
+      deliver = options!.onDelayedWeather!;
+      return Promise.resolve({
+        kind: "unknown", label: "天气暂不可用", freshness: "unavailable",
+        source: "offline", warnings: [], shouldSuppressPoem: false,
+      });
+    });
+    let finishReason!: () => void;
+    const reasonGate = new Promise<void>((resolve) => { finishReason = resolve; });
+    const reasonSpy = vi.spyOn(reasonService, "enrichRecommendationReason")
+      .mockImplementation(async (selected) => {
+        await reasonGate;
+        return selected;
+      });
+    await wrapper.get(".onboarding-form").trigger("submit");
+    await vi.waitFor(() => expect(reasonSpy).toHaveBeenCalled());
+    await deliver(activeSafetyWarning());
+    expect(wrapper.find(".poem-view").exists()).toBe(false);
+    expect(wrapper.find(".loading-view").exists()).toBe(true);
+    finishReason();
+    await vi.waitFor(() => expect(wrapper!.find(".warning-view").exists()).toBe(true));
+    expect(wrapper.find(".poem-view").exists()).toBe(false);
+    expect((await (await createRepository()).load()).dailyState)
+      .toMatchObject({ state: "alert-suppressed" });
+  });
+
+  it("applies a delayed next-day safety warning without showing yesterday's poem", async () => {
+    vi.useFakeTimers({ toFake: ["Date"] });
+    vi.setSystemTime(new Date(2026, 9, 13, 23, 59));
+    localStorage.setItem("weatherpoem.local.v1", JSON.stringify({
+      settings: { configured: true, cityId: "beijing" },
+      history: [], favorites: [], feedback: [],
+    }));
+    wrapper = mount(App, { attachTo: document.body });
+    await vi.waitFor(() => expect(wrapper!.find(".poem-view").exists()).toBe(true));
+    const yesterdayTitle = wrapper.get(".poem-view h1").text();
+    let deliver: ((weather: WeatherContext) => void | Promise<void>) | undefined;
+    vi.mocked(fetchWeather).mockImplementationOnce((_city, options) => {
+      deliver = options?.onDelayedWeather;
+      return Promise.resolve({
+        kind: "unknown", label: "天气暂不可用", freshness: "unavailable",
+        source: "offline", warnings: [], shouldSuppressPoem: false,
+      });
+    });
+    vi.setSystemTime(new Date(2026, 9, 14, 0, 1));
+    window.dispatchEvent(new Event("focus"));
+    await vi.waitFor(() => expect(wrapper!.get(".context-strip strong").text()).toBe("10月14日"));
+    expect(deliver).toBeTypeOf("function");
+    await deliver!(activeSafetyWarning());
+    await vi.waitFor(() => expect(wrapper!.find(".warning-view").exists()).toBe(true));
+    expect(wrapper.find(".poem-view").exists()).toBe(false);
+    expect(wrapper.get(".warning-view").text()).not.toContain(yesterdayTitle);
+    expect((await (await createRepository()).load()).dailyState)
+      .toMatchObject({ localDate: "2026-10-14", state: "alert-suppressed" });
+  });
+
   it("continues a same-day legacy poem even when the new season filter excludes new selection", async () => {
     vi.useFakeTimers({ toFake: ["Date"] });
     vi.setSystemTime(new Date(2026, 9, 14, 9));

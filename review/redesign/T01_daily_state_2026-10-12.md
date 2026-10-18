@@ -2,6 +2,10 @@
 
 状态：**部分通过**。`redesign/phase-1` 的源码日期测试已通过，后续已补隔离 Windows 内部 EXE 的旧 SQLite 实例升级证据；午夜、休眠与托盘端到端仍未测。新 EXE 不是正式发行候选。
 
+同日因提示条布局另建最终本批内部 EXE `7BA3F65D56277E67A7B512A5A1E80A152AF397C2C3E6BAC736738004ACA3729C`，在[同哈希跨日复测](./evidence/T01_NATIVE_CROSS_DAY_LATE_RAIN_toast-fit-20261018.json)中再次得到 19 日离线《登飞来峰》→合成小雨《山居秋暝》，SQLite 为 19 日 `shown`；更新提示与“继续读”不相交。旧 `BF5…` 证据保留为前版验证，不移作新哈希。页面局部时钟、可见窗口而非真实系统跨夜/托盘路径的限制不变，A1 仍部分通过。
+
+2026-10-18 补齐非启动载入的晚到天气：`loadToday` 在跨日选诗时也接入有日期、城市和加载批次保护的续取回调，若晚到安全结果在选诗异步过程中抵达，则先缓冲并完成安全状态后才揭开诗笺。App 级受控时钟测试覆盖次日安全提醒不露出昨日诗。新未安装内部 EXE `.work/redesign-weather-all-loads-20261018/release/weatherpoem.exe`，SHA-256 `BF5CCC3C7DF1D3B9DF41BC2AC4A5CFF702AE9651C295C16C8FD82D8F77B69FEC`。在独立 SQLite/WebView2 窗口中仅把**页面局部**日期推进到 10 月 19 日，拦截两次天气请求并让第二次返回明确的合成小雨；[延迟返回报告](./evidence/T01_NATIVE_CROSS_DAY_LATE_RAIN_DEFERRED_weather-all-loads-20261018.json)记录先出现“天气未更新”的《登飞来峰》，后更新为“小雨”的《山居秋暝》，SQLite 当日状态为 19 日 `shown`。两张[返回前](./evidence/T01_NATIVE_CROSS_DAY_LATE_RAIN_DEFERRED_weather-all-loads-20261018_new_day_before_late.png)与[返回后](./evidence/T01_NATIVE_CROSS_DAY_LATE_RAIN_DEFERRED_weather-all-loads-20261018_after.png)画面已逐张查看，诗句可读；另留一次较快续取的[同哈希复测](./evidence/T01_NATIVE_CROSS_DAY_LATE_RAIN_weather-all-loads-20261018.json)。这只是可见窗口焦点触发的隔离演练，**不是**真实系统午夜、休眠或托盘合成器逐帧验收；A1 仍**部分通过**。
+
 2026-10-14 修复前反例：同日本地 `dailyState` 若保留旧规则已展示、但现行季节过滤不再允许作为新推荐的作品，`src/App.vue` 会把该作品单独传给推荐器，结果候选被过滤为空并进入错误页。先在 `src/core/recommendation.test.ts` 和 `src/App.test.ts` 加入失败回归；当时定向测试 2 失败、31 通过。预期只保留仍有效的同日已展示作品与中性理由，不放宽次日或新推荐的过滤；还须补隔离旧 SQLite 样本。A1 不因修复此一反例而整体通过。
 
 2026-10-14 本轮修复进展：新增显式 `retainedWorkId` 入口，并只在应用确认旧状态是当日本日已展示/保留/预警前保留、且作品仍在可发布目录时使用。旧诗与当前季节冲突时继续展示，理由固定为“今天已选过这首诗，继续读它。”；次日重新选择，撤回作品进入内容校正页，用户主动换诗仍走严格的新候选过滤。含同日、次日和撤回的 App 级反例通过；隔离 Chrome 154 的旧浏览器资料于 2026-10-14 09:00 亚洲上海时区打开该诗并完成设置保存/复访，结果为 passed。此证据不是旧 SQLite 的跨季迁移、Windows WebView2、休眠或真实跨日实测，A1 继续为**部分通过**。
