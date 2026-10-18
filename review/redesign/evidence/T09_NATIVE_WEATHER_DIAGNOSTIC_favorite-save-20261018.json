@@ -1,0 +1,55 @@
+{
+  "schemaVersion": "1.0",
+  "testKind": "isolated-native-weather-network-diagnostic",
+  "generatedAt": "2026-10-18T08:54:35.471Z",
+  "candidate": {
+    "path": ".work/redesign-favorite-save-20261018/release/weatherpoem.exe",
+    "sha256": "9E96FA84DCCA99F7C24D1616FDF1609547A9CFDF4EA323C0DE8F7E807F4CF4F4"
+  },
+  "isolation": {
+    "temporaryProfile": true,
+    "realUserDataTouched": false,
+    "installedOrUninstalled": false,
+    "systemClockChanged": false
+  },
+  "startup": {
+    "schemaVersion": "1.2",
+    "runId": "5557b31b17484fd1ab419223074b02a4",
+    "appVersion": "0.2.0",
+    "processId": 127868,
+    "nativeReadyMs": 1730.6962,
+    "frontendReadyMs": 1438.899999976158,
+    "readyView": "poem",
+    "readyMode": "offline-rules",
+    "viewRenderMs": 110.29999995231628,
+    "performanceScenario": null,
+    "sceneMotion": {
+      "sceneKind": "festival",
+      "appReduced": false,
+      "systemReduced": false,
+      "sceneActive": true,
+      "visibilityState": "visible",
+      "animationName": "none",
+      "animationDuration": "0s",
+      "animationIterationCount": "1"
+    },
+    "recordedAtUnixMs": 1792313677260
+  },
+  "webViewFetches": [
+    {
+      "timeoutMs": 1100,
+      "elapsedMs": 547,
+      "httpStatus": 200,
+      "currentTime": 1792313100,
+      "hasRequiredFields": true
+    },
+    {
+      "timeoutMs": 5000,
+      "elapsedMs": 317,
+      "httpStatus": 200,
+      "currentTime": 1792313100,
+      "hasRequiredFields": true
+    }
+  ],
+  "result": "diagnostic-captured"
+}
