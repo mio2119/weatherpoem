@@ -1,7 +1,8 @@
 import { flushPromises, mount, type VueWrapper } from "@vue/test-utils";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import App from "./App.vue";
-import { CONTENT_VERSION } from "./core/recommendation";
+import { CONTENT_VERSION, recommendPoem } from "./core/recommendation";
+import { buildCalendarContext } from "./core/date-context";
 import { POEMS } from "./data/poems";
 import { CONTENT_WITHDRAWAL_CACHE_KEY } from "./services/content-control";
 import { createRepository } from "./services/persistence";
@@ -86,6 +87,123 @@ describe("browser preview user flow", () => {
       source: "offline", warnings: [], shouldSuppressPoem: false,
     });
     await vi.waitFor(() => expect(wrapper!.find(".poem-view").exists()).toBe(true));
+  });
+
+  it("suppresses an already visible poem when delayed weather contains a safety warning", async () => {
+    localStorage.setItem("weatherpoem.local.v1", JSON.stringify({
+      settings: { configured: true, cityId: "beijing" },
+      history: [], favorites: [], feedback: [],
+    }));
+    let deliver!: (weather: WeatherContext) => void | Promise<void>;
+    vi.mocked(fetchWeather).mockImplementationOnce((_city, options) => {
+      deliver = options!.onDelayedWeather!;
+      return Promise.resolve({
+        kind: "unknown", label: "天气暂不可用", freshness: "unavailable",
+        source: "offline", warnings: [], shouldSuppressPoem: false,
+      });
+    });
+    wrapper = mount(App, { attachTo: document.body });
+    await vi.waitFor(() => expect(wrapper!.find(".poem-view").exists()).toBe(true));
+    const oldTitle = wrapper.get(".poem-view h1").text();
+    await deliver(activeSafetyWarning());
+    await vi.waitFor(() => expect(wrapper!.find(".warning-view").exists()).toBe(true));
+    expect(wrapper.find(".poem-view").exists()).toBe(false);
+    expect(wrapper.get(".warning-view").text()).not.toContain(oldTitle);
+    expect((await (await createRepository()).load()).dailyState)
+      .toMatchObject({ state: "alert-suppressed" });
+  });
+
+  it("uses delayed live weather for an untouched day's recommendation", async () => {
+    vi.useFakeTimers({ toFake: ["Date"] });
+    vi.setSystemTime(new Date(2026, 9, 14, 9));
+    localStorage.setItem("weatherpoem.local.v1", JSON.stringify({
+      settings: { configured: true, cityId: "beijing" },
+      history: [], favorites: [], feedback: [],
+    }));
+    let deliver!: (weather: WeatherContext) => void | Promise<void>;
+    vi.mocked(fetchWeather).mockImplementationOnce((_city, options) => {
+      deliver = options!.onDelayedWeather!;
+      return Promise.resolve({
+        kind: "unknown", label: "天气暂不可用", freshness: "unavailable",
+        source: "offline", warnings: [], shouldSuppressPoem: false,
+      });
+    });
+    wrapper = mount(App, { attachTo: document.body });
+    await vi.waitFor(() => expect(wrapper!.find(".poem-view").exists()).toBe(true));
+    const initialTitle = wrapper.get(".poem-view h1").text();
+    const rainy: WeatherContext = {
+      kind: "light-rain", label: "小雨", freshness: "fresh", source: "open-meteo",
+      observedAt: new Date().toISOString(), warnings: [], shouldSuppressPoem: false,
+    };
+    await deliver(rainy);
+    await vi.waitFor(() => expect(wrapper!.get(".context-strip").text()).toContain("小雨"));
+    const latestTitle = wrapper.get(".poem-view h1").text();
+    const expected = recommendPoem({
+      poems: POEMS,
+      calendar: buildCalendarContext(),
+      weather: rainy,
+      history: [],
+      feedback: [],
+    });
+    expect(latestTitle).toBe(expected.poem.title);
+    expect(latestTitle).not.toBe(initialTitle);
+    const stored = await (await createRepository()).load();
+    expect(stored.dailyState?.workId).toBe(POEMS.find((poem) => poem.title === latestTitle)?.id);
+    expect(stored.history.some((item) => item.workId === stored.dailyState?.workId)).toBe(true);
+    expect(wrapper.get(".poem-view").text()).not.toContain(initialTitle);
+    expect(wrapper.text()).toContain("天气信息已到，今日诗句已更新");
+  });
+
+  it("keeps the poem a reader touched before delayed weather arrived", async () => {
+    localStorage.setItem("weatherpoem.local.v1", JSON.stringify({
+      settings: { configured: true, cityId: "beijing" },
+      history: [], favorites: [], feedback: [],
+    }));
+    let deliver!: (weather: WeatherContext) => void | Promise<void>;
+    vi.mocked(fetchWeather).mockImplementationOnce((_city, options) => {
+      deliver = options!.onDelayedWeather!;
+      return Promise.resolve({
+        kind: "unknown", label: "天气暂不可用", freshness: "unavailable",
+        source: "offline", warnings: [], shouldSuppressPoem: false,
+      });
+    });
+    wrapper = mount(App, { attachTo: document.body });
+    await vi.waitFor(() => expect(wrapper!.find(".poem-view").exists()).toBe(true));
+    const initialTitle = wrapper.get(".poem-view h1").text();
+    await wrapper.get(".poem-view").trigger("pointerdown");
+    await deliver({
+      kind: "snow", label: "雪", freshness: "fresh", source: "open-meteo",
+      observedAt: new Date().toISOString(), warnings: [], shouldSuppressPoem: false,
+    });
+    await vi.waitFor(() => expect(wrapper!.get(".context-strip").text()).toContain("雪"));
+    expect(wrapper.get(".poem-view h1").text()).toBe(initialTitle);
+    expect((await (await createRepository()).load()).history).toHaveLength(1);
+  });
+
+  it("ignores weather from yesterday after the local date has changed", async () => {
+    vi.useFakeTimers({ toFake: ["Date"] });
+    vi.setSystemTime(new Date(2026, 9, 14, 9));
+    localStorage.setItem("weatherpoem.local.v1", JSON.stringify({
+      settings: { configured: true, cityId: "beijing" },
+      history: [], favorites: [], feedback: [],
+    }));
+    let deliver!: (weather: WeatherContext) => void | Promise<void>;
+    vi.mocked(fetchWeather).mockImplementationOnce((_city, options) => {
+      deliver = options!.onDelayedWeather!;
+      return Promise.resolve({
+        kind: "unknown", label: "天气暂不可用", freshness: "unavailable",
+        source: "offline", warnings: [], shouldSuppressPoem: false,
+      });
+    });
+    wrapper = mount(App, { attachTo: document.body });
+    await vi.waitFor(() => expect(wrapper!.find(".poem-view").exists()).toBe(true));
+    const oldTitle = wrapper.get(".poem-view h1").text();
+    vi.setSystemTime(new Date(2026, 9, 15, 0, 1));
+    await deliver(activeSafetyWarning());
+    expect(wrapper.find(".warning-view").exists()).toBe(false);
+    expect(wrapper.get(".poem-view h1").text()).toBe(oldTitle);
+    expect((await (await createRepository()).load()).dailyState)
+      .toMatchObject({ state: "shown", localDate: "2026-10-14" });
   });
 
   it("shows a recoverable data error instead of blank onboarding for damaged browser data", async () => {

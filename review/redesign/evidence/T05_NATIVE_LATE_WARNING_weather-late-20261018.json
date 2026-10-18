@@ -1,0 +1,82 @@
+{
+  "schemaVersion": "1.0",
+  "testKind": "isolated-native-weather-network-diagnostic",
+  "generatedAt": "2026-10-18T09:17:05.684Z",
+  "candidate": {
+    "path": ".work/redesign-weather-late-20261018/release/weatherpoem.exe",
+    "sha256": "4C378084D24E8C2D4C52B5B6DE717D9AA628A6FF9CD6E5F1773387A12D3E2D53"
+  },
+  "isolation": {
+    "temporaryProfile": true,
+    "realUserDataTouched": false,
+    "installedOrUninstalled": false,
+    "systemClockChanged": false
+  },
+  "simulatedWarning": true,
+  "startup": {
+    "schemaVersion": "1.2",
+    "runId": "99ca773fdb794f54a9f9bf39c7bccd11",
+    "appVersion": "0.2.0",
+    "processId": 132000,
+    "nativeReadyMs": 1709.3799000000001,
+    "frontendReadyMs": 1427,
+    "readyView": "warning",
+    "readyMode": "safety-warning",
+    "viewRenderMs": 135.80000001192093,
+    "performanceScenario": null,
+    "sceneMotion": null,
+    "recordedAtUnixMs": 1792315027448
+  },
+  "startupNetwork": [
+    {
+      "requestId": "125680.30",
+      "event": "request",
+      "timestamp": 355643.187732
+    },
+    {
+      "requestId": "125680.40",
+      "event": "request",
+      "timestamp": 355644.294232
+    },
+    {
+      "requestId": "125680.30",
+      "event": "loadingFailed",
+      "timestamp": 355644.296526,
+      "errorText": "net::ERR_ABORTED",
+      "canceled": true
+    },
+    {
+      "requestId": "125680.40",
+      "event": "responseReceived",
+      "timestamp": 355644.296575,
+      "status": 200
+    },
+    {
+      "requestId": "125680.40",
+      "event": "loadingFinished",
+      "timestamp": 355644.295556
+    }
+  ],
+  "webViewFetches": [],
+  "nativeViews": {
+    "atReady": {
+      "title": null,
+      "context": null,
+      "warning": true,
+      "loading": false,
+      "toast": null
+    },
+    "atReadyScreenshot": "review/redesign/evidence/T05_NATIVE_LATE_WARNING_weather-late-20261018_ready.png",
+    "afterWait": {
+      "title": null,
+      "context": null,
+      "warning": true,
+      "loading": false,
+      "toast": null
+    },
+    "afterWaitScreenshot": "review/redesign/evidence/T05_NATIVE_LATE_WARNING_weather-late-20261018_after.png"
+  },
+  "result": "failed",
+  "interceptedWeatherRequests": 2,
+  "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n\ntrue !== false\n\n    at file:///E:/weatherpoem/scripts/diagnose-native-weather.mjs:187:14"
+}

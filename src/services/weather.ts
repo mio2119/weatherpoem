@@ -42,6 +42,8 @@ const MAX_WEATHER_TIMEOUT_MS = 5000;
 
 export interface FetchWeatherOptions {
   performanceScenario?: PerformanceWeatherScenario;
+  onDelayedWeather?: (weather: WeatherContext) => void | Promise<void>;
+  requestTimeoutMs?: number;
 }
 
 export function resolveWeatherTimeoutMs(value?: string): number {
@@ -333,7 +335,7 @@ export async function fetchWeather(
       options.performanceScenario,
     );
   }
-  const timeoutMs = resolveWeatherTimeoutMs(
+  const timeoutMs = options.requestTimeoutMs ?? resolveWeatherTimeoutMs(
     import.meta.env.VITE_WEATHER_TIMEOUT_MS,
   );
   const controller = new AbortController();
@@ -426,8 +428,23 @@ export async function fetchWeather(
     cacheWeather(city.id, weather);
     return weather;
   } catch {
+    const primaryRequestTimedOut = controller.signal.aborted;
     const officialWarnings = await officialWarningsPromise;
     const cached = loadCachedWeather(city.id);
+    if (primaryRequestTimedOut && options.onDelayedWeather) {
+      // Keep the fast first result while allowing one bounded cold-connection retry.
+      // Only a fresh result or a safety warning may change the visible day.
+      const onDelayedWeather = options.onDelayedWeather;
+      void fetchWeather(city, { requestTimeoutMs: MAX_WEATHER_TIMEOUT_MS })
+        .then(async (delayed) => {
+          if (delayed.source === "open-meteo" || delayed.shouldSuppressPoem) {
+            await onDelayedWeather(delayed);
+          }
+        })
+        .catch((error: unknown) => {
+          console.warn("迟到的天气信息未能应用。", error);
+        });
+    }
     if (cached) {
       if (officialWarnings.length === 0) return cached;
       const warnings = [

@@ -118,6 +118,40 @@ describe("weather mapping", () => {
     expect(resolveWeatherTimeoutMs("6000")).toBe(1100);
   });
 
+  it("冷连接超过首屏预算时先给离线诗笺，再把一次成功的晚到天气交回页面", async () => {
+    vi.useFakeTimers();
+    try {
+      const request = vi.fn()
+        .mockImplementationOnce((_url: string, init: RequestInit) => new Promise((_resolve, reject) => {
+          init.signal?.addEventListener("abort", () => reject(new DOMException("Aborted", "AbortError")), { once: true });
+        }))
+        .mockResolvedValueOnce(new Response(
+          JSON.stringify({ current: onlineCurrent() }),
+          { status: 200, headers: { "Content-Type": "application/json" } },
+        ));
+      vi.stubGlobal("fetch", request);
+      const late = vi.fn();
+      const first = fetchWeather(testCity, { onDelayedWeather: late });
+      await vi.advanceTimersByTimeAsync(DEFAULT_WEATHER_TIMEOUT_MS);
+      await expect(first).resolves.toMatchObject({ source: "offline" });
+      await vi.runAllTimersAsync();
+      expect(request).toHaveBeenCalledTimes(2);
+      expect(late).toHaveBeenCalledOnce();
+      expect(late.mock.calls[0]?.[0]).toMatchObject({ source: "open-meteo", kind: "light-rain" });
+    } finally {
+      vi.useRealTimers();
+    }
+  });
+
+  it("立即失败不会无意义地自动重试天气", async () => {
+    const request = vi.fn().mockRejectedValue(new Error("offline"));
+    vi.stubGlobal("fetch", request);
+    const late = vi.fn();
+    await expect(fetchWeather(testCity, { onDelayedWeather: late })).resolves.toMatchObject({ source: "offline" });
+    expect(request).toHaveBeenCalledOnce();
+    expect(late).not.toHaveBeenCalled();
+  });
+
   it("隔离性能账户可以确定性覆盖立即离线和超时降级", async () => {
     const immediate = await fetchWeather(testCity, {
       performanceScenario: "weather-offline",

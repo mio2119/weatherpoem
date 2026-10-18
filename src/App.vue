@@ -75,6 +75,7 @@ import type {
   PilotEventType,
   PilotState,
   Recommendation,
+  RecommendationHistoryItem,
   Poem,
   PoemLayout,
   WeatherContext,
@@ -96,6 +97,8 @@ const weather = ref<WeatherContext>(offlineWeather());
 let performanceWeatherScenario:
   | PerformanceWeatherScenario
   | undefined;
+let weatherLoadGeneration = 0;
+let cardInteractedSinceLoad = false;
 const recommendation = ref<Recommendation>();
 const replacementInProgress = ref(false);
 const dislikeInProgress = ref(false);
@@ -103,6 +106,7 @@ const favoriteInProgress = ref(false);
 const panel = ref<Panel>("card");
 const loading = ref(true);
 const revealPending = ref(false);
+const weatherTransitionPending = ref(false);
 const errorMessage = ref("");
 const onboardingSaving = ref(false);
 const onboardingError = ref("");
@@ -437,11 +441,120 @@ async function persistRecommendation(
   ].slice(0, 60);
 }
 
+interface DelayedWeatherContext {
+  generation: number;
+  localDate: string;
+  cityId: string;
+  hadTodaySelection: boolean;
+  historyBeforeDisplay: RecommendationHistoryItem[];
+}
+
+async function applyDelayedWeather(
+  nextWeather: WeatherContext,
+  context: DelayedWeatherContext,
+): Promise<void> {
+  const isCurrent = () =>
+    context.generation === weatherLoadGeneration &&
+    context.localDate === calendar.value.localDate &&
+    context.localDate === buildCalendarContext().localDate &&
+    context.cityId === settings.value.cityId &&
+    settings.value.configured &&
+    Boolean(repository.value) &&
+    Boolean(recommendation.value) &&
+    !contentCorrectionPending.value &&
+    !errorMessage.value;
+  if (!isCurrent()) return;
+  const current = recommendation.value!;
+
+  if (nextWeather.shouldSuppressPoem) {
+    // Remove the old poem before any asynchronous persistence or announcement.
+    weatherTransitionPending.value = true;
+    recommendation.value = undefined;
+    selectedReadingPoem.value = undefined;
+    panel.value = "card";
+    weather.value = nextWeather;
+    try {
+      const suppressedState = {
+        localDate: context.localDate,
+        state: "alert-suppressed",
+        workId: current.poem.id,
+        shownAt: new Date().toISOString(),
+        contentVersion: CONTENT_VERSION,
+        ruleVersion: RULE_VERSION,
+      } as const;
+      await repository.value!.saveDailyState(suppressedState);
+      bootstrap.value.dailyState = suppressedState;
+      await recordPilotActivity("warning-suppressed");
+    } catch (error) {
+      console.error(error);
+      errorMessage.value = dailyLoadErrorMessage(error);
+    } finally {
+      weatherTransitionPending.value = false;
+    }
+    return;
+  }
+  if (nextWeather.source !== "open-meteo") return;
+  const preservePoem = context.hadTodaySelection ||
+    cardInteractedSinceLoad || panel.value !== "card";
+  const candidate = recommendPoem({
+    poems: preservePoem ? [current.poem] : availablePoems.value,
+    calendar: calendar.value,
+    weather: nextWeather,
+    history: context.historyBeforeDisplay,
+    feedback: bootstrap.value.feedback,
+    retainedWorkId: preservePoem ? current.poem.id : undefined,
+  });
+  const enriched = await enrichRecommendationReason(
+    candidate,
+    calendar.value,
+    nextWeather,
+  );
+  if (!isCurrent() || recommendation.value?.poem.id !== current.poem.id) return;
+  const interactedWhilePreparing = cardInteractedSinceLoad || panel.value !== "card";
+  const selected = interactedWhilePreparing && enriched.poem.id !== current.poem.id
+    ? recommendPoem({
+        poems: [current.poem],
+        calendar: calendar.value,
+        weather: nextWeather,
+        history: context.historyBeforeDisplay,
+        feedback: bootstrap.value.feedback,
+        retainedWorkId: current.poem.id,
+      })
+    : enriched;
+  const changedPoem = selected.poem.id !== current.poem.id;
+  if (changedPoem) {
+    weatherTransitionPending.value = true;
+    try {
+      await persistRecommendation(selected, "shown");
+      if (!isCurrent() || recommendation.value?.poem.id !== current.poem.id) return;
+      weather.value = nextWeather;
+      recommendation.value = selected;
+      cardInteractedSinceLoad = true;
+      showToast("天气信息已到，今日诗句已更新");
+    } finally {
+      weatherTransitionPending.value = false;
+    }
+    return;
+  }
+  weather.value = nextWeather;
+  recommendation.value = selected;
+  cardInteractedSinceLoad = true;
+}
+
+function markCardInteraction(event: Event): void {
+  if (loading.value || panel.value !== "card" || !recommendation.value) return;
+  if (event.target instanceof Element && event.target.closest(".poem-view")) {
+    cardInteractedSinceLoad = true;
+  }
+}
+
 async function loadToday(
   forceNew = false,
   contentControlChecked = false,
   pendingWeather?: Promise<WeatherContext>,
 ): Promise<void> {
+  weatherLoadGeneration += 1;
+  cardInteractedSinceLoad = false;
   const nextCalendar = buildCalendarContext();
   if (nextCalendar.localDate !== calendar.value.localDate) {
     recommendation.value = undefined;
@@ -1198,6 +1311,7 @@ async function initialize(): Promise<void> {
   let revealAfterInitialization = true;
   let revealWithFocus = true;
   let pendingWeather: Promise<WeatherContext> | undefined;
+  let completeInitialLoad: (() => void) | undefined;
   try {
     const [launchContext, controlledScenario] = await Promise.all([
       getLaunchContext(),
@@ -1224,8 +1338,24 @@ async function initialize(): Promise<void> {
         today: buildCalendarContext().localDate,
       });
       if (settings.value.configured && revealAfterInitialization) {
+        const initialLoadCompleted = new Promise<void>((resolve) => {
+          completeInitialLoad = resolve;
+        });
+        const lateContext: DelayedWeatherContext = {
+          generation: weatherLoadGeneration + 1,
+          localDate: buildCalendarContext().localDate,
+          cityId: settings.value.cityId,
+          hadTodaySelection:
+            bootstrap.value.dailyState?.localDate === buildCalendarContext().localDate &&
+            Boolean(bootstrap.value.dailyState.workId),
+          historyBeforeDisplay: [...bootstrap.value.history],
+        };
         pendingWeather = fetchWeather(findCity(settings.value.cityId), {
           performanceScenario: performanceWeatherScenario,
+          onDelayedWeather: async (delayed) => {
+            await initialLoadCompleted;
+            await applyDelayedWeather(delayed, lateContext);
+          },
         });
         // 初始化监听器期间天气请求已经开始；失败仍交给 loadToday 处理。
         void pendingWeather.catch(() => undefined);
@@ -1268,6 +1398,7 @@ async function initialize(): Promise<void> {
   } finally {
     const viewRenderStartedAtMs = window.performance.now();
     loading.value = false;
+    completeInitialLoad?.();
     await queueWindowMode(windowMode.value);
     windowModeReady = true;
     if (revealAfterInitialization) {
@@ -1296,14 +1427,19 @@ onMounted(() => {
   document.documentElement.dataset.sceneActive = isTauri() ? "false" : "true";
   window.addEventListener("weatherpoem:conceal", handleConcealRequest);
   document.addEventListener("visibilitychange", handleSceneVisibilityChange);
+  document.addEventListener("pointerdown", markCardInteraction, true);
+  document.addEventListener("keydown", markCardInteraction, true);
   window.matchMedia("(prefers-color-scheme: dark)")
     .addEventListener("change", handleSystemThemeChange);
   void initialize();
 });
 onBeforeUnmount(() => {
+  weatherLoadGeneration += 1;
   document.documentElement.dataset.sceneActive = "false";
   window.removeEventListener("weatherpoem:conceal", handleConcealRequest);
   document.removeEventListener("visibilitychange", handleSceneVisibilityChange);
+  document.removeEventListener("pointerdown", markCardInteraction, true);
+  document.removeEventListener("keydown", markCardInteraction, true);
   window.matchMedia("(prefers-color-scheme: dark)")
     .removeEventListener("change", handleSystemThemeChange);
   if (toastTimer) window.clearTimeout(toastTimer);
@@ -1327,9 +1463,9 @@ onBeforeUnmount(() => {
       @settings="openSettingsFromShell"
     />
 
-    <div v-if="loading || revealPending" class="loading-view" aria-live="polite">
+    <div v-if="loading || revealPending || weatherTransitionPending" class="loading-view" aria-live="polite">
       <span class="loading-line" />
-      <p>{{ revealPending ? "正在核对今日内容与安全信息" : "正在择取今日诗句" }}</p>
+      <p>{{ revealPending ? "正在核对今日内容与安全信息" : weatherTransitionPending ? "正在根据最新天气核对诗笺" : "正在择取今日诗句" }}</p>
     </div>
 
     <div v-else-if="errorMessage" class="error-view" role="alert">
