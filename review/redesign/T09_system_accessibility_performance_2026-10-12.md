@@ -2,6 +2,8 @@
 
 状态：**部分通过；2026-10-13 的新内部候选已通过已覆盖性能短测，但系统矩阵尚未验收**。本记录只属于 `redesign/phase-1` 源码、隔离的 Windows 开发窗口及内部测试 EXE，不把旧 0.2.0 EXE 的性能或设备报告当作新版通过证据。下文原有失败数据保留为第一轮历史结果，不能误读为最新候选的结果。
 
+2026-10-19 最新未安装内部 EXE `.work/redesign-toast-leave-20261019/release/weatherpoem.exe`，SHA-256 `4C2BE63A80D1D0622F9AFEB2084870EC8E4F18C500F862F43E97BA120C836DCC`。[同哈希隔离短测](./evidence/T09_PERFORMANCE_SMOKE_toast-leave-20261019.json)经独立检查器复算：10 次干净启动就绪 P95 **589.04 ms**，10 次诗笺首帧 P95 **122.5 ms**，10 次离线准备 P95 **1726.91 ms**；60 秒托盘空闲 CPU 平均 **0%**、工作集 P95 **30.54 MiB**。已覆盖短项达标，但 10 次内容准备均为离线，在线首屏样本 **0**、`gateSatisfied=false`；八小时/七天、不同设备缩放和读屏不能从旧哈希转移。提示连续过程的失败→修复报告见 T05，A9 保持部分通过。
+
 2026-10-18 提示留位后的最终本批内部 EXE `.work/redesign-toast-fit-20261018/release/weatherpoem.exe`，SHA-256 `7BA3F65D56277E67A7B512A5A1E80A152AF397C2C3E6BAC736738004ACA3729C`，重新完成[同哈希短测](./evidence/T09_PERFORMANCE_SMOKE_toast-fit-20261018.json)并由 `performance-smoke-check` 独立复算：10 次干净启动就绪 P95 **597.79 ms**，10 次诗笺首帧 P95 **135.7 ms**，10 次离线准备 P95 **1765.42 ms**；60 秒托盘空闲 CPU 平均 **0%**、工作集 P95 **30.55 MiB**。已覆盖短项通过，但 10 次内容准备均为离线，在线首屏样本为 **0**、`gateSatisfied=false`。旧 `BF5…`、`BA9…` 的报告不能签给这一哈希；窗口提示布局的本机小窗图见 T05。八小时/七天、实际多设备缩放、读屏及长时窗口伸缩尚未完成，A9 **部分通过**。
 
 2026-10-18 重新构建覆盖启动、首次设置与跨日续取的独立未签名内部 EXE `.work/redesign-weather-all-loads-20261018/release/weatherpoem.exe`，SHA-256 `BF5CCC3C7DF1D3B9DF41BC2AC4A5CFF702AE9651C295C16C8FD82D8F77B69FEC`。同哈希[性能短测](./evidence/T09_PERFORMANCE_SMOKE_weather-all-loads-20261018.json)经独立检查器复算：10 次干净启动就绪 P95 **621.8 ms**，10 次诗笺首帧 P95 **169 ms**，10 次离线准备 P95 **1767.96 ms**，托盘空闲 60 秒主进程 CPU 平均 **0%**、工作集 P95 **32.44 MiB**，已覆盖短项通过。10 次首屏均为 `offline-rules`，在线首屏 P95 **未测**，报告 `gateSatisfied=false`；八小时/七天、不同缩放和读屏仍不能转移旧候选结果。T01/T03 同哈希的原生画面另显示临时“天气已到”提示遮住底部继续读入口的一部分，这是短时交互质量待改项，不能把性能短测当作完整系统验收。A9 仍**部分通过**。

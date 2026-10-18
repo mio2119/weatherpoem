@@ -2,6 +2,8 @@
 
 状态：**部分通过**。规则源码与确定性模拟已有证据；反馈撤销入口已实现，完整内容人工审读和新候选原生呈现尚未完成。
 
+2026-10-19 最新内部哈希 `4C2BE63A80D1D0622F9AFEB2084870EC8E4F18C500F862F43E97BA120C836DCC` 在独立临时 SQLite 与 WebView2 中复核了[首次杭州](./evidence/T05_NATIVE_TOAST_MOTION_FIXED_toast-leave-20261019.json)与[跨日](./evidence/T01_NATIVE_CROSS_DAY_LATE_RAIN_toast-leave-20261019.json)两条非节日合成小雨晚到重选；离线《登飞来峰》更新为雨景《山居秋暝》，数据库记录一致。它证明此两条受控路径，不证明真实天气精度、多城市长期相关性或具名内容审读；A2 仍部分通过。
+
 同日提示布局修复后，最终本批内部哈希 `7BA3F65D56277E67A7B512A5A1E80A152AF397C2C3E6BAC736738004ACA3729C` 又独立完成[首次杭州](./evidence/T05_NATIVE_FIRST_USE_TOAST_FIT_toast-fit-20261018.json)与[跨日](./evidence/T01_NATIVE_CROSS_DAY_LATE_RAIN_toast-fit-20261018.json)两条合成小雨晚到重选，并在 SQLite 中核对新日作品。旧 `BF5…` 结果不跨哈希转移。内容自然度、不同真实城市及长期天气准确性仍未签收，A2 继续部分通过。
 
 2026-10-18 发现上一批续取回调只覆盖启动预取，首次设置和跨日 `loadToday` 仍可能按离线情境选诗后不再更新。修复后两条路径都适用既定节日 > 天气 > 节气及“未触碰才可重选”边界。新内部 EXE 哈希 `BF5CCC3C7DF1D3B9DF41BC2AC4A5CFF702AE9651C295C16C8FD82D8F77B69FEC` 的[跨日报告](./evidence/T01_NATIVE_CROSS_DAY_LATE_RAIN_DEFERRED_weather-all-loads-20261018.json)与[首次选择杭州报告](./evidence/T03_NATIVE_FIRST_USE_LATE_RAIN_weather-all-loads-20261018.json)分别显示 10 月 19 日在合成小雨晚到后，由离线《登飞来峰》改为雨景《山居秋暝》；保存的 SQLite 当日作品一致。这证明两条可见原生分支的受控非节日重选，不证明不同真实城市、天气准确率、内容自然度或真实安全网关。A2 仍**部分通过**。

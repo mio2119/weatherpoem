@@ -16,7 +16,9 @@ const reportPath = path.resolve(process.argv[3] ?? "");
 const simulateLateWarning = process.argv.includes("--simulate-late-warning");
 const simulateCrossDayRain = process.argv.includes("--simulate-cross-day-rain");
 const simulateFirstUseRain = process.argv.includes("--simulate-first-use-rain");
+const auditToastMotion = process.argv.includes("--audit-toast-motion");
 assert.ok([simulateLateWarning, simulateCrossDayRain, simulateFirstUseRain].filter(Boolean).length <= 1, "Choose one synthetic weather scenario");
+assert.ok(!auditToastMotion || simulateFirstUseRain, "Toast motion audit requires the first-use scenario");
 const observeLate = process.argv.includes("--observe-late") || simulateLateWarning || simulateCrossDayRain || simulateFirstUseRain;
 assert.ok(candidate.toLowerCase().startsWith((path.join(root, ".work") + path.sep).toLowerCase()) && path.basename(candidate).toLowerCase() === "weatherpoem.exe", "Use an internal EXE");
 assert.ok(reportPath.toLowerCase().startsWith((path.join(root, "review", "redesign", "evidence") + path.sep).toLowerCase()) && reportPath.endsWith(".json"), "Use a redesign evidence JSON path");
@@ -37,6 +39,7 @@ const report = {
   simulatedWarning: simulateLateWarning,
   simulatedCrossDayRain: simulateCrossDayRain,
   simulatedFirstUseRain: simulateFirstUseRain,
+  auditToastMotion,
   startup: null,
   startupNetwork: [],
   webViewFetches: [],
@@ -224,6 +227,25 @@ try {
       syntheticObservedAtSeconds = clock.unixSeconds;
       report.firstUse = { clock, pageLocalOnly: true, selectedCityId: "hangzhou" };
       assert.equal(report.startup.readyMode, "local-onboarding");
+      if (auditToastMotion) await evaluate(`(() => {
+        const samples = [];
+        const sample = () => {
+          const view = document.querySelector('.poem-view');
+          const read = view?.querySelector('.read-button');
+          const toast = document.querySelector('.toast-message');
+          const viewRect = view?.getBoundingClientRect();
+          const readRect = read?.getBoundingClientRect();
+          const toastRect = toast?.getBoundingClientRect();
+          samples.push({ elapsedMs: Math.round(performance.now() - started), viewportHeight: innerHeight,
+            toastText: toast?.textContent ?? null,
+            viewScrollHeight: view?.scrollHeight ?? null, viewClientHeight: view?.clientHeight ?? null,
+            readFullyVisible: Boolean(viewRect && readRect && readRect.top >= viewRect.top && readRect.bottom <= viewRect.bottom),
+            toastOverlapsRead: Boolean(toastRect && readRect && toastRect.left < readRect.right && toastRect.right > readRect.left && toastRect.top < readRect.bottom && toastRect.bottom > readRect.top) });
+        };
+        const started = performance.now();
+        sample();
+        window.__weatherpoemToastMotion = { samples, interval: setInterval(sample, 50) };
+      })()`);
       await evaluate(`(() => {
         const search = document.querySelector('#city-search');
         search.value = '杭州';
@@ -259,6 +281,16 @@ try {
       assert.equal(report.savedSettings.cityId, "hangzhou");
       assert.equal(report.savedDailyState?.local_date, clock.localDate);
       assert.equal(report.savedDailyState?.state, "shown");
+      if (auditToastMotion) {
+        await delay(2800);
+        report.toastMotion = await evaluate(`(() => {
+          clearInterval(window.__weatherpoemToastMotion.interval);
+          return window.__weatherpoemToastMotion.samples;
+        })()`);
+        assert.ok(report.toastMotion.length > 50, "Toast motion timeline is too short");
+        assert.equal(report.toastMotion.some((sample) => sample.toastOverlapsRead), false, "Toast briefly covered the read button during enter or leave");
+        assert.equal(report.toastMotion.at(-1)?.toastText, null, "The toast did not leave after its display period");
+      }
     } else if (simulateCrossDayRain) {
       report.nativeViews.beforeCrossDay = await view();
       const clock = await pageTomorrowClock();
@@ -279,6 +311,7 @@ try {
       assert.ok(interceptedWeatherRequests >= 2, "The cross-day request and delayed retry were not both intercepted");
       assert.ok(report.nativeViews.afterWait.context?.includes(clock.displayDate));
       assert.ok(report.nativeViews.afterWait.context?.includes("小雨"));
+      assert.notEqual(report.nativeViews.afterWait.toastOverlapsReadButton, true, "Toast covers the cross-day read button");
       const database = new DatabaseSync(resolvePerformanceDatabasePath(profile), { readOnly: true });
       try {
         report.savedDailyState = database.prepare("SELECT local_date, state, work_id FROM daily_state ORDER BY local_date DESC LIMIT 1").get();

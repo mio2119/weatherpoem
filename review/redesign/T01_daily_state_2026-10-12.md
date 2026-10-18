@@ -2,6 +2,8 @@
 
 状态：**部分通过**。`redesign/phase-1` 的源码日期测试已通过，后续已补隔离 Windows 内部 EXE 的旧 SQLite 实例升级证据；午夜、休眠与托盘端到端仍未测。新 EXE 不是正式发行候选。
 
+2026-10-19 提示退出留位调整后的最终本批内部 EXE `4C2BE63A80D1D0622F9AFEB2084870EC8E4F18C500F862F43E97BA120C836DCC`，再次完成[同哈希页面局部跨日报告](./evidence/T01_NATIVE_CROSS_DAY_LATE_RAIN_toast-leave-20261019.json)：10 月 20 日离线《登飞来峰》→合成小雨《山居秋暝》，SQLite 20 日 `shown` 与画面一致，更新提示和主按钮不相交。[更新前](./evidence/T01_NATIVE_CROSS_DAY_LATE_RAIN_toast-leave-20261019_new_day_before_late.png)与[更新后](./evidence/T01_NATIVE_CROSS_DAY_LATE_RAIN_toast-leave-20261019_after.png)画面已查看。旧哈希的跨日报告不移作新候选结果；真实系统午夜、托盘找回和休眠仍未验，A1 保持部分通过。
+
 同日因提示条布局另建最终本批内部 EXE `7BA3F65D56277E67A7B512A5A1E80A152AF397C2C3E6BAC736738004ACA3729C`，在[同哈希跨日复测](./evidence/T01_NATIVE_CROSS_DAY_LATE_RAIN_toast-fit-20261018.json)中再次得到 19 日离线《登飞来峰》→合成小雨《山居秋暝》，SQLite 为 19 日 `shown`；更新提示与“继续读”不相交。旧 `BF5…` 证据保留为前版验证，不移作新哈希。页面局部时钟、可见窗口而非真实系统跨夜/托盘路径的限制不变，A1 仍部分通过。
 
 2026-10-18 补齐非启动载入的晚到天气：`loadToday` 在跨日选诗时也接入有日期、城市和加载批次保护的续取回调，若晚到安全结果在选诗异步过程中抵达，则先缓冲并完成安全状态后才揭开诗笺。App 级受控时钟测试覆盖次日安全提醒不露出昨日诗。新未安装内部 EXE `.work/redesign-weather-all-loads-20261018/release/weatherpoem.exe`，SHA-256 `BF5CCC3C7DF1D3B9DF41BC2AC4A5CFF702AE9651C295C16C8FD82D8F77B69FEC`。在独立 SQLite/WebView2 窗口中仅把**页面局部**日期推进到 10 月 19 日，拦截两次天气请求并让第二次返回明确的合成小雨；[延迟返回报告](./evidence/T01_NATIVE_CROSS_DAY_LATE_RAIN_DEFERRED_weather-all-loads-20261018.json)记录先出现“天气未更新”的《登飞来峰》，后更新为“小雨”的《山居秋暝》，SQLite 当日状态为 19 日 `shown`。两张[返回前](./evidence/T01_NATIVE_CROSS_DAY_LATE_RAIN_DEFERRED_weather-all-loads-20261018_new_day_before_late.png)与[返回后](./evidence/T01_NATIVE_CROSS_DAY_LATE_RAIN_DEFERRED_weather-all-loads-20261018_after.png)画面已逐张查看，诗句可读；另留一次较快续取的[同哈希复测](./evidence/T01_NATIVE_CROSS_DAY_LATE_RAIN_weather-all-loads-20261018.json)。这只是可见窗口焦点触发的隔离演练，**不是**真实系统午夜、休眠或托盘合成器逐帧验收；A1 仍**部分通过**。

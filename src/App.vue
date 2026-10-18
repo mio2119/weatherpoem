@@ -112,6 +112,7 @@ const onboardingSaving = ref(false);
 const onboardingError = ref("");
 const toast = ref("");
 const toastElement = ref<HTMLElement>();
+const toastRailReserved = ref(false);
 const autostartWarning = ref("");
 const selectedReadingPoem = ref<Poem>();
 const poems = shallowRef<Poem[]>([]);
@@ -139,7 +140,7 @@ let windowModeTask: Promise<void> = Promise.resolve();
 let glanceContentHeight = 320;
 
 function glanceHeightWithStatus(): number {
-  return glanceContentHeight + (toast.value
+  return glanceContentHeight + (toastRailReserved.value
     ? Math.ceil(toastElement.value?.getBoundingClientRect().height ?? 42) + 10
     : 0);
 }
@@ -184,9 +185,16 @@ watch(windowMode, (mode) => {
 });
 
 watch(toast, async () => {
+  if (!toast.value) return;
   await nextTick();
   fitGlanceToContent(glanceContentHeight);
 });
+
+function finishToastLeave(): void {
+  if (toast.value) return;
+  toastRailReserved.value = false;
+  fitGlanceToContent(glanceContentHeight);
+}
 
 function handleReadingResize(size: WindowDimensions): void {
   if (
@@ -284,6 +292,7 @@ function offlineWeather(): WeatherContext {
 }
 
 function showToast(message: string): void {
+  toastRailReserved.value = true;
   toast.value = message;
   if (toastTimer) window.clearTimeout(toastTimer);
   toastTimer = window.setTimeout(() => {
@@ -1619,7 +1628,7 @@ onBeforeUnmount(() => {
       @layout-change="changePoemLayout"
     />
 
-    <Transition name="toast">
+    <Transition name="toast" @after-leave="finishToastLeave">
       <div v-if="toast" ref="toastElement" class="toast-message" role="status">{{ toast }}</div>
     </Transition>
   </div>

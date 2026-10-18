@@ -2,6 +2,8 @@
 
 状态：**部分通过**。除源码和组件级验证外，2026-10-13 已用两个哈希不同的内部 EXE 实看城市反例、键盘选城，并在加入隔离保护后完成首次设置与再次启动；未在真实 Windows 启动项与旧用户资料上做破坏性试验。
 
+2026-10-19 现有原生候选 `4C2BE63A80D1D0622F9AFEB2084870EC8E4F18C500F862F43E97BA120C836DCC` 在[首次杭州时间线](./evidence/T05_NATIVE_TOAST_MOTION_FIXED_toast-leave-20261019.json)中重走城市选择、天气同意、离线诗笺与合成小雨晚到更新，临时 SQLite 为杭州、20 日 `shown`；窗口提示退出前后均未压住主按钮。该次仍未触碰真实资料、启动项或系统时钟，也未验证原生资料写入失败或真实启动项权限；A3 继续部分通过。
+
 同日针对下方发现的提示遮挡，另建内部 EXE `7BA3F65D56277E67A7B512A5A1E80A152AF397C2C3E6BAC736738004ACA3729C`；在[同哈希首次设置复测](./evidence/T05_NATIVE_FIRST_USE_TOAST_FIT_toast-fit-20261018.json)中，杭州选择、同意、离线诗笺→合成小雨重选及 SQLite 保存再次一致，首次设置长提示和更新提示都与“继续读”按钮不相交。新[离线](./evidence/T05_NATIVE_FIRST_USE_TOAST_FIT_toast-fit-20261018_first_use_before_late.png)和[更新后](./evidence/T05_NATIVE_FIRST_USE_TOAST_FIT_toast-fit-20261018_after.png)画面已逐张查看。旧 `BF5…` 的遮挡发现仍作为失败起点保留；真实启动项、原生设置写入故障/重试和读屏未测，A3 继续部分通过。
 
 2026-10-18 在新未安装内部 EXE `BF5CCC3C7DF1D3B9DF41BC2AC4A5CFF702AE9651C295C16C8FD82D8F77B69FEC` 的临时资料中，以 `configured=false` 进入真实 WebView2 首次设置，搜索并选择杭州、勾选天气请求同意；只修改该页面的日期为 10 月 19 日，天气拦截器让首次请求超时、单次续取延迟回合成小雨。[原始报告](./evidence/T03_NATIVE_FIRST_USE_LATE_RAIN_weather-all-loads-20261018.json)记录先为“天气未更新”的《登飞来峰》，后为“小雨”的《山居秋暝》，SQLite `cityId=hangzhou`、`configured=true`、19 日 `shown` 与画面一致。[首次表单](./evidence/T03_NATIVE_FIRST_USE_LATE_RAIN_weather-all-loads-20261018_ready.png)、[离线诗笺](./evidence/T03_NATIVE_FIRST_USE_LATE_RAIN_weather-all-loads-20261018_first_use_before_late.png)、[晚到小雨诗笺](./evidence/T03_NATIVE_FIRST_USE_LATE_RAIN_weather-all-loads-20261018_after.png)逐张查看。诗句可读，但短暂提示覆盖了底部“继续读”按钮的一部分，列为 T05 视觉交互待修；不能据此签收小窗无障碍。App 级测试还覆盖首次设置选诗中途收到安全提醒时遮挡保持到安全页和数据库状态就绪。本次没有改真实启动项、系统时间、用户资料或安装状态；原生设置写入失败/重试、真实自启动权限与读屏仍未测，A3 **部分通过**。
