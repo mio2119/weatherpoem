@@ -1,0 +1,63 @@
+{
+  "schemaVersion": "1.0",
+  "testKind": "isolated-native-hidden-day-reveal",
+  "generatedAt": "2026-10-19T08:20:16.277Z",
+  "candidate": {
+    "path": ".work/redesign-accessibility-focus-ring-20261019/release/weatherpoem.exe",
+    "sha256": "7BFC5F340E992D15D95BE56DAF0C356A7BA261C0B9A8B3BF795B59E5310FF627"
+  },
+  "isolation": {
+    "temporaryProfile": true,
+    "systemClockChanged": false,
+    "installedOrUninstalled": false,
+    "realUserDataTouched": false,
+    "processOnlyWeatherHostBlock": false
+  },
+  "scenario": "weather-offline",
+  "concealAction": "tray-hide-button",
+  "activationPath": "native-single-instance",
+  "revealElapsedMs": 104,
+  "readyView": "poem",
+  "original": {
+    "date": "10月19日",
+    "title": "观书有感",
+    "context": "10月19日天气未更新秋 收藏 0",
+    "visible": "visible",
+    "poem": true
+  },
+  "hidden": {
+    "visibility": "visible",
+    "poem": false,
+    "loading": true
+  },
+  "expectedDate": "10月20日",
+  "screenshots": [
+    "review/redesign/evidence/T01_NATIVE_GLANCE_FOCUS_CROSS_DAY_20261019_before.png",
+    "review/redesign/evidence/T01_NATIVE_GLANCE_FOCUS_CROSS_DAY_20261019_after.png"
+  ],
+  "observed": [
+    {
+      "visible": "visible",
+      "poem": false,
+      "loading": true,
+      "correction": false,
+      "warning": false
+    },
+    {
+      "visible": "visible",
+      "poem": false,
+      "loading": true,
+      "correction": false,
+      "warning": false
+    },
+    {
+      "visible": "visible",
+      "date": "10月20日",
+      "poem": true,
+      "loading": false,
+      "correction": false,
+      "warning": false
+    }
+  ],
+  "result": "passed"
+}
