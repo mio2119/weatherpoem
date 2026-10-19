@@ -1,6 +1,6 @@
 # T02 推荐相关性、理由与多样性自验收
 
-状态：**部分通过**。规则源码与确定性模拟已有证据；反馈撤销入口已实现，完整内容人工审读和新候选原生呈现尚未完成。
+状态：**部分通过**。规则源码与确定性模拟已有证据；当前内部候选已覆盖两条局部原生路径（首次设置晚到天气、反馈撤销与重启），但真实天气相关性、多设备/真人内容审校和完整候选矩阵尚未完成。
 
 2026-10-19 最新内部哈希 `4C2BE63A80D1D0622F9AFEB2084870EC8E4F18C500F862F43E97BA120C836DCC` 在独立临时 SQLite 与 WebView2 中复核了[首次杭州](./evidence/T05_NATIVE_TOAST_MOTION_FIXED_toast-leave-20261019.json)与[跨日](./evidence/T01_NATIVE_CROSS_DAY_LATE_RAIN_toast-leave-20261019.json)两条非节日合成小雨晚到重选；离线《登飞来峰》更新为雨景《山居秋暝》，数据库记录一致。它证明此两条受控路径，不证明真实天气精度、多城市长期相关性或具名内容审读；A2 仍部分通过。
 
@@ -67,3 +67,11 @@
 观察到首次设置页采用纵向滚动和两列城市选择；对应的[首次设置页](./evidence/T02_NATIVE_GLANCE_FOCUS_FIRST_USE_LATE_RAIN_20261019_ready.png)、[晚到前诗笺](./evidence/T02_NATIVE_GLANCE_FOCUS_FIRST_USE_LATE_RAIN_20261019_first_use_before_late.png)、[晚到后雨景诗笺](./evidence/T02_NATIVE_GLANCE_FOCUS_FIRST_USE_LATE_RAIN_20261019_after.png)三张静帧均已人工查看。首次选出的离线《登飞来峰》先显示为“天气未更新”；小雨响应到达后，诗笺显示“10月20日小雨”，作品更新为王维《山居秋暝》，其内容目录天气标签包含 `light-rain`；临时 SQLite 的当日 `work_id` 同步为 `wang-wei-shan-ju-qiu-ming`。晚到后 toast 为“天气信息已到，今日诗句已更新”，不遮挡“继续读”主操作。完整报告为 [`T02_NATIVE_GLANCE_FOCUS_FIRST_USE_LATE_RAIN_20261019.json`](./evidence/T02_NATIVE_GLANCE_FOCUS_FIRST_USE_LATE_RAIN_20261019.json)。
 
 该脚本将结果标为 `diagnostic-captured`，故这里只登记原生观察与数据库一致性，不称作正式门禁通过。此单城、单次合成输入不能证明真实天气质量、天气与诗意的真人贴合度、用户操作后的选择保留、在线长周期多样性或 AI 理由服务质量。自动规则目录校验 `npm.cmd run reason:check` 本轮通过（120 首、47 场景、19 项服务测试）；A2 仍为**部分通过**。
+
+## 2026-10-19 当前候选反馈撤销与重启保留
+
+使用同一未签名、未安装候选 `7BFC5F340E992D15D95BE56DAF0C356A7BA261C0B9A8B3BF795B59E5310FF627`，通过新增的[原生反馈撤销测试脚本](../../scripts/test-redesign-native-feedback-undo.mjs)在临时 profile 中模拟离线天气，并预置一条较早的“不太贴合”、一条“换一首”反馈和一首收藏。复现命令：`node scripts/test-redesign-native-feedback-undo.mjs .work/redesign-accessibility-focus-ring-20261019/release/weatherpoem.exe review/redesign/evidence/T02_NATIVE_FEEDBACK_UNDO_RESTART_RUN3_20261019.json`。系统时间、启动项、用户资料与安装状态均未更改。
+
+原生诗笺《使至塞上》记录“不太贴合”后，SQLite 新增记录绑定当前作品和本地日键；设置页显示“撤销最近一次‘不太贴合’使至塞上”。执行撤销后，只删除这条新反馈，较早的《黄鹤楼》反馈、“换一首”反馈与收藏仍在 SQLite，设置页改为显示仍可撤销的旧反馈。关闭并重启同一临时 profile 后，当日作品仍为《使至塞上》，状态为 `retained`，三类保留数据和旧反馈入口仍一致。正式报告结果为 `native-isolated-feedback-undo-restart-and-preservation-passed`，绑定上述候选哈希；自动化通过不等同于真人用鼠标/键盘操作。
+
+报告：[当前候选原生撤销/重启报告](./evidence/T02_NATIVE_FEEDBACK_UNDO_RESTART_RUN3_20261019.json)。已查看[反馈已记录](./evidence/T02_NATIVE_FEEDBACK_UNDO_RESTART_RUN3_20261019_feedback_saved.png)、[设置中的撤销入口](./evidence/T02_NATIVE_FEEDBACK_UNDO_RESTART_RUN3_20261019_undo_control.png)、[撤销后的保留状态](./evidence/T02_NATIVE_FEEDBACK_UNDO_RESTART_RUN3_20261019_undo_completed.png)及[同资料重启后的设置](./evidence/T02_NATIVE_FEEDBACK_UNDO_RESTART_RUN3_20261019_after_restart.png)：提示清楚，撤销入口可见，收藏仍为 1 首。边界：仅单机当前候选、合成离线天气和临时 SQLite；不验证真实物理 I/O、不同 DPI/读屏、真实用户是否理解设置入口，也不代替具名内容审核和线上模型评测。A2 继续**部分通过**。
