@@ -219,7 +219,7 @@ describe("SQLite feedback migration and undo", () => {
     expect(loaded.settings).toMatchObject({
       configured: true, cityId: "hangzhou", autostart: false,
       theme: "dark", reduceMotion: true,
-      poemLayout: "horizontal", poemFontSize: "medium",
+      poemLayout: "horizontal", poemFontSize: "medium", glanceSize: "small",
     });
     expect(loaded.favorites).toEqual(["legacy-poem"]);
     await repository.saveSettings({ ...loaded.settings, poemLayout: "vertical" });

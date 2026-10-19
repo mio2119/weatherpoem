@@ -199,6 +199,18 @@ describe("window mode geometry", () => {
     });
   });
 
+  it("offers three glance widths independently of poem font size and clamps narrow work areas", () => {
+    const workArea = { width: 1280, height: 800 };
+    expect(windowSizeForMode("glance", workArea, undefined, "small"))
+      .toEqual({ width: 392, height: 320 });
+    expect(windowSizeForMode("glance", workArea, undefined, "medium"))
+      .toEqual({ width: 456, height: 320 });
+    expect(windowSizeForMode("glance", workArea, undefined, "large"))
+      .toEqual({ width: 520, height: 320 });
+    expect(windowSizeForMode("glance", { width: 380, height: 300 }, undefined, "large"))
+      .toEqual({ width: 348, height: 268 });
+  });
+
   it("keeps setup, safety and reading sizes inside a short work area", () => {
     const workArea = { width: 800, height: 600 };
     expect(windowSizeForMode("setup", workArea)).toEqual({
@@ -281,6 +293,32 @@ describe("window mode geometry", () => {
     );
     expect(windowMocks.setSize).toHaveBeenNthCalledWith(
       2, expect.objectContaining({ width: 392, height: 394 }),
+    );
+    delete window.__TAURI_INTERNALS__;
+    vi.clearAllMocks();
+  });
+
+  it("restores the configured glance width when startup reports a narrower inner window", async () => {
+    vi.clearAllMocks();
+    Object.defineProperty(window, "__TAURI_INTERNALS__", {
+      value: {}, configurable: true,
+    });
+    monitorMocks.currentMonitor.mockResolvedValue({
+      scaleFactor: 1,
+      workArea: {
+        position: { x: 0, y: 0 },
+        size: { width: 1920, height: 1032 },
+      },
+    });
+    windowMocks.innerSize.mockResolvedValue({ width: 510, height: 353 });
+    windowMocks.outerSize.mockResolvedValue({ width: 536, height: 353 });
+    windowMocks.setSize.mockResolvedValue();
+    windowMocks.setPosition.mockResolvedValue();
+
+    await fitGlanceWindowHeight(353, "large");
+
+    expect(windowMocks.setSize).toHaveBeenCalledWith(
+      expect.objectContaining({ width: 520, height: 353 }),
     );
     delete window.__TAURI_INTERNALS__;
     vi.clearAllMocks();

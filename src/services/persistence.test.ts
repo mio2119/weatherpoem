@@ -317,6 +317,7 @@ describe("browser persistence", () => {
     expect(data.settings).toMatchObject({ configured: true, cityId: "hangzhou" });
     expect(data.settings.poemLayout).toBe("horizontal");
     expect(data.settings.poemFontSize).toBe("medium");
+    expect(data.settings.glanceSize).toBe("small");
     expect(data.history[0]?.workId).toBe("legacy-poem");
     expect(data.favorites).toEqual(["legacy-poem"]);
     expect(data.feedback).toHaveLength(1);
@@ -326,18 +327,22 @@ describe("browser persistence", () => {
     const repository = await createRepository();
     await repository.saveSettings({
       ...DEFAULT_SETTINGS,
+      glanceSize: "large",
       poemLayout: "vertical",
       poemFontSize: "large",
     });
     expect((await repository.load()).settings).toMatchObject({
+      glanceSize: "large",
       poemLayout: "vertical",
       poemFontSize: "large",
     });
     const raw = JSON.parse(localStorage.getItem("weatherpoem.local.v1")!);
     raw.settings.poemLayout = "diagonal";
     raw.settings.poemFontSize = "enormous";
+    raw.settings.glanceSize = "enormous";
     localStorage.setItem("weatherpoem.local.v1", JSON.stringify(raw));
     expect((await repository.load()).settings).toMatchObject({
+      glanceSize: "small",
       poemLayout: "horizontal",
       poemFontSize: "medium",
     });

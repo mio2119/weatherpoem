@@ -137,6 +137,14 @@ async function showThirdPartyNotices(): Promise<void> {
       <section class="settings-group">
         <h2>阅读外观</h2>
         <label class="stacked-field">
+          <span>桌面诗笺尺寸</span>
+          <select v-model="draft.glanceSize" class="select-input" name="glance-size">
+            <option value="small">小窗（默认）</option>
+            <option value="medium">中窗</option>
+            <option value="large">大窗</option>
+          </select>
+        </label>
+        <label class="stacked-field">
           <span>主题</span>
           <select v-model="draft.theme" class="select-input">
             <option value="system">跟随系统</option>

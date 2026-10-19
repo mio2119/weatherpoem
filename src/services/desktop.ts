@@ -1,4 +1,5 @@
 import type {
+  GlanceSize,
   PerformanceWeatherScenario,
   ThemePreference,
   WeatherContext,
@@ -42,11 +43,17 @@ const WINDOW_PRESETS: Record<WindowMode, WindowDimensions> = {
   reading: { width: 560, height: 720 },
   safety: { width: 430, height: 560 },
 };
+const GLANCE_WIDTHS: Record<GlanceSize, number> = {
+  small: 392,
+  medium: 456,
+  large: 520,
+};
 
 export function windowSizeForMode(
   mode: WindowMode,
   workArea: WindowDimensions,
   savedReadingSize?: WindowDimensions,
+  glanceSize: GlanceSize = "small",
 ): WindowDimensions {
   const validReadingSize =
     savedReadingSize &&
@@ -54,7 +61,9 @@ export function windowSizeForMode(
     Number.isFinite(savedReadingSize.height) &&
     savedReadingSize.width >= 440 &&
     savedReadingSize.height >= 520;
-  const desired = mode === "reading" && validReadingSize
+  const desired = mode === "glance"
+    ? { ...WINDOW_PRESETS.glance, width: GLANCE_WIDTHS[glanceSize] }
+    : mode === "reading" && validReadingSize
     ? savedReadingSize
     : WINDOW_PRESETS[mode];
   return {
@@ -241,6 +250,7 @@ export async function positionWindowBottomRight(): Promise<void> {
 export async function setWindowMode(
   mode: WindowMode,
   savedReadingSize?: WindowDimensions,
+  glanceSize: GlanceSize = "small",
 ): Promise<void> {
   if (!isTauri()) return;
   const [{ LogicalSize, PhysicalPosition }, windowApi] = await Promise.all([
@@ -259,6 +269,7 @@ export async function setWindowMode(
       height: area.size.height / scale,
     },
     savedReadingSize,
+    glanceSize,
   );
   await appWindow.setMinSize(null);
   await appWindow.setSize(new LogicalSize(size.width, size.height));
@@ -291,7 +302,10 @@ export async function setWindowMode(
   await appWindow.setPosition(new PhysicalPosition(x, y));
 }
 
-export async function fitGlanceWindowHeight(requiredHeight: number): Promise<void> {
+export async function fitGlanceWindowHeight(
+  requiredHeight: number,
+  glanceSize?: GlanceSize,
+): Promise<void> {
   if (!isTauri() || !Number.isFinite(requiredHeight)) return;
   const [{ LogicalSize }, windowApi] = await Promise.all([
     import("@tauri-apps/api/dpi"),
@@ -302,12 +316,24 @@ export async function fitGlanceWindowHeight(requiredHeight: number): Promise<voi
   if (!monitor) return;
   const scale = monitor.scaleFactor;
   const current = await appWindow.innerSize();
+  const targetWidth = glanceSize
+    ? windowSizeForMode(
+      "glance",
+      {
+        width: monitor.workArea.size.width / scale,
+        height: monitor.workArea.size.height / scale,
+      },
+      undefined,
+      glanceSize,
+    ).width
+    : current.width / scale;
   const target = Math.min(
     Math.max(320, Math.ceil(requiredHeight)),
     Math.max(1, Math.floor(monitor.workArea.size.height / scale) - 32),
   );
-  if (Math.abs(target - current.height / scale) <= 2) return;
-  await appWindow.setSize(new LogicalSize(current.width / scale, target));
+  if (Math.abs(target - current.height / scale) <= 2 &&
+      Math.abs(targetWidth - current.width / scale) <= 2) return;
+  await appWindow.setSize(new LogicalSize(targetWidth, target));
   await positionWindowBottomRight();
 }
 

@@ -13,6 +13,7 @@ const SETTINGS: AppSettings = {
   reduceMotion: false,
   poemLayout: "horizontal",
   poemFontSize: "medium",
+  glanceSize: "small",
 };
 
 const props = {
@@ -66,13 +67,15 @@ describe("SettingsPanel privacy consent", () => {
 });
 
 describe("settings draft", () => {
-  it("saves orientation and three-step poem size without changing other choices", async () => {
+  it("saves window size separately from orientation and poem font size", async () => {
     const wrapper = mount(SettingsPanel, { props });
+    await wrapper.find<HTMLSelectElement>('select[name="glance-size"]').setValue("large");
     await wrapper.find<HTMLSelectElement>('select[name="poem-layout"]').setValue("vertical");
     await wrapper.find<HTMLSelectElement>('select[name="poem-font-size"]').setValue("large");
     await wrapper.get("form").trigger("submit");
     const saved = wrapper.emitted("save")?.[0]?.[0] as AppSettings;
     expect(saved).toMatchObject({
+      glanceSize: "large",
       poemLayout: "vertical",
       poemFontSize: "large",
       cityId: "beijing",

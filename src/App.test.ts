@@ -461,6 +461,7 @@ describe("browser preview user flow", () => {
     await wrapper.get('button[aria-label="设置"]').trigger("click");
     await vi.waitFor(() => expect(wrapper!.find(".settings-panel").exists()).toBe(true));
     await wrapper.get<HTMLSelectElement>(".settings-form select").setValue("hangzhou");
+    await wrapper.get<HTMLSelectElement>('select[name="glance-size"]').setValue("large");
     await wrapper.get<HTMLSelectElement>('select[name="poem-layout"]').setValue("vertical");
     await wrapper.get<HTMLSelectElement>('select[name="poem-font-size"]').setValue("large");
     await wrapper.get('button[aria-label="设置"]').trigger("click");
@@ -479,6 +480,8 @@ describe("browser preview user flow", () => {
       .toBe("hangzhou");
     expect(wrapper.get<HTMLSelectElement>('select[name="poem-layout"]').element.value)
       .toBe("vertical");
+    expect(wrapper.get<HTMLSelectElement>('select[name="glance-size"]').element.value)
+      .toBe("large");
     expect(wrapper.get<HTMLSelectElement>('select[name="poem-font-size"]').element.value)
       .toBe("large");
 
@@ -487,6 +490,7 @@ describe("browser preview user flow", () => {
       const saved = (await (await createRepository()).load()).settings;
       expect(saved.cityId).toBe("hangzhou");
       expect(saved.poemLayout).toBe("vertical");
+      expect(saved.glanceSize).toBe("large");
       expect(saved.poemFontSize).toBe("large");
     });
 
@@ -499,6 +503,8 @@ describe("browser preview user flow", () => {
       .toBe("hangzhou");
     expect(wrapper.get<HTMLSelectElement>('select[name="poem-layout"]').element.value)
       .toBe("vertical");
+    expect(wrapper.get<HTMLSelectElement>('select[name="glance-size"]').element.value)
+      .toBe("large");
     expect(wrapper.get<HTMLSelectElement>('select[name="poem-font-size"]').element.value)
       .toBe("large");
   });

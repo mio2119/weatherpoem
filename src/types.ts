@@ -1,6 +1,7 @@
 export type ThemePreference = "system" | "light" | "dark";
 export type PoemLayout = "horizontal" | "vertical";
 export type PoemFontSize = "small" | "medium" | "large";
+export type GlanceSize = "small" | "medium" | "large";
 export type Season = "spring" | "summer" | "autumn" | "winter";
 export type TimePeriod = "morning" | "day" | "evening" | "night";
 export type WeatherKind =
@@ -36,6 +37,7 @@ export interface AppSettings {
   reduceMotion: boolean;
   poemLayout: PoemLayout;
   poemFontSize: PoemFontSize;
+  glanceSize: GlanceSize;
   readingWindowSize?: { width: number; height: number };
 }
 

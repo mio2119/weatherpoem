@@ -18,6 +18,7 @@ export const DEFAULT_SETTINGS: AppSettings = {
   reduceMotion: false,
   poemLayout: "horizontal",
   poemFontSize: "medium",
+  glanceSize: "small",
 };
 
 export class DesktopStorageUnavailableError extends Error {
@@ -81,6 +82,9 @@ function normalizeSettings(candidate: Partial<AppSettings> | undefined): AppSett
   if (!["small", "medium", "large"].includes(settings.poemFontSize)) {
     settings.poemFontSize = DEFAULT_SETTINGS.poemFontSize;
   }
+  if (!["small", "medium", "large"].includes(settings.glanceSize)) {
+    settings.glanceSize = DEFAULT_SETTINGS.glanceSize;
+  }
   return settings;
 }
 
@@ -121,7 +125,8 @@ function isStoredSettings(value: unknown): value is Partial<AppSettings> {
     return false;
   }
   // Unknown strings for the newer layout preferences still use the documented fallback.
-  if (!isOptionalString(value, "poemLayout") || !isOptionalString(value, "poemFontSize")) {
+  if (!isOptionalString(value, "poemLayout") || !isOptionalString(value, "poemFontSize") ||
+      !isOptionalString(value, "glanceSize")) {
     return false;
   }
   if ("readingWindowSize" in value) {

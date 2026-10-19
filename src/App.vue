@@ -158,9 +158,9 @@ function queueWindowMode(mode: WindowMode): Promise<void> {
   windowModeTask = windowModeTask
     .catch(() => undefined)
     .then(async () => {
-      await setWindowMode(mode, settings.value.readingWindowSize);
+      await setWindowMode(mode, settings.value.readingWindowSize, settings.value.glanceSize);
       if (mode === "glance") {
-        await fitGlanceWindowHeight(glanceHeightWithStatus());
+        await fitGlanceWindowHeight(glanceHeightWithStatus(), settings.value.glanceSize);
       }
     })
     .catch((error) => {
@@ -174,7 +174,7 @@ function fitGlanceToContent(height: number): void {
   if (windowModeReady && windowMode.value === "glance") {
     void windowModeTask.then(() => {
       if (windowMode.value === "glance") {
-        return fitGlanceWindowHeight(glanceHeightWithStatus());
+        return fitGlanceWindowHeight(glanceHeightWithStatus(), settings.value.glanceSize);
       }
     });
   }
@@ -1459,6 +1459,13 @@ async function initialize(): Promise<void> {
     windowModeReady = true;
     if (revealAfterInitialization) {
       await showWindow(revealWithFocus);
+      if (windowMode.value === "glance") {
+        try {
+          await fitGlanceWindowHeight(glanceHeightWithStatus(), settings.value.glanceSize);
+        } catch (error) {
+          console.warn("窗口显示后未能校准诗笺尺寸。", error);
+        }
+      }
       try {
         const ready = classifyFrontendReady({
           configured: configured.value,

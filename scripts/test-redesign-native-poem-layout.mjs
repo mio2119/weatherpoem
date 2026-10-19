@@ -18,6 +18,7 @@ const poemId = process.argv[4] ?? "";
 const requireOverflow = process.argv.includes("--require-overflow");
 const verifyRestart = process.argv.includes("--verify-restart");
 const exerciseFontSetting = process.argv.includes("--exercise-font-setting");
+const exerciseGlanceSize = process.argv.includes("--exercise-glance-size");
 const fontSettingLayout = process.argv.find((argument) => argument.startsWith("--font-setting-layout="))?.slice("--font-setting-layout=".length) ?? "vertical";
 const fontSize = process.argv.find((argument) => argument.startsWith("--font-size="))?.slice("--font-size=".length) ?? "large";
 const candidateRoot = path.join(root, ".work") + path.sep;
@@ -29,6 +30,7 @@ assert.ok(!existsSync(reportPath), "Refusing to overwrite layout evidence");
 assert.ok(/^[a-z0-9-]+$/.test(poemId), "Specify one catalog poem ID");
 assert.ok(["small", "medium", "large"].includes(fontSize), "Use a supported poem font size");
 assert.ok(!exerciseFontSetting || verifyRestart, "The settings journey must include a same-profile restart");
+assert.ok(!exerciseGlanceSize || verifyRestart, "Glance size verification must include a same-profile restart");
 assert.ok(["horizontal", "vertical"].includes(fontSettingLayout), "Use a supported font-setting layout");
 const running = execFileSync("powershell.exe", ["-NoProfile", "-NonInteractive", "-Command", "Get-CimInstance Win32_Process -Filter \"name = 'weatherpoem.exe'\" | Select-Object -ExpandProperty ProcessId"], { encoding: "utf8" }).trim();
 assert.equal(running, "", "WeatherPoem is already running; refusing to disturb it");
@@ -49,9 +51,9 @@ const report = {
   candidate: { path: path.relative(root, candidate).replaceAll(path.sep, "/"), sha256: createHash("sha256").update(readFileSync(candidate)).digest("hex").toUpperCase() },
   isolation: { temporaryProfile: true, realUserDataTouched: false, systemClockChanged: false, systemDisplaySettingsChanged: false, installedOrUninstalled: false },
   catalog: { poemId, title: poem.title, localDate, contentVersion: CONTENT_VERSION, ruleVersion: RULE_VERSION },
-  setup: { layout: "vertical", fontSize, theme: "light", weather: "offline-rules", exerciseFontSetting, fontSettingLayout: exerciseFontSetting ? fontSettingLayout : null },
+  setup: { layout: "vertical", fontSize, theme: "light", weather: "offline-rules", exerciseFontSetting, exerciseGlanceSize, fontSettingLayout: exerciseFontSetting ? fontSettingLayout : null },
   observations: {},
-  limitations: ["WebView2 page and the current single-monitor native window only; CDP keys are not a human screen-reader or mixed-DPI test.", "The catalog poem is preselected only in the temporary SQLite profile, not by the live recommendation algorithm."],
+  limitations: ["WebView2 page and the current display only; CDP keys are not a human screen-reader or mixed-DPI test.", "The catalog poem is preselected only in the temporary SQLite profile, not by the live recommendation algorithm."],
   result: "in-progress",
 };
 let child;
@@ -92,12 +94,46 @@ async function evaluate(expression) {
   return response.result.value;
 }
 
-async function screenshot(label) {
+async function screenshot(label, expectedWidth) {
   const imagePath = reportPath.replace(/\.json$/, `_${label}.png`);
   assert.ok(!existsSync(imagePath), "Refusing to overwrite a native screenshot");
   const image = await send("Page.captureScreenshot", { format: "png", captureBeyondViewport: false });
-  writeFileSync(imagePath, Buffer.from(image.data, "base64"));
+  const bytes = Buffer.from(image.data, "base64");
+  if (expectedWidth !== undefined) {
+    assert.ok(Math.abs(bytes.readUInt32BE(16) - expectedWidth) <= 2, `Native screenshot width did not settle for ${label}`);
+  }
+  writeFileSync(imagePath, bytes);
   return path.relative(root, imagePath).replaceAll(path.sep, "/");
+}
+
+async function waitForStableGlanceViewport(targetWidth, label) {
+  let stableSince = 0;
+  let previous = "";
+  await waitFor(async () => {
+    const state = await evaluate(`(() => ({ width: innerWidth, height: innerHeight,
+      card: Boolean(document.querySelector('.poem-view')),
+      toast: Boolean(document.querySelector('.toast-message')) }))()`);
+    if (!state.card || state.toast || Math.abs(state.width - targetWidth) > 2) {
+      stableSince = 0;
+      previous = "";
+      return false;
+    }
+    const key = `${state.width}x${state.height}`;
+    if (key !== previous) {
+      previous = key;
+      stableSince = Date.now();
+    }
+    return Date.now() - stableSince >= 450;
+  }, label);
+}
+
+async function nativeWindowSizes() {
+  return evaluate(`(async () => ({
+    inner: await window.__TAURI_INTERNALS__.invoke('plugin:window|inner_size', { label: 'main' }),
+    outer: await window.__TAURI_INTERNALS__.invoke('plugin:window|outer_size', { label: 'main' }),
+    monitor: await window.__TAURI_INTERNALS__.invoke('plugin:window|current_monitor'),
+    viewport: { width: innerWidth, height: innerHeight, clientWidth: document.documentElement.clientWidth }
+  }))()`);
 }
 
 async function readingState() {
@@ -184,6 +220,7 @@ try {
   await connectToWebview(port);
 
   await waitFor(() => evaluate("Boolean(document.querySelector('.poem-view'))"), "preselected poem card");
+  if (exerciseGlanceSize) await waitForStableGlanceViewport(392, "initial small glance width");
   const glance = await evaluate(`(() => {
     const view = document.querySelector('.poem-view');
     const lines = view?.querySelector('.poem-lines');
@@ -254,6 +291,46 @@ try {
   report.observations.returnedGlance = await evaluate("({ title: document.querySelector('.poem-view #daily-poem-title')?.textContent, vertical: document.querySelector('.poem-view .poem-lines')?.classList.contains('is-vertical') })");
   assert.equal(report.observations.returnedGlance.title, poem.title);
   assert.equal(report.observations.returnedGlance.vertical, false);
+  if (exerciseGlanceSize) {
+    report.observations.glanceSizeJourney = [];
+    for (const [selectedSize, targetWidth] of [["small", 392], ["medium", 456], ["large", 520]]) {
+      await evaluate("document.querySelector('button[aria-label=\"设置\"]').click()");
+      await waitFor(() => evaluate("Boolean(document.querySelector('.settings-panel'))"), "native settings for glance size");
+      await evaluate(`(() => {
+        const select = document.querySelector('select[name="glance-size"]');
+        select.value = ${JSON.stringify(selectedSize)};
+        select.dispatchEvent(new Event('input', { bubbles: true }));
+        select.dispatchEvent(new Event('change', { bubbles: true }));
+        document.querySelector('.settings-form').requestSubmit();
+      })()`);
+      await waitFor(() => {
+        const database = new DatabaseSync(resolvePerformanceDatabasePath(profile), { readOnly: true });
+        try { return JSON.parse(database.prepare("SELECT value FROM app_kv WHERE key = 'settings'").get().value).glanceSize === selectedSize; }
+        finally { database.close(); }
+      }, `SQLite glance size ${selectedSize}`);
+      if (await evaluate("Boolean(document.querySelector('.settings-panel'))")) {
+        await evaluate("document.querySelector('.settings-panel .back-button').click()");
+      }
+      await waitForStableGlanceViewport(targetWidth, `stable native glance width ${selectedSize}`);
+      const geometry = await evaluate(`(() => {
+        const view = document.querySelector('.poem-view');
+        const actions = view?.querySelector('.card-actions');
+        view.scrollTop = view.scrollHeight;
+        const rect = view.getBoundingClientRect();
+        const actionRect = actions.getBoundingClientRect();
+        return { title: view.querySelector('#daily-poem-title')?.textContent,
+          poemFontSize: view.dataset.poemFontSize, width: innerWidth, height: innerHeight,
+          documentOverflow: document.documentElement.scrollWidth > innerWidth,
+          actionReachable: actionRect.top >= rect.top && actionRect.bottom <= rect.bottom,
+          viewScrollHeight: view.scrollHeight, viewClientHeight: view.clientHeight };
+      })()`);
+      assert.equal(geometry.title, poem.title);
+      assert.equal(geometry.poemFontSize, fontSize, "Window size changed the poem font setting");
+      assert.equal(geometry.documentOverflow, false);
+      assert.equal(geometry.actionReachable, true, "Glance actions are unreachable after resizing");
+      report.observations.glanceSizeJourney.push({ selectedSize, geometry, nativeWindow: await nativeWindowSizes(), screenshot: await screenshot(`glance_${selectedSize}`, targetWidth) });
+    }
+  }
   if (exerciseFontSetting) {
     report.observations.fontSettingJourney = [];
     for (const selectedSize of ["small", "medium", "large"]) {
@@ -312,6 +389,11 @@ try {
     await waitFor(() => evaluate("Boolean(document.querySelector('.poem-view'))"), "card before restart after font save");
   }
   if (verifyRestart) {
+    if (exerciseGlanceSize) {
+      const database = new DatabaseSync(resolvePerformanceDatabasePath(profile), { readOnly: true });
+      try { report.observations.sqliteSettingsBeforeRestart = JSON.parse(database.prepare("SELECT value FROM app_kv WHERE key = 'settings'").get().value); }
+      finally { database.close(); }
+    }
     socket.close();
     socket = undefined;
     child.kill();
@@ -337,14 +419,32 @@ try {
     assert.equal(report.observations.restartReadyMarker.readyView, "poem");
     await connectToWebview(restartPort);
     await waitFor(() => evaluate("Boolean(document.querySelector('.poem-view'))"), "same-profile restarted poem card");
+    if (exerciseGlanceSize) {
+      const database = new DatabaseSync(resolvePerformanceDatabasePath(profile), { readOnly: true });
+      try { report.observations.sqliteSettingsAfterRestart = JSON.parse(database.prepare("SELECT value FROM app_kv WHERE key = 'settings'").get().value); }
+      finally { database.close(); }
+      report.observations.restartViewportSamples = [];
+      for (let index = 0; index < 20; index += 1) {
+        report.observations.restartViewportSamples.push(await evaluate("({ width: innerWidth, height: innerHeight, card: Boolean(document.querySelector('.poem-view')) })"));
+        await delay(100);
+      }
+      report.observations.restartNativeWindow = await nativeWindowSizes();
+    }
     report.observations.restartGlance = await evaluate("({ title: document.querySelector('.poem-view #daily-poem-title')?.textContent, text: [...document.querySelectorAll('.poem-view .poem-lines p')].map(item => item.textContent).join(''), vertical: document.querySelector('.poem-view .poem-lines')?.classList.contains('is-vertical'), fontSize: document.querySelector('.poem-view')?.dataset.poemFontSize })");
     assert.equal(report.observations.restartGlance.title, poem.title);
     assert.equal(report.observations.restartGlance.text, expectedExcerpt);
     assert.equal(report.observations.restartGlance.vertical, exerciseFontSetting && fontSettingLayout === "vertical");
     assert.equal(report.observations.restartGlance.fontSize, exerciseFontSetting ? "large" : fontSize);
+    if (exerciseGlanceSize) {
+      await waitForStableGlanceViewport(520, "saved large glance width after restart");
+      report.observations.restartGlance.viewportWidth = await evaluate("innerWidth");
+      assert.ok(Math.abs(report.observations.restartGlance.viewportWidth - 520) <= 2, "Saved large glance width was not restored");
+    }
     report.observations.restartScreenshot = await screenshot("restart_horizontal");
   }
-  report.result = exerciseFontSetting
+  report.result = exerciseGlanceSize
+    ? "native-glance-size-setting-and-restart-passed"
+    : exerciseFontSetting
     ? "native-font-setting-layout-reading-and-restart-passed"
     : verifyRestart
       ? "native-layout-reading-scroll-and-restart-passed"
