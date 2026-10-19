@@ -1,0 +1,95 @@
+{
+  "schemaVersion": "1.0",
+  "testKind": "isolated-native-favorite-save-failure-retry-and-reading",
+  "generatedAt": "2026-10-19T08:37:52.650Z",
+  "candidate": {
+    "path": ".work/redesign-accessibility-focus-ring-20261019/release/weatherpoem.exe",
+    "sha256": "7BFC5F340E992D15D95BE56DAF0C356A7BA261C0B9A8B3BF795B59E5310FF627"
+  },
+  "isolation": {
+    "temporaryProfile": true,
+    "systemClockChanged": false,
+    "installedOrUninstalled": false,
+    "realUserDataTouched": false,
+    "processOnlyWeatherHostBlock": false
+  },
+  "scenario": "weather-offline",
+  "concealAction": "tray-hide-button",
+  "activationPath": "isolated-window-commands",
+  "revealElapsedMs": 86,
+  "readyView": "poem",
+  "original": {
+    "date": "10月19日",
+    "title": "观书有感",
+    "context": "10月19日天气未更新秋 收藏 0",
+    "visible": "visible",
+    "poem": true
+  },
+  "initialDisplayEvents": 1,
+  "hidden": {
+    "visibility": "visible",
+    "poem": false,
+    "loading": true
+  },
+  "expectedDate": "10月19日",
+  "finalDisplayEvents": 1,
+  "favoriteJourneyAudit": {
+    "workId": "zhu-xi-guan-shu-you-gan",
+    "failedAdd": {
+      "notice": "收藏未能保存，请再试一次",
+      "pressed": "false",
+      "disabled": false,
+      "screenshot": "review/redesign/evidence/T08_NATIVE_GLANCE_FOCUS_FAVORITE_FAILURE_RETRY_20261019_favorite_add_failed.png"
+    },
+    "reading": {
+      "title": "观书有感",
+      "pressed": "true",
+      "back": " 今日诗笺",
+      "screenshot": "review/redesign/evidence/T08_NATIVE_GLANCE_FOCUS_FAVORITE_FAILURE_RETRY_20261019_favorite_reading.png"
+    },
+    "list": {
+      "title": "观书有感",
+      "removeLabel": "取消收藏《观书有感》",
+      "screenshot": "review/redesign/evidence/T08_NATIVE_GLANCE_FOCUS_FAVORITE_FAILURE_RETRY_20261019_favorite_list.png"
+    },
+    "reopened": {
+      "title": "观书有感",
+      "back": " 我的收藏"
+    },
+    "failedRemove": {
+      "notice": "取消收藏未能保存，请再试一次",
+      "listed": true,
+      "disabled": false,
+      "screenshot": "review/redesign/evidence/T08_NATIVE_GLANCE_FOCUS_FAVORITE_FAILURE_RETRY_20261019_favorite_remove_failed.png"
+    },
+    "final": {
+      "title": "观书有感",
+      "pressed": "false",
+      "favoriteCount": " 收藏 0",
+      "screenshot": "review/redesign/evidence/T08_NATIVE_GLANCE_FOCUS_FAVORITE_FAILURE_RETRY_20261019_favorite_removed_card.png"
+    },
+    "sqliteFavoriteCount": 0
+  },
+  "screenshots": [
+    "review/redesign/evidence/T08_NATIVE_GLANCE_FOCUS_FAVORITE_FAILURE_RETRY_20261019_before.png",
+    "review/redesign/evidence/T08_NATIVE_GLANCE_FOCUS_FAVORITE_FAILURE_RETRY_20261019_after.png"
+  ],
+  "observed": [
+    {
+      "visible": "visible",
+      "poem": false,
+      "loading": true,
+      "correction": false,
+      "warning": false
+    },
+    {
+      "visible": "visible",
+      "date": "10月19日",
+      "poem": true,
+      "loading": false,
+      "correction": false,
+      "warning": false
+    }
+  ],
+  "result": "passed"
+}
