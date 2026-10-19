@@ -16,6 +16,7 @@ const reportPath = path.resolve(process.argv[3] ?? "");
 const nativeClose = process.argv.includes("--native-close");
 const withdrawal = process.argv.includes("--withdrawal");
 const cachedWarning = process.argv.includes("--cached-warning");
+const crossDaySafety = process.argv.includes("--cross-day-safety");
 const sameDay = process.argv.includes("--same-day");
 const motion = process.argv.includes("--motion");
 const minimize = process.argv.includes("--minimize");
@@ -27,6 +28,8 @@ const favoriteJourney = process.argv.includes("--favorite-journey");
 const record = process.argv.includes("--record");
 assert.ok(!(motion && withdrawal), "Choose motion or withdrawal evidence");
 assert.ok(!cachedWarning || (!withdrawal && !motion), "Cached warning requires its own isolated scenario");
+assert.ok(!crossDaySafety || cachedWarning, "Cross-day safety recovery requires a cached safety warning");
+assert.ok(!crossDaySafety || (!withdrawal && !motion && !sameDay), "Cross-day safety recovery requires its own reveal scenario");
 assert.ok(!sameDay || (!cachedWarning && !withdrawal && !motion), "Same-day recovery requires its own isolated scenario");
 assert.ok(!minimize || secondInstance, "Minimized recovery must use the native second-instance path");
 assert.ok(!record || motion, "Motion recording requires the native rain scene");
@@ -245,6 +248,7 @@ try {
     assert.equal(steadyHiddenMotion.runningAnimations.length, 0, `Hidden animation resumed: ${JSON.stringify(steadyHiddenMotion)}`);
   }
   let expectedDate;
+  let expectedLocalDate;
   let withdrawnWorkId;
   if (cachedWarning) {
     await evaluate(`(() => {
@@ -272,6 +276,36 @@ try {
         },
       }));
     })()`);
+    if (crossDaySafety) {
+      const nextDate = await evaluate(`(() => {
+        const RealDate = Date;
+        const tomorrow = new RealDate(RealDate.now() + 86400000);
+        tomorrow.setHours(9, 0, 0, 0);
+        const fixed = tomorrow.getTime();
+        window.Date = class extends RealDate {
+          constructor(...args) { super(...(args.length ? args : [fixed])); }
+          static now() { return fixed; }
+        };
+        return {
+          label: String(tomorrow.getMonth() + 1) + '月' + tomorrow.getDate() + '日',
+          localDate: [tomorrow.getFullYear(), String(tomorrow.getMonth() + 1).padStart(2, '0'), String(tomorrow.getDate()).padStart(2, '0')].join('-'),
+        };
+      })()`);
+      expectedDate = nextDate.label;
+      expectedLocalDate = nextDate.localDate;
+      const cache = await evaluate(`(() => {
+        const key = 'weatherpoem.weather-cache.v1';
+        const cached = JSON.parse(localStorage.getItem(key));
+        const now = new Date();
+        cached.cachedAt = now.getTime();
+        cached.weather.observedAt = now.toISOString();
+        cached.weather.warnings[0].publishedAt = now.toISOString();
+        cached.weather.warnings[0].expiresAt = new Date(now.getTime() + 6 * 60 * 60 * 1000).toISOString();
+        localStorage.setItem(key, JSON.stringify(cached));
+        return cached.weather.warnings[0];
+      })()`);
+      assert.ok(Date.parse(cache.expiresAt) > Date.parse(cache.publishedAt), "Synthetic safety reminder expired before its simulated issue time");
+    }
   } else if (withdrawal) {
     const database = new DatabaseSync(resolvePerformanceDatabasePath(profile), { readOnly: true });
     try {
@@ -293,7 +327,7 @@ try {
   } else if (sameDay) {
     expectedDate = original.date;
   } else if (!motion) {
-    expectedDate = await evaluate(`(() => {
+    const nextDate = await evaluate(`(() => {
       const RealDate = Date;
       const tomorrow = new RealDate(RealDate.now() + 86400000);
       tomorrow.setHours(9, 0, 0, 0);
@@ -302,8 +336,13 @@ try {
         constructor(...args) { super(...(args.length ? args : [fixed])); }
         static now() { return fixed; }
       };
-      return String(tomorrow.getMonth() + 1) + '月' + tomorrow.getDate() + '日';
+      return {
+        label: String(tomorrow.getMonth() + 1) + '月' + tomorrow.getDate() + '日',
+        localDate: [tomorrow.getFullYear(), String(tomorrow.getMonth() + 1).padStart(2, '0'), String(tomorrow.getDate()).padStart(2, '0')].join('-'),
+      };
     })()`);
+    expectedDate = nextDate.label;
+    expectedLocalDate = nextDate.localDate;
   } else {
     expectedDate = original.date;
   }
@@ -463,9 +502,14 @@ try {
     assert.ok(!warningText.includes(original.title), "Old poem title leaked into safety warning");
     const database = new DatabaseSync(resolvePerformanceDatabasePath(profile), { readOnly: true });
     try {
-      warningDailyState = database.prepare("SELECT state, work_id FROM daily_state ORDER BY local_date DESC LIMIT 1").get();
+      warningDailyState = database.prepare("SELECT local_date, state, work_id FROM daily_state ORDER BY local_date DESC LIMIT 1").get();
       assert.equal(warningDailyState?.state, "alert-suppressed");
-      assert.ok(warningDailyState?.work_id, "Suppressed daily state lost the original work ID");
+      if (crossDaySafety) {
+        assert.equal(warningDailyState?.local_date, expectedLocalDate, "Safety reminder was not committed to the simulated next local day");
+        assert.equal(warningDailyState?.work_id, null, "Cross-day safety state retained a previous-day poem reference");
+      } else {
+        assert.ok(warningDailyState?.work_id, "Suppressed daily state lost the original work ID");
+      }
     } finally { database.close(); }
   }
   let compactWarningAudit;
@@ -511,7 +555,7 @@ try {
   const finalScreenshot = await screenshot("after");
   const report = {
     schemaVersion: "1.0",
-    testKind: favoriteJourney ? "isolated-native-favorite-save-failure-retry-and-reading" : cachedWarning ? "isolated-native-hidden-cached-safety-warning" : sameDay ? "isolated-native-hidden-same-day-reveal" : motion ? minimize ? "isolated-native-minimized-motion" : "isolated-native-hidden-motion" : withdrawal ? "isolated-native-hidden-content-withdrawal" : nativeClose ? "isolated-native-close-day-reveal" : "isolated-native-hidden-day-reveal",
+    testKind: favoriteJourney ? "isolated-native-favorite-save-failure-retry-and-reading" : crossDaySafety ? "isolated-native-cross-day-hidden-safety-warning-no-old-poem-flash" : cachedWarning ? "isolated-native-hidden-cached-safety-warning" : sameDay ? "isolated-native-hidden-same-day-reveal" : motion ? minimize ? "isolated-native-minimized-motion" : "isolated-native-hidden-motion" : withdrawal ? "isolated-native-hidden-content-withdrawal" : nativeClose ? "isolated-native-close-day-reveal" : "isolated-native-hidden-day-reveal",
     generatedAt: new Date().toISOString(),
     candidate: { path: path.relative(root, candidate).replaceAll(path.sep, "/"), sha256: createHash("sha256").update(readFileSync(candidate)).digest("hex").toUpperCase() },
     isolation: { temporaryProfile: true, systemClockChanged: false, installedOrUninstalled: false, realUserDataTouched: false, processOnlyWeatherHostBlock: cachedWarning },
@@ -525,6 +569,7 @@ try {
     hidden,
     revealMask,
     expectedDate,
+    expectedLocalDate,
     withdrawnWorkId,
     correctedDailyState,
     finalDisplayEvents,

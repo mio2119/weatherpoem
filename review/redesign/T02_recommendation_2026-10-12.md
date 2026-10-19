@@ -1,6 +1,6 @@
 # T02 推荐相关性、理由与多样性自验收
 
-状态：**部分通过**。规则源码与确定性模拟已有证据；当前内部候选已覆盖两条局部原生路径（首次设置晚到天气、反馈撤销与重启），但真实天气相关性、多设备/真人内容审校和完整候选矩阵尚未完成。
+状态：**部分通过**。前一内部候选 `7BFC5F34…` 已覆盖首次设置晚到天气、反馈撤销与重启两条局部原生路径；推荐规则现升至 `1.2.4`，新内部候选已独立构建，但还没有直接节日选择的同哈希原生复验。真实天气相关性、多设备/真人内容审校和完整候选矩阵尚未完成。
 
 2026-10-19 最新内部哈希 `4C2BE63A80D1D0622F9AFEB2084870EC8E4F18C500F862F43E97BA120C836DCC` 在独立临时 SQLite 与 WebView2 中复核了[首次杭州](./evidence/T05_NATIVE_TOAST_MOTION_FIXED_toast-leave-20261019.json)与[跨日](./evidence/T01_NATIVE_CROSS_DAY_LATE_RAIN_toast-leave-20261019.json)两条非节日合成小雨晚到重选；离线《登飞来峰》更新为雨景《山居秋暝》，数据库记录一致。它证明此两条受控路径，不证明真实天气精度、多城市长期相关性或具名内容审读；A2 仍部分通过。
 
@@ -60,18 +60,26 @@
 
 2026-10-18 冷连接天气晚到修复：此前隔离原生证据显示，天气请求约 1107 ms 后被首屏预算取消，今日诗笺遂按离线规则选出，而同窗口稍后可收到真实数据。现保留 1100 ms 的首次出诗预算，仅当请求确实被该定时器取消时再以最多 5000 ms 的单次请求续取；立即失败不重试，受控演练场景不重试。晚到正常天气若在诗笺未被触碰且当天尚无既有选择时到达，按原节日 > 天气 > 节气规则重新选择并记录真实展示；已经触碰或既有同日作品则保留原诗，只更新可信天气与对应理由，不偷偷消耗用户的换诗次数。晚到结果只在请求的日期、城市及加载批次仍有效且内容未被校正时应用。App 测试用非节日小雨证明重新选择的作品与规则直接计算一致，用已触碰诗笺证明保留原诗，另覆盖跨日丢弃；完整自动测试 285/285、`lint`、`typecheck`、`build` 通过。当前原生候选 `4C378084…` 在真实 10 月 18 日重阳节保留节日诗《过故人庄》，环境栏从“天气未更新”变为“晴”，前后静帧见 T09；这不能代替非节日原生重新选诗、不同城市长期天气质量或具名内容审读，A2 仍**部分通过**。
 
-## 2026-10-19 当前候选首次设置晚到天气观察
+## 2026-10-19 前一候选首次设置晚到天气观察
 
-当前未签名、未安装内部候选 `.work/redesign-accessibility-focus-ring-20261019/release/weatherpoem.exe`，SHA-256 `7BFC5F340E992D15D95BE56DAF0C356A7BA261C0B9A8B3BF795B59E5310FF627`。在一次性临时 profile 内进入杭州首次设置；只把页面本地日期设为 2026-10-20，不改系统时钟。测试拦截器在本进程内阻断 Open-Meteo 请求，并向隔离 WebView 注入延迟约 1.8 秒的合成小雨响应；未触碰真实用户资料或启动项，也未安装/卸载程序。
+当时未签名、未安装内部候选 `.work/redesign-accessibility-focus-ring-20261019/release/weatherpoem.exe`，SHA-256 `7BFC5F340E992D15D95BE56DAF0C356A7BA261C0B9A8B3BF795B59E5310FF627`，规则版本为 `1.2.3`。在一次性临时 profile 内进入杭州首次设置；只把页面本地日期设为 2026-10-20，不改系统时钟。测试拦截器在本进程内阻断 Open-Meteo 请求，并向隔离 WebView 注入延迟约 1.8 秒的合成小雨响应；未触碰真实用户资料或启动项，也未安装/卸载程序。
 
 观察到首次设置页采用纵向滚动和两列城市选择；对应的[首次设置页](./evidence/T02_NATIVE_GLANCE_FOCUS_FIRST_USE_LATE_RAIN_20261019_ready.png)、[晚到前诗笺](./evidence/T02_NATIVE_GLANCE_FOCUS_FIRST_USE_LATE_RAIN_20261019_first_use_before_late.png)、[晚到后雨景诗笺](./evidence/T02_NATIVE_GLANCE_FOCUS_FIRST_USE_LATE_RAIN_20261019_after.png)三张静帧均已人工查看。首次选出的离线《登飞来峰》先显示为“天气未更新”；小雨响应到达后，诗笺显示“10月20日小雨”，作品更新为王维《山居秋暝》，其内容目录天气标签包含 `light-rain`；临时 SQLite 的当日 `work_id` 同步为 `wang-wei-shan-ju-qiu-ming`。晚到后 toast 为“天气信息已到，今日诗句已更新”，不遮挡“继续读”主操作。完整报告为 [`T02_NATIVE_GLANCE_FOCUS_FIRST_USE_LATE_RAIN_20261019.json`](./evidence/T02_NATIVE_GLANCE_FOCUS_FIRST_USE_LATE_RAIN_20261019.json)。
 
 该脚本将结果标为 `diagnostic-captured`，故这里只登记原生观察与数据库一致性，不称作正式门禁通过。此单城、单次合成输入不能证明真实天气质量、天气与诗意的真人贴合度、用户操作后的选择保留、在线长周期多样性或 AI 理由服务质量。自动规则目录校验 `npm.cmd run reason:check` 本轮通过（120 首、47 场景、19 项服务测试）；A2 仍为**部分通过**。
 
-## 2026-10-19 当前候选反馈撤销与重启保留
+## 2026-10-19 前一候选反馈撤销与重启保留
 
-使用同一未签名、未安装候选 `7BFC5F340E992D15D95BE56DAF0C356A7BA261C0B9A8B3BF795B59E5310FF627`，通过新增的[原生反馈撤销测试脚本](../../scripts/test-redesign-native-feedback-undo.mjs)在临时 profile 中模拟离线天气，并预置一条较早的“不太贴合”、一条“换一首”反馈和一首收藏。复现命令：`node scripts/test-redesign-native-feedback-undo.mjs .work/redesign-accessibility-focus-ring-20261019/release/weatherpoem.exe review/redesign/evidence/T02_NATIVE_FEEDBACK_UNDO_RESTART_RUN3_20261019.json`。系统时间、启动项、用户资料与安装状态均未更改。
+使用同一未签名、未安装的前一候选 `7BFC5F340E992D15D95BE56DAF0C356A7BA261C0B9A8B3BF795B59E5310FF627`，通过新增的[原生反馈撤销测试脚本](../../scripts/test-redesign-native-feedback-undo.mjs)在临时 profile 中模拟离线天气，并预置一条较早的“不太贴合”、一条“换一首”反馈和一首收藏。复现命令：`node scripts/test-redesign-native-feedback-undo.mjs .work/redesign-accessibility-focus-ring-20261019/release/weatherpoem.exe review/redesign/evidence/T02_NATIVE_FEEDBACK_UNDO_RESTART_RUN3_20261019.json`。系统时间、启动项、用户资料与安装状态均未更改。
 
 原生诗笺《使至塞上》记录“不太贴合”后，SQLite 新增记录绑定当前作品和本地日键；设置页显示“撤销最近一次‘不太贴合’使至塞上”。执行撤销后，只删除这条新反馈，较早的《黄鹤楼》反馈、“换一首”反馈与收藏仍在 SQLite，设置页改为显示仍可撤销的旧反馈。关闭并重启同一临时 profile 后，当日作品仍为《使至塞上》，状态为 `retained`，三类保留数据和旧反馈入口仍一致。正式报告结果为 `native-isolated-feedback-undo-restart-and-preservation-passed`，绑定上述候选哈希；自动化通过不等同于真人用鼠标/键盘操作。
 
-报告：[当前候选原生撤销/重启报告](./evidence/T02_NATIVE_FEEDBACK_UNDO_RESTART_RUN3_20261019.json)。已查看[反馈已记录](./evidence/T02_NATIVE_FEEDBACK_UNDO_RESTART_RUN3_20261019_feedback_saved.png)、[设置中的撤销入口](./evidence/T02_NATIVE_FEEDBACK_UNDO_RESTART_RUN3_20261019_undo_control.png)、[撤销后的保留状态](./evidence/T02_NATIVE_FEEDBACK_UNDO_RESTART_RUN3_20261019_undo_completed.png)及[同资料重启后的设置](./evidence/T02_NATIVE_FEEDBACK_UNDO_RESTART_RUN3_20261019_after_restart.png)：提示清楚，撤销入口可见，收藏仍为 1 首。边界：仅单机当前候选、合成离线天气和临时 SQLite；不验证真实物理 I/O、不同 DPI/读屏、真实用户是否理解设置入口，也不代替具名内容审核和线上模型评测。A2 继续**部分通过**。
+报告：[前一候选原生撤销/重启报告](./evidence/T02_NATIVE_FEEDBACK_UNDO_RESTART_RUN3_20261019.json)。已查看[反馈已记录](./evidence/T02_NATIVE_FEEDBACK_UNDO_RESTART_RUN3_20261019_feedback_saved.png)、[设置中的撤销入口](./evidence/T02_NATIVE_FEEDBACK_UNDO_RESTART_RUN3_20261019_undo_control.png)、[撤销后的保留状态](./evidence/T02_NATIVE_FEEDBACK_UNDO_RESTART_RUN3_20261019_undo_completed.png)及[同资料重启后的设置](./evidence/T02_NATIVE_FEEDBACK_UNDO_RESTART_RUN3_20261019_after_restart.png)：提示清楚，撤销入口可见，收藏仍为 1 首。边界：仅单机前一候选、合成离线天气和临时 SQLite；不验证真实物理 I/O、不同 DPI/读屏、真实用户是否理解设置入口，也不代替具名内容审核和线上模型评测。A2 继续**部分通过**。
+
+## 2026-10-19 多节日天气轮换模拟与作者连续性修正
+
+既有 30/60/90 天模拟长期使用固定天气。为补足执行方案要求的节日与多变天气交叉覆盖，扩展 `src/core/recommendation-simulation.test.ts`：从 2026-07-22 开始按日轮换晴、小雨、多云、天气不可用；30/60/90 天窗口实际覆盖七夕、中秋、重阳。首次新增模拟时记录到 90 天窗口 2 组相邻日作者重复，其中一组发生在重阳日 2026-10-18。重阳候选池包含王维《九月九日忆山东兄弟》和孟浩然《过故人庄》，后者以“待到重阳日，还来就菊花”直接写到重阳再会。`recommendation.test.ts` 新增两个回归：一项构造近期作者作品同时拥有天气/质量分优势的同节日候选，另一项直接使用真实中秋内容池与 2026-09-25 日期；前者旧规则先失败，修复后两项都保持直接节日命中并避让近期作者。
+
+修复后仍先限定在直接节日作品中；若其中存在五日内未出现的其他作者，则在这些节日作品间优先选择该作者，只有所有节日候选作者都近期出现时才回退原节日池，不降级到普通天气或节气诗。红测现转绿，规则版本由 `1.2.3` 升为 `1.2.4`。轮换窗口的确定性结果：30 天 30 首不同作品、0 次作品重复、1/1 节日命中；60 天 51 首、最短作品间隔 22 天、1/1 命中；90 天 71 首、最短作品间隔 18 天、3/3 命中七夕/中秋/重阳。一个作者连续日重复仍在 2026-08-31 至 09-01，情境为小雨；此记录保留为数据池不足/天气相关性权衡的待审项，不隐藏为通过。标准四情境 30/60/90 模拟继续通过。
+
+`1.2.4` 已同步至 120 首理由目录与 47 场景评测集；完整前端测试 293/293、`lint`、`typecheck`、`reason:check`（19 项服务测试）、`requirements:check`（14 项契约测试）和 `build` 均通过。另在独立 Cargo 目录构建了未签名、未安装内部候选 `.work/redesign-recommendation-124-20261019/release/weatherpoem.exe`（SHA-256 `3759CE59650FDB6681FA55BAD25542F3DA501D22B4832A40ECE3F4ED931712A4`）；候选的[次日托盘唤回安全提醒报告](./evidence/T01_NATIVE_CROSS_DAY_SAFETY_REVEAL_20261019_RETRY.json)只证明隔离跨日安全路径，不等于原生推荐规则验证。`1.2.4` 的作者避让仍由源码红绿反例、真实中秋内容池测试与 30/60/90 天模拟证明；新哈希原生节日选择路径仍待验证。旧哈希 `7BFC5F34…` 及绑定 `1.2.3` 的原生结果不移作新规则证据。真实多城市天气、真人对作者重复与节日匹配的偏好、具名内容审核仍未验证，A2 继续**部分通过**。

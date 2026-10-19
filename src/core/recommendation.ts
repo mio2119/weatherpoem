@@ -11,7 +11,7 @@ import type {
 import { feedbackLocalDate } from "./daily-behavior";
 import { buildCalendarContext } from "./date-context";
 
-export const RULE_VERSION = "1.2.3";
+export const RULE_VERSION = "1.2.4";
 export const CONTENT_VERSION = "2026.07.1";
 export const RETAINED_CONTEXT = "今日已选";
 
@@ -337,6 +337,10 @@ export function recommendPoem(input: RecommendationInput): Recommendation {
         poem.tags.festivals.includes(input.calendar.festival!),
       )
     : [];
+  const hasRecentAuthor = (poem: Poem) => input.history.some((item) =>
+    item.author === poem.author &&
+    elapsedLocalDays(input.calendar.localDate, item.localDate) <= 5,
+  );
   const weatherMatches =
     input.weather.freshness !== "unavailable" &&
     input.weather.kind !== "unknown"
@@ -350,9 +354,10 @@ export function recommendPoem(input: RecommendationInput): Recommendation {
       )
     : [];
   // A directly related festival is exceptional and stays ahead of ordinary
-  // variety. Otherwise, prefer weather then solar-term relevance *within the
-  // same novelty band*. An unseen seasonal poem beats a weather poem shown
-  // recently; this avoids a small weather-tagged pool cycling every few weeks.
+  // variety. If multiple festival works remain, prefer an author not shown in
+  // the last five days; this tie-break never replaces the festival match with
+  // an ordinary weather/solar-term poem. Otherwise, prefer weather then
+  // solar-term relevance within the same novelty band.
   const tiers = [weatherMatches, solarTermMatches, eligible];
   const noveltyBands = [
     (days: number) => !Number.isFinite(days),
@@ -363,10 +368,16 @@ export function recommendPoem(input: RecommendationInput): Recommendation {
   const restedFestivalMatches = festivalMatches.filter((poem) =>
     daysSince(poem) > 14,
   );
+  const festivalCandidates = restedFestivalMatches.length > 0
+    ? restedFestivalMatches
+    : festivalMatches;
+  const restedFestivalAuthors = festivalCandidates.filter(
+    (poem) => !hasRecentAuthor(poem),
+  );
   const candidatePool = festivalMatches.length > 0
-    ? restedFestivalMatches.length > 0
-      ? restedFestivalMatches
-      : festivalMatches
+    ? restedFestivalAuthors.length > 0
+      ? restedFestivalAuthors
+      : festivalCandidates
     : noveltyBands
         .flatMap((isRested) =>
           tiers.map((tier) => tier.filter((poem) => isRested(daysSince(poem)))),
@@ -374,12 +385,7 @@ export function recommendPoem(input: RecommendationInput): Recommendation {
         .find((pool) => pool.length > 0) ?? [];
   const authorRested = festivalMatches.length > 0
     ? []
-    : candidatePool.filter((poem) =>
-        !input.history.some((item) =>
-          item.author === poem.author &&
-          elapsedLocalDays(input.calendar.localDate, item.localDate) <= 5,
-        ),
-      );
+    : candidatePool.filter((poem) => !hasRecentAuthor(poem));
   const candidates = (authorRested.length > 0 ? authorRested : candidatePool)
     .map((poem) => {
       const breakdown = scorePoem(poem, input);

@@ -54,6 +54,82 @@ describe("recommendPoem", () => {
     expect(result.primaryContext).toBe("春节");
   });
 
+  it("节日匹配作品同样适用近期作者避让，不牺牲节日关联", () => {
+    const base = POEMS[0]!;
+    const festivalTags = {
+      ...base.tags,
+      festivals: ["重阳节"],
+      seasons: ["autumn" as const],
+      solarTerms: [],
+      timePeriods: ["day" as const],
+      emotions: [],
+      lifeScenes: [],
+    };
+    const recentAuthorPoem = {
+      ...base,
+      id: "wang-wei-festival-weather-match",
+      author: "王维",
+      quality: 10,
+      tags: { ...festivalTags, weather: ["clear" as const] },
+    };
+    const otherAuthorFestivalPoem = {
+      ...base,
+      id: "meng-hao-ran-festival-match",
+      author: "孟浩然",
+      quality: 0,
+      tags: { ...festivalTags, weather: [] },
+    };
+    const eventDay = buildCalendarContext(new Date(2026, 9, 18, 12));
+    expect(eventDay.festival).toBe("重阳节");
+    const result = recommendPoem({
+      poems: [recentAuthorPoem, otherAuthorFestivalPoem],
+      calendar: eventDay,
+      weather: { ...rainyWeather, kind: "clear", label: "晴" },
+      history: [
+        {
+          localDate: "2026-10-17",
+          workId: "wang-wei-shan-ju-qiu-ming",
+          author: "王维",
+          primaryContext: "秋日",
+        },
+        {
+          localDate: "2026-08-18",
+          workId: recentAuthorPoem.id,
+          author: recentAuthorPoem.author,
+          primaryContext: "重阳节",
+        },
+      ],
+      feedback: [],
+    });
+
+    expect(result.poem.id).toBe(otherAuthorFestivalPoem.id);
+    expect(result.poem.tags.festivals).toContain("重阳节");
+    expect(result.primaryContext).toBe("重阳节");
+  });
+
+  it("真实中秋内容池可避开近期作者，同时仍选择直接节日作品", () => {
+    const eventDay = buildCalendarContext(new Date(2026, 8, 25, 9));
+    expect(eventDay.festival).toBe("中秋节");
+    const result = recommendPoem({
+      poems: POEMS,
+      calendar: eventDay,
+      weather: { ...rainyWeather, kind: "clear", label: "晴" },
+      history: [
+        {
+          localDate: "2026-09-24",
+          workId: "su-shi-ding-feng-bo",
+          author: "苏轼",
+          primaryContext: "秋日",
+        },
+      ],
+      feedback: [],
+    });
+
+    expect(result.poem.author).not.toBe("苏轼");
+    expect(result.poem.tags.festivals).toContain("中秋节");
+    expect(result.primaryContext).toBe("中秋节");
+  });
+
   it("没有节日时优先匹配天气", () => {
     const result = recommend({
       calendar: { ...calendar, festival: undefined, localDate: "2026-07-23" },
