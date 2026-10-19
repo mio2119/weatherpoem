@@ -1,0 +1,1101 @@
+{
+  "schemaVersion": "1.1",
+  "testKind": "isolated-motion-resource-comparison",
+  "generatedAt": "2026-10-19T06:27:13.7523992Z",
+  "artifact": {
+    "path": ".work/redesign-glance-startup-fix-20261019/release/weatherpoem.exe",
+    "sha256": "3D3856613786D6961B6BE7ECF5274F8E017DE79E1AB8CAA541F8B498A4B0ED10"
+  },
+  "scenario": "scene-rain",
+  "isolation": {
+    "profile": "system-temp-only",
+    "realUserDataTouched": false,
+    "sameProfileForBothRuns": true,
+    "order": [
+      "static",
+      "motion"
+    ]
+  },
+  "thresholds": {
+    "cpuIncreasePercentagePoints": 2.0,
+    "memoryP95IncreaseMiB": 20.0
+  },
+  "results": {
+    "static": {
+      "label": "static",
+      "reduceMotion": true,
+      "runId": "20f7b493-9823-47d1-a1a4-11487301752b",
+      "readyMarker": {
+        "schemaVersion": "1.2",
+        "runId": "20f7b493-9823-47d1-a1a4-11487301752b",
+        "appVersion": "0.2.0",
+        "processId": 148436,
+        "nativeReadyMs": 650.5287,
+        "frontendReadyMs": 340.89999997615814,
+        "readyView": "poem",
+        "readyMode": "offline-rules",
+        "viewRenderMs": 135.89999997615814,
+        "performanceScenario": "scene-rain",
+        "sceneMotion": {
+          "sceneKind": "rain",
+          "appReduced": true,
+          "systemReduced": false,
+          "sceneActive": true,
+          "visibilityState": "visible",
+          "animationName": "none",
+          "animationDuration": "1e-05s",
+          "animationIterationCount": "1"
+        },
+        "recordedAtUnixMs": 1792391006172
+      },
+      "dailyState": {
+        "local_date": "2026-10-19",
+        "state": "shown",
+        "work_id": "wang-wei-shan-ju-qiu-ming"
+      },
+      "warmupSeconds": 5,
+      "durationSeconds": 105.92,
+      "sampleCount": 60,
+      "processIds": [
+        142568,
+        148436,
+        151332,
+        155028,
+        157720,
+        160468,
+        160528
+      ],
+      "rendererCount": 1,
+      "processorCount": 20,
+      "cpuTimeDeltaMs": 234.39,
+      "cpuAveragePercent": 0.0111,
+      "memoryP95MiB": 371.44,
+      "samples": [
+        {
+          "index": 1,
+          "atUtc": "2026-10-19T06:23:33.9415303Z",
+          "elapsedMs": 1719.35,
+          "cpuDeltaMs": 0.0,
+          "memoryMiB": 363.3,
+          "rendererCount": 1
+        },
+        {
+          "index": 2,
+          "atUtc": "2026-10-19T06:23:35.7777726Z",
+          "elapsedMs": 3545.95,
+          "cpuDeltaMs": 0.0,
+          "memoryMiB": 362.97,
+          "rendererCount": 1
+        },
+        {
+          "index": 3,
+          "atUtc": "2026-10-19T06:23:37.5551737Z",
+          "elapsedMs": 5323.57,
+          "cpuDeltaMs": 0.0,
+          "memoryMiB": 360.52,
+          "rendererCount": 1
+        },
+        {
+          "index": 4,
+          "atUtc": "2026-10-19T06:23:39.3786856Z",
+          "elapsedMs": 7146.48,
+          "cpuDeltaMs": 0.0,
+          "memoryMiB": 360.37,
+          "rendererCount": 1
+        },
+        {
+          "index": 5,
+          "atUtc": "2026-10-19T06:23:41.1292102Z",
+          "elapsedMs": 8897.1,
+          "cpuDeltaMs": 0.0,
+          "memoryMiB": 360.38,
+          "rendererCount": 1
+        },
+        {
+          "index": 6,
+          "atUtc": "2026-10-19T06:23:42.8591801Z",
+          "elapsedMs": 10626.78,
+          "cpuDeltaMs": 0.0,
+          "memoryMiB": 360.38,
+          "rendererCount": 1
+        },
+        {
+          "index": 7,
+          "atUtc": "2026-10-19T06:23:44.5859631Z",
+          "elapsedMs": 12353.42,
+          "cpuDeltaMs": 0.0,
+          "memoryMiB": 360.38,
+          "rendererCount": 1
+        },
+        {
+          "index": 8,
+          "atUtc": "2026-10-19T06:23:46.3503012Z",
+          "elapsedMs": 14118.16,
+          "cpuDeltaMs": 31.25,
+          "memoryMiB": 360.55,
+          "rendererCount": 1
+        },
+        {
+          "index": 9,
+          "atUtc": "2026-10-19T06:23:48.1169211Z",
+          "elapsedMs": 15888.12,
+          "cpuDeltaMs": 0.0,
+          "memoryMiB": 360.81,
+          "rendererCount": 1
+        },
+        {
+          "index": 10,
+          "atUtc": "2026-10-19T06:23:49.9274730Z",
+          "elapsedMs": 17694.94,
+          "cpuDeltaMs": 0.0,
+          "memoryMiB": 360.8,
+          "rendererCount": 1
+        },
+        {
+          "index": 11,
+          "atUtc": "2026-10-19T06:23:51.6969486Z",
+          "elapsedMs": 19464.99,
+          "cpuDeltaMs": 0.0,
+          "memoryMiB": 360.8,
+          "rendererCount": 1
+        },
+        {
+          "index": 12,
+          "atUtc": "2026-10-19T06:23:53.4717235Z",
+          "elapsedMs": 21239.6,
+          "cpuDeltaMs": 0.0,
+          "memoryMiB": 360.8,
+          "rendererCount": 1
+        },
+        {
+          "index": 13,
+          "atUtc": "2026-10-19T06:23:55.1677840Z",
+          "elapsedMs": 22935.45,
+          "cpuDeltaMs": 0.0,
+          "memoryMiB": 360.81,
+          "rendererCount": 1
+        },
+        {
+          "index": 14,
+          "atUtc": "2026-10-19T06:23:56.9058899Z",
+          "elapsedMs": 24673.27,
+          "cpuDeltaMs": 31.26,
+          "memoryMiB": 369.37,
+          "rendererCount": 1
+        },
+        {
+          "index": 15,
+          "atUtc": "2026-10-19T06:23:58.6801882Z",
+          "elapsedMs": 26447.56,
+          "cpuDeltaMs": 0.0,
+          "memoryMiB": 369.38,
+          "rendererCount": 1
+        },
+        {
+          "index": 16,
+          "atUtc": "2026-10-19T06:24:00.5324052Z",
+          "elapsedMs": 28304.21,
+          "cpuDeltaMs": 0.0,
+          "memoryMiB": 369.37,
+          "rendererCount": 1
+        },
+        {
+          "index": 17,
+          "atUtc": "2026-10-19T06:24:02.3095726Z",
+          "elapsedMs": 30077.79,
+          "cpuDeltaMs": 0.0,
+          "memoryMiB": 369.39,
+          "rendererCount": 1
+        },
+        {
+          "index": 18,
+          "atUtc": "2026-10-19T06:24:04.0983868Z",
+          "elapsedMs": 31865.89,
+          "cpuDeltaMs": 0.0,
+          "memoryMiB": 369.41,
+          "rendererCount": 1
+        },
+        {
+          "index": 19,
+          "atUtc": "2026-10-19T06:24:05.8563828Z",
+          "elapsedMs": 33625.83,
+          "cpuDeltaMs": 15.62,
+          "memoryMiB": 369.12,
+          "rendererCount": 1
+        },
+        {
+          "index": 20,
+          "atUtc": "2026-10-19T06:24:07.5930283Z",
+          "elapsedMs": 35360.98,
+          "cpuDeltaMs": 0.0,
+          "memoryMiB": 369.11,
+          "rendererCount": 1
+        },
+        {
+          "index": 21,
+          "atUtc": "2026-10-19T06:24:09.3290664Z",
+          "elapsedMs": 37096.45,
+          "cpuDeltaMs": 0.0,
+          "memoryMiB": 369.11,
+          "rendererCount": 1
+        },
+        {
+          "index": 22,
+          "atUtc": "2026-10-19T06:24:11.0281766Z",
+          "elapsedMs": 38795.19,
+          "cpuDeltaMs": 0.0,
+          "memoryMiB": 369.11,
+          "rendererCount": 1
+        },
+        {
+          "index": 23,
+          "atUtc": "2026-10-19T06:24:12.7441139Z",
+          "elapsedMs": 40520.21,
+          "cpuDeltaMs": 0.0,
+          "memoryMiB": 369.11,
+          "rendererCount": 1
+        },
+        {
+          "index": 24,
+          "atUtc": "2026-10-19T06:24:14.4751173Z",
+          "elapsedMs": 42242.92,
+          "cpuDeltaMs": 0.0,
+          "memoryMiB": 369.11,
+          "rendererCount": 1
+        },
+        {
+          "index": 25,
+          "atUtc": "2026-10-19T06:24:16.1988739Z",
+          "elapsedMs": 43966.2,
+          "cpuDeltaMs": 0.0,
+          "memoryMiB": 369.11,
+          "rendererCount": 1
+        },
+        {
+          "index": 26,
+          "atUtc": "2026-10-19T06:24:17.9349173Z",
+          "elapsedMs": 45703.17,
+          "cpuDeltaMs": 0.0,
+          "memoryMiB": 369.11,
+          "rendererCount": 1
+        },
+        {
+          "index": 27,
+          "atUtc": "2026-10-19T06:24:19.6741367Z",
+          "elapsedMs": 47441.54,
+          "cpuDeltaMs": 0.0,
+          "memoryMiB": 369.11,
+          "rendererCount": 1
+        },
+        {
+          "index": 28,
+          "atUtc": "2026-10-19T06:24:21.4159485Z",
+          "elapsedMs": 49183.7,
+          "cpuDeltaMs": 0.0,
+          "memoryMiB": 369.11,
+          "rendererCount": 1
+        },
+        {
+          "index": 29,
+          "atUtc": "2026-10-19T06:24:23.1497161Z",
+          "elapsedMs": 50917.36,
+          "cpuDeltaMs": 0.0,
+          "memoryMiB": 369.11,
+          "rendererCount": 1
+        },
+        {
+          "index": 30,
+          "atUtc": "2026-10-19T06:24:24.8660612Z",
+          "elapsedMs": 52635.07,
+          "cpuDeltaMs": 0.0,
+          "memoryMiB": 369.11,
+          "rendererCount": 1
+        },
+        {
+          "index": 31,
+          "atUtc": "2026-10-19T06:24:26.5970852Z",
+          "elapsedMs": 54364.48,
+          "cpuDeltaMs": 125.0,
+          "memoryMiB": 371.8,
+          "rendererCount": 1
+        },
+        {
+          "index": 32,
+          "atUtc": "2026-10-19T06:24:28.3292303Z",
+          "elapsedMs": 56096.74,
+          "cpuDeltaMs": 0.0,
+          "memoryMiB": 372.68,
+          "rendererCount": 1
+        },
+        {
+          "index": 33,
+          "atUtc": "2026-10-19T06:24:30.0805714Z",
+          "elapsedMs": 57848.16,
+          "cpuDeltaMs": 0.0,
+          "memoryMiB": 371.43,
+          "rendererCount": 1
+        },
+        {
+          "index": 34,
+          "atUtc": "2026-10-19T06:24:31.8573634Z",
+          "elapsedMs": 59624.65,
+          "cpuDeltaMs": 0.0,
+          "memoryMiB": 371.44,
+          "rendererCount": 1
+        },
+        {
+          "index": 35,
+          "atUtc": "2026-10-19T06:24:33.6439953Z",
+          "elapsedMs": 61411.46,
+          "cpuDeltaMs": 0.0,
+          "memoryMiB": 371.44,
+          "rendererCount": 1
+        },
+        {
+          "index": 36,
+          "atUtc": "2026-10-19T06:24:35.4583319Z",
+          "elapsedMs": 63225.65,
+          "cpuDeltaMs": 0.0,
+          "memoryMiB": 371.28,
+          "rendererCount": 1
+        },
+        {
+          "index": 37,
+          "atUtc": "2026-10-19T06:24:37.2353022Z",
+          "elapsedMs": 65005.8,
+          "cpuDeltaMs": 0.0,
+          "memoryMiB": 371.38,
+          "rendererCount": 1
+        },
+        {
+          "index": 38,
+          "atUtc": "2026-10-19T06:24:38.9908968Z",
+          "elapsedMs": 66758.18,
+          "cpuDeltaMs": 0.0,
+          "memoryMiB": 371.28,
+          "rendererCount": 1
+        },
+        {
+          "index": 39,
+          "atUtc": "2026-10-19T06:24:40.8332902Z",
+          "elapsedMs": 68600.6,
+          "cpuDeltaMs": 0.0,
+          "memoryMiB": 371.28,
+          "rendererCount": 1
+        },
+        {
+          "index": 40,
+          "atUtc": "2026-10-19T06:24:42.6677311Z",
+          "elapsedMs": 70435.01,
+          "cpuDeltaMs": 0.0,
+          "memoryMiB": 371.27,
+          "rendererCount": 1
+        },
+        {
+          "index": 41,
+          "atUtc": "2026-10-19T06:24:44.3908049Z",
+          "elapsedMs": 72158.12,
+          "cpuDeltaMs": 0.0,
+          "memoryMiB": 371.27,
+          "rendererCount": 1
+        },
+        {
+          "index": 42,
+          "atUtc": "2026-10-19T06:24:46.2452824Z",
+          "elapsedMs": 74012.58,
+          "cpuDeltaMs": 0.0,
+          "memoryMiB": 371.27,
+          "rendererCount": 1
+        },
+        {
+          "index": 43,
+          "atUtc": "2026-10-19T06:24:48.0428767Z",
+          "elapsedMs": 75810.17,
+          "cpuDeltaMs": 0.0,
+          "memoryMiB": 371.27,
+          "rendererCount": 1
+        },
+        {
+          "index": 44,
+          "atUtc": "2026-10-19T06:24:49.8350452Z",
+          "elapsedMs": 77602.44,
+          "cpuDeltaMs": 0.0,
+          "memoryMiB": 371.27,
+          "rendererCount": 1
+        },
+        {
+          "index": 45,
+          "atUtc": "2026-10-19T06:24:51.5877700Z",
+          "elapsedMs": 79355.14,
+          "cpuDeltaMs": 0.0,
+          "memoryMiB": 371.27,
+          "rendererCount": 1
+        },
+        {
+          "index": 46,
+          "atUtc": "2026-10-19T06:24:53.3468464Z",
+          "elapsedMs": 81114.83,
+          "cpuDeltaMs": 0.0,
+          "memoryMiB": 371.27,
+          "rendererCount": 1
+        },
+        {
+          "index": 47,
+          "atUtc": "2026-10-19T06:24:55.1618801Z",
+          "elapsedMs": 82929.43,
+          "cpuDeltaMs": 0.0,
+          "memoryMiB": 371.27,
+          "rendererCount": 1
+        },
+        {
+          "index": 48,
+          "atUtc": "2026-10-19T06:24:56.9253675Z",
+          "elapsedMs": 84693.11,
+          "cpuDeltaMs": 15.63,
+          "memoryMiB": 371.23,
+          "rendererCount": 1
+        },
+        {
+          "index": 49,
+          "atUtc": "2026-10-19T06:24:58.7312750Z",
+          "elapsedMs": 86498.59,
+          "cpuDeltaMs": 0.0,
+          "memoryMiB": 371.34,
+          "rendererCount": 1
+        },
+        {
+          "index": 50,
+          "atUtc": "2026-10-19T06:25:00.5458805Z",
+          "elapsedMs": 88313.2,
+          "cpuDeltaMs": 0.0,
+          "memoryMiB": 371.34,
+          "rendererCount": 1
+        },
+        {
+          "index": 51,
+          "atUtc": "2026-10-19T06:25:02.2878235Z",
+          "elapsedMs": 90055.14,
+          "cpuDeltaMs": 0.0,
+          "memoryMiB": 371.25,
+          "rendererCount": 1
+        },
+        {
+          "index": 52,
+          "atUtc": "2026-10-19T06:25:04.0902718Z",
+          "elapsedMs": 91857.6,
+          "cpuDeltaMs": 0.0,
+          "memoryMiB": 371.25,
+          "rendererCount": 1
+        },
+        {
+          "index": 53,
+          "atUtc": "2026-10-19T06:25:05.8599500Z",
+          "elapsedMs": 93627.25,
+          "cpuDeltaMs": 0.0,
+          "memoryMiB": 371.25,
+          "rendererCount": 1
+        },
+        {
+          "index": 54,
+          "atUtc": "2026-10-19T06:25:07.6371127Z",
+          "elapsedMs": 95404.11,
+          "cpuDeltaMs": 0.0,
+          "memoryMiB": 371.24,
+          "rendererCount": 1
+        },
+        {
+          "index": 55,
+          "atUtc": "2026-10-19T06:25:09.3530103Z",
+          "elapsedMs": 97120.31,
+          "cpuDeltaMs": 0.0,
+          "memoryMiB": 371.22,
+          "rendererCount": 1
+        },
+        {
+          "index": 56,
+          "atUtc": "2026-10-19T06:25:11.2029768Z",
+          "elapsedMs": 98970.71,
+          "cpuDeltaMs": 0.0,
+          "memoryMiB": 371.2,
+          "rendererCount": 1
+        },
+        {
+          "index": 57,
+          "atUtc": "2026-10-19T06:25:12.9388703Z",
+          "elapsedMs": 100705.85,
+          "cpuDeltaMs": 0.0,
+          "memoryMiB": 368.09,
+          "rendererCount": 1
+        },
+        {
+          "index": 58,
+          "atUtc": "2026-10-19T06:25:14.6634019Z",
+          "elapsedMs": 102431.04,
+          "cpuDeltaMs": 0.0,
+          "memoryMiB": 367.79,
+          "rendererCount": 1
+        },
+        {
+          "index": 59,
+          "atUtc": "2026-10-19T06:25:16.4069086Z",
+          "elapsedMs": 104174.18,
+          "cpuDeltaMs": 0.0,
+          "memoryMiB": 367.8,
+          "rendererCount": 1
+        },
+        {
+          "index": 60,
+          "atUtc": "2026-10-19T06:25:18.1519009Z",
+          "elapsedMs": 105919.19,
+          "cpuDeltaMs": 15.63,
+          "memoryMiB": 367.8,
+          "rendererCount": 1
+        }
+      ]
+    },
+    "motion": {
+      "label": "motion",
+      "reduceMotion": false,
+      "runId": "01bc8800-e833-42ba-a639-4124498395a9",
+      "readyMarker": {
+        "schemaVersion": "1.2",
+        "runId": "01bc8800-e833-42ba-a639-4124498395a9",
+        "appVersion": "0.2.0",
+        "processId": 155492,
+        "nativeReadyMs": 772.2170000000001,
+        "frontendReadyMs": 384.60000002384186,
+        "readyView": "poem",
+        "readyMode": "offline-rules",
+        "viewRenderMs": 171.4000000357628,
+        "performanceScenario": "scene-rain",
+        "sceneMotion": {
+          "sceneKind": "rain",
+          "appReduced": false,
+          "systemReduced": false,
+          "sceneActive": true,
+          "visibilityState": "visible",
+          "animationName": "scene-drift",
+          "animationDuration": "16s",
+          "animationIterationCount": "infinite"
+        },
+        "recordedAtUnixMs": 1792391121308
+      },
+      "dailyState": {
+        "local_date": "2026-10-19",
+        "state": "retained",
+        "work_id": "wang-wei-shan-ju-qiu-ming"
+      },
+      "warmupSeconds": 5,
+      "durationSeconds": 106.57,
+      "sampleCount": 60,
+      "processIds": [
+        124516,
+        144912,
+        148740,
+        154540,
+        155492,
+        158056,
+        159888
+      ],
+      "rendererCount": 1,
+      "processorCount": 20,
+      "cpuTimeDeltaMs": 24749.98,
+      "cpuAveragePercent": 1.1612,
+      "memoryP95MiB": 382.57,
+      "samples": [
+        {
+          "index": 1,
+          "atUtc": "2026-10-19T06:25:28.7961144Z",
+          "elapsedMs": 1705.04,
+          "cpuDeltaMs": 374.99,
+          "memoryMiB": 373.23,
+          "rendererCount": 1
+        },
+        {
+          "index": 2,
+          "atUtc": "2026-10-19T06:25:30.5062383Z",
+          "elapsedMs": 3415.14,
+          "cpuDeltaMs": 406.25,
+          "memoryMiB": 371.87,
+          "rendererCount": 1
+        },
+        {
+          "index": 3,
+          "atUtc": "2026-10-19T06:25:32.2181996Z",
+          "elapsedMs": 5127.02,
+          "cpuDeltaMs": 421.88,
+          "memoryMiB": 370.98,
+          "rendererCount": 1
+        },
+        {
+          "index": 4,
+          "atUtc": "2026-10-19T06:25:34.0028025Z",
+          "elapsedMs": 6911.75,
+          "cpuDeltaMs": 343.74,
+          "memoryMiB": 370.81,
+          "rendererCount": 1
+        },
+        {
+          "index": 5,
+          "atUtc": "2026-10-19T06:25:35.7110647Z",
+          "elapsedMs": 8619.87,
+          "cpuDeltaMs": 406.26,
+          "memoryMiB": 370.81,
+          "rendererCount": 1
+        },
+        {
+          "index": 6,
+          "atUtc": "2026-10-19T06:25:37.4937087Z",
+          "elapsedMs": 10402.7,
+          "cpuDeltaMs": 453.12,
+          "memoryMiB": 373.17,
+          "rendererCount": 1
+        },
+        {
+          "index": 7,
+          "atUtc": "2026-10-19T06:25:39.2279139Z",
+          "elapsedMs": 12136.71,
+          "cpuDeltaMs": 578.12,
+          "memoryMiB": 371.32,
+          "rendererCount": 1
+        },
+        {
+          "index": 8,
+          "atUtc": "2026-10-19T06:25:41.0237400Z",
+          "elapsedMs": 13932.56,
+          "cpuDeltaMs": 546.87,
+          "memoryMiB": 371.42,
+          "rendererCount": 1
+        },
+        {
+          "index": 9,
+          "atUtc": "2026-10-19T06:25:42.7477725Z",
+          "elapsedMs": 15656.96,
+          "cpuDeltaMs": 671.88,
+          "memoryMiB": 371.3,
+          "rendererCount": 1
+        },
+        {
+          "index": 10,
+          "atUtc": "2026-10-19T06:25:44.5568484Z",
+          "elapsedMs": 17465.69,
+          "cpuDeltaMs": 656.25,
+          "memoryMiB": 371.58,
+          "rendererCount": 1
+        },
+        {
+          "index": 11,
+          "atUtc": "2026-10-19T06:25:46.3854468Z",
+          "elapsedMs": 19294.33,
+          "cpuDeltaMs": 578.13,
+          "memoryMiB": 371.61,
+          "rendererCount": 1
+        },
+        {
+          "index": 12,
+          "atUtc": "2026-10-19T06:25:48.1742642Z",
+          "elapsedMs": 21083.12,
+          "cpuDeltaMs": 640.63,
+          "memoryMiB": 371.61,
+          "rendererCount": 1
+        },
+        {
+          "index": 13,
+          "atUtc": "2026-10-19T06:25:49.8930025Z",
+          "elapsedMs": 22801.82,
+          "cpuDeltaMs": 593.75,
+          "memoryMiB": 371.62,
+          "rendererCount": 1
+        },
+        {
+          "index": 14,
+          "atUtc": "2026-10-19T06:25:51.6603660Z",
+          "elapsedMs": 24569.21,
+          "cpuDeltaMs": 515.62,
+          "memoryMiB": 380.2,
+          "rendererCount": 1
+        },
+        {
+          "index": 15,
+          "atUtc": "2026-10-19T06:25:53.4283008Z",
+          "elapsedMs": 26337.74,
+          "cpuDeltaMs": 500.0,
+          "memoryMiB": 382.17,
+          "rendererCount": 1
+        },
+        {
+          "index": 16,
+          "atUtc": "2026-10-19T06:25:55.1356906Z",
+          "elapsedMs": 28044.51,
+          "cpuDeltaMs": 468.75,
+          "memoryMiB": 380.36,
+          "rendererCount": 1
+        },
+        {
+          "index": 17,
+          "atUtc": "2026-10-19T06:25:56.8334527Z",
+          "elapsedMs": 29745.3,
+          "cpuDeltaMs": 562.5,
+          "memoryMiB": 380.36,
+          "rendererCount": 1
+        },
+        {
+          "index": 18,
+          "atUtc": "2026-10-19T06:25:58.5944808Z",
+          "elapsedMs": 31503.83,
+          "cpuDeltaMs": 531.24,
+          "memoryMiB": 380.08,
+          "rendererCount": 1
+        },
+        {
+          "index": 19,
+          "atUtc": "2026-10-19T06:26:00.3598450Z",
+          "elapsedMs": 33268.71,
+          "cpuDeltaMs": 453.14,
+          "memoryMiB": 380.06,
+          "rendererCount": 1
+        },
+        {
+          "index": 20,
+          "atUtc": "2026-10-19T06:26:02.1013387Z",
+          "elapsedMs": 35010.2,
+          "cpuDeltaMs": 421.86,
+          "memoryMiB": 380.02,
+          "rendererCount": 1
+        },
+        {
+          "index": 21,
+          "atUtc": "2026-10-19T06:26:03.9401697Z",
+          "elapsedMs": 36848.97,
+          "cpuDeltaMs": 421.89,
+          "memoryMiB": 380.02,
+          "rendererCount": 1
+        },
+        {
+          "index": 22,
+          "atUtc": "2026-10-19T06:26:05.6923804Z",
+          "elapsedMs": 38602.0,
+          "cpuDeltaMs": 390.62,
+          "memoryMiB": 380.02,
+          "rendererCount": 1
+        },
+        {
+          "index": 23,
+          "atUtc": "2026-10-19T06:26:07.4497440Z",
+          "elapsedMs": 40358.56,
+          "cpuDeltaMs": 484.37,
+          "memoryMiB": 380.04,
+          "rendererCount": 1
+        },
+        {
+          "index": 24,
+          "atUtc": "2026-10-19T06:26:09.2081046Z",
+          "elapsedMs": 42117.0,
+          "cpuDeltaMs": 328.12,
+          "memoryMiB": 378.98,
+          "rendererCount": 1
+        },
+        {
+          "index": 25,
+          "atUtc": "2026-10-19T06:26:10.9828738Z",
+          "elapsedMs": 43891.71,
+          "cpuDeltaMs": 250.01,
+          "memoryMiB": 378.99,
+          "rendererCount": 1
+        },
+        {
+          "index": 26,
+          "atUtc": "2026-10-19T06:26:12.6893127Z",
+          "elapsedMs": 45598.13,
+          "cpuDeltaMs": 249.99,
+          "memoryMiB": 379.12,
+          "rendererCount": 1
+        },
+        {
+          "index": 27,
+          "atUtc": "2026-10-19T06:26:14.4764706Z",
+          "elapsedMs": 47385.27,
+          "cpuDeltaMs": 265.63,
+          "memoryMiB": 379.06,
+          "rendererCount": 1
+        },
+        {
+          "index": 28,
+          "atUtc": "2026-10-19T06:26:16.2239235Z",
+          "elapsedMs": 49132.75,
+          "cpuDeltaMs": 296.87,
+          "memoryMiB": 379.08,
+          "rendererCount": 1
+        },
+        {
+          "index": 29,
+          "atUtc": "2026-10-19T06:26:18.0849572Z",
+          "elapsedMs": 50994.16,
+          "cpuDeltaMs": 390.63,
+          "memoryMiB": 379.1,
+          "rendererCount": 1
+        },
+        {
+          "index": 30,
+          "atUtc": "2026-10-19T06:26:19.9046516Z",
+          "elapsedMs": 52813.65,
+          "cpuDeltaMs": 390.62,
+          "memoryMiB": 379.09,
+          "rendererCount": 1
+        },
+        {
+          "index": 31,
+          "atUtc": "2026-10-19T06:26:21.7274666Z",
+          "elapsedMs": 54636.29,
+          "cpuDeltaMs": 500.02,
+          "memoryMiB": 382.1,
+          "rendererCount": 1
+        },
+        {
+          "index": 32,
+          "atUtc": "2026-10-19T06:26:23.5512582Z",
+          "elapsedMs": 56460.07,
+          "cpuDeltaMs": 562.49,
+          "memoryMiB": 383.26,
+          "rendererCount": 1
+        },
+        {
+          "index": 33,
+          "atUtc": "2026-10-19T06:26:25.3645835Z",
+          "elapsedMs": 58273.51,
+          "cpuDeltaMs": 421.88,
+          "memoryMiB": 382.72,
+          "rendererCount": 1
+        },
+        {
+          "index": 34,
+          "atUtc": "2026-10-19T06:26:27.2012168Z",
+          "elapsedMs": 60110.59,
+          "cpuDeltaMs": 343.74,
+          "memoryMiB": 382.87,
+          "rendererCount": 1
+        },
+        {
+          "index": 35,
+          "atUtc": "2026-10-19T06:26:29.0243688Z",
+          "elapsedMs": 61933.19,
+          "cpuDeltaMs": 484.38,
+          "memoryMiB": 382.55,
+          "rendererCount": 1
+        },
+        {
+          "index": 36,
+          "atUtc": "2026-10-19T06:26:30.8463963Z",
+          "elapsedMs": 63755.21,
+          "cpuDeltaMs": 421.87,
+          "memoryMiB": 382.55,
+          "rendererCount": 1
+        },
+        {
+          "index": 37,
+          "atUtc": "2026-10-19T06:26:32.6708045Z",
+          "elapsedMs": 65579.6,
+          "cpuDeltaMs": 328.13,
+          "memoryMiB": 382.54,
+          "rendererCount": 1
+        },
+        {
+          "index": 38,
+          "atUtc": "2026-10-19T06:26:34.4738392Z",
+          "elapsedMs": 67382.69,
+          "cpuDeltaMs": 562.51,
+          "memoryMiB": 382.56,
+          "rendererCount": 1
+        },
+        {
+          "index": 39,
+          "atUtc": "2026-10-19T06:26:36.2916601Z",
+          "elapsedMs": 69200.53,
+          "cpuDeltaMs": 468.74,
+          "memoryMiB": 382.57,
+          "rendererCount": 1
+        },
+        {
+          "index": 40,
+          "atUtc": "2026-10-19T06:26:38.0916157Z",
+          "elapsedMs": 71000.52,
+          "cpuDeltaMs": 421.88,
+          "memoryMiB": 382.39,
+          "rendererCount": 1
+        },
+        {
+          "index": 41,
+          "atUtc": "2026-10-19T06:26:39.8930139Z",
+          "elapsedMs": 72801.94,
+          "cpuDeltaMs": 421.88,
+          "memoryMiB": 382.4,
+          "rendererCount": 1
+        },
+        {
+          "index": 42,
+          "atUtc": "2026-10-19T06:26:41.7248468Z",
+          "elapsedMs": 74633.68,
+          "cpuDeltaMs": 390.61,
+          "memoryMiB": 382.36,
+          "rendererCount": 1
+        },
+        {
+          "index": 43,
+          "atUtc": "2026-10-19T06:26:43.6110306Z",
+          "elapsedMs": 76519.86,
+          "cpuDeltaMs": 562.51,
+          "memoryMiB": 382.4,
+          "rendererCount": 1
+        },
+        {
+          "index": 44,
+          "atUtc": "2026-10-19T06:26:45.4360647Z",
+          "elapsedMs": 78344.88,
+          "cpuDeltaMs": 359.38,
+          "memoryMiB": 382.39,
+          "rendererCount": 1
+        },
+        {
+          "index": 45,
+          "atUtc": "2026-10-19T06:26:47.2371221Z",
+          "elapsedMs": 80146.0,
+          "cpuDeltaMs": 578.11,
+          "memoryMiB": 382.38,
+          "rendererCount": 1
+        },
+        {
+          "index": 46,
+          "atUtc": "2026-10-19T06:26:49.0268368Z",
+          "elapsedMs": 81935.8,
+          "cpuDeltaMs": 312.5,
+          "memoryMiB": 382.39,
+          "rendererCount": 1
+        },
+        {
+          "index": 47,
+          "atUtc": "2026-10-19T06:26:50.7464014Z",
+          "elapsedMs": 83655.2,
+          "cpuDeltaMs": 312.51,
+          "memoryMiB": 382.38,
+          "rendererCount": 1
+        },
+        {
+          "index": 48,
+          "atUtc": "2026-10-19T06:26:52.5044329Z",
+          "elapsedMs": 85413.29,
+          "cpuDeltaMs": 234.37,
+          "memoryMiB": 382.27,
+          "rendererCount": 1
+        },
+        {
+          "index": 49,
+          "atUtc": "2026-10-19T06:26:54.2577146Z",
+          "elapsedMs": 87166.59,
+          "cpuDeltaMs": 250.01,
+          "memoryMiB": 382.34,
+          "rendererCount": 1
+        },
+        {
+          "index": 50,
+          "atUtc": "2026-10-19T06:26:56.0346624Z",
+          "elapsedMs": 88943.57,
+          "cpuDeltaMs": 265.61,
+          "memoryMiB": 382.33,
+          "rendererCount": 1
+        },
+        {
+          "index": 51,
+          "atUtc": "2026-10-19T06:26:57.8007698Z",
+          "elapsedMs": 90710.04,
+          "cpuDeltaMs": 328.13,
+          "memoryMiB": 382.35,
+          "rendererCount": 1
+        },
+        {
+          "index": 52,
+          "atUtc": "2026-10-19T06:26:59.5770014Z",
+          "elapsedMs": 92485.83,
+          "cpuDeltaMs": 265.62,
+          "memoryMiB": 382.36,
+          "rendererCount": 1
+        },
+        {
+          "index": 53,
+          "atUtc": "2026-10-19T06:27:01.3624677Z",
+          "elapsedMs": 94273.65,
+          "cpuDeltaMs": 234.38,
+          "memoryMiB": 382.36,
+          "rendererCount": 1
+        },
+        {
+          "index": 54,
+          "atUtc": "2026-10-19T06:27:03.1243970Z",
+          "elapsedMs": 96033.37,
+          "cpuDeltaMs": 296.87,
+          "memoryMiB": 382.35,
+          "rendererCount": 1
+        },
+        {
+          "index": 55,
+          "atUtc": "2026-10-19T06:27:04.8875179Z",
+          "elapsedMs": 97796.34,
+          "cpuDeltaMs": 343.75,
+          "memoryMiB": 382.36,
+          "rendererCount": 1
+        },
+        {
+          "index": 56,
+          "atUtc": "2026-10-19T06:27:06.6347789Z",
+          "elapsedMs": 99543.63,
+          "cpuDeltaMs": 296.88,
+          "memoryMiB": 382.36,
+          "rendererCount": 1
+        },
+        {
+          "index": 57,
+          "atUtc": "2026-10-19T06:27:08.3977293Z",
+          "elapsedMs": 101306.56,
+          "cpuDeltaMs": 234.38,
+          "memoryMiB": 382.36,
+          "rendererCount": 1
+        },
+        {
+          "index": 58,
+          "atUtc": "2026-10-19T06:27:10.1530297Z",
+          "elapsedMs": 103062.09,
+          "cpuDeltaMs": 296.88,
+          "memoryMiB": 382.34,
+          "rendererCount": 1
+        },
+        {
+          "index": 59,
+          "atUtc": "2026-10-19T06:27:11.9210347Z",
+          "elapsedMs": 104829.89,
+          "cpuDeltaMs": 296.86,
+          "memoryMiB": 382.38,
+          "rendererCount": 1
+        },
+        {
+          "index": 60,
+          "atUtc": "2026-10-19T06:27:13.6615984Z",
+          "elapsedMs": 106571.94,
+          "cpuDeltaMs": 359.37,
+          "memoryMiB": 382.31,
+          "rendererCount": 1
+        }
+      ]
+    },
+    "samePoemAndLocalDate": true,
+    "cpuIncreasePercentagePoints": 1.1501,
+    "memoryP95IncreaseMiB": 11.13,
+    "resourceThresholdSatisfied": true
+  },
+  "limitations": {
+    "syntheticWeatherNotRealLocalWeather": true,
+    "visibleMotionRecordingCaptured": false,
+    "systemReducedMotionMediaQueryChecked": true,
+    "computedSceneAnimationVerified": true,
+    "a7OverallSatisfied": false
+  },
+  "result": "resource-comparison-passed"
+}

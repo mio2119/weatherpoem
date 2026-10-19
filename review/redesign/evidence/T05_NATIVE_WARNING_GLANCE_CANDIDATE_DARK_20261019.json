@@ -1,0 +1,78 @@
+{
+  "schemaVersion": "1.0",
+  "testKind": "isolated-native-official-style-warning",
+  "generatedAt": "2026-10-19T06:22:17.897Z",
+  "candidate": {
+    "path": ".work/redesign-glance-startup-fix-20261019/release/weatherpoem.exe",
+    "sha256": "3D3856613786D6961B6BE7ECF5274F8E017DE79E1AB8CAA541F8B498A4B0ED10"
+  },
+  "isolation": {
+    "temporaryProfile": true,
+    "syntheticWeather": true,
+    "realWeatherWarning": false,
+    "realUserDataTouched": false,
+    "systemClockChanged": false,
+    "systemDisplaySettingsChanged": false,
+    "installedOrUninstalled": false
+  },
+  "setup": {
+    "theme": "dark",
+    "scenario": "official-warning",
+    "seededPriorWorkId": "meng-hao-ran-su-jian-de-jiang",
+    "localDate": "2026-10-19",
+    "contentVersion": "2026.07.1",
+    "ruleVersion": "1.2.3"
+  },
+  "observations": {
+    "readyMarker": {
+      "schemaVersion": "1.2",
+      "runId": "e1f597a9398c462d8c9848a7656e788c",
+      "appVersion": "0.2.0",
+      "processId": 151396,
+      "nativeReadyMs": 601.2425000000001,
+      "frontendReadyMs": 278,
+      "readyView": "warning",
+      "readyMode": "safety-warning",
+      "viewRenderMs": 119.10000002384186,
+      "performanceScenario": "official-warning",
+      "sceneMotion": null,
+      "recordedAtUnixMs": 1792390938573
+    },
+    "view": {
+      "title": "今日诗笺暂缓展示",
+      "role": "alert",
+      "itemTitle": "受控暴雨预警演练",
+      "itemDescription": "这是隔离性能账户中的安全优先路径演练，不是真实气象预警。",
+      "source": "北京 · WeatherPoem 隔离性能演练  · 发布 10/19 14:22 · 有效至 10/19 20:22",
+      "disclaimer": "本页仅用于隔离安全路径演练，没有连接真实预警网关；请以当地气象部门最新信息为准。",
+      "oldPoemPresent": false,
+      "poemViewPresent": false,
+      "theme": "dark",
+      "viewport": {
+        "width": 420,
+        "height": 580
+      },
+      "scroll": {
+        "height": 580,
+        "clientHeight": 580
+      }
+    },
+    "topScreenshot": "review/redesign/evidence/T05_NATIVE_WARNING_GLANCE_CANDIDATE_DARK_20261019_warning_top.png",
+    "bottom": {
+      "scrollY": 0,
+      "disclaimerBottom": 526.15625,
+      "viewportHeight": 580
+    },
+    "bottomScreenshot": "review/redesign/evidence/T05_NATIVE_WARNING_GLANCE_CANDIDATE_DARK_20261019_warning_bottom.png",
+    "dailyState": {
+      "state": "alert-suppressed",
+      "work_id": "meng-hao-ran-su-jian-de-jiang"
+    }
+  },
+  "limitations": [
+    "This is an app-bundled isolated warning exercise, not a real official gateway response or live weather.",
+    "A startup warning does not prove that a warning arriving while hidden is displayed without an old-poem compositor frame.",
+    "CDP DOM and screenshots do not replace screen-reader or real display-scaling tests."
+  ],
+  "result": "native-isolated-warning-suppression-passed"
+}
