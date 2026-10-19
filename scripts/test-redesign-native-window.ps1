@@ -148,8 +148,66 @@ function Get-AccessibleElements {
 function Invoke-Button {
     param([IntPtr]$Handle, [string]$Name)
     $button = Find-Button -Handle $Handle -Name $Name
-    $pattern = $button.GetCurrentPattern([System.Windows.Automation.InvokePattern]::Pattern)
-    $pattern.Invoke()
+    Invoke-ObservedButton -Element $button -RequestedName $Name -Stage "named-button:$Name"
+}
+
+function Get-InvokePatternDiagnostic {
+    param([System.Windows.Automation.AutomationElement]$Element)
+    $invokePattern = $null
+    $tryGetSupported = $false
+    $tryGetError = $null
+    try {
+        $tryGetSupported = $Element.TryGetCurrentPattern(
+            [System.Windows.Automation.InvokePattern]::Pattern,
+            [ref]$invokePattern
+        )
+    } catch {
+        $tryGetError = [string]$_
+    }
+    return [ordered]@{
+        name = $Element.Current.Name
+        controlType = $Element.Current.ControlType.ProgrammaticName
+        className = $Element.Current.ClassName
+        frameworkId = $Element.Current.FrameworkId
+        automationId = $Element.Current.AutomationId
+        isEnabled = $Element.Current.IsEnabled
+        isKeyboardFocusable = $Element.Current.IsKeyboardFocusable
+        isOffscreen = $Element.Current.IsOffscreen
+        boundingRectangle = [ordered]@{
+            left = $Element.Current.BoundingRectangle.Left
+            top = $Element.Current.BoundingRectangle.Top
+            width = $Element.Current.BoundingRectangle.Width
+            height = $Element.Current.BoundingRectangle.Height
+        }
+        supportedPatterns = @($Element.GetSupportedPatterns() | ForEach-Object { $_.ProgrammaticName })
+        tryGetInvokePatternSupported = $tryGetSupported
+        tryGetInvokePatternError = $tryGetError
+    }
+}
+
+function Invoke-ObservedButton {
+    param(
+        [System.Windows.Automation.AutomationElement]$Element,
+        [string]$RequestedName,
+        [string]$Stage
+    )
+    $diagnostic = [ordered]@{
+        stage = $Stage
+        requestedName = $RequestedName
+        element = Get-InvokePatternDiagnostic -Element $Element
+        getCurrentPattern = "pending"
+    }
+    $script:uiaInvocationDiagnostics += $diagnostic
+    try {
+        $pattern = $Element.GetCurrentPattern([System.Windows.Automation.InvokePattern]::Pattern)
+        $diagnostic.getCurrentPattern = "available"
+        $pattern.Invoke()
+        $diagnostic.invoke = "completed"
+    } catch {
+        $diagnostic.getCurrentPattern = "failed-or-invoke-failed"
+        $diagnostic.error = [string]$_
+        throw
+    }
 }
 
 function Find-TrayElement {
@@ -198,7 +256,7 @@ function Invoke-TrayElement {
         $Element.Current.ClassName -ne "SystemTray.NormalButton") {
         throw "Refusing to invoke an unexpected tray element"
     }
-    $Element.GetCurrentPattern([System.Windows.Automation.InvokePattern]::Pattern).Invoke()
+    Invoke-ObservedButton -Element $Element -RequestedName "WeatherPoem 今日诗笺" -Stage "tray-button"
 }
 
 function Save-WindowImage {
@@ -242,6 +300,10 @@ $report = [ordered]@{
         path = $candidate
         sha256 = (Get-FileHash -LiteralPath $candidate -Algorithm SHA256).Hash
     }
+    testHarness = [ordered]@{
+        path = "scripts/test-redesign-native-window.ps1"
+        sha256 = (Get-FileHash -LiteralPath $PSCommandPath -Algorithm SHA256).Hash
+    }
     profileIsolation = $true
     realUserDataTouched = $false
     systemAutostartChanged = $false
@@ -260,6 +322,7 @@ if (-not $profile.StartsWith($tempRoot + '\', [StringComparison]::OrdinalIgnoreC
 }
 $process = $null
 $focusForm = $null
+$script:uiaInvocationDiagnostics = @()
 try {
     foreach ($part in @("appdata", "localappdata", "temp\probe")) {
         [IO.Directory]::CreateDirectory((Join-Path $profile $part)) | Out-Null
@@ -405,7 +468,7 @@ try {
     } elseif (-not $SkipScreenshots) {
         $report.limitations += "Glance screenshot omitted because Windows did not foreground the test app."
     }
-    $readButton.GetCurrentPattern([System.Windows.Automation.InvokePattern]::Pattern).Invoke()
+    Invoke-ObservedButton -Element $readButton -RequestedName "继续读" -Stage "expand-reading"
     $reading = Wait-For {
         $state = Get-WindowObservation -Handle $window
         if ($state.width -ge 540 -and $state.height -ge 600) { $state }
@@ -525,7 +588,7 @@ try {
     $restartReadButton = Wait-For {
         try { Find-Button -Handle $restartWindow -Name "继续读" } catch { $null }
     } "restart read button" 10
-    $restartReadButton.GetCurrentPattern([System.Windows.Automation.InvokePattern]::Pattern).Invoke()
+    Invoke-ObservedButton -Element $restartReadButton -RequestedName "继续读" -Stage "restart-expand-reading"
     $report.observations.restartProcessId = $process.Id
     $report.observations.restartReading = Wait-For {
         $state = Get-WindowObservation -Handle $restartWindow
@@ -575,6 +638,7 @@ try {
             }
         } else { throw "Refusing to remove unexpected profile path" }
     }
+    $report.observations.uiaInvocationDiagnostics = @($script:uiaInvocationDiagnostics)
     $report | ConvertTo-Json -Depth 12 | Set-Content -LiteralPath $ReportPath -Encoding utf8
 }
 
