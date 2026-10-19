@@ -115,6 +115,25 @@ describe("poem scene grounding", () => {
     });
   });
 
+  it("shows a rain scene when light rain matches a broadly rain-tagged poem", () => {
+    const poem = POEMS.find((item) => item.id === "wang-chang-ling-fu-rong-lou")!;
+    expect(poem.tags.weather).toContain("rain");
+    expect(poem.tags.weather).not.toContain("light-rain");
+    expect(selectPoemScene({
+      poem,
+      calendar: { ...baseCalendar, festival: undefined, season: "autumn" },
+      weather: { ...baseWeather, kind: "light-rain", label: "小雨" },
+    })).toMatchObject({ kind: "rain", description: "当地天气：小雨" });
+
+    const downpourPoem = POEMS.find((item) => item.title === "夜雨寄北")!;
+    expect(downpourPoem.tags.weather).toContain("heavy-rain");
+    expect(selectPoemScene({
+      poem: downpourPoem,
+      calendar: { ...baseCalendar, festival: undefined, season: "autumn" },
+      weather: { ...baseWeather, kind: "light-rain", label: "小雨" },
+    }).kind).toBe("season");
+  });
+
   it("uses neutral art for an old same-day poem kept outside the current season", () => {
     expect(selectPoemScene({
       poem: festivalPoem,

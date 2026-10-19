@@ -410,6 +410,28 @@ describe("recommendPoem", () => {
     expect(result.primaryContext).toBe("雨");
   });
 
+  it("秋季小雨可匹配广义雨诗并避开前一天作者", () => {
+    const recentAuthorPoem = POEMS.find((item) => item.id === "wang-wei-shan-ju-qiu-ming")!;
+    const otherAuthorRainPoem = POEMS.find((item) => item.id === "wang-chang-ling-fu-rong-lou")!;
+    const result = recommendPoem({
+      poems: [recentAuthorPoem, otherAuthorRainPoem],
+      calendar: buildCalendarContext(new Date(2026, 8, 1, 9)),
+      weather: { ...rainyWeather, kind: "light-rain", label: "小雨" },
+      history: [{
+        localDate: "2026-08-31",
+        workId: "wang-wei-zhong-nan-bie-ye",
+        author: "王维",
+        primaryContext: "晴",
+      }],
+      feedback: [],
+    });
+
+    expect(result.poem.id).toBe(otherAuthorRainPoem.id);
+    expect(result.primaryContext).toBe("小雨");
+    expect(result.breakdown.weather).toBe(20);
+    expect(result.reason).toContain("当地有小雨");
+  });
+
   it("临近稀缺节日前先保留唯一的直关联作品", () => {
     const base = POEMS[0]!;
     const festivalPoem = {

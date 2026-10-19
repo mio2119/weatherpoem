@@ -172,6 +172,7 @@ describe("long-term recommendation diversity", () => {
       );
       expect(result.unmatchedDays).toBe(0);
       expect(result.festivalMatchedDays).toBe(result.festivalDays);
+      expect(result.consecutiveAuthorRepeats).toEqual([]);
       expect(result.shortestWorkRepeat ?? Number.POSITIVE_INFINITY).toBeGreaterThanOrEqual(15);
       if (days === 30) expect(result.distinctWorks).toBeGreaterThanOrEqual(25);
       if (days === 60) expect(result.distinctWorks).toBeGreaterThanOrEqual(40);
@@ -198,17 +199,7 @@ describe("long-term recommendation diversity", () => {
           "unmatchedDays": 0,
         },
         {
-          "consecutiveAuthorRepeats": [
-            {
-              "author": "王维",
-              "festival": undefined,
-              "localDate": "2026-09-01",
-              "previousDate": "2026-08-31",
-              "previousTitle": "终南别业",
-              "primaryContext": "小雨",
-              "title": "山居秋暝",
-            },
-          ],
+          "consecutiveAuthorRepeats": [],
           "days": 60,
           "distinctWorks": 51,
           "festivalDays": 1,
@@ -216,22 +207,12 @@ describe("long-term recommendation diversity", () => {
           "festivalNames": [
             "七夕节",
           ],
-          "shortestAuthorRepeat": 1,
+          "shortestAuthorRepeat": 5,
           "shortestWorkRepeat": 22,
           "unmatchedDays": 0,
         },
         {
-          "consecutiveAuthorRepeats": [
-            {
-              "author": "王维",
-              "festival": undefined,
-              "localDate": "2026-09-01",
-              "previousDate": "2026-08-31",
-              "previousTitle": "终南别业",
-              "primaryContext": "小雨",
-              "title": "山居秋暝",
-            },
-          ],
+          "consecutiveAuthorRepeats": [],
           "days": 90,
           "distinctWorks": 71,
           "festivalDays": 3,
@@ -241,8 +222,8 @@ describe("long-term recommendation diversity", () => {
             "中秋节",
             "重阳节",
           ],
-          "shortestAuthorRepeat": 1,
-          "shortestWorkRepeat": 18,
+          "shortestAuthorRepeat": 2,
+          "shortestWorkRepeat": 22,
           "unmatchedDays": 0,
         },
       ]

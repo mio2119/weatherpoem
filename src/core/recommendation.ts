@@ -10,8 +10,9 @@ import type {
 } from "../types";
 import { feedbackLocalDate } from "./daily-behavior";
 import { buildCalendarContext } from "./date-context";
+import { matchesPoemWeather } from "./weather-match";
 
-export const RULE_VERSION = "1.2.4";
+export const RULE_VERSION = "1.2.5";
 export const CONTENT_VERSION = "2026.07.1";
 export const RETAINED_CONTEXT = "今日已选";
 
@@ -132,7 +133,7 @@ function scorePoem(
   const weatherScore =
     weather.freshness !== "unavailable" &&
     weather.kind !== "unknown" &&
-    poem.tags.weather.includes(weather.kind)
+    matchesPoemWeather(poem, weather.kind)
       ? 20
       : 0;
   const solarTerm =
@@ -255,7 +256,7 @@ function buildReason(
   if (
     weather.freshness !== "unavailable" &&
     weather.kind !== "unknown" &&
-    poem.tags.weather.includes(weather.kind)
+    matchesPoemWeather(poem, weather.kind)
   ) {
     const rehearsalLabel = weather.label.replace(/（隔离演练）$/u, "");
     return {
@@ -345,7 +346,7 @@ export function recommendPoem(input: RecommendationInput): Recommendation {
     input.weather.freshness !== "unavailable" &&
     input.weather.kind !== "unknown"
       ? eligible.filter((poem) =>
-          poem.tags.weather.includes(input.weather.kind),
+          matchesPoemWeather(poem, input.weather.kind),
         )
       : [];
   const solarTermMatches = input.calendar.solarTerm

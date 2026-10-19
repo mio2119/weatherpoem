@@ -19,6 +19,7 @@ const withdrawal = process.argv.includes("--withdrawal");
 const cachedWarning = process.argv.includes("--cached-warning");
 const crossDaySafety = process.argv.includes("--cross-day-safety");
 const festivalAuthorDiversity = process.argv.includes("--festival-author-diversity");
+const rainAuthorDiversity = process.argv.includes("--rain-author-diversity");
 const sameDay = process.argv.includes("--same-day");
 const motion = process.argv.includes("--motion");
 const minimize = process.argv.includes("--minimize");
@@ -33,6 +34,7 @@ assert.ok(!cachedWarning || (!withdrawal && !motion), "Cached warning requires i
 assert.ok(!crossDaySafety || cachedWarning, "Cross-day safety recovery requires a cached safety warning");
 assert.ok(!crossDaySafety || (!withdrawal && !motion && !sameDay), "Cross-day safety recovery requires its own reveal scenario");
 assert.ok(!festivalAuthorDiversity || (!cachedWarning && !withdrawal && !motion && !sameDay), "Festival author diversity requires its own reveal scenario");
+assert.ok(!rainAuthorDiversity || (!festivalAuthorDiversity && !cachedWarning && !withdrawal && !motion && !sameDay && secondInstance && capture), "Rain author diversity requires an isolated captured second-instance reveal");
 assert.ok(!sameDay || (!cachedWarning && !withdrawal && !motion), "Same-day recovery requires its own isolated scenario");
 assert.ok(!minimize || secondInstance, "Minimized recovery must use the native second-instance path");
 assert.ok(!record || motion, "Motion recording requires the native rain scene");
@@ -83,12 +85,12 @@ try {
     mkdirSync(path.join(profile, segment), { recursive: true });
   }
   seedPerformanceProfile(profile);
-  if (festivalAuthorDiversity) {
+  if (festivalAuthorDiversity || rainAuthorDiversity) {
     const { POEMS, CONTENT_VERSION, RULE_VERSION } = await loadReasonSources(root);
     const localDate = new Date().toLocaleDateString("en-CA");
     assert.equal(localDate, "2026-10-19", "This controlled native scenario is authored for 2026-10-19");
     const carryover = POEMS.find((item) => item.id === "wang-an-shi-yuan-ri");
-    const recentWang = POEMS.find((item) => item.id === "wang-wei-shan-ju-qiu-ming");
+    const recentWang = POEMS.find((item) => item.id === (rainAuthorDiversity ? "wang-wei-zhong-nan-bie-ye" : "wang-wei-shan-ju-qiu-ming"));
     assert.equal(carryover?.author, "王安石");
     assert.equal(recentWang?.author, "王维");
     const database = new DatabaseSync(resolvePerformanceDatabasePath(profile));
@@ -118,7 +120,13 @@ try {
       const insertDisplay = database.prepare(`INSERT INTO recommendation_display_events
         (local_date, work_id, author, primary_context, displayed_at)
         VALUES (?, ?, ?, ?, ?)`);
-      insertDisplay.run("2026-10-17", recentWang.id, recentWang.author, "秋日", "2026-10-17T01:00:00.000Z");
+      insertDisplay.run(
+        rainAuthorDiversity ? "2026-08-31" : "2026-10-17",
+        recentWang.id,
+        recentWang.author,
+        rainAuthorDiversity ? "晴" : "秋日",
+        rainAuthorDiversity ? "2026-08-31T01:00:00.000Z" : "2026-10-17T01:00:00.000Z",
+      );
       insertDisplay.run(localDate, carryover.id, carryover.author, "今日已选", new Date().toISOString());
     } finally {
       database.close();
@@ -133,7 +141,7 @@ try {
       WEATHERPOEM_PERFORMANCE_PROFILE: profile,
       WEATHERPOEM_PERFORMANCE_PROBE: markerPath,
       WEATHERPOEM_PERFORMANCE_RUN_ID: randomUUID().replaceAll("-", ""),
-      WEATHERPOEM_PERFORMANCE_SCENARIO: cachedWarning ? "" : motion ? "scene-rain" : "weather-offline",
+      WEATHERPOEM_PERFORMANCE_SCENARIO: cachedWarning ? "" : (motion || rainAuthorDiversity) ? "scene-rain" : "weather-offline",
       WEBVIEW2_ADDITIONAL_BROWSER_ARGUMENTS: cachedWarning
         ? `--remote-debugging-port=${port} --host-resolver-rules="MAP api.open-meteo.com 127.0.0.1" --no-proxy-server`
         : `--remote-debugging-port=${port}`,
@@ -382,6 +390,18 @@ try {
     })()`);
     expectedDate = festivalDay.label;
     expectedLocalDate = festivalDay.localDate;
+  } else if (rainAuthorDiversity) {
+    const rainDay = await evaluate(`(() => {
+      const RealDate = Date;
+      const fixed = new RealDate(2026, 8, 1, 9, 0, 0, 0).getTime();
+      window.Date = class extends RealDate {
+        constructor(...args) { super(...(args.length ? args : [fixed])); }
+        static now() { return fixed; }
+      };
+      return { label: '9月1日', localDate: '2026-09-01' };
+    })()`);
+    expectedDate = rainDay.label;
+    expectedLocalDate = rainDay.localDate;
   } else if (!motion) {
     const nextDate = await evaluate(`(() => {
       const RealDate = Date;
@@ -471,6 +491,38 @@ try {
       assert.equal(displayEvent?.author, "孟浩然");
       assert.equal(displayEvent?.primary_context, "重阳节");
       festivalSelectionAudit = { ui, dailyState, displayEvent };
+    } finally {
+      database.close();
+    }
+  }
+  let rainSelectionAudit;
+  if (rainAuthorDiversity) {
+    const ui = await evaluate(`(() => ({
+      title: document.querySelector('.poem-view h1')?.textContent,
+      author: document.querySelector('.poem-view .poem-heading p')?.textContent,
+      context: document.querySelector('.context-strip')?.textContent,
+      date: document.querySelector('.context-strip strong')?.textContent,
+      reason: document.querySelector('.poem-view .reason-block')?.textContent,
+      scene: document.querySelector('.poem-paper')?.getAttribute('data-scene'),
+      sceneDescription: document.querySelector('.scene-mark')?.getAttribute('aria-label'),
+    }))()`);
+    assert.equal(ui.date, expectedDate);
+    assert.equal(ui.title, "芙蓉楼送辛渐", `Broader rain match did not avoid yesterday's author: ${JSON.stringify(ui)}`);
+    assert.ok(ui.author?.startsWith("王昌龄"));
+    assert.ok(ui.context?.includes("小雨（隔离演练）"));
+    assert.ok(ui.reason?.includes("演练"));
+    assert.equal(ui.scene, "rain");
+    assert.ok(ui.sceneDescription?.includes("不代表当地实时天气"));
+    const database = new DatabaseSync(resolvePerformanceDatabasePath(profile), { readOnly: true });
+    try {
+      const dailyState = database.prepare("SELECT local_date, state, work_id FROM daily_state WHERE local_date = ?").get(expectedLocalDate);
+      const displayEvent = database.prepare("SELECT work_id, author, primary_context FROM recommendation_display_events WHERE local_date = ? ORDER BY id DESC LIMIT 1").get(expectedLocalDate);
+      assert.equal(dailyState?.state, "shown");
+      assert.equal(dailyState?.work_id, "wang-chang-ling-fu-rong-lou");
+      assert.equal(displayEvent?.work_id, dailyState.work_id);
+      assert.equal(displayEvent?.author, "王昌龄");
+      assert.ok(displayEvent?.primary_context.includes("小雨（隔离演练）"));
+      rainSelectionAudit = { ui, dailyState, displayEvent };
     } finally {
       database.close();
     }
@@ -654,12 +706,12 @@ try {
   const finalScreenshot = await screenshot("after");
   const report = {
     schemaVersion: "1.0",
-    testKind: favoriteJourney ? "isolated-native-favorite-save-failure-retry-and-reading" : festivalAuthorDiversity ? "isolated-native-cross-day-festival-author-diversity" : crossDaySafety ? "isolated-native-cross-day-hidden-safety-warning-no-old-poem-flash" : cachedWarning ? "isolated-native-hidden-cached-safety-warning" : sameDay ? "isolated-native-hidden-same-day-reveal" : motion ? minimize ? "isolated-native-minimized-motion" : "isolated-native-hidden-motion" : withdrawal ? "isolated-native-hidden-content-withdrawal" : nativeClose ? "isolated-native-close-day-reveal" : "isolated-native-hidden-day-reveal",
+    testKind: favoriteJourney ? "isolated-native-favorite-save-failure-retry-and-reading" : rainAuthorDiversity ? "isolated-native-cross-day-light-rain-author-diversity" : festivalAuthorDiversity ? "isolated-native-cross-day-festival-author-diversity" : crossDaySafety ? "isolated-native-cross-day-hidden-safety-warning-no-old-poem-flash" : cachedWarning ? "isolated-native-hidden-cached-safety-warning" : sameDay ? "isolated-native-hidden-same-day-reveal" : motion ? minimize ? "isolated-native-minimized-motion" : "isolated-native-hidden-motion" : withdrawal ? "isolated-native-hidden-content-withdrawal" : nativeClose ? "isolated-native-close-day-reveal" : "isolated-native-hidden-day-reveal",
     generatedAt: new Date().toISOString(),
     candidate: { path: path.relative(root, candidate).replaceAll(path.sep, "/"), sha256: createHash("sha256").update(readFileSync(candidate)).digest("hex").toUpperCase() },
     testHarness: { path: "scripts/test-redesign-native-reveal.mjs", sha256: createHash("sha256").update(readFileSync(fileURLToPath(import.meta.url))).digest("hex").toUpperCase() },
     isolation: { temporaryProfile: true, systemClockChanged: false, installedOrUninstalled: false, realUserDataTouched: false, processOnlyWeatherHostBlock: cachedWarning },
-    scenario: cachedWarning ? "network-blocked-cached-warning" : motion ? "scene-rain" : "weather-offline",
+    scenario: cachedWarning ? "network-blocked-cached-warning" : (motion || rainAuthorDiversity) ? "scene-rain" : "weather-offline",
     concealAction: nativeClose ? "native-close" : minimize ? "minimize-button" : "tray-hide-button",
     activationPath: secondInstance ? "native-single-instance" : "isolated-window-commands",
     revealElapsedMs,
@@ -667,6 +719,7 @@ try {
     original,
     initialDisplayEvents,
     festivalSelectionAudit,
+    rainSelectionAudit,
     hidden,
     revealMask,
     expectedDate,
