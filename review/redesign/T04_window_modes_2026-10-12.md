@@ -58,3 +58,10 @@
 为定位上述一次 UIA 异常，对 `scripts/test-redesign-native-window.ps1` 加入只读调用诊断并重跑；复核报告同时记录候选哈希与该测试器 SHA-256，便于区分冻结应用和测试器版本。脚本解析须用项目 PowerShell 7；本次曾误用 Windows PowerShell 5.1，因其按 ANSI 读取无 BOM UTF-8 脚本而在启动前解析失败，该尝试没有启动产品、不属于产品测试结果，也未修改脚本编码。A4 不因 UIA 复现正常而整体通过。
 
 2026-10-19 在键盘焦点修复候选 `7BFC5F340E992D15D95BE56DAF0C356A7BA261C0B9A8B3BF795B59E5310FF627` 上复核窗口恢复。先前自动启动全链路报告[首次边界采样](./evidence/T04_NATIVE_WINDOW_FOCUS_RING_RECHECK_20261019.json)在等待到 640×640 尺寸后立即读取位置，记录到定位尚未完成的窗口外溢；这不是稳定位置的验收结论。测试器现等待目标尺寸并且窗口四边全部回到工作区后才通过。一次自动启动复测因测试前台条件下没有出现可见窗口而超时，留存为[未完成报告](./evidence/T04_NATIVE_WINDOW_FOCUS_RING_BOUNDS_RECHECK_20261019.json)，不计成功或产品失败。随后在[手动启动完整链路](./evidence/T04_NATIVE_WINDOW_FOCUS_RING_MANUAL_BOUNDS_RECHECK_20261019.json)中，诗笺为 `408×438`、阅读为 `576×729`，重启后阅读 `640×640` 位于单屏 `1920×1032` 工作区内；托盘图标 `InvokePattern` 找回并取焦，7/7 UIA 调用均完成。该测试无截图，位置为原生窗口 API 实测，尺寸变化仍由 `MoveWindow` 合成而非物理拖动。另用临时 WinForms 输入框明确保持前台完成[自动启动焦点复测](./evidence/T04_NATIVE_WINDOW_FOCUS_RING_AUTOSTART_INPUT_RECHECK_20261019.json)：产品显示但未抢焦，1 秒后输入框仍聚焦。所有测试使用临时资料，未改真实自启动、显示设置或用户资料。这里仅补当前哈希、本机 96 DPI 子项；真实多屏、其他缩放、鼠标拖动、真人托盘点击和长期稳定性仍未验，A4 **部分通过**。
+
+2026-10-19 在规则 `1.2.4` 内部候选 `.work/redesign-recommendation-124-20261019/release/weatherpoem.exe`（SHA-256 `3759CE59650FDB6681FA55BAD25542F3DA501D22B4832A40ECE3F4ED931712A4`）重新复核当前窗口链路。使用 `pwsh.exe -NoProfile -File scripts/test-redesign-native-window.ps1`，脚本 SHA-256 记在各自报告中；仅使用临时资料，报告路径均为新路径，未覆盖旧证据。
+
+- [自动焦点报告](./evidence/T04_NATIVE_AUTOSTART_FOCUS_RULE124_20261019.json)：隔离 WinForms 输入框先取得前台，WeatherPoem 以 `--autostart` 自动显示；显示后及一秒后仍为同一前台窗口句柄，输入框在两次观察中保持聚焦，结果 `autostart-preserved-focus`。报告中的 EXE SHA-256 与文件现场复算一致。
+- [手动窗口状态报告](./evidence/T04_NATIVE_WINDOW_RULE124_20261019.json)：手动启动诗笺为 `408×372`、阅读窗为 `576×729`；以 Win32 `MoveWindow` 调至 `640×640` 后返回诗笺，再展开恢复 `640×640`。收起后产品进程存活；准确且可见的 WeatherPoem 托盘按钮经 UIA `InvokePattern` 找回窗口并取焦；关闭隔离进程后以同一临时资料重启，阅读窗仍为 `640×640` 且在当前工作区内。报告中的 EXE SHA-256 与文件现场复算一致。
+
+该轮 `-SkipScreenshots`，没有新视觉截图；程序化尺寸改变不等于鼠标拖边，程序化托盘调用不等于真人点击。报告仅覆盖当前 Windows 会话、单屏和当下 DPI，未复核同哈希诗笺/阅读切换时推荐计数与收藏是否不重置，也未做真实连续输入、演示/游戏、Windows 10、多屏混合 DPI或长时稳定性；A4 继续**部分通过**。
