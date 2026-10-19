@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.0",
-  "baselineVersion": "2026.10-accessibility-v2",
+  "baselineVersion": "2026.10-accessibility-v3",
   "status": "automatic-baseline-ready-awaiting-manual-system-test",
   "target": {
     "platform": "Windows 11",
@@ -20,6 +20,25 @@
       "implementation": "src/composables/useInitialFocus.ts",
       "test": "src/composables/useInitialFocus.test.ts",
       "includesDailyCard": true
+    },
+    "keyboardNavigation": {
+      "status": "passed",
+      "test": "scripts/test-redesign-native-poem-layout.mjs --verify-keyboard-navigation",
+      "evidence": "redesign/evidence/T06_NATIVE_GLANCE_CANDIDATE_KEYBOARD_FOCUS_RING_20261019.json",
+      "darkThemeEvidence": "redesign/evidence/T06_NATIVE_GLANCE_CANDIDATE_KEYBOARD_FOCUS_DARK_20261019.json",
+      "preFixFailureEvidence": "redesign/evidence/T06_NATIVE_GLANCE_CANDIDATE_KEYBOARD_FOCUS_RED_20261019.json",
+      "themes": ["light", "dark"],
+      "tabStops": [
+        "返回诗笺",
+        "收藏",
+        "排版切换",
+        "可滚动竖排诗文",
+        "放回它的时代",
+        "放进今天"
+      ],
+      "explicitFocusIndicator": true,
+      "detailsKeyboardActivation": true,
+      "limitation": "CDP 合成按键不替代实体键盘或屏幕阅读器验收。"
     },
     "screenReaderSemantics": {
       "status": "passed",

@@ -19,6 +19,8 @@ const requireOverflow = process.argv.includes("--require-overflow");
 const verifyRestart = process.argv.includes("--verify-restart");
 const exerciseFontSetting = process.argv.includes("--exercise-font-setting");
 const exerciseGlanceSize = process.argv.includes("--exercise-glance-size");
+const verifyKeyboardNavigation = process.argv.includes("--verify-keyboard-navigation");
+const theme = process.argv.find((argument) => argument.startsWith("--theme="))?.slice("--theme=".length) ?? "light";
 const fontSettingLayout = process.argv.find((argument) => argument.startsWith("--font-setting-layout="))?.slice("--font-setting-layout=".length) ?? "vertical";
 const fontSize = process.argv.find((argument) => argument.startsWith("--font-size="))?.slice("--font-size=".length) ?? "large";
 const candidateRoot = path.join(root, ".work") + path.sep;
@@ -29,6 +31,7 @@ assert.ok(reportPath.toLowerCase().startsWith(evidenceRoot.toLowerCase()) && rep
 assert.ok(!existsSync(reportPath), "Refusing to overwrite layout evidence");
 assert.ok(/^[a-z0-9-]+$/.test(poemId), "Specify one catalog poem ID");
 assert.ok(["small", "medium", "large"].includes(fontSize), "Use a supported poem font size");
+assert.ok(["light", "dark"].includes(theme), "Use a supported theme");
 assert.ok(!exerciseFontSetting || verifyRestart, "The settings journey must include a same-profile restart");
 assert.ok(!exerciseGlanceSize || verifyRestart, "Glance size verification must include a same-profile restart");
 assert.ok(["horizontal", "vertical"].includes(fontSettingLayout), "Use a supported font-setting layout");
@@ -51,9 +54,9 @@ const report = {
   candidate: { path: path.relative(root, candidate).replaceAll(path.sep, "/"), sha256: createHash("sha256").update(readFileSync(candidate)).digest("hex").toUpperCase() },
   isolation: { temporaryProfile: true, realUserDataTouched: false, systemClockChanged: false, systemDisplaySettingsChanged: false, installedOrUninstalled: false },
   catalog: { poemId, title: poem.title, localDate, contentVersion: CONTENT_VERSION, ruleVersion: RULE_VERSION },
-  setup: { layout: "vertical", fontSize, theme: "light", weather: "offline-rules", exerciseFontSetting, exerciseGlanceSize, fontSettingLayout: exerciseFontSetting ? fontSettingLayout : null },
+  setup: { layout: "vertical", fontSize, theme, weather: "offline-rules", exerciseFontSetting, exerciseGlanceSize, verifyKeyboardNavigation, fontSettingLayout: exerciseFontSetting ? fontSettingLayout : null },
   observations: {},
-  limitations: ["WebView2 page and the current display only; CDP keys are not a human screen-reader or mixed-DPI test.", "The catalog poem is preselected only in the temporary SQLite profile, not by the live recommendation algorithm."],
+  limitations: ["WebView2 page and the current display only; CDP keys are synthetic and do not replace physical-keyboard, screen-reader, or mixed-DPI testing.", "The catalog poem is preselected only in the temporary SQLite profile, not by the live recommendation algorithm."],
   result: "in-progress",
 };
 let child;
@@ -162,6 +165,34 @@ async function readingState() {
   })()`);
 }
 
+async function focusedElementState() {
+  return evaluate(`(() => {
+    const element = document.activeElement;
+    const style = element ? getComputedStyle(element) : null;
+    return {
+      tagName: element?.tagName ?? null,
+      className: typeof element?.className === "string" ? element.className : "",
+      role: element?.getAttribute("role") ?? null,
+      label: element?.getAttribute("aria-label") ?? null,
+      text: element?.innerText?.trim() ?? "",
+      tabIndex: element?.tabIndex ?? null,
+      focusVisible: element?.matches(":focus-visible") ?? false,
+      outlineStyle: style?.outlineStyle ?? null,
+      outlineWidth: style?.outlineWidth ?? null,
+      outlineColor: style?.outlineColor ?? null,
+    };
+  })()`);
+}
+
+async function pressKey(key, code, windowsVirtualKeyCode, modifiers = 0) {
+  await send("Input.dispatchKeyEvent", {
+    type: "keyDown", key, code, windowsVirtualKeyCode, modifiers,
+  });
+  await send("Input.dispatchKeyEvent", {
+    type: "keyUp", key, code, windowsVirtualKeyCode, modifiers,
+  });
+}
+
 async function connectToWebview(port) {
   let target;
   await waitFor(async () => {
@@ -193,7 +224,7 @@ try {
   const database = new DatabaseSync(resolvePerformanceDatabasePath(profile));
   try {
     const settings = JSON.parse(database.prepare("SELECT value FROM app_kv WHERE key = 'settings'").get().value);
-    Object.assign(settings, { theme: "light", poemLayout: "vertical", poemFontSize: fontSize });
+    Object.assign(settings, { theme, poemLayout: "vertical", poemFontSize: fontSize });
     database.prepare("UPDATE app_kv SET value = ? WHERE key = 'settings'").run(JSON.stringify(settings));
     database.exec("CREATE TABLE daily_state (local_date TEXT PRIMARY KEY NOT NULL, state TEXT NOT NULL, work_id TEXT, shown_at TEXT, content_version TEXT NOT NULL, rule_version TEXT NOT NULL)");
     database.prepare("INSERT INTO daily_state (local_date, state, work_id, shown_at, content_version, rule_version) VALUES (?, 'shown', ?, ?, ?, ?)")
@@ -263,6 +294,43 @@ try {
   assert.ok(initial.panelScrollWidth <= initial.panelClientWidth + 1, "Reading panel overflowed horizontally");
   if (requireOverflow) assert.ok(initial.frameScrollWidth > initial.frameClientWidth + 1, "Expected long vertical poem to require horizontal scrolling");
   report.observations.readingScreenshot = await screenshot("reading_vertical");
+
+  if (verifyKeyboardNavigation) {
+    const keyboard = { initialFocus: null, steps: [], openedDetails: [] };
+    report.observations.keyboardNavigation = keyboard;
+    await waitFor(() => evaluate("document.activeElement?.matches('.reading-panel')"), "reading route initial focus");
+    keyboard.initialFocus = await focusedElementState();
+    assert.equal(keyboard.initialFocus.className, "reading-panel", "Reading route did not receive initial focus");
+    const tabStops = [
+      { selector: ".reading-panel .back-button", label: "返回诗笺" },
+      { selector: ".reading-panel .icon-button[aria-pressed]", label: "收藏" },
+      { selector: ".reading-layout-action button", label: "排版切换" },
+      { selector: ".reading-poem-frame[tabindex='0']", label: "可滚动竖排诗文" },
+      { selector: ".reading-section summary", label: "放回它的时代" },
+      { selector: ".reading-section:nth-of-type(2) summary", label: "放进今天" },
+    ];
+    for (const stop of tabStops) {
+      await pressKey("Tab", "Tab", 9);
+      await waitFor(
+        () => evaluate(`document.activeElement?.matches(${JSON.stringify(stop.selector)})`),
+        `keyboard Tab to ${stop.label}`,
+      );
+      const active = { expected: stop.label, ...(await focusedElementState()) };
+      keyboard.steps.push(active);
+      assert.equal(active.focusVisible, true, `Keyboard focus was not visible at ${stop.label}`);
+      assert.equal(active.outlineStyle, "solid", `Focus outline style was not explicit at ${stop.label}`);
+      assert.ok(Number.parseFloat(active.outlineWidth) >= 2, `Focus outline was too thin at ${stop.label}`);
+      if (stop.label === "放回它的时代" || stop.label === "放进今天") {
+        if (stop.label === "放回它的时代") {
+          keyboard.focusedSummaryScreenshot = await screenshot("keyboard_focus_summary");
+        }
+        await pressKey(" ", "Space", 32);
+        const open = await evaluate(`document.querySelector(${JSON.stringify(stop.selector)})?.closest('details')?.open`);
+        keyboard.openedDetails.push({ label: stop.label, open });
+        assert.equal(open, true, `Space did not expand ${stop.label}`);
+      }
+    }
+  }
 
   if (initial.frameScrollWidth > initial.frameClientWidth + 1) {
     await evaluate("document.querySelector('.reading-poem-frame').focus()");

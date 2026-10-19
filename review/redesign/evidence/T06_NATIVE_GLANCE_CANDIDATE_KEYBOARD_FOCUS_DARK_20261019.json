@@ -1,0 +1,276 @@
+{
+  "schemaVersion": "1.0",
+  "testKind": "isolated-native-webview2-poem-layout",
+  "generatedAt": "2026-10-19T08:15:22.522Z",
+  "candidate": {
+    "path": ".work/redesign-accessibility-focus-ring-20261019/release/weatherpoem.exe",
+    "sha256": "7BFC5F340E992D15D95BE56DAF0C356A7BA261C0B9A8B3BF795B59E5310FF627"
+  },
+  "isolation": {
+    "temporaryProfile": true,
+    "realUserDataTouched": false,
+    "systemClockChanged": false,
+    "systemDisplaySettingsChanged": false,
+    "installedOrUninstalled": false
+  },
+  "catalog": {
+    "poemId": "su-shi-shui-diao-ge-tou",
+    "title": "水调歌头·明月几时有",
+    "localDate": "2026-10-19",
+    "contentVersion": "2026.07.1",
+    "ruleVersion": "1.2.3"
+  },
+  "setup": {
+    "layout": "vertical",
+    "fontSize": "large",
+    "theme": "dark",
+    "weather": "offline-rules",
+    "exerciseFontSetting": false,
+    "exerciseGlanceSize": false,
+    "verifyKeyboardNavigation": true,
+    "fontSettingLayout": null
+  },
+  "observations": {
+    "readyMarker": {
+      "schemaVersion": "1.2",
+      "runId": "0168662e1b8a4a21aea8bfbf3d82e998",
+      "appVersion": "0.2.0",
+      "processId": 22608,
+      "nativeReadyMs": 548.5773,
+      "frontendReadyMs": 288.09999999962747,
+      "readyView": "poem",
+      "readyMode": "offline-rules",
+      "viewRenderMs": 112.70000000018626,
+      "performanceScenario": "weather-offline",
+      "sceneMotion": {
+        "sceneKind": "season",
+        "appReduced": false,
+        "systemReduced": false,
+        "sceneActive": true,
+        "visibilityState": "visible",
+        "animationName": "none",
+        "animationDuration": "0s",
+        "animationIterationCount": "1"
+      },
+      "recordedAtUnixMs": 1792397723126
+    },
+    "glance": {
+      "title": "水调歌头·明月几时有",
+      "text": "但愿人长久千里共婵娟",
+      "vertical": true,
+      "fontSize": "large",
+      "fallbackNote": null,
+      "documentOverflow": false,
+      "actionsInScrollRegion": true,
+      "paperWidth": 362,
+      "viewport": {
+        "width": 392,
+        "height": 448
+      }
+    },
+    "glanceScreenshot": "review/redesign/evidence/T06_NATIVE_GLANCE_CANDIDATE_KEYBOARD_FOCUS_DARK_20261019_glance.png",
+    "readingInitial": {
+      "title": "水调歌头·明月几时有",
+      "text": "明月几时有？把酒问青天。不知天上宫阙，今夕是何年。我欲乘风归去，又恐琼楼玉宇，高处不胜寒。起舞弄清影，何似在人间。转朱阁，低绮户，照无眠。不应有恨，何事长向别时圆？人有悲欢离合，月有阴晴圆缺，此事古难全。但愿人长久，千里共婵娟。",
+      "vertical": true,
+      "writingMode": "vertical-rl",
+      "fontSize": "large",
+      "frameClientWidth": 483,
+      "frameScrollWidth": 716,
+      "frameScrollLeft": 0,
+      "frameTabIndex": 0,
+      "panelScrollWidth": 551,
+      "panelClientWidth": 551,
+      "backVisible": true,
+      "sourcePresent": true,
+      "viewport": {
+        "width": 560,
+        "height": 720
+      }
+    },
+    "readingScreenshot": "review/redesign/evidence/T06_NATIVE_GLANCE_CANDIDATE_KEYBOARD_FOCUS_DARK_20261019_reading_vertical.png",
+    "keyboardNavigation": {
+      "initialFocus": {
+        "tagName": "MAIN",
+        "className": "reading-panel",
+        "role": null,
+        "label": null,
+        "text": "今日诗笺\n\n宋 · 词\n\n水调歌头·明月几时有\n\n苏轼\n\n横排阅读\n\n明月几时有？\n\n把酒问青天。\n\n不知天上宫阙，\n\n今夕是何年。\n\n我欲乘风归去，\n\n又恐琼楼玉宇，\n\n高处不胜寒。\n\n起舞弄清影，\n\n何似在人间。\n\n转朱阁，\n\n低绮户，\n\n照无眠。\n\n不应有恨，\n\n何事长向别时圆？\n\n人有悲欢离合，\n\n月有阴晴圆缺，\n\n此事古难全。\n\n但愿人长久，\n\n千里共婵娟。\n\n放回它的时代\n放进今天\n词句小注\n\n文本来源：《东坡乐府》",
+        "tabIndex": -1,
+        "focusVisible": true,
+        "outlineStyle": "none",
+        "outlineWidth": "3px",
+        "outlineColor": "rgb(238, 232, 221)"
+      },
+      "steps": [
+        {
+          "expected": "返回诗笺",
+          "tagName": "BUTTON",
+          "className": "back-button",
+          "role": null,
+          "label": null,
+          "text": "今日诗笺",
+          "tabIndex": 0,
+          "focusVisible": true,
+          "outlineStyle": "solid",
+          "outlineWidth": "2px",
+          "outlineColor": "rgb(211, 145, 124)"
+        },
+        {
+          "expected": "收藏",
+          "tagName": "BUTTON",
+          "className": "icon-button",
+          "role": null,
+          "label": "收藏",
+          "text": "",
+          "tabIndex": 0,
+          "focusVisible": true,
+          "outlineStyle": "solid",
+          "outlineWidth": "2px",
+          "outlineColor": "rgb(211, 145, 124)"
+        },
+        {
+          "expected": "排版切换",
+          "tagName": "BUTTON",
+          "className": "",
+          "role": null,
+          "label": "改为横排诗句",
+          "text": "横排阅读",
+          "tabIndex": 0,
+          "focusVisible": true,
+          "outlineStyle": "solid",
+          "outlineWidth": "2px",
+          "outlineColor": "rgb(211, 145, 124)"
+        },
+        {
+          "expected": "可滚动竖排诗文",
+          "tagName": "DIV",
+          "className": "reading-poem-frame is-vertical",
+          "role": "region",
+          "label": "竖排诗文，可左右滚动",
+          "text": "明月几时有？\n\n把酒问青天。\n\n不知天上宫阙，\n\n今夕是何年。\n\n我欲乘风归去，\n\n又恐琼楼玉宇，\n\n高处不胜寒。\n\n起舞弄清影，\n\n何似在人间。\n\n转朱阁，\n\n低绮户，\n\n照无眠。\n\n不应有恨，\n\n何事长向别时圆？\n\n人有悲欢离合，\n\n月有阴晴圆缺，\n\n此事古难全。\n\n但愿人长久，\n\n千里共婵娟。",
+          "tabIndex": 0,
+          "focusVisible": true,
+          "outlineStyle": "solid",
+          "outlineWidth": "2px",
+          "outlineColor": "rgb(211, 145, 124)"
+        },
+        {
+          "expected": "放回它的时代",
+          "tagName": "SUMMARY",
+          "className": "",
+          "role": null,
+          "label": null,
+          "text": "放回它的时代",
+          "tabIndex": 0,
+          "focusVisible": true,
+          "outlineStyle": "solid",
+          "outlineWidth": "2px",
+          "outlineColor": "rgb(211, 145, 124)"
+        },
+        {
+          "expected": "放进今天",
+          "tagName": "SUMMARY",
+          "className": "",
+          "role": null,
+          "label": null,
+          "text": "放进今天",
+          "tabIndex": 0,
+          "focusVisible": true,
+          "outlineStyle": "solid",
+          "outlineWidth": "2px",
+          "outlineColor": "rgb(211, 145, 124)"
+        }
+      ],
+      "openedDetails": [
+        {
+          "label": "放回它的时代",
+          "open": true
+        },
+        {
+          "label": "放进今天",
+          "open": true
+        }
+      ],
+      "focusedSummaryScreenshot": "review/redesign/evidence/T06_NATIVE_GLANCE_CANDIDATE_KEYBOARD_FOCUS_DARK_20261019_keyboard_focus_summary.png"
+    },
+    "readingAfterKeyboard": {
+      "title": "水调歌头·明月几时有",
+      "text": "明月几时有？把酒问青天。不知天上宫阙，今夕是何年。我欲乘风归去，又恐琼楼玉宇，高处不胜寒。起舞弄清影，何似在人间。转朱阁，低绮户，照无眠。不应有恨，何事长向别时圆？人有悲欢离合，月有阴晴圆缺，此事古难全。但愿人长久，千里共婵娟。",
+      "vertical": true,
+      "writingMode": "vertical-rl",
+      "fontSize": "large",
+      "frameClientWidth": 483,
+      "frameScrollWidth": 716,
+      "frameScrollLeft": -233,
+      "frameTabIndex": 0,
+      "panelScrollWidth": 551,
+      "panelClientWidth": 551,
+      "backVisible": true,
+      "sourcePresent": true,
+      "viewport": {
+        "width": 560,
+        "height": 720
+      }
+    },
+    "readingHorizontal": {
+      "title": "水调歌头·明月几时有",
+      "text": "明月几时有？把酒问青天。不知天上宫阙，今夕是何年。我欲乘风归去，又恐琼楼玉宇，高处不胜寒。起舞弄清影，何似在人间。转朱阁，低绮户，照无眠。不应有恨，何事长向别时圆？人有悲欢离合，月有阴晴圆缺，此事古难全。但愿人长久，千里共婵娟。",
+      "vertical": false,
+      "writingMode": "horizontal-tb",
+      "fontSize": "large",
+      "frameClientWidth": 483,
+      "frameScrollWidth": 483,
+      "frameScrollLeft": 0,
+      "frameTabIndex": -1,
+      "panelScrollWidth": 551,
+      "panelClientWidth": 551,
+      "backVisible": true,
+      "sourcePresent": true,
+      "viewport": {
+        "width": 560,
+        "height": 720
+      }
+    },
+    "sqliteLayoutAfterSwitch": "horizontal",
+    "returnedGlance": {
+      "title": "水调歌头·明月几时有",
+      "vertical": false
+    },
+    "restartReadyMarker": {
+      "schemaVersion": "1.2",
+      "runId": "e3fd64dab82b44b7a3ad5f37be677fbb",
+      "appVersion": "0.2.0",
+      "processId": 40264,
+      "nativeReadyMs": 537.554,
+      "frontendReadyMs": 279.3999999994412,
+      "readyView": "poem",
+      "readyMode": "offline-rules",
+      "viewRenderMs": 96.09999999962749,
+      "performanceScenario": "weather-offline",
+      "sceneMotion": {
+        "sceneKind": "season",
+        "appReduced": false,
+        "systemReduced": false,
+        "sceneActive": true,
+        "visibilityState": "visible",
+        "animationName": "none",
+        "animationDuration": "0s",
+        "animationIterationCount": "1"
+      },
+      "recordedAtUnixMs": 1792397725059
+    },
+    "restartGlance": {
+      "title": "水调歌头·明月几时有",
+      "text": "但愿人长久千里共婵娟",
+      "vertical": false,
+      "fontSize": "large"
+    },
+    "restartScreenshot": "review/redesign/evidence/T06_NATIVE_GLANCE_CANDIDATE_KEYBOARD_FOCUS_DARK_20261019_restart_horizontal.png"
+  },
+  "limitations": [
+    "WebView2 page and the current display only; CDP keys are synthetic and do not replace physical-keyboard, screen-reader, or mixed-DPI testing.",
+    "The catalog poem is preselected only in the temporary SQLite profile, not by the live recommendation algorithm."
+  ],
+  "result": "native-layout-reading-scroll-and-restart-passed"
+}

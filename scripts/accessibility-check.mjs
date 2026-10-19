@@ -23,6 +23,7 @@ for (const token of [
   "@media (prefers-contrast: more)",
   "@media (prefers-reduced-motion: reduce)",
   ':root[data-motion="reduced"]',
+  "summary:focus-visible",
   "@media (max-width: 300px)",
   "grid-template-rows: auto minmax(0, 1fr)",
 ]) {
@@ -30,6 +31,13 @@ for (const token of [
 }
 if (/min-width:\s*360px/.test(css) || /min-height:\s*560px/.test(css)) {
   throw new Error("固定最小视口会破坏 200% 缩放回流");
+}
+if ((css.match(/summary:focus-visible,/gu) ?? []).length !== 2) {
+  throw new Error("折叠说明必须同时覆盖普通与强制颜色下的键盘焦点");
+}
+if (!css.includes("outline: 2px solid var(--accent)") ||
+    !css.includes("outline: 3px solid Highlight")) {
+  throw new Error("键盘焦点环须适配普通主题和 Windows 强制颜色主题");
 }
 for (const pair of plan.automaticBaseline.contrast.pairs) {
   for (const color of [pair.foreground, pair.background]) {

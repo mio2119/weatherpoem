@@ -38,6 +38,15 @@ test("诗境叠色检查不能从自动基线中移除", () => {
   );
 });
 
+test("键盘导航基线必须保留明确焦点指示和合成输入限制", () => {
+  const invalid = fixture();
+  invalid.automaticBaseline.keyboardNavigation.darkThemeEvidence = "";
+  assert.throws(
+    () => validateAccessibilityPlan(invalid),
+    /原生键盘路径必须记录/,
+  );
+});
+
 test("不能用计划文件冒充真实辅助技术验收", () => {
   const fakePass = fixture();
   fakePass.manualSystemTests[0].status = "passed";

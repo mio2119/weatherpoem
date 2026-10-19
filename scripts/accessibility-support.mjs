@@ -39,7 +39,7 @@ export function contrastRatio(foreground, background) {
 export function validateAccessibilityPlan(plan) {
   assert(plan.schemaVersion === "1.0", "可访问性计划 Schema 不匹配");
   assert(
-    plan.baselineVersion === "2026.10-accessibility-v2",
+    plan.baselineVersion === "2026.10-accessibility-v3",
     "可访问性基线版本不匹配",
   );
   assert(
@@ -72,6 +72,19 @@ export function validateAccessibilityPlan(plan) {
   assert(
     plan.automaticBaseline.routeFocus.includesDailyCard === true,
     "首次设置完成后必须把焦点交给今日诗笺",
+  );
+  const keyboardNavigation = plan.automaticBaseline.keyboardNavigation;
+  assert(
+    keyboardNavigation?.status === "passed" &&
+      keyboardNavigation.explicitFocusIndicator === true &&
+      keyboardNavigation.detailsKeyboardActivation === true &&
+      keyboardNavigation.tabStops.length >= 6 &&
+      keyboardNavigation.evidence.includes("KEYBOARD_FOCUS_RING") &&
+      JSON.stringify(keyboardNavigation.themes) === JSON.stringify(["light", "dark"]) &&
+      keyboardNavigation.preFixFailureEvidence.includes("KEYBOARD_FOCUS_RED") &&
+      keyboardNavigation.darkThemeEvidence.includes("KEYBOARD_FOCUS_DARK") &&
+      keyboardNavigation.limitation.includes("不替代"),
+    "原生键盘路径必须记录焦点指示、折叠项操作及合成输入限制",
   );
   assert(
     plan.automaticBaseline.highContrastCss.forcedColorsMediaQuery ===
