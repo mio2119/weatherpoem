@@ -52,6 +52,7 @@ const report = {
   testKind: "isolated-native-webview2-poem-layout",
   generatedAt: new Date().toISOString(),
   candidate: { path: path.relative(root, candidate).replaceAll(path.sep, "/"), sha256: createHash("sha256").update(readFileSync(candidate)).digest("hex").toUpperCase() },
+  testHarness: { path: "scripts/test-redesign-native-poem-layout.mjs", sha256: createHash("sha256").update(readFileSync(fileURLToPath(import.meta.url))).digest("hex").toUpperCase() },
   isolation: { temporaryProfile: true, realUserDataTouched: false, systemClockChanged: false, systemDisplaySettingsChanged: false, installedOrUninstalled: false },
   catalog: { poemId, title: poem.title, localDate, contentVersion: CONTENT_VERSION, ruleVersion: RULE_VERSION },
   setup: { layout: "vertical", fontSize, theme, weather: "offline-rules", exerciseFontSetting, exerciseGlanceSize, verifyKeyboardNavigation, fontSettingLayout: exerciseFontSetting ? fontSettingLayout : null },
@@ -112,22 +113,31 @@ async function screenshot(label, expectedWidth) {
 async function waitForStableGlanceViewport(targetWidth, label) {
   let stableSince = 0;
   let previous = "";
-  await waitFor(async () => {
-    const state = await evaluate(`(() => ({ width: innerWidth, height: innerHeight,
-      card: Boolean(document.querySelector('.poem-view')),
-      toast: Boolean(document.querySelector('.toast-message')) }))()`);
-    if (!state.card || state.toast || Math.abs(state.width - targetWidth) > 2) {
-      stableSince = 0;
-      previous = "";
-      return false;
-    }
-    const key = `${state.width}x${state.height}`;
-    if (key !== previous) {
-      previous = key;
-      stableSince = Date.now();
-    }
-    return Date.now() - stableSince >= 450;
-  }, label);
+  let lastState;
+  let samples = 0;
+  try {
+    await waitFor(async () => {
+      const state = await evaluate(`(() => ({ width: innerWidth, height: innerHeight,
+        card: Boolean(document.querySelector('.poem-view')),
+        toast: Boolean(document.querySelector('.toast-message')) }))()`);
+      lastState = state;
+      samples += 1;
+      if (!state.card || state.toast || Math.abs(state.width - targetWidth) > 2) {
+        stableSince = 0;
+        previous = "";
+        return false;
+      }
+      const key = `${state.width}x${state.height}`;
+      if (key !== previous) {
+        previous = key;
+        stableSince = Date.now();
+      }
+      return Date.now() - stableSince >= 450;
+    }, label);
+  } catch (error) {
+    report.observations.viewportWaitFailure = { targetWidth, label, samples, lastState };
+    throw new Error(`${error.message}; last viewport after ${samples} samples: ${JSON.stringify(lastState)}`);
+  }
 }
 
 async function nativeWindowSizes() {
@@ -508,7 +518,7 @@ try {
       report.observations.restartGlance.viewportWidth = await evaluate("innerWidth");
       assert.ok(Math.abs(report.observations.restartGlance.viewportWidth - 520) <= 2, "Saved large glance width was not restored");
     }
-    report.observations.restartScreenshot = await screenshot("restart_horizontal");
+    report.observations.restartScreenshot = await screenshot(`restart_${report.observations.restartGlance.vertical ? "vertical" : "horizontal"}`);
   }
   report.result = exerciseGlanceSize
     ? "native-glance-size-setting-and-restart-passed"

@@ -1,0 +1,575 @@
+{
+  "schemaVersion": "1.0",
+  "testKind": "isolated-native-webview2-poem-layout",
+  "generatedAt": "2026-10-19T10:18:25.171Z",
+  "candidate": {
+    "path": ".work/redesign-recommendation-124-20261019/release/weatherpoem.exe",
+    "sha256": "3759CE59650FDB6681FA55BAD25542F3DA501D22B4832A40ECE3F4ED931712A4"
+  },
+  "isolation": {
+    "temporaryProfile": true,
+    "realUserDataTouched": false,
+    "systemClockChanged": false,
+    "systemDisplaySettingsChanged": false,
+    "installedOrUninstalled": false
+  },
+  "catalog": {
+    "poemId": "su-shi-shui-diao-ge-tou",
+    "title": "水调歌头·明月几时有",
+    "localDate": "2026-10-19",
+    "contentVersion": "2026.07.1",
+    "ruleVersion": "1.2.4"
+  },
+  "setup": {
+    "layout": "vertical",
+    "fontSize": "large",
+    "theme": "light",
+    "weather": "offline-rules",
+    "exerciseFontSetting": true,
+    "exerciseGlanceSize": true,
+    "verifyKeyboardNavigation": false,
+    "fontSettingLayout": "vertical"
+  },
+  "observations": {
+    "readyMarker": {
+      "schemaVersion": "1.2",
+      "runId": "790a2a3a36bb45599f91349ef797090e",
+      "appVersion": "0.2.0",
+      "processId": 42548,
+      "nativeReadyMs": 617.5182,
+      "frontendReadyMs": 335.1000000014901,
+      "readyView": "poem",
+      "readyMode": "offline-rules",
+      "viewRenderMs": 122.30000000074506,
+      "performanceScenario": "weather-offline",
+      "sceneMotion": {
+        "sceneKind": "season",
+        "appReduced": false,
+        "systemReduced": false,
+        "sceneActive": true,
+        "visibilityState": "visible",
+        "animationName": "none",
+        "animationDuration": "0s",
+        "animationIterationCount": "1"
+      },
+      "recordedAtUnixMs": 1792405105847
+    },
+    "glance": {
+      "title": "水调歌头·明月几时有",
+      "text": "但愿人长久千里共婵娟",
+      "vertical": true,
+      "fontSize": "large",
+      "fallbackNote": null,
+      "documentOverflow": false,
+      "actionsInScrollRegion": true,
+      "paperWidth": 362,
+      "viewport": {
+        "width": 392,
+        "height": 448
+      }
+    },
+    "glanceScreenshot": "review/redesign/evidence/T06_NATIVE_GLANCE_RULE124_LONG_POEM_20261019_glance.png",
+    "readingInitial": {
+      "title": "水调歌头·明月几时有",
+      "text": "明月几时有？把酒问青天。不知天上宫阙，今夕是何年。我欲乘风归去，又恐琼楼玉宇，高处不胜寒。起舞弄清影，何似在人间。转朱阁，低绮户，照无眠。不应有恨，何事长向别时圆？人有悲欢离合，月有阴晴圆缺，此事古难全。但愿人长久，千里共婵娟。",
+      "vertical": true,
+      "writingMode": "vertical-rl",
+      "fontSize": "large",
+      "frameClientWidth": 483,
+      "frameScrollWidth": 716,
+      "frameScrollLeft": 0,
+      "frameTabIndex": 0,
+      "panelScrollWidth": 551,
+      "panelClientWidth": 551,
+      "backVisible": true,
+      "sourcePresent": true,
+      "viewport": {
+        "width": 560,
+        "height": 720
+      }
+    },
+    "readingScreenshot": "review/redesign/evidence/T06_NATIVE_GLANCE_RULE124_LONG_POEM_20261019_reading_vertical.png",
+    "readingAfterKeyboard": {
+      "title": "水调歌头·明月几时有",
+      "text": "明月几时有？把酒问青天。不知天上宫阙，今夕是何年。我欲乘风归去，又恐琼楼玉宇，高处不胜寒。起舞弄清影，何似在人间。转朱阁，低绮户，照无眠。不应有恨，何事长向别时圆？人有悲欢离合，月有阴晴圆缺，此事古难全。但愿人长久，千里共婵娟。",
+      "vertical": true,
+      "writingMode": "vertical-rl",
+      "fontSize": "large",
+      "frameClientWidth": 483,
+      "frameScrollWidth": 716,
+      "frameScrollLeft": -233,
+      "frameTabIndex": 0,
+      "panelScrollWidth": 551,
+      "panelClientWidth": 551,
+      "backVisible": true,
+      "sourcePresent": true,
+      "viewport": {
+        "width": 560,
+        "height": 720
+      }
+    },
+    "readingHorizontal": {
+      "title": "水调歌头·明月几时有",
+      "text": "明月几时有？把酒问青天。不知天上宫阙，今夕是何年。我欲乘风归去，又恐琼楼玉宇，高处不胜寒。起舞弄清影，何似在人间。转朱阁，低绮户，照无眠。不应有恨，何事长向别时圆？人有悲欢离合，月有阴晴圆缺，此事古难全。但愿人长久，千里共婵娟。",
+      "vertical": false,
+      "writingMode": "horizontal-tb",
+      "fontSize": "large",
+      "frameClientWidth": 483,
+      "frameScrollWidth": 483,
+      "frameScrollLeft": 0,
+      "frameTabIndex": -1,
+      "panelScrollWidth": 551,
+      "panelClientWidth": 551,
+      "backVisible": true,
+      "sourcePresent": true,
+      "viewport": {
+        "width": 560,
+        "height": 720
+      }
+    },
+    "sqliteLayoutAfterSwitch": "horizontal",
+    "returnedGlance": {
+      "title": "水调歌头·明月几时有",
+      "vertical": false
+    },
+    "glanceSizeJourney": [
+      {
+        "selectedSize": "small",
+        "geometry": {
+          "title": "水调歌头·明月几时有",
+          "poemFontSize": "large",
+          "width": 392,
+          "height": 353,
+          "documentOverflow": false,
+          "actionReachable": true,
+          "viewScrollHeight": 293,
+          "viewClientHeight": 293
+        },
+        "nativeWindow": {
+          "inner": {
+            "width": 392,
+            "height": 353
+          },
+          "outer": {
+            "width": 408,
+            "height": 362
+          },
+          "monitor": {
+            "name": "\\\\.\\DISPLAY5",
+            "size": {
+              "width": 1920,
+              "height": 1080
+            },
+            "position": {
+              "x": 0,
+              "y": 0
+            },
+            "workArea": {
+              "position": {
+                "x": 0,
+                "y": 0
+              },
+              "size": {
+                "width": 1920,
+                "height": 1032
+              }
+            },
+            "scaleFactor": 1
+          },
+          "viewport": {
+            "width": 392,
+            "height": 353,
+            "clientWidth": 392
+          }
+        },
+        "screenshot": "review/redesign/evidence/T06_NATIVE_GLANCE_RULE124_LONG_POEM_20261019_glance_small.png"
+      },
+      {
+        "selectedSize": "medium",
+        "geometry": {
+          "title": "水调歌头·明月几时有",
+          "poemFontSize": "large",
+          "width": 456,
+          "height": 353,
+          "documentOverflow": false,
+          "actionReachable": true,
+          "viewScrollHeight": 293,
+          "viewClientHeight": 293
+        },
+        "nativeWindow": {
+          "inner": {
+            "width": 456,
+            "height": 353
+          },
+          "outer": {
+            "width": 472,
+            "height": 362
+          },
+          "monitor": {
+            "name": "\\\\.\\DISPLAY5",
+            "size": {
+              "width": 1920,
+              "height": 1080
+            },
+            "position": {
+              "x": 0,
+              "y": 0
+            },
+            "workArea": {
+              "position": {
+                "x": 0,
+                "y": 0
+              },
+              "size": {
+                "width": 1920,
+                "height": 1032
+              }
+            },
+            "scaleFactor": 1
+          },
+          "viewport": {
+            "width": 456,
+            "height": 353,
+            "clientWidth": 456
+          }
+        },
+        "screenshot": "review/redesign/evidence/T06_NATIVE_GLANCE_RULE124_LONG_POEM_20261019_glance_medium.png"
+      },
+      {
+        "selectedSize": "large",
+        "geometry": {
+          "title": "水调歌头·明月几时有",
+          "poemFontSize": "large",
+          "width": 520,
+          "height": 353,
+          "documentOverflow": false,
+          "actionReachable": true,
+          "viewScrollHeight": 293,
+          "viewClientHeight": 293
+        },
+        "nativeWindow": {
+          "inner": {
+            "width": 520,
+            "height": 353
+          },
+          "outer": {
+            "width": 536,
+            "height": 362
+          },
+          "monitor": {
+            "name": "\\\\.\\DISPLAY5",
+            "size": {
+              "width": 1920,
+              "height": 1080
+            },
+            "position": {
+              "x": 0,
+              "y": 0
+            },
+            "workArea": {
+              "position": {
+                "x": 0,
+                "y": 0
+              },
+              "size": {
+                "width": 1920,
+                "height": 1032
+              }
+            },
+            "scaleFactor": 1
+          },
+          "viewport": {
+            "width": 520,
+            "height": 353,
+            "clientWidth": 520
+          }
+        },
+        "screenshot": "review/redesign/evidence/T06_NATIVE_GLANCE_RULE124_LONG_POEM_20261019_glance_large.png"
+      }
+    ],
+    "fontSettingJourney": [
+      {
+        "selectedSize": "small",
+        "previous": "large",
+        "settingsAfterSave": {
+          "panel": true,
+          "selected": "small",
+          "layout": "vertical",
+          "notice": "其他设置已保存；隔离测试不会修改系统开机启动。"
+        },
+        "glanceAfterSave": {
+          "title": "水调歌头·明月几时有",
+          "text": "但愿人长久千里共婵娟",
+          "fontSize": "small",
+          "computedPoemFontSize": "19.8px",
+          "vertical": true,
+          "documentOverflow": false
+        },
+        "screenshot": "review/redesign/evidence/T06_NATIVE_GLANCE_RULE124_LONG_POEM_20261019_settings_font_small.png"
+      },
+      {
+        "selectedSize": "medium",
+        "previous": "small",
+        "settingsAfterSave": {
+          "panel": true,
+          "selected": "medium",
+          "layout": "vertical",
+          "notice": "其他设置已保存；隔离测试不会修改系统开机启动。"
+        },
+        "glanceAfterSave": {
+          "title": "水调歌头·明月几时有",
+          "text": "但愿人长久千里共婵娟",
+          "fontSize": "medium",
+          "computedPoemFontSize": "22px",
+          "vertical": true,
+          "documentOverflow": false
+        },
+        "screenshot": "review/redesign/evidence/T06_NATIVE_GLANCE_RULE124_LONG_POEM_20261019_settings_font_medium.png"
+      },
+      {
+        "selectedSize": "large",
+        "previous": "medium",
+        "settingsAfterSave": {
+          "panel": true,
+          "selected": "large",
+          "layout": "vertical",
+          "notice": "其他设置已保存；隔离测试不会修改系统开机启动。"
+        },
+        "glanceAfterSave": {
+          "title": "水调歌头·明月几时有",
+          "text": "但愿人长久千里共婵娟",
+          "fontSize": "large",
+          "computedPoemFontSize": "25.52px",
+          "vertical": true,
+          "documentOverflow": false
+        },
+        "screenshot": "review/redesign/evidence/T06_NATIVE_GLANCE_RULE124_LONG_POEM_20261019_settings_font_large.png"
+      }
+    ],
+    "readingAfterFontSave": {
+      "title": "水调歌头·明月几时有",
+      "text": "明月几时有？把酒问青天。不知天上宫阙，今夕是何年。我欲乘风归去，又恐琼楼玉宇，高处不胜寒。起舞弄清影，何似在人间。转朱阁，低绮户，照无眠。不应有恨，何事长向别时圆？人有悲欢离合，月有阴晴圆缺，此事古难全。但愿人长久，千里共婵娟。",
+      "vertical": true,
+      "writingMode": "vertical-rl",
+      "fontSize": "large",
+      "frameClientWidth": 443,
+      "frameScrollWidth": 716,
+      "frameScrollLeft": 0,
+      "frameTabIndex": 0,
+      "panelScrollWidth": 511,
+      "panelClientWidth": 511,
+      "backVisible": true,
+      "sourcePresent": true,
+      "viewport": {
+        "width": 520,
+        "height": 448
+      }
+    },
+    "readingAfterFontSaveScreenshot": "review/redesign/evidence/T06_NATIVE_GLANCE_RULE124_LONG_POEM_20261019_reading_after_font_save.png",
+    "sqliteSettingsBeforeRestart": {
+      "configured": true,
+      "cityId": "beijing",
+      "autostart": false,
+      "anonymousMetrics": false,
+      "theme": "light",
+      "reduceMotion": false,
+      "poemLayout": "vertical",
+      "poemFontSize": "large",
+      "glanceSize": "large",
+      "readingWindowSize": {
+        "width": 560,
+        "height": 720
+      }
+    },
+    "restartReadyMarker": {
+      "schemaVersion": "1.2",
+      "runId": "f4a62fe7d6e243d3a73e105414fe26a7",
+      "appVersion": "0.2.0",
+      "processId": 35844,
+      "nativeReadyMs": 562.202,
+      "frontendReadyMs": 274.30000000074506,
+      "readyView": "poem",
+      "readyMode": "offline-rules",
+      "viewRenderMs": 107.40000000037251,
+      "performanceScenario": "weather-offline",
+      "sceneMotion": {
+        "sceneKind": "season",
+        "appReduced": false,
+        "systemReduced": false,
+        "sceneActive": true,
+        "visibilityState": "visible",
+        "animationName": "none",
+        "animationDuration": "0s",
+        "animationIterationCount": "1"
+      },
+      "recordedAtUnixMs": 1792405125773
+    },
+    "sqliteSettingsAfterRestart": {
+      "configured": true,
+      "cityId": "beijing",
+      "autostart": false,
+      "anonymousMetrics": false,
+      "theme": "light",
+      "reduceMotion": false,
+      "poemLayout": "vertical",
+      "poemFontSize": "large",
+      "glanceSize": "large",
+      "readingWindowSize": {
+        "width": 560,
+        "height": 720
+      }
+    },
+    "restartViewportSamples": [
+      {
+        "width": 520,
+        "height": 448,
+        "card": true
+      },
+      {
+        "width": 520,
+        "height": 448,
+        "card": true
+      },
+      {
+        "width": 520,
+        "height": 448,
+        "card": true
+      },
+      {
+        "width": 520,
+        "height": 448,
+        "card": true
+      },
+      {
+        "width": 520,
+        "height": 448,
+        "card": true
+      },
+      {
+        "width": 520,
+        "height": 448,
+        "card": true
+      },
+      {
+        "width": 520,
+        "height": 448,
+        "card": true
+      },
+      {
+        "width": 520,
+        "height": 448,
+        "card": true
+      },
+      {
+        "width": 520,
+        "height": 448,
+        "card": true
+      },
+      {
+        "width": 520,
+        "height": 448,
+        "card": true
+      },
+      {
+        "width": 520,
+        "height": 448,
+        "card": true
+      },
+      {
+        "width": 520,
+        "height": 448,
+        "card": true
+      },
+      {
+        "width": 520,
+        "height": 448,
+        "card": true
+      },
+      {
+        "width": 520,
+        "height": 448,
+        "card": true
+      },
+      {
+        "width": 520,
+        "height": 448,
+        "card": true
+      },
+      {
+        "width": 520,
+        "height": 448,
+        "card": true
+      },
+      {
+        "width": 520,
+        "height": 448,
+        "card": true
+      },
+      {
+        "width": 520,
+        "height": 448,
+        "card": true
+      },
+      {
+        "width": 520,
+        "height": 448,
+        "card": true
+      },
+      {
+        "width": 520,
+        "height": 448,
+        "card": true
+      }
+    ],
+    "restartNativeWindow": {
+      "inner": {
+        "width": 520,
+        "height": 448
+      },
+      "outer": {
+        "width": 536,
+        "height": 457
+      },
+      "monitor": {
+        "name": "\\\\.\\DISPLAY5",
+        "size": {
+          "width": 1920,
+          "height": 1080
+        },
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "workArea": {
+          "position": {
+            "x": 0,
+            "y": 0
+          },
+          "size": {
+            "width": 1920,
+            "height": 1032
+          }
+        },
+        "scaleFactor": 1
+      },
+      "viewport": {
+        "width": 520,
+        "height": 448,
+        "clientWidth": 520
+      }
+    },
+    "restartGlance": {
+      "title": "水调歌头·明月几时有",
+      "text": "但愿人长久千里共婵娟",
+      "vertical": true,
+      "fontSize": "large",
+      "viewportWidth": 520
+    },
+    "restartScreenshot": "review/redesign/evidence/T06_NATIVE_GLANCE_RULE124_LONG_POEM_20261019_restart_horizontal.png"
+  },
+  "limitations": [
+    "WebView2 page and the current display only; CDP keys are synthetic and do not replace physical-keyboard, screen-reader, or mixed-DPI testing.",
+    "The catalog poem is preselected only in the temporary SQLite profile, not by the live recommendation algorithm."
+  ],
+  "result": "native-glance-size-setting-and-restart-passed"
+}
