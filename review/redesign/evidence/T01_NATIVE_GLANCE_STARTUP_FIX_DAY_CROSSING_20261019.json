@@ -1,0 +1,63 @@
+{
+  "schemaVersion": "1.0",
+  "testKind": "isolated-native-hidden-day-reveal",
+  "generatedAt": "2026-10-19T06:29:59.806Z",
+  "candidate": {
+    "path": ".work/redesign-glance-startup-fix-20261019/release/weatherpoem.exe",
+    "sha256": "3D3856613786D6961B6BE7ECF5274F8E017DE79E1AB8CAA541F8B498A4B0ED10"
+  },
+  "isolation": {
+    "temporaryProfile": true,
+    "systemClockChanged": false,
+    "installedOrUninstalled": false,
+    "realUserDataTouched": false,
+    "processOnlyWeatherHostBlock": false
+  },
+  "scenario": "weather-offline",
+  "concealAction": "tray-hide-button",
+  "activationPath": "native-single-instance",
+  "revealElapsedMs": 146,
+  "readyView": "poem",
+  "original": {
+    "date": "10月19日",
+    "title": "观书有感",
+    "context": "10月19日天气未更新秋 收藏 0",
+    "visible": "visible",
+    "poem": true
+  },
+  "hidden": {
+    "visibility": "visible",
+    "poem": false,
+    "loading": true
+  },
+  "expectedDate": "10月20日",
+  "screenshots": [
+    "review/redesign/evidence/T01_NATIVE_GLANCE_STARTUP_FIX_DAY_CROSSING_20261019_before.png",
+    "review/redesign/evidence/T01_NATIVE_GLANCE_STARTUP_FIX_DAY_CROSSING_20261019_after.png"
+  ],
+  "observed": [
+    {
+      "visible": "visible",
+      "poem": false,
+      "loading": true,
+      "correction": false,
+      "warning": false
+    },
+    {
+      "visible": "visible",
+      "poem": false,
+      "loading": true,
+      "correction": false,
+      "warning": false
+    },
+    {
+      "visible": "visible",
+      "date": "10月20日",
+      "poem": true,
+      "loading": false,
+      "correction": false,
+      "warning": false
+    }
+  ],
+  "result": "passed"
+}

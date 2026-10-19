@@ -77,3 +77,5 @@
 演练预警文案修正后的新内部候选哈希 `4507FF5002D3C4E749C6F411D371D3331C30E0AC5F438353634D19FD371BC029` 又重跑[隔离托盘跨日 DOM 路径](./evidence/T01_WARNING_COPY_CANDIDATE_DAY_RECHECK_20261017.json)并通过；原窗口画面仍属于前述旧哈希，不能跨候选冒充新截图。A1 不因此完成真实系统跨日或休眠验收。
 
 隐藏期间安全提醒复查修正后的新内部候选哈希 `3CD3094FDF09CCD36E0EA67E0C59CD5E3DF3609BAFCA0363FE62BC7F1BE0C6F0` 再跑[托盘隔离跨日回归](./evidence/T01_HIDDEN_WARNING_CANDIDATE_DAY_RECHECK_20261017.json)并通过；它只记录 DOM 状态，跨日静帧仍属于更早的哈希。真实系统跨午夜和休眠仍未验，A1 继续**部分通过**。
+
+2026-10-19 窗口尺寸启动修正候选 `3D3856613786D6961B6BE7ECF5274F8E017DE79E1AB8CAA541F8B498A4B0ED10` 重新通过[原生托盘隐藏→第二实例唤回→页面局部次日检查](./evidence/T01_NATIVE_GLANCE_STARTUP_FIX_DAY_CROSSING_20261019.json)。诗笺先显示 10 月 19 日《观书有感》，隐藏后只保留遮挡页；仅将隔离 WebView 日期推进至 10 月 20 日，第二实例唤回耗时 146 ms，最终显示《登飞来峰》。三次 DOM 观察为“遮挡→遮挡→新日诗笺”，未观察到旧日诗卡；[原日画面](./evidence/T01_NATIVE_GLANCE_STARTUP_FIX_DAY_CROSSING_20261019_before.png)与[次日画面](./evidence/T01_NATIVE_GLANCE_STARTUP_FIX_DAY_CROSSING_20261019_after.png)已检查。隔离程序未改系统时钟、真实资料、启动项或安装状态。这只证明当前候选下该页面局部跨日路径，不证明真实午夜、休眠唤醒、不同 DPI 或每个原生合成帧，A1 保持**部分通过**。
