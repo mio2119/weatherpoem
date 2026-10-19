@@ -1,0 +1,47 @@
+{
+  "schemaVersion": "1.0",
+  "testKind": "isolated-native-autostart-foreground-bounds",
+  "generatedAt": "2026-10-19T07:25:14.7479046Z",
+  "sourceCommit": "5dea8b312409590c5ad19e1dfa46718e52fb1b3d",
+  "candidate": {
+    "path": "E:\\weatherpoem\\.work\\redesign-glance-startup-fix-20261019\\release\\weatherpoem.exe",
+    "sha256": "3D3856613786D6961B6BE7ECF5274F8E017DE79E1AB8CAA541F8B498A4B0ED10"
+  },
+  "isolation": {
+    "temporaryProfile": true,
+    "realUserDataTouched": false,
+    "systemAutostartChanged": false,
+    "systemDisplaySettingsChanged": false
+  },
+  "observations": {
+    "probeMode": "work-area",
+    "foregroundProbePrecondition": true,
+    "foregroundProbeActivationAttempts": 1,
+    "foregroundProbeDpi": 96,
+    "monitorBounds": {
+      "left": 0,
+      "top": 0,
+      "right": 1920,
+      "bottom": 1080
+    },
+    "workAreaBounds": {
+      "left": 0,
+      "top": 0,
+      "right": 1920,
+      "bottom": 1032
+    },
+    "appPid": 30528,
+    "productWindowHandle": "723762",
+    "autoVisible": true,
+    "probeStillForeground": true,
+    "readyMarkerAfterAuto": true,
+    "secondInstancePid": 26616,
+    "manualVisible": true,
+    "manualFocused": true,
+    "manualResult": true
+  },
+  "limitations": [
+    "Borderless WinForms probe is not a real presentation, game, or ordinary maximized application; single monitor and current DPI only."
+  ],
+  "result": "work-area-autostart-revealed-without-focus-theft-passed"
+}
