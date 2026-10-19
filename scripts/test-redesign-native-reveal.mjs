@@ -548,7 +548,24 @@ try {
       assert.equal(countFavorite(), 0, "Favorite removal retry did not update native SQLite");
       await evaluate("document.querySelector('.favorites-panel .back-button').click()");
       await waitFor(() => evaluate("Boolean(document.querySelector('.poem-view'))"), "return to card after favorite removal");
-      const final = await evaluate("({ title: document.querySelector('.poem-view h1')?.textContent, pressed: document.querySelector('.card-actions button[aria-pressed]')?.getAttribute('aria-pressed'), favoriteCount: document.querySelector('.context-favorites')?.textContent })");
+      await waitFor(() => evaluate("!document.querySelector('.toast-message')"), "favorite removal confirmation toast to settle");
+      const final = await evaluate(`(() => {
+        const view = document.querySelector('.poem-view');
+        const actions = view?.querySelector('.card-actions');
+        const viewRect = view?.getBoundingClientRect();
+        const actionsRect = actions?.getBoundingClientRect();
+        return {
+          title: view?.querySelector('h1')?.textContent,
+          pressed: view?.querySelector('.card-actions button[aria-pressed]')?.getAttribute('aria-pressed'),
+          favoriteCount: document.querySelector('.context-favorites')?.textContent,
+          viewport: { width: innerWidth, height: innerHeight },
+          actionRowVisibleWithoutScroll: Boolean(actionsRect && viewRect && actionsRect.top >= viewRect.top && actionsRect.bottom <= viewRect.bottom),
+          documentOverflow: document.documentElement.scrollWidth > innerWidth,
+          cardScrollHeight: view?.scrollHeight,
+          cardClientHeight: view?.clientHeight,
+          cardScrollTop: view?.scrollTop,
+        };
+      })()`);
       assert.equal(final.title, original.title);
       assert.equal(final.pressed, "false");
       final.screenshot = await screenshot("favorite_removed_card");
@@ -640,6 +657,7 @@ try {
     testKind: favoriteJourney ? "isolated-native-favorite-save-failure-retry-and-reading" : festivalAuthorDiversity ? "isolated-native-cross-day-festival-author-diversity" : crossDaySafety ? "isolated-native-cross-day-hidden-safety-warning-no-old-poem-flash" : cachedWarning ? "isolated-native-hidden-cached-safety-warning" : sameDay ? "isolated-native-hidden-same-day-reveal" : motion ? minimize ? "isolated-native-minimized-motion" : "isolated-native-hidden-motion" : withdrawal ? "isolated-native-hidden-content-withdrawal" : nativeClose ? "isolated-native-close-day-reveal" : "isolated-native-hidden-day-reveal",
     generatedAt: new Date().toISOString(),
     candidate: { path: path.relative(root, candidate).replaceAll(path.sep, "/"), sha256: createHash("sha256").update(readFileSync(candidate)).digest("hex").toUpperCase() },
+    testHarness: { path: "scripts/test-redesign-native-reveal.mjs", sha256: createHash("sha256").update(readFileSync(fileURLToPath(import.meta.url))).digest("hex").toUpperCase() },
     isolation: { temporaryProfile: true, systemClockChanged: false, installedOrUninstalled: false, realUserDataTouched: false, processOnlyWeatherHostBlock: cachedWarning },
     scenario: cachedWarning ? "network-blocked-cached-warning" : motion ? "scene-rain" : "weather-offline",
     concealAction: nativeClose ? "native-close" : minimize ? "minimize-button" : "tray-hide-button",

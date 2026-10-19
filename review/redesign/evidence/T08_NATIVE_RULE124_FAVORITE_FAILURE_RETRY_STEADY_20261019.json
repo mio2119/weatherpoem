@@ -1,0 +1,108 @@
+{
+  "schemaVersion": "1.0",
+  "testKind": "isolated-native-favorite-save-failure-retry-and-reading",
+  "generatedAt": "2026-10-19T10:31:32.020Z",
+  "candidate": {
+    "path": ".work/redesign-recommendation-124-20261019/release/weatherpoem.exe",
+    "sha256": "3759CE59650FDB6681FA55BAD25542F3DA501D22B4832A40ECE3F4ED931712A4"
+  },
+  "testHarness": {
+    "path": "scripts/test-redesign-native-reveal.mjs",
+    "sha256": "8D5357B4846A2012E1887B89ADF18E0DDCE499C22C7FF5D1D8EE471CBE4017F7"
+  },
+  "isolation": {
+    "temporaryProfile": true,
+    "systemClockChanged": false,
+    "installedOrUninstalled": false,
+    "realUserDataTouched": false,
+    "processOnlyWeatherHostBlock": false
+  },
+  "scenario": "weather-offline",
+  "concealAction": "tray-hide-button",
+  "activationPath": "isolated-window-commands",
+  "revealElapsedMs": 89,
+  "readyView": "poem",
+  "original": {
+    "date": "10月19日",
+    "title": "使至塞上",
+    "context": "10月19日天气未更新秋 收藏 0",
+    "visible": "visible",
+    "poem": true
+  },
+  "initialDisplayEvents": 1,
+  "hidden": {
+    "visibility": "visible",
+    "poem": false,
+    "loading": true
+  },
+  "expectedDate": "10月19日",
+  "finalDisplayEvents": 1,
+  "favoriteJourneyAudit": {
+    "workId": "wang-wei-shi-zhi-sai-shang",
+    "failedAdd": {
+      "notice": "收藏未能保存，请再试一次",
+      "pressed": "false",
+      "disabled": false,
+      "screenshot": "review/redesign/evidence/T08_NATIVE_RULE124_FAVORITE_FAILURE_RETRY_STEADY_20261019_favorite_add_failed.png"
+    },
+    "reading": {
+      "title": "使至塞上",
+      "pressed": "true",
+      "back": " 今日诗笺",
+      "screenshot": "review/redesign/evidence/T08_NATIVE_RULE124_FAVORITE_FAILURE_RETRY_STEADY_20261019_favorite_reading.png"
+    },
+    "list": {
+      "title": "使至塞上",
+      "removeLabel": "取消收藏《使至塞上》",
+      "screenshot": "review/redesign/evidence/T08_NATIVE_RULE124_FAVORITE_FAILURE_RETRY_STEADY_20261019_favorite_list.png"
+    },
+    "reopened": {
+      "title": "使至塞上",
+      "back": " 我的收藏"
+    },
+    "failedRemove": {
+      "notice": "取消收藏未能保存，请再试一次",
+      "listed": true,
+      "disabled": false,
+      "screenshot": "review/redesign/evidence/T08_NATIVE_RULE124_FAVORITE_FAILURE_RETRY_STEADY_20261019_favorite_remove_failed.png"
+    },
+    "final": {
+      "title": "使至塞上",
+      "pressed": "false",
+      "favoriteCount": " 收藏 0",
+      "viewport": {
+        "width": 392,
+        "height": 407
+      },
+      "actionRowVisibleWithoutScroll": true,
+      "documentOverflow": false,
+      "cardScrollHeight": 347,
+      "cardClientHeight": 347,
+      "cardScrollTop": 0,
+      "screenshot": "review/redesign/evidence/T08_NATIVE_RULE124_FAVORITE_FAILURE_RETRY_STEADY_20261019_favorite_removed_card.png"
+    },
+    "sqliteFavoriteCount": 0
+  },
+  "screenshots": [
+    "review/redesign/evidence/T08_NATIVE_RULE124_FAVORITE_FAILURE_RETRY_STEADY_20261019_before.png",
+    "review/redesign/evidence/T08_NATIVE_RULE124_FAVORITE_FAILURE_RETRY_STEADY_20261019_after.png"
+  ],
+  "observed": [
+    {
+      "visible": "visible",
+      "poem": false,
+      "loading": true,
+      "correction": false,
+      "warning": false
+    },
+    {
+      "visible": "visible",
+      "date": "10月19日",
+      "poem": true,
+      "loading": false,
+      "correction": false,
+      "warning": false
+    }
+  ],
+  "result": "passed"
+}
