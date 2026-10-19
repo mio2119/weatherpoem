@@ -1,0 +1,141 @@
+{
+  "schemaVersion": "1.0",
+  "testKind": "isolated-native-hidden-cached-safety-warning",
+  "generatedAt": "2026-10-19T07:03:37.144Z",
+  "candidate": {
+    "path": ".work/redesign-glance-startup-fix-20261019/release/weatherpoem.exe",
+    "sha256": "3D3856613786D6961B6BE7ECF5274F8E017DE79E1AB8CAA541F8B498A4B0ED10"
+  },
+  "isolation": {
+    "temporaryProfile": true,
+    "systemClockChanged": false,
+    "installedOrUninstalled": false,
+    "realUserDataTouched": false,
+    "processOnlyWeatherHostBlock": true
+  },
+  "scenario": "network-blocked-cached-warning",
+  "concealAction": "tray-hide-button",
+  "activationPath": "native-single-instance",
+  "revealElapsedMs": 1166,
+  "readyView": "poem",
+  "original": {
+    "date": "10月19日",
+    "title": "观书有感",
+    "context": "10月19日天气未更新秋 收藏 0",
+    "visible": "visible",
+    "poem": true
+  },
+  "hidden": {
+    "visibility": "visible",
+    "poem": false,
+    "loading": true
+  },
+  "revealMask": {
+    "text": "正在核对今日内容与安全信息",
+    "poem": false,
+    "warning": false,
+    "screenshot": "review/redesign/evidence/T05_NATIVE_GLANCE_CANDIDATE_HIDDEN_WARNING_COMPACT_20261019_reveal_mask.png"
+  },
+  "warningDailyState": {
+    "state": "alert-suppressed",
+    "work_id": "zhu-xi-guan-shu-you-gan"
+  },
+  "warningText": "安全信息优先今日诗笺暂缓展示这是隔离演练，不是真实气象预警。请先阅读安全信息。隔离暴雨预警演练这是临时资料中的长文排版演练，不是真实气象预警。这是临时资料中的长文排版演练，不是真实气象预警。这是临时资料中的长文排版演练，不是真实气象预警。这是临时资料中的长文排版演练，不是真实气象预警。这是临时资料中的长文排版演练，不是真实气象预警。这是临时资料中的长文排版演练，不是真实气象预警。这是临时资料中的长文排版演练，不是真实气象预警。这是临时资料中的长文排版演练，不是真实气象预警。北京市 · WeatherPoem 隔离性能演练  · 发布 10/19 15:03 · 有效至 10/19 21:03本页仅用于隔离安全路径演练，没有连接真实预警网关；请以当地气象部门最新信息为准。",
+  "compactWarningAudit": {
+    "syntheticLongText": true,
+    "top": {
+      "viewport": {
+        "width": 320,
+        "height": 260
+      },
+      "scroll": {
+        "clientWidth": 311,
+        "scrollWidth": 311,
+        "clientHeight": 200,
+        "scrollHeight": 502,
+        "scrollTop": 0
+      },
+      "rootRect": {
+        "top": 59,
+        "bottom": 259
+      },
+      "introductionRect": {
+        "top": 126.890625,
+        "bottom": 168.890625
+      },
+      "warningTitleRect": {
+        "top": 189.890625,
+        "bottom": 205.890625
+      },
+      "disclaimerRect": {
+        "top": 503.828125,
+        "bottom": 541.203125
+      },
+      "warningCount": 1,
+      "hasOldPoem": false
+    },
+    "bottom": {
+      "viewport": {
+        "width": 320,
+        "height": 260
+      },
+      "scroll": {
+        "clientWidth": 311,
+        "scrollWidth": 311,
+        "clientHeight": 200,
+        "scrollHeight": 502,
+        "scrollTop": 302
+      },
+      "rootRect": {
+        "top": 59,
+        "bottom": 259
+      },
+      "introductionRect": {
+        "top": -175.109375,
+        "bottom": -133.109375
+      },
+      "warningTitleRect": {
+        "top": -112.109375,
+        "bottom": -96.109375
+      },
+      "disclaimerRect": {
+        "top": 201.828125,
+        "bottom": 239.203125
+      },
+      "warningCount": 1,
+      "hasOldPoem": false
+    },
+    "screenshots": [
+      "review/redesign/evidence/T05_NATIVE_GLANCE_CANDIDATE_HIDDEN_WARNING_COMPACT_20261019_compact_warning_top.png",
+      "review/redesign/evidence/T05_NATIVE_GLANCE_CANDIDATE_HIDDEN_WARNING_COMPACT_20261019_compact_warning_bottom.png"
+    ]
+  },
+  "screenshots": [
+    "review/redesign/evidence/T05_NATIVE_GLANCE_CANDIDATE_HIDDEN_WARNING_COMPACT_20261019_before.png",
+    "review/redesign/evidence/T05_NATIVE_GLANCE_CANDIDATE_HIDDEN_WARNING_COMPACT_20261019_after.png"
+  ],
+  "observed": [
+    {
+      "visible": "visible",
+      "poem": false,
+      "loading": true,
+      "correction": false,
+      "warning": false
+    },
+    {
+      "visible": "visible",
+      "poem": false,
+      "loading": true,
+      "correction": false,
+      "warning": false
+    },
+    {
+      "visible": "visible",
+      "poem": false,
+      "loading": false,
+      "correction": false,
+      "warning": true
+    }
+  ],
+  "result": "passed"
+}
