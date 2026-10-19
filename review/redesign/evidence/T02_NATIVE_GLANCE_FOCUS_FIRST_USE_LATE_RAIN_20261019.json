@@ -1,0 +1,121 @@
+{
+  "schemaVersion": "1.0",
+  "testKind": "isolated-native-weather-network-diagnostic",
+  "generatedAt": "2026-10-19T08:40:22.023Z",
+  "candidate": {
+    "path": ".work/redesign-accessibility-focus-ring-20261019/release/weatherpoem.exe",
+    "sha256": "7BFC5F340E992D15D95BE56DAF0C356A7BA261C0B9A8B3BF795B59E5310FF627"
+  },
+  "isolation": {
+    "temporaryProfile": true,
+    "realUserDataTouched": false,
+    "installedOrUninstalled": false,
+    "systemClockChanged": false,
+    "pageLocalClockChanged": true
+  },
+  "simulatedWarning": false,
+  "simulatedCrossDayRain": false,
+  "simulatedFirstUseRain": true,
+  "auditToastMotion": false,
+  "startup": {
+    "schemaVersion": "1.2",
+    "runId": "c9bbf7332e9e4791be38df12c07c2674",
+    "appVersion": "0.2.0",
+    "processId": 32356,
+    "nativeReadyMs": 530.2332,
+    "frontendReadyMs": 262.90000000037253,
+    "readyView": "onboarding",
+    "readyMode": "local-onboarding",
+    "viewRenderMs": 102.6000000005588,
+    "performanceScenario": null,
+    "sceneMotion": null,
+    "recordedAtUnixMs": 1792399222607
+  },
+  "startupNetwork": [
+    {
+      "requestId": "37320.58",
+      "event": "request",
+      "timestamp": 7051.707211
+    },
+    {
+      "requestId": "37320.71",
+      "event": "request",
+      "timestamp": 7052.81438
+    },
+    {
+      "requestId": "37320.58",
+      "event": "loadingFailed",
+      "timestamp": 7052.817746,
+      "errorText": "net::ERR_ABORTED",
+      "canceled": true
+    },
+    {
+      "requestId": "37320.71",
+      "event": "responseReceived",
+      "timestamp": 7054.627826,
+      "status": 200
+    },
+    {
+      "requestId": "37320.71",
+      "event": "loadingFinished",
+      "timestamp": 7054.627091
+    }
+  ],
+  "webViewFetches": [],
+  "nativeViews": {
+    "atReady": {
+      "title": null,
+      "context": null,
+      "warning": false,
+      "loading": false,
+      "toast": null,
+      "toastOverlapsReadButton": null
+    },
+    "atReadyScreenshot": "review/redesign/evidence/T02_NATIVE_GLANCE_FOCUS_FIRST_USE_LATE_RAIN_20261019_ready.png",
+    "firstUseBeforeLate": {
+      "title": "登飞来峰",
+      "context": "10月20日天气未更新秋 收藏 0",
+      "warning": false,
+      "loading": false,
+      "toast": "隔离测试不会修改系统开机启动；此处仅保存测试偏好。",
+      "toastOverlapsReadButton": false
+    },
+    "firstUseBeforeLateScreenshot": "review/redesign/evidence/T02_NATIVE_GLANCE_FOCUS_FIRST_USE_LATE_RAIN_20261019_first_use_before_late.png",
+    "afterWait": {
+      "title": "山居秋暝",
+      "context": "10月20日小雨雨 收藏 0",
+      "warning": false,
+      "loading": false,
+      "toast": "天气信息已到，今日诗句已更新",
+      "toastOverlapsReadButton": false
+    },
+    "afterWaitScreenshot": "review/redesign/evidence/T02_NATIVE_GLANCE_FOCUS_FIRST_USE_LATE_RAIN_20261019_after.png"
+  },
+  "result": "diagnostic-captured",
+  "firstUse": {
+    "clock": {
+      "localDate": "2026-10-20",
+      "displayDate": "10月20日",
+      "unixSeconds": 1792458000
+    },
+    "pageLocalOnly": true,
+    "selectedCityId": "hangzhou"
+  },
+  "interceptedWeatherRequests": 2,
+  "savedSettings": {
+    "configured": true,
+    "cityId": "hangzhou",
+    "autostart": false,
+    "anonymousMetrics": false,
+    "theme": "system",
+    "reduceMotion": false,
+    "poemLayout": "horizontal",
+    "poemFontSize": "medium",
+    "glanceSize": "small"
+  },
+  "savedDailyState": {
+    "local_date": "2026-10-20",
+    "state": "shown",
+    "work_id": "wang-wei-shan-ju-qiu-ming"
+  }
+}
