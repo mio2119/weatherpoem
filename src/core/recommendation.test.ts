@@ -130,6 +130,30 @@ describe("recommendPoem", () => {
     expect(result.primaryContext).toBe("中秋节");
   });
 
+  it("重阳的真实竞争作品在托盘次日恢复场景下避开前一日王维", () => {
+    const eventDay = buildCalendarContext(new Date(2026, 9, 18, 9));
+    expect(eventDay.festival).toBe("重阳节");
+    const result = recommendPoem({
+      poems: POEMS,
+      calendar: eventDay,
+      weather: { ...rainyWeather, kind: "unknown", freshness: "unavailable" },
+      history: [
+        {
+          localDate: "2026-10-17",
+          workId: "wang-wei-shan-ju-qiu-ming",
+          author: "王维",
+          primaryContext: "秋日",
+        },
+      ],
+      feedback: [],
+    });
+
+    expect(result.poem.id).toBe("meng-hao-ran-guo-gu-ren-zhuang");
+    expect(result.poem.author).toBe("孟浩然");
+    expect(result.poem.tags.festivals).toContain("重阳节");
+    expect(result.primaryContext).toBe("重阳节");
+  });
+
   it("没有节日时优先匹配天气", () => {
     const result = recommend({
       calendar: { ...calendar, festival: undefined, localDate: "2026-07-23" },
