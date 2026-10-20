@@ -1,0 +1,146 @@
+{
+  "schemaVersion": "1.0",
+  "testKind": "isolated-native-hidden-cached-safety-warning",
+  "generatedAt": "2026-10-20T08:14:22.270Z",
+  "candidate": {
+    "path": ".work/redesign-reset-inline-20261020/release/weatherpoem.exe",
+    "sha256": "D68E286A2C5F2262079078921804134917CBB8C6836E1AB2D8036307E8F1325B"
+  },
+  "testHarness": {
+    "path": "scripts/test-redesign-native-reveal.mjs",
+    "sha256": "EC545DBFDABB8A193EE27C25276EF67AE966EBC173B753EFE039E62C4F864915"
+  },
+  "isolation": {
+    "temporaryProfile": true,
+    "systemClockChanged": false,
+    "installedOrUninstalled": false,
+    "realUserDataTouched": false,
+    "processOnlyWeatherHostBlock": true
+  },
+  "scenario": "network-blocked-cached-warning",
+  "concealAction": "tray-hide-button",
+  "activationPath": "native-single-instance",
+  "revealElapsedMs": 1227,
+  "readyView": "poem",
+  "original": {
+    "date": "10月20日",
+    "title": "望洞庭湖赠张丞相",
+    "context": "10月20日天气未更新秋 收藏 0",
+    "visible": "visible",
+    "poem": true
+  },
+  "hidden": {
+    "visibility": "visible",
+    "poem": false,
+    "loading": true
+  },
+  "revealMask": {
+    "text": "正在核对今日内容与安全信息",
+    "poem": false,
+    "warning": false,
+    "screenshot": "review/redesign/evidence/T05_NATIVE_COMPACT_WARNING_RESETINLINE_20261020_reveal_mask.png"
+  },
+  "warningDailyState": {
+    "local_date": "2026-10-20",
+    "state": "alert-suppressed",
+    "work_id": "meng-hao-ran-wang-dong-ting-hu"
+  },
+  "warningText": "安全信息优先今日诗笺暂缓展示这是隔离演练，不是真实气象预警。请先阅读安全信息。隔离暴雨预警演练这是临时资料中的长文排版演练，不是真实气象预警。这是临时资料中的长文排版演练，不是真实气象预警。这是临时资料中的长文排版演练，不是真实气象预警。这是临时资料中的长文排版演练，不是真实气象预警。这是临时资料中的长文排版演练，不是真实气象预警。这是临时资料中的长文排版演练，不是真实气象预警。这是临时资料中的长文排版演练，不是真实气象预警。这是临时资料中的长文排版演练，不是真实气象预警。北京市 · WeatherPoem 隔离性能演练  · 发布 10/20 16:14 · 有效至 10/20 22:14本页仅用于隔离安全路径演练，没有连接真实预警网关；请以当地气象部门最新信息为准。",
+  "compactWarningAudit": {
+    "syntheticLongText": true,
+    "top": {
+      "viewport": {
+        "width": 320,
+        "height": 260
+      },
+      "scroll": {
+        "clientWidth": 311,
+        "scrollWidth": 311,
+        "clientHeight": 200,
+        "scrollHeight": 502,
+        "scrollTop": 0
+      },
+      "rootRect": {
+        "top": 59,
+        "bottom": 259
+      },
+      "introductionRect": {
+        "top": 126.890625,
+        "bottom": 168.890625
+      },
+      "warningTitleRect": {
+        "top": 189.890625,
+        "bottom": 205.890625
+      },
+      "disclaimerRect": {
+        "top": 503.828125,
+        "bottom": 541.203125
+      },
+      "warningCount": 1,
+      "hasOldPoem": false
+    },
+    "bottom": {
+      "viewport": {
+        "width": 320,
+        "height": 260
+      },
+      "scroll": {
+        "clientWidth": 311,
+        "scrollWidth": 311,
+        "clientHeight": 200,
+        "scrollHeight": 502,
+        "scrollTop": 302
+      },
+      "rootRect": {
+        "top": 59,
+        "bottom": 259
+      },
+      "introductionRect": {
+        "top": -175.109375,
+        "bottom": -133.109375
+      },
+      "warningTitleRect": {
+        "top": -112.109375,
+        "bottom": -96.109375
+      },
+      "disclaimerRect": {
+        "top": 201.828125,
+        "bottom": 239.203125
+      },
+      "warningCount": 1,
+      "hasOldPoem": false
+    },
+    "screenshots": [
+      "review/redesign/evidence/T05_NATIVE_COMPACT_WARNING_RESETINLINE_20261020_compact_warning_top.png",
+      "review/redesign/evidence/T05_NATIVE_COMPACT_WARNING_RESETINLINE_20261020_compact_warning_bottom.png"
+    ]
+  },
+  "screenshots": [
+    "review/redesign/evidence/T05_NATIVE_COMPACT_WARNING_RESETINLINE_20261020_before.png",
+    "review/redesign/evidence/T05_NATIVE_COMPACT_WARNING_RESETINLINE_20261020_after.png"
+  ],
+  "observed": [
+    {
+      "visible": "visible",
+      "poem": false,
+      "loading": true,
+      "correction": false,
+      "warning": false
+    },
+    {
+      "visible": "visible",
+      "poem": false,
+      "loading": true,
+      "correction": false,
+      "warning": false
+    },
+    {
+      "visible": "visible",
+      "poem": false,
+      "loading": false,
+      "correction": false,
+      "warning": true
+    }
+  ],
+  "result": "passed"
+}
