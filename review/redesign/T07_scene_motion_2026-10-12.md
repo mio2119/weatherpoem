@@ -1,6 +1,8 @@
 # T07 诗境背景、轻动效与单一组件自验收
 
-状态：**部分通过**。规则映射、CSS 静态画面与动效开关已实现；隔离小雨场景的同机偏好开/关资源对照、原生动效状态、托盘停机及短录屏已有不同候选的逐项证据。2026-10-14 补齐了 14 组隔离浏览器天气/诗境静态矩阵。当前哈希仍缺完整六类场景原生视觉矩阵、真实 Windows 系统设置切换、静/动资源对照和真人视觉检查，不能签 A7 全通过。
+状态：**部分通过**。规则映射、CSS 静态画面与动效开关已实现；当前内部哈希已有隔离小雨场景的静/动资源对照、WebView2 减少动态效果模拟、托盘停机及短录屏。2026-10-14 补齐了 14 组隔离浏览器天气/诗境静态矩阵。仍缺完整六类场景原生视觉矩阵、真实 Windows 系统设置切换和真人长时视觉检查，不能签 A7 全通过。
+
+2026-10-20 最新内部 EXE `D68E286A2C5F2262079078921804134917CBB8C6836E1AB2D8036307E8F1325B` 完成[同诗静／动资源对照](./evidence/T07_MOTION_RESOURCE_reset-inline-20261020.json)并经独立检查器重算：两段各 60 样本，静态 CPU 均值 `0.0175%`、动态 `0.3029%`，增量 `0.2854` 个百分点（≤2）；合并进程工作集 P95 `369.62→381.89 MiB`，增量 `12.27 MiB`（≤20）。[WebView2 减少动态效果模拟](./evidence/T07_SYSTEM_REDUCED_MOTION_reset-inline-20261020.json)确认应用偏好未关闭动画、浏览器媒体条件要求减少动态时，雨景仅播放一次约 0.01 毫秒，不无限循环；没有修改 Windows 全局设置。[同哈希可见托盘雨景](./evidence/T07_NATIVE_TRAY_MOTION_RESETINLINE_20261020.json)另取 6 秒 24 帧，23/23 相邻帧变化；隐藏后立即及三秒后运行中动画为零，第二实例找回后恢复。已检查[收起前](./evidence/T07_NATIVE_TRAY_MOTION_RESETINLINE_20261020_before.png)、[找回后](./evidence/T07_NATIVE_TRAY_MOTION_RESETINLINE_20261020_after.png)与[短录制](./evidence/T07_NATIVE_TRAY_MOTION_RESETINLINE_20261020_motion.gif)：低对比雨纹未遮诗句、理由或操作，并标明“隔离演练”。这些只覆盖单机、单一合成雨景；不代表当地真实天气、全场景、多 DPI、Windows 全局设置切换或真人长期疲劳感受，A7 仍**部分通过**。
 
 2026-10-20 当前内容 `2026.10.1` 内部 EXE `402FE0C7…` 的[原生托盘雨景报告](./evidence/T07_NATIVE_TRAY_MOTION_CONTENT101_20261020.json)通过。合成小雨诗笺中的 `scene-drift` 取 6 秒、24 帧，[动图](./evidence/T07_NATIVE_TRAY_MOTION_CONTENT101_20261020_motion.gif)有 23/23 相邻帧变化；托盘收起后立即及三秒后 `sceneActive=false`、运行动画为空，第二实例找回后恢复。[收起前](./evidence/T07_NATIVE_TRAY_MOTION_CONTENT101_20261020_before.png)和[找回后](./evidence/T07_NATIVE_TRAY_MOTION_CONTENT101_20261020_after.png)已目视检查：淡雨纹没有压住新“寒雨”节选、理由或底部操作，画面明示“隔离演练”。这只关闭当前哈希的合成雨景托盘子项；最小化、真实系统减少动态设置、静动资源对照、其他场景/缩放及真人长时视觉判断仍缺，A7 保持**部分通过**。
 

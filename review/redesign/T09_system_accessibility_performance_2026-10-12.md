@@ -1,6 +1,8 @@
 # T09 真机可访问性与资源表现阶段记录
 
-状态：**部分通过；当前规则 1.2.5／内容目录 2026.10.1 内部候选的离线短测已复算通过，但系统矩阵和在线性能尚未验收**。本记录只属于 `redesign/phase-1` 源码、隔离的 Windows 开发窗口及内部测试 EXE，不把旧 0.2.0 EXE 的性能或设备报告当作新版通过证据。下文原有失败数据保留为第一轮历史结果，不能误读为最新候选的结果。
+状态：**部分通过；最新内部候选的离线短测和受控故障矩阵已复算通过，但系统矩阵和在线性能尚未验收**。本记录只属于 `redesign/phase-1` 源码、隔离的 Windows 开发窗口及内部测试 EXE，不把旧 0.2.0 EXE 的性能或设备报告当作新版通过证据。下文原有失败数据保留为第一轮历史结果，不能误读为最新候选的结果。
+
+2026-10-20 最新未签名、未安装内部 EXE `D68E286A2C5F2262079078921804134917CBB8C6836E1AB2D8036307E8F1325B` 的[同哈希短测](./evidence/T09_PERFORMANCE_SMOKE_reset-inline-20261020.json)经 `performance-smoke-check --candidate=reset-inline-20261020` 独立复算：10 次干净启动就绪 P95 `584.94 ms`，10 次已配置诗笺首帧 P95 `134.1 ms`、离线准备 P95 `1702.63 ms`；60 秒托盘空闲主进程 CPU 平均 `0%`、工作集 P95 `30.13 MiB`，已覆盖短项达标。[同哈希受控故障矩阵](./evidence/T09_FAULT_MATRIX_reset-inline-20261020.json)另经检查器复算，立即离线、天气超时、合成安全提醒各 3 次均进入预期页面，P95 分别 `613.08/1739.8/581.38 ms`，均低于 2 秒场景阈值。10 次内容准备全部为 `offline-rules`，在线首屏样本 `0`、短测 `gateSatisfied=false`；合成预警不等于真实网关。不同设备/DPI、读屏、生产联网与长稳仍缺，A9 **部分通过**。
 
 2026-10-20 当前未签名、未安装内部 EXE `.work/redesign-rain-excerpt-20261019/release/weatherpoem.exe`，SHA-256 `402FE0C76ECFA256B396E02B4226E1E30E95716DC582D20F7263FDB9FA18EC16`，在强制 `weather-offline` 的隔离资料中完成[同哈希性能短测](./evidence/T09_PERFORMANCE_SMOKE_rain-excerpt-20261019.json)，并由 `node scripts/performance-smoke-check.mjs --candidate=rain-excerpt-20261019` 独立复算。10 次干净资料启动就绪 P95 **847.82 ms**，10 次已配置诗笺首帧 P95 **119.9 ms**，10 次离线准备 P95 **626.67 ms**；60 秒托盘空闲主进程 CPU 平均 **0%**、工作集 P95 **30.09 MiB**。已覆盖的短项通过，但在线首屏样本 **0**、报告 `gateSatisfied=false`；不证明真实在线天气、具名读屏、不同系统缩放、生产安全/撤回或长时稳定性。旧哈希 `5CC65F7E…` 的短测不能转签给当前候选，A9 继续**部分通过**。
 

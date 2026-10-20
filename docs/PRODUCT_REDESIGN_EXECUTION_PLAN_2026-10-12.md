@@ -1,6 +1,6 @@
 # WeatherPoem 完整改版执行方案与验收规范
 
-版本：1.89；制定日期：2026-10-12；进度核对：2026-10-20；用途：供后续 AI 编码任务逐阶段执行、提交证据和自验收。实际开发目录始终是 `E:\weatherpoem`。`D:\纯净工作台` 只承担控制与独立审计，不存放本项目源码。单批交接入口见 [AI 完整修改方案](./AI_MODIFICATION_BLUEPRINT_2026-10-14.md)。
+版本：1.90；制定日期：2026-10-12；进度核对：2026-10-20；用途：供后续 AI 编码任务逐阶段执行、提交证据和自验收。实际开发目录始终是 `E:\weatherpoem`。`D:\纯净工作台` 只承担控制与独立审计，不存放本项目源码。单批交接入口见 [AI 完整修改方案](./AI_MODIFICATION_BLUEPRINT_2026-10-14.md)。
 
 本方案根据 [产品体验审查](./PRODUCT_EXPERIENCE_AUDIT_2026-10-12.md)、当前 Vue 3/Tauri 2 实现和项目发起人的新想法制定。它同时是目标规范和后续执行入口；已实施内容、仍缺的证据以第七节及 `review/redesign/` 的逐任务记录为准，不能因写在计划里就视为验收通过。当前 `0.2.0` 未签名内部试用候选及其发布证据保留为旧基线；新构建应使用可区分的候选身份，旧哈希不能证明新候选通过。七天长测已按项目决定跳过，RQT-13 完整门禁继续保持 `partial`。
 
@@ -290,6 +290,8 @@
 同一候选再补[原生窗口全链路](../review/redesign/evidence/T04_NATIVE_WINDOW_RESETINLINE_PS51_20261020.json)和[受控输入焦点](../review/redesign/evidence/T04_NATIVE_FOCUS_RESETINLINE_PS51_20261020.json)：自动出现不夺焦、托盘准确按钮可找回且取焦、阅读尺寸跨模式及同资料重启保持；诗笺和阅读静帧已目视检查。测试器修复 Windows PowerShell 5.1 对中文 UI 标签的编码解析，并把执行时仓库 HEAD 与 EXE 身份分开记录。仍缺真人鼠标拖边/托盘、其他 DPI/多屏、Windows 10 与真实全屏手动路径，A4 继续**部分通过**。
 
 同一候选的[深色长词和键盘路径](../review/redesign/evidence/T06_NATIVE_DARK_KEYBOARD_RESETINLINE_20261020.json)通过：竖排全文可横向滚动，三档诗笺尺寸与字号独立保存、重启保留，六站合成键盘焦点可见，两项说明可展开；四张关键原生画面已查看。仍不能替代实体键盘、读屏、真实缩放或真人排版判断，A6 继续**部分通过**。
+
+同一候选的[静／动雨景资源对照](../review/redesign/evidence/T07_MOTION_RESOURCE_reset-inline-20261020.json)复算通过：CPU 均值增量 `0.2854` 个百分点、合并进程内存 P95 增量 `12.27 MiB`，均低于 A7 预算；[系统减少动态效果的 WebView2 模拟](../review/redesign/evidence/T07_SYSTEM_REDUCED_MOTION_reset-inline-20261020.json)与[可见雨景托盘短录制](../review/redesign/evidence/T07_NATIVE_TRAY_MOTION_RESETINLINE_20261020.json)分别证明循环停用和隐藏后动画停机。另有[当前哈希启动短测](../review/redesign/evidence/T09_PERFORMANCE_SMOKE_reset-inline-20261020.json)及[离线／超时／合成预警故障矩阵](../review/redesign/evidence/T09_FAULT_MATRIX_reset-inline-20261020.json)经各自检查器复算达已覆盖阈值。在线首屏仍为零样本，A9 报告 `gateSatisfied=false`；真实 Windows 减少动态设置、全诗境、生产网络、不同设备/读屏与真人视觉评审未验，A7/A9 均**部分通过**。
 
 2026-10-14 增量：A1/A2 的“同日旧诗跨季保留”缺陷已有源码修复与定向、全量、隔离浏览器证据，规则升至 `1.2.2`；新推荐的季节过滤未放宽，远端理由与诗境不会把保留诗伪装成当前天气/季节匹配。详见 T01/T02 记录。本节表中此前的 `1.2.1` 与缺口描述是历史快照；新证据仍不能代替旧 SQLite 的跨季原生迁移、真机交互、真人审读或新候选发布门禁，A1/A2 保持部分通过。
 
