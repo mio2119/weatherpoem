@@ -22,7 +22,7 @@
     "redesign:h1:preflight": "node --test scripts/redesign-h1-preflight.test.mjs",
     "content:withdrawal:drill": "node scripts/content-withdrawal-drill.mjs",
     "content:withdrawal:check": "node scripts/content-withdrawal-drill.mjs --check && node --test scripts/content-withdrawal-contract.test.mjs",
-    "content:withdrawal:redesign:check": "node scripts/content-withdrawal-drill.mjs --check --report=T08_CONTENT_WITHDRAWAL_DRILL_20261015.json && node --test scripts/content-withdrawal-contract.test.mjs",
+    "content:withdrawal:redesign:check": "node scripts/content-withdrawal-drill.mjs --check --report=T08_CONTENT_WITHDRAWAL_DRILL_CONTENT101_20261020.json && node --test scripts/content-withdrawal-contract.test.mjs",
     "device:matrix:check": "node --test scripts/device-matrix-contract.test.mjs",
     "desktop:capability:check": "node --test scripts/desktop-capability-contract.test.mjs",
     "performance:smoke": "powershell.exe -NoLogo -NoProfile -NonInteractive -ExecutionPolicy Bypass -File scripts/test-performance-smoke.ps1",
