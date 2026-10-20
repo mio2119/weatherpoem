@@ -1,0 +1,121 @@
+{
+  "schemaVersion": "1.0",
+  "testKind": "isolated-native-live-weather-diagnostic",
+  "generatedAt": "2026-10-20T10:04:28.056Z",
+  "candidate": {
+    "path": ".work/redesign-reset-inline-20261020/release/weatherpoem.exe",
+    "sha256": "D68E286A2C5F2262079078921804134917CBB8C6836E1AB2D8036307E8F1325B"
+  },
+  "testHarness": {
+    "path": "scripts/diagnose-redesign-native-weather.mjs",
+    "sha256": "AFAAA976F99E2349D8BC0CCEED29C2A5C76551EEC849218D1ACBB64F823FF2CC"
+  },
+  "isolation": {
+    "temporaryProfile": true,
+    "realUserDataTouched": false,
+    "systemClockChanged": false,
+    "systemSettingsChanged": false,
+    "installedOrUninstalled": false,
+    "liveReadOnlyWeatherRequest": true
+  },
+  "limitations": [
+    "This is one host and one session; a direct WebView2 fetch does not prove the app's 1.1-second first-screen deadline.",
+    "The direct WebView2 request runs only after the app's natural eight-second state and SQLite history have been captured.",
+    "The screenshot and page state are samples, not compositor-frame or production service monitoring."
+  ],
+  "result": "live-weather-observed-after-start",
+  "readyMarker": {
+    "schemaVersion": "1.2",
+    "runId": "c44976ec24ba426f81cb607ca4ec08cc",
+    "appVersion": "0.2.0",
+    "processId": 35064,
+    "nativeReadyMs": 1652.8052,
+    "frontendReadyMs": 1387.800000000745,
+    "readyView": "poem",
+    "readyMode": "offline-rules",
+    "viewRenderMs": 111.30000000074506,
+    "performanceScenario": null,
+    "sceneMotion": {
+      "sceneKind": "season",
+      "appReduced": false,
+      "systemReduced": false,
+      "sceneActive": true,
+      "visibilityState": "visible",
+      "animationName": "none",
+      "animationDuration": "0s",
+      "animationIterationCount": "1"
+    },
+    "recordedAtUnixMs": 1792490669760
+  },
+  "initialPage": {
+    "pageUrl": "http://tauri.localhost/",
+    "onlineHint": true,
+    "title": "暮江吟",
+    "context": "10月20日天气未更新秋 收藏 0",
+    "warning": false,
+    "loading": false,
+    "cached": null,
+    "weatherResources": [
+      {
+        "name": "https://api.open-meteo.com/v1/forecast",
+        "durationMs": 1121,
+        "transferSize": 0
+      }
+    ]
+  },
+  "naturalWaitMs": 8000,
+  "afterNaturalWait": {
+    "pageUrl": "http://tauri.localhost/",
+    "onlineHint": true,
+    "title": "山居秋暝",
+    "context": "10月20日小雨雨 收藏 0",
+    "warning": false,
+    "loading": false,
+    "cached": {
+      "cityId": "beijing",
+      "source": "open-meteo",
+      "label": "小雨",
+      "observedAt": "2026-10-20T10:00:00.000Z",
+      "cachedAt": 1792490670576
+    },
+    "weatherResources": [
+      {
+        "name": "https://api.open-meteo.com/v1/forecast",
+        "durationMs": 1121,
+        "transferSize": 0
+      },
+      {
+        "name": "https://api.open-meteo.com/v1/forecast",
+        "durationMs": 965.6000000014901,
+        "transferSize": 0
+      }
+    ]
+  },
+  "nativeDailyState": {
+    "local_date": "2026-10-20",
+    "state": "shown",
+    "work_id": "wang-wei-shan-ju-qiu-ming"
+  },
+  "nativeDisplayEvents": [
+    {
+      "local_date": "2026-10-20",
+      "work_id": "bai-ju-yi-mu-jiang-yin",
+      "primary_context": "秋日"
+    },
+    {
+      "local_date": "2026-10-20",
+      "work_id": "wang-wei-shan-ju-qiu-ming",
+      "primary_context": "小雨"
+    }
+  ],
+  "screenshot": "review/redesign/evidence/T09_NATIVE_LIVE_WEATHER_NATURAL_RESETINLINE_20261020_after.png",
+  "directRequestAfterObservation": {
+    "ok": true,
+    "status": 200,
+    "elapsedMs": 1334.5,
+    "currentTime": 1792490400,
+    "weatherCode": 51,
+    "hostNowUnixSeconds": 1792490679
+  },
+  "liveUiConsistent": true
+}

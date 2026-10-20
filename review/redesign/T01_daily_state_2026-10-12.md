@@ -2,6 +2,8 @@
 
 状态：**部分通过**。`redesign/phase-1` 的源码日期测试已通过，后续已补隔离 Windows 内部 EXE 的旧 SQLite 实例升级及页面局部跨日托盘找回证据；真实系统跨午夜、休眠恢复与合成器逐帧仍未测。新 EXE 不是正式发行候选。
 
+2026-10-20 同一最新内部 EXE `D68E286A…` 又在独立临时资料中真实请求北京天气，见[不干预续取的原生诊断](./evidence/T09_NATIVE_LIVE_WEATHER_NATURAL_RESETINLINE_20261020.json)。首屏为离线《暮江吟》；脚本先只等待 8 秒，不发自己的请求，再记录画面、本地缓存与 SQLite：实时小雨《山居秋暝》已自然出现，当日状态指向新作品，展示事件依次保留离线原诗和小雨新诗两条。只读检查器复算了 EXE／测试器哈希、前后画面状态及两条事件一致性。直接接口请求安排在上述观察**之后**，不会帮助前面的续取；这只证明本机、本日、北京样本的晚到真实天气路径，不证明每天/所有城市的稳定转换，也不等于在线首屏已测，A1 仍**部分通过**。
+
 2026-10-20 当前未安装内部 EXE `D68E286A2C5F2262079078921804134917CBB8C6836E1AB2D8036307E8F1325B` 补做[次日安全提醒托盘找回报告](./evidence/T01_NATIVE_CROSS_DAY_SAFETY_RESETINLINE_20261020.json)。在独立临时资料的原生 WebView2 中，先隐藏 10 月 20 日诗笺，仅将**页面局部日期**推进到 21 日并注入明确标注演练的缓存提醒，再通过第二实例唤回。四次 DOM 变化观察均为遮挡或提醒，没有旧诗；SQLite 新日本地状态为 `alert-suppressed` 且无旧作品 ID。逐张查看[原诗](./evidence/T01_NATIVE_CROSS_DAY_SAFETY_RESETINLINE_20261020_before.png)、[找回遮挡](./evidence/T01_NATIVE_CROSS_DAY_SAFETY_RESETINLINE_20261020_reveal_mask.png)与[安全页](./evidence/T01_NATIVE_CROSS_DAY_SAFETY_RESETINLINE_20261020_after.png)：旧诗不在遮挡及最终画面，安全说明与演练来源可读。这证明当前哈希的受控窗口路径，不证明 Windows 真实午夜、休眠唤醒、合成器每帧或真实预警网关；未改系统时钟、真实资料和安装状态。A1 仍**部分通过**。
 
 2026-10-19 提示退出留位调整后的最终本批内部 EXE `4C2BE63A80D1D0622F9AFEB2084870EC8E4F18C500F862F43E97BA120C836DCC`，再次完成[同哈希页面局部跨日报告](./evidence/T01_NATIVE_CROSS_DAY_LATE_RAIN_toast-leave-20261019.json)：10 月 20 日离线《登飞来峰》→合成小雨《山居秋暝》，SQLite 20 日 `shown` 与画面一致，更新提示和主按钮不相交。[更新前](./evidence/T01_NATIVE_CROSS_DAY_LATE_RAIN_toast-leave-20261019_new_day_before_late.png)与[更新后](./evidence/T01_NATIVE_CROSS_DAY_LATE_RAIN_toast-leave-20261019_after.png)画面已查看。旧哈希的跨日报告不移作新候选结果；真实系统午夜、托盘找回和休眠仍未验，A1 保持部分通过。
