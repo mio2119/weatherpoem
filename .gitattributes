@@ -1,2 +1,6 @@
 # Third-party license evidence is byte-hashed; never rewrite line endings.
 third_party/license-texts/** -text
+
+# The native-window probe is byte-hashed in audit reports and uses a UTF-8 BOM
+# so Windows PowerShell 5.1 reads its Chinese UI labels correctly.
+scripts/test-redesign-native-window.ps1 text eol=lf

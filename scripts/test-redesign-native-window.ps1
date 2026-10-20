@@ -1,5 +1,6 @@
-# Follow-up runs must pass a fresh -ReportPath and -SkipScreenshots. The original
-# screenshot/report pair is immutable; this probe never overwrites evidence.
+﻿# Follow-up runs must pass a fresh -ReportPath. The original screenshot/report
+# pair is immutable; this probe never overwrites evidence. Keep the UTF-8 BOM:
+# Windows PowerShell 5.1 otherwise misdecodes the Chinese UI labels.
 param(
     [string]$CandidatePath = "E:\weatherpoem\.work\redesign-native-20261015\release\weatherpoem.exe",
     [string]$ReportPath = "E:\weatherpoem\review\redesign\evidence\T04_NATIVE_WINDOW_20261015.json",
@@ -296,7 +297,7 @@ $report = [ordered]@{
     schemaVersion = "1.0"
     testKind = if ($FocusOnly) { "isolated-native-autostart-focus" } else { "isolated-native-window" }
     generatedAt = [DateTime]::UtcNow.ToString("o")
-    sourceCommit = (& git -C $projectRoot rev-parse HEAD).Trim()
+    repositoryHeadAtTest = (& git -C $projectRoot rev-parse HEAD).Trim()
     candidate = [ordered]@{
         path = $candidate
         sha256 = (Get-FileHash -LiteralPath $candidate -Algorithm SHA256).Hash
@@ -311,7 +312,7 @@ $report = [ordered]@{
     systemAutostartChanged = $false
     systemDisplaySettingsChanged = $false
     observations = [ordered]@{}
-    limitations = @()
+    limitations = @("Repository HEAD identifies the test checkout, not the compiled EXE's source commit; candidate identity is the EXE SHA-256.")
     result = "in-progress"
 }
 
