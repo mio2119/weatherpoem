@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "1.0",
+  "testKind": "isolated-native-window",
+  "generatedAt": "2026-10-20T03:48:10.9555442Z",
+  "sourceCommit": "e95d48e38b29086deb3b1441a0e8bd4a19f50446",
+  "candidate": {
+    "path": "E:\\weatherpoem\\.work\\redesign-rain-excerpt-20261019\\release\\weatherpoem.exe",
+    "sha256": "402FE0C76ECFA256B396E02B4226E1E30E95716DC582D20F7263FDB9FA18EC16"
+  },
+  "testHarness": {
+    "path": "scripts/test-redesign-native-window.ps1",
+    "sha256": "038B2DBDA3357160A17EA3C7962D54FB65D30299409B0B5AD1BA4E409216AB4B"
+  },
+  "profileIsolation": true,
+  "launchMode": "autostart",
+  "realUserDataTouched": false,
+  "systemAutostartChanged": false,
+  "systemDisplaySettingsChanged": false,
+  "observations": {
+    "foregroundBeforePid": 22768,
+    "uiaInvocationDiagnostics": []
+  },
+  "limitations": [],
+  "result": "failed",
+  "error": "Timed out waiting for product window"
+}
