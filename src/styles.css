@@ -1535,6 +1535,11 @@ button:disabled {
   scroll-margin-top: 56px;
 }
 
+.settings-reset-confirmation:focus {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
 .settings-reset-confirmation h3 {
   margin: 0 0 7px;
   color: var(--ink);
@@ -1547,6 +1552,12 @@ button:disabled {
   color: var(--muted);
   font-size: 12px;
   line-height: 1.6;
+}
+
+.settings-reset-confirmation .settings-reset-error {
+  margin-top: 8px;
+  color: var(--danger);
+  font-weight: 600;
 }
 
 .settings-reset-actions {

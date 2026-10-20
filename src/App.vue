@@ -104,6 +104,7 @@ const replacementInProgress = ref(false);
 const dislikeInProgress = ref(false);
 const favoriteInProgress = ref(false);
 const resetInProgress = ref(false);
+const resetError = ref("");
 const panel = ref<Panel>("card");
 const loading = ref(true);
 const revealPending = ref(false);
@@ -1244,6 +1245,7 @@ async function withdrawPilot(): Promise<void> {
 async function resetData(): Promise<void> {
   if (!repository.value || resetInProgress.value) return;
   resetInProgress.value = true;
+  resetError.value = "";
   try {
     let autostartReset: "disabled" | "unavailable" | "isolated";
     try {
@@ -1260,8 +1262,10 @@ async function resetData(): Promise<void> {
         };
         settingsDraft.value = { ...settings.value };
         bootstrap.value.settings = settings.value;
-        autostartWarning.value = dataResetFailureMessage(error);
-        showToast(autostartWarning.value);
+        const failureMessage = dataResetFailureMessage(error);
+        autostartWarning.value = failureMessage;
+        resetError.value = failureMessage;
+        showToast(failureMessage);
       } catch (loadError) {
         console.error(loadError);
         errorMessage.value = dailyLoadErrorMessage(loadError);
@@ -1277,6 +1281,7 @@ async function resetData(): Promise<void> {
     settings.value = { ...DEFAULT_SETTINGS };
     settingsDraft.value = { ...DEFAULT_SETTINGS };
     autostartWarning.value = "";
+    resetError.value = "";
     pilotState.value = undefined;
     pilotSessionOpened = false;
     recommendation.value = undefined;
@@ -1363,6 +1368,7 @@ async function exitFromShell(): Promise<void> {
 async function initialize(): Promise<void> {
   loading.value = true;
   errorMessage.value = "";
+  resetError.value = "";
   let revealAfterInitialization = true;
   let revealWithFocus = true;
   let pendingWeather: Promise<WeatherContext> | undefined;
@@ -1556,10 +1562,12 @@ onBeforeUnmount(() => {
       :last-feedback-title="latestDislikeTitle"
       :pilot-status="pilotState?.status"
       :resetting="resetInProgress"
+      :reset-error="resetError"
       @back="returnToCard"
       @save="saveSettings"
       @draft-change="settingsDraft = $event"
       @reset="resetData"
+      @reset-dismiss="resetError = ''"
       @favorites="openFavorites('settings')"
       @pilot="panel = 'pilot'"
       @undo-feedback="undoLatestDislike"

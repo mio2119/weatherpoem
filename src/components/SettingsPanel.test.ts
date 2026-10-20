@@ -119,6 +119,7 @@ describe("settings data reset confirmation", () => {
 
     await wrapper.get(".settings-reset-actions button").trigger("click");
     expect(wrapper.emitted("reset")).toBeUndefined();
+    expect(wrapper.emitted("resetDismiss")).toHaveLength(1);
     expect(wrapper.find(".settings-reset-confirmation").exists()).toBe(false);
     expect(document.activeElement).toBe(wrapper.get(".danger-link").element);
 
@@ -135,6 +136,15 @@ describe("settings data reset confirmation", () => {
     expect(wrapper.get(".settings-reset-confirm-button").attributes("disabled")).toBeDefined();
     expect(wrapper.get(".settings-reset-actions button").attributes("disabled")).toBeDefined();
     expect(wrapper.text()).toContain("正在清除");
+  });
+
+  it("keeps a reset failure beside the retry action", async () => {
+    const wrapper = mount(SettingsPanel, { props });
+    await wrapper.get(".danger-link").trigger("click");
+    await wrapper.setProps({ resetError: "本地资料未完整清除；请重试。" });
+    expect(wrapper.get(".settings-reset-error").attributes("role")).toBe("alert");
+    expect(wrapper.get(".settings-reset-error").text()).toContain("资料未完整清除");
+    expect(wrapper.get(".settings-reset-confirm-button").attributes("disabled")).toBeUndefined();
   });
 });
 

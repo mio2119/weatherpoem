@@ -19,6 +19,7 @@ const props = defineProps<{
   lastFeedbackTitle?: string;
   pilotStatus?: PilotState["status"];
   resetting?: boolean;
+  resetError?: string;
 }>();
 
 const emit = defineEmits<{
@@ -26,6 +27,7 @@ const emit = defineEmits<{
   save: [settings: AppSettings];
   draftChange: [settings: AppSettings];
   reset: [];
+  resetDismiss: [];
   favorites: [];
   pilot: [];
   undoFeedback: [];
@@ -81,6 +83,7 @@ async function showResetConfirmation(): Promise<void> {
 
 async function cancelResetConfirmation(): Promise<void> {
   confirmReset.value = false;
+  emit("resetDismiss");
   await nextTick();
   resetTrigger.value?.focus();
 }
@@ -232,6 +235,7 @@ async function showThirdPartyNotices(): Promise<void> {
         >
           <h3 id="settings-reset-title">确认清除本机资料？</h3>
           <p>将删除设置、收藏、阅读记录、反馈、试点记录和天气缓存，且无法撤销。桌面版会先确认开机启动已关闭；若无法确认，资料不会删除。</p>
+          <p v-if="resetError" class="settings-reset-error" role="alert">{{ resetError }}</p>
           <div class="settings-reset-actions">
             <button
               type="button"

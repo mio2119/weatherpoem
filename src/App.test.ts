@@ -618,6 +618,7 @@ describe("browser preview user flow", () => {
     await wrapper.get(".settings-reset-confirm-button").trigger("click");
     await vi.waitFor(() => {
       expect(wrapper!.get(".toast-message").text()).toContain("资料未完整清除");
+      expect(wrapper!.get(".settings-reset-error").text()).toContain("资料未完整清除");
     });
     expect(wrapper.find(".settings-panel").exists()).toBe(true);
     expect((await (await createRepository()).load()).favorites).toEqual(["a-favorite"]);

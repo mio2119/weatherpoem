@@ -22,6 +22,7 @@ import { resolvePerformanceDatabasePath, seedPerformanceProfile } from "./seed-p
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const candidate = path.resolve(process.argv[2] ?? "");
 const reportPath = path.resolve(process.argv[3] ?? "");
+const resetAudit = process.argv.includes("--reset-audit");
 const internalRoot = path.join(root, ".work") + path.sep;
 const evidenceRoot = path.join(root, "review", "redesign", "evidence") + path.sep;
 assert.ok(candidate.toLowerCase().startsWith(internalRoot.toLowerCase()) &&
@@ -68,11 +69,16 @@ const markerPath = path.join(profile, "temp", "probe", "weatherpoem-performance-
 const databasePath = resolvePerformanceDatabasePath(profile);
 const report = {
   schemaVersion: "1.0",
-  testKind: "isolated-native-settings-save-failure-retry",
+  testKind: resetAudit
+    ? "isolated-native-settings-retry-and-data-reset"
+    : "isolated-native-settings-save-failure-retry",
   generatedAt: new Date().toISOString(),
   candidate: {
     path: path.relative(root, candidate).replaceAll(path.sep, "/"),
     sha256: createHash("sha256").update(readFileSync(candidate)).digest("hex").toUpperCase(),
+    sourceCommit: execFileSync("git", ["rev-parse", "HEAD"], {
+      cwd: root, encoding: "utf8",
+    }).trim(),
   },
   testHarness: {
     path: "scripts/test-redesign-native-settings-retry.mjs",
@@ -87,7 +93,9 @@ const report = {
     installedOrUninstalled: false,
   },
   limitations: [
-    "The SQLite trigger simulates a failed settings write inside an isolated native profile; it is not a physical disk-full, permission, or storage-device failure.",
+    resetAudit
+      ? "SQLite triggers simulate a failed settings write and a mid-reset deletion inside an isolated native profile; they are not physical disk-full, permission, or storage-device failures."
+      : "The SQLite trigger simulates a failed settings write inside an isolated native profile; it is not a physical disk-full, permission, or storage-device failure.",
     "CDP button interaction and the current Windows display do not replace manual input, screen-reader, or multi-DPI testing.",
   ],
 };
@@ -191,6 +199,16 @@ function readStoredSettings() {
   return JSON.parse(row.value);
 }
 
+function readUserRowCounts() {
+  return Object.fromEntries([
+    "app_kv", "daily_state", "recommendation_history",
+    "recommendation_display_events", "favorites", "feedback",
+  ].map((table) => [
+    table,
+    database.prepare(`SELECT COUNT(*) AS count FROM ${table}`).get().count,
+  ]));
+}
+
 try {
   for (const segment of ["appdata", "localappdata", "temp/probe"]) {
     mkdirSync(path.join(profile, segment), { recursive: true });
@@ -291,6 +309,10 @@ try {
   if (existsSync(markerPath)) unlinkSync(markerPath);
   await connectToCandidate();
   await waitFor(() => evaluate("Boolean(document.querySelector('.poem-view'))"), "poem after same-profile restart");
+  if (resetAudit) {
+    await evaluate(`document.querySelector('.poem-view .card-actions button[aria-pressed]').click()`);
+    await waitFor(() => readUserRowCounts().favorites === 1, "native favorite before reset");
+  }
   await evaluate(`document.querySelector('button[aria-label="设置"]').click()`);
   await waitFor(() => evaluate("Boolean(document.querySelector('.settings-panel'))"), "reopened settings after restart");
   report.afterRestart = await evaluate(`({
@@ -299,7 +321,82 @@ try {
     fontSize: document.querySelector('select[name="poem-font-size"]')?.value,
   })`);
   assert.equal(report.afterRestart.glanceSize, "large");
-  report.result = "native-isolated-settings-save-failure-retry-and-restart-passed";
+  if (resetAudit) {
+    const beforeReset = readUserRowCounts();
+    assert.equal(beforeReset.app_kv > 0, true);
+    assert.equal(beforeReset.daily_state > 0, true);
+    assert.equal(beforeReset.recommendation_display_events > 0, true);
+    assert.equal(beforeReset.favorites, 1);
+    report.resetBefore = beforeReset;
+
+    await evaluate(`document.querySelector('.settings-panel .danger-link').click()`);
+    await waitFor(() => evaluate("Boolean(document.querySelector('.settings-reset-confirmation'))"),
+      "native inline reset confirmation");
+    report.resetOffered = await evaluate(`({
+      title: document.querySelector('#settings-reset-title')?.textContent,
+      groupFocused: document.activeElement === document.querySelector('.settings-reset-confirmation'),
+      deleteExplanation: document.querySelector('.settings-reset-confirmation')?.textContent,
+    })`);
+    assert.equal(report.resetOffered.groupFocused, true);
+    assert.ok(report.resetOffered.deleteExplanation.includes("无法撤销"));
+    assert.deepEqual(readUserRowCounts(), beforeReset,
+      "The first reset click changed isolated SQLite rows");
+    report.resetOffered.screenshot = await screenshot("reset_confirmation");
+
+    await evaluate(`document.querySelector('.settings-reset-actions button').click()`);
+    await waitFor(() => evaluate("!document.querySelector('.settings-reset-confirmation')"),
+      "native reset cancellation");
+    report.resetCanceled = await evaluate(`({
+      triggerFocused: document.activeElement?.classList.contains('danger-link'),
+      confirmationClosed: !document.querySelector('.settings-reset-confirmation'),
+    })`);
+    assert.equal(report.resetCanceled.triggerFocused, true);
+    assert.deepEqual(readUserRowCounts(), beforeReset,
+      "Canceling reset changed isolated SQLite rows");
+
+    await evaluate(`document.querySelector('.settings-panel .danger-link').click()`);
+    database.exec(`CREATE TRIGGER isolated_reset_delete_fault
+      BEFORE DELETE ON favorites
+      BEGIN SELECT RAISE(ABORT, 'isolated reset delete fault'); END`);
+    await evaluate(`document.querySelector('.settings-reset-confirm-button').click()`);
+    await waitFor(() => evaluate(
+      "document.querySelector('.settings-warning')?.textContent?.includes('资料未完整清除')",
+    ), "native reset failure notice");
+    report.resetFailed = await evaluate(`({
+      confirmationOpen: Boolean(document.querySelector('.settings-reset-confirmation')),
+      warning: document.querySelector('.settings-warning')?.textContent,
+      inlineWarning: document.querySelector('.settings-reset-error')?.textContent,
+      confirmDisabled: document.querySelector('.settings-reset-confirm-button')?.disabled,
+    })`);
+    report.resetFailed.rows = readUserRowCounts();
+    assert.equal(report.resetFailed.confirmationOpen, true);
+    assert.ok(report.resetFailed.inlineWarning.includes("资料未完整清除"));
+    assert.equal(report.resetFailed.confirmDisabled, false);
+    assert.deepEqual(report.resetFailed.rows, beforeReset,
+      "SQLite reset fault left a partially deleted profile");
+    await waitFor(() => evaluate("!document.querySelector('.toast-message')"),
+      "reset failure toast to clear before steady screenshot");
+    report.resetFailed.screenshot = await screenshot("reset_failed_retained");
+
+    database.exec("DROP TRIGGER isolated_reset_delete_fault");
+    await evaluate(`document.querySelector('.settings-reset-confirm-button').click()`);
+    await waitFor(() => evaluate("Boolean(document.querySelector('.onboarding-view'))"),
+      "native first-use view after reset retry");
+    report.resetRetried = await evaluate(`({
+      onboardingVisible: Boolean(document.querySelector('.onboarding-view')),
+      settingsVisible: Boolean(document.querySelector('.settings-panel')),
+      notice: document.querySelector('.toast-message')?.textContent,
+    })`);
+    report.resetRetried.rows = readUserRowCounts();
+    for (const [table, count] of Object.entries(report.resetRetried.rows)) {
+      assert.equal(count, 0, `Reset retry did not clear isolated ${table}`);
+    }
+    assert.equal(report.resetRetried.onboardingVisible, true);
+    report.resetRetried.screenshot = await screenshot("reset_retried_onboarding");
+  }
+  report.result = resetAudit
+    ? "native-isolated-settings-retry-reset-rollback-and-retry-passed"
+    : "native-isolated-settings-save-failure-retry-and-restart-passed";
 } catch (error) {
   report.result = "failed";
   report.error = String(error?.stack ?? error);
