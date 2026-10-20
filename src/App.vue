@@ -103,6 +103,7 @@ const recommendation = ref<Recommendation>();
 const replacementInProgress = ref(false);
 const dislikeInProgress = ref(false);
 const favoriteInProgress = ref(false);
+const resetInProgress = ref(false);
 const panel = ref<Panel>("card");
 const loading = ref(true);
 const revealPending = ref(false);
@@ -1241,59 +1242,57 @@ async function withdrawPilot(): Promise<void> {
 }
 
 async function resetData(): Promise<void> {
-  if (
-    !window.confirm(
-      "确定清除设置、收藏、阅读记录、反馈、试点记录与天气缓存，并关闭开机启动吗？",
-    )
-  ) {
-    return;
-  }
-  if (!repository.value) return;
-  let autostartReset: "disabled" | "unavailable" | "isolated";
+  if (!repository.value || resetInProgress.value) return;
+  resetInProgress.value = true;
   try {
-    autostartReset = await clearAllLocalUserData(repository.value);
-  } catch (error) {
-    console.error(error);
+    let autostartReset: "disabled" | "unavailable" | "isolated";
     try {
-      bootstrap.value = await repository.value.load();
-      settings.value = {
-        ...bootstrap.value.settings,
-        autostart: error instanceof DataResetError && error.autostartStatus === "disabled"
-          ? false
-          : bootstrap.value.settings.autostart,
-      };
-      settingsDraft.value = { ...settings.value };
-      bootstrap.value.settings = settings.value;
-      autostartWarning.value = dataResetFailureMessage(error);
-      showToast(autostartWarning.value);
-    } catch (loadError) {
-      console.error(loadError);
-      errorMessage.value = dailyLoadErrorMessage(loadError);
+      autostartReset = await clearAllLocalUserData(repository.value);
+    } catch (error) {
+      console.error(error);
+      try {
+        bootstrap.value = await repository.value.load();
+        settings.value = {
+          ...bootstrap.value.settings,
+          autostart: error instanceof DataResetError && error.autostartStatus === "disabled"
+            ? false
+            : bootstrap.value.settings.autostart,
+        };
+        settingsDraft.value = { ...settings.value };
+        bootstrap.value.settings = settings.value;
+        autostartWarning.value = dataResetFailureMessage(error);
+        showToast(autostartWarning.value);
+      } catch (loadError) {
+        console.error(loadError);
+        errorMessage.value = dailyLoadErrorMessage(loadError);
+      }
+      return;
     }
-    return;
+    bootstrap.value = {
+      settings: { ...DEFAULT_SETTINGS },
+      history: [],
+      favorites: [],
+      feedback: [],
+    };
+    settings.value = { ...DEFAULT_SETTINGS };
+    settingsDraft.value = { ...DEFAULT_SETTINGS };
+    autostartWarning.value = "";
+    pilotState.value = undefined;
+    pilotSessionOpened = false;
+    recommendation.value = undefined;
+    panel.value = "card";
+    applyTheme("system");
+    applyMotionPreference(false);
+    showToast(
+      autostartReset === "disabled"
+        ? "本地数据已清除，开机启动已关闭"
+        : autostartReset === "isolated"
+          ? "隔离测试资料已清除，未修改系统开机启动"
+          : "浏览器预览资料已清除，此处没有系统开机启动设置",
+    );
+  } finally {
+    resetInProgress.value = false;
   }
-  bootstrap.value = {
-    settings: { ...DEFAULT_SETTINGS },
-    history: [],
-    favorites: [],
-    feedback: [],
-  };
-  settings.value = { ...DEFAULT_SETTINGS };
-  settingsDraft.value = { ...DEFAULT_SETTINGS };
-  autostartWarning.value = "";
-  pilotState.value = undefined;
-  pilotSessionOpened = false;
-  recommendation.value = undefined;
-  panel.value = "card";
-  applyTheme("system");
-  applyMotionPreference(false);
-  showToast(
-    autostartReset === "disabled"
-      ? "本地数据已清除，开机启动已关闭"
-      : autostartReset === "isolated"
-        ? "隔离测试资料已清除，未修改系统开机启动"
-        : "浏览器预览资料已清除，此处没有系统开机启动设置",
-  );
 }
 
 async function openMainFromShell(): Promise<void> {
@@ -1556,6 +1555,7 @@ onBeforeUnmount(() => {
       :can-undo-feedback="Boolean(latestDislike)"
       :last-feedback-title="latestDislikeTitle"
       :pilot-status="pilotState?.status"
+      :resetting="resetInProgress"
       @back="returnToCard"
       @save="saveSettings"
       @draft-change="settingsDraft = $event"

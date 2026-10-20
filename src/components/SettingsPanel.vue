@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, reactive, ref, watch } from "vue";
+import { computed, nextTick, reactive, ref, watch } from "vue";
 import { useInitialFocus } from "../composables/useInitialFocus";
 import { CITIES } from "../data/cities";
 import {
@@ -18,6 +18,7 @@ const props = defineProps<{
   canUndoFeedback?: boolean;
   lastFeedbackTitle?: string;
   pilotStatus?: PilotState["status"];
+  resetting?: boolean;
 }>();
 
 const emit = defineEmits<{
@@ -41,6 +42,9 @@ const releaseLabel = isTrialRelease
   : "正式签名版";
 const trustError = ref("");
 const confirmDiscard = ref(false);
+const confirmReset = ref(false);
+const resetTrigger = ref<HTMLButtonElement | null>(null);
+const resetGroup = ref<HTMLDivElement | null>(null);
 const isDirty = computed(() =>
   JSON.stringify(draft) !==
   JSON.stringify({ ...props.savedSettings, anonymousMetrics: false }),
@@ -66,6 +70,19 @@ function back(): void {
 
 function submit(): void {
   emit("save", { ...draft, anonymousMetrics: false });
+}
+
+async function showResetConfirmation(): Promise<void> {
+  confirmReset.value = true;
+  await nextTick();
+  resetGroup.value?.scrollIntoView?.({ block: "start" });
+  resetGroup.value?.focus({ preventScroll: true });
+}
+
+async function cancelResetConfirmation(): Promise<void> {
+  confirmReset.value = false;
+  await nextTick();
+  resetTrigger.value?.focus();
 }
 
 async function showWeatherLicense(): Promise<void> {
@@ -194,9 +211,45 @@ async function showThirdPartyNotices(): Promise<void> {
         <p id="metrics-disabled-note" class="settings-note">
           此预留能力未启用，旧版本中的选择不会作为未来授权。
         </p>
-        <button class="danger-link" type="button" @click="emit('reset')">
+        <button
+          v-if="!confirmReset"
+          ref="resetTrigger"
+          class="danger-link"
+          type="button"
+          :disabled="resetting"
+          @click="showResetConfirmation"
+        >
           清除个人数据与设置
         </button>
+        <div
+          v-else
+          id="settings-reset-confirmation"
+          ref="resetGroup"
+          class="settings-reset-confirmation"
+          role="group"
+          aria-labelledby="settings-reset-title"
+          tabindex="-1"
+        >
+          <h3 id="settings-reset-title">确认清除本机资料？</h3>
+          <p>将删除设置、收藏、阅读记录、反馈、试点记录和天气缓存，且无法撤销。桌面版会先确认开机启动已关闭；若无法确认，资料不会删除。</p>
+          <div class="settings-reset-actions">
+            <button
+              type="button"
+              :disabled="resetting"
+              @click="cancelResetConfirmation"
+            >
+              继续保留
+            </button>
+            <button
+              class="settings-reset-confirm-button"
+              type="button"
+              :disabled="resetting"
+              @click="emit('reset')"
+            >
+              {{ resetting ? "正在清除" : "确认清除资料" }}
+            </button>
+          </div>
+        </div>
       </section>
 
       <section class="settings-group">

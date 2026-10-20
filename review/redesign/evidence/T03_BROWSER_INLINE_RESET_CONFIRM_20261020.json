@@ -1,0 +1,130 @@
+{
+  "schemaVersion": "1.0",
+  "browser": "Chrome/155.0.8059.85",
+  "isolatedProfile": true,
+  "nativeWebView2": false,
+  "manualVisualReview": "320x260 actions-end screenshot shows the confirmation heading partly behind the sticky settings header; functional measurements passed but this visual state requires correction.",
+  "visualScreenshot": "T03_BROWSER_RESET_CONFIRM_BEFORE_20261020.png",
+  "settingsMeasurements": [
+    {
+      "theme": "light",
+      "width": 430,
+      "height": 680,
+      "sizes": {
+        "groupHeading": 13,
+        "switchDescription": 12,
+        "settingsNote": 12,
+        "releaseDescription": 12,
+        "trustHeading": 13,
+        "trustBody": 12,
+        "trustFootnote": 12,
+        "trustAction": 12,
+        "navigationDescription": 12,
+        "clearDataAction": 12
+      },
+      "horizontalOverflow": false,
+      "panelScrollHeight": 1427,
+      "panelClientHeight": 620,
+      "saveReachable": true
+    },
+    {
+      "theme": "light",
+      "width": 320,
+      "height": 260,
+      "sizes": {
+        "groupHeading": 13,
+        "switchDescription": 12,
+        "settingsNote": 12,
+        "releaseDescription": 12,
+        "trustHeading": 13,
+        "trustBody": 12,
+        "trustFootnote": 12,
+        "trustAction": 12,
+        "navigationDescription": 12,
+        "clearDataAction": 12
+      },
+      "horizontalOverflow": false,
+      "panelScrollHeight": 1523,
+      "panelClientHeight": 200,
+      "saveReachable": true
+    },
+    {
+      "theme": "dark",
+      "width": 430,
+      "height": 680,
+      "sizes": {
+        "groupHeading": 13,
+        "switchDescription": 12,
+        "settingsNote": 12,
+        "releaseDescription": 12,
+        "trustHeading": 13,
+        "trustBody": 12,
+        "trustFootnote": 12,
+        "trustAction": 12,
+        "navigationDescription": 12,
+        "clearDataAction": 12
+      },
+      "horizontalOverflow": false,
+      "panelScrollHeight": 1427,
+      "panelClientHeight": 620,
+      "saveReachable": true
+    },
+    {
+      "theme": "dark",
+      "width": 320,
+      "height": 260,
+      "sizes": {
+        "groupHeading": 13,
+        "switchDescription": 12,
+        "settingsNote": 12,
+        "releaseDescription": 12,
+        "trustHeading": 13,
+        "trustBody": 12,
+        "trustFootnote": 12,
+        "trustAction": 12,
+        "navigationDescription": 12,
+        "clearDataAction": 12
+      },
+      "horizontalOverflow": false,
+      "panelScrollHeight": 1523,
+      "panelClientHeight": 200,
+      "saveReachable": true
+    }
+  ],
+  "settingsResetFlow": [
+    {
+      "stage": "offered",
+      "text": "确认清除本机资料？将删除设置、收藏、阅读记录、反馈、试点记录和天气缓存，且无法撤销。桌面版会先确认开机启动已关闭；若无法确认，资料不会删除。 继续保留 确认清除资料",
+      "focused": "继续保留",
+      "groupName": "settings-reset-title",
+      "buttons": [
+        {
+          "label": "继续保留",
+          "width": 74
+        },
+        {
+          "label": "确认清除资料",
+          "width": 98
+        }
+      ],
+      "dataUnchanged": true,
+      "horizontalOverflow": false,
+      "viewport": {
+        "width": 320,
+        "height": 260
+      }
+    },
+    {
+      "stage": "canceled",
+      "confirmationClosed": true,
+      "triggerFocused": true,
+      "dataUnchanged": true
+    },
+    {
+      "stage": "confirmed",
+      "onboardingVisible": true,
+      "mainDataRemoved": true,
+      "horizontalOverflow": false
+    }
+  ]
+}

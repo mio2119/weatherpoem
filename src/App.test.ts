@@ -578,12 +578,13 @@ describe("browser preview user flow", () => {
       favorites: ["a-favorite"],
       feedback: [],
     }));
-    vi.stubGlobal("confirm", vi.fn(() => true));
     wrapper = mount(App, { attachTo: document.body });
     await vi.waitFor(() => expect(wrapper!.find(".poem-view").exists()).toBe(true));
     await wrapper.get('button[aria-label="设置"]').trigger("click");
     await vi.waitFor(() => expect(wrapper!.find(".settings-panel").exists()).toBe(true));
     await wrapper.get(".settings-panel .danger-link").trigger("click");
+    expect((await (await createRepository()).load()).favorites).toEqual(["a-favorite"]);
+    await wrapper.get(".settings-reset-confirm-button").trigger("click");
 
     await vi.waitFor(async () => {
       expect(wrapper!.find(".onboarding-view").exists()).toBe(true);
@@ -602,7 +603,6 @@ describe("browser preview user flow", () => {
       favorites: ["a-favorite"],
       feedback: [],
     }));
-    vi.stubGlobal("confirm", vi.fn(() => true));
     wrapper = mount(App, { attachTo: document.body });
     await vi.waitFor(() => expect(wrapper!.find(".poem-view").exists()).toBe(true));
     await wrapper.get('button[aria-label="设置"]').trigger("click");
@@ -615,6 +615,7 @@ describe("browser preview user flow", () => {
         return originalRemoveItem(key);
       });
     await wrapper.get(".settings-panel .danger-link").trigger("click");
+    await wrapper.get(".settings-reset-confirm-button").trigger("click");
     await vi.waitFor(() => {
       expect(wrapper!.get(".toast-message").text()).toContain("资料未完整清除");
     });
@@ -622,7 +623,7 @@ describe("browser preview user flow", () => {
     expect((await (await createRepository()).load()).favorites).toEqual(["a-favorite"]);
 
     storageSpy.mockRestore();
-    await wrapper.get(".settings-panel .danger-link").trigger("click");
+    await wrapper.get(".settings-reset-confirm-button").trigger("click");
     await vi.waitFor(async () => {
       expect(wrapper!.find(".onboarding-view").exists()).toBe(true);
       expect((await (await createRepository()).load()).favorites).toEqual([]);

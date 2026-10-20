@@ -1,6 +1,6 @@
 # WeatherPoem 完整改版执行方案与验收规范
 
-版本：1.84；制定日期：2026-10-12；进度核对：2026-10-20；用途：供后续 AI 编码任务逐阶段执行、提交证据和自验收。实际开发目录始终是 `E:\weatherpoem`。`D:\纯净工作台` 只承担控制与独立审计，不存放本项目源码。单批交接入口见 [AI 完整修改方案](./AI_MODIFICATION_BLUEPRINT_2026-10-14.md)。
+版本：1.85；制定日期：2026-10-12；进度核对：2026-10-20；用途：供后续 AI 编码任务逐阶段执行、提交证据和自验收。实际开发目录始终是 `E:\weatherpoem`。`D:\纯净工作台` 只承担控制与独立审计，不存放本项目源码。单批交接入口见 [AI 完整修改方案](./AI_MODIFICATION_BLUEPRINT_2026-10-14.md)。
 
 本方案根据 [产品体验审查](./PRODUCT_EXPERIENCE_AUDIT_2026-10-12.md)、当前 Vue 3/Tauri 2 实现和项目发起人的新想法制定。它同时是目标规范和后续执行入口；已实施内容、仍缺的证据以第七节及 `review/redesign/` 的逐任务记录为准，不能因写在计划里就视为验收通过。当前 `0.2.0` 未签名内部试用候选及其发布证据保留为旧基线；新构建应使用可区分的候选身份，旧哈希不能证明新候选通过。七天长测已按项目决定跳过，RQT-13 完整门禁继续保持 `partial`。
 
@@ -280,6 +280,8 @@
 当前哈希的[自动显示焦点](../review/redesign/evidence/T04_NATIVE_FOCUS_CONTENT101_20261020.json)与[真实全屏前台自动避让](../review/redesign/evidence/T04_REAL_FULLSCREEN_SUPPRESSION_CONTENT101_FINAL_20261020.json)均有隔离原生证据：全屏窗口覆盖当前显示器时产品进程保持存活，主窗口 30 次采样不可见，前台未改变。就绪标记仍未生成，托盘手动找回及合成器逐帧未验；通用窗口脚本对这种按设计隐藏的状态已改为[启动前拒绝](../review/redesign/evidence/T04_VISIBLE_WINDOW_PRECONDITION_CONTENT101_20261020.json)，原超时失败继续留档。A5 的[浅色](../review/redesign/evidence/T05_NATIVE_WARNING_CONTENT101_LIGHT_20261020.json)/[深色](../review/redesign/evidence/T05_NATIVE_WARNING_CONTENT101_DARK_20261020.json)隔离启动安全页、A6 的[单首长词横竖排/字号/窗口重启](../review/redesign/evidence/T06_NATIVE_CONTENT101_LONG_POEM_MATRIX_20261020.json)、A7 的[雨景托盘停机及短录屏](../review/redesign/evidence/T07_NATIVE_TRAY_MOTION_CONTENT101_20261020.json)、A8 的[收藏写入失败与重试](../review/redesign/evidence/T08_NATIVE_FAVORITE_CONTENT101_20261020.json)均在各自独立临时资料中通过；仍不替代真实安全网关、其他作品/天气、多系统缩放/读屏、真人审美与 19 首具名内容审核。A4–A8 继续**部分通过**，T10 不启动。
 
 内容版本变更后，旧 `0.2.0` 发布清单、需求追踪与四周试点计划仍指向 `2026.07.1`。改版专用 `content:withdrawal:redesign:check` 已改为核验当前 `2026.10.1` 的独立报告并通过；旧版默认 `content:withdrawal:check` 保持原入口。全项目 `npm.cmd run check` 现越过撤回门禁，停在 `pilot:four-week:check`：现存计划仍绑定旧内容目录和旧发布 EXE `00DB4B15…`；`requirements:check` 等后续门禁未由此次总检查运行到，不能假定通过。不能通过修改旧清单或把旧报告重新命名来消除身份差异；发布派生产物仅在 T10 适用前置门禁齐备后刷新。A10 继续未开始，H1 的 19 首具名内容审读继续待人完成。
+
+2026-10-20 T03 补充页内数据清除二次确认和并发保护，隔离 Chrome 在 320×260 的首次画面发现固定栏压住标题，调整焦点与滚动留白后，标题顶端与底部操作各自完整可达；首击／取消不删、明确确认后才删的流程报告与前后静帧见 [T03 记录](../review/redesign/T03_first_use_settings_2026-10-12.md)。这只证明当前源码的组件与隔离浏览器路径；`402FE0C7…` 内部 EXE 构建于该修改之前，不能移用为本功能的原生结果。当前全屏游戏占用前台，未启动会抢占桌面的新原生窗口测试；真实系统自启动、原生资料故障、读屏仍缺，A3 保持**部分通过**。
 
 2026-10-14 增量：A1/A2 的“同日旧诗跨季保留”缺陷已有源码修复与定向、全量、隔离浏览器证据，规则升至 `1.2.2`；新推荐的季节过滤未放宽，远端理由与诗境不会把保留诗伪装成当前天气/季节匹配。详见 T01/T02 记录。本节表中此前的 `1.2.1` 与缺口描述是历史快照；新证据仍不能代替旧 SQLite 的跨季原生迁移、真机交互、真人审读或新候选发布门禁，A1/A2 保持部分通过。
 

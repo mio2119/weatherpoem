@@ -1,4 +1,4 @@
-import { spawn } from "node:child_process";
+import { spawn, spawnSync } from "node:child_process";
 import { existsSync, mkdtempSync, readFileSync, realpathSync, rmSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { basename, join, sep } from "node:path";
@@ -382,7 +382,16 @@ async function captureScreenshot(name) {
 
 async function closeOwnedBrowser() {
   if (!browser || browser.exitCode !== null) return;
-  browser.kill();
+  if (process.platform === "win32") {
+    const result = spawnSync("taskkill.exe", ["/PID", String(browser.pid), "/T", "/F"], {
+      windowsHide: true, encoding: "utf8",
+    });
+    if (result.status !== 0 && browser.exitCode === null) {
+      throw new Error(`Could not close the owned isolated browser ${browser.pid}: ${result.stderr || result.stdout}`);
+    }
+  } else {
+    browser.kill();
+  }
   await Promise.race([
     new Promise((resolve) => browser.once("exit", resolve)),
     delay(5_000),
@@ -735,6 +744,111 @@ try {
   const favoritePreserved = await evaluate(`JSON.parse(localStorage.getItem("weatherpoem.local.v1"))
     .favorites.includes("wang-an-shi-yuan-ri")`);
   if (!favoritePreserved) throw new Error("Legacy favorite was lost");
+  const settingsResetFlow = [];
+  if (settingsAudit) {
+    await send("Emulation.setDeviceMetricsOverride", {
+      width: 320, height: 260, deviceScaleFactor: 1, mobile: false,
+    });
+    const originalRaw = await evaluate("localStorage.getItem('weatherpoem.local.v1')");
+    await click(".settings-panel .danger-link");
+    await waitFor(() => evaluate("Boolean(document.querySelector('.settings-reset-confirmation'))"),
+      "inline data reset confirmation");
+    const offered = await evaluate(`(() => {
+      const group = document.querySelector('.settings-reset-confirmation');
+      const heading = group.querySelector('h3').getBoundingClientRect();
+      const stickyHeader = document.querySelector('.settings-panel .panel-header').getBoundingClientRect();
+      const buttons = [...group.querySelectorAll('button')].map((button) => ({
+        label: button.textContent.trim(),
+        width: Math.round(button.getBoundingClientRect().width),
+      }));
+      return {
+        stage: 'offered',
+        text: group.textContent.trim(),
+        groupFocused: document.activeElement === group,
+        groupName: group.getAttribute('aria-labelledby'),
+        headingVisible: heading.top >= stickyHeader.bottom + 1 && heading.bottom <= innerHeight,
+        buttons,
+        dataUnchanged: localStorage.getItem('weatherpoem.local.v1') === ${JSON.stringify(originalRaw)},
+        horizontalOverflow: document.documentElement.scrollWidth > innerWidth + 1,
+        viewport: { width: innerWidth, height: innerHeight },
+      };
+    })()`);
+    if (!offered.dataUnchanged || offered.horizontalOverflow ||
+        offered.groupName !== "settings-reset-title" ||
+        !offered.text.includes("无法撤销") ||
+        offered.buttons.length !== 2 || offered.buttons.some((button) => button.width < 60) ||
+        !offered.groupFocused || !offered.headingVisible) {
+      throw new Error(`Reset confirmation is not safe or readable: ${JSON.stringify(offered)}`);
+    }
+    settingsResetFlow.push(offered);
+    await captureScreenshot("T03_settings_reset_confirmation_320x260_top.png");
+    const resetActions = await evaluate(`(() => {
+      const group = document.querySelector('.settings-reset-confirmation');
+      group.scrollIntoView({ block: 'end' });
+      const buttons = [...group.querySelectorAll('button')];
+      const last = buttons.at(-1).getBoundingClientRect();
+      return {
+        stage: 'actions',
+        confirmReachable: last.top >= 58 && last.bottom <= innerHeight,
+        horizontalOverflow: document.documentElement.scrollWidth > innerWidth + 1,
+      };
+    })()`);
+    if (!resetActions.confirmReachable || resetActions.horizontalOverflow) {
+      throw new Error(`Reset actions are not reachable: ${JSON.stringify(resetActions)}`);
+    }
+    settingsResetFlow.push(resetActions);
+    await captureScreenshot("T03_settings_reset_confirmation_320x260_actions.png");
+    await click(".settings-reset-actions button");
+    const canceled = await evaluate(`({
+      stage: 'canceled',
+      confirmationClosed: !document.querySelector('.settings-reset-confirmation'),
+      triggerFocused: document.activeElement?.classList.contains('danger-link'),
+      dataUnchanged: localStorage.getItem('weatherpoem.local.v1') === ${JSON.stringify(originalRaw)},
+    })`);
+    if (!canceled.confirmationClosed || !canceled.triggerFocused || !canceled.dataUnchanged) {
+      throw new Error(`Canceling reset changed data or lost focus: ${JSON.stringify(canceled)}`);
+    }
+    settingsResetFlow.push(canceled);
+    await evaluate("document.documentElement.dataset.theme = 'dark'");
+    await click(".settings-panel .danger-link");
+    const darkOffered = await evaluate(`(() => {
+      const group = document.querySelector('.settings-reset-confirmation');
+      const heading = group.querySelector('h3').getBoundingClientRect();
+      const header = document.querySelector('.settings-panel .panel-header').getBoundingClientRect();
+      return {
+        stage: 'offered-dark',
+        groupFocused: document.activeElement === group,
+        headingVisible: heading.top >= header.bottom + 1 && heading.bottom <= innerHeight,
+        dataUnchanged: localStorage.getItem('weatherpoem.local.v1') === ${JSON.stringify(originalRaw)},
+        horizontalOverflow: document.documentElement.scrollWidth > innerWidth + 1,
+      };
+    })()`);
+    if (!darkOffered.groupFocused || !darkOffered.headingVisible ||
+        !darkOffered.dataUnchanged || darkOffered.horizontalOverflow) {
+      throw new Error(`Dark reset confirmation is not readable: ${JSON.stringify(darkOffered)}`);
+    }
+    settingsResetFlow.push(darkOffered);
+    await captureScreenshot("T03_settings_reset_confirmation_dark_320x260_top.png");
+    await evaluate("document.querySelector('.settings-reset-confirmation').scrollIntoView({ block: 'end' })");
+    await captureScreenshot("T03_settings_reset_confirmation_dark_320x260_actions.png");
+    await click(".settings-reset-actions button");
+    await evaluate("document.documentElement.dataset.theme = 'light'");
+    await click(".settings-panel .danger-link");
+    await click(".settings-reset-confirm-button");
+    await waitFor(() => evaluate("Boolean(document.querySelector('.onboarding-view'))"),
+      "first-use view after confirmed reset");
+    const confirmed = await evaluate(`({
+      stage: 'confirmed',
+      onboardingVisible: Boolean(document.querySelector('.onboarding-view')),
+      mainDataRemoved: localStorage.getItem('weatherpoem.local.v1') === null,
+      horizontalOverflow: document.documentElement.scrollWidth > innerWidth + 1,
+    })`);
+    if (!confirmed.mainDataRemoved || confirmed.horizontalOverflow) {
+      throw new Error(`Confirmed reset did not finish cleanly: ${JSON.stringify(confirmed)}`);
+    }
+    settingsResetFlow.push(confirmed);
+    await send("Emulation.clearDeviceMetricsOverride");
+  }
   const favoriteFlow = [];
   let favoriteCompactReading;
   if (favoritesAudit) {
@@ -1309,6 +1423,7 @@ try {
       isolatedProfile: true,
       nativeWebView2: false,
       settingsMeasurements,
+      settingsResetFlow,
     }, null, 2)}\n`);
   }
   console.log(JSON.stringify({
@@ -1329,9 +1444,12 @@ try {
     ...(midnightAudit ? { midnightFlow } : {}),
     ...(corruptStorageAudit ? { corruptFlow } : {}),
     ...(legacyMatrixAudit ? { legacyMatrixFlow } : {}),
-    ...(settingsAudit ? { settingsMeasurements } : {}),
+    ...(settingsAudit ? { settingsMeasurements, settingsResetFlow } : {}),
     ...(captureLayout ? { capturedScreenshots } : {}),
   }));
+} catch (error) {
+  console.error("Isolated browser audit failed before cleanup:", error);
+  throw error;
 } finally {
   for (const request of pending.values()) {
     clearTimeout(request.timeout);

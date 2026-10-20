@@ -108,6 +108,36 @@ describe("settings draft", () => {
   });
 });
 
+describe("settings data reset confirmation", () => {
+  it("keeps the reset in the page and requires an explicit second action", async () => {
+    const wrapper = mount(SettingsPanel, { attachTo: document.body, props });
+    await wrapper.get(".danger-link").trigger("click");
+    expect(wrapper.emitted("reset")).toBeUndefined();
+    expect(wrapper.get(".settings-reset-confirmation").attributes("role")).toBe("group");
+    expect(wrapper.text()).toContain("无法撤销");
+    expect(document.activeElement).toBe(wrapper.get(".settings-reset-confirmation").element);
+
+    await wrapper.get(".settings-reset-actions button").trigger("click");
+    expect(wrapper.emitted("reset")).toBeUndefined();
+    expect(wrapper.find(".settings-reset-confirmation").exists()).toBe(false);
+    expect(document.activeElement).toBe(wrapper.get(".danger-link").element);
+
+    await wrapper.get(".danger-link").trigger("click");
+    await wrapper.get(".settings-reset-confirm-button").trigger("click");
+    expect(wrapper.emitted("reset")).toHaveLength(1);
+    wrapper.unmount();
+  });
+
+  it("prevents another reset while deletion is running", async () => {
+    const wrapper = mount(SettingsPanel, { props });
+    await wrapper.get(".danger-link").trigger("click");
+    await wrapper.setProps({ resetting: true });
+    expect(wrapper.get(".settings-reset-confirm-button").attributes("disabled")).toBeDefined();
+    expect(wrapper.get(".settings-reset-actions button").attributes("disabled")).toBeDefined();
+    expect(wrapper.text()).toContain("正在清除");
+  });
+});
+
 describe("feedback control", () => {
   it("shows a persistent path to undo the latest mismatch feedback", async () => {
     const wrapper = mount(SettingsPanel, {
