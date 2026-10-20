@@ -1,0 +1,48 @@
+{
+  "schemaVersion": "1.0",
+  "testKind": "isolated-native-autostart-focus",
+  "generatedAt": "2026-10-17T03:27:01.3109285Z",
+  "sourceCommit": "4f6a7dd60dcdec1187bbc381b91fd0847a2434b1",
+  "candidate": {
+    "path": "E:\\weatherpoem\\.work\\redesign-compact-warning-20261017\\release\\weatherpoem.exe",
+    "sha256": "1DFDFC7064455FED11780922596A6328C50F63793AAE1DDAE1A3141211813BE1"
+  },
+  "profileIsolation": true,
+  "realUserDataTouched": false,
+  "systemAutostartChanged": false,
+  "systemDisplaySettingsChanged": false,
+  "observations": {
+    "foregroundProbeAttempts": 1,
+    "foregroundProbeActivationAccepted": true,
+    "foregroundProbeOwnerPid": 106984,
+    "foregroundProbeInputFocused": true,
+    "foregroundProbeKind": "temporary-winforms-text-input",
+    "foregroundBeforePid": 106984,
+    "readyView": "poem",
+    "readyMode": "offline-rules",
+    "processId": 98624,
+    "windowHandle": "6295140",
+    "windowHandleType": "System.IntPtr",
+    "foregroundAfterPid": 106984,
+    "productTookFocus": false,
+    "foregroundUnchanged": true,
+    "glance": {
+      "left": 1500,
+      "top": 658,
+      "right": 1898,
+      "bottom": 1010,
+      "width": 398,
+      "height": 352,
+      "dpi": 96,
+      "workingArea": {
+        "left": 0,
+        "top": 0,
+        "right": 1920,
+        "bottom": 1032
+      }
+    },
+    "foregroundAfterOneSecondPid": 106984
+  },
+  "limitations": [],
+  "result": "autostart-preserved-focus"
+}

@@ -57,9 +57,9 @@ npm run check
 当前 120 首发布目录提供单独的专家审核包：
 
 - `review/content-review-catalog.json`：由当前发布目录机械生成的只读事实快照；
-- `output/WeatherPoem_内容专家审核回收模板_2026.07.1.csv`：机器回收模板；
+- `output/WeatherPoem_内容专家审核回收模板_2026.10.1.csv`：当前内容版本的机器回收模板；
 - `outputs/content-review-2026.07.1/WeatherPoem_内容专家审核工作簿_2026.07.1.xlsx`：
-  专家填写工作簿。
+  旧版专家工作簿，不能用来签收当前内容；新版工作簿须由 `2026.10.1` 目录重新制作并由真实专家填写。
 
 每首作品需要填写具名初审人、所属机构、日期、权威底本版本、HTTPS 证据链接或
 馆藏/书目编号，并分别判断正文、作者朝代体裁、来源与注释、当代连接表达和情境标签。
@@ -71,6 +71,8 @@ npm run check
 npm run content:review:export
 npm run content:review:check
 ```
+
+`output/*.csv` 按仓库忽略规则留在本机；新检出或交接给审核者时，须先运行 `content:review:export` 生成当前版本空白模板，再运行检查。不得把旧版 CSV 或已填写的私人审核资料当作当前版本模板。
 
 专家完成 XLSX 后，将“逐首审核”工作表另存为 UTF-8 CSV，并执行：
 

@@ -43,8 +43,9 @@ validateDependencyRiskReview(report, {
   cargoLockSha256: await sha256File(cargoLockPath),
   targetUnmaintainedWarnings:
     cargoAudit.targetResolution.warnings.unmaintained,
+  targetPackages: cargoAudit.targetResolution.packages,
 });
 
 console.log(
-  "依赖风险处置草案有效：5 项 unic-* 公告已归并到同一上游链；修复已合并但尚未进入稳定 Tauri，具名安全批准仍未完成。",
+  "依赖风险处置草案有效：稳定 Tauri 升级已应用，旧 unic-* 链和 5 项公告已退出 Windows 目标；具名安全批准仍未完成。",
 );

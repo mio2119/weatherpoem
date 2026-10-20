@@ -5,6 +5,12 @@ import { POEMS } from "./poems";
 import { validateCatalog } from "./content-validation";
 
 describe("content publication gate", () => {
+  it("雨景《芙蓉楼送辛渐》的首页节选呈现推荐理由所说的寒雨", () => {
+    const poem = POEMS.find((item) => item.id === "wang-chang-ling-fu-rong-lou");
+    expect(poem?.excerpt).toEqual(["寒雨连江夜入吴", "平明送客楚山孤"]);
+    expect(poem?.fullText[0]).toContain("寒雨连江夜入吴，平明送客楚山孤。");
+  });
+
   it("当前发布目录全部通过内容门禁", () => {
     const result = validateCatalog(POEMS, CONTENT_REVIEWS);
     expect(result.issues).toEqual([]);

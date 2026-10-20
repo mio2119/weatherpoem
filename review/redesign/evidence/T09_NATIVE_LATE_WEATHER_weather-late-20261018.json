@@ -1,0 +1,88 @@
+{
+  "schemaVersion": "1.0",
+  "testKind": "isolated-native-weather-network-diagnostic",
+  "generatedAt": "2026-10-18T09:13:52.509Z",
+  "candidate": {
+    "path": ".work/redesign-weather-late-20261018/release/weatherpoem.exe",
+    "sha256": "4C378084D24E8C2D4C52B5B6DE717D9AA628A6FF9CD6E5F1773387A12D3E2D53"
+  },
+  "isolation": {
+    "temporaryProfile": true,
+    "realUserDataTouched": false,
+    "installedOrUninstalled": false,
+    "systemClockChanged": false
+  },
+  "startup": {
+    "schemaVersion": "1.2",
+    "runId": "d6629d6b050842d3a828bf30522877b5",
+    "appVersion": "0.2.0",
+    "processId": 117356,
+    "nativeReadyMs": 1831.9891,
+    "frontendReadyMs": 1438.7000000476835,
+    "readyView": "poem",
+    "readyMode": "offline-rules",
+    "viewRenderMs": 144.80000001192093,
+    "performanceScenario": null,
+    "sceneMotion": {
+      "sceneKind": "festival",
+      "appReduced": false,
+      "systemReduced": false,
+      "sceneActive": true,
+      "visibilityState": "visible",
+      "animationName": "none",
+      "animationDuration": "0s",
+      "animationIterationCount": "1"
+    },
+    "recordedAtUnixMs": 1792314834799
+  },
+  "startupNetwork": [
+    {
+      "requestId": "127740.30",
+      "event": "request",
+      "timestamp": 355450.549488
+    },
+    {
+      "requestId": "127740.40",
+      "event": "request",
+      "timestamp": 355451.653501
+    },
+    {
+      "requestId": "127740.30",
+      "event": "loadingFailed",
+      "timestamp": 355451.65558,
+      "errorText": "net::ERR_ABORTED",
+      "canceled": true
+    },
+    {
+      "requestId": "127740.40",
+      "event": "responseReceived",
+      "timestamp": 355452.861306,
+      "status": 200
+    },
+    {
+      "requestId": "127740.40",
+      "event": "loadingFinished",
+      "timestamp": 355452.860256
+    }
+  ],
+  "webViewFetches": [],
+  "nativeViews": {
+    "atReady": {
+      "title": "过故人庄",
+      "context": "10月18日重阳节 · 天气未更新节 收藏 0",
+      "warning": false,
+      "loading": false,
+      "toast": null
+    },
+    "atReadyScreenshot": "review/redesign/evidence/T09_NATIVE_LATE_WEATHER_weather-late-20261018_ready.png",
+    "afterWait": {
+      "title": "过故人庄",
+      "context": "10月18日重阳节 · 晴节 收藏 0",
+      "warning": false,
+      "loading": false,
+      "toast": null
+    },
+    "afterWaitScreenshot": "review/redesign/evidence/T09_NATIVE_LATE_WEATHER_weather-late-20261018_after.png"
+  },
+  "result": "diagnostic-captured"
+}

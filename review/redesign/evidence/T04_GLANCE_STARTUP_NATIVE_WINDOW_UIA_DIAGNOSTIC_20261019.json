@@ -1,0 +1,456 @@
+{
+  "schemaVersion": "1.0",
+  "testKind": "isolated-native-window",
+  "generatedAt": "2026-10-19T07:59:08.4689509Z",
+  "sourceCommit": "6150f1daf7f2cffa0aba3d5748567d252470f2d0",
+  "candidate": {
+    "path": "E:\\weatherpoem\\.work\\redesign-glance-startup-fix-20261019\\release\\weatherpoem.exe",
+    "sha256": "3D3856613786D6961B6BE7ECF5274F8E017DE79E1AB8CAA541F8B498A4B0ED10"
+  },
+  "profileIsolation": true,
+  "realUserDataTouched": false,
+  "systemAutostartChanged": false,
+  "systemDisplaySettingsChanged": false,
+  "observations": {
+    "foregroundBeforePid": 17844,
+    "readyView": "poem",
+    "readyMode": "offline-rules",
+    "processId": 38680,
+    "windowHandle": "265170",
+    "windowHandleType": "System.IntPtr",
+    "foregroundAfterPid": 17844,
+    "productTookFocus": false,
+    "foregroundUnchanged": true,
+    "glance": {
+      "left": 1490,
+      "top": 572,
+      "right": 1898,
+      "bottom": 1010,
+      "width": 408,
+      "height": 438,
+      "dpi": 96,
+      "workingArea": {
+        "left": 0,
+        "top": 0,
+        "right": 1920,
+        "bottom": 1032
+      }
+    },
+    "accessibleElements": [
+      {
+        "name": "WeatherPoem 今日诗笺",
+        "controlType": "ControlType.Pane"
+      },
+      {
+        "name": "WeatherPoem 今日诗笺 - Web 内容",
+        "controlType": "ControlType.Pane"
+      },
+      {
+        "name": "WeatherPoem 今日诗笺",
+        "controlType": "ControlType.Document"
+      },
+      {
+        "name": "今日诗笺",
+        "controlType": "ControlType.Text"
+      },
+      {
+        "name": "北京 · 九月初十",
+        "controlType": "ControlType.Text"
+      },
+      {
+        "name": "设置",
+        "controlType": "ControlType.Button"
+      },
+      {
+        "name": "最小化",
+        "controlType": "ControlType.Button"
+      },
+      {
+        "name": "隐藏到托盘",
+        "controlType": "ControlType.Button"
+      },
+      {
+        "name": "观书有感",
+        "controlType": "ControlType.Group"
+      },
+      {
+        "name": "今日环境",
+        "controlType": "ControlType.Group"
+      },
+      {
+        "name": "10月19日",
+        "controlType": "ControlType.Text"
+      },
+      {
+        "name": "天气未更新",
+        "controlType": "ControlType.Text"
+      },
+      {
+        "name": "抽象季节纹样，不代表当地实时天气",
+        "controlType": "ControlType.Image"
+      },
+      {
+        "name": "收藏 0",
+        "controlType": "ControlType.Button"
+      },
+      {
+        "name": "观书有感",
+        "controlType": "ControlType.Group"
+      },
+      {
+        "name": "观书有感",
+        "controlType": "ControlType.Text"
+      },
+      {
+        "name": "朱熹 · 宋",
+        "controlType": "ControlType.Text"
+      },
+      {
+        "name": "改为竖排诗句",
+        "controlType": "ControlType.Button"
+      },
+      {
+        "name": "诗句节选",
+        "controlType": "ControlType.Group"
+      },
+      {
+        "name": "半亩方塘一鉴开，天光云影共徘徊。",
+        "controlType": "ControlType.Text"
+      },
+      {
+        "name": "问渠那得清如许？为有源头活水来。",
+        "controlType": "ControlType.Text"
+      },
+      {
+        "name": "秋日，方塘因源头活水保持清澈，人的认识也需要不断吸收新的真实经验。",
+        "controlType": "ControlType.Text"
+      },
+      {
+        "name": "继续读",
+        "controlType": "ControlType.Button"
+      },
+      {
+        "name": "收藏",
+        "controlType": "ControlType.Button"
+      },
+      {
+        "name": "收起",
+        "controlType": "ControlType.Button"
+      },
+      {
+        "name": "更多",
+        "controlType": "ControlType.Button"
+      }
+    ],
+    "manualForegroundOwnerPid": 38680,
+    "reading": {
+      "left": 1328,
+      "top": 287,
+      "right": 1904,
+      "bottom": 1016,
+      "width": 576,
+      "height": 729,
+      "dpi": 96,
+      "workingArea": {
+        "left": 0,
+        "top": 0,
+        "right": 1920,
+        "bottom": 1032
+      }
+    },
+    "resizedReading": {
+      "left": 350,
+      "top": 160,
+      "right": 990,
+      "bottom": 800,
+      "width": 640,
+      "height": 640,
+      "dpi": 96,
+      "workingArea": {
+        "left": 0,
+        "top": 0,
+        "right": 1920,
+        "bottom": 1032
+      }
+    },
+    "returnedGlance": {
+      "left": 1490,
+      "top": 572,
+      "right": 1898,
+      "bottom": 1010,
+      "width": 408,
+      "height": 438,
+      "dpi": 96,
+      "workingArea": {
+        "left": 0,
+        "top": 0,
+        "right": 1920,
+        "bottom": 1032
+      }
+    },
+    "reopenedReading": {
+      "left": 1264,
+      "top": 376,
+      "right": 1904,
+      "bottom": 1016,
+      "width": 640,
+      "height": 640,
+      "dpi": 96,
+      "workingArea": {
+        "left": 0,
+        "top": 0,
+        "right": 1920,
+        "bottom": 1032
+      }
+    },
+    "hiddenProcessAlive": true,
+    "trayDiagnostic": [
+      {
+        "name": "显示隐藏的图标",
+        "controlType": "ControlType.Button",
+        "className": "SystemTray.NormalButton"
+      },
+      {
+        "name": "WeatherPoem 今日诗笺",
+        "controlType": "ControlType.Button",
+        "className": "SystemTray.NormalButton"
+      }
+    ],
+    "trayControlType": "ControlType.Button",
+    "trayBounds": {
+      "left": 1571.0,
+      "top": 855.0,
+      "width": 40.0,
+      "height": 40.0,
+      "offscreen": false
+    },
+    "trayInteraction": "exact UI Automation InvokePattern",
+    "trayWindowHandle": "265170",
+    "trayRecovered": true,
+    "trayForegroundOwnerPid": 38680,
+    "trayOpenedWithFocus": true,
+    "persistedReadingSize": {
+      "width": 624,
+      "height": 631
+    },
+    "restartProcessId": 12148,
+    "restartReading": {
+      "left": 1264,
+      "top": 376,
+      "right": 1904,
+      "bottom": 1016,
+      "width": 640,
+      "height": 640,
+      "dpi": 96,
+      "workingArea": {
+        "left": 0,
+        "top": 0,
+        "right": 1920,
+        "bottom": 1032
+      }
+    },
+    "uiaInvocationDiagnostics": [
+      {
+        "stage": "expand-reading",
+        "requestedName": "继续读",
+        "element": {
+          "name": "继续读",
+          "controlType": "ControlType.Button",
+          "className": "read-button",
+          "frameworkId": "Chrome",
+          "automationId": "",
+          "isEnabled": true,
+          "isKeyboardFocusable": true,
+          "isOffscreen": false,
+          "boundingRectangle": {
+            "left": 1530.0,
+            "top": 942.0,
+            "width": 81.0,
+            "height": 35.0
+          },
+          "supportedPatterns": [
+            "InvokePatternIdentifiers.Pattern",
+            "ScrollItemPatternIdentifiers.Pattern"
+          ],
+          "tryGetInvokePatternSupported": true,
+          "tryGetInvokePatternError": null
+        },
+        "getCurrentPattern": "available",
+        "invoke": "completed"
+      },
+      {
+        "stage": "named-button:今日诗笺",
+        "requestedName": "今日诗笺",
+        "element": {
+          "name": "今日诗笺",
+          "controlType": "ControlType.Button",
+          "className": "back-button",
+          "frameworkId": "Chrome",
+          "automationId": "",
+          "isEnabled": true,
+          "isKeyboardFocusable": true,
+          "isOffscreen": false,
+          "boundingRectangle": {
+            "left": 379.0,
+            "top": 227.0,
+            "width": 66.0,
+            "height": 31.0
+          },
+          "supportedPatterns": [
+            "InvokePatternIdentifiers.Pattern",
+            "ScrollItemPatternIdentifiers.Pattern"
+          ],
+          "tryGetInvokePatternSupported": true,
+          "tryGetInvokePatternError": null
+        },
+        "getCurrentPattern": "available",
+        "invoke": "completed"
+      },
+      {
+        "stage": "named-button:继续读",
+        "requestedName": "继续读",
+        "element": {
+          "name": "继续读",
+          "controlType": "ControlType.Button",
+          "className": "read-button",
+          "frameworkId": "Chrome",
+          "automationId": "",
+          "isEnabled": true,
+          "isKeyboardFocusable": true,
+          "isOffscreen": false,
+          "boundingRectangle": {
+            "left": 1530.0,
+            "top": 856.0,
+            "width": 81.0,
+            "height": 35.0
+          },
+          "supportedPatterns": [
+            "InvokePatternIdentifiers.Pattern",
+            "ScrollItemPatternIdentifiers.Pattern"
+          ],
+          "tryGetInvokePatternSupported": true,
+          "tryGetInvokePatternError": null
+        },
+        "getCurrentPattern": "available",
+        "invoke": "completed"
+      },
+      {
+        "stage": "named-button:今日诗笺",
+        "requestedName": "今日诗笺",
+        "element": {
+          "name": "今日诗笺",
+          "controlType": "ControlType.Button",
+          "className": "back-button",
+          "frameworkId": "Chrome",
+          "automationId": "",
+          "isEnabled": true,
+          "isKeyboardFocusable": true,
+          "isOffscreen": false,
+          "boundingRectangle": {
+            "left": 1293.0,
+            "top": 443.0,
+            "width": 66.0,
+            "height": 31.0
+          },
+          "supportedPatterns": [
+            "InvokePatternIdentifiers.Pattern",
+            "ScrollItemPatternIdentifiers.Pattern"
+          ],
+          "tryGetInvokePatternSupported": true,
+          "tryGetInvokePatternError": null
+        },
+        "getCurrentPattern": "available",
+        "invoke": "completed"
+      },
+      {
+        "stage": "named-button:收起",
+        "requestedName": "收起",
+        "element": {
+          "name": "收起",
+          "controlType": "ControlType.Button",
+          "className": "quiet-action",
+          "frameworkId": "Chrome",
+          "automationId": "",
+          "isEnabled": true,
+          "isKeyboardFocusable": true,
+          "isOffscreen": false,
+          "boundingRectangle": {
+            "left": 1902.0,
+            "top": 857.0,
+            "width": 35.0,
+            "height": 33.0
+          },
+          "supportedPatterns": [
+            "InvokePatternIdentifiers.Pattern",
+            "ScrollItemPatternIdentifiers.Pattern"
+          ],
+          "tryGetInvokePatternSupported": true,
+          "tryGetInvokePatternError": null
+        },
+        "getCurrentPattern": "available",
+        "invoke": "completed"
+      },
+      {
+        "stage": "tray-button",
+        "requestedName": "WeatherPoem 今日诗笺",
+        "element": {
+          "name": "WeatherPoem 今日诗笺",
+          "controlType": "ControlType.Button",
+          "className": "SystemTray.NormalButton",
+          "frameworkId": "XAML",
+          "automationId": "NotifyItemIcon",
+          "isEnabled": true,
+          "isKeyboardFocusable": true,
+          "isOffscreen": false,
+          "boundingRectangle": {
+            "left": 1571.0,
+            "top": 855.0,
+            "width": 40.0,
+            "height": 40.0
+          },
+          "supportedPatterns": [
+            "InvokePatternIdentifiers.Pattern",
+            "ScrollItemPatternIdentifiers.Pattern"
+          ],
+          "tryGetInvokePatternSupported": true,
+          "tryGetInvokePatternError": null
+        },
+        "getCurrentPattern": "available",
+        "invoke": "completed"
+      },
+      {
+        "stage": "restart-expand-reading",
+        "requestedName": "继续读",
+        "element": {
+          "name": "继续读",
+          "controlType": "ControlType.Button",
+          "className": "read-button",
+          "frameworkId": "Chrome",
+          "automationId": "",
+          "isEnabled": true,
+          "isKeyboardFocusable": true,
+          "isOffscreen": false,
+          "boundingRectangle": {
+            "left": 1530.0,
+            "top": 942.0,
+            "width": 81.0,
+            "height": 35.0
+          },
+          "supportedPatterns": [
+            "InvokePatternIdentifiers.Pattern",
+            "ScrollItemPatternIdentifiers.Pattern"
+          ],
+          "tryGetInvokePatternSupported": true,
+          "tryGetInvokePatternError": null
+        },
+        "getCurrentPattern": "available",
+        "invoke": "completed"
+      }
+    ]
+  },
+  "limitations": [
+    "Resize was generated by Win32 MoveWindow, not a physical drag.",
+    "Programmatic UI Automation invocation cannot replace a human manual-click focus check."
+  ],
+  "result": "focus-resize-tray-invoke-and-restart-passed"
+}

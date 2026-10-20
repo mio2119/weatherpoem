@@ -37,6 +37,14 @@ const appShell = await readFile(
   path.join(projectRoot, "src", "App.vue"),
   "utf8",
 );
+const desktopService = await readFile(
+  path.join(projectRoot, "src", "services", "desktop.ts"),
+  "utf8",
+);
+const styles = await readFile(
+  path.join(projectRoot, "src", "styles.css"),
+  "utf8",
+);
 
 test("SQLite 只开放应用持久化必需的加载、读取和写入能力", () => {
   assert.deepEqual(capability.windows, ["main"]);
@@ -89,6 +97,34 @@ test("隐藏启动的主窗口不会在 WebView 初始化时抢占焦点", () =>
   assert.ok(mainWindow);
   assert.equal(mainWindow.visible, false);
   assert.equal(mainWindow.focus, false);
+  assert.ok(capability.permissions.includes("core:window:allow-set-focusable"));
+  assert.match(desktopService, /if \(!takeFocus\) await appWindow\.setFocusable\(false\)/);
+  assert.match(desktopService, /if \(!takeFocus\) await appWindow\.setFocusable\(true\)/);
+});
+
+test("原生隐藏遮挡不保留循环的加载条动效", () => {
+  assert.match(appShell, /window\.addEventListener\("weatherpoem:conceal", handleConcealRequest\)/);
+  assert.match(styles, /:root\[data-scene-active="false"\]\s+\.loading-line::after\s*\{\s*animation:\s*none;/);
+});
+
+test("诗笺与阅读窗的原生尺寸切换只使用列明的窗口能力", () => {
+  for (const permission of [
+    "core:window:allow-current-monitor",
+    "core:window:allow-primary-monitor",
+    "core:window:allow-inner-size",
+    "core:window:allow-outer-position",
+    "core:window:allow-scale-factor",
+    "core:window:allow-set-min-size",
+    "core:window:allow-set-position",
+    "core:window:allow-set-resizable",
+    "core:window:allow-set-size",
+  ]) {
+    assert.ok(capability.permissions.includes(permission), permission);
+  }
+  assert.equal(
+    capability.permissions.includes("core:window:default"),
+    false,
+  );
 });
 
 test("外部链接和第三方许可使用固定目标，不开放任意路径", () => {
@@ -125,6 +161,7 @@ test("可控天气故障只能从合法临时性能账户传入", () => {
     "weather-offline",
     "weather-timeout",
     "official-warning",
+    "scene-rain",
   ]) {
     assert.match(desktopShell, new RegExp(`"${scenario}"`));
     assert.match(weatherService, new RegExp(`"${scenario}"`));

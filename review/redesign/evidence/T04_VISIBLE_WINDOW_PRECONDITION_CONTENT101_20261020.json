@@ -1,0 +1,27 @@
+{
+  "schemaVersion": "1.0",
+  "testKind": "isolated-native-window",
+  "generatedAt": "2026-10-20T03:57:33.5707066Z",
+  "sourceCommit": "c6f14a4d6a8fd1732d5d96e0479f7908c0cb850e",
+  "candidate": {
+    "path": "E:\\weatherpoem\\.work\\redesign-rain-excerpt-20261019\\release\\weatherpoem.exe",
+    "sha256": "402FE0C76ECFA256B396E02B4226E1E30E95716DC582D20F7263FDB9FA18EC16"
+  },
+  "testHarness": {
+    "path": "scripts/test-redesign-native-window.ps1",
+    "sha256": "6A5391A7A61BD3278EBAD80007540D0EEC10CEF421FD823AF02F735E5A44CA50"
+  },
+  "profileIsolation": true,
+  "launchMode": "autostart",
+  "realUserDataTouched": false,
+  "systemAutostartChanged": false,
+  "systemDisplaySettingsChanged": false,
+  "observations": {
+    "foregroundBeforePid": 22768,
+    "foregroundCoversScreen": true,
+    "uiaInvocationDiagnostics": []
+  },
+  "limitations": [],
+  "result": "test-precondition-failed",
+  "error": "A full-screen foreground may intentionally suppress autostart; use the full-screen suppression probe instead of the visible-window journey"
+}

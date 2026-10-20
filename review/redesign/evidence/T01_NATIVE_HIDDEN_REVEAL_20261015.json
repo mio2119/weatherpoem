@@ -1,0 +1,46 @@
+{
+  "schemaVersion": "1.0",
+  "testKind": "isolated-native-hidden-day-reveal",
+  "generatedAt": "2026-10-15T13:06:35.377Z",
+  "candidate": {
+    "path": ".work/redesign-reveal-20261015/release/weatherpoem.exe",
+    "sha256": "C69C991F182DE286623F9DBA379C92FA8DA7B597ACB28886D8FFF609F525A015"
+  },
+  "isolation": {
+    "temporaryProfile": true,
+    "systemClockChanged": false,
+    "installedOrUninstalled": false,
+    "realUserDataTouched": false
+  },
+  "readyView": "poem",
+  "original": {
+    "date": "10月15日",
+    "visible": "visible",
+    "poem": true
+  },
+  "hidden": {
+    "visibility": "visible",
+    "poem": false,
+    "loading": true
+  },
+  "expectedDate": "10月16日",
+  "observed": [
+    {
+      "visible": "visible",
+      "poem": false,
+      "loading": true
+    },
+    {
+      "visible": "visible",
+      "poem": false,
+      "loading": true
+    },
+    {
+      "visible": "visible",
+      "date": "10月16日",
+      "poem": true,
+      "loading": false
+    }
+  ],
+  "result": "passed"
+}

@@ -27,7 +27,7 @@ export function resolvePerformanceDatabasePath(profilePath) {
   );
 }
 
-export function seedPerformanceProfile(profilePath) {
+export function seedPerformanceProfile(profilePath, options = {}) {
   const databasePath = resolvePerformanceDatabasePath(profilePath);
   mkdirSync(path.dirname(databasePath), { recursive: true });
   const database = new DatabaseSync(databasePath);
@@ -41,7 +41,7 @@ export function seedPerformanceProfile(profilePath) {
       autostart: false,
       anonymousMetrics: false,
       theme: "system",
-      reduceMotion: false,
+      reduceMotion: options.reduceMotion === true,
     };
     database
       .prepare(
@@ -81,10 +81,18 @@ export function inspectPerformanceDatabase(profilePath) {
     const row = database
       .prepare("SELECT value FROM app_kv WHERE key = 'settings'")
       .get();
+    const dailyState = tables.includes("daily_state")
+      ? database
+          .prepare(
+            "SELECT local_date, state, work_id FROM daily_state ORDER BY local_date DESC LIMIT 1",
+          )
+          .get()
+      : null;
     return {
       databasePath,
       tables,
       settings: row?.value ? JSON.parse(row.value) : null,
+      dailyState: dailyState ? { ...dailyState } : null,
     };
   } finally {
     database.close();
@@ -96,12 +104,13 @@ const invokedPath = process.argv[1]
   : "";
 if (import.meta.url === invokedPath) {
   const inspectOnly = process.argv[2] === "--inspect";
-  const profilePath = process.argv[inspectOnly ? 3 : 2];
+  const reduceMotion = process.argv[2] === "--reduce-motion";
+  const profilePath = process.argv[inspectOnly || reduceMotion ? 3 : 2];
   if (!profilePath) throw new Error("缺少性能预置目录");
   if (inspectOnly) {
     console.log(JSON.stringify(inspectPerformanceDatabase(profilePath)));
   } else {
-    const databasePath = seedPerformanceProfile(profilePath);
+    const databasePath = seedPerformanceProfile(profilePath, { reduceMotion });
     console.log(`已预置隔离性能配置：${databasePath}`);
   }
 }

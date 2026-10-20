@@ -1,0 +1,150 @@
+{
+  "schemaVersion": "1.0",
+  "product": "WeatherPoem",
+  "appVersion": "0.2.0",
+  "generatedAt": "2026-10-13T01:54:52.573Z",
+  "testKind": "controlled-performance-fault-matrix",
+  "artifact": {
+    "path": ".work/redesign-overlap-20261013/release/weatherpoem.exe",
+    "sha256": "036E8FAD943554793DCDFF977B4E6FC99C86BB74C3C56B38296D6249701640D0",
+    "sizeBytes": 25117452
+  },
+  "configuration": {
+    "samplesPerScenario": 3,
+    "isolatedProfilePerSample": true,
+    "sqliteAndWebviewIsolated": true,
+    "realUserDataTouched": false,
+    "syntheticScenarios": true
+  },
+  "scenarios": [
+    {
+      "id": "weather-offline",
+      "expectedView": "poem",
+      "expectedMode": "offline-rules",
+      "thresholdMs": 2000,
+      "simulated": true,
+      "sampleCount": 3,
+      "samples": [
+        {
+          "observedReadyMs": 890.64,
+          "nativeReadyMs": 658.1317,
+          "frontendReadyMs": 319.5,
+          "viewRenderMs": 121.5,
+          "readyView": "poem",
+          "readyMode": "offline-rules",
+          "performanceScenario": "weather-offline"
+        },
+        {
+          "observedReadyMs": 705.11,
+          "nativeReadyMs": 653.1976999999999,
+          "frontendReadyMs": 331.09999999403954,
+          "viewRenderMs": 137.29999999701977,
+          "readyView": "poem",
+          "readyMode": "offline-rules",
+          "performanceScenario": "weather-offline"
+        },
+        {
+          "observedReadyMs": 717.83,
+          "nativeReadyMs": 652.1668000000001,
+          "frontendReadyMs": 311.90000000596046,
+          "viewRenderMs": 113.20000000298025,
+          "readyView": "poem",
+          "readyMode": "offline-rules",
+          "performanceScenario": "weather-offline"
+        }
+      ],
+      "observedReadyP95Ms": 890.64,
+      "expectedStateSatisfied": true,
+      "thresholdSatisfied": true
+    },
+    {
+      "id": "weather-timeout",
+      "expectedView": "poem",
+      "expectedMode": "offline-rules",
+      "thresholdMs": 2000,
+      "simulated": true,
+      "sampleCount": 3,
+      "samples": [
+        {
+          "observedReadyMs": 1796.19,
+          "nativeReadyMs": 1756.6505000000002,
+          "frontendReadyMs": 1405.2999999970198,
+          "viewRenderMs": 114,
+          "readyView": "poem",
+          "readyMode": "offline-rules",
+          "performanceScenario": "weather-timeout"
+        },
+        {
+          "observedReadyMs": 1808.29,
+          "nativeReadyMs": 1738.1006000000002,
+          "frontendReadyMs": 1397.6000000089407,
+          "viewRenderMs": 113,
+          "readyView": "poem",
+          "readyMode": "offline-rules",
+          "performanceScenario": "weather-timeout"
+        },
+        {
+          "observedReadyMs": 1802.88,
+          "nativeReadyMs": 1761.8866,
+          "frontendReadyMs": 1456.5999999940395,
+          "viewRenderMs": 165.5,
+          "readyView": "poem",
+          "readyMode": "offline-rules",
+          "performanceScenario": "weather-timeout"
+        }
+      ],
+      "observedReadyP95Ms": 1808.29,
+      "expectedStateSatisfied": true,
+      "thresholdSatisfied": true
+    },
+    {
+      "id": "official-warning",
+      "expectedView": "warning",
+      "expectedMode": "safety-warning",
+      "thresholdMs": 2000,
+      "simulated": true,
+      "sampleCount": 3,
+      "samples": [
+        {
+          "observedReadyMs": 716.27,
+          "nativeReadyMs": 663.6993,
+          "frontendReadyMs": 335.20000000298023,
+          "viewRenderMs": 123,
+          "readyView": "warning",
+          "readyMode": "safety-warning",
+          "performanceScenario": "official-warning"
+        },
+        {
+          "observedReadyMs": 681.67,
+          "nativeReadyMs": 636.2738,
+          "frontendReadyMs": 296.79999999701977,
+          "viewRenderMs": 134.79999999701977,
+          "readyView": "warning",
+          "readyMode": "safety-warning",
+          "performanceScenario": "official-warning"
+        },
+        {
+          "observedReadyMs": 683.06,
+          "nativeReadyMs": 643.3898,
+          "frontendReadyMs": 312.59999999403954,
+          "viewRenderMs": 142.5,
+          "readyView": "warning",
+          "readyMode": "safety-warning",
+          "performanceScenario": "official-warning"
+        }
+      ],
+      "observedReadyP95Ms": 716.27,
+      "expectedStateSatisfied": true,
+      "thresholdSatisfied": true
+    }
+  ],
+  "limitations": {
+    "realOnlineMeasured": false,
+    "realOfficialWarningMeasured": false,
+    "eightHourIdleMeasured": false,
+    "sevenDayLongRunMeasured": false,
+    "namedQualitySignoff": false
+  },
+  "gateSatisfied": false,
+  "result": "automated-controlled-matrix-passed"
+}

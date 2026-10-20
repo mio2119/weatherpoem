@@ -1,7 +1,7 @@
 import { readFile, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
-import { createServer } from "vite";
+import { loadReasonSources } from "./load-reason-sources.mjs";
 
 const projectRoot = path.resolve(
   path.dirname(fileURLToPath(import.meta.url)),
@@ -118,19 +118,10 @@ function assertFallback(value, caseId) {
   return value;
 }
 
-const vite = await createServer({
-  root: projectRoot,
-  appType: "custom",
-  logLevel: "silent",
-  server: { middlewareMode: true },
-});
-
-try {
-  const [{ POEMS }, { CONTENT_VERSION, RULE_VERSION }] =
-    await Promise.all([
-      vite.ssrLoadModule("/src/data/poems.ts"),
-      vite.ssrLoadModule("/src/core/recommendation.ts"),
-    ]);
+async function main() {
+  const { POEMS, CONTENT_VERSION, RULE_VERSION } = await loadReasonSources(
+    projectRoot,
+  );
 
   const cases = [];
 
@@ -275,6 +266,6 @@ try {
       `已生成 ${cases.length} 个 AI 理由评测场景到 server/reason-evals.json。`,
     );
   }
-} finally {
-  await vite.close();
 }
+
+await main();

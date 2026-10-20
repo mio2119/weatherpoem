@@ -3,15 +3,11 @@ import { mkdir, readFile, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { gunzipSync } from "node:zlib";
+import { collectThirdPartyNoticeInputs } from "./third-party-notices-support.mjs";
 
 const projectRoot = path.resolve(
   path.dirname(fileURLToPath(import.meta.url)),
   "..",
-);
-const reportPath = path.join(
-  projectRoot,
-  "review",
-  "third-party-notice-index.json",
 );
 const cargoLockPath = path.join(
   projectRoot,
@@ -259,8 +255,8 @@ async function syncPackage(packageId, packageInfo, checksum) {
   };
 }
 
-const [report, lockText, existing] = await Promise.all([
-  readFile(reportPath, "utf8").then(JSON.parse),
+const [currentInputs, lockText, existing] = await Promise.all([
+  collectThirdPartyNoticeInputs(projectRoot, { skipCanonicalCargo: true }),
   readFile(cargoLockPath, "utf8"),
   readFile(supplementPath, "utf8").then(JSON.parse),
 ]);
@@ -269,19 +265,28 @@ assert(
   "Cargo 许可补充清单身份无效",
 );
 const checksums = cargoLockChecksums(lockText);
+const currentPackages = new Map(
+  currentInputs.cargoPackages.map((item) => [item.packageId, item]),
+);
+const missingTextPackageIds = currentInputs.cargoPackages
+  .filter((item) => !item.noticeFiles.some((file) => file.textReadable === true))
+  .map((item) => item.packageId);
+const removedStale = existing.entries
+  .map((item) => item.packageId)
+  .filter((packageId) => !currentPackages.has(packageId));
 const candidateIds = [
   ...new Set([
-    ...report.ecosystems.cargo.coverage.missingTextPackageIds,
-    ...existing.entries.map((item) => item.packageId),
+    ...missingTextPackageIds,
+    ...existing.entries
+      .map((item) => item.packageId)
+      .filter((packageId) => currentPackages.has(packageId)),
   ]),
 ].sort();
 const entries = [];
 const unresolved = [];
 for (const packageId of candidateIds) {
-  const packageInfo = report.ecosystems.cargo.packages.find(
-    (item) => item.packageId === packageId,
-  );
-  assert(packageInfo, `NOTICE 报告不存在 Cargo 候选：${packageId}`);
+  const packageInfo = currentPackages.get(packageId);
+  assert(packageInfo, `当前锁文件不存在 Cargo 候选：${packageId}`);
   const checksum = checksums.get(
     `${packageInfo.name}@${packageInfo.version}`,
   );
@@ -311,6 +316,7 @@ console.log(
     {
       downloaded: candidateIds.length,
       resolvedWithVcsCommitText: entries.length,
+      removedStale,
       unresolved,
       manifest: path
         .relative(projectRoot, supplementPath)

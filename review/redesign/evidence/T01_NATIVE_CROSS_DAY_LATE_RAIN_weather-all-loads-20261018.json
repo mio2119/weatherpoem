@@ -1,0 +1,148 @@
+{
+  "schemaVersion": "1.0",
+  "testKind": "isolated-native-weather-network-diagnostic",
+  "generatedAt": "2026-10-18T09:31:38.538Z",
+  "candidate": {
+    "path": ".work/redesign-weather-all-loads-20261018/release/weatherpoem.exe",
+    "sha256": "BF5CCC3C7DF1D3B9DF41BC2AC4A5CFF702AE9651C295C16C8FD82D8F77B69FEC"
+  },
+  "isolation": {
+    "temporaryProfile": true,
+    "realUserDataTouched": false,
+    "installedOrUninstalled": false,
+    "systemClockChanged": false,
+    "pageLocalClockChanged": true
+  },
+  "simulatedWarning": false,
+  "simulatedCrossDayRain": true,
+  "startup": {
+    "schemaVersion": "1.2",
+    "runId": "26b19488fdd947b282df2551b036c504",
+    "appVersion": "0.2.0",
+    "processId": 127740,
+    "nativeReadyMs": 1876.8788,
+    "frontendReadyMs": 1474.699999988079,
+    "readyView": "poem",
+    "readyMode": "offline-rules",
+    "viewRenderMs": 151.19999998807907,
+    "performanceScenario": null,
+    "sceneMotion": {
+      "sceneKind": "festival",
+      "appReduced": false,
+      "systemReduced": false,
+      "sceneActive": true,
+      "visibilityState": "visible",
+      "animationName": "none",
+      "animationDuration": "0s",
+      "animationIterationCount": "1"
+    },
+    "recordedAtUnixMs": 1792315900806
+  },
+  "startupNetwork": [
+    {
+      "requestId": "131740.30",
+      "event": "request",
+      "timestamp": 356516.512224
+    },
+    {
+      "requestId": "131740.40",
+      "event": "request",
+      "timestamp": 356517.623566
+    },
+    {
+      "requestId": "131740.30",
+      "event": "loadingFailed",
+      "timestamp": 356517.625767,
+      "errorText": "net::ERR_ABORTED",
+      "canceled": true
+    },
+    {
+      "requestId": "131740.40",
+      "event": "responseReceived",
+      "timestamp": 356518.559794,
+      "status": 200
+    },
+    {
+      "requestId": "131740.40",
+      "event": "loadingFinished",
+      "timestamp": 356518.559005
+    },
+    {
+      "requestId": "131740.71",
+      "event": "request",
+      "timestamp": 356524.426059
+    },
+    {
+      "requestId": "131740.74",
+      "event": "request",
+      "timestamp": 356525.527306
+    },
+    {
+      "requestId": "131740.71",
+      "event": "loadingFailed",
+      "timestamp": 356525.529781,
+      "errorText": "net::ERR_ABORTED",
+      "canceled": true
+    },
+    {
+      "requestId": "131740.74",
+      "event": "responseReceived",
+      "timestamp": 356525.532737,
+      "status": 200
+    },
+    {
+      "requestId": "131740.74",
+      "event": "loadingFinished",
+      "timestamp": 356525.531649
+    }
+  ],
+  "webViewFetches": [],
+  "nativeViews": {
+    "atReady": {
+      "title": "过故人庄",
+      "context": "10月18日重阳节 · 天气未更新节 收藏 0",
+      "warning": false,
+      "loading": false,
+      "toast": null
+    },
+    "atReadyScreenshot": "review/redesign/evidence/T01_NATIVE_CROSS_DAY_LATE_RAIN_weather-all-loads-20261018_ready.png",
+    "beforeCrossDay": {
+      "title": "过故人庄",
+      "context": "10月18日重阳节 · 晴节 收藏 0",
+      "warning": false,
+      "loading": false,
+      "toast": null
+    },
+    "newDayBeforeLate": {
+      "title": "山居秋暝",
+      "context": "10月19日小雨雨 收藏 0",
+      "warning": false,
+      "loading": false,
+      "toast": null
+    },
+    "newDayBeforeLateScreenshot": "review/redesign/evidence/T01_NATIVE_CROSS_DAY_LATE_RAIN_weather-all-loads-20261018_new_day_before_late.png",
+    "afterWait": {
+      "title": "山居秋暝",
+      "context": "10月19日小雨雨 收藏 0",
+      "warning": false,
+      "loading": false,
+      "toast": null
+    },
+    "afterWaitScreenshot": "review/redesign/evidence/T01_NATIVE_CROSS_DAY_LATE_RAIN_weather-all-loads-20261018_after.png"
+  },
+  "result": "diagnostic-captured",
+  "crossDay": {
+    "clock": {
+      "localDate": "2026-10-19",
+      "displayDate": "10月19日",
+      "unixSeconds": 1792371600
+    },
+    "pageLocalOnly": true
+  },
+  "interceptedWeatherRequests": 2,
+  "savedDailyState": {
+    "local_date": "2026-10-19",
+    "state": "shown",
+    "work_id": "wang-wei-shan-ju-qiu-ming"
+  }
+}

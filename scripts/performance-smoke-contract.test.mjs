@@ -1,10 +1,98 @@
 import assert from "node:assert/strict";
+import { spawnSync } from "node:child_process";
+import { mkdtempSync, readFileSync, realpathSync, rmSync } from "node:fs";
+import { tmpdir } from "node:os";
+import { basename, join, resolve, sep } from "node:path";
 import test from "node:test";
 import {
+  REDESIGN_EXE_PATH,
+  resolvePerformancePaths,
   validatePerformanceReport,
 } from "./performance-smoke-support.mjs";
 
 const HASH = "A".repeat(64);
+
+test("就绪标记缺失时的独立诊断记录不覆盖既有证据", {
+  skip: process.platform !== "win32",
+}, () => {
+  const directory = mkdtempSync(join(tmpdir(), "WeatherPoem.ProbeDiagnostic.Test."));
+  const helper = resolve("scripts/performance-smoke-failure.ps1");
+  const report = join(directory, "T09_TEST.json");
+  const runId = "00000000-0000-4000-8000-000000000001";
+  const quote = (value) => `'${value.replaceAll("'", "''")}'`;
+  const command = `. ${quote(helper)}; ` + [
+    `Write-PerformanceSmokeProbeFailure -ReportPath ${quote(report)}`,
+    `-ArtifactPath ${quote("isolated/test-artifact")}`,
+    `-ExePath ${quote(helper)}`,
+    "-SampleLabel content-03",
+    `-RunId ${runId}`,
+    "-FailureKind ready-timeout -ElapsedMs 15012.34",
+    "-ProcessId 1234 -ProcessAlive $true -MarkerExists $false",
+  ].join(" ");
+  try {
+    const first = spawnSync("powershell.exe", [
+      "-NoLogo", "-NoProfile", "-NonInteractive", "-ExecutionPolicy", "Bypass",
+      "-Command", command,
+    ], { encoding: "utf8", timeout: 30_000 });
+    assert.equal(first.status, 0, first.stderr);
+    const failurePath = first.stdout.trim().split(/\r?\n/u).at(-1);
+    const record = JSON.parse(readFileSync(failurePath, "utf8"));
+    assert.equal(record.result, "ready-timeout");
+    assert.equal(record.sample.label, "content-03");
+    assert.equal(record.sample.processAliveAtFailure, true);
+    assert.equal(record.sample.readyMarkerExistsAtFailure, false);
+    assert.match(record.artifact.sha256, /^[0-9A-F]{64}$/u, JSON.stringify(record));
+    assert.equal(record.limitations.performanceGateSatisfied, false);
+    assert.equal(record.limitations.causeDetermined, false);
+    assert.equal(record.limitations.realUserDataTouched, false);
+
+    const exitCommand = command
+      .replace(runId, "00000000-0000-4000-8000-000000000002")
+      .replace("-FailureKind ready-timeout", "-FailureKind exit-before-ready")
+      .replace("-ProcessAlive $true", "-ProcessAlive $false") + " -ExitCode 1";
+    const exited = spawnSync("powershell.exe", [
+      "-NoLogo", "-NoProfile", "-NonInteractive", "-ExecutionPolicy", "Bypass",
+      "-Command", exitCommand,
+    ], { encoding: "utf8", timeout: 30_000 });
+    assert.equal(exited.status, 0, exited.stderr);
+    const exitPath = exited.stdout.trim().split(/\r?\n/u).at(-1);
+    const exitRecord = JSON.parse(readFileSync(exitPath, "utf8"));
+    assert.equal(exitRecord.result, "exit-before-ready");
+    assert.equal(exitRecord.sample.processAliveAtFailure, false);
+    assert.equal(exitRecord.sample.exitCode, 1);
+
+    const duplicate = spawnSync("powershell.exe", [
+      "-NoLogo", "-NoProfile", "-NonInteractive", "-ExecutionPolicy", "Bypass",
+      "-Command", command,
+    ], { encoding: "utf8", timeout: 30_000 });
+    assert.notEqual(duplicate.status, 0);
+    assert.deepEqual(JSON.parse(readFileSync(failurePath, "utf8")), record);
+  } finally {
+    const target = realpathSync(directory);
+    const base = realpathSync(tmpdir());
+    assert.ok(target.startsWith(`${base}${sep}`));
+    assert.ok(basename(target).startsWith("WeatherPoem.ProbeDiagnostic.Test."));
+    rmSync(target, { recursive: true, force: false });
+  }
+});
+
+test("具名内部候选只解析到隔离构建与独立报告路径", () => {
+  const paths = resolvePerformancePaths(
+    "E:/weatherpoem",
+    "candidate:overlap-20261013",
+  );
+  assert.equal(
+    paths.artifactPath,
+    ".work/redesign-overlap-20261013/release/weatherpoem.exe",
+  );
+  assert.match(paths.reportPath, /T09_PERFORMANCE_SMOKE_overlap-20261013\.json$/);
+  assert.throws(() =>
+    resolvePerformancePaths("E:/weatherpoem", "candidate:../release"),
+  );
+  assert.throws(() =>
+    resolvePerformancePaths("E:/weatherpoem", "candidate:target"),
+  );
+});
 
 function fixture() {
   return {
@@ -112,6 +200,33 @@ test("性能报告绑定当前发布物并保留完整门禁限制", () => {
       appVersion: "0.2.0",
       exeSha256: HASH,
     }),
+  );
+});
+
+test("改版内部候选只接受独立路径和独立哈希", () => {
+  const report = fixture();
+  report.artifact.path = REDESIGN_EXE_PATH;
+  assert.doesNotThrow(() =>
+    validatePerformanceReport(report, {
+      appVersion: "0.2.0",
+      exeSha256: HASH,
+      artifactPath: REDESIGN_EXE_PATH,
+    }),
+  );
+  assert.throws(() =>
+    validatePerformanceReport(report, {
+      appVersion: "0.2.0",
+      exeSha256: HASH,
+    }),
+  );
+  assert.match(
+    resolvePerformancePaths("E:/weatherpoem", "redesign").reportPath,
+    /T09_PERFORMANCE_SMOKE\.json$/,
+  );
+  assert.match(
+    resolvePerformancePaths("E:/weatherpoem", "baseline-comparison")
+      .reportPath,
+    /T09_BASELINE_PERFORMANCE_SMOKE\.json$/,
   );
 });
 

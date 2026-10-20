@@ -1,7 +1,7 @@
 import { readFile, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
-import { createServer } from "vite";
+import { loadReasonSources } from "./load-reason-sources.mjs";
 
 const projectRoot = path.resolve(
   path.dirname(fileURLToPath(import.meta.url)),
@@ -14,18 +14,10 @@ const outputPath = path.join(
 );
 const checkOnly = process.argv.includes("--check");
 
-const vite = await createServer({
-  root: projectRoot,
-  appType: "custom",
-  logLevel: "silent",
-  server: { middlewareMode: true },
-});
-
-try {
-  const [{ POEMS }, { CONTENT_VERSION, RULE_VERSION }] = await Promise.all([
-    vite.ssrLoadModule("/src/data/poems.ts"),
-    vite.ssrLoadModule("/src/core/recommendation.ts"),
-  ]);
+async function main() {
+  const { POEMS, CONTENT_VERSION, RULE_VERSION } = await loadReasonSources(
+    projectRoot,
+  );
   const catalog = {
     schemaVersion: "1.0",
     contentVersion: CONTENT_VERSION,
@@ -55,6 +47,6 @@ try {
       `已导出 ${catalog.works.length} 首作品到 server/reason-catalog.json。`,
     );
   }
-} finally {
-  await vite.close();
 }
+
+await main();

@@ -1,0 +1,86 @@
+{
+  "schemaVersion": "1.0",
+  "testKind": "isolated-native-weather-network-diagnostic",
+  "generatedAt": "2026-10-18T09:17:44.060Z",
+  "candidate": {
+    "path": ".work/redesign-weather-late-20261018/release/weatherpoem.exe",
+    "sha256": "4C378084D24E8C2D4C52B5B6DE717D9AA628A6FF9CD6E5F1773387A12D3E2D53"
+  },
+  "isolation": {
+    "temporaryProfile": true,
+    "realUserDataTouched": false,
+    "installedOrUninstalled": false,
+    "systemClockChanged": false
+  },
+  "simulatedWarning": true,
+  "startup": {
+    "schemaVersion": "1.2",
+    "runId": "f5862a066dfa48b1a7ddb104a240d82b",
+    "appVersion": "0.2.0",
+    "processId": 129284,
+    "nativeReadyMs": 1699.0167000000001,
+    "frontendReadyMs": 1433.5,
+    "readyView": "warning",
+    "readyMode": "safety-warning",
+    "viewRenderMs": 156.69999998807907,
+    "performanceScenario": null,
+    "sceneMotion": null,
+    "recordedAtUnixMs": 1792315065813
+  },
+  "startupNetwork": [
+    {
+      "requestId": "127800.30",
+      "event": "request",
+      "timestamp": 355681.531651
+    },
+    {
+      "requestId": "127800.40",
+      "event": "request",
+      "timestamp": 355682.637099
+    },
+    {
+      "requestId": "127800.30",
+      "event": "loadingFailed",
+      "timestamp": 355682.639427,
+      "errorText": "net::ERR_ABORTED",
+      "canceled": true
+    },
+    {
+      "requestId": "127800.40",
+      "event": "responseReceived",
+      "timestamp": 355682.639488,
+      "status": 200
+    },
+    {
+      "requestId": "127800.40",
+      "event": "loadingFinished",
+      "timestamp": 355682.638656
+    }
+  ],
+  "webViewFetches": [],
+  "nativeViews": {
+    "atReady": {
+      "title": null,
+      "context": null,
+      "warning": true,
+      "loading": false,
+      "toast": null
+    },
+    "atReadyScreenshot": "review/redesign/evidence/T05_NATIVE_LATE_WARNING_VERIFIED_weather-late-20261018_ready.png",
+    "afterWait": {
+      "title": null,
+      "context": null,
+      "warning": true,
+      "loading": false,
+      "toast": null
+    },
+    "afterWaitScreenshot": "review/redesign/evidence/T05_NATIVE_LATE_WARNING_VERIFIED_weather-late-20261018_after.png"
+  },
+  "result": "diagnostic-captured",
+  "interceptedWeatherRequests": 2,
+  "savedDailyState": {
+    "local_date": "2026-10-18",
+    "state": "alert-suppressed",
+    "work_id": "meng-hao-ran-guo-gu-ren-zhuang"
+  }
+}

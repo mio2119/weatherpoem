@@ -1,0 +1,57 @@
+{
+  "schemaVersion": "1.0",
+  "testKind": "isolated-native-hidden-content-withdrawal",
+  "generatedAt": "2026-10-17T02:47:54.194Z",
+  "candidate": {
+    "path": ".work/redesign-warning-copy-20261017/release/weatherpoem.exe",
+    "sha256": "4507FF5002D3C4E749C6F411D371D3331C30E0AC5F438353634D19FD371BC029"
+  },
+  "isolation": {
+    "temporaryProfile": true,
+    "systemClockChanged": false,
+    "installedOrUninstalled": false,
+    "realUserDataTouched": false
+  },
+  "scenario": "weather-offline",
+  "concealAction": "tray-hide-button",
+  "activationPath": "native-single-instance",
+  "readyView": "poem",
+  "original": {
+    "date": "10月17日",
+    "title": "秋词",
+    "visible": "visible",
+    "poem": true
+  },
+  "hidden": {
+    "visibility": "visible",
+    "poem": false,
+    "loading": true
+  },
+  "withdrawnWorkId": "liu-yu-xi-qiu-ci",
+  "correctedDailyState": {
+    "state": "content-withdrawn",
+    "work_id": "liu-yu-xi-qiu-ci"
+  },
+  "screenshots": [],
+  "observed": [
+    {
+      "visible": "visible",
+      "poem": false,
+      "loading": true,
+      "correction": false
+    },
+    {
+      "visible": "visible",
+      "poem": false,
+      "loading": true,
+      "correction": false
+    },
+    {
+      "visible": "visible",
+      "poem": false,
+      "loading": false,
+      "correction": true
+    }
+  ],
+  "result": "passed"
+}

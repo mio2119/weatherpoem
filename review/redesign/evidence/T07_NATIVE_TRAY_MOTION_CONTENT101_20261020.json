@@ -1,0 +1,103 @@
+{
+  "schemaVersion": "1.0",
+  "testKind": "isolated-native-hidden-motion",
+  "generatedAt": "2026-10-20T03:46:01.485Z",
+  "candidate": {
+    "path": ".work/redesign-rain-excerpt-20261019/release/weatherpoem.exe",
+    "sha256": "402FE0C76ECFA256B396E02B4226E1E30E95716DC582D20F7263FDB9FA18EC16"
+  },
+  "testHarness": {
+    "path": "scripts/test-redesign-native-reveal.mjs",
+    "sha256": "EC545DBFDABB8A193EE27C25276EF67AE966EBC173B753EFE039E62C4F864915"
+  },
+  "isolation": {
+    "temporaryProfile": true,
+    "systemClockChanged": false,
+    "installedOrUninstalled": false,
+    "realUserDataTouched": false,
+    "processOnlyWeatherHostBlock": false
+  },
+  "scenario": "scene-rain",
+  "concealAction": "tray-hide-button",
+  "activationPath": "native-single-instance",
+  "revealElapsedMs": 93,
+  "readyView": "poem",
+  "original": {
+    "date": "10月20日",
+    "title": "芙蓉楼送辛渐",
+    "context": "10月20日小雨（隔离演练）雨 收藏 0",
+    "visible": "visible",
+    "poem": true
+  },
+  "hidden": {
+    "visibility": "visible",
+    "poem": false,
+    "loading": true
+  },
+  "expectedDate": "10月20日",
+  "motion": {
+    "initial": {
+      "sceneActive": "true",
+      "sceneKind": "rain",
+      "sceneAnimation": "scene-drift",
+      "loaderAnimation": null,
+      "runningAnimations": [
+        "scene-drift"
+      ]
+    },
+    "hidden": {
+      "sceneActive": "false",
+      "sceneAnimation": null,
+      "loaderAnimation": "none",
+      "runningAnimations": []
+    },
+    "steadyHiddenAfter3s": {
+      "sceneActive": "false",
+      "sceneAnimation": null,
+      "loaderAnimation": "none",
+      "runningAnimations": []
+    },
+    "restored": {
+      "sceneActive": "true",
+      "sceneKind": "rain",
+      "sceneAnimation": "scene-drift",
+      "loaderAnimation": null,
+      "runningAnimations": [
+        "scene-drift"
+      ]
+    }
+  },
+  "motionRecording": {
+    "path": "review/redesign/evidence/T07_NATIVE_TRAY_MOTION_CONTENT101_20261020_motion.gif",
+    "frameCount": 24,
+    "changedAdjacentPairs": 23,
+    "width": 392,
+    "height": 363,
+    "frameIntervalMs": 250,
+    "durationMs": 6000,
+    "captureWallMs": 6520,
+    "source": "isolated WebView2 CDP page"
+  },
+  "screenshots": [
+    "review/redesign/evidence/T07_NATIVE_TRAY_MOTION_CONTENT101_20261020_before.png",
+    "review/redesign/evidence/T07_NATIVE_TRAY_MOTION_CONTENT101_20261020_after.png"
+  ],
+  "observed": [
+    {
+      "visible": "visible",
+      "poem": false,
+      "loading": true,
+      "correction": false,
+      "warning": false
+    },
+    {
+      "visible": "visible",
+      "date": "10月20日",
+      "poem": true,
+      "loading": false,
+      "correction": false,
+      "warning": false
+    }
+  ],
+  "result": "passed"
+}

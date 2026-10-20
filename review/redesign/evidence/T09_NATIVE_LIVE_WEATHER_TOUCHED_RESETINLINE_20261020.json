@@ -1,0 +1,103 @@
+{
+  "schemaVersion": "1.0",
+  "testKind": "isolated-native-live-weather-touched-card",
+  "generatedAt": "2026-10-20T10:12:52.979Z",
+  "candidate": {
+    "path": ".work/redesign-reset-inline-20261020/release/weatherpoem.exe",
+    "sha256": "D68E286A2C5F2262079078921804134917CBB8C6836E1AB2D8036307E8F1325B"
+  },
+  "testHarness": {
+    "path": "scripts/diagnose-redesign-native-weather-touch.mjs",
+    "sha256": "217D3E2C6BE1EFA0353E8019C9A46836EBE679A6082F456928168FFBDB0E16AD"
+  },
+  "isolation": {
+    "temporaryProfile": true,
+    "realUserDataTouched": false,
+    "systemClockChanged": false,
+    "systemSettingsChanged": false,
+    "installedOrUninstalled": false,
+    "weatherRequest": "natural-app-request-to-open-meteo"
+  },
+  "limitations": [
+    "One host, city, date and natural network timing; a first-screen live result makes this particular late-arrival test inconclusive.",
+    "CDP mouse input is sent to the isolated native WebView2; it is not a human usability study.",
+    "A page screenshot is not a compositor-frame or screen-reader audit."
+  ],
+  "result": "passed-poem-preserved-live-context-updated",
+  "readyMarker": {
+    "schemaVersion": "1.2",
+    "runId": "c95fd5a425604d7bac09e904a43bd6a3",
+    "appVersion": "0.2.0",
+    "processId": 35500,
+    "nativeReadyMs": 1719.361,
+    "frontendReadyMs": 1440.60000000149,
+    "readyView": "poem",
+    "readyMode": "offline-rules",
+    "viewRenderMs": 124.30000000074506,
+    "performanceScenario": null,
+    "sceneMotion": {
+      "sceneKind": "season",
+      "appReduced": false,
+      "systemReduced": false,
+      "sceneActive": true,
+      "visibilityState": "visible",
+      "animationName": "none",
+      "animationDuration": "0s",
+      "animationIterationCount": "1"
+    },
+    "recordedAtUnixMs": 1792491174749
+  },
+  "initialPage": {
+    "title": "暮江吟",
+    "context": "10月20日天气未更新秋 收藏 0",
+    "loading": false,
+    "warning": false,
+    "cached": null,
+    "inputEvents": 0,
+    "weatherResourceDurationsMs": [
+      1116.6000000014901
+    ]
+  },
+  "afterTouch": {
+    "title": "暮江吟",
+    "context": "10月20日天气未更新秋 收藏 0",
+    "loading": false,
+    "warning": false,
+    "cached": null,
+    "inputEvents": 1,
+    "weatherResourceDurationsMs": [
+      1116.6000000014901
+    ]
+  },
+  "naturalWaitMs": 8000,
+  "afterNaturalWait": {
+    "title": "暮江吟",
+    "context": "10月20日小雨秋 收藏 0",
+    "loading": false,
+    "warning": false,
+    "cached": {
+      "cityId": "beijing",
+      "source": "open-meteo",
+      "label": "小雨",
+      "observedAt": "2026-10-20T10:00:00.000Z"
+    },
+    "inputEvents": 1,
+    "weatherResourceDurationsMs": [
+      1116.6000000014901,
+      1392
+    ]
+  },
+  "nativeDailyState": {
+    "local_date": "2026-10-20",
+    "state": "shown",
+    "work_id": "bai-ju-yi-mu-jiang-yin"
+  },
+  "nativeDisplayEvents": [
+    {
+      "local_date": "2026-10-20",
+      "work_id": "bai-ju-yi-mu-jiang-yin",
+      "primary_context": "秋日"
+    }
+  ],
+  "screenshot": "review/redesign/evidence/T09_NATIVE_LIVE_WEATHER_TOUCHED_RESETINLINE_20261020_after.png"
+}

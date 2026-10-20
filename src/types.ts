@@ -1,4 +1,7 @@
 export type ThemePreference = "system" | "light" | "dark";
+export type PoemLayout = "horizontal" | "vertical";
+export type PoemFontSize = "small" | "medium" | "large";
+export type GlanceSize = "small" | "medium" | "large";
 export type Season = "spring" | "summer" | "autumn" | "winter";
 export type TimePeriod = "morning" | "day" | "evening" | "night";
 export type WeatherKind =
@@ -32,6 +35,10 @@ export interface AppSettings {
   anonymousMetrics: boolean;
   theme: ThemePreference;
   reduceMotion: boolean;
+  poemLayout: PoemLayout;
+  poemFontSize: PoemFontSize;
+  glanceSize: GlanceSize;
+  readingWindowSize?: { width: number; height: number };
 }
 
 export interface CalendarContext {
@@ -66,7 +73,7 @@ export interface WeatherContext {
   precipitation?: number;
   observedAt?: string;
   freshness: "fresh" | "stale" | "unavailable";
-  source: "open-meteo" | "cache" | "offline";
+  source: "open-meteo" | "cache" | "offline" | "synthetic";
   warnings: WeatherWarning[];
   shouldSuppressPoem: boolean;
 }
@@ -74,7 +81,8 @@ export interface WeatherContext {
 export type PerformanceWeatherScenario =
   | "weather-offline"
   | "weather-timeout"
-  | "official-warning";
+  | "official-warning"
+  | "scene-rain";
 
 export interface PoemTags {
   festivals: string[];
@@ -123,6 +131,7 @@ export interface RecommendationHistoryItem {
   workId: string;
   author: string;
   primaryContext: string;
+  displayedAt?: string;
 }
 
 export interface FeedbackItem {
@@ -130,6 +139,7 @@ export interface FeedbackItem {
   type: "disliked" | "replaced";
   contextTags: string[];
   createdAt: string;
+  localDate?: string;
 }
 
 export type PilotEventType =

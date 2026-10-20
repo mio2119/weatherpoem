@@ -1,0 +1,82 @@
+{
+  "schemaVersion": "1.0",
+  "testKind": "isolated-native-cross-day-festival-author-diversity",
+  "generatedAt": "2026-10-19T10:07:12.228Z",
+  "candidate": {
+    "path": ".work/redesign-recommendation-124-20261019/release/weatherpoem.exe",
+    "sha256": "3759CE59650FDB6681FA55BAD25542F3DA501D22B4832A40ECE3F4ED931712A4"
+  },
+  "isolation": {
+    "temporaryProfile": true,
+    "systemClockChanged": false,
+    "installedOrUninstalled": false,
+    "realUserDataTouched": false,
+    "processOnlyWeatherHostBlock": false
+  },
+  "scenario": "weather-offline",
+  "concealAction": "tray-hide-button",
+  "activationPath": "native-single-instance",
+  "revealElapsedMs": 95,
+  "readyView": "poem",
+  "original": {
+    "date": "10月19日",
+    "title": "元日",
+    "context": "10月19日天气未更新诗 收藏 0",
+    "visible": "visible",
+    "poem": true
+  },
+  "festivalSelectionAudit": {
+    "ui": {
+      "title": "过故人庄",
+      "author": "孟浩然 · 唐",
+      "context": "10月18日重阳节 · 天气未更新节 收藏 0",
+      "date": "10月18日"
+    },
+    "dailyState": {
+      "local_date": "2026-10-18",
+      "state": "shown",
+      "work_id": "meng-hao-ran-guo-gu-ren-zhuang"
+    },
+    "displayEvent": {
+      "work_id": "meng-hao-ran-guo-gu-ren-zhuang",
+      "author": "孟浩然",
+      "primary_context": "重阳节"
+    }
+  },
+  "hidden": {
+    "visibility": "visible",
+    "poem": false,
+    "loading": true
+  },
+  "expectedDate": "10月18日",
+  "expectedLocalDate": "2026-10-18",
+  "screenshots": [
+    "review/redesign/evidence/T02_NATIVE_FESTIVAL_AUTHOR_AVOIDANCE_20261019_before.png",
+    "review/redesign/evidence/T02_NATIVE_FESTIVAL_AUTHOR_AVOIDANCE_20261019_after.png"
+  ],
+  "observed": [
+    {
+      "visible": "visible",
+      "poem": false,
+      "loading": true,
+      "correction": false,
+      "warning": false
+    },
+    {
+      "visible": "visible",
+      "poem": false,
+      "loading": true,
+      "correction": false,
+      "warning": false
+    },
+    {
+      "visible": "visible",
+      "date": "10月18日",
+      "poem": true,
+      "loading": false,
+      "correction": false,
+      "warning": false
+    }
+  ],
+  "result": "passed"
+}

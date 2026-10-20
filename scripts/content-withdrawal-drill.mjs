@@ -1,9 +1,10 @@
 import { createHash } from "node:crypto";
+import { existsSync } from "node:fs";
 import { readFile, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
-import { createServer } from "vite";
 import { assertContentWithdrawalDrillReport } from "./content-withdrawal-support.mjs";
+import { loadBundledModule } from "./load-reason-sources.mjs";
 
 const projectRoot = path.resolve(
   path.dirname(fileURLToPath(import.meta.url)),
@@ -29,12 +30,23 @@ const schemaPath = path.join(
   "content-withdrawal.schema.json",
 );
 const catalog = JSON.parse(await readFile(catalogPath, "utf8"));
-const reportPath = path.join(
+const baselineReportPath = path.join(
   projectRoot,
   "output",
   `WeatherPoem_${packageJson.version}_CONTENT_WITHDRAWAL_DRILL.json`,
 );
+const reportName = process.argv.find((arg) => arg.startsWith("--report="))
+  ?.slice("--report=".length);
+if (reportName && !/^T08_[A-Za-z0-9_-]+\.json$/.test(reportName)) {
+  throw new Error("--report requires a T08_*.json filename");
+}
+const reportPath = reportName
+  ? path.join(projectRoot, "review", "redesign", "evidence", reportName)
+  : baselineReportPath;
 const checkOnly = process.argv.includes("--check");
+if (!checkOnly && reportName && existsSync(reportPath)) {
+  throw new Error(`Refusing to overwrite a redesign evidence report: ${reportPath}`);
+}
 
 async function sha256(filePath) {
   return createHash("sha256")
@@ -80,20 +92,13 @@ class MemoryStorage {
   }
 }
 
-const vite = await createServer({
-  root: projectRoot,
-  appType: "custom",
-  logLevel: "silent",
-  server: { middlewareMode: true },
-});
-
-try {
+async function runDrill() {
   const {
     CONTENT_WITHDRAWAL_CACHE_KEY,
     fetchContentWithdrawals,
     filterWithdrawnWorks,
     shouldShowContentCorrection,
-  } = await vite.ssrLoadModule("/src/services/content-control.ts");
+  } = await loadBundledModule(projectRoot, "src/services/content-control.ts");
   const now = Date.now();
   const currentContext = await context(now);
   const sample = catalog.works[0];
@@ -270,6 +275,6 @@ try {
   console.log(
     `内容撤回自动演练通过：${sample.id} 已从 ${catalog.works.length} 首候选中排除，离线缓存与防回退检查通过；报告：${reportPath}`,
   );
-} finally {
-  await vite.close();
 }
+
+await runDrill();

@@ -1,0 +1,196 @@
+{
+  "schemaVersion": "1.0",
+  "testKind": "isolated-native-webview2-poem-layout",
+  "generatedAt": "2026-10-18T16:20:26.887Z",
+  "candidate": {
+    "path": ".work/redesign-glance-sizes-20261019/release/weatherpoem.exe",
+    "sha256": "13B4D02DB7D1A7C821D23FA0A1981A523F6A4BC91B2D989F13B9F1F754357031"
+  },
+  "isolation": {
+    "temporaryProfile": true,
+    "realUserDataTouched": false,
+    "systemClockChanged": false,
+    "systemDisplaySettingsChanged": false,
+    "installedOrUninstalled": false
+  },
+  "catalog": {
+    "poemId": "cui-hao-huang-he-lou",
+    "title": "黄鹤楼",
+    "localDate": "2026-10-19",
+    "contentVersion": "2026.07.1",
+    "ruleVersion": "1.2.3"
+  },
+  "setup": {
+    "layout": "vertical",
+    "fontSize": "large",
+    "theme": "light",
+    "weather": "offline-rules",
+    "exerciseFontSetting": false,
+    "exerciseGlanceSize": true,
+    "fontSettingLayout": null
+  },
+  "observations": {
+    "readyMarker": {
+      "schemaVersion": "1.2",
+      "runId": "ad78d05640eb45e08048bb710d1bf4c8",
+      "appVersion": "0.2.0",
+      "processId": 147496,
+      "nativeReadyMs": 871.1552,
+      "frontendReadyMs": 429.5999999642372,
+      "readyView": "poem",
+      "readyMode": "offline-rules",
+      "viewRenderMs": 161.19999998807907,
+      "performanceScenario": "weather-offline",
+      "sceneMotion": {
+        "sceneKind": "season",
+        "appReduced": false,
+        "systemReduced": false,
+        "sceneActive": true,
+        "visibilityState": "visible",
+        "animationName": "none",
+        "animationDuration": "0s",
+        "animationIterationCount": "1"
+      },
+      "recordedAtUnixMs": 1792340428201
+    },
+    "glance": {
+      "title": "黄鹤楼",
+      "text": "昔人已乘黄鹤去，此地空余黄鹤楼。黄鹤一去不复返，白云千载空悠悠。",
+      "vertical": true,
+      "fontSize": "large",
+      "fallbackNote": null,
+      "documentOverflow": false,
+      "actionsInScrollRegion": true,
+      "paperWidth": 352,
+      "viewport": {
+        "width": 382,
+        "height": 571
+      }
+    },
+    "glanceScreenshot": "review/redesign/evidence/T04_NATIVE_GLANCE_SIZES_glance-sizes-20261019_glance.png",
+    "readingInitial": {
+      "title": "黄鹤楼",
+      "text": "昔人已乘黄鹤去，此地空余黄鹤楼。黄鹤一去不复返，白云千载空悠悠。晴川历历汉阳树，芳草萋萋鹦鹉洲。日暮乡关何处是？烟波江上使人愁。",
+      "vertical": true,
+      "writingMode": "vertical-rl",
+      "fontSize": "large",
+      "frameClientWidth": 483,
+      "frameScrollWidth": 483,
+      "frameScrollLeft": 0,
+      "frameTabIndex": 0,
+      "panelScrollWidth": 551,
+      "panelClientWidth": 551,
+      "backVisible": true,
+      "sourcePresent": true,
+      "viewport": {
+        "width": 560,
+        "height": 720
+      }
+    },
+    "readingScreenshot": "review/redesign/evidence/T04_NATIVE_GLANCE_SIZES_glance-sizes-20261019_reading_vertical.png",
+    "readingHorizontal": {
+      "title": "黄鹤楼",
+      "text": "昔人已乘黄鹤去，此地空余黄鹤楼。黄鹤一去不复返，白云千载空悠悠。晴川历历汉阳树，芳草萋萋鹦鹉洲。日暮乡关何处是？烟波江上使人愁。",
+      "vertical": false,
+      "writingMode": "horizontal-tb",
+      "fontSize": "large",
+      "frameClientWidth": 483,
+      "frameScrollWidth": 483,
+      "frameScrollLeft": 0,
+      "frameTabIndex": -1,
+      "panelScrollWidth": 551,
+      "panelClientWidth": 551,
+      "backVisible": true,
+      "sourcePresent": true,
+      "viewport": {
+        "width": 560,
+        "height": 720
+      }
+    },
+    "sqliteLayoutAfterSwitch": "horizontal",
+    "returnedGlance": {
+      "title": "黄鹤楼",
+      "vertical": false
+    },
+    "glanceSizeJourney": [
+      {
+        "selectedSize": "small",
+        "geometry": {
+          "title": "黄鹤楼",
+          "poemFontSize": "large",
+          "width": 392,
+          "height": 320,
+          "documentOverflow": false,
+          "actionReachable": true,
+          "viewScrollHeight": 390,
+          "viewClientHeight": 260
+        },
+        "screenshot": "review/redesign/evidence/T04_NATIVE_GLANCE_SIZES_glance-sizes-20261019_glance_small.png"
+      },
+      {
+        "selectedSize": "medium",
+        "geometry": {
+          "title": "黄鹤楼",
+          "poemFontSize": "large",
+          "width": 456,
+          "height": 474,
+          "documentOverflow": false,
+          "actionReachable": true,
+          "viewScrollHeight": 414,
+          "viewClientHeight": 414
+        },
+        "screenshot": "review/redesign/evidence/T04_NATIVE_GLANCE_SIZES_glance-sizes-20261019_glance_medium.png"
+      },
+      {
+        "selectedSize": "large",
+        "geometry": {
+          "title": "黄鹤楼",
+          "poemFontSize": "large",
+          "width": 520,
+          "height": 353,
+          "documentOverflow": false,
+          "actionReachable": true,
+          "viewScrollHeight": 293,
+          "viewClientHeight": 293
+        },
+        "screenshot": "review/redesign/evidence/T04_NATIVE_GLANCE_SIZES_glance-sizes-20261019_glance_large.png"
+      }
+    ],
+    "restartReadyMarker": {
+      "schemaVersion": "1.2",
+      "runId": "1bfa992e521b4d7f8fc421fbc59ef216",
+      "appVersion": "0.2.0",
+      "processId": 144708,
+      "nativeReadyMs": 657.9956,
+      "frontendReadyMs": 315.19999998807907,
+      "readyView": "poem",
+      "readyMode": "offline-rules",
+      "viewRenderMs": 112.5,
+      "performanceScenario": "weather-offline",
+      "sceneMotion": {
+        "sceneKind": "season",
+        "appReduced": false,
+        "systemReduced": false,
+        "sceneActive": true,
+        "visibilityState": "visible",
+        "animationName": "none",
+        "animationDuration": "0s",
+        "animationIterationCount": "1"
+      },
+      "recordedAtUnixMs": 1792340435501
+    },
+    "restartGlance": {
+      "title": "黄鹤楼",
+      "text": "昔人已乘黄鹤去，此地空余黄鹤楼。黄鹤一去不复返，白云千载空悠悠。",
+      "vertical": false,
+      "fontSize": "large",
+      "viewportWidth": 510
+    }
+  },
+  "limitations": [
+    "WebView2 page and the current single-monitor native window only; CDP keys are not a human screen-reader or mixed-DPI test.",
+    "The catalog poem is preselected only in the temporary SQLite profile, not by the live recommendation algorithm."
+  ],
+  "result": "failed",
+  "error": "AssertionError [ERR_ASSERTION]: Saved large glance width was not restored\n    at file:///E:/weatherpoem/scripts/test-redesign-native-poem-layout.mjs:393:14"
+}

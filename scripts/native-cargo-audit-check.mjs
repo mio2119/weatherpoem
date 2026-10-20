@@ -71,6 +71,8 @@ const summary = validateNativeCargoAuditReport(report, {
 console.log(
   `原生 cargo-audit 报告有效：Windows 目标 ${summary.targetPackageCount - 1} 个依赖、` +
     `${summary.targetVulnerabilityCount} 个漏洞；` +
-    `${summary.targetUnmaintainedCount} 项停止维护公告仍需具名评审。` +
+    (summary.targetUnmaintainedCount === 0
+      ? "目标内 0 项停止维护公告；具名安全总评审仍待完成。"
+      : `${summary.targetUnmaintainedCount} 项停止维护公告仍需具名评审。`) +
     `另保留 ${summary.excludedNonTargetVulnerabilityCount} 个非 Windows 目标原始发现。`,
 );

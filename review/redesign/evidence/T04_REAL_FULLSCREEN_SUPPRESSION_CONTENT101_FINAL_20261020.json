@@ -1,0 +1,56 @@
+{
+  "schemaVersion": "1.0",
+  "testKind": "isolated-native-existing-fullscreen-autostart-suppression",
+  "generatedAt": "2026-10-20T03:59:17.9788287Z",
+  "sourceCommit": "c6f14a4d6a8fd1732d5d96e0479f7908c0cb850e",
+  "candidate": {
+    "path": "E:\\weatherpoem\\.work\\redesign-rain-excerpt-20261019\\release\\weatherpoem.exe",
+    "sha256": "402FE0C76ECFA256B396E02B4226E1E30E95716DC582D20F7263FDB9FA18EC16"
+  },
+  "testHarness": {
+    "path": "scripts/test-redesign-autostart-fullscreen.ps1",
+    "sha256": "7BB512638CE7F7074E700D6098591624E056E49622AD43F4BC37D6094D5767D7"
+  },
+  "isolation": {
+    "temporaryProfile": true,
+    "realUserDataTouched": false,
+    "systemAutostartChanged": false,
+    "systemDisplaySettingsChanged": false
+  },
+  "observations": {
+    "probeMode": "existing-full-screen",
+    "foregroundProbePrecondition": true,
+    "foregroundProcessId": 22768,
+    "foregroundWindowBounds": {
+      "left": 0,
+      "top": 0,
+      "right": 1922,
+      "bottom": 1080
+    },
+    "monitorBounds": {
+      "left": 0,
+      "top": 0,
+      "right": 1920,
+      "bottom": 1080
+    },
+    "workAreaBounds": {
+      "left": 0,
+      "top": 0,
+      "right": 1920,
+      "bottom": 1032
+    },
+    "foregroundProbeDpi": 96,
+    "appPid": 14356,
+    "productWindowHandle": "2493748",
+    "visibilitySamples": 30,
+    "visibleSamples": 0,
+    "foregroundChangedSamples": 0,
+    "appStillRunning": true,
+    "readyMarkerAfterAuto": false
+  },
+  "limitations": [
+    "The existing foreground application is not controlled by this test; manual recovery and compositor-frame continuity are not checked.",
+    "Only the foreground monitor and current Windows session are observed."
+  ],
+  "result": "existing-fullscreen-autostart-suppressed-passed"
+}

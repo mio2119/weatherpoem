@@ -11,6 +11,11 @@ const props = defineProps<{
 const hasOfficialWarning = computed(() =>
   props.weather.warnings.some((warning) => warning.origin === "official"),
 );
+const isIsolatedExercise = computed(() =>
+  props.weather.warnings.some(
+    (warning) => warning.source === "WeatherPoem 隔离性能演练",
+  ),
+);
 useInitialFocus();
 
 function displayTimestamp(value?: string): string {
@@ -41,9 +46,11 @@ function displayTimestamp(value?: string): string {
     <h1 id="warning-title">今日诗笺暂缓展示</h1>
     <p>
       {{
-        hasOfficialWarning
-          ? "已收到仍在有效期内的气象预警，请先阅读安全信息。"
-          : "基础天气数据发现可能影响出行的情况。请先查看当地气象部门发布的正式预警。"
+        isIsolatedExercise
+          ? "这是隔离演练，不是真实气象预警。请先阅读安全信息。"
+          : hasOfficialWarning
+            ? "已收到仍在有效期内的气象预警，请先阅读安全信息。"
+            : "基础天气数据发现可能影响出行的情况。请先查看当地气象部门发布的正式预警。"
       }}
     </p>
     <section
@@ -67,9 +74,11 @@ function displayTimestamp(value?: string): string {
     </section>
     <p class="warning-disclaimer">
       {{
-        hasOfficialWarning
-          ? "预警由配置的授权网关转发，请以发布机构最新信息和属地应急指引为准。"
-          : "本提示依据基础天气数据生成，不替代官方预警或应急指引。"
+        isIsolatedExercise
+          ? "本页仅用于隔离安全路径演练，没有连接真实预警网关；请以当地气象部门最新信息为准。"
+          : hasOfficialWarning
+            ? "预警由配置的授权网关转发，请以发布机构最新信息和属地应急指引为准。"
+            : "本提示依据基础天气数据生成，不替代官方预警或应急指引。"
       }}
     </p>
   </main>

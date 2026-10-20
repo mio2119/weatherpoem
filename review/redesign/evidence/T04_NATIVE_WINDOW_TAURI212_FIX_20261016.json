@@ -1,0 +1,43 @@
+{
+  "schemaVersion": "1.0",
+  "testKind": "isolated-native-window",
+  "generatedAt": "2026-10-16T03:31:57.6314158Z",
+  "sourceCommit": "d5e1067d77f6ce8a1163df85668d471ea6f738ab",
+  "candidate": {
+    "path": "E:\\weatherpoem\\.work\\redesign-tauri-212-minimize-fix-20261016\\release\\weatherpoem.exe",
+    "sha256": "DB56F155495900B11E73CCFABCC4D99BFFC24F233AEBD0127772639811DD391D"
+  },
+  "profileIsolation": true,
+  "realUserDataTouched": false,
+  "systemAutostartChanged": false,
+  "systemDisplaySettingsChanged": false,
+  "observations": {
+    "foregroundBeforePid": 80972,
+    "readyView": "poem",
+    "readyMode": "offline-rules",
+    "processId": 73320,
+    "windowHandle": "1051644",
+    "windowHandleType": "System.IntPtr",
+    "foregroundAfterPid": 73320,
+    "productTookFocus": true,
+    "foregroundUnchanged": false,
+    "glance": {
+      "left": 1500,
+      "top": 658,
+      "right": 1898,
+      "bottom": 1010,
+      "width": 398,
+      "height": 352,
+      "dpi": 96,
+      "workingArea": {
+        "left": 0,
+        "top": 0,
+        "right": 1920,
+        "bottom": 1032
+      }
+    }
+  },
+  "limitations": [],
+  "result": "failed",
+  "error": "Autostart took foreground focus"
+}

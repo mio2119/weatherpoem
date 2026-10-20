@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.1",
-  "generatedAt": "2026-07-24T03:35:32.394Z",
+  "generatedAt": "2026-10-15T14:21:21.539Z",
   "entries": [
     {
       "sourceKind": "npm-registry-archive",
@@ -66,7 +66,7 @@
       "integrity": "sha512-ZLv/JdUfkvOy9eCnnBaGfiO+XimbjebAeO+MRQqD/B+FR1tnRN0tpKSJHRbE8sFfS6aqsXZ67TQjfwfsxULVbg==",
       "archiveSha512": "64BBFF25D51F92F3B2F5E0A79C16867E23BE5E299B8DE6C078EF8C450A83FC1F85475B6744DD2DA4A4891D16C4F2C15F4BA6AAB1767AED34237F07ECC542D56E",
       "registryMetadataUrl": "https://registry.npmjs.org/%40napi-rs%2Fwasm-runtime/1.1.6",
-      "registryMetadataSha256": "090C44446F8D8920BB3A80122757062F2D2F0DA27FCEF0066F8C5B6DE45923A2",
+      "registryMetadataSha256": "B7052ABA13DF612E5CE2A8F3DC6C413FABEBA58C0BFD551CB0A7647F816DA9B0",
       "repository": "https://github.com/napi-rs/napi-rs",
       "gitHead": "b77119e711704cc453949e056b45a4996ea0386c",
       "files": [

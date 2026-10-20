@@ -9,7 +9,14 @@ param(
     [int]$ResourceSeconds = 60,
 
     [ValidateRange(500, 5000)]
-    [int]$SampleIntervalMs = 1000
+    [int]$SampleIntervalMs = 1000,
+
+    [switch]$RedesignCandidate,
+
+    [switch]$BaselineComparison,
+
+    [ValidatePattern('^[a-z0-9][a-z0-9-]{0,39}$')]
+    [string]$CandidateName
 )
 
 Set-StrictMode -Version Latest
@@ -23,9 +30,36 @@ Import-Module -Name $utilityModule -ErrorAction Stop
 $projectRoot = [System.IO.Path]::GetFullPath((Join-Path $PSScriptRoot ".."))
 $packageJson = Get-Content -LiteralPath (Join-Path $projectRoot "package.json") -Raw -Encoding UTF8 | ConvertFrom-Json
 $appVersion = [string]$packageJson.version
-$exePath = [System.IO.Path]::GetFullPath((Join-Path $projectRoot "src-tauri\target\release\weatherpoem.exe"))
-$reportPath = [System.IO.Path]::GetFullPath((Join-Path $projectRoot "output\WeatherPoem_0.2.0_PERFORMANCE_SMOKE.json"))
+if ($RedesignCandidate -and $BaselineComparison) {
+    throw "RedesignCandidate and BaselineComparison are mutually exclusive."
+}
+if ($PSBoundParameters.ContainsKey('CandidateName') -and
+    ([string]::IsNullOrWhiteSpace($CandidateName) -or $CandidateName -eq 'target')) {
+    throw "CandidateName must be a nonempty new candidate name, not target."
+}
+if ($CandidateName -and ($RedesignCandidate -or $BaselineComparison)) {
+    throw "CandidateName cannot be combined with another candidate switch."
+}
+if ($CandidateName) {
+    $artifactPath = ".work/redesign-$CandidateName/release/weatherpoem.exe"
+    $reportRelativePath = "review/redesign/evidence/T09_PERFORMANCE_SMOKE_$CandidateName.json"
+}
+elseif ($RedesignCandidate) {
+    $artifactPath = ".work/redesign-target/release/weatherpoem.exe"
+    $reportRelativePath = "review/redesign/evidence/T09_PERFORMANCE_SMOKE.json"
+}
+elseif ($BaselineComparison) {
+    $artifactPath = "src-tauri/target/release/weatherpoem.exe"
+    $reportRelativePath = "review/redesign/evidence/T09_BASELINE_PERFORMANCE_SMOKE.json"
+}
+else {
+    $artifactPath = "src-tauri/target/release/weatherpoem.exe"
+    $reportRelativePath = "output/WeatherPoem_0.2.0_PERFORMANCE_SMOKE.json"
+}
+$exePath = [System.IO.Path]::GetFullPath((Join-Path $projectRoot $artifactPath))
+$reportPath = [System.IO.Path]::GetFullPath((Join-Path $projectRoot $reportRelativePath))
 $seedScript = [System.IO.Path]::GetFullPath((Join-Path $projectRoot "scripts\seed-performance-profile.mjs"))
+. (Join-Path $PSScriptRoot "performance-smoke-failure.ps1")
 
 if (-not (Test-Path -LiteralPath $exePath -PathType Leaf)) {
     throw "Release EXE not found. Run npm run tauri:build first: $exePath"
@@ -82,6 +116,7 @@ function Start-IsolatedProbe {
     param(
         [string]$ProfilePath,
         [string]$RunId,
+        [string]$SampleLabel,
         [switch]$Configured
     )
 
@@ -123,12 +158,37 @@ function Start-IsolatedProbe {
     while (-not (Test-Path -LiteralPath $markerPath -PathType Leaf)) {
         if ($process.HasExited) {
             $exitCode = $process.ExitCode
+            $failurePath = $null
+            try {
+                $failurePath = Write-PerformanceSmokeProbeFailure `
+                    -ReportPath $reportPath -ArtifactPath $artifactPath -ExePath $exePath `
+                    -SampleLabel $SampleLabel -RunId $RunId -FailureKind 'exit-before-ready' `
+                    -ElapsedMs $stopwatch.Elapsed.TotalMilliseconds -ProcessId $process.Id `
+                    -ProcessAlive $false -ExitCode $exitCode `
+                    -MarkerExists (Test-Path -LiteralPath $markerPath -PathType Leaf)
+            }
+            catch {
+                Write-Warning "Could not preserve the failed probe diagnostic: $_"
+            }
             Stop-LaunchedProcess -Process $process
-            throw "WeatherPoem exited before the ready marker (exit code $exitCode)."
+            throw "WeatherPoem exited before the ready marker (exit code $exitCode; sample $SampleLabel; diagnostic $failurePath)."
         }
         if ([DateTime]::UtcNow -ge $deadline) {
+            if (Test-Path -LiteralPath $markerPath -PathType Leaf) { break }
+            $failurePath = $null
+            try {
+                $failurePath = Write-PerformanceSmokeProbeFailure `
+                    -ReportPath $reportPath -ArtifactPath $artifactPath -ExePath $exePath `
+                    -SampleLabel $SampleLabel -RunId $RunId -FailureKind 'ready-timeout' `
+                    -ElapsedMs $stopwatch.Elapsed.TotalMilliseconds -ProcessId $process.Id `
+                    -ProcessAlive (-not $process.HasExited) `
+                    -MarkerExists (Test-Path -LiteralPath $markerPath -PathType Leaf)
+            }
+            catch {
+                Write-Warning "Could not preserve the failed probe diagnostic: $_"
+            }
             Stop-LaunchedProcess -Process $process
-            throw "WeatherPoem did not emit the ready marker within 15 seconds."
+            throw "WeatherPoem did not emit the ready marker within 15 seconds ($SampleLabel; diagnostic $failurePath)."
         }
         Start-Sleep -Milliseconds 20
     }
@@ -182,11 +242,12 @@ function Start-IsolatedProbe {
 $startupResults = [System.Collections.Generic.List[object]]::new()
 $contentResults = [System.Collections.Generic.List[object]]::new()
 $idleProcess = $null
+$testFailure = $null
 try {
     for ($index = 1; $index -le $StartupSamples; $index++) {
         $profilePath = Join-Path $runRoot ("startup-" + $index.ToString("00"))
         [System.IO.Directory]::CreateDirectory($profilePath) | Out-Null
-        $probe = Start-IsolatedProbe -ProfilePath $profilePath -RunId ([System.Guid]::NewGuid().ToString("D"))
+        $probe = Start-IsolatedProbe -ProfilePath $profilePath -RunId ([System.Guid]::NewGuid().ToString("D")) -SampleLabel "startup-$index"
         try {
             if ($probe.ReadyView -ne "onboarding" -or $probe.ReadyMode -ne "local-onboarding") {
                 throw "Clean profile did not render onboarding as its final view."
@@ -209,6 +270,7 @@ try {
         $probe = Start-IsolatedProbe `
             -ProfilePath $profilePath `
             -RunId ([System.Guid]::NewGuid().ToString("D")) `
+            -SampleLabel "content-$index" `
             -Configured
         try {
             $contentResults.Add([pscustomobject]@{
@@ -228,7 +290,7 @@ try {
 
     $idleProfile = Join-Path $runRoot "idle"
     [System.IO.Directory]::CreateDirectory($idleProfile) | Out-Null
-    $idleProbe = Start-IsolatedProbe -ProfilePath $idleProfile -RunId ([System.Guid]::NewGuid().ToString("D"))
+    $idleProbe = Start-IsolatedProbe -ProfilePath $idleProfile -RunId ([System.Guid]::NewGuid().ToString("D")) -SampleLabel "idle"
     $idleProcess = $idleProbe.Process
     $closeRequestAccepted = $idleProcess.CloseMainWindow()
     Start-Sleep -Milliseconds 750
@@ -356,7 +418,7 @@ try {
         generatedAt = [DateTime]::UtcNow.ToString("o")
         testKind = "automated-performance-smoke"
         artifact = [ordered]@{
-            path = "src-tauri/target/release/weatherpoem.exe"
+            path = $artifactPath
             sha256 = $hash
             sizeBytes = [long]$file.Length
             authenticodeStatus = [string]$signature.Status
@@ -470,6 +532,10 @@ try {
     }
     Write-Host "Performance smoke passed: $reportPath"
 }
+catch {
+    $testFailure = $_
+    throw
+}
 finally {
     if ($null -ne $idleProcess) {
         Stop-LaunchedProcess -Process $idleProcess
@@ -480,16 +546,20 @@ finally {
         (Split-Path -Leaf $resolvedRunRoot).StartsWith("WeatherPoem.Performance.", [System.StringComparison]::Ordinal)
     ) {
         if (Test-Path -LiteralPath $resolvedRunRoot) {
-            foreach ($attempt in 1..5) {
+            foreach ($attempt in 1..16) {
                 try {
-                    Remove-Item -LiteralPath $resolvedRunRoot -Recurse -Force
+                    Remove-Item -LiteralPath $resolvedRunRoot -Recurse -Force -ErrorAction Stop
                     break
                 }
                 catch {
-                    if ($attempt -eq 5) {
-                        throw
+                    if ($attempt -eq 16) {
+                        if ($null -ne $testFailure) {
+                            Write-Warning "Isolated WebView data remained locked after performance smoke: $resolvedRunRoot. Original test failure is preserved."
+                            break
+                        }
+                        throw "Isolated WebView data remained locked after performance smoke: $resolvedRunRoot"
                     }
-                    Start-Sleep -Seconds 1
+                    Start-Sleep -Milliseconds 750
                 }
             }
         }

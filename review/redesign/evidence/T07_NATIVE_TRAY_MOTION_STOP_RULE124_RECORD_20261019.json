@@ -1,0 +1,99 @@
+{
+  "schemaVersion": "1.0",
+  "testKind": "isolated-native-hidden-motion",
+  "generatedAt": "2026-10-19T10:26:27.972Z",
+  "candidate": {
+    "path": ".work/redesign-recommendation-124-20261019/release/weatherpoem.exe",
+    "sha256": "3759CE59650FDB6681FA55BAD25542F3DA501D22B4832A40ECE3F4ED931712A4"
+  },
+  "isolation": {
+    "temporaryProfile": true,
+    "systemClockChanged": false,
+    "installedOrUninstalled": false,
+    "realUserDataTouched": false,
+    "processOnlyWeatherHostBlock": false
+  },
+  "scenario": "scene-rain",
+  "concealAction": "tray-hide-button",
+  "activationPath": "native-single-instance",
+  "revealElapsedMs": 85,
+  "readyView": "poem",
+  "original": {
+    "date": "10月19日",
+    "title": "山居秋暝",
+    "context": "10月19日小雨（隔离演练）雨 收藏 0",
+    "visible": "visible",
+    "poem": true
+  },
+  "hidden": {
+    "visibility": "visible",
+    "poem": false,
+    "loading": true
+  },
+  "expectedDate": "10月19日",
+  "motion": {
+    "initial": {
+      "sceneActive": "true",
+      "sceneKind": "rain",
+      "sceneAnimation": "scene-drift",
+      "loaderAnimation": null,
+      "runningAnimations": [
+        "scene-drift"
+      ]
+    },
+    "hidden": {
+      "sceneActive": "false",
+      "sceneAnimation": null,
+      "loaderAnimation": "none",
+      "runningAnimations": []
+    },
+    "steadyHiddenAfter3s": {
+      "sceneActive": "false",
+      "sceneAnimation": null,
+      "loaderAnimation": "none",
+      "runningAnimations": []
+    },
+    "restored": {
+      "sceneActive": "true",
+      "sceneKind": "rain",
+      "sceneAnimation": "scene-drift",
+      "loaderAnimation": null,
+      "runningAnimations": [
+        "scene-drift"
+      ]
+    }
+  },
+  "motionRecording": {
+    "path": "review/redesign/evidence/T07_NATIVE_TRAY_MOTION_STOP_RULE124_RECORD_20261019_motion.gif",
+    "frameCount": 24,
+    "changedAdjacentPairs": 23,
+    "width": 392,
+    "height": 363,
+    "frameIntervalMs": 250,
+    "durationMs": 6000,
+    "captureWallMs": 6135,
+    "source": "isolated WebView2 CDP page"
+  },
+  "screenshots": [
+    "review/redesign/evidence/T07_NATIVE_TRAY_MOTION_STOP_RULE124_RECORD_20261019_before.png",
+    "review/redesign/evidence/T07_NATIVE_TRAY_MOTION_STOP_RULE124_RECORD_20261019_after.png"
+  ],
+  "observed": [
+    {
+      "visible": "visible",
+      "poem": false,
+      "loading": true,
+      "correction": false,
+      "warning": false
+    },
+    {
+      "visible": "visible",
+      "date": "10月19日",
+      "poem": true,
+      "loading": false,
+      "correction": false,
+      "warning": false
+    }
+  ],
+  "result": "passed"
+}

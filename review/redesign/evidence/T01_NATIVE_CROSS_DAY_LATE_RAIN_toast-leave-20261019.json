@@ -1,0 +1,154 @@
+{
+  "schemaVersion": "1.0",
+  "testKind": "isolated-native-weather-network-diagnostic",
+  "generatedAt": "2026-10-18T16:09:57.064Z",
+  "candidate": {
+    "path": ".work/redesign-toast-leave-20261019/release/weatherpoem.exe",
+    "sha256": "4C2BE63A80D1D0622F9AFEB2084870EC8E4F18C500F862F43E97BA120C836DCC"
+  },
+  "isolation": {
+    "temporaryProfile": true,
+    "realUserDataTouched": false,
+    "installedOrUninstalled": false,
+    "systemClockChanged": false,
+    "pageLocalClockChanged": true
+  },
+  "simulatedWarning": false,
+  "simulatedCrossDayRain": true,
+  "simulatedFirstUseRain": false,
+  "auditToastMotion": false,
+  "startup": {
+    "schemaVersion": "1.2",
+    "runId": "085c19cfa5484d608c49d6a6f1292ea4",
+    "appVersion": "0.2.0",
+    "processId": 150364,
+    "nativeReadyMs": 1679.1923,
+    "frontendReadyMs": 1412.300000011921,
+    "readyView": "poem",
+    "readyMode": "offline-rules",
+    "viewRenderMs": 123.69999998807909,
+    "performanceScenario": null,
+    "sceneMotion": {
+      "sceneKind": "season",
+      "appReduced": false,
+      "systemReduced": false,
+      "sceneActive": true,
+      "visibilityState": "visible",
+      "animationName": "none",
+      "animationDuration": "0s",
+      "animationIterationCount": "1"
+    },
+    "recordedAtUnixMs": 1792339798799
+  },
+  "startupNetwork": [
+    {
+      "requestId": "142632.30",
+      "event": "request",
+      "timestamp": 380414.170558
+    },
+    {
+      "requestId": "142632.40",
+      "event": "request",
+      "timestamp": 380415.273865
+    },
+    {
+      "requestId": "142632.30",
+      "event": "loadingFailed",
+      "timestamp": 380415.277465,
+      "errorText": "net::ERR_ABORTED",
+      "canceled": true
+    },
+    {
+      "requestId": "142632.40",
+      "event": "responseReceived",
+      "timestamp": 380416.525039,
+      "status": 200
+    },
+    {
+      "requestId": "142632.40",
+      "event": "loadingFinished",
+      "timestamp": 380416.524045
+    },
+    {
+      "requestId": "142632.71",
+      "event": "request",
+      "timestamp": 380422.061111
+    },
+    {
+      "requestId": "142632.74",
+      "event": "request",
+      "timestamp": 380423.166437
+    },
+    {
+      "requestId": "142632.71",
+      "event": "loadingFailed",
+      "timestamp": 380423.168723,
+      "errorText": "net::ERR_ABORTED",
+      "canceled": true
+    },
+    {
+      "requestId": "142632.74",
+      "event": "responseReceived",
+      "timestamp": 380424.985027,
+      "status": 200
+    },
+    {
+      "requestId": "142632.74",
+      "event": "loadingFinished",
+      "timestamp": 380424.984303
+    }
+  ],
+  "webViewFetches": [],
+  "nativeViews": {
+    "atReady": {
+      "title": "出塞",
+      "context": "10月19日天气未更新秋 收藏 0",
+      "warning": false,
+      "loading": false,
+      "toast": null,
+      "toastOverlapsReadButton": null
+    },
+    "atReadyScreenshot": "review/redesign/evidence/T01_NATIVE_CROSS_DAY_LATE_RAIN_toast-leave-20261019_ready.png",
+    "beforeCrossDay": {
+      "title": "出塞",
+      "context": "10月19日晴夜 收藏 0",
+      "warning": false,
+      "loading": false,
+      "toast": null,
+      "toastOverlapsReadButton": null
+    },
+    "newDayBeforeLate": {
+      "title": "登飞来峰",
+      "context": "10月20日天气未更新秋 收藏 0",
+      "warning": false,
+      "loading": false,
+      "toast": null,
+      "toastOverlapsReadButton": null
+    },
+    "newDayBeforeLateScreenshot": "review/redesign/evidence/T01_NATIVE_CROSS_DAY_LATE_RAIN_toast-leave-20261019_new_day_before_late.png",
+    "afterWait": {
+      "title": "山居秋暝",
+      "context": "10月20日小雨雨 收藏 0",
+      "warning": false,
+      "loading": false,
+      "toast": "天气信息已到，今日诗句已更新",
+      "toastOverlapsReadButton": false
+    },
+    "afterWaitScreenshot": "review/redesign/evidence/T01_NATIVE_CROSS_DAY_LATE_RAIN_toast-leave-20261019_after.png"
+  },
+  "result": "diagnostic-captured",
+  "crossDay": {
+    "clock": {
+      "localDate": "2026-10-20",
+      "displayDate": "10月20日",
+      "unixSeconds": 1792458000
+    },
+    "pageLocalOnly": true
+  },
+  "interceptedWeatherRequests": 2,
+  "savedDailyState": {
+    "local_date": "2026-10-20",
+    "state": "shown",
+    "work_id": "wang-wei-shan-ju-qiu-ming"
+  }
+}

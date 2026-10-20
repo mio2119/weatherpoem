@@ -5,6 +5,9 @@ import IconSymbol from "./IconSymbol.vue";
 
 defineProps<{
   poems: Poem[];
+  withdrawnWorkIds: string[];
+  favoriteSaving: boolean;
+  backLabel: string;
 }>();
 
 const emit = defineEmits<{
@@ -26,7 +29,7 @@ useInitialFocus();
     <header class="panel-header">
       <button class="back-button" type="button" @click="emit('back')">
         <IconSymbol name="back" :size="18" />
-        设置
+        {{ backLabel }}
       </button>
       <h1 id="favorites-title">我的收藏</h1>
       <span class="header-spacer" />
@@ -51,6 +54,8 @@ useInitialFocus();
           class="favorite-remove"
           type="button"
           :aria-label="`取消收藏《${poem.title}》`"
+          :aria-busy="favoriteSaving"
+          :disabled="favoriteSaving"
           @click="emit('remove', poem.id)"
         >
           <IconSymbol name="bookmark-filled" :size="18" />
@@ -58,7 +63,23 @@ useInitialFocus();
       </article>
     </section>
 
-    <section v-else class="empty-favorites">
+    <section v-if="withdrawnWorkIds.length" class="withdrawn-favorites" aria-label="已撤回的收藏">
+      <p>有 {{ withdrawnWorkIds.length }} 首收藏已撤回，原文暂不展示。</p>
+      <div v-for="(workId, index) in withdrawnWorkIds" :key="workId">
+        <span>已撤回的收藏记录 {{ index + 1 }}</span>
+        <button
+          type="button"
+          :aria-label="`移除第${index + 1}条已撤回收藏记录`"
+          :aria-busy="favoriteSaving"
+          :disabled="favoriteSaving"
+          @click="emit('remove', workId)"
+        >
+          移除记录
+        </button>
+      </div>
+    </section>
+
+    <section v-if="!poems.length && !withdrawnWorkIds.length" class="empty-favorites">
       <span class="brand-seal" aria-hidden="true">藏</span>
       <h2>收藏还是空的</h2>
       <p>遇到想再读的诗，点一下诗笺下方的“收藏”即可。</p>

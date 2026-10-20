@@ -1,0 +1,157 @@
+{
+  "schemaVersion": "1.0",
+  "testKind": "isolated-native-settings-retry-and-data-reset",
+  "generatedAt": "2026-10-20T08:06:15.543Z",
+  "candidate": {
+    "path": ".work/redesign-reset-inline-20261020/release/weatherpoem.exe",
+    "sha256": "D68E286A2C5F2262079078921804134917CBB8C6836E1AB2D8036307E8F1325B",
+    "sourceCommit": "eb9e74898e5e81f15202a262a9f84308dbf6c7a3"
+  },
+  "testHarness": {
+    "path": "scripts/test-redesign-native-settings-retry.mjs",
+    "sha256": "0A368B183C61D04A6C0795E5E17E2ADAA0C95C82A5B3E0D0248B36FC16835E5C"
+  },
+  "isolation": {
+    "temporaryProfile": true,
+    "syntheticSqliteTrigger": true,
+    "realUserDataTouched": false,
+    "systemClockChanged": false,
+    "systemAutostartChanged": false,
+    "systemDisplaySettingsChanged": false,
+    "installedOrUninstalled": false
+  },
+  "limitations": [
+    "SQLite triggers simulate a failed settings write and a mid-reset deletion inside an isolated native profile; they are not physical disk-full, permission, or storage-device failures.",
+    "CDP button interaction and the current Windows display do not replace manual input, screen-reader, or multi-DPI testing."
+  ],
+  "initialStoredSettings": {
+    "configured": true,
+    "cityId": "beijing",
+    "autostart": false,
+    "anonymousMetrics": false,
+    "theme": "system",
+    "reduceMotion": false
+  },
+  "readyMarker": {
+    "schemaVersion": "1.2",
+    "runId": "dd2ab9c5fd29485889dfb6cc4e1ee8ed",
+    "appVersion": "0.2.0",
+    "processId": 9300,
+    "nativeReadyMs": 968.5817,
+    "frontendReadyMs": 514.5999999996275,
+    "readyView": "poem",
+    "readyMode": "offline-rules",
+    "viewRenderMs": 275.7999999988824,
+    "performanceScenario": "weather-offline",
+    "sceneMotion": {
+      "sceneKind": "season",
+      "appReduced": false,
+      "systemReduced": false,
+      "sceneActive": true,
+      "visibilityState": "visible",
+      "animationName": "none",
+      "animationDuration": "0s",
+      "animationIterationCount": "1"
+    },
+    "recordedAtUnixMs": 1792483579291
+  },
+  "original": {
+    "title": "望洞庭湖赠张丞相",
+    "visible": "visible",
+    "poem": true
+  },
+  "initialDraft": {
+    "glanceSize": "small",
+    "layout": "horizontal",
+    "fontSize": "medium"
+  },
+  "draftBeforeFailure": {
+    "glanceSize": "large",
+    "submitDisabled": false
+  },
+  "failedSave": {
+    "panelOpen": true,
+    "draftSize": "large",
+    "notice": "设置未能保存，请重试。",
+    "submitDisabled": false,
+    "screenshot": "review/redesign/evidence/T03_NATIVE_RESET_INLINE_FINAL_20261020_settings_save_failed.png"
+  },
+  "storedAfterFailure": {
+    "configured": true,
+    "cityId": "beijing",
+    "autostart": false,
+    "anonymousMetrics": false,
+    "theme": "system",
+    "reduceMotion": false
+  },
+  "retry": {
+    "panelOpen": true,
+    "notice": "其他设置已保存；隔离测试不会修改系统开机启动。",
+    "draftSize": "large",
+    "screenshot": "review/redesign/evidence/T03_NATIVE_RESET_INLINE_FINAL_20261020_settings_save_retried.png"
+  },
+  "storedAfterRetry": {
+    "configured": true,
+    "cityId": "beijing",
+    "autostart": false,
+    "anonymousMetrics": false,
+    "theme": "system",
+    "reduceMotion": false,
+    "poemLayout": "horizontal",
+    "poemFontSize": "medium",
+    "glanceSize": "large"
+  },
+  "afterRestart": {
+    "glanceSize": "large",
+    "layout": "horizontal",
+    "fontSize": "medium"
+  },
+  "resetBefore": {
+    "app_kv": 1,
+    "daily_state": 1,
+    "recommendation_history": 0,
+    "recommendation_display_events": 2,
+    "favorites": 1,
+    "feedback": 0
+  },
+  "resetOffered": {
+    "title": "确认清除本机资料？",
+    "groupFocused": true,
+    "deleteExplanation": "确认清除本机资料？将删除设置、收藏、阅读记录、反馈、试点记录和天气缓存，且无法撤销。桌面版会先确认开机启动已关闭；若无法确认，资料不会删除。 继续保留 确认清除资料",
+    "screenshot": "review/redesign/evidence/T03_NATIVE_RESET_INLINE_FINAL_20261020_reset_confirmation.png"
+  },
+  "resetCanceled": {
+    "triggerFocused": true,
+    "confirmationClosed": true
+  },
+  "resetFailed": {
+    "confirmationOpen": true,
+    "warning": "本地资料未完整清除；系统开机启动未修改，请重试。",
+    "inlineWarning": "本地资料未完整清除；系统开机启动未修改，请重试。",
+    "confirmDisabled": false,
+    "rows": {
+      "app_kv": 1,
+      "daily_state": 1,
+      "recommendation_history": 0,
+      "recommendation_display_events": 2,
+      "favorites": 1,
+      "feedback": 0
+    },
+    "screenshot": "review/redesign/evidence/T03_NATIVE_RESET_INLINE_FINAL_20261020_reset_failed_retained.png"
+  },
+  "resetRetried": {
+    "onboardingVisible": true,
+    "settingsVisible": false,
+    "notice": "隔离测试资料已清除，未修改系统开机启动",
+    "rows": {
+      "app_kv": 0,
+      "daily_state": 0,
+      "recommendation_history": 0,
+      "recommendation_display_events": 0,
+      "favorites": 0,
+      "feedback": 0
+    },
+    "screenshot": "review/redesign/evidence/T03_NATIVE_RESET_INLINE_FINAL_20261020_reset_retried_onboarding.png"
+  },
+  "result": "native-isolated-settings-retry-reset-rollback-and-retry-passed"
+}

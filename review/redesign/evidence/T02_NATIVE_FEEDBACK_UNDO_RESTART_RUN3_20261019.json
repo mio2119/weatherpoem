@@ -1,0 +1,131 @@
+{
+  "schemaVersion": "1.0",
+  "testKind": "isolated-native-feedback-undo-restart-and-preservation",
+  "generatedAt": "2026-10-19T09:37:45.760Z",
+  "candidate": {
+    "path": ".work/redesign-accessibility-focus-ring-20261019/release/weatherpoem.exe",
+    "sha256": "7BFC5F340E992D15D95BE56DAF0C356A7BA261C0B9A8B3BF795B59E5310FF627"
+  },
+  "isolation": {
+    "temporaryProfile": true,
+    "systemClockChanged": false,
+    "systemAutostartChanged": false,
+    "realUserDataTouched": false,
+    "installedOrUninstalled": false,
+    "weatherScenario": "offline"
+  },
+  "preservedSeed": {
+    "dislikedWorkId": "cui-hao-huang-he-lou",
+    "replacedWorkId": "legacy-replaced-feedback-preserved",
+    "favoriteWorkId": "cui-hao-huang-he-lou",
+    "localDate": "2026-10-18"
+  },
+  "limitations": [
+    "UI interaction is driven through the isolated WebView2 debugging interface; this is not physical mouse or keyboard testing.",
+    "The test uses the temporary SQLite profile and does not simulate disk-full, permission, filesystem, or device failures."
+  ],
+  "result": "native-isolated-feedback-undo-restart-and-preservation-passed",
+  "readyMarker": {
+    "schemaVersion": "1.2",
+    "runId": "18e7e5250c6a42cca1980c36cc28bde2",
+    "appVersion": "0.2.0",
+    "processId": 40224,
+    "nativeReadyMs": 558.122,
+    "frontendReadyMs": 290.19999999925494,
+    "readyView": "poem",
+    "readyMode": "offline-rules",
+    "viewRenderMs": 116.69999999925494,
+    "performanceScenario": "weather-offline",
+    "sceneMotion": {
+      "sceneKind": "season",
+      "appReduced": false,
+      "systemReduced": false,
+      "sceneActive": true,
+      "visibilityState": "visible",
+      "animationName": "none",
+      "animationDuration": "0s",
+      "animationIterationCount": "1"
+    },
+    "recordedAtUnixMs": 1792402666344
+  },
+  "initial": {
+    "title": "使至塞上",
+    "favoriteCount": " 收藏 1",
+    "localDate": "10月19日"
+  },
+  "initialDailyState": {
+    "local_date": "2026-10-19",
+    "state": "shown",
+    "work_id": "wang-wei-shi-zhi-sai-shang"
+  },
+  "afterRecord": {
+    "feedback": [
+      {
+        "work_id": "wang-wei-shi-zhi-sai-shang",
+        "type": "disliked",
+        "context_tags": "[\"秋日\",\"苍茫\",\"开阔\",\"远行\",\"边塞\"]",
+        "created_at": "2026-10-19T09:37:46.431Z",
+        "local_date": "2026-10-19"
+      },
+      {
+        "work_id": "legacy-replaced-feedback-preserved",
+        "type": "replaced",
+        "context_tags": "[\"preserved-test-entry\"]",
+        "created_at": "2026-10-18T09:37:45.732Z",
+        "local_date": "2026-10-18"
+      },
+      {
+        "work_id": "cui-hao-huang-he-lou",
+        "type": "disliked",
+        "context_tags": "[\"preserved-test-entry\"]",
+        "created_at": "2026-10-18T09:37:45.732Z",
+        "local_date": "2026-10-18"
+      }
+    ],
+    "latestDislikeWorkId": "wang-wei-shi-zhi-sai-shang",
+    "favoriteCount": 1
+  },
+  "feedbackSavedScreenshot": "review/redesign/evidence/T02_NATIVE_FEEDBACK_UNDO_RESTART_RUN3_20261019_feedback_saved.png",
+  "undoControl": {
+    "text": "撤销最近一次“不太贴合”使至塞上 · 恢复原有推荐权重",
+    "disabled": false
+  },
+  "undoControlScreenshot": "review/redesign/evidence/T02_NATIVE_FEEDBACK_UNDO_RESTART_RUN3_20261019_undo_control.png",
+  "afterUndo": {
+    "feedback": [
+      {
+        "work_id": "legacy-replaced-feedback-preserved",
+        "type": "replaced",
+        "context_tags": "[\"preserved-test-entry\"]",
+        "created_at": "2026-10-18T09:37:45.732Z",
+        "local_date": "2026-10-18"
+      },
+      {
+        "work_id": "cui-hao-huang-he-lou",
+        "type": "disliked",
+        "context_tags": "[\"preserved-test-entry\"]",
+        "created_at": "2026-10-18T09:37:45.732Z",
+        "local_date": "2026-10-18"
+      }
+    ],
+    "favoriteCount": 1,
+    "undoControl": "撤销最近一次“不太贴合”黄鹤楼 · 恢复原有推荐权重"
+  },
+  "undoCompletedScreenshot": "review/redesign/evidence/T02_NATIVE_FEEDBACK_UNDO_RESTART_RUN3_20261019_undo_completed.png",
+  "afterRestart": {
+    "dailyState": {
+      "local_date": "2026-10-19",
+      "state": "retained",
+      "work_id": "wang-wei-shi-zhi-sai-shang"
+    },
+    "dislikedCount": 1,
+    "replacedCount": 1,
+    "favoriteCount": 1,
+    "undoControl": "撤销最近一次“不太贴合”黄鹤楼 · 恢复原有推荐权重"
+  },
+  "restartScreenshot": "review/redesign/evidence/T02_NATIVE_FEEDBACK_UNDO_RESTART_RUN3_20261019_after_restart.png",
+  "testHarness": {
+    "path": "scripts/test-redesign-native-feedback-undo.mjs",
+    "sha256": "EC6A2EF29D41A7414AC749193183F317130CA74CC014E8A57793CF2AECF73548"
+  }
+}

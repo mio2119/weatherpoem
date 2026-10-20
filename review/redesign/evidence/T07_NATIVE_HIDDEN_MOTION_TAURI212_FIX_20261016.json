@@ -1,0 +1,80 @@
+{
+  "schemaVersion": "1.0",
+  "testKind": "isolated-native-hidden-motion",
+  "generatedAt": "2026-10-16T03:31:49.994Z",
+  "candidate": {
+    "path": ".work/redesign-tauri-212-minimize-fix-20261016/release/weatherpoem.exe",
+    "sha256": "DB56F155495900B11E73CCFABCC4D99BFFC24F233AEBD0127772639811DD391D"
+  },
+  "isolation": {
+    "temporaryProfile": true,
+    "systemClockChanged": false,
+    "installedOrUninstalled": false,
+    "realUserDataTouched": false
+  },
+  "scenario": "scene-rain",
+  "concealAction": "tray-hide-button",
+  "activationPath": "native-single-instance",
+  "readyView": "poem",
+  "original": {
+    "date": "10月16日",
+    "title": "山居秋暝",
+    "visible": "visible",
+    "poem": true
+  },
+  "hidden": {
+    "visibility": "visible",
+    "poem": false,
+    "loading": true
+  },
+  "expectedDate": "10月16日",
+  "motion": {
+    "initial": {
+      "sceneActive": "true",
+      "sceneKind": "rain",
+      "sceneAnimation": "scene-drift",
+      "loaderAnimation": null,
+      "runningAnimations": [
+        "scene-drift"
+      ]
+    },
+    "hidden": {
+      "sceneActive": "false",
+      "sceneAnimation": null,
+      "loaderAnimation": "none",
+      "runningAnimations": []
+    },
+    "steadyHiddenAfter3s": {
+      "sceneActive": "false",
+      "sceneAnimation": null,
+      "loaderAnimation": "none",
+      "runningAnimations": []
+    },
+    "restored": {
+      "sceneActive": "true",
+      "sceneKind": "rain",
+      "sceneAnimation": "scene-drift",
+      "loaderAnimation": null,
+      "runningAnimations": [
+        "scene-drift"
+      ]
+    }
+  },
+  "screenshots": [],
+  "observed": [
+    {
+      "visible": "visible",
+      "poem": false,
+      "loading": true,
+      "correction": false
+    },
+    {
+      "visible": "visible",
+      "date": "10月16日",
+      "poem": true,
+      "loading": false,
+      "correction": false
+    }
+  ],
+  "result": "passed"
+}

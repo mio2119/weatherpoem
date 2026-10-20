@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { reactive, ref } from "vue";
+import { computed, nextTick, reactive, ref, watch } from "vue";
 import { useInitialFocus } from "../composables/useInitialFocus";
 import { CITIES } from "../data/cities";
 import {
@@ -12,16 +12,25 @@ import IconSymbol from "./IconSymbol.vue";
 
 const props = defineProps<{
   settings: AppSettings;
+  savedSettings: AppSettings;
+  autostartWarning?: string;
   favoriteCount: number;
+  canUndoFeedback?: boolean;
+  lastFeedbackTitle?: string;
   pilotStatus?: PilotState["status"];
+  resetting?: boolean;
+  resetError?: string;
 }>();
 
 const emit = defineEmits<{
   back: [];
   save: [settings: AppSettings];
+  draftChange: [settings: AppSettings];
   reset: [];
+  resetDismiss: [];
   favorites: [];
   pilot: [];
+  undoFeedback: [];
 }>();
 
 const draft = reactive<AppSettings>({
@@ -34,10 +43,49 @@ const releaseLabel = isTrialRelease
   ? "M1 未签名试用版"
   : "正式签名版";
 const trustError = ref("");
+const confirmDiscard = ref(false);
+const confirmReset = ref(false);
+const resetTrigger = ref<HTMLButtonElement | null>(null);
+const resetGroup = ref<HTMLDivElement | null>(null);
+const isDirty = computed(() =>
+  JSON.stringify(draft) !==
+  JSON.stringify({ ...props.savedSettings, anonymousMetrics: false }),
+);
 useInitialFocus();
+
+watch(draft, () => {
+  confirmDiscard.value = false;
+  emit("draftChange", { ...draft, anonymousMetrics: false });
+}, { deep: true });
+
+watch(() => props.settings, (next) => {
+  Object.assign(draft, next);
+});
+
+function back(): void {
+  if (isDirty.value) {
+    confirmDiscard.value = true;
+    return;
+  }
+  emit("back");
+}
 
 function submit(): void {
   emit("save", { ...draft, anonymousMetrics: false });
+}
+
+async function showResetConfirmation(): Promise<void> {
+  confirmReset.value = true;
+  await nextTick();
+  resetGroup.value?.scrollIntoView?.({ block: "start" });
+  resetGroup.value?.focus({ preventScroll: true });
+}
+
+async function cancelResetConfirmation(): Promise<void> {
+  confirmReset.value = false;
+  emit("resetDismiss");
+  await nextTick();
+  resetTrigger.value?.focus();
 }
 
 async function showWeatherLicense(): Promise<void> {
@@ -67,13 +115,21 @@ async function showThirdPartyNotices(): Promise<void> {
     tabindex="-1"
   >
     <header class="panel-header">
-      <button class="back-button" type="button" @click="emit('back')">
+      <button class="back-button" type="button" @click="back">
         <IconSymbol name="back" :size="18" />
         返回
       </button>
       <h1 id="settings-title">设置</h1>
       <span class="header-spacer" />
     </header>
+
+    <div v-if="confirmDiscard" class="settings-discard" role="alert">
+      <p>修改尚未保存。可以继续编辑，或放弃修改后返回诗笺。</p>
+      <div>
+        <button type="button" @click="confirmDiscard = false">继续编辑</button>
+        <button type="button" @click="emit('back')">放弃修改并返回</button>
+      </div>
+    </div>
 
     <form class="settings-form" @submit.prevent="submit">
       <section class="settings-group">
@@ -93,16 +149,42 @@ async function showThirdPartyNotices(): Promise<void> {
           </span>
           <input v-model="draft.autostart" type="checkbox" role="switch" />
         </label>
+        <p v-if="autostartWarning" class="settings-warning" role="status">
+          {{ autostartWarning }}
+        </p>
       </section>
 
       <section class="settings-group">
         <h2>阅读外观</h2>
+        <label class="stacked-field">
+          <span>桌面诗笺尺寸</span>
+          <select v-model="draft.glanceSize" class="select-input" name="glance-size">
+            <option value="small">小窗（默认）</option>
+            <option value="medium">中窗</option>
+            <option value="large">大窗</option>
+          </select>
+        </label>
         <label class="stacked-field">
           <span>主题</span>
           <select v-model="draft.theme" class="select-input">
             <option value="system">跟随系统</option>
             <option value="light">浅色</option>
             <option value="dark">深色</option>
+          </select>
+        </label>
+        <label class="stacked-field">
+          <span>诗句排版</span>
+          <select v-model="draft.poemLayout" class="select-input" name="poem-layout">
+            <option value="horizontal">横排</option>
+            <option value="vertical">传统竖排</option>
+          </select>
+        </label>
+        <label class="stacked-field">
+          <span>诗句字号</span>
+          <select v-model="draft.poemFontSize" class="select-input" name="poem-font-size">
+            <option value="small">小</option>
+            <option value="medium">中</option>
+            <option value="large">大</option>
           </select>
         </label>
         <label class="switch-row">
@@ -132,13 +214,62 @@ async function showThirdPartyNotices(): Promise<void> {
         <p id="metrics-disabled-note" class="settings-note">
           此预留能力未启用，旧版本中的选择不会作为未来授权。
         </p>
-        <button class="danger-link" type="button" @click="emit('reset')">
+        <button
+          v-if="!confirmReset"
+          ref="resetTrigger"
+          class="danger-link"
+          type="button"
+          :disabled="resetting"
+          @click="showResetConfirmation"
+        >
           清除个人数据与设置
         </button>
+        <div
+          v-else
+          id="settings-reset-confirmation"
+          ref="resetGroup"
+          class="settings-reset-confirmation"
+          role="group"
+          aria-labelledby="settings-reset-title"
+          tabindex="-1"
+        >
+          <h3 id="settings-reset-title">确认清除本机资料？</h3>
+          <p>将删除设置、收藏、阅读记录、反馈、试点记录和天气缓存，且无法撤销。桌面版会先确认开机启动已关闭；若无法确认，资料不会删除。</p>
+          <p v-if="resetError" class="settings-reset-error" role="alert">{{ resetError }}</p>
+          <div class="settings-reset-actions">
+            <button
+              type="button"
+              :disabled="resetting"
+              @click="cancelResetConfirmation"
+            >
+              继续保留
+            </button>
+            <button
+              class="settings-reset-confirm-button"
+              type="button"
+              :disabled="resetting"
+              @click="emit('reset')"
+            >
+              {{ resetting ? "正在清除" : "确认清除资料" }}
+            </button>
+          </div>
+        </div>
       </section>
 
       <section class="settings-group">
         <h2>我的内容</h2>
+        <button
+          v-if="canUndoFeedback"
+          class="settings-navigation"
+          type="button"
+          @click="emit('undoFeedback')"
+        >
+          <span>
+            <strong>撤销最近一次“不太贴合”</strong>
+            <small>{{ lastFeedbackTitle }} · 恢复原有推荐权重</small>
+          </span>
+          <IconSymbol name="back" :size="17" />
+        </button>
         <button
           class="settings-navigation"
           type="button"

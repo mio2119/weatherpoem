@@ -1,0 +1,156 @@
+{
+  "schemaVersion": "1.0",
+  "testKind": "isolated-native-settings-retry-and-data-reset",
+  "generatedAt": "2026-10-20T07:37:52.008Z",
+  "candidate": {
+    "path": ".work/redesign-reset-confirm-20261020/release/weatherpoem.exe",
+    "sha256": "95B94659AE9EE2CF0503B0908CBEAF2E2197312A2865C627B8E6EB528AB8F582",
+    "sourceCommit": "2d0d50c0bda7aec7f7d31b420183896200fa6c21"
+  },
+  "testHarness": {
+    "path": "scripts/test-redesign-native-settings-retry.mjs",
+    "sha256": "F61561BE1CF2DD245719CCEEF9CDAD266EA58A7C00E3570BC6E95503211DBE62"
+  },
+  "isolation": {
+    "temporaryProfile": true,
+    "syntheticSqliteTrigger": true,
+    "realUserDataTouched": false,
+    "systemClockChanged": false,
+    "systemAutostartChanged": false,
+    "systemDisplaySettingsChanged": false,
+    "installedOrUninstalled": false
+  },
+  "limitations": [
+    "The SQLite trigger simulates a failed settings write inside an isolated native profile; it is not a physical disk-full, permission, or storage-device failure.",
+    "CDP button interaction and the current Windows display do not replace manual input, screen-reader, or multi-DPI testing."
+  ],
+  "initialStoredSettings": {
+    "configured": true,
+    "cityId": "beijing",
+    "autostart": false,
+    "anonymousMetrics": false,
+    "theme": "system",
+    "reduceMotion": false
+  },
+  "readyMarker": {
+    "schemaVersion": "1.2",
+    "runId": "6895cd04c4f84ce6bc2480c40157bfe5",
+    "appVersion": "0.2.0",
+    "processId": 30292,
+    "nativeReadyMs": 740.7839,
+    "frontendReadyMs": 394.7999999988824,
+    "readyView": "poem",
+    "readyMode": "offline-rules",
+    "viewRenderMs": 201.5,
+    "performanceScenario": "weather-offline",
+    "sceneMotion": {
+      "sceneKind": "season",
+      "appReduced": false,
+      "systemReduced": false,
+      "sceneActive": true,
+      "visibilityState": "visible",
+      "animationName": "none",
+      "animationDuration": "0s",
+      "animationIterationCount": "1"
+    },
+    "recordedAtUnixMs": 1792481875113
+  },
+  "original": {
+    "title": "望洞庭湖赠张丞相",
+    "visible": "visible",
+    "poem": true
+  },
+  "initialDraft": {
+    "glanceSize": "small",
+    "layout": "horizontal",
+    "fontSize": "medium"
+  },
+  "draftBeforeFailure": {
+    "glanceSize": "large",
+    "submitDisabled": false
+  },
+  "failedSave": {
+    "panelOpen": true,
+    "draftSize": "large",
+    "notice": "设置未能保存，请重试。",
+    "submitDisabled": false,
+    "screenshot": "review/redesign/evidence/T03_NATIVE_RESET_CONFIRM_20261020_settings_save_failed.png"
+  },
+  "storedAfterFailure": {
+    "configured": true,
+    "cityId": "beijing",
+    "autostart": false,
+    "anonymousMetrics": false,
+    "theme": "system",
+    "reduceMotion": false
+  },
+  "retry": {
+    "panelOpen": true,
+    "notice": "其他设置已保存；隔离测试不会修改系统开机启动。",
+    "draftSize": "large",
+    "screenshot": "review/redesign/evidence/T03_NATIVE_RESET_CONFIRM_20261020_settings_save_retried.png"
+  },
+  "storedAfterRetry": {
+    "configured": true,
+    "cityId": "beijing",
+    "autostart": false,
+    "anonymousMetrics": false,
+    "theme": "system",
+    "reduceMotion": false,
+    "poemLayout": "horizontal",
+    "poemFontSize": "medium",
+    "glanceSize": "large"
+  },
+  "afterRestart": {
+    "glanceSize": "large",
+    "layout": "horizontal",
+    "fontSize": "medium"
+  },
+  "resetBefore": {
+    "app_kv": 1,
+    "daily_state": 1,
+    "recommendation_history": 0,
+    "recommendation_display_events": 2,
+    "favorites": 1,
+    "feedback": 0
+  },
+  "resetOffered": {
+    "title": "确认清除本机资料？",
+    "groupFocused": true,
+    "deleteExplanation": "确认清除本机资料？将删除设置、收藏、阅读记录、反馈、试点记录和天气缓存，且无法撤销。桌面版会先确认开机启动已关闭；若无法确认，资料不会删除。 继续保留 确认清除资料",
+    "screenshot": "review/redesign/evidence/T03_NATIVE_RESET_CONFIRM_20261020_reset_confirmation.png"
+  },
+  "resetCanceled": {
+    "triggerFocused": true,
+    "confirmationClosed": true
+  },
+  "resetFailed": {
+    "confirmationOpen": true,
+    "warning": "本地资料未完整清除；系统开机启动未修改，请重试。",
+    "confirmDisabled": false,
+    "rows": {
+      "app_kv": 1,
+      "daily_state": 1,
+      "recommendation_history": 0,
+      "recommendation_display_events": 2,
+      "favorites": 1,
+      "feedback": 0
+    },
+    "screenshot": "review/redesign/evidence/T03_NATIVE_RESET_CONFIRM_20261020_reset_failed_retained.png"
+  },
+  "resetRetried": {
+    "onboardingVisible": true,
+    "settingsVisible": false,
+    "notice": "隔离测试资料已清除，未修改系统开机启动",
+    "rows": {
+      "app_kv": 0,
+      "daily_state": 0,
+      "recommendation_history": 0,
+      "recommendation_display_events": 0,
+      "favorites": 0,
+      "feedback": 0
+    },
+    "screenshot": "review/redesign/evidence/T03_NATIVE_RESET_CONFIRM_20261020_reset_retried_onboarding.png"
+  },
+  "result": "native-isolated-settings-retry-reset-rollback-and-retry-passed"
+}

@@ -1,0 +1,109 @@
+{
+  "schemaVersion": "1.0",
+  "testKind": "isolated-native-settings-save-failure-retry",
+  "generatedAt": "2026-10-19T10:09:34.738Z",
+  "candidate": {
+    "path": ".work/redesign-recommendation-124-20261019/release/weatherpoem.exe",
+    "sha256": "3759CE59650FDB6681FA55BAD25542F3DA501D22B4832A40ECE3F4ED931712A4"
+  },
+  "testHarness": {
+    "path": "scripts/test-redesign-native-settings-retry.mjs",
+    "sha256": "FCFE37287DFAABDBAD28C3741E293490A99DE456B65AAA37831ABB439397776F"
+  },
+  "isolation": {
+    "temporaryProfile": true,
+    "syntheticSqliteTrigger": true,
+    "realUserDataTouched": false,
+    "systemClockChanged": false,
+    "systemAutostartChanged": false,
+    "systemDisplaySettingsChanged": false,
+    "installedOrUninstalled": false
+  },
+  "limitations": [
+    "The SQLite trigger simulates a failed settings write inside an isolated native profile; it is not a physical disk-full, permission, or storage-device failure.",
+    "CDP button interaction and the current Windows display do not replace manual input, screen-reader, or multi-DPI testing."
+  ],
+  "initialStoredSettings": {
+    "configured": true,
+    "cityId": "beijing",
+    "autostart": false,
+    "anonymousMetrics": false,
+    "theme": "system",
+    "reduceMotion": false
+  },
+  "readyMarker": {
+    "schemaVersion": "1.2",
+    "runId": "4013a9bfbe4c46ddbc8612e5b78773b0",
+    "appVersion": "0.2.0",
+    "processId": 44016,
+    "nativeReadyMs": 600.0092,
+    "frontendReadyMs": 313.19999999925494,
+    "readyView": "poem",
+    "readyMode": "offline-rules",
+    "viewRenderMs": 119.09999999962749,
+    "performanceScenario": "weather-offline",
+    "sceneMotion": {
+      "sceneKind": "season",
+      "appReduced": false,
+      "systemReduced": false,
+      "sceneActive": true,
+      "visibilityState": "visible",
+      "animationName": "none",
+      "animationDuration": "0s",
+      "animationIterationCount": "1"
+    },
+    "recordedAtUnixMs": 1792404576940
+  },
+  "original": {
+    "title": "使至塞上",
+    "visible": "visible",
+    "poem": true
+  },
+  "initialDraft": {
+    "glanceSize": "small",
+    "layout": "horizontal",
+    "fontSize": "medium"
+  },
+  "draftBeforeFailure": {
+    "glanceSize": "large",
+    "submitDisabled": false
+  },
+  "failedSave": {
+    "panelOpen": true,
+    "draftSize": "large",
+    "notice": "设置未能保存，请重试。",
+    "submitDisabled": false,
+    "screenshot": "review/redesign/evidence/T03_NATIVE_SETTINGS_SAVE_RETRY_RULE124_20261019_settings_save_failed.png"
+  },
+  "storedAfterFailure": {
+    "configured": true,
+    "cityId": "beijing",
+    "autostart": false,
+    "anonymousMetrics": false,
+    "theme": "system",
+    "reduceMotion": false
+  },
+  "retry": {
+    "panelOpen": true,
+    "notice": "其他设置已保存；隔离测试不会修改系统开机启动。",
+    "draftSize": "large",
+    "screenshot": "review/redesign/evidence/T03_NATIVE_SETTINGS_SAVE_RETRY_RULE124_20261019_settings_save_retried.png"
+  },
+  "storedAfterRetry": {
+    "configured": true,
+    "cityId": "beijing",
+    "autostart": false,
+    "anonymousMetrics": false,
+    "theme": "system",
+    "reduceMotion": false,
+    "poemLayout": "horizontal",
+    "poemFontSize": "medium",
+    "glanceSize": "large"
+  },
+  "afterRestart": {
+    "glanceSize": "large",
+    "layout": "horizontal",
+    "fontSize": "medium"
+  },
+  "result": "native-isolated-settings-save-failure-retry-and-restart-passed"
+}

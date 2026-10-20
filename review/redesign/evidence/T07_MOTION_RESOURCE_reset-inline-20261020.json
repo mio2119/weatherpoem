@@ -1,0 +1,1101 @@
+{
+    "schemaVersion":  "1.1",
+    "testKind":  "isolated-motion-resource-comparison",
+    "generatedAt":  "2026-10-20T09:53:05.4502612Z",
+    "artifact":  {
+                     "path":  ".work/redesign-reset-inline-20261020/release/weatherpoem.exe",
+                     "sha256":  "D68E286A2C5F2262079078921804134917CBB8C6836E1AB2D8036307E8F1325B"
+                 },
+    "scenario":  "scene-rain",
+    "isolation":  {
+                      "profile":  "system-temp-only",
+                      "realUserDataTouched":  false,
+                      "sameProfileForBothRuns":  true,
+                      "order":  [
+                                    "static",
+                                    "motion"
+                                ]
+                  },
+    "thresholds":  {
+                       "cpuIncreasePercentagePoints":  2,
+                       "memoryP95IncreaseMiB":  20
+                   },
+    "results":  {
+                    "static":  {
+                                   "label":  "static",
+                                   "reduceMotion":  true,
+                                   "runId":  "3b62d1cc-fb43-46ae-834a-653e0116f6d0",
+                                   "readyMarker":  {
+                                                       "schemaVersion":  "1.2",
+                                                       "runId":  "3b62d1cc-fb43-46ae-834a-653e0116f6d0",
+                                                       "appVersion":  "0.2.0",
+                                                       "processId":  42888,
+                                                       "nativeReadyMs":  574.7282,
+                                                       "frontendReadyMs":  299.80000000074506,
+                                                       "readyView":  "poem",
+                                                       "readyMode":  "offline-rules",
+                                                       "viewRenderMs":  115.19999999925494,
+                                                       "performanceScenario":  "scene-rain",
+                                                       "sceneMotion":  {
+                                                                           "sceneKind":  "rain",
+                                                                           "appReduced":  true,
+                                                                           "systemReduced":  false,
+                                                                           "sceneActive":  true,
+                                                                           "visibilityState":  "visible",
+                                                                           "animationName":  "none",
+                                                                           "animationDuration":  "1e-05s",
+                                                                           "animationIterationCount":  "1"
+                                                                       },
+                                                       "recordedAtUnixMs":  1792489820148
+                                                   },
+                                   "dailyState":  {
+                                                      "local_date":  "2026-10-20",
+                                                      "state":  "shown",
+                                                      "work_id":  "wang-wei-shan-ju-qiu-ming"
+                                                  },
+                                   "warmupSeconds":  5,
+                                   "durationSeconds":  75.95,
+                                   "sampleCount":  60,
+                                   "processIds":  [
+                                                      10144,
+                                                      18036,
+                                                      38020,
+                                                      39292,
+                                                      40128,
+                                                      42076,
+                                                      42888
+                                                  ],
+                                   "rendererCount":  1,
+                                   "processorCount":  20,
+                                   "cpuTimeDeltaMs":  265.62,
+                                   "cpuAveragePercent":  0.0175,
+                                   "memoryP95MiB":  369.62,
+                                   "samples":  [
+                                                   {
+                                                       "index":  1,
+                                                       "atUtc":  "2026-10-20T09:50:27.0135560Z",
+                                                       "elapsedMs":  1295.82,
+                                                       "cpuDeltaMs":  0,
+                                                       "memoryMiB":  363.17,
+                                                       "rendererCount":  1
+                                                   },
+                                                   {
+                                                       "index":  2,
+                                                       "atUtc":  "2026-10-20T09:50:28.3303688Z",
+                                                       "elapsedMs":  2598.06,
+                                                       "cpuDeltaMs":  0,
+                                                       "memoryMiB":  360.84,
+                                                       "rendererCount":  1
+                                                   },
+                                                   {
+                                                       "index":  3,
+                                                       "atUtc":  "2026-10-20T09:50:29.6121423Z",
+                                                       "elapsedMs":  3879.9,
+                                                       "cpuDeltaMs":  0,
+                                                       "memoryMiB":  360.84,
+                                                       "rendererCount":  1
+                                                   },
+                                                   {
+                                                       "index":  4,
+                                                       "atUtc":  "2026-10-20T09:50:30.8887328Z",
+                                                       "elapsedMs":  5155.18,
+                                                       "cpuDeltaMs":  0,
+                                                       "memoryMiB":  358.51,
+                                                       "rendererCount":  1
+                                                   },
+                                                   {
+                                                       "index":  5,
+                                                       "atUtc":  "2026-10-20T09:50:32.1583541Z",
+                                                       "elapsedMs":  6425.19,
+                                                       "cpuDeltaMs":  0,
+                                                       "memoryMiB":  358.37,
+                                                       "rendererCount":  1
+                                                   },
+                                                   {
+                                                       "index":  6,
+                                                       "atUtc":  "2026-10-20T09:50:33.4165090Z",
+                                                       "elapsedMs":  7683.89,
+                                                       "cpuDeltaMs":  0,
+                                                       "memoryMiB":  358.37,
+                                                       "rendererCount":  1
+                                                   },
+                                                   {
+                                                       "index":  7,
+                                                       "atUtc":  "2026-10-20T09:50:34.6743116Z",
+                                                       "elapsedMs":  8941.92,
+                                                       "cpuDeltaMs":  0,
+                                                       "memoryMiB":  358.37,
+                                                       "rendererCount":  1
+                                                   },
+                                                   {
+                                                       "index":  8,
+                                                       "atUtc":  "2026-10-20T09:50:35.9328932Z",
+                                                       "elapsedMs":  10199.79,
+                                                       "cpuDeltaMs":  0,
+                                                       "memoryMiB":  358.39,
+                                                       "rendererCount":  1
+                                                   },
+                                                   {
+                                                       "index":  9,
+                                                       "atUtc":  "2026-10-20T09:50:37.1634808Z",
+                                                       "elapsedMs":  11430.73,
+                                                       "cpuDeltaMs":  0,
+                                                       "memoryMiB":  358.39,
+                                                       "rendererCount":  1
+                                                   },
+                                                   {
+                                                       "index":  10,
+                                                       "atUtc":  "2026-10-20T09:50:38.4271092Z",
+                                                       "elapsedMs":  12693.55,
+                                                       "cpuDeltaMs":  0,
+                                                       "memoryMiB":  358.39,
+                                                       "rendererCount":  1
+                                                   },
+                                                   {
+                                                       "index":  11,
+                                                       "atUtc":  "2026-10-20T09:50:39.6742479Z",
+                                                       "elapsedMs":  13941.61,
+                                                       "cpuDeltaMs":  0,
+                                                       "memoryMiB":  358.56,
+                                                       "rendererCount":  1
+                                                   },
+                                                   {
+                                                       "index":  12,
+                                                       "atUtc":  "2026-10-20T09:50:40.9029217Z",
+                                                       "elapsedMs":  15170.25,
+                                                       "cpuDeltaMs":  0,
+                                                       "memoryMiB":  358.55,
+                                                       "rendererCount":  1
+                                                   },
+                                                   {
+                                                       "index":  13,
+                                                       "atUtc":  "2026-10-20T09:50:42.1441708Z",
+                                                       "elapsedMs":  16411.22,
+                                                       "cpuDeltaMs":  0,
+                                                       "memoryMiB":  358.82,
+                                                       "rendererCount":  1
+                                                   },
+                                                   {
+                                                       "index":  14,
+                                                       "atUtc":  "2026-10-20T09:50:43.4074183Z",
+                                                       "elapsedMs":  17674.61,
+                                                       "cpuDeltaMs":  0,
+                                                       "memoryMiB":  358.82,
+                                                       "rendererCount":  1
+                                                   },
+                                                   {
+                                                       "index":  15,
+                                                       "atUtc":  "2026-10-20T09:50:44.6701572Z",
+                                                       "elapsedMs":  18938.38,
+                                                       "cpuDeltaMs":  0,
+                                                       "memoryMiB":  358.8,
+                                                       "rendererCount":  1
+                                                   },
+                                                   {
+                                                       "index":  16,
+                                                       "atUtc":  "2026-10-20T09:50:45.9058521Z",
+                                                       "elapsedMs":  20172.61,
+                                                       "cpuDeltaMs":  0,
+                                                       "memoryMiB":  358.8,
+                                                       "rendererCount":  1
+                                                   },
+                                                   {
+                                                       "index":  17,
+                                                       "atUtc":  "2026-10-20T09:50:47.1630470Z",
+                                                       "elapsedMs":  21429.64,
+                                                       "cpuDeltaMs":  0,
+                                                       "memoryMiB":  358.8,
+                                                       "rendererCount":  1
+                                                   },
+                                                   {
+                                                       "index":  18,
+                                                       "atUtc":  "2026-10-20T09:50:48.4069920Z",
+                                                       "elapsedMs":  22676,
+                                                       "cpuDeltaMs":  0,
+                                                       "memoryMiB":  358.8,
+                                                       "rendererCount":  1
+                                                   },
+                                                   {
+                                                       "index":  19,
+                                                       "atUtc":  "2026-10-20T09:50:49.7040543Z",
+                                                       "elapsedMs":  23971.65,
+                                                       "cpuDeltaMs":  0,
+                                                       "memoryMiB":  367.23,
+                                                       "rendererCount":  1
+                                                   },
+                                                   {
+                                                       "index":  20,
+                                                       "atUtc":  "2026-10-20T09:50:50.9323978Z",
+                                                       "elapsedMs":  25198.37,
+                                                       "cpuDeltaMs":  125,
+                                                       "memoryMiB":  367.42,
+                                                       "rendererCount":  1
+                                                   },
+                                                   {
+                                                       "index":  21,
+                                                       "atUtc":  "2026-10-20T09:50:52.2071807Z",
+                                                       "elapsedMs":  26474.13,
+                                                       "cpuDeltaMs":  0,
+                                                       "memoryMiB":  367.4,
+                                                       "rendererCount":  1
+                                                   },
+                                                   {
+                                                       "index":  22,
+                                                       "atUtc":  "2026-10-20T09:50:53.4430692Z",
+                                                       "elapsedMs":  27710.04,
+                                                       "cpuDeltaMs":  0,
+                                                       "memoryMiB":  367.4,
+                                                       "rendererCount":  1
+                                                   },
+                                                   {
+                                                       "index":  23,
+                                                       "atUtc":  "2026-10-20T09:50:54.8717954Z",
+                                                       "elapsedMs":  29138.48,
+                                                       "cpuDeltaMs":  0,
+                                                       "memoryMiB":  367.4,
+                                                       "rendererCount":  1
+                                                   },
+                                                   {
+                                                       "index":  24,
+                                                       "atUtc":  "2026-10-20T09:50:56.1327376Z",
+                                                       "elapsedMs":  30399.6,
+                                                       "cpuDeltaMs":  0,
+                                                       "memoryMiB":  367.42,
+                                                       "rendererCount":  1
+                                                   },
+                                                   {
+                                                       "index":  25,
+                                                       "atUtc":  "2026-10-20T09:50:57.4088553Z",
+                                                       "elapsedMs":  31676.96,
+                                                       "cpuDeltaMs":  0,
+                                                       "memoryMiB":  367.42,
+                                                       "rendererCount":  1
+                                                   },
+                                                   {
+                                                       "index":  26,
+                                                       "atUtc":  "2026-10-20T09:50:58.6822988Z",
+                                                       "elapsedMs":  32949.85,
+                                                       "cpuDeltaMs":  0,
+                                                       "memoryMiB":  367.42,
+                                                       "rendererCount":  1
+                                                   },
+                                                   {
+                                                       "index":  27,
+                                                       "atUtc":  "2026-10-20T09:50:59.9279963Z",
+                                                       "elapsedMs":  34195.23,
+                                                       "cpuDeltaMs":  0,
+                                                       "memoryMiB":  367.21,
+                                                       "rendererCount":  1
+                                                   },
+                                                   {
+                                                       "index":  28,
+                                                       "atUtc":  "2026-10-20T09:51:01.1846380Z",
+                                                       "elapsedMs":  35452.31,
+                                                       "cpuDeltaMs":  0,
+                                                       "memoryMiB":  367.21,
+                                                       "rendererCount":  1
+                                                   },
+                                                   {
+                                                       "index":  29,
+                                                       "atUtc":  "2026-10-20T09:51:02.4410609Z",
+                                                       "elapsedMs":  36707.77,
+                                                       "cpuDeltaMs":  0,
+                                                       "memoryMiB":  367.21,
+                                                       "rendererCount":  1
+                                                   },
+                                                   {
+                                                       "index":  30,
+                                                       "atUtc":  "2026-10-20T09:51:03.6927645Z",
+                                                       "elapsedMs":  37959.81,
+                                                       "cpuDeltaMs":  0,
+                                                       "memoryMiB":  367.21,
+                                                       "rendererCount":  1
+                                                   },
+                                                   {
+                                                       "index":  31,
+                                                       "atUtc":  "2026-10-20T09:51:04.9673039Z",
+                                                       "elapsedMs":  39234.84,
+                                                       "cpuDeltaMs":  0,
+                                                       "memoryMiB":  367.21,
+                                                       "rendererCount":  1
+                                                   },
+                                                   {
+                                                       "index":  32,
+                                                       "atUtc":  "2026-10-20T09:51:06.2232418Z",
+                                                       "elapsedMs":  40489.95,
+                                                       "cpuDeltaMs":  0,
+                                                       "memoryMiB":  367.21,
+                                                       "rendererCount":  1
+                                                   },
+                                                   {
+                                                       "index":  33,
+                                                       "atUtc":  "2026-10-20T09:51:07.4897734Z",
+                                                       "elapsedMs":  41756.56,
+                                                       "cpuDeltaMs":  0,
+                                                       "memoryMiB":  367.21,
+                                                       "rendererCount":  1
+                                                   },
+                                                   {
+                                                       "index":  34,
+                                                       "atUtc":  "2026-10-20T09:51:08.7734978Z",
+                                                       "elapsedMs":  43040.77,
+                                                       "cpuDeltaMs":  0,
+                                                       "memoryMiB":  367.22,
+                                                       "rendererCount":  1
+                                                   },
+                                                   {
+                                                       "index":  35,
+                                                       "atUtc":  "2026-10-20T09:51:10.0369721Z",
+                                                       "elapsedMs":  44304.44,
+                                                       "cpuDeltaMs":  0,
+                                                       "memoryMiB":  367.2,
+                                                       "rendererCount":  1
+                                                   },
+                                                   {
+                                                       "index":  36,
+                                                       "atUtc":  "2026-10-20T09:51:11.3131974Z",
+                                                       "elapsedMs":  45580.16,
+                                                       "cpuDeltaMs":  0,
+                                                       "memoryMiB":  367.2,
+                                                       "rendererCount":  1
+                                                   },
+                                                   {
+                                                       "index":  37,
+                                                       "atUtc":  "2026-10-20T09:51:12.5918976Z",
+                                                       "elapsedMs":  46858.92,
+                                                       "cpuDeltaMs":  0,
+                                                       "memoryMiB":  367.2,
+                                                       "rendererCount":  1
+                                                   },
+                                                   {
+                                                       "index":  38,
+                                                       "atUtc":  "2026-10-20T09:51:13.8724897Z",
+                                                       "elapsedMs":  48139.02,
+                                                       "cpuDeltaMs":  0,
+                                                       "memoryMiB":  367.2,
+                                                       "rendererCount":  1
+                                                   },
+                                                   {
+                                                       "index":  39,
+                                                       "atUtc":  "2026-10-20T09:51:15.1393494Z",
+                                                       "elapsedMs":  49405.98,
+                                                       "cpuDeltaMs":  0,
+                                                       "memoryMiB":  367.2,
+                                                       "rendererCount":  1
+                                                   },
+                                                   {
+                                                       "index":  40,
+                                                       "atUtc":  "2026-10-20T09:51:16.3961291Z",
+                                                       "elapsedMs":  50662.94,
+                                                       "cpuDeltaMs":  0,
+                                                       "memoryMiB":  367.2,
+                                                       "rendererCount":  1
+                                                   },
+                                                   {
+                                                       "index":  41,
+                                                       "atUtc":  "2026-10-20T09:51:17.6576204Z",
+                                                       "elapsedMs":  51924.09,
+                                                       "cpuDeltaMs":  0,
+                                                       "memoryMiB":  367.2,
+                                                       "rendererCount":  1
+                                                   },
+                                                   {
+                                                       "index":  42,
+                                                       "atUtc":  "2026-10-20T09:51:18.9284213Z",
+                                                       "elapsedMs":  53195.83,
+                                                       "cpuDeltaMs":  0,
+                                                       "memoryMiB":  367.2,
+                                                       "rendererCount":  1
+                                                   },
+                                                   {
+                                                       "index":  43,
+                                                       "atUtc":  "2026-10-20T09:51:20.1790954Z",
+                                                       "elapsedMs":  54447.36,
+                                                       "cpuDeltaMs":  124.99,
+                                                       "memoryMiB":  369.29,
+                                                       "rendererCount":  1
+                                                   },
+                                                   {
+                                                       "index":  44,
+                                                       "atUtc":  "2026-10-20T09:51:21.4472475Z",
+                                                       "elapsedMs":  55713.66,
+                                                       "cpuDeltaMs":  15.63,
+                                                       "memoryMiB":  369.79,
+                                                       "rendererCount":  1
+                                                   },
+                                                   {
+                                                       "index":  45,
+                                                       "atUtc":  "2026-10-20T09:51:22.7363353Z",
+                                                       "elapsedMs":  57003.34,
+                                                       "cpuDeltaMs":  0,
+                                                       "memoryMiB":  370.91,
+                                                       "rendererCount":  1
+                                                   },
+                                                   {
+                                                       "index":  46,
+                                                       "atUtc":  "2026-10-20T09:51:23.9966015Z",
+                                                       "elapsedMs":  58264.86,
+                                                       "cpuDeltaMs":  0,
+                                                       "memoryMiB":  369.62,
+                                                       "rendererCount":  1
+                                                   },
+                                                   {
+                                                       "index":  47,
+                                                       "atUtc":  "2026-10-20T09:51:25.2840687Z",
+                                                       "elapsedMs":  59550.46,
+                                                       "cpuDeltaMs":  0,
+                                                       "memoryMiB":  369.63,
+                                                       "rendererCount":  1
+                                                   },
+                                                   {
+                                                       "index":  48,
+                                                       "atUtc":  "2026-10-20T09:51:26.5579684Z",
+                                                       "elapsedMs":  60825.46,
+                                                       "cpuDeltaMs":  0,
+                                                       "memoryMiB":  369.62,
+                                                       "rendererCount":  1
+                                                   },
+                                                   {
+                                                       "index":  49,
+                                                       "atUtc":  "2026-10-20T09:51:27.8317549Z",
+                                                       "elapsedMs":  62098.97,
+                                                       "cpuDeltaMs":  0,
+                                                       "memoryMiB":  369.46,
+                                                       "rendererCount":  1
+                                                   },
+                                                   {
+                                                       "index":  50,
+                                                       "atUtc":  "2026-10-20T09:51:29.0601259Z",
+                                                       "elapsedMs":  63326.88,
+                                                       "cpuDeltaMs":  0,
+                                                       "memoryMiB":  369.46,
+                                                       "rendererCount":  1
+                                                   },
+                                                   {
+                                                       "index":  51,
+                                                       "atUtc":  "2026-10-20T09:51:30.3314164Z",
+                                                       "elapsedMs":  64598.34,
+                                                       "cpuDeltaMs":  0,
+                                                       "memoryMiB":  369.56,
+                                                       "rendererCount":  1
+                                                   },
+                                                   {
+                                                       "index":  52,
+                                                       "atUtc":  "2026-10-20T09:51:31.6062310Z",
+                                                       "elapsedMs":  65872.75,
+                                                       "cpuDeltaMs":  0,
+                                                       "memoryMiB":  369.56,
+                                                       "rendererCount":  1
+                                                   },
+                                                   {
+                                                       "index":  53,
+                                                       "atUtc":  "2026-10-20T09:51:32.8320377Z",
+                                                       "elapsedMs":  67098.4,
+                                                       "cpuDeltaMs":  0,
+                                                       "memoryMiB":  369.48,
+                                                       "rendererCount":  1
+                                                   },
+                                                   {
+                                                       "index":  54,
+                                                       "atUtc":  "2026-10-20T09:51:34.1084479Z",
+                                                       "elapsedMs":  68375.16,
+                                                       "cpuDeltaMs":  0,
+                                                       "memoryMiB":  369.48,
+                                                       "rendererCount":  1
+                                                   },
+                                                   {
+                                                       "index":  55,
+                                                       "atUtc":  "2026-10-20T09:51:35.3810140Z",
+                                                       "elapsedMs":  69648,
+                                                       "cpuDeltaMs":  0,
+                                                       "memoryMiB":  369.48,
+                                                       "rendererCount":  1
+                                                   },
+                                                   {
+                                                       "index":  56,
+                                                       "atUtc":  "2026-10-20T09:51:36.6283790Z",
+                                                       "elapsedMs":  70895.25,
+                                                       "cpuDeltaMs":  0,
+                                                       "memoryMiB":  369.45,
+                                                       "rendererCount":  1
+                                                   },
+                                                   {
+                                                       "index":  57,
+                                                       "atUtc":  "2026-10-20T09:51:37.8960737Z",
+                                                       "elapsedMs":  72163.56,
+                                                       "cpuDeltaMs":  0,
+                                                       "memoryMiB":  369.45,
+                                                       "rendererCount":  1
+                                                   },
+                                                   {
+                                                       "index":  58,
+                                                       "atUtc":  "2026-10-20T09:51:39.1679746Z",
+                                                       "elapsedMs":  73435.24,
+                                                       "cpuDeltaMs":  0,
+                                                       "memoryMiB":  369.45,
+                                                       "rendererCount":  1
+                                                   },
+                                                   {
+                                                       "index":  59,
+                                                       "atUtc":  "2026-10-20T09:51:40.4423682Z",
+                                                       "elapsedMs":  74710.25,
+                                                       "cpuDeltaMs":  0,
+                                                       "memoryMiB":  369.45,
+                                                       "rendererCount":  1
+                                                   },
+                                                   {
+                                                       "index":  60,
+                                                       "atUtc":  "2026-10-20T09:51:41.6815675Z",
+                                                       "elapsedMs":  75947.4,
+                                                       "cpuDeltaMs":  0,
+                                                       "memoryMiB":  369.45,
+                                                       "rendererCount":  1
+                                                   }
+                                               ]
+                               },
+                    "motion":  {
+                                   "label":  "motion",
+                                   "reduceMotion":  false,
+                                   "runId":  "25cec49b-ba59-47b2-9ad2-a9f851efcef8",
+                                   "readyMarker":  {
+                                                       "schemaVersion":  "1.2",
+                                                       "runId":  "25cec49b-ba59-47b2-9ad2-a9f851efcef8",
+                                                       "appVersion":  "0.2.0",
+                                                       "processId":  34940,
+                                                       "nativeReadyMs":  540.3836,
+                                                       "frontendReadyMs":  273.8999999985099,
+                                                       "readyView":  "poem",
+                                                       "readyMode":  "offline-rules",
+                                                       "viewRenderMs":  115.59999999776484,
+                                                       "performanceScenario":  "scene-rain",
+                                                       "sceneMotion":  {
+                                                                           "sceneKind":  "rain",
+                                                                           "appReduced":  false,
+                                                                           "systemReduced":  false,
+                                                                           "sceneActive":  true,
+                                                                           "visibilityState":  "visible",
+                                                                           "animationName":  "scene-drift",
+                                                                           "animationDuration":  "16s",
+                                                                           "animationIterationCount":  "infinite"
+                                                                       },
+                                                       "recordedAtUnixMs":  1792489904461
+                                                   },
+                                   "dailyState":  {
+                                                      "local_date":  "2026-10-20",
+                                                      "state":  "retained",
+                                                      "work_id":  "wang-wei-shan-ju-qiu-ming"
+                                                  },
+                                   "warmupSeconds":  5,
+                                   "durationSeconds":  75.57,
+                                   "sampleCount":  60,
+                                   "processIds":  [
+                                                      11796,
+                                                      21440,
+                                                      27700,
+                                                      34940,
+                                                      39096,
+                                                      40560,
+                                                      41312
+                                                  ],
+                                   "rendererCount":  1,
+                                   "processorCount":  20,
+                                   "cpuTimeDeltaMs":  4578.12,
+                                   "cpuAveragePercent":  0.3029,
+                                   "memoryP95MiB":  381.89,
+                                   "samples":  [
+                                                   {
+                                                       "index":  1,
+                                                       "atUtc":  "2026-10-20T09:51:51.0509061Z",
+                                                       "elapsedMs":  1285.75,
+                                                       "cpuDeltaMs":  31.25,
+                                                       "memoryMiB":  367.37,
+                                                       "rendererCount":  1
+                                                   },
+                                                   {
+                                                       "index":  2,
+                                                       "atUtc":  "2026-10-20T09:51:52.3196975Z",
+                                                       "elapsedMs":  2554.7,
+                                                       "cpuDeltaMs":  62.5,
+                                                       "memoryMiB":  364.81,
+                                                       "rendererCount":  1
+                                                   },
+                                                   {
+                                                       "index":  3,
+                                                       "atUtc":  "2026-10-20T09:51:53.5667830Z",
+                                                       "elapsedMs":  3801.4,
+                                                       "cpuDeltaMs":  31.25,
+                                                       "memoryMiB":  364.81,
+                                                       "rendererCount":  1
+                                                   },
+                                                   {
+                                                       "index":  4,
+                                                       "atUtc":  "2026-10-20T09:51:54.8122431Z",
+                                                       "elapsedMs":  5047.09,
+                                                       "cpuDeltaMs":  46.88,
+                                                       "memoryMiB":  362.77,
+                                                       "rendererCount":  1
+                                                   },
+                                                   {
+                                                       "index":  5,
+                                                       "atUtc":  "2026-10-20T09:51:56.0712297Z",
+                                                       "elapsedMs":  6306.03,
+                                                       "cpuDeltaMs":  46.87,
+                                                       "memoryMiB":  362.61,
+                                                       "rendererCount":  1
+                                                   },
+                                                   {
+                                                       "index":  6,
+                                                       "atUtc":  "2026-10-20T09:51:57.3497589Z",
+                                                       "elapsedMs":  7585.12,
+                                                       "cpuDeltaMs":  93.76,
+                                                       "memoryMiB":  362.62,
+                                                       "rendererCount":  1
+                                                   },
+                                                   {
+                                                       "index":  7,
+                                                       "atUtc":  "2026-10-20T09:51:58.6218056Z",
+                                                       "elapsedMs":  8857.23,
+                                                       "cpuDeltaMs":  62.49,
+                                                       "memoryMiB":  362.62,
+                                                       "rendererCount":  1
+                                                   },
+                                                   {
+                                                       "index":  8,
+                                                       "atUtc":  "2026-10-20T09:51:59.8960602Z",
+                                                       "elapsedMs":  10131.93,
+                                                       "cpuDeltaMs":  93.76,
+                                                       "memoryMiB":  362.65,
+                                                       "rendererCount":  1
+                                                   },
+                                                   {
+                                                       "index":  9,
+                                                       "atUtc":  "2026-10-20T09:52:01.1355591Z",
+                                                       "elapsedMs":  11370.35,
+                                                       "cpuDeltaMs":  93.74,
+                                                       "memoryMiB":  364.86,
+                                                       "rendererCount":  1
+                                                   },
+                                                   {
+                                                       "index":  10,
+                                                       "atUtc":  "2026-10-20T09:52:02.4091702Z",
+                                                       "elapsedMs":  12644.19,
+                                                       "cpuDeltaMs":  125,
+                                                       "memoryMiB":  362.98,
+                                                       "rendererCount":  1
+                                                   },
+                                                   {
+                                                       "index":  11,
+                                                       "atUtc":  "2026-10-20T09:52:03.6911305Z",
+                                                       "elapsedMs":  13926.35,
+                                                       "cpuDeltaMs":  62.5,
+                                                       "memoryMiB":  363.17,
+                                                       "rendererCount":  1
+                                                   },
+                                                   {
+                                                       "index":  12,
+                                                       "atUtc":  "2026-10-20T09:52:04.9218073Z",
+                                                       "elapsedMs":  15156.05,
+                                                       "cpuDeltaMs":  109.39,
+                                                       "memoryMiB":  362.93,
+                                                       "rendererCount":  1
+                                                   },
+                                                   {
+                                                       "index":  13,
+                                                       "atUtc":  "2026-10-20T09:52:06.1843659Z",
+                                                       "elapsedMs":  16419.03,
+                                                       "cpuDeltaMs":  78.12,
+                                                       "memoryMiB":  362.91,
+                                                       "rendererCount":  1
+                                                   },
+                                                   {
+                                                       "index":  14,
+                                                       "atUtc":  "2026-10-20T09:52:07.4403059Z",
+                                                       "elapsedMs":  17675.82,
+                                                       "cpuDeltaMs":  78.12,
+                                                       "memoryMiB":  363.18,
+                                                       "rendererCount":  1
+                                                   },
+                                                   {
+                                                       "index":  15,
+                                                       "atUtc":  "2026-10-20T09:52:08.7002359Z",
+                                                       "elapsedMs":  18935.78,
+                                                       "cpuDeltaMs":  62.49,
+                                                       "memoryMiB":  363.18,
+                                                       "rendererCount":  1
+                                                   },
+                                                   {
+                                                       "index":  16,
+                                                       "atUtc":  "2026-10-20T09:52:09.9696324Z",
+                                                       "elapsedMs":  20204.76,
+                                                       "cpuDeltaMs":  78.13,
+                                                       "memoryMiB":  363.18,
+                                                       "rendererCount":  1
+                                                   },
+                                                   {
+                                                       "index":  17,
+                                                       "atUtc":  "2026-10-20T09:52:11.2367365Z",
+                                                       "elapsedMs":  21471.99,
+                                                       "cpuDeltaMs":  46.87,
+                                                       "memoryMiB":  363.18,
+                                                       "rendererCount":  1
+                                                   },
+                                                   {
+                                                       "index":  18,
+                                                       "atUtc":  "2026-10-20T09:52:12.4848006Z",
+                                                       "elapsedMs":  22720.1,
+                                                       "cpuDeltaMs":  93.76,
+                                                       "memoryMiB":  363.18,
+                                                       "rendererCount":  1
+                                                   },
+                                                   {
+                                                       "index":  19,
+                                                       "atUtc":  "2026-10-20T09:52:13.7317044Z",
+                                                       "elapsedMs":  23966.38,
+                                                       "cpuDeltaMs":  62.5,
+                                                       "memoryMiB":  363.18,
+                                                       "rendererCount":  1
+                                                   },
+                                                   {
+                                                       "index":  20,
+                                                       "atUtc":  "2026-10-20T09:52:14.9928717Z",
+                                                       "elapsedMs":  25227.63,
+                                                       "cpuDeltaMs":  46.87,
+                                                       "memoryMiB":  372.15,
+                                                       "rendererCount":  1
+                                                   },
+                                                   {
+                                                       "index":  21,
+                                                       "atUtc":  "2026-10-20T09:52:16.2530922Z",
+                                                       "elapsedMs":  26488.33,
+                                                       "cpuDeltaMs":  78.13,
+                                                       "memoryMiB":  372.68,
+                                                       "rendererCount":  1
+                                                   },
+                                                   {
+                                                       "index":  22,
+                                                       "atUtc":  "2026-10-20T09:52:17.5191574Z",
+                                                       "elapsedMs":  27753.78,
+                                                       "cpuDeltaMs":  78.13,
+                                                       "memoryMiB":  372.67,
+                                                       "rendererCount":  1
+                                                   },
+                                                   {
+                                                       "index":  23,
+                                                       "atUtc":  "2026-10-20T09:52:18.7740716Z",
+                                                       "elapsedMs":  29009.65,
+                                                       "cpuDeltaMs":  93.75,
+                                                       "memoryMiB":  372.68,
+                                                       "rendererCount":  1
+                                                   },
+                                                   {
+                                                       "index":  24,
+                                                       "atUtc":  "2026-10-20T09:52:20.0304248Z",
+                                                       "elapsedMs":  30264.98,
+                                                       "cpuDeltaMs":  46.88,
+                                                       "memoryMiB":  372.64,
+                                                       "rendererCount":  1
+                                                   },
+                                                   {
+                                                       "index":  25,
+                                                       "atUtc":  "2026-10-20T09:52:21.2663364Z",
+                                                       "elapsedMs":  31500.48,
+                                                       "cpuDeltaMs":  78.12,
+                                                       "memoryMiB":  372.59,
+                                                       "rendererCount":  1
+                                                   },
+                                                   {
+                                                       "index":  26,
+                                                       "atUtc":  "2026-10-20T09:52:22.5411308Z",
+                                                       "elapsedMs":  32777.02,
+                                                       "cpuDeltaMs":  46.88,
+                                                       "memoryMiB":  372.59,
+                                                       "rendererCount":  1
+                                                   },
+                                                   {
+                                                       "index":  27,
+                                                       "atUtc":  "2026-10-20T09:52:23.7958743Z",
+                                                       "elapsedMs":  34031,
+                                                       "cpuDeltaMs":  78.12,
+                                                       "memoryMiB":  372.59,
+                                                       "rendererCount":  1
+                                                   },
+                                                   {
+                                                       "index":  28,
+                                                       "atUtc":  "2026-10-20T09:52:25.0278066Z",
+                                                       "elapsedMs":  35262.78,
+                                                       "cpuDeltaMs":  62.5,
+                                                       "memoryMiB":  372.59,
+                                                       "rendererCount":  1
+                                                   },
+                                                   {
+                                                       "index":  29,
+                                                       "atUtc":  "2026-10-20T09:52:26.3106400Z",
+                                                       "elapsedMs":  36545.98,
+                                                       "cpuDeltaMs":  15.62,
+                                                       "memoryMiB":  372.59,
+                                                       "rendererCount":  1
+                                                   },
+                                                   {
+                                                       "index":  30,
+                                                       "atUtc":  "2026-10-20T09:52:27.5567326Z",
+                                                       "elapsedMs":  37792.05,
+                                                       "cpuDeltaMs":  15.62,
+                                                       "memoryMiB":  372.59,
+                                                       "rendererCount":  1
+                                                   },
+                                                   {
+                                                       "index":  31,
+                                                       "atUtc":  "2026-10-20T09:52:28.8138880Z",
+                                                       "elapsedMs":  39049.45,
+                                                       "cpuDeltaMs":  15.63,
+                                                       "memoryMiB":  372.59,
+                                                       "rendererCount":  1
+                                                   },
+                                                   {
+                                                       "index":  32,
+                                                       "atUtc":  "2026-10-20T09:52:30.0624838Z",
+                                                       "elapsedMs":  40297.16,
+                                                       "cpuDeltaMs":  46.87,
+                                                       "memoryMiB":  372.59,
+                                                       "rendererCount":  1
+                                                   },
+                                                   {
+                                                       "index":  33,
+                                                       "atUtc":  "2026-10-20T09:52:31.3305366Z",
+                                                       "elapsedMs":  41568.02,
+                                                       "cpuDeltaMs":  15.63,
+                                                       "memoryMiB":  372.59,
+                                                       "rendererCount":  1
+                                                   },
+                                                   {
+                                                       "index":  34,
+                                                       "atUtc":  "2026-10-20T09:52:32.6254305Z",
+                                                       "elapsedMs":  42860.47,
+                                                       "cpuDeltaMs":  46.87,
+                                                       "memoryMiB":  372.66,
+                                                       "rendererCount":  1
+                                                   },
+                                                   {
+                                                       "index":  35,
+                                                       "atUtc":  "2026-10-20T09:52:33.8955077Z",
+                                                       "elapsedMs":  44130.44,
+                                                       "cpuDeltaMs":  31.25,
+                                                       "memoryMiB":  372.6,
+                                                       "rendererCount":  1
+                                                   },
+                                                   {
+                                                       "index":  36,
+                                                       "atUtc":  "2026-10-20T09:52:35.1606230Z",
+                                                       "elapsedMs":  45395.66,
+                                                       "cpuDeltaMs":  46.88,
+                                                       "memoryMiB":  372.6,
+                                                       "rendererCount":  1
+                                                   },
+                                                   {
+                                                       "index":  37,
+                                                       "atUtc":  "2026-10-20T09:52:36.4300985Z",
+                                                       "elapsedMs":  46664.76,
+                                                       "cpuDeltaMs":  15.63,
+                                                       "memoryMiB":  372.6,
+                                                       "rendererCount":  1
+                                                   },
+                                                   {
+                                                       "index":  38,
+                                                       "atUtc":  "2026-10-20T09:52:37.7031883Z",
+                                                       "elapsedMs":  47937.97,
+                                                       "cpuDeltaMs":  31.25,
+                                                       "memoryMiB":  372.6,
+                                                       "rendererCount":  1
+                                                   },
+                                                   {
+                                                       "index":  39,
+                                                       "atUtc":  "2026-10-20T09:52:38.9840420Z",
+                                                       "elapsedMs":  49218.66,
+                                                       "cpuDeltaMs":  78.11,
+                                                       "memoryMiB":  372.6,
+                                                       "rendererCount":  1
+                                                   },
+                                                   {
+                                                       "index":  40,
+                                                       "atUtc":  "2026-10-20T09:52:40.2259466Z",
+                                                       "elapsedMs":  50461.17,
+                                                       "cpuDeltaMs":  46.89,
+                                                       "memoryMiB":  372.6,
+                                                       "rendererCount":  1
+                                                   },
+                                                   {
+                                                       "index":  41,
+                                                       "atUtc":  "2026-10-20T09:52:41.5000307Z",
+                                                       "elapsedMs":  51735.17,
+                                                       "cpuDeltaMs":  78.12,
+                                                       "memoryMiB":  372.6,
+                                                       "rendererCount":  1
+                                                   },
+                                                   {
+                                                       "index":  42,
+                                                       "atUtc":  "2026-10-20T09:52:42.7208279Z",
+                                                       "elapsedMs":  52955.27,
+                                                       "cpuDeltaMs":  78.13,
+                                                       "memoryMiB":  372.6,
+                                                       "rendererCount":  1
+                                                   },
+                                                   {
+                                                       "index":  43,
+                                                       "atUtc":  "2026-10-20T09:52:43.9770490Z",
+                                                       "elapsedMs":  54211.67,
+                                                       "cpuDeltaMs":  124.99,
+                                                       "memoryMiB":  372.68,
+                                                       "rendererCount":  1
+                                                   },
+                                                   {
+                                                       "index":  44,
+                                                       "atUtc":  "2026-10-20T09:52:45.2141761Z",
+                                                       "elapsedMs":  55449.25,
+                                                       "cpuDeltaMs":  218.75,
+                                                       "memoryMiB":  375.73,
+                                                       "rendererCount":  1
+                                                   },
+                                                   {
+                                                       "index":  45,
+                                                       "atUtc":  "2026-10-20T09:52:46.4562867Z",
+                                                       "elapsedMs":  56691.58,
+                                                       "cpuDeltaMs":  93.75,
+                                                       "memoryMiB":  377.01,
+                                                       "rendererCount":  1
+                                                   },
+                                                   {
+                                                       "index":  46,
+                                                       "atUtc":  "2026-10-20T09:52:47.7150840Z",
+                                                       "elapsedMs":  57949.64,
+                                                       "cpuDeltaMs":  140.64,
+                                                       "memoryMiB":  379.25,
+                                                       "rendererCount":  1
+                                                   },
+                                                   {
+                                                       "index":  47,
+                                                       "atUtc":  "2026-10-20T09:52:48.9872057Z",
+                                                       "elapsedMs":  59222.51,
+                                                       "cpuDeltaMs":  109.37,
+                                                       "memoryMiB":  379.12,
+                                                       "rendererCount":  1
+                                                   },
+                                                   {
+                                                       "index":  48,
+                                                       "atUtc":  "2026-10-20T09:52:50.2346273Z",
+                                                       "elapsedMs":  60469.68,
+                                                       "cpuDeltaMs":  62.49,
+                                                       "memoryMiB":  379.11,
+                                                       "rendererCount":  1
+                                                   },
+                                                   {
+                                                       "index":  49,
+                                                       "atUtc":  "2026-10-20T09:52:51.4947004Z",
+                                                       "elapsedMs":  61729.44,
+                                                       "cpuDeltaMs":  156.26,
+                                                       "memoryMiB":  378.81,
+                                                       "rendererCount":  1
+                                                   },
+                                                   {
+                                                       "index":  50,
+                                                       "atUtc":  "2026-10-20T09:52:52.7440991Z",
+                                                       "elapsedMs":  62979.3,
+                                                       "cpuDeltaMs":  250,
+                                                       "memoryMiB":  383.33,
+                                                       "rendererCount":  1
+                                                   },
+                                                   {
+                                                       "index":  51,
+                                                       "atUtc":  "2026-10-20T09:52:54.0046719Z",
+                                                       "elapsedMs":  64239.69,
+                                                       "cpuDeltaMs":  234.37,
+                                                       "memoryMiB":  383.55,
+                                                       "rendererCount":  1
+                                                   },
+                                                   {
+                                                       "index":  52,
+                                                       "atUtc":  "2026-10-20T09:52:55.2325666Z",
+                                                       "elapsedMs":  65467.28,
+                                                       "cpuDeltaMs":  78.13,
+                                                       "memoryMiB":  384.28,
+                                                       "rendererCount":  1
+                                                   },
+                                                   {
+                                                       "index":  53,
+                                                       "atUtc":  "2026-10-20T09:52:56.5010778Z",
+                                                       "elapsedMs":  66736.37,
+                                                       "cpuDeltaMs":  156.25,
+                                                       "memoryMiB":  381.87,
+                                                       "rendererCount":  1
+                                                   },
+                                                   {
+                                                       "index":  54,
+                                                       "atUtc":  "2026-10-20T09:52:57.7736779Z",
+                                                       "elapsedMs":  68008.59,
+                                                       "cpuDeltaMs":  109.36,
+                                                       "memoryMiB":  381.89,
+                                                       "rendererCount":  1
+                                                   },
+                                                   {
+                                                       "index":  55,
+                                                       "atUtc":  "2026-10-20T09:52:59.0501986Z",
+                                                       "elapsedMs":  69284.64,
+                                                       "cpuDeltaMs":  171.88,
+                                                       "memoryMiB":  377.96,
+                                                       "rendererCount":  1
+                                                   },
+                                                   {
+                                                       "index":  56,
+                                                       "atUtc":  "2026-10-20T09:53:00.3289402Z",
+                                                       "elapsedMs":  70563.93,
+                                                       "cpuDeltaMs":  62.5,
+                                                       "memoryMiB":  377.86,
+                                                       "rendererCount":  1
+                                                   },
+                                                   {
+                                                       "index":  57,
+                                                       "atUtc":  "2026-10-20T09:53:01.5615721Z",
+                                                       "elapsedMs":  71796.82,
+                                                       "cpuDeltaMs":  31.25,
+                                                       "memoryMiB":  377.88,
+                                                       "rendererCount":  1
+                                                   },
+                                                   {
+                                                       "index":  58,
+                                                       "atUtc":  "2026-10-20T09:53:02.8278878Z",
+                                                       "elapsedMs":  73063.54,
+                                                       "cpuDeltaMs":  31.25,
+                                                       "memoryMiB":  377.89,
+                                                       "rendererCount":  1
+                                                   },
+                                                   {
+                                                       "index":  59,
+                                                       "atUtc":  "2026-10-20T09:53:04.0767230Z",
+                                                       "elapsedMs":  74313.29,
+                                                       "cpuDeltaMs":  0,
+                                                       "memoryMiB":  377.9,
+                                                       "rendererCount":  1
+                                                   },
+                                                   {
+                                                       "index":  60,
+                                                       "atUtc":  "2026-10-20T09:53:05.3392464Z",
+                                                       "elapsedMs":  75573.63,
+                                                       "cpuDeltaMs":  15.62,
+                                                       "memoryMiB":  377.9,
+                                                       "rendererCount":  1
+                                                   }
+                                               ]
+                               },
+                    "samePoemAndLocalDate":  true,
+                    "cpuIncreasePercentagePoints":  0.2854,
+                    "memoryP95IncreaseMiB":  12.27,
+                    "resourceThresholdSatisfied":  true
+                },
+    "limitations":  {
+                        "syntheticWeatherNotRealLocalWeather":  true,
+                        "visibleMotionRecordingCaptured":  false,
+                        "systemReducedMotionMediaQueryChecked":  true,
+                        "computedSceneAnimationVerified":  true,
+                        "a7OverallSatisfied":  false
+                    },
+    "result":  "resource-comparison-passed"
+}

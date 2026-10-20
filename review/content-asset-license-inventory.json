@@ -2,8 +2,8 @@
   "schemaVersion": "1.1",
   "product": "WeatherPoem",
   "appVersion": "0.2.0",
-  "contentVersion": "2026.07.1",
-  "generatedAt": "2026-09-09T18:40:33.996Z",
+  "contentVersion": "2026.10.1",
+  "generatedAt": "2026-10-19T15:07:39.008Z",
   "status": "inventory-ready-awaiting-legal-review",
   "scope": {
     "target": "x86_64-pc-windows-msvc",
@@ -14,23 +14,23 @@
   "inputs": {
     "packageJson": {
       "path": "package.json",
-      "sha256": "2E9DDA60A4664924B4A84EA71DDE11A2FC6E14548C911785B3DF5E63E75D5D5F"
+      "sha256": "6CB652C08466EA41A62077488C11C284D91678B5914AD3882D94FBFFD73786F1"
     },
     "packageLock": {
       "path": "package-lock.json",
-      "sha256": "B25F08E34940D57B7A4DCB37CBDE24A0D9EE18DBFB450BDECC88BB5FB1BB7934"
+      "sha256": "2CFEF94CB24F03E04D42006599CE35B1A87E0B6C12F1820BD728E8CC3F8137F1"
     },
     "cargoLock": {
       "path": "src-tauri/Cargo.lock",
-      "sha256": "D8E86E63299DCEC3E5FF9DC66D6D796159F51BBAF9085D4F0B3D5D4C7A82302A"
+      "sha256": "F51B47AEC215D3CAF2408F880B7A8B764C4608EF2852DCBD443F07871A4760C2"
     },
     "cargoAudit": {
       "path": "output/WeatherPoem_0.2.0_CARGO_AUDIT.json",
-      "sha256": "D4303DF89B580DF72E0DE7602D9E9456289B471043A3D273260941DEFC868D74"
+      "sha256": "E1DF3E82E7BBE8721AC402B6F5EB9C9A56153C0EEED1E6D0F3D559015893DBDC"
     },
     "contentCatalog": {
       "path": "review/content-review-catalog.json",
-      "sha256": "9F06180D40278D10B8EB9C208A2DF8A207BB90ED1C16C1D126AEF3546F4D62FE"
+      "sha256": "A9943B492FA086D4ECBE72B20D19F7BD14B420CD8306076F5C882585A65E4A31"
     },
     "iconSource": {
       "path": "src-tauri/icons/app-icon.svg",
@@ -50,27 +50,27 @@
     },
     "styles": {
       "path": "src/styles.css",
-      "sha256": "98EF4284BE52EFE566049E8A2930A66590D1C82474C3A0D8C829D215CD433982"
+      "sha256": "025D70F41504732CA3CBD8CFCE392E8CF8799E772F5182FCC38B7A7419164D53"
     },
     "settingsPanel": {
       "path": "src/components/SettingsPanel.vue",
-      "sha256": "DFB7DB06C32B23F68035E3AF468950581A1F67AE68AAA40FD64B60C2CA8DB224"
+      "sha256": "3FD6F89166045538037FBB7E03B748FBA088CBE3EF13318DDC684DB147DD0D11"
     },
     "desktopService": {
       "path": "src/services/desktop.ts",
-      "sha256": "2D9E2F44908CF7E9BDE71C1067C8C85A39B04BB9B77764E7C101EA78F0522060"
+      "sha256": "DE99CEEEBF3DCA289875F789AA8615E3D3DC0869C8F970E6E16241B8E9932E63"
     },
     "tauriConfig": {
       "path": "src-tauri/tauri.conf.json",
-      "sha256": "7CD31C25618D68E2683538DB617C60BBF2C85B391B7D18CF6B77A082D89CF855"
+      "sha256": "7A4551240D193730E933EBF1BC5E7DE7B35ED32B45043688338F28E64E09B993"
     },
     "capability": {
       "path": "src-tauri/capabilities/default.json",
-      "sha256": "8666E9E44C38E42A1BCDB3995BEFB2151DC31B78095515CD4A2DAFE7D47C1ACE"
+      "sha256": "7FC576DA833EB54E31BB1114C67822F3F2EC0CFC17933E4799EE319BB5D1E603"
     },
     "rustShell": {
       "path": "src-tauri/src/lib.rs",
-      "sha256": "E531BA451CC4972DDF9FF54E1D00BDD2A8D7C2EBD30889CC237DA9EF715205B3"
+      "sha256": "7ABB2ED8292ED1B1F9F18E3D9063C05DB9B93F732F5320B8447540F93A0E5B8F"
     }
   },
   "projectCode": {
@@ -527,15 +527,15 @@
         },
         {
           "name": "@babel/parser",
-          "version": "7.29.7",
+          "version": "7.29.9",
           "license": "MIT",
-          "resolved": "https://registry.npmjs.org/@babel/parser/-/parser-7.29.7.tgz"
+          "resolved": "https://registry.npmjs.org/@babel/parser/-/parser-7.29.9.tgz"
         },
         {
           "name": "@babel/types",
-          "version": "7.29.7",
+          "version": "7.29.8",
           "license": "MIT",
-          "resolved": "https://registry.npmjs.org/@babel/types/-/types-7.29.7.tgz"
+          "resolved": "https://registry.npmjs.org/@babel/types/-/types-7.29.8.tgz"
         },
         {
           "name": "@emnapi/core",
@@ -767,81 +767,81 @@
         },
         {
           "name": "@tauri-apps/api",
-          "version": "2.11.1",
+          "version": "2.12.4",
           "license": "Apache-2.0 OR MIT",
-          "resolved": "https://registry.npmjs.org/@tauri-apps/api/-/api-2.11.1.tgz"
+          "resolved": "https://registry.npmjs.org/@tauri-apps/api/-/api-2.12.4.tgz"
         },
         {
           "name": "@tauri-apps/cli",
-          "version": "2.11.4",
+          "version": "2.12.3",
           "license": "Apache-2.0 OR MIT",
-          "resolved": "https://registry.npmjs.org/@tauri-apps/cli/-/cli-2.11.4.tgz"
+          "resolved": "https://registry.npmjs.org/@tauri-apps/cli/-/cli-2.12.3.tgz"
         },
         {
           "name": "@tauri-apps/cli-darwin-arm64",
-          "version": "2.11.4",
+          "version": "2.12.3",
           "license": "Apache-2.0 OR MIT",
-          "resolved": "https://registry.npmjs.org/@tauri-apps/cli-darwin-arm64/-/cli-darwin-arm64-2.11.4.tgz"
+          "resolved": "https://registry.npmjs.org/@tauri-apps/cli-darwin-arm64/-/cli-darwin-arm64-2.12.3.tgz"
         },
         {
           "name": "@tauri-apps/cli-darwin-x64",
-          "version": "2.11.4",
+          "version": "2.12.3",
           "license": "Apache-2.0 OR MIT",
-          "resolved": "https://registry.npmjs.org/@tauri-apps/cli-darwin-x64/-/cli-darwin-x64-2.11.4.tgz"
+          "resolved": "https://registry.npmjs.org/@tauri-apps/cli-darwin-x64/-/cli-darwin-x64-2.12.3.tgz"
         },
         {
           "name": "@tauri-apps/cli-linux-arm-gnueabihf",
-          "version": "2.11.4",
+          "version": "2.12.3",
           "license": "Apache-2.0 OR MIT",
-          "resolved": "https://registry.npmjs.org/@tauri-apps/cli-linux-arm-gnueabihf/-/cli-linux-arm-gnueabihf-2.11.4.tgz"
+          "resolved": "https://registry.npmjs.org/@tauri-apps/cli-linux-arm-gnueabihf/-/cli-linux-arm-gnueabihf-2.12.3.tgz"
         },
         {
           "name": "@tauri-apps/cli-linux-arm64-gnu",
-          "version": "2.11.4",
+          "version": "2.12.3",
           "license": "Apache-2.0 OR MIT",
-          "resolved": "https://registry.npmjs.org/@tauri-apps/cli-linux-arm64-gnu/-/cli-linux-arm64-gnu-2.11.4.tgz"
+          "resolved": "https://registry.npmjs.org/@tauri-apps/cli-linux-arm64-gnu/-/cli-linux-arm64-gnu-2.12.3.tgz"
         },
         {
           "name": "@tauri-apps/cli-linux-arm64-musl",
-          "version": "2.11.4",
+          "version": "2.12.3",
           "license": "Apache-2.0 OR MIT",
-          "resolved": "https://registry.npmjs.org/@tauri-apps/cli-linux-arm64-musl/-/cli-linux-arm64-musl-2.11.4.tgz"
+          "resolved": "https://registry.npmjs.org/@tauri-apps/cli-linux-arm64-musl/-/cli-linux-arm64-musl-2.12.3.tgz"
         },
         {
           "name": "@tauri-apps/cli-linux-riscv64-gnu",
-          "version": "2.11.4",
+          "version": "2.12.3",
           "license": "Apache-2.0 OR MIT",
-          "resolved": "https://registry.npmjs.org/@tauri-apps/cli-linux-riscv64-gnu/-/cli-linux-riscv64-gnu-2.11.4.tgz"
+          "resolved": "https://registry.npmjs.org/@tauri-apps/cli-linux-riscv64-gnu/-/cli-linux-riscv64-gnu-2.12.3.tgz"
         },
         {
           "name": "@tauri-apps/cli-linux-x64-gnu",
-          "version": "2.11.4",
+          "version": "2.12.3",
           "license": "Apache-2.0 OR MIT",
-          "resolved": "https://registry.npmjs.org/@tauri-apps/cli-linux-x64-gnu/-/cli-linux-x64-gnu-2.11.4.tgz"
+          "resolved": "https://registry.npmjs.org/@tauri-apps/cli-linux-x64-gnu/-/cli-linux-x64-gnu-2.12.3.tgz"
         },
         {
           "name": "@tauri-apps/cli-linux-x64-musl",
-          "version": "2.11.4",
+          "version": "2.12.3",
           "license": "Apache-2.0 OR MIT",
-          "resolved": "https://registry.npmjs.org/@tauri-apps/cli-linux-x64-musl/-/cli-linux-x64-musl-2.11.4.tgz"
+          "resolved": "https://registry.npmjs.org/@tauri-apps/cli-linux-x64-musl/-/cli-linux-x64-musl-2.12.3.tgz"
         },
         {
           "name": "@tauri-apps/cli-win32-arm64-msvc",
-          "version": "2.11.4",
+          "version": "2.12.3",
           "license": "Apache-2.0 OR MIT",
-          "resolved": "https://registry.npmjs.org/@tauri-apps/cli-win32-arm64-msvc/-/cli-win32-arm64-msvc-2.11.4.tgz"
+          "resolved": "https://registry.npmjs.org/@tauri-apps/cli-win32-arm64-msvc/-/cli-win32-arm64-msvc-2.12.3.tgz"
         },
         {
           "name": "@tauri-apps/cli-win32-ia32-msvc",
-          "version": "2.11.4",
+          "version": "2.12.3",
           "license": "Apache-2.0 OR MIT",
-          "resolved": "https://registry.npmjs.org/@tauri-apps/cli-win32-ia32-msvc/-/cli-win32-ia32-msvc-2.11.4.tgz"
+          "resolved": "https://registry.npmjs.org/@tauri-apps/cli-win32-ia32-msvc/-/cli-win32-ia32-msvc-2.12.3.tgz"
         },
         {
           "name": "@tauri-apps/cli-win32-x64-msvc",
-          "version": "2.11.4",
+          "version": "2.12.3",
           "license": "Apache-2.0 OR MIT",
-          "resolved": "https://registry.npmjs.org/@tauri-apps/cli-win32-x64-msvc/-/cli-win32-x64-msvc-2.11.4.tgz"
+          "resolved": "https://registry.npmjs.org/@tauri-apps/cli-win32-x64-msvc/-/cli-win32-x64-msvc-2.12.3.tgz"
         },
         {
           "name": "@tauri-apps/plugin-autostart",
@@ -1043,27 +1043,27 @@
         },
         {
           "name": "@vue/compiler-core",
-          "version": "3.5.40",
+          "version": "3.5.44",
           "license": "MIT",
-          "resolved": "https://registry.npmjs.org/@vue/compiler-core/-/compiler-core-3.5.40.tgz"
+          "resolved": "https://registry.npmjs.org/@vue/compiler-core/-/compiler-core-3.5.44.tgz"
         },
         {
           "name": "@vue/compiler-dom",
-          "version": "3.5.40",
+          "version": "3.5.44",
           "license": "MIT",
-          "resolved": "https://registry.npmjs.org/@vue/compiler-dom/-/compiler-dom-3.5.40.tgz"
+          "resolved": "https://registry.npmjs.org/@vue/compiler-dom/-/compiler-dom-3.5.44.tgz"
         },
         {
           "name": "@vue/compiler-sfc",
-          "version": "3.5.40",
+          "version": "3.5.44",
           "license": "MIT",
-          "resolved": "https://registry.npmjs.org/@vue/compiler-sfc/-/compiler-sfc-3.5.40.tgz"
+          "resolved": "https://registry.npmjs.org/@vue/compiler-sfc/-/compiler-sfc-3.5.44.tgz"
         },
         {
           "name": "@vue/compiler-ssr",
-          "version": "3.5.40",
+          "version": "3.5.44",
           "license": "MIT",
-          "resolved": "https://registry.npmjs.org/@vue/compiler-ssr/-/compiler-ssr-3.5.40.tgz"
+          "resolved": "https://registry.npmjs.org/@vue/compiler-ssr/-/compiler-ssr-3.5.44.tgz"
         },
         {
           "name": "@vue/language-core",
@@ -1073,33 +1073,33 @@
         },
         {
           "name": "@vue/reactivity",
-          "version": "3.5.40",
+          "version": "3.5.44",
           "license": "MIT",
-          "resolved": "https://registry.npmjs.org/@vue/reactivity/-/reactivity-3.5.40.tgz"
+          "resolved": "https://registry.npmjs.org/@vue/reactivity/-/reactivity-3.5.44.tgz"
         },
         {
           "name": "@vue/runtime-core",
-          "version": "3.5.40",
+          "version": "3.5.44",
           "license": "MIT",
-          "resolved": "https://registry.npmjs.org/@vue/runtime-core/-/runtime-core-3.5.40.tgz"
+          "resolved": "https://registry.npmjs.org/@vue/runtime-core/-/runtime-core-3.5.44.tgz"
         },
         {
           "name": "@vue/runtime-dom",
-          "version": "3.5.40",
+          "version": "3.5.44",
           "license": "MIT",
-          "resolved": "https://registry.npmjs.org/@vue/runtime-dom/-/runtime-dom-3.5.40.tgz"
+          "resolved": "https://registry.npmjs.org/@vue/runtime-dom/-/runtime-dom-3.5.44.tgz"
         },
         {
           "name": "@vue/server-renderer",
-          "version": "3.5.40",
+          "version": "3.5.44",
           "license": "MIT",
-          "resolved": "https://registry.npmjs.org/@vue/server-renderer/-/server-renderer-3.5.40.tgz"
+          "resolved": "https://registry.npmjs.org/@vue/server-renderer/-/server-renderer-3.5.44.tgz"
         },
         {
           "name": "@vue/shared",
-          "version": "3.5.40",
+          "version": "3.5.44",
           "license": "MIT",
-          "resolved": "https://registry.npmjs.org/@vue/shared/-/shared-3.5.40.tgz"
+          "resolved": "https://registry.npmjs.org/@vue/shared/-/shared-3.5.44.tgz"
         },
         {
           "name": "@vue/test-utils",
@@ -1205,21 +1205,21 @@
         },
         {
           "name": "brace-expansion",
-          "version": "2.1.4",
+          "version": "2.1.7",
           "license": "MIT",
-          "resolved": "https://registry.npmjs.org/brace-expansion/-/brace-expansion-2.1.4.tgz"
+          "resolved": "https://registry.npmjs.org/brace-expansion/-/brace-expansion-2.1.7.tgz"
         },
         {
           "name": "brace-expansion",
-          "version": "2.1.4",
+          "version": "2.1.7",
           "license": "MIT",
-          "resolved": "https://registry.npmjs.org/brace-expansion/-/brace-expansion-2.1.4.tgz"
+          "resolved": "https://registry.npmjs.org/brace-expansion/-/brace-expansion-2.1.7.tgz"
         },
         {
           "name": "brace-expansion",
-          "version": "5.0.9",
+          "version": "5.0.12",
           "license": "MIT",
-          "resolved": "https://registry.npmjs.org/brace-expansion/-/brace-expansion-5.0.9.tgz"
+          "resolved": "https://registry.npmjs.org/brace-expansion/-/brace-expansion-5.0.12.tgz"
         },
         {
           "name": "buffer-image-size",
@@ -1733,9 +1733,9 @@
         },
         {
           "name": "nanoid",
-          "version": "3.3.18",
+          "version": "3.3.20",
           "license": "MIT",
-          "resolved": "https://registry.npmjs.org/nanoid/-/nanoid-3.3.18.tgz"
+          "resolved": "https://registry.npmjs.org/nanoid/-/nanoid-3.3.20.tgz"
         },
         {
           "name": "natural-compare",
@@ -1829,15 +1829,15 @@
         },
         {
           "name": "postcss",
-          "version": "8.5.28",
+          "version": "8.5.30",
           "license": "MIT",
-          "resolved": "https://registry.npmjs.org/postcss/-/postcss-8.5.28.tgz"
+          "resolved": "https://registry.npmjs.org/postcss/-/postcss-8.5.30.tgz"
         },
         {
           "name": "postcss-selector-parser",
-          "version": "7.1.4",
+          "version": "7.1.6",
           "license": "MIT",
-          "resolved": "https://registry.npmjs.org/postcss-selector-parser/-/postcss-selector-parser-7.1.4.tgz"
+          "resolved": "https://registry.npmjs.org/postcss-selector-parser/-/postcss-selector-parser-7.1.6.tgz"
         },
         {
           "name": "prelude-ls",
@@ -1895,9 +1895,9 @@
         },
         {
           "name": "source-map-js",
-          "version": "1.2.1",
+          "version": "1.2.2",
           "license": "BSD-3-Clause",
-          "resolved": "https://registry.npmjs.org/source-map-js/-/source-map-js-1.2.1.tgz"
+          "resolved": "https://registry.npmjs.org/source-map-js/-/source-map-js-1.2.2.tgz"
         },
         {
           "name": "stackback",
@@ -2045,9 +2045,9 @@
         },
         {
           "name": "vue",
-          "version": "3.5.40",
+          "version": "3.5.44",
           "license": "MIT",
-          "resolved": "https://registry.npmjs.org/vue/-/vue-3.5.40.tgz"
+          "resolved": "https://registry.npmjs.org/vue/-/vue-3.5.44.tgz"
         },
         {
           "name": "vue-component-type-helpers",
@@ -2154,7 +2154,7 @@
         },
         {
           "expression": "Apache-2.0 OR MIT",
-          "packageCount": 32
+          "packageCount": 31
         },
         {
           "expression": "Apache-2.0/MIT",
@@ -2178,15 +2178,15 @@
         },
         {
           "expression": "MIT",
-          "packageCount": 50
+          "packageCount": 49
         },
         {
           "expression": "MIT OR Apache-2.0",
-          "packageCount": 145
+          "packageCount": 151
         },
         {
           "expression": "MIT OR Apache-2.0 OR Zlib",
-          "packageCount": 1
+          "packageCount": 2
         },
         {
           "expression": "MIT OR Zlib OR Apache-2.0",
@@ -2194,7 +2194,7 @@
         },
         {
           "expression": "MIT/Apache-2.0",
-          "packageCount": 13
+          "packageCount": 8
         },
         {
           "expression": "MPL-2.0",
@@ -2234,14 +2234,14 @@
         },
         {
           "name": "alloc-no-stdlib",
-          "version": "2.0.4",
+          "version": "3.0.0",
           "license": "BSD-3-Clause",
           "source": "registry+https://github.com/rust-lang/crates.io-index",
           "repository": "https://github.com/dropbox/rust-alloc-no-stdlib"
         },
         {
           "name": "alloc-stdlib",
-          "version": "0.2.4",
+          "version": "0.3.0",
           "license": "BSD-3-Clause",
           "source": "registry+https://github.com/rust-lang/crates.io-index",
           "repository": "https://github.com/dropbox/rust-alloc-no-stdlib"
@@ -2296,6 +2296,13 @@
           "repository": "https://github.com/marshallpierce/rust-base64"
         },
         {
+          "name": "base64",
+          "version": "0.23.1",
+          "license": "MIT OR Apache-2.0",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/marshallpierce/rust-base64"
+        },
+        {
           "name": "bit-set",
           "version": "0.8.0",
           "license": "Apache-2.0 OR MIT",
@@ -2332,14 +2339,14 @@
         },
         {
           "name": "brotli",
-          "version": "8.0.4",
+          "version": "9.0.0",
           "license": "BSD-3-Clause AND MIT",
           "source": "registry+https://github.com/rust-lang/crates.io-index",
           "repository": "https://github.com/dropbox/rust-brotli"
         },
         {
           "name": "brotli-decompressor",
-          "version": "5.0.3",
+          "version": "6.0.1",
           "license": "BSD-3-Clause/MIT",
           "source": "registry+https://github.com/rust-lang/crates.io-index",
           "repository": "https://github.com/dropbox/rust-brotli-decompressor"
@@ -2374,7 +2381,7 @@
         },
         {
           "name": "cargo_toml",
-          "version": "0.22.3",
+          "version": "1.0.1",
           "license": "Apache-2.0 OR MIT",
           "source": "registry+https://github.com/rust-lang/crates.io-index",
           "repository": "https://gitlab.com/lib.rs/cargo_toml"
@@ -2395,7 +2402,7 @@
         },
         {
           "name": "cfb",
-          "version": "0.7.3",
+          "version": "0.14.0",
           "license": "MIT",
           "source": "registry+https://github.com/rust-lang/crates.io-index",
           "repository": "https://github.com/mdsteele/rust-cfb"
@@ -2472,31 +2479,24 @@
         },
         {
           "name": "cssparser",
-          "version": "0.36.0",
+          "version": "0.37.0",
           "license": "MPL-2.0",
           "source": "registry+https://github.com/rust-lang/crates.io-index",
           "repository": "https://github.com/servo/rust-cssparser"
         },
         {
           "name": "cssparser-macros",
-          "version": "0.6.1",
+          "version": "0.7.1",
           "license": "MPL-2.0",
           "source": "registry+https://github.com/rust-lang/crates.io-index",
           "repository": "https://github.com/servo/rust-cssparser"
         },
         {
           "name": "ctor",
-          "version": "0.8.0",
+          "version": "1.0.13",
           "license": "Apache-2.0 OR MIT",
           "source": "registry+https://github.com/rust-lang/crates.io-index",
-          "repository": "https://github.com/mmastrac/rust-ctor"
-        },
-        {
-          "name": "ctor-proc-macro",
-          "version": "0.0.7",
-          "license": "Apache-2.0 OR MIT",
-          "source": "registry+https://github.com/rust-lang/crates.io-index",
-          "repository": "https://github.com/mmastrac/rust-ctor"
+          "repository": "https://github.com/mmastrac/linktime"
         },
         {
           "name": "darling",
@@ -2549,10 +2549,10 @@
         },
         {
           "name": "dirs",
-          "version": "6.0.0",
+          "version": "7.0.0",
           "license": "MIT OR Apache-2.0",
           "source": "registry+https://github.com/rust-lang/crates.io-index",
-          "repository": "https://github.com/soc/dirs-rs"
+          "repository": "https://codeberg.org/dirs/dirs-rs"
         },
         {
           "name": "dirs-sys",
@@ -2570,7 +2570,7 @@
         },
         {
           "name": "dom_query",
-          "version": "0.27.0",
+          "version": "0.28.0",
           "license": "MIT",
           "source": "registry+https://github.com/rust-lang/crates.io-index",
           "repository": "https://github.com/niklak/dom_query"
@@ -2843,7 +2843,7 @@
         },
         {
           "name": "html5ever",
-          "version": "0.38.0",
+          "version": "0.39.0",
           "license": "MIT OR Apache-2.0",
           "source": "registry+https://github.com/rust-lang/crates.io-index",
           "repository": "https://github.com/servo/html5ever"
@@ -2948,7 +2948,7 @@
         },
         {
           "name": "infer",
-          "version": "0.19.0",
+          "version": "0.22.0",
           "license": "MIT",
           "source": "registry+https://github.com/rust-lang/crates.io-index",
           "repository": "https://github.com/bojand/infer"
@@ -2962,24 +2962,24 @@
         },
         {
           "name": "json-patch",
-          "version": "3.0.1",
+          "version": "4.2.0",
           "license": "MIT/Apache-2.0",
           "source": "registry+https://github.com/rust-lang/crates.io-index",
           "repository": "https://github.com/idubrov/json-patch"
         },
         {
           "name": "jsonptr",
-          "version": "0.6.3",
+          "version": "0.7.1",
           "license": "MIT OR Apache-2.0",
           "source": "registry+https://github.com/rust-lang/crates.io-index",
           "repository": "https://github.com/chanced/jsonptr"
         },
         {
           "name": "keyboard-types",
-          "version": "0.7.0",
+          "version": "0.8.3",
           "license": "MIT OR Apache-2.0",
           "source": "registry+https://github.com/rust-lang/crates.io-index",
-          "repository": "https://github.com/pyfisch/keyboard-types"
+          "repository": "https://github.com/rust-windowing/keyboard-types"
         },
         {
           "name": "libc",
@@ -3018,7 +3018,7 @@
         },
         {
           "name": "markup5ever",
-          "version": "0.38.0",
+          "version": "0.39.0",
           "license": "MIT OR Apache-2.0",
           "source": "registry+https://github.com/rust-lang/crates.io-index",
           "repository": "https://github.com/servo/html5ever"
@@ -3053,7 +3053,7 @@
         },
         {
           "name": "muda",
-          "version": "0.19.3",
+          "version": "0.20.0",
           "license": "Apache-2.0 OR MIT",
           "source": "registry+https://github.com/rust-lang/crates.io-index",
           "repository": "https://github.com/tauri-apps/muda"
@@ -3192,6 +3192,13 @@
           "repository": "https://github.com/image-rs/image-png"
         },
         {
+          "name": "png",
+          "version": "0.18.1",
+          "license": "MIT OR Apache-2.0",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/image-rs/image-png"
+        },
+        {
           "name": "potential_utf",
           "version": "0.1.5",
           "license": "Unicode-3.0",
@@ -3319,7 +3326,7 @@
         },
         {
           "name": "selectors",
-          "version": "0.36.1",
+          "version": "0.38.0",
           "license": "MPL-2.0",
           "source": "registry+https://github.com/rust-lang/crates.io-index",
           "repository": "https://github.com/servo/stylo"
@@ -3535,6 +3542,13 @@
           "repository": "https://github.com/storyyeller/stable_deref_trait"
         },
         {
+          "name": "static_vcruntime",
+          "version": "3.0.0",
+          "license": "MIT OR Apache-2.0 OR Zlib",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/ChrisDenton/static_vcruntime"
+        },
+        {
           "name": "string_cache",
           "version": "0.9.0",
           "license": "MIT OR Apache-2.0",
@@ -3578,35 +3592,35 @@
         },
         {
           "name": "tao",
-          "version": "0.35.3",
+          "version": "0.37.1",
           "license": "Apache-2.0",
           "source": "registry+https://github.com/rust-lang/crates.io-index",
           "repository": "https://github.com/tauri-apps/tao"
         },
         {
           "name": "tauri",
-          "version": "2.11.5",
+          "version": "2.12.4",
           "license": "Apache-2.0 OR MIT",
           "source": "registry+https://github.com/rust-lang/crates.io-index",
           "repository": "https://github.com/tauri-apps/tauri"
         },
         {
           "name": "tauri-build",
-          "version": "2.6.3",
+          "version": "2.7.3",
           "license": "Apache-2.0 OR MIT",
           "source": "registry+https://github.com/rust-lang/crates.io-index",
           "repository": "https://github.com/tauri-apps/tauri"
         },
         {
           "name": "tauri-codegen",
-          "version": "2.6.3",
+          "version": "2.7.3",
           "license": "Apache-2.0 OR MIT",
           "source": "registry+https://github.com/rust-lang/crates.io-index",
           "repository": "https://github.com/tauri-apps/tauri"
         },
         {
           "name": "tauri-macros",
-          "version": "2.6.3",
+          "version": "2.7.3",
           "license": "Apache-2.0 OR MIT",
           "source": "registry+https://github.com/rust-lang/crates.io-index",
           "repository": "https://github.com/tauri-apps/tauri"
@@ -3648,21 +3662,21 @@
         },
         {
           "name": "tauri-runtime",
-          "version": "2.11.3",
+          "version": "2.12.2",
           "license": "Apache-2.0 OR MIT",
           "source": "registry+https://github.com/rust-lang/crates.io-index",
           "repository": "https://github.com/tauri-apps/tauri"
         },
         {
           "name": "tauri-runtime-wry",
-          "version": "2.11.4",
+          "version": "2.12.2",
           "license": "Apache-2.0 OR MIT",
           "source": "registry+https://github.com/rust-lang/crates.io-index",
           "repository": "https://github.com/tauri-apps/tauri"
         },
         {
           "name": "tauri-utils",
-          "version": "2.9.3",
+          "version": "2.10.2",
           "license": "Apache-2.0 OR MIT",
           "source": "registry+https://github.com/rust-lang/crates.io-index",
           "repository": "https://github.com/tauri-apps/tauri"
@@ -3753,21 +3767,7 @@
         },
         {
           "name": "toml",
-          "version": "0.9.12+spec-1.1.0",
-          "license": "MIT OR Apache-2.0",
-          "source": "registry+https://github.com/rust-lang/crates.io-index",
-          "repository": "https://github.com/toml-rs/toml"
-        },
-        {
-          "name": "toml",
           "version": "1.1.3+spec-1.1.0",
-          "license": "MIT OR Apache-2.0",
-          "source": "registry+https://github.com/rust-lang/crates.io-index",
-          "repository": "https://github.com/toml-rs/toml"
-        },
-        {
-          "name": "toml_datetime",
-          "version": "0.7.5+spec-1.1.0",
           "license": "MIT OR Apache-2.0",
           "source": "registry+https://github.com/rust-lang/crates.io-index",
           "repository": "https://github.com/toml-rs/toml"
@@ -3816,7 +3816,7 @@
         },
         {
           "name": "tray-icon",
-          "version": "0.24.1",
+          "version": "0.25.1",
           "license": "MIT OR Apache-2.0",
           "source": "registry+https://github.com/rust-lang/crates.io-index",
           "repository": "https://github.com/tauri-apps/tray-icon"
@@ -3834,41 +3834,6 @@
           "license": "MIT OR Apache-2.0",
           "source": "registry+https://github.com/rust-lang/crates.io-index",
           "repository": "https://github.com/paholg/typenum"
-        },
-        {
-          "name": "unic-char-property",
-          "version": "0.9.0",
-          "license": "MIT/Apache-2.0",
-          "source": "registry+https://github.com/rust-lang/crates.io-index",
-          "repository": "https://github.com/open-i18n/rust-unic/"
-        },
-        {
-          "name": "unic-char-range",
-          "version": "0.9.0",
-          "license": "MIT/Apache-2.0",
-          "source": "registry+https://github.com/rust-lang/crates.io-index",
-          "repository": "https://github.com/open-i18n/rust-unic/"
-        },
-        {
-          "name": "unic-common",
-          "version": "0.9.0",
-          "license": "MIT/Apache-2.0",
-          "source": "registry+https://github.com/rust-lang/crates.io-index",
-          "repository": "https://github.com/open-i18n/rust-unic/"
-        },
-        {
-          "name": "unic-ucd-ident",
-          "version": "0.9.0",
-          "license": "MIT/Apache-2.0",
-          "source": "registry+https://github.com/rust-lang/crates.io-index",
-          "repository": "https://github.com/open-i18n/rust-unic/"
-        },
-        {
-          "name": "unic-ucd-version",
-          "version": "0.9.0",
-          "license": "MIT/Apache-2.0",
-          "source": "registry+https://github.com/rust-lang/crates.io-index",
-          "repository": "https://github.com/open-i18n/rust-unic/"
         },
         {
           "name": "unicode-ident",
@@ -3893,7 +3858,7 @@
         },
         {
           "name": "urlpattern",
-          "version": "0.3.0",
+          "version": "0.6.0",
           "license": "MIT",
           "source": "registry+https://github.com/rust-lang/crates.io-index",
           "repository": "https://github.com/denoland/rust-urlpattern"
@@ -3941,8 +3906,15 @@
           "repository": "https://github.com/servo/html5ever"
         },
         {
+          "name": "web-time",
+          "version": "1.1.0",
+          "license": "MIT OR Apache-2.0",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/daxpedda/web-time"
+        },
+        {
           "name": "webview2-com",
-          "version": "0.38.2",
+          "version": "0.39.1",
           "license": "MIT",
           "source": "registry+https://github.com/rust-lang/crates.io-index",
           "repository": "https://github.com/wravery/webview2-rs"
@@ -3956,7 +3928,7 @@
         },
         {
           "name": "webview2-com-sys",
-          "version": "0.38.2",
+          "version": "0.39.1",
           "license": "MIT",
           "source": "registry+https://github.com/rust-lang/crates.io-index",
           "repository": "https://github.com/wravery/webview2-rs"
@@ -3977,7 +3949,7 @@
         },
         {
           "name": "window-vibrancy",
-          "version": "0.6.0",
+          "version": "0.8.1",
           "license": "Apache-2.0 OR MIT",
           "source": "registry+https://github.com/rust-lang/crates.io-index",
           "repository": "https://github.com/tauri-apps/tauri-plugin-vibrancy"
@@ -3990,8 +3962,8 @@
           "repository": "https://github.com/microsoft/windows-rs"
         },
         {
-          "name": "windows_x86_64_msvc",
-          "version": "0.52.6",
+          "name": "windows",
+          "version": "0.62.2",
           "license": "MIT OR Apache-2.0",
           "source": "registry+https://github.com/rust-lang/crates.io-index",
           "repository": "https://github.com/microsoft/windows-rs"
@@ -4011,6 +3983,13 @@
           "repository": "https://github.com/microsoft/windows-rs"
         },
         {
+          "name": "windows-collections",
+          "version": "0.3.2",
+          "license": "MIT OR Apache-2.0",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/microsoft/windows-rs"
+        },
+        {
           "name": "windows-core",
           "version": "0.61.2",
           "license": "MIT OR Apache-2.0",
@@ -4018,8 +3997,22 @@
           "repository": "https://github.com/microsoft/windows-rs"
         },
         {
+          "name": "windows-core",
+          "version": "0.62.2",
+          "license": "MIT OR Apache-2.0",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/microsoft/windows-rs"
+        },
+        {
           "name": "windows-future",
           "version": "0.2.1",
+          "license": "MIT OR Apache-2.0",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/microsoft/windows-rs"
+        },
+        {
+          "name": "windows-future",
+          "version": "0.3.2",
           "license": "MIT OR Apache-2.0",
           "source": "registry+https://github.com/rust-lang/crates.io-index",
           "repository": "https://github.com/microsoft/windows-rs"
@@ -4060,8 +4053,22 @@
           "repository": "https://github.com/microsoft/windows-rs"
         },
         {
+          "name": "windows-numerics",
+          "version": "0.3.1",
+          "license": "MIT OR Apache-2.0",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/microsoft/windows-rs"
+        },
+        {
           "name": "windows-result",
           "version": "0.3.4",
+          "license": "MIT OR Apache-2.0",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "repository": "https://github.com/microsoft/windows-rs"
+        },
+        {
+          "name": "windows-result",
+          "version": "0.4.1",
           "license": "MIT OR Apache-2.0",
           "source": "registry+https://github.com/rust-lang/crates.io-index",
           "repository": "https://github.com/microsoft/windows-rs"
@@ -4074,8 +4081,8 @@
           "repository": "https://github.com/microsoft/windows-rs"
         },
         {
-          "name": "windows-sys",
-          "version": "0.59.0",
+          "name": "windows-strings",
+          "version": "0.5.1",
           "license": "MIT OR Apache-2.0",
           "source": "registry+https://github.com/rust-lang/crates.io-index",
           "repository": "https://github.com/microsoft/windows-rs"
@@ -4096,13 +4103,6 @@
         },
         {
           "name": "windows-targets",
-          "version": "0.52.6",
-          "license": "MIT OR Apache-2.0",
-          "source": "registry+https://github.com/rust-lang/crates.io-index",
-          "repository": "https://github.com/microsoft/windows-rs"
-        },
-        {
-          "name": "windows-targets",
           "version": "0.53.5",
           "license": "MIT OR Apache-2.0",
           "source": "registry+https://github.com/rust-lang/crates.io-index",
@@ -4116,18 +4116,18 @@
           "repository": "https://github.com/microsoft/windows-rs"
         },
         {
-          "name": "windows-version",
-          "version": "0.1.7",
+          "name": "windows-threading",
+          "version": "0.2.1",
           "license": "MIT OR Apache-2.0",
           "source": "registry+https://github.com/rust-lang/crates.io-index",
           "repository": "https://github.com/microsoft/windows-rs"
         },
         {
-          "name": "winnow",
-          "version": "0.7.15",
-          "license": "MIT",
+          "name": "windows-version",
+          "version": "0.1.7",
+          "license": "MIT OR Apache-2.0",
           "source": "registry+https://github.com/rust-lang/crates.io-index",
-          "repository": "https://github.com/winnow-rs/winnow"
+          "repository": "https://github.com/microsoft/windows-rs"
         },
         {
           "name": "winnow",
@@ -4152,7 +4152,7 @@
         },
         {
           "name": "wry",
-          "version": "0.55.1",
+          "version": "0.57.0",
           "license": "Apache-2.0 OR MIT",
           "source": "registry+https://github.com/rust-lang/crates.io-index",
           "repository": "https://github.com/tauri-apps/wry"

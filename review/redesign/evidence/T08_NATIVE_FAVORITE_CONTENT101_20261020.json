@@ -1,0 +1,108 @@
+{
+  "schemaVersion": "1.0",
+  "testKind": "isolated-native-favorite-save-failure-retry-and-reading",
+  "generatedAt": "2026-10-20T03:46:50.710Z",
+  "candidate": {
+    "path": ".work/redesign-rain-excerpt-20261019/release/weatherpoem.exe",
+    "sha256": "402FE0C76ECFA256B396E02B4226E1E30E95716DC582D20F7263FDB9FA18EC16"
+  },
+  "testHarness": {
+    "path": "scripts/test-redesign-native-reveal.mjs",
+    "sha256": "EC545DBFDABB8A193EE27C25276EF67AE966EBC173B753EFE039E62C4F864915"
+  },
+  "isolation": {
+    "temporaryProfile": true,
+    "systemClockChanged": false,
+    "installedOrUninstalled": false,
+    "realUserDataTouched": false,
+    "processOnlyWeatherHostBlock": false
+  },
+  "scenario": "weather-offline",
+  "concealAction": "tray-hide-button",
+  "activationPath": "native-single-instance",
+  "revealElapsedMs": 103,
+  "readyView": "poem",
+  "original": {
+    "date": "10月20日",
+    "title": "望洞庭湖赠张丞相",
+    "context": "10月20日天气未更新秋 收藏 0",
+    "visible": "visible",
+    "poem": true
+  },
+  "initialDisplayEvents": 1,
+  "hidden": {
+    "visibility": "visible",
+    "poem": false,
+    "loading": true
+  },
+  "expectedDate": "10月20日",
+  "finalDisplayEvents": 1,
+  "favoriteJourneyAudit": {
+    "workId": "meng-hao-ran-wang-dong-ting-hu",
+    "failedAdd": {
+      "notice": "收藏未能保存，请再试一次",
+      "pressed": "false",
+      "disabled": false,
+      "screenshot": "review/redesign/evidence/T08_NATIVE_FAVORITE_CONTENT101_20261020_favorite_add_failed.png"
+    },
+    "reading": {
+      "title": "望洞庭湖赠张丞相",
+      "pressed": "true",
+      "back": " 今日诗笺",
+      "screenshot": "review/redesign/evidence/T08_NATIVE_FAVORITE_CONTENT101_20261020_favorite_reading.png"
+    },
+    "list": {
+      "title": "望洞庭湖赠张丞相",
+      "removeLabel": "取消收藏《望洞庭湖赠张丞相》",
+      "screenshot": "review/redesign/evidence/T08_NATIVE_FAVORITE_CONTENT101_20261020_favorite_list.png"
+    },
+    "reopened": {
+      "title": "望洞庭湖赠张丞相",
+      "back": " 我的收藏"
+    },
+    "failedRemove": {
+      "notice": "取消收藏未能保存，请再试一次",
+      "listed": true,
+      "disabled": false,
+      "screenshot": "review/redesign/evidence/T08_NATIVE_FAVORITE_CONTENT101_20261020_favorite_remove_failed.png"
+    },
+    "final": {
+      "title": "望洞庭湖赠张丞相",
+      "pressed": "false",
+      "favoriteCount": " 收藏 0",
+      "viewport": {
+        "width": 392,
+        "height": 363
+      },
+      "actionRowVisibleWithoutScroll": true,
+      "documentOverflow": false,
+      "cardScrollHeight": 303,
+      "cardClientHeight": 303,
+      "cardScrollTop": 0,
+      "screenshot": "review/redesign/evidence/T08_NATIVE_FAVORITE_CONTENT101_20261020_favorite_removed_card.png"
+    },
+    "sqliteFavoriteCount": 0
+  },
+  "screenshots": [
+    "review/redesign/evidence/T08_NATIVE_FAVORITE_CONTENT101_20261020_before.png",
+    "review/redesign/evidence/T08_NATIVE_FAVORITE_CONTENT101_20261020_after.png"
+  ],
+  "observed": [
+    {
+      "visible": "visible",
+      "poem": false,
+      "loading": true,
+      "correction": false,
+      "warning": false
+    },
+    {
+      "visible": "visible",
+      "date": "10月20日",
+      "poem": true,
+      "loading": false,
+      "correction": false,
+      "warning": false
+    }
+  ],
+  "result": "passed"
+}

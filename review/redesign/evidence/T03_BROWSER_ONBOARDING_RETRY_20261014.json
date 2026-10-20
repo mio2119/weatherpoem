@@ -1,0 +1,285 @@
+{
+  "schemaVersion": "1.0",
+  "result": "passed",
+  "browser": "Chrome/155.0.8059.40",
+  "isolatedProfile": true,
+  "nativeWebView2": false,
+  "weatherNetworkBlocked": true,
+  "systemAutostartUntouched": true,
+  "fixedLocalTime": "2026-10-14 09:00 Asia/Shanghai",
+  "stages": {
+    "initial": {
+      "view": true,
+      "search": "",
+      "options": [
+        {
+          "value": "beijing",
+          "checked": false
+        },
+        {
+          "value": "shanghai",
+          "checked": false
+        },
+        {
+          "value": "hangzhou",
+          "checked": false
+        },
+        {
+          "value": "nanjing",
+          "checked": false
+        },
+        {
+          "value": "wuhan",
+          "checked": false
+        },
+        {
+          "value": "guangzhou",
+          "checked": false
+        },
+        {
+          "value": "chengdu",
+          "checked": false
+        },
+        {
+          "value": "xian",
+          "checked": false
+        },
+        {
+          "value": "changsha",
+          "checked": false
+        },
+        {
+          "value": "harbin",
+          "checked": false
+        },
+        {
+          "value": "kunming",
+          "checked": false
+        },
+        {
+          "value": "lanzhou",
+          "checked": false
+        }
+      ],
+      "emptyState": null,
+      "selection": "请选择一座城市，再开始今日诗笺。",
+      "consent": false,
+      "saveError": null,
+      "submitDisabled": true,
+      "focused": "",
+      "documentOverflow": false,
+      "mainScrollHeight": 661,
+      "mainClientHeight": 660,
+      "submitBox": {
+        "top": 656,
+        "bottom": 700
+      },
+      "viewport": {
+        "width": 560,
+        "height": 720
+      }
+    },
+    "unsupported": {
+      "view": true,
+      "search": "深圳",
+      "options": [],
+      "emptyState": "暂未找到支持的城市。请清空搜索，或换一个城市名称试试。",
+      "selection": "请选择一座城市，再开始今日诗笺。",
+      "consent": false,
+      "saveError": null,
+      "submitDisabled": true,
+      "focused": "city-search",
+      "documentOverflow": false,
+      "mainScrollHeight": 660,
+      "mainClientHeight": 660,
+      "submitBox": {
+        "top": 554,
+        "bottom": 598
+      },
+      "viewport": {
+        "width": 560,
+        "height": 720
+      }
+    },
+    "keyboardFocus": {
+      "view": true,
+      "search": "杭州",
+      "options": [
+        {
+          "value": "hangzhou",
+          "checked": false
+        }
+      ],
+      "emptyState": null,
+      "selection": "请选择一座城市，再开始今日诗笺。",
+      "consent": false,
+      "saveError": null,
+      "submitDisabled": true,
+      "focused": "hangzhou",
+      "documentOverflow": false,
+      "mainScrollHeight": 660,
+      "mainClientHeight": 660,
+      "submitBox": {
+        "top": 577,
+        "bottom": 621
+      },
+      "viewport": {
+        "width": 560,
+        "height": 720
+      }
+    },
+    "selectedWithoutConsent": {
+      "view": true,
+      "search": "杭州",
+      "options": [
+        {
+          "value": "hangzhou",
+          "checked": true
+        }
+      ],
+      "emptyState": null,
+      "selection": "本次将使用浙江 · 杭州的天气；城市设置保存在本机。",
+      "consent": false,
+      "saveError": null,
+      "submitDisabled": true,
+      "focused": "hangzhou",
+      "documentOverflow": false,
+      "mainScrollHeight": 660,
+      "mainClientHeight": 660,
+      "submitBox": {
+        "top": 577,
+        "bottom": 621
+      },
+      "viewport": {
+        "width": 560,
+        "height": 720
+      }
+    },
+    "clearedSelection": {
+      "view": true,
+      "search": "深圳",
+      "options": [],
+      "emptyState": "暂未找到支持的城市。请清空搜索，或换一个城市名称试试。",
+      "selection": "请选择一座城市，再开始今日诗笺。",
+      "consent": false,
+      "saveError": null,
+      "submitDisabled": true,
+      "focused": "city-search",
+      "documentOverflow": false,
+      "mainScrollHeight": 660,
+      "mainClientHeight": 660,
+      "submitBox": {
+        "top": 554,
+        "bottom": 598
+      },
+      "viewport": {
+        "width": 560,
+        "height": 720
+      }
+    },
+    "ready": {
+      "view": true,
+      "search": "杭州",
+      "options": [
+        {
+          "value": "hangzhou",
+          "checked": true
+        }
+      ],
+      "emptyState": null,
+      "selection": "本次将使用浙江 · 杭州的天气；城市设置保存在本机。",
+      "consent": true,
+      "saveError": null,
+      "submitDisabled": false,
+      "focused": "hangzhou",
+      "documentOverflow": false,
+      "mainScrollHeight": 660,
+      "mainClientHeight": 660,
+      "submitBox": {
+        "top": 577,
+        "bottom": 621
+      },
+      "viewport": {
+        "width": 560,
+        "height": 720
+      }
+    },
+    "compact": {
+      "view": true,
+      "search": "杭州",
+      "options": [
+        {
+          "value": "hangzhou",
+          "checked": true
+        }
+      ],
+      "emptyState": null,
+      "selection": "本次将使用浙江 · 杭州的天气；城市设置保存在本机。",
+      "consent": true,
+      "saveError": null,
+      "submitDisabled": false,
+      "focused": "hangzhou",
+      "documentOverflow": false,
+      "mainScrollHeight": 637,
+      "mainClientHeight": 200,
+      "submitBox": {
+        "top": 195,
+        "bottom": 239
+      },
+      "viewport": {
+        "width": 320,
+        "height": 260
+      }
+    },
+    "saved": {
+      "cityLabel": "诗今日诗笺杭州 · 九月初五",
+      "weatherLabel": "10月14日天气未更新秋 收藏 0",
+      "settings": {
+        "configured": true,
+        "cityId": "hangzhou",
+        "autostart": true,
+        "anonymousMetrics": false,
+        "theme": "system",
+        "reduceMotion": false,
+        "poemLayout": "horizontal",
+        "poemFontSize": "medium"
+      }
+    },
+    "reloaded": {
+      "onboardingVisible": false,
+      "cityLabel": "诗今日诗笺杭州 · 九月初五",
+      "cityId": "hangzhou"
+    },
+    "failedSave": {
+      "view": true,
+      "search": "杭州",
+      "options": [
+        {
+          "value": "hangzhou",
+          "checked": true
+        }
+      ],
+      "emptyState": null,
+      "selection": "本次将使用浙江 · 杭州的天气；城市设置保存在本机。",
+      "consent": true,
+      "saveError": "首次设置未能保存。你的城市选择还在，请再试一次。",
+      "submitDisabled": false,
+      "focused": "hangzhou",
+      "documentOverflow": false,
+      "mainScrollHeight": 660,
+      "mainClientHeight": 660,
+      "submitBox": {
+        "top": 606,
+        "bottom": 650
+      },
+      "viewport": {
+        "width": 560,
+        "height": 720
+      }
+    },
+    "retriedSave": {
+      "cityLabel": "诗今日诗笺杭州 · 九月初五",
+      "cityId": "hangzhou"
+    }
+  }
+}
