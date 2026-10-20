@@ -101,3 +101,11 @@
 [同哈希隔离短测](./evidence/T09_PERFORMANCE_SMOKE_weather-late-20261018.json)经 `node scripts/performance-smoke-check.mjs --candidate=weather-late-20261018` 复算：10 次干净资料启动就绪 P95 **600.69 ms**、10 次诗笺首帧 P95 **118.4 ms**、10 次离线准备 P95 **1,702.49 ms**；60 秒托盘空闲主进程 CPU 平均 **0%**、工作集 P95 **30.56 MiB**，已测短项达标。10 次首屏仍全部是 `offline-rules`，没有首次就绪即在线的样本，在线准备 P95 **未测**，报告 `gateSatisfied=false`。晚到成功不伪装成首屏在线通过；八小时/七天、不同机器、缩放和真实读屏也未由旧哈希转移。A9 继续**部分通过**。
 
 2026-10-19 窗口大小启动修正后的未安装 EXE `.work/redesign-glance-startup-fix-20261019/release/weatherpoem.exe`，SHA-256 `3D3856613786D6961B6BE7ECF5274F8E017DE79E1AB8CAA541F8B498A4B0ED10`，完成[同哈希隔离性能短测](./evidence/T09_PERFORMANCE_SMOKE_glance-startup-fix-20261019.json)，独立检查器 `node scripts/performance-smoke-check.mjs --candidate=glance-startup-fix-20261019` 通过。10 次干净资料启动就绪 P95 **605.68 ms**，10 次离线诗笺首帧 P95 **142.4 ms**、离线准备 P95 **1,860.75 ms**；60 秒托盘空闲主进程 CPU 平均 **0%**、工作集 P95 **30.55 MiB**，已测短项达标。10 次已配置首屏均为 `offline-rules`，首次就绪在线样本仍为 0，报告 `gateSatisfied=false`。当前会话曾锁屏，焦点脚本前提失败，不能把这份短测当作自动弹窗不抢焦点证据；真实在线、读屏、多 DPI、长期与发布门禁均未由旧哈希转移。A9 继续**部分通过**。
+
+## 2026-10-20 真实天气晚到后的已读诗笺保持检查
+
+当前未安装内部 EXE `.work/redesign-reset-inline-20261020/release/weatherpoem.exe`，SHA-256 `D68E286A2C5F2262079078921804134917CBB8C6836E1AB2D8036307E8F1325B`，此前[自然续取诊断](./evidence/T09_NATIVE_LIVE_WEATHER_NATURAL_RESETINLINE_20261020.json)已经证明在未碰诗笺时，晚到的小雨会触发自然重选，但未覆盖用户开始阅读后的低打扰行为。本次采用单独临时资料，以 WebView2 原生指针输入点在诗题，随后不代替应用发天气请求，等待应用自然续取；[结构化报告](./evidence/T09_NATIVE_LIVE_WEATHER_TOUCHED_RESETINLINE_20261020.json)和[末态截图](./evidence/T09_NATIVE_LIVE_WEATHER_TOUCHED_RESETINLINE_20261020_after.png)保留结果。
+
+就绪标记为 `offline-rules`；点诗前后均显示《暮江吟》，实际 `pointerdown` 命中诗笺一次。八秒后本机北京 Open-Meteo 缓存来源为 `open-meteo`，天气栏从“天气未更新”更新为“小雨”，诗题仍为《暮江吟》，无加载/安全遮挡；隔离 SQLite 当日状态和唯一一条展示事件均指向该诗。`node scripts/redesign-live-weather-touch-check.mjs T09_NATIVE_LIVE_WEATHER_TOUCHED_RESETINLINE_20261020.json` 独立复算 EXE／脚本哈希、指针命中、UI 状态、数据库与 PNG 文件通过。原生截图已检查主句、理由与操作没有被天气栏遮挡。没有修改真实资料、时钟、启动项、显示设置，也没有安装/卸载。
+
+这只证明单一日期、城市、机器和自然网络时序下的“已读诗不闪换”，不代表人工长期使用、弱网分布、真实预警/读屏或在线首屏 P95。旧候选的离线短测数值不因本次诊断改写；A1/A9 仍**部分通过**。首个天气资源被 1100 ms 限制取消的观测不足以决定新超时，应先用独立新候选 A/B 重测在线和离线，而非仅根据 1116–1121 ms 两个边界样本上调。
