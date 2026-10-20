@@ -502,6 +502,7 @@ try {
       author: document.querySelector('.poem-view .poem-heading p')?.textContent,
       context: document.querySelector('.context-strip')?.textContent,
       date: document.querySelector('.context-strip strong')?.textContent,
+      excerpt: [...document.querySelectorAll('.poem-view .poem-lines p')].map((line) => line.textContent),
       reason: document.querySelector('.poem-view .reason-block')?.textContent,
       scene: document.querySelector('.poem-paper')?.getAttribute('data-scene'),
       sceneDescription: document.querySelector('.scene-mark')?.getAttribute('aria-label'),
@@ -509,6 +510,7 @@ try {
     assert.equal(ui.date, expectedDate);
     assert.equal(ui.title, "芙蓉楼送辛渐", `Broader rain match did not avoid yesterday's author: ${JSON.stringify(ui)}`);
     assert.ok(ui.author?.startsWith("王昌龄"));
+    assert.deepEqual(ui.excerpt, ["寒雨连江夜入吴", "平明送客楚山孤"], "Rain card did not expose the matching published couplet");
     assert.ok(ui.context?.includes("小雨（隔离演练）"));
     assert.ok(ui.reason?.includes("演练"));
     assert.equal(ui.scene, "rain");

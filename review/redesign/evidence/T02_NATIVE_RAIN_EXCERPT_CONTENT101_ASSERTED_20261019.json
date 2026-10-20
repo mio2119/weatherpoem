@@ -1,0 +1,93 @@
+{
+  "schemaVersion": "1.0",
+  "testKind": "isolated-native-cross-day-light-rain-author-diversity",
+  "generatedAt": "2026-10-19T15:22:50.038Z",
+  "candidate": {
+    "path": ".work/redesign-rain-excerpt-20261019/release/weatherpoem.exe",
+    "sha256": "402FE0C76ECFA256B396E02B4226E1E30E95716DC582D20F7263FDB9FA18EC16"
+  },
+  "testHarness": {
+    "path": "scripts/test-redesign-native-reveal.mjs",
+    "sha256": "EC545DBFDABB8A193EE27C25276EF67AE966EBC173B753EFE039E62C4F864915"
+  },
+  "isolation": {
+    "temporaryProfile": true,
+    "systemClockChanged": false,
+    "installedOrUninstalled": false,
+    "realUserDataTouched": false,
+    "processOnlyWeatherHostBlock": false
+  },
+  "scenario": "scene-rain",
+  "concealAction": "tray-hide-button",
+  "activationPath": "native-single-instance",
+  "revealElapsedMs": 179,
+  "readyView": "poem",
+  "original": {
+    "date": "10月19日",
+    "title": "元日",
+    "context": "10月19日小雨（隔离演练）诗 收藏 0",
+    "visible": "visible",
+    "poem": true
+  },
+  "rainSelectionAudit": {
+    "ui": {
+      "title": "芙蓉楼送辛渐",
+      "author": "王昌龄 · 唐",
+      "context": "9月1日小雨（隔离演练）雨 收藏 0",
+      "date": "9月1日",
+      "excerpt": [
+        "寒雨连江夜入吴",
+        "平明送客楚山孤"
+      ],
+      "reason": "隔离场景模拟小雨（隔离演练），在雨夜送别之后，把坦荡留作最简洁的自我说明。",
+      "scene": "rain",
+      "sceneDescription": "隔离场景：小雨（隔离演练）；不代表当地实时天气"
+    },
+    "dailyState": {
+      "local_date": "2026-09-01",
+      "state": "shown",
+      "work_id": "wang-chang-ling-fu-rong-lou"
+    },
+    "displayEvent": {
+      "work_id": "wang-chang-ling-fu-rong-lou",
+      "author": "王昌龄",
+      "primary_context": "小雨（隔离演练）"
+    }
+  },
+  "hidden": {
+    "visibility": "visible",
+    "poem": false,
+    "loading": true
+  },
+  "expectedDate": "9月1日",
+  "expectedLocalDate": "2026-09-01",
+  "screenshots": [
+    "review/redesign/evidence/T02_NATIVE_RAIN_EXCERPT_CONTENT101_ASSERTED_20261019_before.png",
+    "review/redesign/evidence/T02_NATIVE_RAIN_EXCERPT_CONTENT101_ASSERTED_20261019_after.png"
+  ],
+  "observed": [
+    {
+      "visible": "visible",
+      "poem": false,
+      "loading": true,
+      "correction": false,
+      "warning": false
+    },
+    {
+      "visible": "visible",
+      "poem": false,
+      "loading": true,
+      "correction": false,
+      "warning": false
+    },
+    {
+      "visible": "visible",
+      "date": "9月1日",
+      "poem": true,
+      "loading": false,
+      "correction": false,
+      "warning": false
+    }
+  ],
+  "result": "passed"
+}

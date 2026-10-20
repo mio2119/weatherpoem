@@ -2,8 +2,8 @@
   "schemaVersion": "1.1",
   "product": "WeatherPoem",
   "appVersion": "0.2.0",
-  "contentVersion": "2026.07.1",
-  "generatedAt": "2026-10-16T17:34:12.266Z",
+  "contentVersion": "2026.10.1",
+  "generatedAt": "2026-10-19T15:07:39.008Z",
   "status": "inventory-ready-awaiting-legal-review",
   "scope": {
     "target": "x86_64-pc-windows-msvc",
@@ -30,7 +30,7 @@
     },
     "contentCatalog": {
       "path": "review/content-review-catalog.json",
-      "sha256": "9F06180D40278D10B8EB9C208A2DF8A207BB90ED1C16C1D126AEF3546F4D62FE"
+      "sha256": "A9943B492FA086D4ECBE72B20D19F7BD14B420CD8306076F5C882585A65E4A31"
     },
     "iconSource": {
       "path": "src-tauri/icons/app-icon.svg",
@@ -50,15 +50,15 @@
     },
     "styles": {
       "path": "src/styles.css",
-      "sha256": "EB775606B0A84312526226427EEA83D8379B1A99C68B4299BCB51B132755BCCA"
+      "sha256": "025D70F41504732CA3CBD8CFCE392E8CF8799E772F5182FCC38B7A7419164D53"
     },
     "settingsPanel": {
       "path": "src/components/SettingsPanel.vue",
-      "sha256": "B3EED426D252992D9EDDDE9CD4372814698260998BC6198888856AF9D65A32D2"
+      "sha256": "3FD6F89166045538037FBB7E03B748FBA088CBE3EF13318DDC684DB147DD0D11"
     },
     "desktopService": {
       "path": "src/services/desktop.ts",
-      "sha256": "8014A5708A563E3CD925296FE327766E9C5944FCB752895EF31380883383AC2C"
+      "sha256": "DE99CEEEBF3DCA289875F789AA8615E3D3DC0869C8F970E6E16241B8E9932E63"
     },
     "tauriConfig": {
       "path": "src-tauri/tauri.conf.json",

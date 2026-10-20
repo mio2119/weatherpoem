@@ -3,8 +3,8 @@ import { existsSync } from "node:fs";
 import { readFile, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
-import { createServer } from "vite";
 import { assertContentWithdrawalDrillReport } from "./content-withdrawal-support.mjs";
+import { loadBundledModule } from "./load-reason-sources.mjs";
 
 const projectRoot = path.resolve(
   path.dirname(fileURLToPath(import.meta.url)),
@@ -92,20 +92,13 @@ class MemoryStorage {
   }
 }
 
-const vite = await createServer({
-  root: projectRoot,
-  appType: "custom",
-  logLevel: "silent",
-  server: { middlewareMode: true },
-});
-
-try {
+async function runDrill() {
   const {
     CONTENT_WITHDRAWAL_CACHE_KEY,
     fetchContentWithdrawals,
     filterWithdrawnWorks,
     shouldShowContentCorrection,
-  } = await vite.ssrLoadModule("/src/services/content-control.ts");
+  } = await loadBundledModule(projectRoot, "src/services/content-control.ts");
   const now = Date.now();
   const currentContext = await context(now);
   const sample = catalog.works[0];
@@ -282,6 +275,6 @@ try {
   console.log(
     `内容撤回自动演练通过：${sample.id} 已从 ${catalog.works.length} 首候选中排除，离线缓存与防回退检查通过；报告：${reportPath}`,
   );
-} finally {
-  await vite.close();
 }
+
+await runDrill();

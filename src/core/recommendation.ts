@@ -13,7 +13,7 @@ import { buildCalendarContext } from "./date-context";
 import { matchesPoemWeather } from "./weather-match";
 
 export const RULE_VERSION = "1.2.5";
-export const CONTENT_VERSION = "2026.07.1";
+export const CONTENT_VERSION = "2026.10.1";
 export const RETAINED_CONTEXT = "今日已选";
 
 interface RecommendationInput {

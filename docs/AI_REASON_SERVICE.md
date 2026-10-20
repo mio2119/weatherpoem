@@ -158,7 +158,7 @@ docker run --rm -p 8787:8787 `
 ```json
 {
   "schemaVersion": "1.1",
-  "contentVersion": "2026.07.1",
+  "contentVersion": "2026.10.1",
   "ruleVersion": "1.2.5",
   "work": {
     "id": "zhao-shi-xiu-yue-ke",

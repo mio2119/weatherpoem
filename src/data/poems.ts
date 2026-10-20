@@ -525,7 +525,7 @@ const CANDIDATE_POEMS: Poem[] = [
       "寒雨连江夜入吴，平明送客楚山孤。",
       "洛阳亲友如相问，一片冰心在玉壶。",
     ],
-    excerpt: ["洛阳亲友如相问", "一片冰心在玉壶"],
+    excerpt: ["寒雨连江夜入吴", "平明送客楚山孤"],
     sourceName: "《全唐诗》",
     oneLineSummary: "在雨夜送别之后，把坦荡留作最简洁的自我说明。",
     culturalBackground:

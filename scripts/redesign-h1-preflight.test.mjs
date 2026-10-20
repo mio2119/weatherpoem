@@ -5,7 +5,7 @@ import { test } from 'node:test';
 const read = (path) => readFileSync(new URL(`../${path}`, import.meta.url), 'utf8');
 const lines = (path) => read(path).trimEnd().split(/\r?\n/);
 
-test('H1 content template matches the 18 pending works and contains no review decisions', () => {
+test('H1 content template matches the 19 pending works and contains no review decisions', () => {
   const source = read('review/redesign/T08_content_sample_2026-10-12.md');
   const expected = [...source.matchAll(/^\| `([^`]+)` \| ([^|]+) \|/gm)]
     .map((match) => [match[1], match[2].trim()]);
@@ -13,8 +13,8 @@ test('H1 content template matches the 18 pending works and contains no review de
   const works = new Map(catalog.works.map((work) => [work.id, work.title]));
   const [header, ...rows] = lines('review/redesign/templates/T11_content_review_template.csv');
 
-  assert.equal(expected.length, 18);
-  assert.equal(rows.length, 18);
+  assert.equal(expected.length, 19);
+  assert.equal(rows.length, 19);
   assert.deepEqual(header.split(','), [
     'workId', 'title', 'contentVersion', 'reviewer', 'reviewDate',
     'editionOrAuthoritativePage', 'locator', 'textAccurate',
