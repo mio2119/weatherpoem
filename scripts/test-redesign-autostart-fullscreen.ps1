@@ -1,8 +1,13 @@
 param(
     [Parameter(Mandatory = $true)][string]$CandidatePath,
     [Parameter(Mandatory = $true)][string]$ReportPath,
-    [ValidateSet('full-screen', 'work-area')][string]$ProbeMode = 'full-screen'
+    [ValidateSet('full-screen', 'work-area')][string]$ProbeMode = 'full-screen',
+    [switch]$ObserveCurrentForeground
 )
+
+if ($ObserveCurrentForeground -and $ProbeMode -ne 'full-screen') {
+    throw 'Observing the current foreground only supports full-screen suppression'
+}
 
 Set-StrictMode -Version Latest
 $ErrorActionPreference = 'Stop'
@@ -28,6 +33,11 @@ public static class WeatherPoemFullScreenProbe {
     [DllImport("user32.dll")] public static extern bool IsWindowVisible(IntPtr window);
     [DllImport("user32.dll")] public static extern bool GetWindowRect(IntPtr window, out RECT rect);
     [DllImport("user32.dll")] public static extern uint GetDpiForWindow(IntPtr window);
+    public static int OwnerPid(IntPtr window) {
+        uint pid;
+        GetWindowThreadProcessId(window, out pid);
+        return (int)pid;
+    }
     public static IntPtr FindMainWindow(int wantedPid) {
         IntPtr found = IntPtr.Zero;
         EnumWindows((window, state) => {
@@ -116,13 +126,18 @@ $markerPath = Join-Path $profile 'temp\probe\weatherpoem-performance-ready.json'
 $runId = [Guid]::NewGuid().ToString('N')
 $report = [ordered]@{
     schemaVersion = '1.0'
-    testKind = 'isolated-native-autostart-foreground-bounds'
+    testKind = if ($ObserveCurrentForeground) { 'isolated-native-existing-fullscreen-autostart-suppression' } else { 'isolated-native-autostart-foreground-bounds' }
     generatedAt = [DateTime]::UtcNow.ToString('o')
     sourceCommit = (& git -C $projectRoot rev-parse HEAD).Trim()
     candidate = [ordered]@{ path = $candidate; sha256 = (Get-FileHash -LiteralPath $candidate -Algorithm SHA256).Hash }
+    testHarness = [ordered]@{ path = 'scripts/test-redesign-autostart-fullscreen.ps1'; sha256 = (Get-FileHash -LiteralPath $PSCommandPath -Algorithm SHA256).Hash }
     isolation = [ordered]@{ temporaryProfile = $true; realUserDataTouched = $false; systemAutostartChanged = $false; systemDisplaySettingsChanged = $false }
     observations = [ordered]@{}
-    limitations = @('Borderless WinForms probe is not a real presentation, game, or ordinary maximized application; single monitor and current DPI only.')
+    limitations = if ($ObserveCurrentForeground) {
+        @('The existing foreground application is not controlled by this test; manual recovery and compositor-frame continuity are not checked.', 'Only the foreground monitor and current Windows session are observed.')
+    } else {
+        @('Borderless WinForms probe is not a real presentation, game, or ordinary maximized application; single monitor and current DPI only.')
+    }
     result = 'in-progress'
 }
 $fullScreen = $null
@@ -136,45 +151,68 @@ try {
     & node (Join-Path $projectRoot 'scripts\seed-performance-profile.mjs') $profile | Out-Null
     if ($LASTEXITCODE -ne 0) { throw 'Could not seed isolated profile' }
 
-    $screen = [System.Windows.Forms.Screen]::PrimaryScreen
-    if (-not $screen) { throw 'No primary monitor available' }
-    $fullScreen = [System.Windows.Forms.Form]::new()
-    $fullScreen.Text = 'WeatherPoem 隔离前台边界演练'
-    $fullScreen.FormBorderStyle = [System.Windows.Forms.FormBorderStyle]::None
-    $fullScreen.StartPosition = [System.Windows.Forms.FormStartPosition]::Manual
-    $targetBounds = if ($ProbeMode -eq 'full-screen') { $screen.Bounds } else { $screen.WorkingArea }
-    $fullScreen.Bounds = $targetBounds
-    $fullScreen.BackColor = [System.Drawing.Color]::FromArgb(34, 43, 48)
-    $label = [System.Windows.Forms.Label]::new()
-    $label.Text = "WeatherPoem 隔离前台边界演练 · $ProbeMode"
-    $label.ForeColor = [System.Drawing.Color]::White
-    $label.Dock = [System.Windows.Forms.DockStyle]::Fill
-    $label.TextAlign = [System.Drawing.ContentAlignment]::MiddleCenter
-    $fullScreen.Controls.Add($label)
-    $fullScreen.Show()
-    $ready = $false
-    for ($attempt = 1; $attempt -le 8; $attempt++) {
-        $fullScreen.Activate()
-        [WeatherPoemFullScreenProbe]::FocusExactWindow($fullScreen.Handle) | Out-Null
-        [System.Windows.Forms.Application]::DoEvents()
+    $foregroundProbe = [IntPtr]::Zero
+    if ($ObserveCurrentForeground) {
+        $foregroundProbe = [WeatherPoemFullScreenProbe]::GetForegroundWindow()
+        if ($foregroundProbe -eq [IntPtr]::Zero) { throw 'No current foreground window to observe' }
+        $screen = [System.Windows.Forms.Screen]::FromHandle($foregroundProbe)
+        if (-not $screen) { throw 'Could not identify the foreground monitor' }
         $rect = [WeatherPoemFullScreenProbe+RECT]::new()
-        $boundsAvailable = [WeatherPoemFullScreenProbe]::GetWindowRect($fullScreen.Handle, [ref]$rect)
-        if ([WeatherPoemFullScreenProbe]::GetForegroundWindow() -eq $fullScreen.Handle -and
-            $boundsAvailable -and
-            $rect.Left -eq $targetBounds.Left -and $rect.Top -eq $targetBounds.Top -and
-            $rect.Right -eq $targetBounds.Right -and $rect.Bottom -eq $targetBounds.Bottom) {
-            $ready = $true
-            break
+        if (-not [WeatherPoemFullScreenProbe]::GetWindowRect($foregroundProbe, [ref]$rect)) {
+            throw 'Could not read existing foreground bounds'
         }
-        Start-Sleep -Milliseconds 200
+        $bounds = $screen.Bounds
+        $coversScreen = $rect.Left -le $bounds.Left + 3 -and $rect.Top -le $bounds.Top + 3 -and
+            $rect.Right -ge $bounds.Right - 3 -and $rect.Bottom -ge $bounds.Bottom - 3
+        $report.observations.probeMode = 'existing-full-screen'
+        $report.observations.foregroundProbePrecondition = $coversScreen
+        $report.observations.foregroundProcessId = [WeatherPoemFullScreenProbe]::OwnerPid($foregroundProbe)
+        $report.observations.foregroundWindowBounds = [ordered]@{ left = $rect.Left; top = $rect.Top; right = $rect.Right; bottom = $rect.Bottom }
+        $report.observations.monitorBounds = [ordered]@{ left = $bounds.Left; top = $bounds.Top; right = $bounds.Right; bottom = $bounds.Bottom }
+        $report.observations.workAreaBounds = [ordered]@{ left = $screen.WorkingArea.Left; top = $screen.WorkingArea.Top; right = $screen.WorkingArea.Right; bottom = $screen.WorkingArea.Bottom }
+        $report.observations.foregroundProbeDpi = [WeatherPoemFullScreenProbe]::GetDpiForWindow($foregroundProbe)
+        if (-not $coversScreen) { throw 'Current foreground window does not cover its monitor; app not launched' }
+    } else {
+        $screen = [System.Windows.Forms.Screen]::PrimaryScreen
+        if (-not $screen) { throw 'No primary monitor available' }
+        $fullScreen = [System.Windows.Forms.Form]::new()
+        $fullScreen.Text = 'WeatherPoem 隔离前台边界演练'
+        $fullScreen.FormBorderStyle = [System.Windows.Forms.FormBorderStyle]::None
+        $fullScreen.StartPosition = [System.Windows.Forms.FormStartPosition]::Manual
+        $targetBounds = if ($ProbeMode -eq 'full-screen') { $screen.Bounds } else { $screen.WorkingArea }
+        $fullScreen.Bounds = $targetBounds
+        $fullScreen.BackColor = [System.Drawing.Color]::FromArgb(34, 43, 48)
+        $label = [System.Windows.Forms.Label]::new()
+        $label.Text = "WeatherPoem 隔离前台边界演练 · $ProbeMode"
+        $label.ForeColor = [System.Drawing.Color]::White
+        $label.Dock = [System.Windows.Forms.DockStyle]::Fill
+        $label.TextAlign = [System.Drawing.ContentAlignment]::MiddleCenter
+        $fullScreen.Controls.Add($label)
+        $fullScreen.Show()
+        $ready = $false
+        for ($attempt = 1; $attempt -le 8; $attempt++) {
+            $fullScreen.Activate()
+            [WeatherPoemFullScreenProbe]::FocusExactWindow($fullScreen.Handle) | Out-Null
+            [System.Windows.Forms.Application]::DoEvents()
+            $rect = [WeatherPoemFullScreenProbe+RECT]::new()
+            $boundsAvailable = [WeatherPoemFullScreenProbe]::GetWindowRect($fullScreen.Handle, [ref]$rect)
+            if ([WeatherPoemFullScreenProbe]::GetForegroundWindow() -eq $fullScreen.Handle -and
+                $boundsAvailable -and
+                $rect.Left -eq $targetBounds.Left -and $rect.Top -eq $targetBounds.Top -and
+                $rect.Right -eq $targetBounds.Right -and $rect.Bottom -eq $targetBounds.Bottom) {
+                $ready = $true
+                break
+            }
+            Start-Sleep -Milliseconds 200
+        }
+        $report.observations.probeMode = $ProbeMode
+        $report.observations.foregroundProbePrecondition = $ready
+        $report.observations.foregroundProbeActivationAttempts = $attempt
+        $report.observations.foregroundProbeDpi = [WeatherPoemFullScreenProbe]::GetDpiForWindow($fullScreen.Handle)
+        $report.observations.monitorBounds = [ordered]@{ left = $screen.Bounds.Left; top = $screen.Bounds.Top; right = $screen.Bounds.Right; bottom = $screen.Bounds.Bottom }
+        $report.observations.workAreaBounds = [ordered]@{ left = $screen.WorkingArea.Left; top = $screen.WorkingArea.Top; right = $screen.WorkingArea.Right; bottom = $screen.WorkingArea.Bottom }
+        if (-not $ready) { throw 'Could not establish exact foreground probe bounds' }
     }
-    $report.observations.probeMode = $ProbeMode
-    $report.observations.foregroundProbePrecondition = $ready
-    $report.observations.foregroundProbeActivationAttempts = $attempt
-    $report.observations.foregroundProbeDpi = [WeatherPoemFullScreenProbe]::GetDpiForWindow($fullScreen.Handle)
-    $report.observations.monitorBounds = [ordered]@{ left = $screen.Bounds.Left; top = $screen.Bounds.Top; right = $screen.Bounds.Right; bottom = $screen.Bounds.Bottom }
-    $report.observations.workAreaBounds = [ordered]@{ left = $screen.WorkingArea.Left; top = $screen.WorkingArea.Top; right = $screen.WorkingArea.Right; bottom = $screen.WorkingArea.Bottom }
-    if (-not $ready) { throw 'Could not establish exact foreground probe bounds' }
 
     $app = Start-IsolatedCandidate '--autostart'
     if (-not $app) { throw 'Could not launch isolated candidate' }
@@ -184,35 +222,57 @@ try {
         if ($app.HasExited) { throw "Candidate exited before full-screen observation: $($app.ExitCode)" }
         [WeatherPoemFullScreenProbe]::FindMainWindow($app.Id)
     } 'hidden product window' 25
-    if ($ProbeMode -eq 'work-area') {
-        Wait-Until { [WeatherPoemFullScreenProbe]::IsWindowVisible($main) } 'automatic reveal behind work-area foreground' 15 | Out-Null
-    }
-    Start-Sleep -Seconds 3
-    [System.Windows.Forms.Application]::DoEvents()
-    $report.observations.productWindowHandle = [string]$main
-    $report.observations.autoVisible = [WeatherPoemFullScreenProbe]::IsWindowVisible($main)
-    $report.observations.probeStillForeground = [WeatherPoemFullScreenProbe]::GetForegroundWindow() -eq $fullScreen.Handle
-    $report.observations.readyMarkerAfterAuto = Test-Path -LiteralPath $markerPath
-    $shouldBeVisible = $ProbeMode -eq 'work-area'
-    if ($report.observations.autoVisible -ne $shouldBeVisible -or -not $report.observations.probeStillForeground) {
-        throw 'Autostart visibility/focus did not match foreground probe mode'
-    }
-
-    $second = Start-IsolatedCandidate ''
-    if (-not $second) { throw 'Could not launch manual second instance' }
-    $report.observations.secondInstancePid = $second.Id
-    Wait-Until { $second.HasExited } 'manual second-instance forwarding' 12 | Out-Null
-    $manual = Wait-Until {
-        [WeatherPoemFullScreenProbe]::IsWindowVisible($main) -and
-            [WeatherPoemFullScreenProbe]::GetForegroundWindow() -eq $main
-    } 'manual recovery with foreground focus' 15
-    $report.observations.manualVisible = [WeatherPoemFullScreenProbe]::IsWindowVisible($main)
-    $report.observations.manualFocused = [WeatherPoemFullScreenProbe]::GetForegroundWindow() -eq $main
-    $report.observations.manualResult = [bool]$manual
-    $report.result = if ($ProbeMode -eq 'full-screen') {
-        'full-screen-autostart-suppressed-manual-recovery-passed'
+    if ($ObserveCurrentForeground) {
+        $visibleSamples = 0
+        $foregroundChangedSamples = 0
+        $sampleCount = 30
+        for ($sample = 0; $sample -lt $sampleCount; $sample++) {
+            if ($app.HasExited) { throw "Candidate exited during suppression observation: $($app.ExitCode)" }
+            if ([WeatherPoemFullScreenProbe]::IsWindowVisible($main)) { $visibleSamples++ }
+            if ([WeatherPoemFullScreenProbe]::GetForegroundWindow() -ne $foregroundProbe) { $foregroundChangedSamples++ }
+            Start-Sleep -Milliseconds 100
+        }
+        $report.observations.productWindowHandle = [string]$main
+        $report.observations.visibilitySamples = $sampleCount
+        $report.observations.visibleSamples = $visibleSamples
+        $report.observations.foregroundChangedSamples = $foregroundChangedSamples
+        $report.observations.appStillRunning = -not $app.HasExited
+        $report.observations.readyMarkerAfterAuto = Test-Path -LiteralPath $markerPath
+        if ($visibleSamples -ne 0 -or $foregroundChangedSamples -ne 0 -or $app.HasExited) {
+            throw 'Existing full-screen foreground was interrupted or product became visible'
+        }
+        $report.result = 'existing-fullscreen-autostart-suppressed-passed'
     } else {
-        'work-area-autostart-revealed-without-focus-theft-passed'
+        if ($ProbeMode -eq 'work-area') {
+            Wait-Until { [WeatherPoemFullScreenProbe]::IsWindowVisible($main) } 'automatic reveal behind work-area foreground' 15 | Out-Null
+        }
+        Start-Sleep -Seconds 3
+        [System.Windows.Forms.Application]::DoEvents()
+        $report.observations.productWindowHandle = [string]$main
+        $report.observations.autoVisible = [WeatherPoemFullScreenProbe]::IsWindowVisible($main)
+        $report.observations.probeStillForeground = [WeatherPoemFullScreenProbe]::GetForegroundWindow() -eq $fullScreen.Handle
+        $report.observations.readyMarkerAfterAuto = Test-Path -LiteralPath $markerPath
+        $shouldBeVisible = $ProbeMode -eq 'work-area'
+        if ($report.observations.autoVisible -ne $shouldBeVisible -or -not $report.observations.probeStillForeground) {
+            throw 'Autostart visibility/focus did not match foreground probe mode'
+        }
+
+        $second = Start-IsolatedCandidate ''
+        if (-not $second) { throw 'Could not launch manual second instance' }
+        $report.observations.secondInstancePid = $second.Id
+        Wait-Until { $second.HasExited } 'manual second-instance forwarding' 12 | Out-Null
+        $manual = Wait-Until {
+            [WeatherPoemFullScreenProbe]::IsWindowVisible($main) -and
+                [WeatherPoemFullScreenProbe]::GetForegroundWindow() -eq $main
+        } 'manual recovery with foreground focus' 15
+        $report.observations.manualVisible = [WeatherPoemFullScreenProbe]::IsWindowVisible($main)
+        $report.observations.manualFocused = [WeatherPoemFullScreenProbe]::GetForegroundWindow() -eq $main
+        $report.observations.manualResult = [bool]$manual
+        $report.result = if ($ProbeMode -eq 'full-screen') {
+            'full-screen-autostart-suppressed-manual-recovery-passed'
+        } else {
+            'work-area-autostart-revealed-without-focus-theft-passed'
+        }
     }
 } catch {
     $report.result = if (-not $appLaunched) { 'test-precondition-failed' } else { 'failed' }

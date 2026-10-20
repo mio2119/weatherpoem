@@ -372,6 +372,23 @@ try {
     }
     $report.observations.foregroundBeforePid = [WeatherPoemNativeWindowProbe]::OwnerPid($foregroundBefore)
     $script:productTookFocus = $false
+    if (-not $ManualLaunch -and -not $ControlledInput) {
+        $foregroundRect = [WeatherPoemNativeWindowProbe+RECT]::new()
+        if (-not [WeatherPoemNativeWindowProbe]::GetWindowRect($foregroundBefore, [ref]$foregroundRect)) {
+            throw "Could not inspect the foreground before an automatic visible-window test"
+        }
+        $foregroundScreen = [System.Windows.Forms.Screen]::FromHandle($foregroundBefore)
+        $bounds = $foregroundScreen.Bounds
+        $foregroundCoversScreen = $foregroundRect.Left -le $bounds.Left + 3 -and
+            $foregroundRect.Top -le $bounds.Top + 3 -and
+            $foregroundRect.Right -ge $bounds.Right - 3 -and
+            $foregroundRect.Bottom -ge $bounds.Bottom - 3
+        $report.observations.foregroundCoversScreen = $foregroundCoversScreen
+        if ($foregroundCoversScreen) {
+            $report.result = "test-precondition-failed"
+            throw "A full-screen foreground may intentionally suppress autostart; use the full-screen suppression probe instead of the visible-window journey"
+        }
+    }
 
     $markerPath = Join-Path $profile "temp\probe\weatherpoem-performance-ready.json"
     $start = [System.Diagnostics.ProcessStartInfo]::new()
@@ -621,7 +638,7 @@ try {
         }
     }
 } catch {
-    $report.result = "failed"
+    if ($report.result -ne "test-precondition-failed") { $report.result = "failed" }
     $report.error = [string]$_
     throw
 } finally {
